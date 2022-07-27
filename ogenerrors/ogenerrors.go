@@ -10,6 +10,7 @@ import (
 
 // Error is ogen error.
 type Error interface {
+	OperationName() string
 	OperationID() string
 	Code() int
 	errors.Wrapper
@@ -24,16 +25,27 @@ var _ = []Error{
 	new(DecodeRequestError),
 }
 
-// SecurityError reports that error caused by security handler.
-type SecurityError struct {
-	Operation string
-	Security  string
-	Err       error
+// OperationContext defines operation context for the error.
+type OperationContext struct {
+	Name string
+	ID   string
 }
 
-// OperationID returns operation ID of failed request.
-func (d *SecurityError) OperationID() string {
-	return d.Operation
+// OperationName returns operation Name.
+func (d OperationContext) OperationName() string {
+	return d.Name
+}
+
+// OperationID returns operation ID.
+func (d OperationContext) OperationID() string {
+	return d.ID
+}
+
+// SecurityError reports that error caused by security handler.
+type SecurityError struct {
+	OperationContext
+	Security string
+	Err      error
 }
 
 // Code returns http code to respond.
@@ -48,7 +60,7 @@ func (d *SecurityError) Unwrap() error {
 
 // FormatError implements errors.Formatter.
 func (d *SecurityError) FormatError(p errors.Printer) (next error) {
-	p.Printf("operation %s: security %q", d.Operation, d.Security)
+	p.Printf("operation %s: security %q", d.OperationName(), d.Security)
 	return d.Err
 }
 
@@ -59,18 +71,13 @@ func (d *SecurityError) Format(s fmt.State, verb rune) {
 
 // Error implements error.
 func (d *SecurityError) Error() string {
-	return fmt.Sprintf("operation %s: security %q: %s", d.Operation, d.Security, d.Err)
+	return fmt.Sprintf("operation %s: security %q: %s", d.OperationName(), d.Security, d.Err)
 }
 
 // DecodeParamsError reports that error caused by params decoder.
 type DecodeParamsError struct {
-	Operation string
-	Err       error
-}
-
-// OperationID returns operation ID of failed request.
-func (d *DecodeParamsError) OperationID() string {
-	return d.Operation
+	OperationContext
+	Err error
 }
 
 // Code returns http code to respond.
@@ -85,7 +92,7 @@ func (d *DecodeParamsError) Unwrap() error {
 
 // FormatError implements errors.Formatter.
 func (d *DecodeParamsError) FormatError(p errors.Printer) (next error) {
-	p.Printf("operation %s: decode params", d.Operation)
+	p.Printf("operation %s: decode params", d.OperationName())
 	return d.Err
 }
 
@@ -96,18 +103,13 @@ func (d *DecodeParamsError) Format(s fmt.State, verb rune) {
 
 // Error implements error.
 func (d *DecodeParamsError) Error() string {
-	return fmt.Sprintf("operation %s: decode params: %s", d.Operation, d.Err)
+	return fmt.Sprintf("operation %s: decode params: %s", d.OperationName(), d.Err)
 }
 
 // DecodeRequestError reports that error caused by request decoder.
 type DecodeRequestError struct {
-	Operation string
-	Err       error
-}
-
-// OperationID returns operation ID of failed request.
-func (d *DecodeRequestError) OperationID() string {
-	return d.Operation
+	OperationContext
+	Err error
 }
 
 // Code returns http code to respond.
@@ -122,7 +124,7 @@ func (d *DecodeRequestError) Unwrap() error {
 
 // FormatError implements errors.Formatter.
 func (d *DecodeRequestError) FormatError(p errors.Printer) (next error) {
-	p.Printf("operation %s: decode request", d.Operation)
+	p.Printf("operation %s: decode request", d.OperationName())
 	return d.Err
 }
 
@@ -133,5 +135,5 @@ func (d *DecodeRequestError) Format(s fmt.State, verb rune) {
 
 // Error implements error.
 func (d *DecodeRequestError) Error() string {
-	return fmt.Sprintf("operation %s: decode request: %s", d.Operation, d.Err)
+	return fmt.Sprintf("operation %s: decode request: %s", d.OperationName(), d.Err)
 }

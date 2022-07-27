@@ -30,12 +30,18 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg",
+			ID:   "actions/add-repo-access-to-self-hosted-runner-group-in-org",
+		}
+	)
 	params, err := decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -75,12 +81,18 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsAddSelectedRepoToOrgSecret",
+			ID:   "actions/add-selected-repo-to-org-secret",
+		}
+	)
 	params, err := decodeActionsAddSelectedRepoToOrgSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsAddSelectedRepoToOrgSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -120,12 +132,18 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsAddSelfHostedRunnerToGroupForOrg",
+			ID:   "actions/add-self-hosted-runner-to-group-for-org",
+		}
+	)
 	params, err := decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsAddSelfHostedRunnerToGroupForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -165,12 +183,18 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsApproveWorkflowRun",
+			ID:   "actions/approve-workflow-run",
+		}
+	)
 	params, err := decodeActionsApproveWorkflowRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsApproveWorkflowRun",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -210,12 +234,18 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsCancelWorkflowRun",
+			ID:   "actions/cancel-workflow-run",
+		}
+	)
 	params, err := decodeActionsCancelWorkflowRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsCancelWorkflowRun",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -255,12 +285,18 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsCreateOrUpdateEnvironmentSecret",
+			ID:   "actions/create-or-update-environment-secret",
+		}
+	)
 	params, err := decodeActionsCreateOrUpdateEnvironmentSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsCreateOrUpdateEnvironmentSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -268,8 +304,8 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 	request, close, err := s.decodeActionsCreateOrUpdateEnvironmentSecretRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActionsCreateOrUpdateEnvironmentSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -310,12 +346,18 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsCreateOrUpdateOrgSecret",
+			ID:   "actions/create-or-update-org-secret",
+		}
+	)
 	params, err := decodeActionsCreateOrUpdateOrgSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsCreateOrUpdateOrgSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -323,8 +365,8 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 	request, close, err := s.decodeActionsCreateOrUpdateOrgSecretRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActionsCreateOrUpdateOrgSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -365,12 +407,18 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsCreateOrUpdateRepoSecret",
+			ID:   "actions/create-or-update-repo-secret",
+		}
+	)
 	params, err := decodeActionsCreateOrUpdateRepoSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsCreateOrUpdateRepoSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -378,8 +426,8 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 	request, close, err := s.decodeActionsCreateOrUpdateRepoSecretRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActionsCreateOrUpdateRepoSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -420,12 +468,18 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsCreateRegistrationTokenForOrg",
+			ID:   "actions/create-registration-token-for-org",
+		}
+	)
 	params, err := decodeActionsCreateRegistrationTokenForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsCreateRegistrationTokenForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -465,12 +519,18 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsCreateRegistrationTokenForRepo",
+			ID:   "actions/create-registration-token-for-repo",
+		}
+	)
 	params, err := decodeActionsCreateRegistrationTokenForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsCreateRegistrationTokenForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -510,12 +570,18 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsCreateRemoveTokenForOrg",
+			ID:   "actions/create-remove-token-for-org",
+		}
+	)
 	params, err := decodeActionsCreateRemoveTokenForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsCreateRemoveTokenForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -555,12 +621,18 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsCreateRemoveTokenForRepo",
+			ID:   "actions/create-remove-token-for-repo",
+		}
+	)
 	params, err := decodeActionsCreateRemoveTokenForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsCreateRemoveTokenForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -600,12 +672,18 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsCreateSelfHostedRunnerGroupForOrg",
+			ID:   "actions/create-self-hosted-runner-group-for-org",
+		}
+	)
 	params, err := decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsCreateSelfHostedRunnerGroupForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -613,8 +691,8 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 	request, close, err := s.decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActionsCreateSelfHostedRunnerGroupForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -655,12 +733,18 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsDeleteArtifact",
+			ID:   "actions/delete-artifact",
+		}
+	)
 	params, err := decodeActionsDeleteArtifactParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsDeleteArtifact",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -700,12 +784,18 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsDeleteEnvironmentSecret",
+			ID:   "actions/delete-environment-secret",
+		}
+	)
 	params, err := decodeActionsDeleteEnvironmentSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsDeleteEnvironmentSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -745,12 +835,18 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsDeleteOrgSecret",
+			ID:   "actions/delete-org-secret",
+		}
+	)
 	params, err := decodeActionsDeleteOrgSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsDeleteOrgSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -790,12 +886,18 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsDeleteRepoSecret",
+			ID:   "actions/delete-repo-secret",
+		}
+	)
 	params, err := decodeActionsDeleteRepoSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsDeleteRepoSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -835,12 +937,18 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsDeleteSelfHostedRunnerFromOrg",
+			ID:   "actions/delete-self-hosted-runner-from-org",
+		}
+	)
 	params, err := decodeActionsDeleteSelfHostedRunnerFromOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsDeleteSelfHostedRunnerFromOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -880,12 +988,18 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsDeleteSelfHostedRunnerFromRepo",
+			ID:   "actions/delete-self-hosted-runner-from-repo",
+		}
+	)
 	params, err := decodeActionsDeleteSelfHostedRunnerFromRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsDeleteSelfHostedRunnerFromRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -925,12 +1039,18 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsDeleteSelfHostedRunnerGroupFromOrg",
+			ID:   "actions/delete-self-hosted-runner-group-from-org",
+		}
+	)
 	params, err := decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsDeleteSelfHostedRunnerGroupFromOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -970,12 +1090,18 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsDeleteWorkflowRun",
+			ID:   "actions/delete-workflow-run",
+		}
+	)
 	params, err := decodeActionsDeleteWorkflowRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsDeleteWorkflowRun",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1015,12 +1141,18 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsDeleteWorkflowRunLogs",
+			ID:   "actions/delete-workflow-run-logs",
+		}
+	)
 	params, err := decodeActionsDeleteWorkflowRunLogsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsDeleteWorkflowRunLogs",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1060,12 +1192,18 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsDisableSelectedRepositoryGithubActionsOrganization",
+			ID:   "actions/disable-selected-repository-github-actions-organization",
+		}
+	)
 	params, err := decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsDisableSelectedRepositoryGithubActionsOrganization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1105,12 +1243,18 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsDownloadArtifact",
+			ID:   "actions/download-artifact",
+		}
+	)
 	params, err := decodeActionsDownloadArtifactParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsDownloadArtifact",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1150,12 +1294,18 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsDownloadJobLogsForWorkflowRun",
+			ID:   "actions/download-job-logs-for-workflow-run",
+		}
+	)
 	params, err := decodeActionsDownloadJobLogsForWorkflowRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsDownloadJobLogsForWorkflowRun",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1195,12 +1345,18 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsDownloadWorkflowRunLogs",
+			ID:   "actions/download-workflow-run-logs",
+		}
+	)
 	params, err := decodeActionsDownloadWorkflowRunLogsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsDownloadWorkflowRunLogs",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1240,12 +1396,18 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsEnableSelectedRepositoryGithubActionsOrganization",
+			ID:   "actions/enable-selected-repository-github-actions-organization",
+		}
+	)
 	params, err := decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsEnableSelectedRepositoryGithubActionsOrganization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1285,12 +1447,18 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetAllowedActionsOrganization",
+			ID:   "actions/get-allowed-actions-organization",
+		}
+	)
 	params, err := decodeActionsGetAllowedActionsOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetAllowedActionsOrganization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1330,12 +1498,18 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetAllowedActionsRepository",
+			ID:   "actions/get-allowed-actions-repository",
+		}
+	)
 	params, err := decodeActionsGetAllowedActionsRepositoryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetAllowedActionsRepository",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1375,12 +1549,18 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetArtifact",
+			ID:   "actions/get-artifact",
+		}
+	)
 	params, err := decodeActionsGetArtifactParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetArtifact",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1420,12 +1600,18 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetEnvironmentPublicKey",
+			ID:   "actions/get-environment-public-key",
+		}
+	)
 	params, err := decodeActionsGetEnvironmentPublicKeyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetEnvironmentPublicKey",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1465,12 +1651,18 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetEnvironmentSecret",
+			ID:   "actions/get-environment-secret",
+		}
+	)
 	params, err := decodeActionsGetEnvironmentSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetEnvironmentSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1510,12 +1702,18 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetGithubActionsPermissionsOrganization",
+			ID:   "actions/get-github-actions-permissions-organization",
+		}
+	)
 	params, err := decodeActionsGetGithubActionsPermissionsOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetGithubActionsPermissionsOrganization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1555,12 +1753,18 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetGithubActionsPermissionsRepository",
+			ID:   "actions/get-github-actions-permissions-repository",
+		}
+	)
 	params, err := decodeActionsGetGithubActionsPermissionsRepositoryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetGithubActionsPermissionsRepository",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1600,12 +1804,18 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetJobForWorkflowRun",
+			ID:   "actions/get-job-for-workflow-run",
+		}
+	)
 	params, err := decodeActionsGetJobForWorkflowRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetJobForWorkflowRun",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1645,12 +1855,18 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetOrgPublicKey",
+			ID:   "actions/get-org-public-key",
+		}
+	)
 	params, err := decodeActionsGetOrgPublicKeyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetOrgPublicKey",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1690,12 +1906,18 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetOrgSecret",
+			ID:   "actions/get-org-secret",
+		}
+	)
 	params, err := decodeActionsGetOrgSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetOrgSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1735,12 +1957,18 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetRepoPublicKey",
+			ID:   "actions/get-repo-public-key",
+		}
+	)
 	params, err := decodeActionsGetRepoPublicKeyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetRepoPublicKey",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1780,12 +2008,18 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetRepoSecret",
+			ID:   "actions/get-repo-secret",
+		}
+	)
 	params, err := decodeActionsGetRepoSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetRepoSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1825,12 +2059,18 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetReviewsForRun",
+			ID:   "actions/get-reviews-for-run",
+		}
+	)
 	params, err := decodeActionsGetReviewsForRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetReviewsForRun",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1870,12 +2110,18 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetSelfHostedRunnerForOrg",
+			ID:   "actions/get-self-hosted-runner-for-org",
+		}
+	)
 	params, err := decodeActionsGetSelfHostedRunnerForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetSelfHostedRunnerForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1915,12 +2161,18 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetSelfHostedRunnerForRepo",
+			ID:   "actions/get-self-hosted-runner-for-repo",
+		}
+	)
 	params, err := decodeActionsGetSelfHostedRunnerForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetSelfHostedRunnerForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1960,12 +2212,18 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetSelfHostedRunnerGroupForOrg",
+			ID:   "actions/get-self-hosted-runner-group-for-org",
+		}
+	)
 	params, err := decodeActionsGetSelfHostedRunnerGroupForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetSelfHostedRunnerGroupForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2005,12 +2263,18 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetWorkflowRun",
+			ID:   "actions/get-workflow-run",
+		}
+	)
 	params, err := decodeActionsGetWorkflowRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetWorkflowRun",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2050,12 +2314,18 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsGetWorkflowRunUsage",
+			ID:   "actions/get-workflow-run-usage",
+		}
+	)
 	params, err := decodeActionsGetWorkflowRunUsageParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsGetWorkflowRunUsage",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2095,12 +2365,18 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsListArtifactsForRepo",
+			ID:   "actions/list-artifacts-for-repo",
+		}
+	)
 	params, err := decodeActionsListArtifactsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsListArtifactsForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2140,12 +2416,18 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsListEnvironmentSecrets",
+			ID:   "actions/list-environment-secrets",
+		}
+	)
 	params, err := decodeActionsListEnvironmentSecretsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsListEnvironmentSecrets",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2185,12 +2467,18 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsListJobsForWorkflowRun",
+			ID:   "actions/list-jobs-for-workflow-run",
+		}
+	)
 	params, err := decodeActionsListJobsForWorkflowRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsListJobsForWorkflowRun",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2230,12 +2518,18 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsListOrgSecrets",
+			ID:   "actions/list-org-secrets",
+		}
+	)
 	params, err := decodeActionsListOrgSecretsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsListOrgSecrets",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2275,12 +2569,18 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg",
+			ID:   "actions/list-repo-access-to-self-hosted-runner-group-in-org",
+		}
+	)
 	params, err := decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2320,12 +2620,18 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsListRepoSecrets",
+			ID:   "actions/list-repo-secrets",
+		}
+	)
 	params, err := decodeActionsListRepoSecretsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsListRepoSecrets",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2365,12 +2671,18 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsListRepoWorkflows",
+			ID:   "actions/list-repo-workflows",
+		}
+	)
 	params, err := decodeActionsListRepoWorkflowsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsListRepoWorkflows",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2410,12 +2722,18 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsListRunnerApplicationsForOrg",
+			ID:   "actions/list-runner-applications-for-org",
+		}
+	)
 	params, err := decodeActionsListRunnerApplicationsForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsListRunnerApplicationsForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2455,12 +2773,18 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsListRunnerApplicationsForRepo",
+			ID:   "actions/list-runner-applications-for-repo",
+		}
+	)
 	params, err := decodeActionsListRunnerApplicationsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsListRunnerApplicationsForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2500,12 +2824,18 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsListSelectedReposForOrgSecret",
+			ID:   "actions/list-selected-repos-for-org-secret",
+		}
+	)
 	params, err := decodeActionsListSelectedReposForOrgSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsListSelectedReposForOrgSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2545,12 +2875,18 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization",
+			ID:   "actions/list-selected-repositories-enabled-github-actions-organization",
+		}
+	)
 	params, err := decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2590,12 +2926,18 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsListSelfHostedRunnerGroupsForOrg",
+			ID:   "actions/list-self-hosted-runner-groups-for-org",
+		}
+	)
 	params, err := decodeActionsListSelfHostedRunnerGroupsForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsListSelfHostedRunnerGroupsForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2635,12 +2977,18 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsListSelfHostedRunnersForOrg",
+			ID:   "actions/list-self-hosted-runners-for-org",
+		}
+	)
 	params, err := decodeActionsListSelfHostedRunnersForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsListSelfHostedRunnersForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2680,12 +3028,18 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsListSelfHostedRunnersForRepo",
+			ID:   "actions/list-self-hosted-runners-for-repo",
+		}
+	)
 	params, err := decodeActionsListSelfHostedRunnersForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsListSelfHostedRunnersForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2725,12 +3079,18 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsListSelfHostedRunnersInGroupForOrg",
+			ID:   "actions/list-self-hosted-runners-in-group-for-org",
+		}
+	)
 	params, err := decodeActionsListSelfHostedRunnersInGroupForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsListSelfHostedRunnersInGroupForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2770,12 +3130,18 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsListWorkflowRunArtifacts",
+			ID:   "actions/list-workflow-run-artifacts",
+		}
+	)
 	params, err := decodeActionsListWorkflowRunArtifactsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsListWorkflowRunArtifacts",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2815,12 +3181,18 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsListWorkflowRunsForRepo",
+			ID:   "actions/list-workflow-runs-for-repo",
+		}
+	)
 	params, err := decodeActionsListWorkflowRunsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsListWorkflowRunsForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2860,12 +3232,18 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsReRunWorkflow",
+			ID:   "actions/re-run-workflow",
+		}
+	)
 	params, err := decodeActionsReRunWorkflowParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsReRunWorkflow",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2905,12 +3283,18 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg",
+			ID:   "actions/remove-repo-access-to-self-hosted-runner-group-in-org",
+		}
+	)
 	params, err := decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2950,12 +3334,18 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsRemoveSelectedRepoFromOrgSecret",
+			ID:   "actions/remove-selected-repo-from-org-secret",
+		}
+	)
 	params, err := decodeActionsRemoveSelectedRepoFromOrgSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsRemoveSelectedRepoFromOrgSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2995,12 +3385,18 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsRemoveSelfHostedRunnerFromGroupForOrg",
+			ID:   "actions/remove-self-hosted-runner-from-group-for-org",
+		}
+	)
 	params, err := decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsRemoveSelfHostedRunnerFromGroupForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3040,12 +3436,18 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsRetryWorkflow",
+			ID:   "actions/retry-workflow",
+		}
+	)
 	params, err := decodeActionsRetryWorkflowParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsRetryWorkflow",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3085,12 +3487,18 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsReviewPendingDeploymentsForRun",
+			ID:   "actions/review-pending-deployments-for-run",
+		}
+	)
 	params, err := decodeActionsReviewPendingDeploymentsForRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsReviewPendingDeploymentsForRun",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3098,8 +3506,8 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 	request, close, err := s.decodeActionsReviewPendingDeploymentsForRunRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActionsReviewPendingDeploymentsForRun",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3140,12 +3548,18 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsSetAllowedActionsOrganization",
+			ID:   "actions/set-allowed-actions-organization",
+		}
+	)
 	params, err := decodeActionsSetAllowedActionsOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsSetAllowedActionsOrganization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3153,8 +3567,8 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 	request, close, err := s.decodeActionsSetAllowedActionsOrganizationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActionsSetAllowedActionsOrganization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3195,12 +3609,18 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsSetAllowedActionsRepository",
+			ID:   "actions/set-allowed-actions-repository",
+		}
+	)
 	params, err := decodeActionsSetAllowedActionsRepositoryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsSetAllowedActionsRepository",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3208,8 +3628,8 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 	request, close, err := s.decodeActionsSetAllowedActionsRepositoryRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActionsSetAllowedActionsRepository",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3250,12 +3670,18 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsSetGithubActionsPermissionsOrganization",
+			ID:   "actions/set-github-actions-permissions-organization",
+		}
+	)
 	params, err := decodeActionsSetGithubActionsPermissionsOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsSetGithubActionsPermissionsOrganization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3263,8 +3689,8 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 	request, close, err := s.decodeActionsSetGithubActionsPermissionsOrganizationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActionsSetGithubActionsPermissionsOrganization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3305,12 +3731,18 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsSetGithubActionsPermissionsRepository",
+			ID:   "actions/set-github-actions-permissions-repository",
+		}
+	)
 	params, err := decodeActionsSetGithubActionsPermissionsRepositoryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsSetGithubActionsPermissionsRepository",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3318,8 +3750,8 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 	request, close, err := s.decodeActionsSetGithubActionsPermissionsRepositoryRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActionsSetGithubActionsPermissionsRepository",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3360,12 +3792,18 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
+			ID:   "actions/set-repo-access-to-self-hosted-runner-group-in-org",
+		}
+	)
 	params, err := decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3373,8 +3811,8 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	request, close, err := s.decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3415,12 +3853,18 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsSetSelectedReposForOrgSecret",
+			ID:   "actions/set-selected-repos-for-org-secret",
+		}
+	)
 	params, err := decodeActionsSetSelectedReposForOrgSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsSetSelectedReposForOrgSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3428,8 +3872,8 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 	request, close, err := s.decodeActionsSetSelectedReposForOrgSecretRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActionsSetSelectedReposForOrgSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3470,12 +3914,18 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
+			ID:   "actions/set-selected-repositories-enabled-github-actions-organization",
+		}
+	)
 	params, err := decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3483,8 +3933,8 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 	request, close, err := s.decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3525,12 +3975,18 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsSetSelfHostedRunnersInGroupForOrg",
+			ID:   "actions/set-self-hosted-runners-in-group-for-org",
+		}
+	)
 	params, err := decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsSetSelfHostedRunnersInGroupForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3538,8 +3994,8 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 	request, close, err := s.decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActionsSetSelfHostedRunnersInGroupForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3580,12 +4036,18 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActionsUpdateSelfHostedRunnerGroupForOrg",
+			ID:   "actions/update-self-hosted-runner-group-for-org",
+		}
+	)
 	params, err := decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActionsUpdateSelfHostedRunnerGroupForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3593,8 +4055,8 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 	request, close, err := s.decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActionsUpdateSelfHostedRunnerGroupForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3635,12 +4097,18 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityCheckRepoIsStarredByAuthenticatedUser",
+			ID:   "activity/check-repo-is-starred-by-authenticated-user",
+		}
+	)
 	params, err := decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityCheckRepoIsStarredByAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3680,12 +4148,18 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityDeleteRepoSubscription",
+			ID:   "activity/delete-repo-subscription",
+		}
+	)
 	params, err := decodeActivityDeleteRepoSubscriptionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityDeleteRepoSubscription",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3725,12 +4199,18 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityDeleteThreadSubscription",
+			ID:   "activity/delete-thread-subscription",
+		}
+	)
 	params, err := decodeActivityDeleteThreadSubscriptionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityDeleteThreadSubscription",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3770,7 +4250,9 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.ActivityGetFeeds(ctx)
 	if err != nil {
@@ -3806,12 +4288,18 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityGetRepoSubscription",
+			ID:   "activity/get-repo-subscription",
+		}
+	)
 	params, err := decodeActivityGetRepoSubscriptionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityGetRepoSubscription",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3851,12 +4339,18 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityGetThread",
+			ID:   "activity/get-thread",
+		}
+	)
 	params, err := decodeActivityGetThreadParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityGetThread",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3896,12 +4390,18 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityGetThreadSubscriptionForAuthenticatedUser",
+			ID:   "activity/get-thread-subscription-for-authenticated-user",
+		}
+	)
 	params, err := decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityGetThreadSubscriptionForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3941,12 +4441,18 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityListEventsForAuthenticatedUser",
+			ID:   "activity/list-events-for-authenticated-user",
+		}
+	)
 	params, err := decodeActivityListEventsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityListEventsForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3986,12 +4492,18 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityListNotificationsForAuthenticatedUser",
+			ID:   "activity/list-notifications-for-authenticated-user",
+		}
+	)
 	params, err := decodeActivityListNotificationsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityListNotificationsForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4031,12 +4543,18 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityListOrgEventsForAuthenticatedUser",
+			ID:   "activity/list-org-events-for-authenticated-user",
+		}
+	)
 	params, err := decodeActivityListOrgEventsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityListOrgEventsForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4076,12 +4594,18 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityListPublicEvents",
+			ID:   "activity/list-public-events",
+		}
+	)
 	params, err := decodeActivityListPublicEventsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityListPublicEvents",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4121,12 +4645,18 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityListPublicEventsForRepoNetwork",
+			ID:   "activity/list-public-events-for-repo-network",
+		}
+	)
 	params, err := decodeActivityListPublicEventsForRepoNetworkParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityListPublicEventsForRepoNetwork",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4166,12 +4696,18 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityListPublicEventsForUser",
+			ID:   "activity/list-public-events-for-user",
+		}
+	)
 	params, err := decodeActivityListPublicEventsForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityListPublicEventsForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4211,12 +4747,18 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityListPublicOrgEvents",
+			ID:   "activity/list-public-org-events",
+		}
+	)
 	params, err := decodeActivityListPublicOrgEventsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityListPublicOrgEvents",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4256,12 +4798,18 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityListReceivedEventsForUser",
+			ID:   "activity/list-received-events-for-user",
+		}
+	)
 	params, err := decodeActivityListReceivedEventsForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityListReceivedEventsForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4301,12 +4849,18 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityListReceivedPublicEventsForUser",
+			ID:   "activity/list-received-public-events-for-user",
+		}
+	)
 	params, err := decodeActivityListReceivedPublicEventsForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityListReceivedPublicEventsForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4346,12 +4900,18 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityListRepoEvents",
+			ID:   "activity/list-repo-events",
+		}
+	)
 	params, err := decodeActivityListRepoEventsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityListRepoEvents",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4391,12 +4951,18 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityListRepoNotificationsForAuthenticatedUser",
+			ID:   "activity/list-repo-notifications-for-authenticated-user",
+		}
+	)
 	params, err := decodeActivityListRepoNotificationsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityListRepoNotificationsForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4436,12 +5002,18 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityListReposStarredByAuthenticatedUser",
+			ID:   "activity/list-repos-starred-by-authenticated-user",
+		}
+	)
 	params, err := decodeActivityListReposStarredByAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityListReposStarredByAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4481,12 +5053,18 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityListReposWatchedByUser",
+			ID:   "activity/list-repos-watched-by-user",
+		}
+	)
 	params, err := decodeActivityListReposWatchedByUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityListReposWatchedByUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4526,12 +5104,18 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityListWatchedReposForAuthenticatedUser",
+			ID:   "activity/list-watched-repos-for-authenticated-user",
+		}
+	)
 	params, err := decodeActivityListWatchedReposForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityListWatchedReposForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4571,12 +5155,18 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityListWatchersForRepo",
+			ID:   "activity/list-watchers-for-repo",
+		}
+	)
 	params, err := decodeActivityListWatchersForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityListWatchersForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4616,12 +5206,18 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityMarkNotificationsAsRead",
+			ID:   "activity/mark-notifications-as-read",
+		}
+	)
 	request, close, err := s.decodeActivityMarkNotificationsAsReadRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActivityMarkNotificationsAsRead",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4662,12 +5258,18 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityMarkRepoNotificationsAsRead",
+			ID:   "activity/mark-repo-notifications-as-read",
+		}
+	)
 	params, err := decodeActivityMarkRepoNotificationsAsReadParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityMarkRepoNotificationsAsRead",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4675,8 +5277,8 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 	request, close, err := s.decodeActivityMarkRepoNotificationsAsReadRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActivityMarkRepoNotificationsAsRead",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4717,12 +5319,18 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityMarkThreadAsRead",
+			ID:   "activity/mark-thread-as-read",
+		}
+	)
 	params, err := decodeActivityMarkThreadAsReadParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityMarkThreadAsRead",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4762,12 +5370,18 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivitySetRepoSubscription",
+			ID:   "activity/set-repo-subscription",
+		}
+	)
 	params, err := decodeActivitySetRepoSubscriptionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivitySetRepoSubscription",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4775,8 +5389,8 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 	request, close, err := s.decodeActivitySetRepoSubscriptionRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActivitySetRepoSubscription",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4817,12 +5431,18 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivitySetThreadSubscription",
+			ID:   "activity/set-thread-subscription",
+		}
+	)
 	params, err := decodeActivitySetThreadSubscriptionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivitySetThreadSubscription",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4830,8 +5450,8 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 	request, close, err := s.decodeActivitySetThreadSubscriptionRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ActivitySetThreadSubscription",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4872,12 +5492,18 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityStarRepoForAuthenticatedUser",
+			ID:   "activity/star-repo-for-authenticated-user",
+		}
+	)
 	params, err := decodeActivityStarRepoForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityStarRepoForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4917,12 +5543,18 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ActivityUnstarRepoForAuthenticatedUser",
+			ID:   "activity/unstar-repo-for-authenticated-user",
+		}
+	)
 	params, err := decodeActivityUnstarRepoForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ActivityUnstarRepoForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4962,12 +5594,18 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsAddRepoToInstallation",
+			ID:   "apps/add-repo-to-installation",
+		}
+	)
 	params, err := decodeAppsAddRepoToInstallationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsAddRepoToInstallation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5007,12 +5645,18 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsCheckToken",
+			ID:   "apps/check-token",
+		}
+	)
 	params, err := decodeAppsCheckTokenParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsCheckToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5020,8 +5664,8 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 	request, close, err := s.decodeAppsCheckTokenRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "AppsCheckToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5062,12 +5706,18 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsCreateContentAttachment",
+			ID:   "apps/create-content-attachment",
+		}
+	)
 	params, err := decodeAppsCreateContentAttachmentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsCreateContentAttachment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5075,8 +5725,8 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 	request, close, err := s.decodeAppsCreateContentAttachmentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "AppsCreateContentAttachment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5117,12 +5767,18 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsCreateFromManifest",
+			ID:   "apps/create-from-manifest",
+		}
+	)
 	params, err := decodeAppsCreateFromManifestParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsCreateFromManifest",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5130,8 +5786,8 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.Resp
 	request, close, err := s.decodeAppsCreateFromManifestRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "AppsCreateFromManifest",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5172,12 +5828,18 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsCreateInstallationAccessToken",
+			ID:   "apps/create-installation-access-token",
+		}
+	)
 	params, err := decodeAppsCreateInstallationAccessTokenParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsCreateInstallationAccessToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5185,8 +5847,8 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 	request, close, err := s.decodeAppsCreateInstallationAccessTokenRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "AppsCreateInstallationAccessToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5227,12 +5889,18 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsDeleteAuthorization",
+			ID:   "apps/delete-authorization",
+		}
+	)
 	params, err := decodeAppsDeleteAuthorizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsDeleteAuthorization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5240,8 +5908,8 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 	request, close, err := s.decodeAppsDeleteAuthorizationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "AppsDeleteAuthorization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5282,12 +5950,18 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsDeleteInstallation",
+			ID:   "apps/delete-installation",
+		}
+	)
 	params, err := decodeAppsDeleteInstallationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsDeleteInstallation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5327,12 +6001,18 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsDeleteToken",
+			ID:   "apps/delete-token",
+		}
+	)
 	params, err := decodeAppsDeleteTokenParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsDeleteToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5340,8 +6020,8 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 	request, close, err := s.decodeAppsDeleteTokenRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "AppsDeleteToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5382,7 +6062,9 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.AppsGetAuthenticated(ctx)
 	if err != nil {
@@ -5418,12 +6100,18 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsGetBySlug",
+			ID:   "apps/get-by-slug",
+		}
+	)
 	params, err := decodeAppsGetBySlugParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsGetBySlug",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5463,12 +6151,18 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsGetSubscriptionPlanForAccount",
+			ID:   "apps/get-subscription-plan-for-account",
+		}
+	)
 	params, err := decodeAppsGetSubscriptionPlanForAccountParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsGetSubscriptionPlanForAccount",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5508,12 +6202,18 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsGetSubscriptionPlanForAccountStubbed",
+			ID:   "apps/get-subscription-plan-for-account-stubbed",
+		}
+	)
 	params, err := decodeAppsGetSubscriptionPlanForAccountStubbedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsGetSubscriptionPlanForAccountStubbed",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5553,7 +6253,9 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.AppsGetWebhookConfigForApp(ctx)
 	if err != nil {
@@ -5589,12 +6291,18 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsGetWebhookDelivery",
+			ID:   "apps/get-webhook-delivery",
+		}
+	)
 	params, err := decodeAppsGetWebhookDeliveryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsGetWebhookDelivery",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5634,12 +6342,18 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsListAccountsForPlan",
+			ID:   "apps/list-accounts-for-plan",
+		}
+	)
 	params, err := decodeAppsListAccountsForPlanParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsListAccountsForPlan",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5679,12 +6393,18 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsListAccountsForPlanStubbed",
+			ID:   "apps/list-accounts-for-plan-stubbed",
+		}
+	)
 	params, err := decodeAppsListAccountsForPlanStubbedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsListAccountsForPlanStubbed",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5724,12 +6444,18 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsListInstallationReposForAuthenticatedUser",
+			ID:   "apps/list-installation-repos-for-authenticated-user",
+		}
+	)
 	params, err := decodeAppsListInstallationReposForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsListInstallationReposForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5769,12 +6495,18 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsListPlans",
+			ID:   "apps/list-plans",
+		}
+	)
 	params, err := decodeAppsListPlansParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsListPlans",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5814,12 +6546,18 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsListPlansStubbed",
+			ID:   "apps/list-plans-stubbed",
+		}
+	)
 	params, err := decodeAppsListPlansStubbedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsListPlansStubbed",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5859,12 +6597,18 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsListReposAccessibleToInstallation",
+			ID:   "apps/list-repos-accessible-to-installation",
+		}
+	)
 	params, err := decodeAppsListReposAccessibleToInstallationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsListReposAccessibleToInstallation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5904,12 +6648,18 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsListSubscriptionsForAuthenticatedUser",
+			ID:   "apps/list-subscriptions-for-authenticated-user",
+		}
+	)
 	params, err := decodeAppsListSubscriptionsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsListSubscriptionsForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5949,12 +6699,18 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsListSubscriptionsForAuthenticatedUserStubbed",
+			ID:   "apps/list-subscriptions-for-authenticated-user-stubbed",
+		}
+	)
 	params, err := decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsListSubscriptionsForAuthenticatedUserStubbed",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5994,12 +6750,18 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsListWebhookDeliveries",
+			ID:   "apps/list-webhook-deliveries",
+		}
+	)
 	params, err := decodeAppsListWebhookDeliveriesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsListWebhookDeliveries",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6039,12 +6801,18 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsRedeliverWebhookDelivery",
+			ID:   "apps/redeliver-webhook-delivery",
+		}
+	)
 	params, err := decodeAppsRedeliverWebhookDeliveryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsRedeliverWebhookDelivery",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6084,12 +6852,18 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsRemoveRepoFromInstallation",
+			ID:   "apps/remove-repo-from-installation",
+		}
+	)
 	params, err := decodeAppsRemoveRepoFromInstallationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsRemoveRepoFromInstallation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6129,12 +6903,18 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsResetToken",
+			ID:   "apps/reset-token",
+		}
+	)
 	params, err := decodeAppsResetTokenParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsResetToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6142,8 +6922,8 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 	request, close, err := s.decodeAppsResetTokenRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "AppsResetToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6184,7 +6964,9 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.AppsRevokeInstallationAccessToken(ctx)
 	if err != nil {
@@ -6220,12 +7002,18 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsScopeToken",
+			ID:   "apps/scope-token",
+		}
+	)
 	params, err := decodeAppsScopeTokenParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsScopeToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6233,8 +7021,8 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 	request, close, err := s.decodeAppsScopeTokenRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "AppsScopeToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6275,12 +7063,18 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsSuspendInstallation",
+			ID:   "apps/suspend-installation",
+		}
+	)
 	params, err := decodeAppsSuspendInstallationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsSuspendInstallation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6320,12 +7114,18 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsUnsuspendInstallation",
+			ID:   "apps/unsuspend-installation",
+		}
+	)
 	params, err := decodeAppsUnsuspendInstallationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "AppsUnsuspendInstallation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6365,12 +7165,18 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AppsUpdateWebhookConfigForApp",
+			ID:   "apps/update-webhook-config-for-app",
+		}
+	)
 	request, close, err := s.decodeAppsUpdateWebhookConfigForAppRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "AppsUpdateWebhookConfigForApp",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6411,12 +7217,18 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "BillingGetGithubActionsBillingGhe",
+			ID:   "billing/get-github-actions-billing-ghe",
+		}
+	)
 	params, err := decodeBillingGetGithubActionsBillingGheParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "BillingGetGithubActionsBillingGhe",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6456,12 +7268,18 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "BillingGetGithubActionsBillingOrg",
+			ID:   "billing/get-github-actions-billing-org",
+		}
+	)
 	params, err := decodeBillingGetGithubActionsBillingOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "BillingGetGithubActionsBillingOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6501,12 +7319,18 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "BillingGetGithubActionsBillingUser",
+			ID:   "billing/get-github-actions-billing-user",
+		}
+	)
 	params, err := decodeBillingGetGithubActionsBillingUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "BillingGetGithubActionsBillingUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6546,12 +7370,18 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "BillingGetGithubPackagesBillingGhe",
+			ID:   "billing/get-github-packages-billing-ghe",
+		}
+	)
 	params, err := decodeBillingGetGithubPackagesBillingGheParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "BillingGetGithubPackagesBillingGhe",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6591,12 +7421,18 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "BillingGetGithubPackagesBillingOrg",
+			ID:   "billing/get-github-packages-billing-org",
+		}
+	)
 	params, err := decodeBillingGetGithubPackagesBillingOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "BillingGetGithubPackagesBillingOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6636,12 +7472,18 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "BillingGetGithubPackagesBillingUser",
+			ID:   "billing/get-github-packages-billing-user",
+		}
+	)
 	params, err := decodeBillingGetGithubPackagesBillingUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "BillingGetGithubPackagesBillingUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6681,12 +7523,18 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "BillingGetSharedStorageBillingGhe",
+			ID:   "billing/get-shared-storage-billing-ghe",
+		}
+	)
 	params, err := decodeBillingGetSharedStorageBillingGheParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "BillingGetSharedStorageBillingGhe",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6726,12 +7574,18 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "BillingGetSharedStorageBillingOrg",
+			ID:   "billing/get-shared-storage-billing-org",
+		}
+	)
 	params, err := decodeBillingGetSharedStorageBillingOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "BillingGetSharedStorageBillingOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6771,12 +7625,18 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "BillingGetSharedStorageBillingUser",
+			ID:   "billing/get-shared-storage-billing-user",
+		}
+	)
 	params, err := decodeBillingGetSharedStorageBillingUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "BillingGetSharedStorageBillingUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6816,12 +7676,18 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ChecksCreateSuite",
+			ID:   "checks/create-suite",
+		}
+	)
 	params, err := decodeChecksCreateSuiteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ChecksCreateSuite",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6829,8 +7695,8 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 	request, close, err := s.decodeChecksCreateSuiteRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ChecksCreateSuite",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6871,12 +7737,18 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ChecksGet",
+			ID:   "checks/get",
+		}
+	)
 	params, err := decodeChecksGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ChecksGet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6916,12 +7788,18 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ChecksGetSuite",
+			ID:   "checks/get-suite",
+		}
+	)
 	params, err := decodeChecksGetSuiteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ChecksGetSuite",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6961,12 +7839,18 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ChecksListAnnotations",
+			ID:   "checks/list-annotations",
+		}
+	)
 	params, err := decodeChecksListAnnotationsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ChecksListAnnotations",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7006,12 +7890,18 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ChecksListForRef",
+			ID:   "checks/list-for-ref",
+		}
+	)
 	params, err := decodeChecksListForRefParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ChecksListForRef",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7051,12 +7941,18 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ChecksListForSuite",
+			ID:   "checks/list-for-suite",
+		}
+	)
 	params, err := decodeChecksListForSuiteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ChecksListForSuite",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7096,12 +7992,18 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ChecksListSuitesForRef",
+			ID:   "checks/list-suites-for-ref",
+		}
+	)
 	params, err := decodeChecksListSuitesForRefParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ChecksListSuitesForRef",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7141,12 +8043,18 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ChecksRerequestSuite",
+			ID:   "checks/rerequest-suite",
+		}
+	)
 	params, err := decodeChecksRerequestSuiteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ChecksRerequestSuite",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7186,12 +8094,18 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ChecksSetSuitesPreferences",
+			ID:   "checks/set-suites-preferences",
+		}
+	)
 	params, err := decodeChecksSetSuitesPreferencesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ChecksSetSuitesPreferences",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7199,8 +8113,8 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 	request, close, err := s.decodeChecksSetSuitesPreferencesRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ChecksSetSuitesPreferences",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7241,12 +8155,18 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "CodeScanningDeleteAnalysis",
+			ID:   "code-scanning/delete-analysis",
+		}
+	)
 	params, err := decodeCodeScanningDeleteAnalysisParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "CodeScanningDeleteAnalysis",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7286,12 +8206,18 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "CodeScanningGetAlert",
+			ID:   "code-scanning/get-alert",
+		}
+	)
 	params, err := decodeCodeScanningGetAlertParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "CodeScanningGetAlert",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7331,12 +8257,18 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "CodeScanningGetAnalysis",
+			ID:   "code-scanning/get-analysis",
+		}
+	)
 	params, err := decodeCodeScanningGetAnalysisParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "CodeScanningGetAnalysis",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7376,12 +8308,18 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "CodeScanningGetSarif",
+			ID:   "code-scanning/get-sarif",
+		}
+	)
 	params, err := decodeCodeScanningGetSarifParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "CodeScanningGetSarif",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7421,12 +8359,18 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "CodeScanningListAlertInstances",
+			ID:   "code-scanning/list-alert-instances",
+		}
+	)
 	params, err := decodeCodeScanningListAlertInstancesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "CodeScanningListAlertInstances",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7466,12 +8410,18 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "CodeScanningListAlertsForRepo",
+			ID:   "code-scanning/list-alerts-for-repo",
+		}
+	)
 	params, err := decodeCodeScanningListAlertsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "CodeScanningListAlertsForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7511,12 +8461,18 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "CodeScanningListRecentAnalyses",
+			ID:   "code-scanning/list-recent-analyses",
+		}
+	)
 	params, err := decodeCodeScanningListRecentAnalysesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "CodeScanningListRecentAnalyses",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7556,12 +8512,18 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "CodeScanningUpdateAlert",
+			ID:   "code-scanning/update-alert",
+		}
+	)
 	params, err := decodeCodeScanningUpdateAlertParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "CodeScanningUpdateAlert",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7569,8 +8531,8 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 	request, close, err := s.decodeCodeScanningUpdateAlertRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "CodeScanningUpdateAlert",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7611,12 +8573,18 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "CodeScanningUploadSarif",
+			ID:   "code-scanning/upload-sarif",
+		}
+	)
 	params, err := decodeCodeScanningUploadSarifParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "CodeScanningUploadSarif",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7624,8 +8592,8 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 	request, close, err := s.decodeCodeScanningUploadSarifRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "CodeScanningUploadSarif",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7666,7 +8634,9 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.CodesOfConductGetAllCodesOfConduct(ctx)
 	if err != nil {
@@ -7702,12 +8672,18 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "CodesOfConductGetConductCode",
+			ID:   "codes-of-conduct/get-conduct-code",
+		}
+	)
 	params, err := decodeCodesOfConductGetConductCodeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "CodesOfConductGetConductCode",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7747,7 +8723,9 @@ func (s *Server) handleEmojisGetRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.EmojisGet(ctx)
 	if err != nil {
@@ -7783,12 +8761,18 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			ID:   "enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7828,12 +8812,18 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise",
+			ID:   "enterprise-admin/add-self-hosted-runner-to-group-for-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7873,12 +8863,18 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminCreateRegistrationTokenForEnterprise",
+			ID:   "enterprise-admin/create-registration-token-for-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminCreateRegistrationTokenForEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7918,12 +8914,18 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminCreateRemoveTokenForEnterprise",
+			ID:   "enterprise-admin/create-remove-token-for-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminCreateRemoveTokenForEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7963,12 +8965,18 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
+			ID:   "enterprise-admin/create-self-hosted-runner-group-for-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7976,8 +8984,8 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 	request, close, err := s.decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8018,12 +9026,18 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminDeleteScimGroupFromEnterprise",
+			ID:   "enterprise-admin/delete-scim-group-from-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminDeleteScimGroupFromEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8063,12 +9077,18 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise",
+			ID:   "enterprise-admin/delete-self-hosted-runner-from-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8108,12 +9128,18 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise",
+			ID:   "enterprise-admin/delete-self-hosted-runner-group-from-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8153,12 +9179,18 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminDeleteUserFromEnterprise",
+			ID:   "enterprise-admin/delete-user-from-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminDeleteUserFromEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8198,12 +9230,18 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise",
+			ID:   "enterprise-admin/disable-selected-organization-github-actions-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8243,12 +9281,18 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise",
+			ID:   "enterprise-admin/enable-selected-organization-github-actions-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8288,12 +9332,18 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminGetAllowedActionsEnterprise",
+			ID:   "enterprise-admin/get-allowed-actions-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminGetAllowedActionsEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8333,12 +9383,18 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminGetAuditLog",
+			ID:   "enterprise-admin/get-audit-log",
+		}
+	)
 	params, err := decodeEnterpriseAdminGetAuditLogParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminGetAuditLog",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8378,12 +9434,18 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminGetGithubActionsPermissionsEnterprise",
+			ID:   "enterprise-admin/get-github-actions-permissions-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminGetGithubActionsPermissionsEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8423,12 +9485,18 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup",
+			ID:   "enterprise-admin/get-provisioning-information-for-enterprise-group",
+		}
+	)
 	params, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8468,12 +9536,18 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminGetProvisioningInformationForEnterpriseUser",
+			ID:   "enterprise-admin/get-provisioning-information-for-enterprise-user",
+		}
+	)
 	params, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminGetProvisioningInformationForEnterpriseUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8513,12 +9587,18 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminGetSelfHostedRunnerForEnterprise",
+			ID:   "enterprise-admin/get-self-hosted-runner-for-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminGetSelfHostedRunnerForEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8558,12 +9638,18 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise",
+			ID:   "enterprise-admin/get-self-hosted-runner-group-for-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8603,12 +9689,18 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			ID:   "enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8648,12 +9740,18 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminListProvisionedGroupsEnterprise",
+			ID:   "enterprise-admin/list-provisioned-groups-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminListProvisionedGroupsEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8693,12 +9791,18 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminListProvisionedIdentitiesEnterprise",
+			ID:   "enterprise-admin/list-provisioned-identities-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminListProvisionedIdentitiesEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8738,12 +9842,18 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminListRunnerApplicationsForEnterprise",
+			ID:   "enterprise-admin/list-runner-applications-for-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminListRunnerApplicationsForEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8783,12 +9893,18 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise",
+			ID:   "enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8828,12 +9944,18 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise",
+			ID:   "enterprise-admin/list-self-hosted-runner-groups-for-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8873,12 +9995,18 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminListSelfHostedRunnersForEnterprise",
+			ID:   "enterprise-admin/list-self-hosted-runners-for-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminListSelfHostedRunnersForEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8918,12 +10046,18 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise",
+			ID:   "enterprise-admin/list-self-hosted-runners-in-group-for-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8963,12 +10097,18 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminProvisionAndInviteEnterpriseGroup",
+			ID:   "enterprise-admin/provision-and-invite-enterprise-group",
+		}
+	)
 	params, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminProvisionAndInviteEnterpriseGroup",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8976,8 +10116,8 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 	request, close, err := s.decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EnterpriseAdminProvisionAndInviteEnterpriseGroup",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9018,12 +10158,18 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminProvisionAndInviteEnterpriseUser",
+			ID:   "enterprise-admin/provision-and-invite-enterprise-user",
+		}
+	)
 	params, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminProvisionAndInviteEnterpriseUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9031,8 +10177,8 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 	request, close, err := s.decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EnterpriseAdminProvisionAndInviteEnterpriseUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9073,12 +10219,18 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			ID:   "enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9118,12 +10270,18 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise",
+			ID:   "enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9163,12 +10321,18 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminSetAllowedActionsEnterprise",
+			ID:   "enterprise-admin/set-allowed-actions-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminSetAllowedActionsEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9176,8 +10340,8 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 	request, close, err := s.decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EnterpriseAdminSetAllowedActionsEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9218,12 +10382,18 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminSetGithubActionsPermissionsEnterprise",
+			ID:   "enterprise-admin/set-github-actions-permissions-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminSetGithubActionsPermissionsEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9231,8 +10401,8 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 	request, close, err := s.decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EnterpriseAdminSetGithubActionsPermissionsEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9273,12 +10443,18 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
+			ID:   "enterprise-admin/set-information-for-provisioned-enterprise-group",
+		}
+	)
 	params, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9286,8 +10462,8 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 	request, close, err := s.decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9328,12 +10504,18 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
+			ID:   "enterprise-admin/set-information-for-provisioned-enterprise-user",
+		}
+	)
 	params, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9341,8 +10523,8 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 	request, close, err := s.decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9383,12 +10565,18 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			ID:   "enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9396,8 +10584,8 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 	request, close, err := s.decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9438,12 +10626,18 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
+			ID:   "enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9451,8 +10645,8 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 	request, close, err := s.decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9493,12 +10687,18 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
+			ID:   "enterprise-admin/set-self-hosted-runners-in-group-for-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9506,8 +10706,8 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 	request, close, err := s.decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9548,12 +10748,18 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminUpdateAttributeForEnterpriseGroup",
+			ID:   "enterprise-admin/update-attribute-for-enterprise-group",
+		}
+	)
 	params, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminUpdateAttributeForEnterpriseGroup",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9561,8 +10767,8 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 	request, close, err := s.decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EnterpriseAdminUpdateAttributeForEnterpriseGroup",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9603,12 +10809,18 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminUpdateAttributeForEnterpriseUser",
+			ID:   "enterprise-admin/update-attribute-for-enterprise-user",
+		}
+	)
 	params, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminUpdateAttributeForEnterpriseUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9616,8 +10828,8 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 	request, close, err := s.decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EnterpriseAdminUpdateAttributeForEnterpriseUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9658,12 +10870,18 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
+			ID:   "enterprise-admin/update-self-hosted-runner-group-for-enterprise",
+		}
+	)
 	params, err := decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9671,8 +10889,8 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 	request, close, err := s.decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9713,12 +10931,18 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsCheckIsStarred",
+			ID:   "gists/check-is-starred",
+		}
+	)
 	params, err := decodeGistsCheckIsStarredParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsCheckIsStarred",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9758,12 +10982,18 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsCreate",
+			ID:   "gists/create",
+		}
+	)
 	request, close, err := s.decodeGistsCreateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GistsCreate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9804,12 +11034,18 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsCreateComment",
+			ID:   "gists/create-comment",
+		}
+	)
 	params, err := decodeGistsCreateCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsCreateComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9817,8 +11053,8 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 	request, close, err := s.decodeGistsCreateCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GistsCreateComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9859,12 +11095,18 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsDelete",
+			ID:   "gists/delete",
+		}
+	)
 	params, err := decodeGistsDeleteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsDelete",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9904,12 +11146,18 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsDeleteComment",
+			ID:   "gists/delete-comment",
+		}
+	)
 	params, err := decodeGistsDeleteCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsDeleteComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9949,12 +11197,18 @@ func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsFork",
+			ID:   "gists/fork",
+		}
+	)
 	params, err := decodeGistsForkParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsFork",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9994,12 +11248,18 @@ func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsGet",
+			ID:   "gists/get",
+		}
+	)
 	params, err := decodeGistsGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsGet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10039,12 +11299,18 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsGetComment",
+			ID:   "gists/get-comment",
+		}
+	)
 	params, err := decodeGistsGetCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsGetComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10084,12 +11350,18 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsGetRevision",
+			ID:   "gists/get-revision",
+		}
+	)
 	params, err := decodeGistsGetRevisionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsGetRevision",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10129,12 +11401,18 @@ func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsList",
+			ID:   "gists/list",
+		}
+	)
 	params, err := decodeGistsListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10174,12 +11452,18 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsListComments",
+			ID:   "gists/list-comments",
+		}
+	)
 	params, err := decodeGistsListCommentsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsListComments",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10219,12 +11503,18 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsListCommits",
+			ID:   "gists/list-commits",
+		}
+	)
 	params, err := decodeGistsListCommitsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsListCommits",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10264,12 +11554,18 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsListForUser",
+			ID:   "gists/list-for-user",
+		}
+	)
 	params, err := decodeGistsListForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsListForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10309,12 +11605,18 @@ func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsListForks",
+			ID:   "gists/list-forks",
+		}
+	)
 	params, err := decodeGistsListForksParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsListForks",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10354,12 +11656,18 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsListPublic",
+			ID:   "gists/list-public",
+		}
+	)
 	params, err := decodeGistsListPublicParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsListPublic",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10399,12 +11707,18 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsListStarred",
+			ID:   "gists/list-starred",
+		}
+	)
 	params, err := decodeGistsListStarredParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsListStarred",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10444,12 +11758,18 @@ func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsStar",
+			ID:   "gists/star",
+		}
+	)
 	params, err := decodeGistsStarParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsStar",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10489,12 +11809,18 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsUnstar",
+			ID:   "gists/unstar",
+		}
+	)
 	params, err := decodeGistsUnstarParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsUnstar",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10534,12 +11860,18 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GistsUpdateComment",
+			ID:   "gists/update-comment",
+		}
+	)
 	params, err := decodeGistsUpdateCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GistsUpdateComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10547,8 +11879,8 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 	request, close, err := s.decodeGistsUpdateCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GistsUpdateComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10589,12 +11921,18 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GitCreateBlob",
+			ID:   "git/create-blob",
+		}
+	)
 	params, err := decodeGitCreateBlobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GitCreateBlob",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10602,8 +11940,8 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 	request, close, err := s.decodeGitCreateBlobRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GitCreateBlob",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10644,12 +11982,18 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GitCreateCommit",
+			ID:   "git/create-commit",
+		}
+	)
 	params, err := decodeGitCreateCommitParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GitCreateCommit",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10657,8 +12001,8 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 	request, close, err := s.decodeGitCreateCommitRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GitCreateCommit",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10699,12 +12043,18 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GitCreateRef",
+			ID:   "git/create-ref",
+		}
+	)
 	params, err := decodeGitCreateRefParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GitCreateRef",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10712,8 +12062,8 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 	request, close, err := s.decodeGitCreateRefRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GitCreateRef",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10754,12 +12104,18 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GitCreateTag",
+			ID:   "git/create-tag",
+		}
+	)
 	params, err := decodeGitCreateTagParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GitCreateTag",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10767,8 +12123,8 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 	request, close, err := s.decodeGitCreateTagRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GitCreateTag",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10809,12 +12165,18 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GitCreateTree",
+			ID:   "git/create-tree",
+		}
+	)
 	params, err := decodeGitCreateTreeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GitCreateTree",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10822,8 +12184,8 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 	request, close, err := s.decodeGitCreateTreeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GitCreateTree",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10864,12 +12226,18 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GitDeleteRef",
+			ID:   "git/delete-ref",
+		}
+	)
 	params, err := decodeGitDeleteRefParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GitDeleteRef",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10909,12 +12277,18 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GitGetBlob",
+			ID:   "git/get-blob",
+		}
+	)
 	params, err := decodeGitGetBlobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GitGetBlob",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10954,12 +12328,18 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GitGetCommit",
+			ID:   "git/get-commit",
+		}
+	)
 	params, err := decodeGitGetCommitParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GitGetCommit",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10999,12 +12379,18 @@ func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GitGetRef",
+			ID:   "git/get-ref",
+		}
+	)
 	params, err := decodeGitGetRefParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GitGetRef",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11044,12 +12430,18 @@ func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GitGetTag",
+			ID:   "git/get-tag",
+		}
+	)
 	params, err := decodeGitGetTagParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GitGetTag",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11089,12 +12481,18 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GitGetTree",
+			ID:   "git/get-tree",
+		}
+	)
 	params, err := decodeGitGetTreeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GitGetTree",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11134,12 +12532,18 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GitListMatchingRefs",
+			ID:   "git/list-matching-refs",
+		}
+	)
 	params, err := decodeGitListMatchingRefsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GitListMatchingRefs",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11179,12 +12583,18 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GitUpdateRef",
+			ID:   "git/update-ref",
+		}
+	)
 	params, err := decodeGitUpdateRefParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GitUpdateRef",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11192,8 +12602,8 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 	request, close, err := s.decodeGitUpdateRefRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GitUpdateRef",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11234,7 +12644,9 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.GitignoreGetAllTemplates(ctx)
 	if err != nil {
@@ -11270,12 +12682,18 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GitignoreGetTemplate",
+			ID:   "gitignore/get-template",
+		}
+	)
 	params, err := decodeGitignoreGetTemplateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GitignoreGetTemplate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11315,7 +12733,9 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.InteractionsRemoveRestrictionsForAuthenticatedUser(ctx)
 	if err != nil {
@@ -11351,12 +12771,18 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "InteractionsRemoveRestrictionsForOrg",
+			ID:   "interactions/remove-restrictions-for-org",
+		}
+	)
 	params, err := decodeInteractionsRemoveRestrictionsForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "InteractionsRemoveRestrictionsForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11396,12 +12822,18 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "InteractionsRemoveRestrictionsForRepo",
+			ID:   "interactions/remove-restrictions-for-repo",
+		}
+	)
 	params, err := decodeInteractionsRemoveRestrictionsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "InteractionsRemoveRestrictionsForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11441,12 +12873,18 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "InteractionsSetRestrictionsForAuthenticatedUser",
+			ID:   "interactions/set-restrictions-for-authenticated-user",
+		}
+	)
 	request, close, err := s.decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "InteractionsSetRestrictionsForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11487,12 +12925,18 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "InteractionsSetRestrictionsForOrg",
+			ID:   "interactions/set-restrictions-for-org",
+		}
+	)
 	params, err := decodeInteractionsSetRestrictionsForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "InteractionsSetRestrictionsForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11500,8 +12944,8 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 	request, close, err := s.decodeInteractionsSetRestrictionsForOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "InteractionsSetRestrictionsForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11542,12 +12986,18 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "InteractionsSetRestrictionsForRepo",
+			ID:   "interactions/set-restrictions-for-repo",
+		}
+	)
 	params, err := decodeInteractionsSetRestrictionsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "InteractionsSetRestrictionsForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11555,8 +13005,8 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 	request, close, err := s.decodeInteractionsSetRestrictionsForRepoRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "InteractionsSetRestrictionsForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11597,12 +13047,18 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesAddAssignees",
+			ID:   "issues/add-assignees",
+		}
+	)
 	params, err := decodeIssuesAddAssigneesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesAddAssignees",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11610,8 +13066,8 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 	request, close, err := s.decodeIssuesAddAssigneesRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "IssuesAddAssignees",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11652,12 +13108,18 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesCheckUserCanBeAssigned",
+			ID:   "issues/check-user-can-be-assigned",
+		}
+	)
 	params, err := decodeIssuesCheckUserCanBeAssignedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesCheckUserCanBeAssigned",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11697,12 +13159,18 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesCreate",
+			ID:   "issues/create",
+		}
+	)
 	params, err := decodeIssuesCreateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesCreate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11710,8 +13178,8 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 	request, close, err := s.decodeIssuesCreateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "IssuesCreate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11752,12 +13220,18 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesCreateComment",
+			ID:   "issues/create-comment",
+		}
+	)
 	params, err := decodeIssuesCreateCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesCreateComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11765,8 +13239,8 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 	request, close, err := s.decodeIssuesCreateCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "IssuesCreateComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11807,12 +13281,18 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesCreateLabel",
+			ID:   "issues/create-label",
+		}
+	)
 	params, err := decodeIssuesCreateLabelParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesCreateLabel",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11820,8 +13300,8 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 	request, close, err := s.decodeIssuesCreateLabelRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "IssuesCreateLabel",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11862,12 +13342,18 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesCreateMilestone",
+			ID:   "issues/create-milestone",
+		}
+	)
 	params, err := decodeIssuesCreateMilestoneParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesCreateMilestone",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11875,8 +13361,8 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 	request, close, err := s.decodeIssuesCreateMilestoneRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "IssuesCreateMilestone",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11917,12 +13403,18 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesDeleteComment",
+			ID:   "issues/delete-comment",
+		}
+	)
 	params, err := decodeIssuesDeleteCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesDeleteComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11962,12 +13454,18 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesDeleteLabel",
+			ID:   "issues/delete-label",
+		}
+	)
 	params, err := decodeIssuesDeleteLabelParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesDeleteLabel",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12007,12 +13505,18 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesDeleteMilestone",
+			ID:   "issues/delete-milestone",
+		}
+	)
 	params, err := decodeIssuesDeleteMilestoneParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesDeleteMilestone",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12052,12 +13556,18 @@ func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesGet",
+			ID:   "issues/get",
+		}
+	)
 	params, err := decodeIssuesGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesGet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12097,12 +13607,18 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesGetComment",
+			ID:   "issues/get-comment",
+		}
+	)
 	params, err := decodeIssuesGetCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesGetComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12142,12 +13658,18 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesGetEvent",
+			ID:   "issues/get-event",
+		}
+	)
 	params, err := decodeIssuesGetEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesGetEvent",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12187,12 +13709,18 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesGetLabel",
+			ID:   "issues/get-label",
+		}
+	)
 	params, err := decodeIssuesGetLabelParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesGetLabel",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12232,12 +13760,18 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesGetMilestone",
+			ID:   "issues/get-milestone",
+		}
+	)
 	params, err := decodeIssuesGetMilestoneParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesGetMilestone",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12277,12 +13811,18 @@ func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesList",
+			ID:   "issues/list",
+		}
+	)
 	params, err := decodeIssuesListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12322,12 +13862,18 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesListAssignees",
+			ID:   "issues/list-assignees",
+		}
+	)
 	params, err := decodeIssuesListAssigneesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesListAssignees",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12367,12 +13913,18 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesListComments",
+			ID:   "issues/list-comments",
+		}
+	)
 	params, err := decodeIssuesListCommentsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesListComments",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12412,12 +13964,18 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesListCommentsForRepo",
+			ID:   "issues/list-comments-for-repo",
+		}
+	)
 	params, err := decodeIssuesListCommentsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesListCommentsForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12457,12 +14015,18 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesListEventsForRepo",
+			ID:   "issues/list-events-for-repo",
+		}
+	)
 	params, err := decodeIssuesListEventsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesListEventsForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12502,12 +14066,18 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesListForAuthenticatedUser",
+			ID:   "issues/list-for-authenticated-user",
+		}
+	)
 	params, err := decodeIssuesListForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesListForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12547,12 +14117,18 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesListForOrg",
+			ID:   "issues/list-for-org",
+		}
+	)
 	params, err := decodeIssuesListForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesListForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12592,12 +14168,18 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesListForRepo",
+			ID:   "issues/list-for-repo",
+		}
+	)
 	params, err := decodeIssuesListForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesListForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12637,12 +14219,18 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesListLabelsForMilestone",
+			ID:   "issues/list-labels-for-milestone",
+		}
+	)
 	params, err := decodeIssuesListLabelsForMilestoneParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesListLabelsForMilestone",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12682,12 +14270,18 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesListLabelsForRepo",
+			ID:   "issues/list-labels-for-repo",
+		}
+	)
 	params, err := decodeIssuesListLabelsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesListLabelsForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12727,12 +14321,18 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesListLabelsOnIssue",
+			ID:   "issues/list-labels-on-issue",
+		}
+	)
 	params, err := decodeIssuesListLabelsOnIssueParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesListLabelsOnIssue",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12772,12 +14372,18 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesListMilestones",
+			ID:   "issues/list-milestones",
+		}
+	)
 	params, err := decodeIssuesListMilestonesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesListMilestones",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12817,12 +14423,18 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesLock",
+			ID:   "issues/lock",
+		}
+	)
 	params, err := decodeIssuesLockParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesLock",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12830,8 +14442,8 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 	request, close, err := s.decodeIssuesLockRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "IssuesLock",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12872,12 +14484,18 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesRemoveAllLabels",
+			ID:   "issues/remove-all-labels",
+		}
+	)
 	params, err := decodeIssuesRemoveAllLabelsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesRemoveAllLabels",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12917,12 +14535,18 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesRemoveAssignees",
+			ID:   "issues/remove-assignees",
+		}
+	)
 	params, err := decodeIssuesRemoveAssigneesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesRemoveAssignees",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12930,8 +14554,8 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 	request, close, err := s.decodeIssuesRemoveAssigneesRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "IssuesRemoveAssignees",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12972,12 +14596,18 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesRemoveLabel",
+			ID:   "issues/remove-label",
+		}
+	)
 	params, err := decodeIssuesRemoveLabelParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesRemoveLabel",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13017,12 +14647,18 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesUnlock",
+			ID:   "issues/unlock",
+		}
+	)
 	params, err := decodeIssuesUnlockParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesUnlock",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13062,12 +14698,18 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesUpdate",
+			ID:   "issues/update",
+		}
+	)
 	params, err := decodeIssuesUpdateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesUpdate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13075,8 +14717,8 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 	request, close, err := s.decodeIssuesUpdateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "IssuesUpdate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13117,12 +14759,18 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesUpdateComment",
+			ID:   "issues/update-comment",
+		}
+	)
 	params, err := decodeIssuesUpdateCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesUpdateComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13130,8 +14778,8 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 	request, close, err := s.decodeIssuesUpdateCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "IssuesUpdateComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13172,12 +14820,18 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesUpdateLabel",
+			ID:   "issues/update-label",
+		}
+	)
 	params, err := decodeIssuesUpdateLabelParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesUpdateLabel",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13185,8 +14839,8 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 	request, close, err := s.decodeIssuesUpdateLabelRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "IssuesUpdateLabel",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13227,12 +14881,18 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IssuesUpdateMilestone",
+			ID:   "issues/update-milestone",
+		}
+	)
 	params, err := decodeIssuesUpdateMilestoneParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IssuesUpdateMilestone",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13240,8 +14900,8 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 	request, close, err := s.decodeIssuesUpdateMilestoneRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "IssuesUpdateMilestone",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13282,12 +14942,18 @@ func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "LicensesGet",
+			ID:   "licenses/get",
+		}
+	)
 	params, err := decodeLicensesGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "LicensesGet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13327,12 +14993,18 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "LicensesGetAllCommonlyUsed",
+			ID:   "licenses/get-all-commonly-used",
+		}
+	)
 	params, err := decodeLicensesGetAllCommonlyUsedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "LicensesGetAllCommonlyUsed",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13372,12 +15044,18 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "LicensesGetForRepo",
+			ID:   "licenses/get-for-repo",
+		}
+	)
 	params, err := decodeLicensesGetForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "LicensesGetForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13417,7 +15095,9 @@ func (s *Server) handleMetaGetRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.MetaGet(ctx)
 	if err != nil {
@@ -13453,7 +15133,9 @@ func (s *Server) handleMetaGetZenRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.MetaGetZen(ctx)
 	if err != nil {
@@ -13489,7 +15171,9 @@ func (s *Server) handleMetaRootRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.MetaRoot(ctx)
 	if err != nil {
@@ -13525,12 +15209,18 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsCancelImport",
+			ID:   "migrations/cancel-import",
+		}
+	)
 	params, err := decodeMigrationsCancelImportParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsCancelImport",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13570,12 +15260,18 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsDeleteArchiveForAuthenticatedUser",
+			ID:   "migrations/delete-archive-for-authenticated-user",
+		}
+	)
 	params, err := decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsDeleteArchiveForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13615,12 +15311,18 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsDeleteArchiveForOrg",
+			ID:   "migrations/delete-archive-for-org",
+		}
+	)
 	params, err := decodeMigrationsDeleteArchiveForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsDeleteArchiveForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13660,12 +15362,18 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsDownloadArchiveForOrg",
+			ID:   "migrations/download-archive-for-org",
+		}
+	)
 	params, err := decodeMigrationsDownloadArchiveForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsDownloadArchiveForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13705,12 +15413,18 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsGetArchiveForAuthenticatedUser",
+			ID:   "migrations/get-archive-for-authenticated-user",
+		}
+	)
 	params, err := decodeMigrationsGetArchiveForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsGetArchiveForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13750,12 +15464,18 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsGetCommitAuthors",
+			ID:   "migrations/get-commit-authors",
+		}
+	)
 	params, err := decodeMigrationsGetCommitAuthorsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsGetCommitAuthors",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13795,12 +15515,18 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsGetImportStatus",
+			ID:   "migrations/get-import-status",
+		}
+	)
 	params, err := decodeMigrationsGetImportStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsGetImportStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13840,12 +15566,18 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsGetLargeFiles",
+			ID:   "migrations/get-large-files",
+		}
+	)
 	params, err := decodeMigrationsGetLargeFilesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsGetLargeFiles",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13885,12 +15617,18 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsGetStatusForAuthenticatedUser",
+			ID:   "migrations/get-status-for-authenticated-user",
+		}
+	)
 	params, err := decodeMigrationsGetStatusForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsGetStatusForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13930,12 +15668,18 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsGetStatusForOrg",
+			ID:   "migrations/get-status-for-org",
+		}
+	)
 	params, err := decodeMigrationsGetStatusForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsGetStatusForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13975,12 +15719,18 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsListForAuthenticatedUser",
+			ID:   "migrations/list-for-authenticated-user",
+		}
+	)
 	params, err := decodeMigrationsListForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsListForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14020,12 +15770,18 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsListForOrg",
+			ID:   "migrations/list-for-org",
+		}
+	)
 	params, err := decodeMigrationsListForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsListForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14065,12 +15821,18 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsListReposForOrg",
+			ID:   "migrations/list-repos-for-org",
+		}
+	)
 	params, err := decodeMigrationsListReposForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsListReposForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14110,12 +15872,18 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsListReposForUser",
+			ID:   "migrations/list-repos-for-user",
+		}
+	)
 	params, err := decodeMigrationsListReposForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsListReposForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14155,12 +15923,18 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsMapCommitAuthor",
+			ID:   "migrations/map-commit-author",
+		}
+	)
 	params, err := decodeMigrationsMapCommitAuthorParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsMapCommitAuthor",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14168,8 +15942,8 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 	request, close, err := s.decodeMigrationsMapCommitAuthorRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "MigrationsMapCommitAuthor",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14210,12 +15984,18 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsSetLfsPreference",
+			ID:   "migrations/set-lfs-preference",
+		}
+	)
 	params, err := decodeMigrationsSetLfsPreferenceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsSetLfsPreference",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14223,8 +16003,8 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 	request, close, err := s.decodeMigrationsSetLfsPreferenceRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "MigrationsSetLfsPreference",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14265,12 +16045,18 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsStartForAuthenticatedUser",
+			ID:   "migrations/start-for-authenticated-user",
+		}
+	)
 	request, close, err := s.decodeMigrationsStartForAuthenticatedUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "MigrationsStartForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14311,12 +16097,18 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsStartForOrg",
+			ID:   "migrations/start-for-org",
+		}
+	)
 	params, err := decodeMigrationsStartForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsStartForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14324,8 +16116,8 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 	request, close, err := s.decodeMigrationsStartForOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "MigrationsStartForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14366,12 +16158,18 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsStartImport",
+			ID:   "migrations/start-import",
+		}
+	)
 	params, err := decodeMigrationsStartImportParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsStartImport",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14379,8 +16177,8 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 	request, close, err := s.decodeMigrationsStartImportRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "MigrationsStartImport",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14421,12 +16219,18 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsUnlockRepoForAuthenticatedUser",
+			ID:   "migrations/unlock-repo-for-authenticated-user",
+		}
+	)
 	params, err := decodeMigrationsUnlockRepoForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsUnlockRepoForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14466,12 +16270,18 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsUnlockRepoForOrg",
+			ID:   "migrations/unlock-repo-for-org",
+		}
+	)
 	params, err := decodeMigrationsUnlockRepoForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsUnlockRepoForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14511,12 +16321,18 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MigrationsUpdateImport",
+			ID:   "migrations/update-import",
+		}
+	)
 	params, err := decodeMigrationsUpdateImportParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "MigrationsUpdateImport",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14524,8 +16340,8 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 	request, close, err := s.decodeMigrationsUpdateImportRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "MigrationsUpdateImport",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14566,12 +16382,18 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OAuthAuthorizationsCreateAuthorization",
+			ID:   "oauth-authorizations/create-authorization",
+		}
+	)
 	request, close, err := s.decodeOAuthAuthorizationsCreateAuthorizationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "OAuthAuthorizationsCreateAuthorization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14612,12 +16434,18 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OAuthAuthorizationsDeleteAuthorization",
+			ID:   "oauth-authorizations/delete-authorization",
+		}
+	)
 	params, err := decodeOAuthAuthorizationsDeleteAuthorizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OAuthAuthorizationsDeleteAuthorization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14657,12 +16485,18 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OAuthAuthorizationsDeleteGrant",
+			ID:   "oauth-authorizations/delete-grant",
+		}
+	)
 	params, err := decodeOAuthAuthorizationsDeleteGrantParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OAuthAuthorizationsDeleteGrant",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14702,12 +16536,18 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OAuthAuthorizationsGetAuthorization",
+			ID:   "oauth-authorizations/get-authorization",
+		}
+	)
 	params, err := decodeOAuthAuthorizationsGetAuthorizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OAuthAuthorizationsGetAuthorization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14747,12 +16587,18 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OAuthAuthorizationsGetGrant",
+			ID:   "oauth-authorizations/get-grant",
+		}
+	)
 	params, err := decodeOAuthAuthorizationsGetGrantParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OAuthAuthorizationsGetGrant",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14792,12 +16638,18 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OAuthAuthorizationsGetOrCreateAuthorizationForApp",
+			ID:   "oauth-authorizations/get-or-create-authorization-for-app",
+		}
+	)
 	params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OAuthAuthorizationsGetOrCreateAuthorizationForApp",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14805,8 +16657,8 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 	request, close, err := s.decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "OAuthAuthorizationsGetOrCreateAuthorizationForApp",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14847,12 +16699,18 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
+			ID:   "oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint",
+		}
+	)
 	params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14860,8 +16718,8 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 	request, close, err := s.decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14902,12 +16760,18 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OAuthAuthorizationsListAuthorizations",
+			ID:   "oauth-authorizations/list-authorizations",
+		}
+	)
 	params, err := decodeOAuthAuthorizationsListAuthorizationsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OAuthAuthorizationsListAuthorizations",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14947,12 +16811,18 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OAuthAuthorizationsListGrants",
+			ID:   "oauth-authorizations/list-grants",
+		}
+	)
 	params, err := decodeOAuthAuthorizationsListGrantsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OAuthAuthorizationsListGrants",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14992,12 +16862,18 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OAuthAuthorizationsUpdateAuthorization",
+			ID:   "oauth-authorizations/update-authorization",
+		}
+	)
 	params, err := decodeOAuthAuthorizationsUpdateAuthorizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OAuthAuthorizationsUpdateAuthorization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15005,8 +16881,8 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 	request, close, err := s.decodeOAuthAuthorizationsUpdateAuthorizationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "OAuthAuthorizationsUpdateAuthorization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15047,12 +16923,18 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsBlockUser",
+			ID:   "orgs/block-user",
+		}
+	)
 	params, err := decodeOrgsBlockUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsBlockUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15092,12 +16974,18 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsCancelInvitation",
+			ID:   "orgs/cancel-invitation",
+		}
+	)
 	params, err := decodeOrgsCancelInvitationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsCancelInvitation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15137,12 +17025,18 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsCheckBlockedUser",
+			ID:   "orgs/check-blocked-user",
+		}
+	)
 	params, err := decodeOrgsCheckBlockedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsCheckBlockedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15182,12 +17076,18 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsCheckMembershipForUser",
+			ID:   "orgs/check-membership-for-user",
+		}
+	)
 	params, err := decodeOrgsCheckMembershipForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsCheckMembershipForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15227,12 +17127,18 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsCheckPublicMembershipForUser",
+			ID:   "orgs/check-public-membership-for-user",
+		}
+	)
 	params, err := decodeOrgsCheckPublicMembershipForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsCheckPublicMembershipForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15272,12 +17178,18 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsConvertMemberToOutsideCollaborator",
+			ID:   "orgs/convert-member-to-outside-collaborator",
+		}
+	)
 	params, err := decodeOrgsConvertMemberToOutsideCollaboratorParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsConvertMemberToOutsideCollaborator",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15317,12 +17229,18 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsCreateInvitation",
+			ID:   "orgs/create-invitation",
+		}
+	)
 	params, err := decodeOrgsCreateInvitationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsCreateInvitation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15330,8 +17248,8 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 	request, close, err := s.decodeOrgsCreateInvitationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "OrgsCreateInvitation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15372,12 +17290,18 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsCreateWebhook",
+			ID:   "orgs/create-webhook",
+		}
+	)
 	params, err := decodeOrgsCreateWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsCreateWebhook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15385,8 +17309,8 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 	request, close, err := s.decodeOrgsCreateWebhookRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "OrgsCreateWebhook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15427,12 +17351,18 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsDeleteWebhook",
+			ID:   "orgs/delete-webhook",
+		}
+	)
 	params, err := decodeOrgsDeleteWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsDeleteWebhook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15472,12 +17402,18 @@ func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsGet",
+			ID:   "orgs/get",
+		}
+	)
 	params, err := decodeOrgsGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsGet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15517,12 +17453,18 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsGetAuditLog",
+			ID:   "orgs/get-audit-log",
+		}
+	)
 	params, err := decodeOrgsGetAuditLogParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsGetAuditLog",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15562,12 +17504,18 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsGetMembershipForAuthenticatedUser",
+			ID:   "orgs/get-membership-for-authenticated-user",
+		}
+	)
 	params, err := decodeOrgsGetMembershipForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsGetMembershipForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15607,12 +17555,18 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsGetMembershipForUser",
+			ID:   "orgs/get-membership-for-user",
+		}
+	)
 	params, err := decodeOrgsGetMembershipForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsGetMembershipForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15652,12 +17606,18 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsGetWebhook",
+			ID:   "orgs/get-webhook",
+		}
+	)
 	params, err := decodeOrgsGetWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsGetWebhook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15697,12 +17657,18 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsGetWebhookConfigForOrg",
+			ID:   "orgs/get-webhook-config-for-org",
+		}
+	)
 	params, err := decodeOrgsGetWebhookConfigForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsGetWebhookConfigForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15742,12 +17708,18 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsGetWebhookDelivery",
+			ID:   "orgs/get-webhook-delivery",
+		}
+	)
 	params, err := decodeOrgsGetWebhookDeliveryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsGetWebhookDelivery",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15787,12 +17759,18 @@ func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsList",
+			ID:   "orgs/list",
+		}
+	)
 	params, err := decodeOrgsListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15832,12 +17810,18 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsListBlockedUsers",
+			ID:   "orgs/list-blocked-users",
+		}
+	)
 	params, err := decodeOrgsListBlockedUsersParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsListBlockedUsers",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15877,12 +17861,18 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsListFailedInvitations",
+			ID:   "orgs/list-failed-invitations",
+		}
+	)
 	params, err := decodeOrgsListFailedInvitationsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsListFailedInvitations",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15922,12 +17912,18 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsListForAuthenticatedUser",
+			ID:   "orgs/list-for-authenticated-user",
+		}
+	)
 	params, err := decodeOrgsListForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsListForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15967,12 +17963,18 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsListForUser",
+			ID:   "orgs/list-for-user",
+		}
+	)
 	params, err := decodeOrgsListForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsListForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16012,12 +18014,18 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsListInvitationTeams",
+			ID:   "orgs/list-invitation-teams",
+		}
+	)
 	params, err := decodeOrgsListInvitationTeamsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsListInvitationTeams",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16057,12 +18065,18 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsListMembers",
+			ID:   "orgs/list-members",
+		}
+	)
 	params, err := decodeOrgsListMembersParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsListMembers",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16102,12 +18116,18 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsListMembershipsForAuthenticatedUser",
+			ID:   "orgs/list-memberships-for-authenticated-user",
+		}
+	)
 	params, err := decodeOrgsListMembershipsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsListMembershipsForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16147,12 +18167,18 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsListOutsideCollaborators",
+			ID:   "orgs/list-outside-collaborators",
+		}
+	)
 	params, err := decodeOrgsListOutsideCollaboratorsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsListOutsideCollaborators",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16192,12 +18218,18 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsListPendingInvitations",
+			ID:   "orgs/list-pending-invitations",
+		}
+	)
 	params, err := decodeOrgsListPendingInvitationsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsListPendingInvitations",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16237,12 +18269,18 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsListPublicMembers",
+			ID:   "orgs/list-public-members",
+		}
+	)
 	params, err := decodeOrgsListPublicMembersParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsListPublicMembers",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16282,12 +18320,18 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsListSamlSSOAuthorizations",
+			ID:   "orgs/list-saml-sso-authorizations",
+		}
+	)
 	params, err := decodeOrgsListSamlSSOAuthorizationsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsListSamlSSOAuthorizations",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16327,12 +18371,18 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsListWebhookDeliveries",
+			ID:   "orgs/list-webhook-deliveries",
+		}
+	)
 	params, err := decodeOrgsListWebhookDeliveriesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsListWebhookDeliveries",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16372,12 +18422,18 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsListWebhooks",
+			ID:   "orgs/list-webhooks",
+		}
+	)
 	params, err := decodeOrgsListWebhooksParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsListWebhooks",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16417,12 +18473,18 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsPingWebhook",
+			ID:   "orgs/ping-webhook",
+		}
+	)
 	params, err := decodeOrgsPingWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsPingWebhook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16462,12 +18524,18 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsRedeliverWebhookDelivery",
+			ID:   "orgs/redeliver-webhook-delivery",
+		}
+	)
 	params, err := decodeOrgsRedeliverWebhookDeliveryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsRedeliverWebhookDelivery",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16507,12 +18575,18 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsRemoveMember",
+			ID:   "orgs/remove-member",
+		}
+	)
 	params, err := decodeOrgsRemoveMemberParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsRemoveMember",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16552,12 +18626,18 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsRemoveMembershipForUser",
+			ID:   "orgs/remove-membership-for-user",
+		}
+	)
 	params, err := decodeOrgsRemoveMembershipForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsRemoveMembershipForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16597,12 +18677,18 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsRemoveOutsideCollaborator",
+			ID:   "orgs/remove-outside-collaborator",
+		}
+	)
 	params, err := decodeOrgsRemoveOutsideCollaboratorParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsRemoveOutsideCollaborator",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16642,12 +18728,18 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsRemovePublicMembershipForAuthenticatedUser",
+			ID:   "orgs/remove-public-membership-for-authenticated-user",
+		}
+	)
 	params, err := decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsRemovePublicMembershipForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16687,12 +18779,18 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsRemoveSamlSSOAuthorization",
+			ID:   "orgs/remove-saml-sso-authorization",
+		}
+	)
 	params, err := decodeOrgsRemoveSamlSSOAuthorizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsRemoveSamlSSOAuthorization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16732,12 +18830,18 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsSetMembershipForUser",
+			ID:   "orgs/set-membership-for-user",
+		}
+	)
 	params, err := decodeOrgsSetMembershipForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsSetMembershipForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16745,8 +18849,8 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 	request, close, err := s.decodeOrgsSetMembershipForUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "OrgsSetMembershipForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16787,12 +18891,18 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsSetPublicMembershipForAuthenticatedUser",
+			ID:   "orgs/set-public-membership-for-authenticated-user",
+		}
+	)
 	params, err := decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsSetPublicMembershipForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16832,12 +18942,18 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsUnblockUser",
+			ID:   "orgs/unblock-user",
+		}
+	)
 	params, err := decodeOrgsUnblockUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsUnblockUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16877,12 +18993,18 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsUpdateMembershipForAuthenticatedUser",
+			ID:   "orgs/update-membership-for-authenticated-user",
+		}
+	)
 	params, err := decodeOrgsUpdateMembershipForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsUpdateMembershipForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16890,8 +19012,8 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 	request, close, err := s.decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "OrgsUpdateMembershipForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16932,12 +19054,18 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsUpdateWebhook",
+			ID:   "orgs/update-webhook",
+		}
+	)
 	params, err := decodeOrgsUpdateWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsUpdateWebhook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16945,8 +19073,8 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 	request, close, err := s.decodeOrgsUpdateWebhookRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "OrgsUpdateWebhook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16987,12 +19115,18 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OrgsUpdateWebhookConfigForOrg",
+			ID:   "orgs/update-webhook-config-for-org",
+		}
+	)
 	params, err := decodeOrgsUpdateWebhookConfigForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "OrgsUpdateWebhookConfigForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17000,8 +19134,8 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 	request, close, err := s.decodeOrgsUpdateWebhookConfigForOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "OrgsUpdateWebhookConfigForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17042,12 +19176,18 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesDeletePackageForAuthenticatedUser",
+			ID:   "packages/delete-package-for-authenticated-user",
+		}
+	)
 	params, err := decodePackagesDeletePackageForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesDeletePackageForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17087,12 +19227,18 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesDeletePackageForOrg",
+			ID:   "packages/delete-package-for-org",
+		}
+	)
 	params, err := decodePackagesDeletePackageForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesDeletePackageForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17132,12 +19278,18 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesDeletePackageForUser",
+			ID:   "packages/delete-package-for-user",
+		}
+	)
 	params, err := decodePackagesDeletePackageForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesDeletePackageForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17177,12 +19329,18 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesDeletePackageVersionForAuthenticatedUser",
+			ID:   "packages/delete-package-version-for-authenticated-user",
+		}
+	)
 	params, err := decodePackagesDeletePackageVersionForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesDeletePackageVersionForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17222,12 +19380,18 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesDeletePackageVersionForOrg",
+			ID:   "packages/delete-package-version-for-org",
+		}
+	)
 	params, err := decodePackagesDeletePackageVersionForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesDeletePackageVersionForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17267,12 +19431,18 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesDeletePackageVersionForUser",
+			ID:   "packages/delete-package-version-for-user",
+		}
+	)
 	params, err := decodePackagesDeletePackageVersionForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesDeletePackageVersionForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17312,12 +19482,18 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser",
+			ID:   "packages/get-all-package-versions-for-package-owned-by-authenticated-user",
+		}
+	)
 	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17357,12 +19533,18 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesGetAllPackageVersionsForPackageOwnedByOrg",
+			ID:   "packages/get-all-package-versions-for-package-owned-by-org",
+		}
+	)
 	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesGetAllPackageVersionsForPackageOwnedByOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17402,12 +19584,18 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesGetAllPackageVersionsForPackageOwnedByUser",
+			ID:   "packages/get-all-package-versions-for-package-owned-by-user",
+		}
+	)
 	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesGetAllPackageVersionsForPackageOwnedByUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17447,12 +19635,18 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesGetPackageForAuthenticatedUser",
+			ID:   "packages/get-package-for-authenticated-user",
+		}
+	)
 	params, err := decodePackagesGetPackageForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesGetPackageForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17492,12 +19686,18 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesGetPackageForOrganization",
+			ID:   "packages/get-package-for-organization",
+		}
+	)
 	params, err := decodePackagesGetPackageForOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesGetPackageForOrganization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17537,12 +19737,18 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesGetPackageForUser",
+			ID:   "packages/get-package-for-user",
+		}
+	)
 	params, err := decodePackagesGetPackageForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesGetPackageForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17582,12 +19788,18 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesGetPackageVersionForAuthenticatedUser",
+			ID:   "packages/get-package-version-for-authenticated-user",
+		}
+	)
 	params, err := decodePackagesGetPackageVersionForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesGetPackageVersionForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17627,12 +19839,18 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesGetPackageVersionForOrganization",
+			ID:   "packages/get-package-version-for-organization",
+		}
+	)
 	params, err := decodePackagesGetPackageVersionForOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesGetPackageVersionForOrganization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17672,12 +19890,18 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesGetPackageVersionForUser",
+			ID:   "packages/get-package-version-for-user",
+		}
+	)
 	params, err := decodePackagesGetPackageVersionForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesGetPackageVersionForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17717,12 +19941,18 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesListPackagesForAuthenticatedUser",
+			ID:   "packages/list-packages-for-authenticated-user",
+		}
+	)
 	params, err := decodePackagesListPackagesForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesListPackagesForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17762,12 +19992,18 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesListPackagesForOrganization",
+			ID:   "packages/list-packages-for-organization",
+		}
+	)
 	params, err := decodePackagesListPackagesForOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesListPackagesForOrganization",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17807,12 +20043,18 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesListPackagesForUser",
+			ID:   "packages/list-packages-for-user",
+		}
+	)
 	params, err := decodePackagesListPackagesForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesListPackagesForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17852,12 +20094,18 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesRestorePackageForAuthenticatedUser",
+			ID:   "packages/restore-package-for-authenticated-user",
+		}
+	)
 	params, err := decodePackagesRestorePackageForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesRestorePackageForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17897,12 +20145,18 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesRestorePackageForOrg",
+			ID:   "packages/restore-package-for-org",
+		}
+	)
 	params, err := decodePackagesRestorePackageForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesRestorePackageForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17942,12 +20196,18 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesRestorePackageForUser",
+			ID:   "packages/restore-package-for-user",
+		}
+	)
 	params, err := decodePackagesRestorePackageForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesRestorePackageForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17987,12 +20247,18 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesRestorePackageVersionForAuthenticatedUser",
+			ID:   "packages/restore-package-version-for-authenticated-user",
+		}
+	)
 	params, err := decodePackagesRestorePackageVersionForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesRestorePackageVersionForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18032,12 +20298,18 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesRestorePackageVersionForOrg",
+			ID:   "packages/restore-package-version-for-org",
+		}
+	)
 	params, err := decodePackagesRestorePackageVersionForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesRestorePackageVersionForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18077,12 +20349,18 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PackagesRestorePackageVersionForUser",
+			ID:   "packages/restore-package-version-for-user",
+		}
+	)
 	params, err := decodePackagesRestorePackageVersionForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PackagesRestorePackageVersionForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18122,12 +20400,18 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsAddCollaborator",
+			ID:   "projects/add-collaborator",
+		}
+	)
 	params, err := decodeProjectsAddCollaboratorParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsAddCollaborator",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18135,8 +20419,8 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 	request, close, err := s.decodeProjectsAddCollaboratorRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ProjectsAddCollaborator",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18177,12 +20461,18 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsCreateColumn",
+			ID:   "projects/create-column",
+		}
+	)
 	params, err := decodeProjectsCreateColumnParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsCreateColumn",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18190,8 +20480,8 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 	request, close, err := s.decodeProjectsCreateColumnRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ProjectsCreateColumn",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18232,12 +20522,18 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsCreateForAuthenticatedUser",
+			ID:   "projects/create-for-authenticated-user",
+		}
+	)
 	request, close, err := s.decodeProjectsCreateForAuthenticatedUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ProjectsCreateForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18278,12 +20574,18 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsCreateForOrg",
+			ID:   "projects/create-for-org",
+		}
+	)
 	params, err := decodeProjectsCreateForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsCreateForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18291,8 +20593,8 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 	request, close, err := s.decodeProjectsCreateForOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ProjectsCreateForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18333,12 +20635,18 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsCreateForRepo",
+			ID:   "projects/create-for-repo",
+		}
+	)
 	params, err := decodeProjectsCreateForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsCreateForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18346,8 +20654,8 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 	request, close, err := s.decodeProjectsCreateForRepoRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ProjectsCreateForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18388,12 +20696,18 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsDelete",
+			ID:   "projects/delete",
+		}
+	)
 	params, err := decodeProjectsDeleteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsDelete",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18433,12 +20747,18 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsDeleteCard",
+			ID:   "projects/delete-card",
+		}
+	)
 	params, err := decodeProjectsDeleteCardParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsDeleteCard",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18478,12 +20798,18 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsDeleteColumn",
+			ID:   "projects/delete-column",
+		}
+	)
 	params, err := decodeProjectsDeleteColumnParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsDeleteColumn",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18523,12 +20849,18 @@ func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsGet",
+			ID:   "projects/get",
+		}
+	)
 	params, err := decodeProjectsGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsGet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18568,12 +20900,18 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsGetCard",
+			ID:   "projects/get-card",
+		}
+	)
 	params, err := decodeProjectsGetCardParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsGetCard",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18613,12 +20951,18 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsGetColumn",
+			ID:   "projects/get-column",
+		}
+	)
 	params, err := decodeProjectsGetColumnParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsGetColumn",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18658,12 +21002,18 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsGetPermissionForUser",
+			ID:   "projects/get-permission-for-user",
+		}
+	)
 	params, err := decodeProjectsGetPermissionForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsGetPermissionForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18703,12 +21053,18 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsListCards",
+			ID:   "projects/list-cards",
+		}
+	)
 	params, err := decodeProjectsListCardsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsListCards",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18748,12 +21104,18 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsListCollaborators",
+			ID:   "projects/list-collaborators",
+		}
+	)
 	params, err := decodeProjectsListCollaboratorsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsListCollaborators",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18793,12 +21155,18 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsListColumns",
+			ID:   "projects/list-columns",
+		}
+	)
 	params, err := decodeProjectsListColumnsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsListColumns",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18838,12 +21206,18 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsListForOrg",
+			ID:   "projects/list-for-org",
+		}
+	)
 	params, err := decodeProjectsListForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsListForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18883,12 +21257,18 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsListForRepo",
+			ID:   "projects/list-for-repo",
+		}
+	)
 	params, err := decodeProjectsListForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsListForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18928,12 +21308,18 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsListForUser",
+			ID:   "projects/list-for-user",
+		}
+	)
 	params, err := decodeProjectsListForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsListForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18973,12 +21359,18 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsMoveCard",
+			ID:   "projects/move-card",
+		}
+	)
 	params, err := decodeProjectsMoveCardParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsMoveCard",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18986,8 +21378,8 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 	request, close, err := s.decodeProjectsMoveCardRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ProjectsMoveCard",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19028,12 +21420,18 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsMoveColumn",
+			ID:   "projects/move-column",
+		}
+	)
 	params, err := decodeProjectsMoveColumnParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsMoveColumn",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19041,8 +21439,8 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 	request, close, err := s.decodeProjectsMoveColumnRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ProjectsMoveColumn",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19083,12 +21481,18 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsRemoveCollaborator",
+			ID:   "projects/remove-collaborator",
+		}
+	)
 	params, err := decodeProjectsRemoveCollaboratorParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsRemoveCollaborator",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19128,12 +21532,18 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsUpdate",
+			ID:   "projects/update",
+		}
+	)
 	params, err := decodeProjectsUpdateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsUpdate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19141,8 +21551,8 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 	request, close, err := s.decodeProjectsUpdateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ProjectsUpdate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19183,12 +21593,18 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsUpdateCard",
+			ID:   "projects/update-card",
+		}
+	)
 	params, err := decodeProjectsUpdateCardParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsUpdateCard",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19196,8 +21612,8 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 	request, close, err := s.decodeProjectsUpdateCardRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ProjectsUpdateCard",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19238,12 +21654,18 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ProjectsUpdateColumn",
+			ID:   "projects/update-column",
+		}
+	)
 	params, err := decodeProjectsUpdateColumnParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ProjectsUpdateColumn",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19251,8 +21673,8 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 	request, close, err := s.decodeProjectsUpdateColumnRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ProjectsUpdateColumn",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19293,12 +21715,18 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsCheckIfMerged",
+			ID:   "pulls/check-if-merged",
+		}
+	)
 	params, err := decodePullsCheckIfMergedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsCheckIfMerged",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19338,12 +21766,18 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsCreate",
+			ID:   "pulls/create",
+		}
+	)
 	params, err := decodePullsCreateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsCreate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19351,8 +21785,8 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 	request, close, err := s.decodePullsCreateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PullsCreate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19393,12 +21827,18 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsCreateReplyForReviewComment",
+			ID:   "pulls/create-reply-for-review-comment",
+		}
+	)
 	params, err := decodePullsCreateReplyForReviewCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsCreateReplyForReviewComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19406,8 +21846,8 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 	request, close, err := s.decodePullsCreateReplyForReviewCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PullsCreateReplyForReviewComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19448,12 +21888,18 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsCreateReview",
+			ID:   "pulls/create-review",
+		}
+	)
 	params, err := decodePullsCreateReviewParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsCreateReview",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19461,8 +21907,8 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 	request, close, err := s.decodePullsCreateReviewRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PullsCreateReview",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19503,12 +21949,18 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsCreateReviewComment",
+			ID:   "pulls/create-review-comment",
+		}
+	)
 	params, err := decodePullsCreateReviewCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsCreateReviewComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19516,8 +21968,8 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 	request, close, err := s.decodePullsCreateReviewCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PullsCreateReviewComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19558,12 +22010,18 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsDeletePendingReview",
+			ID:   "pulls/delete-pending-review",
+		}
+	)
 	params, err := decodePullsDeletePendingReviewParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsDeletePendingReview",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19603,12 +22061,18 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsDeleteReviewComment",
+			ID:   "pulls/delete-review-comment",
+		}
+	)
 	params, err := decodePullsDeleteReviewCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsDeleteReviewComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19648,12 +22112,18 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsDismissReview",
+			ID:   "pulls/dismiss-review",
+		}
+	)
 	params, err := decodePullsDismissReviewParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsDismissReview",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19661,8 +22131,8 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 	request, close, err := s.decodePullsDismissReviewRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PullsDismissReview",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19703,12 +22173,18 @@ func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsGet",
+			ID:   "pulls/get",
+		}
+	)
 	params, err := decodePullsGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsGet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19748,12 +22224,18 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsGetReview",
+			ID:   "pulls/get-review",
+		}
+	)
 	params, err := decodePullsGetReviewParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsGetReview",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19793,12 +22275,18 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsGetReviewComment",
+			ID:   "pulls/get-review-comment",
+		}
+	)
 	params, err := decodePullsGetReviewCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsGetReviewComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19838,12 +22326,18 @@ func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsList",
+			ID:   "pulls/list",
+		}
+	)
 	params, err := decodePullsListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19883,12 +22377,18 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsListCommentsForReview",
+			ID:   "pulls/list-comments-for-review",
+		}
+	)
 	params, err := decodePullsListCommentsForReviewParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsListCommentsForReview",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19928,12 +22428,18 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsListCommits",
+			ID:   "pulls/list-commits",
+		}
+	)
 	params, err := decodePullsListCommitsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsListCommits",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19973,12 +22479,18 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsListFiles",
+			ID:   "pulls/list-files",
+		}
+	)
 	params, err := decodePullsListFilesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsListFiles",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20018,12 +22530,18 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsListRequestedReviewers",
+			ID:   "pulls/list-requested-reviewers",
+		}
+	)
 	params, err := decodePullsListRequestedReviewersParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsListRequestedReviewers",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20063,12 +22581,18 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsListReviewComments",
+			ID:   "pulls/list-review-comments",
+		}
+	)
 	params, err := decodePullsListReviewCommentsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsListReviewComments",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20108,12 +22632,18 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsListReviewCommentsForRepo",
+			ID:   "pulls/list-review-comments-for-repo",
+		}
+	)
 	params, err := decodePullsListReviewCommentsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsListReviewCommentsForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20153,12 +22683,18 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsListReviews",
+			ID:   "pulls/list-reviews",
+		}
+	)
 	params, err := decodePullsListReviewsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsListReviews",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20198,12 +22734,18 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsMerge",
+			ID:   "pulls/merge",
+		}
+	)
 	params, err := decodePullsMergeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsMerge",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20211,8 +22753,8 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 	request, close, err := s.decodePullsMergeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PullsMerge",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20253,12 +22795,18 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsRemoveRequestedReviewers",
+			ID:   "pulls/remove-requested-reviewers",
+		}
+	)
 	params, err := decodePullsRemoveRequestedReviewersParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsRemoveRequestedReviewers",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20266,8 +22814,8 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 	request, close, err := s.decodePullsRemoveRequestedReviewersRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PullsRemoveRequestedReviewers",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20308,12 +22856,18 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsSubmitReview",
+			ID:   "pulls/submit-review",
+		}
+	)
 	params, err := decodePullsSubmitReviewParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsSubmitReview",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20321,8 +22875,8 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 	request, close, err := s.decodePullsSubmitReviewRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PullsSubmitReview",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20363,12 +22917,18 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsUpdate",
+			ID:   "pulls/update",
+		}
+	)
 	params, err := decodePullsUpdateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsUpdate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20376,8 +22936,8 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 	request, close, err := s.decodePullsUpdateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PullsUpdate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20418,12 +22978,18 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsUpdateBranch",
+			ID:   "pulls/update-branch",
+		}
+	)
 	params, err := decodePullsUpdateBranchParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsUpdateBranch",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20431,8 +22997,8 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 	request, close, err := s.decodePullsUpdateBranchRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PullsUpdateBranch",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20473,12 +23039,18 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsUpdateReview",
+			ID:   "pulls/update-review",
+		}
+	)
 	params, err := decodePullsUpdateReviewParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsUpdateReview",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20486,8 +23058,8 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 	request, close, err := s.decodePullsUpdateReviewRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PullsUpdateReview",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20528,12 +23100,18 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PullsUpdateReviewComment",
+			ID:   "pulls/update-review-comment",
+		}
+	)
 	params, err := decodePullsUpdateReviewCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PullsUpdateReviewComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20541,8 +23119,8 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 	request, close, err := s.decodePullsUpdateReviewCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PullsUpdateReviewComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20583,7 +23161,9 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.RateLimitGet(ctx)
 	if err != nil {
@@ -20619,12 +23199,18 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsCreateForCommitComment",
+			ID:   "reactions/create-for-commit-comment",
+		}
+	)
 	params, err := decodeReactionsCreateForCommitCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsCreateForCommitComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20632,8 +23218,8 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 	request, close, err := s.decodeReactionsCreateForCommitCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReactionsCreateForCommitComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20674,12 +23260,18 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsCreateForIssue",
+			ID:   "reactions/create-for-issue",
+		}
+	)
 	params, err := decodeReactionsCreateForIssueParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsCreateForIssue",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20687,8 +23279,8 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 	request, close, err := s.decodeReactionsCreateForIssueRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReactionsCreateForIssue",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20729,12 +23321,18 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsCreateForIssueComment",
+			ID:   "reactions/create-for-issue-comment",
+		}
+	)
 	params, err := decodeReactionsCreateForIssueCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsCreateForIssueComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20742,8 +23340,8 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 	request, close, err := s.decodeReactionsCreateForIssueCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReactionsCreateForIssueComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20784,12 +23382,18 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsCreateForPullRequestReviewComment",
+			ID:   "reactions/create-for-pull-request-review-comment",
+		}
+	)
 	params, err := decodeReactionsCreateForPullRequestReviewCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsCreateForPullRequestReviewComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20797,8 +23401,8 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 	request, close, err := s.decodeReactionsCreateForPullRequestReviewCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReactionsCreateForPullRequestReviewComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20839,12 +23443,18 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsCreateForRelease",
+			ID:   "reactions/create-for-release",
+		}
+	)
 	params, err := decodeReactionsCreateForReleaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsCreateForRelease",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20852,8 +23462,8 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 	request, close, err := s.decodeReactionsCreateForReleaseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReactionsCreateForRelease",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20894,12 +23504,18 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsCreateForTeamDiscussionCommentInOrg",
+			ID:   "reactions/create-for-team-discussion-comment-in-org",
+		}
+	)
 	params, err := decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsCreateForTeamDiscussionCommentInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20907,8 +23523,8 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 	request, close, err := s.decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReactionsCreateForTeamDiscussionCommentInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20949,12 +23565,18 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsCreateForTeamDiscussionCommentLegacy",
+			ID:   "reactions/create-for-team-discussion-comment-legacy",
+		}
+	)
 	params, err := decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsCreateForTeamDiscussionCommentLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20962,8 +23584,8 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 	request, close, err := s.decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReactionsCreateForTeamDiscussionCommentLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21004,12 +23626,18 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsCreateForTeamDiscussionInOrg",
+			ID:   "reactions/create-for-team-discussion-in-org",
+		}
+	)
 	params, err := decodeReactionsCreateForTeamDiscussionInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsCreateForTeamDiscussionInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21017,8 +23645,8 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 	request, close, err := s.decodeReactionsCreateForTeamDiscussionInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReactionsCreateForTeamDiscussionInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21059,12 +23687,18 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsCreateForTeamDiscussionLegacy",
+			ID:   "reactions/create-for-team-discussion-legacy",
+		}
+	)
 	params, err := decodeReactionsCreateForTeamDiscussionLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsCreateForTeamDiscussionLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21072,8 +23706,8 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 	request, close, err := s.decodeReactionsCreateForTeamDiscussionLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReactionsCreateForTeamDiscussionLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21114,12 +23748,18 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsDeleteForCommitComment",
+			ID:   "reactions/delete-for-commit-comment",
+		}
+	)
 	params, err := decodeReactionsDeleteForCommitCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsDeleteForCommitComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21159,12 +23799,18 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsDeleteForIssue",
+			ID:   "reactions/delete-for-issue",
+		}
+	)
 	params, err := decodeReactionsDeleteForIssueParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsDeleteForIssue",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21204,12 +23850,18 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsDeleteForIssueComment",
+			ID:   "reactions/delete-for-issue-comment",
+		}
+	)
 	params, err := decodeReactionsDeleteForIssueCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsDeleteForIssueComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21249,12 +23901,18 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsDeleteForPullRequestComment",
+			ID:   "reactions/delete-for-pull-request-comment",
+		}
+	)
 	params, err := decodeReactionsDeleteForPullRequestCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsDeleteForPullRequestComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21294,12 +23952,18 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsDeleteForTeamDiscussion",
+			ID:   "reactions/delete-for-team-discussion",
+		}
+	)
 	params, err := decodeReactionsDeleteForTeamDiscussionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsDeleteForTeamDiscussion",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21339,12 +24003,18 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsDeleteForTeamDiscussionComment",
+			ID:   "reactions/delete-for-team-discussion-comment",
+		}
+	)
 	params, err := decodeReactionsDeleteForTeamDiscussionCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsDeleteForTeamDiscussionComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21384,12 +24054,18 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsDeleteLegacy",
+			ID:   "reactions/delete-legacy",
+		}
+	)
 	params, err := decodeReactionsDeleteLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsDeleteLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21429,12 +24105,18 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsListForCommitComment",
+			ID:   "reactions/list-for-commit-comment",
+		}
+	)
 	params, err := decodeReactionsListForCommitCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsListForCommitComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21474,12 +24156,18 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsListForIssue",
+			ID:   "reactions/list-for-issue",
+		}
+	)
 	params, err := decodeReactionsListForIssueParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsListForIssue",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21519,12 +24207,18 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsListForIssueComment",
+			ID:   "reactions/list-for-issue-comment",
+		}
+	)
 	params, err := decodeReactionsListForIssueCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsListForIssueComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21564,12 +24258,18 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsListForPullRequestReviewComment",
+			ID:   "reactions/list-for-pull-request-review-comment",
+		}
+	)
 	params, err := decodeReactionsListForPullRequestReviewCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsListForPullRequestReviewComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21609,12 +24309,18 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsListForTeamDiscussionCommentInOrg",
+			ID:   "reactions/list-for-team-discussion-comment-in-org",
+		}
+	)
 	params, err := decodeReactionsListForTeamDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsListForTeamDiscussionCommentInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21654,12 +24360,18 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsListForTeamDiscussionCommentLegacy",
+			ID:   "reactions/list-for-team-discussion-comment-legacy",
+		}
+	)
 	params, err := decodeReactionsListForTeamDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsListForTeamDiscussionCommentLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21699,12 +24411,18 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsListForTeamDiscussionInOrg",
+			ID:   "reactions/list-for-team-discussion-in-org",
+		}
+	)
 	params, err := decodeReactionsListForTeamDiscussionInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsListForTeamDiscussionInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21744,12 +24462,18 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReactionsListForTeamDiscussionLegacy",
+			ID:   "reactions/list-for-team-discussion-legacy",
+		}
+	)
 	params, err := decodeReactionsListForTeamDiscussionLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReactionsListForTeamDiscussionLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21789,12 +24513,18 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposAcceptInvitation",
+			ID:   "repos/accept-invitation",
+		}
+	)
 	params, err := decodeReposAcceptInvitationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposAcceptInvitation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21834,12 +24564,18 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposAddAppAccessRestrictions",
+			ID:   "repos/add-app-access-restrictions",
+		}
+	)
 	params, err := decodeReposAddAppAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposAddAppAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21847,8 +24583,8 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 	request, close, err := s.decodeReposAddAppAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposAddAppAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21889,12 +24625,18 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposAddCollaborator",
+			ID:   "repos/add-collaborator",
+		}
+	)
 	params, err := decodeReposAddCollaboratorParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposAddCollaborator",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21902,8 +24644,8 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 	request, close, err := s.decodeReposAddCollaboratorRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposAddCollaborator",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21944,12 +24686,18 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposAddStatusCheckContexts",
+			ID:   "repos/add-status-check-contexts",
+		}
+	)
 	params, err := decodeReposAddStatusCheckContextsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposAddStatusCheckContexts",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21957,8 +24705,8 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 	request, close, err := s.decodeReposAddStatusCheckContextsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposAddStatusCheckContexts",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21999,12 +24747,18 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposAddTeamAccessRestrictions",
+			ID:   "repos/add-team-access-restrictions",
+		}
+	)
 	params, err := decodeReposAddTeamAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposAddTeamAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22012,8 +24766,8 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 	request, close, err := s.decodeReposAddTeamAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposAddTeamAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22054,12 +24808,18 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposAddUserAccessRestrictions",
+			ID:   "repos/add-user-access-restrictions",
+		}
+	)
 	params, err := decodeReposAddUserAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposAddUserAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22067,8 +24827,8 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 	request, close, err := s.decodeReposAddUserAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposAddUserAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22109,12 +24869,18 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCheckCollaborator",
+			ID:   "repos/check-collaborator",
+		}
+	)
 	params, err := decodeReposCheckCollaboratorParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCheckCollaborator",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22154,12 +24920,18 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCheckVulnerabilityAlerts",
+			ID:   "repos/check-vulnerability-alerts",
+		}
+	)
 	params, err := decodeReposCheckVulnerabilityAlertsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCheckVulnerabilityAlerts",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22199,12 +24971,18 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCompareCommits",
+			ID:   "repos/compare-commits",
+		}
+	)
 	params, err := decodeReposCompareCommitsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCompareCommits",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22244,12 +25022,18 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCreateAutolink",
+			ID:   "repos/create-autolink",
+		}
+	)
 	params, err := decodeReposCreateAutolinkParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCreateAutolink",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22257,8 +25041,8 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 	request, close, err := s.decodeReposCreateAutolinkRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposCreateAutolink",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22299,12 +25083,18 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCreateCommitComment",
+			ID:   "repos/create-commit-comment",
+		}
+	)
 	params, err := decodeReposCreateCommitCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCreateCommitComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22312,8 +25102,8 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 	request, close, err := s.decodeReposCreateCommitCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposCreateCommitComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22354,12 +25144,18 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCreateCommitSignatureProtection",
+			ID:   "repos/create-commit-signature-protection",
+		}
+	)
 	params, err := decodeReposCreateCommitSignatureProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCreateCommitSignatureProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22399,12 +25195,18 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCreateCommitStatus",
+			ID:   "repos/create-commit-status",
+		}
+	)
 	params, err := decodeReposCreateCommitStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCreateCommitStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22412,8 +25214,8 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 	request, close, err := s.decodeReposCreateCommitStatusRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposCreateCommitStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22454,12 +25256,18 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCreateDeployKey",
+			ID:   "repos/create-deploy-key",
+		}
+	)
 	params, err := decodeReposCreateDeployKeyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCreateDeployKey",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22467,8 +25275,8 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 	request, close, err := s.decodeReposCreateDeployKeyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposCreateDeployKey",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22509,12 +25317,18 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCreateDeployment",
+			ID:   "repos/create-deployment",
+		}
+	)
 	params, err := decodeReposCreateDeploymentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCreateDeployment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22522,8 +25336,8 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 	request, close, err := s.decodeReposCreateDeploymentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposCreateDeployment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22564,12 +25378,18 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCreateDeploymentStatus",
+			ID:   "repos/create-deployment-status",
+		}
+	)
 	params, err := decodeReposCreateDeploymentStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCreateDeploymentStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22577,8 +25397,8 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 	request, close, err := s.decodeReposCreateDeploymentStatusRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposCreateDeploymentStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22619,12 +25439,18 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCreateDispatchEvent",
+			ID:   "repos/create-dispatch-event",
+		}
+	)
 	params, err := decodeReposCreateDispatchEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCreateDispatchEvent",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22632,8 +25458,8 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 	request, close, err := s.decodeReposCreateDispatchEventRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposCreateDispatchEvent",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22674,12 +25500,18 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCreateForAuthenticatedUser",
+			ID:   "repos/create-for-authenticated-user",
+		}
+	)
 	request, close, err := s.decodeReposCreateForAuthenticatedUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposCreateForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22720,12 +25552,18 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCreateFork",
+			ID:   "repos/create-fork",
+		}
+	)
 	params, err := decodeReposCreateForkParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCreateFork",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22733,8 +25571,8 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 	request, close, err := s.decodeReposCreateForkRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposCreateFork",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22775,12 +25613,18 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCreateInOrg",
+			ID:   "repos/create-in-org",
+		}
+	)
 	params, err := decodeReposCreateInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCreateInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22788,8 +25632,8 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 	request, close, err := s.decodeReposCreateInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposCreateInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22830,12 +25674,18 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCreateOrUpdateFileContents",
+			ID:   "repos/create-or-update-file-contents",
+		}
+	)
 	params, err := decodeReposCreateOrUpdateFileContentsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCreateOrUpdateFileContents",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22843,8 +25693,8 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 	request, close, err := s.decodeReposCreateOrUpdateFileContentsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposCreateOrUpdateFileContents",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22885,12 +25735,18 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCreatePagesSite",
+			ID:   "repos/create-pages-site",
+		}
+	)
 	params, err := decodeReposCreatePagesSiteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCreatePagesSite",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22898,8 +25754,8 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 	request, close, err := s.decodeReposCreatePagesSiteRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposCreatePagesSite",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22940,12 +25796,18 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCreateRelease",
+			ID:   "repos/create-release",
+		}
+	)
 	params, err := decodeReposCreateReleaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCreateRelease",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22953,8 +25815,8 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 	request, close, err := s.decodeReposCreateReleaseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposCreateRelease",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22995,12 +25857,18 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCreateUsingTemplate",
+			ID:   "repos/create-using-template",
+		}
+	)
 	params, err := decodeReposCreateUsingTemplateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCreateUsingTemplate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23008,8 +25876,8 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 	request, close, err := s.decodeReposCreateUsingTemplateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposCreateUsingTemplate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23050,12 +25918,18 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposCreateWebhook",
+			ID:   "repos/create-webhook",
+		}
+	)
 	params, err := decodeReposCreateWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposCreateWebhook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23063,8 +25937,8 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 	request, close, err := s.decodeReposCreateWebhookRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposCreateWebhook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23105,12 +25979,18 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDeclineInvitation",
+			ID:   "repos/decline-invitation",
+		}
+	)
 	params, err := decodeReposDeclineInvitationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDeclineInvitation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23150,12 +26030,18 @@ func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDelete",
+			ID:   "repos/delete",
+		}
+	)
 	params, err := decodeReposDeleteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDelete",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23195,12 +26081,18 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDeleteAccessRestrictions",
+			ID:   "repos/delete-access-restrictions",
+		}
+	)
 	params, err := decodeReposDeleteAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDeleteAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23240,12 +26132,18 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDeleteAdminBranchProtection",
+			ID:   "repos/delete-admin-branch-protection",
+		}
+	)
 	params, err := decodeReposDeleteAdminBranchProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDeleteAdminBranchProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23285,12 +26183,18 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDeleteAnEnvironment",
+			ID:   "repos/delete-an-environment",
+		}
+	)
 	params, err := decodeReposDeleteAnEnvironmentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDeleteAnEnvironment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23330,12 +26234,18 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDeleteAutolink",
+			ID:   "repos/delete-autolink",
+		}
+	)
 	params, err := decodeReposDeleteAutolinkParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDeleteAutolink",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23375,12 +26285,18 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDeleteBranchProtection",
+			ID:   "repos/delete-branch-protection",
+		}
+	)
 	params, err := decodeReposDeleteBranchProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDeleteBranchProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23420,12 +26336,18 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDeleteCommitComment",
+			ID:   "repos/delete-commit-comment",
+		}
+	)
 	params, err := decodeReposDeleteCommitCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDeleteCommitComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23465,12 +26387,18 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDeleteCommitSignatureProtection",
+			ID:   "repos/delete-commit-signature-protection",
+		}
+	)
 	params, err := decodeReposDeleteCommitSignatureProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDeleteCommitSignatureProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23510,12 +26438,18 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDeleteDeployKey",
+			ID:   "repos/delete-deploy-key",
+		}
+	)
 	params, err := decodeReposDeleteDeployKeyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDeleteDeployKey",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23555,12 +26489,18 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDeleteDeployment",
+			ID:   "repos/delete-deployment",
+		}
+	)
 	params, err := decodeReposDeleteDeploymentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDeleteDeployment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23600,12 +26540,18 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDeleteFile",
+			ID:   "repos/delete-file",
+		}
+	)
 	params, err := decodeReposDeleteFileParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDeleteFile",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23613,8 +26559,8 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 	request, close, err := s.decodeReposDeleteFileRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposDeleteFile",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23655,12 +26601,18 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDeleteInvitation",
+			ID:   "repos/delete-invitation",
+		}
+	)
 	params, err := decodeReposDeleteInvitationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDeleteInvitation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23700,12 +26652,18 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDeletePagesSite",
+			ID:   "repos/delete-pages-site",
+		}
+	)
 	params, err := decodeReposDeletePagesSiteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDeletePagesSite",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23745,12 +26703,18 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDeletePullRequestReviewProtection",
+			ID:   "repos/delete-pull-request-review-protection",
+		}
+	)
 	params, err := decodeReposDeletePullRequestReviewProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDeletePullRequestReviewProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23790,12 +26754,18 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDeleteRelease",
+			ID:   "repos/delete-release",
+		}
+	)
 	params, err := decodeReposDeleteReleaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDeleteRelease",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23835,12 +26805,18 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDeleteReleaseAsset",
+			ID:   "repos/delete-release-asset",
+		}
+	)
 	params, err := decodeReposDeleteReleaseAssetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDeleteReleaseAsset",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23880,12 +26856,18 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDeleteWebhook",
+			ID:   "repos/delete-webhook",
+		}
+	)
 	params, err := decodeReposDeleteWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDeleteWebhook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23925,12 +26907,18 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDisableAutomatedSecurityFixes",
+			ID:   "repos/disable-automated-security-fixes",
+		}
+	)
 	params, err := decodeReposDisableAutomatedSecurityFixesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDisableAutomatedSecurityFixes",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23970,12 +26958,18 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDisableLfsForRepo",
+			ID:   "repos/disable-lfs-for-repo",
+		}
+	)
 	params, err := decodeReposDisableLfsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDisableLfsForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24015,12 +27009,18 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDisableVulnerabilityAlerts",
+			ID:   "repos/disable-vulnerability-alerts",
+		}
+	)
 	params, err := decodeReposDisableVulnerabilityAlertsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDisableVulnerabilityAlerts",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24060,12 +27060,18 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDownloadTarballArchive",
+			ID:   "repos/download-tarball-archive",
+		}
+	)
 	params, err := decodeReposDownloadTarballArchiveParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDownloadTarballArchive",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24105,12 +27111,18 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposDownloadZipballArchive",
+			ID:   "repos/download-zipball-archive",
+		}
+	)
 	params, err := decodeReposDownloadZipballArchiveParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposDownloadZipballArchive",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24150,12 +27162,18 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposEnableAutomatedSecurityFixes",
+			ID:   "repos/enable-automated-security-fixes",
+		}
+	)
 	params, err := decodeReposEnableAutomatedSecurityFixesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposEnableAutomatedSecurityFixes",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24195,12 +27213,18 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposEnableLfsForRepo",
+			ID:   "repos/enable-lfs-for-repo",
+		}
+	)
 	params, err := decodeReposEnableLfsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposEnableLfsForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24240,12 +27264,18 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposEnableVulnerabilityAlerts",
+			ID:   "repos/enable-vulnerability-alerts",
+		}
+	)
 	params, err := decodeReposEnableVulnerabilityAlertsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposEnableVulnerabilityAlerts",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24285,12 +27315,18 @@ func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGet",
+			ID:   "repos/get",
+		}
+	)
 	params, err := decodeReposGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24330,12 +27366,18 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetAccessRestrictions",
+			ID:   "repos/get-access-restrictions",
+		}
+	)
 	params, err := decodeReposGetAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24375,12 +27417,18 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetAdminBranchProtection",
+			ID:   "repos/get-admin-branch-protection",
+		}
+	)
 	params, err := decodeReposGetAdminBranchProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetAdminBranchProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24420,12 +27468,18 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetAllStatusCheckContexts",
+			ID:   "repos/get-all-status-check-contexts",
+		}
+	)
 	params, err := decodeReposGetAllStatusCheckContextsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetAllStatusCheckContexts",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24465,12 +27519,18 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetAllTopics",
+			ID:   "repos/get-all-topics",
+		}
+	)
 	params, err := decodeReposGetAllTopicsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetAllTopics",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24510,12 +27570,18 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetAppsWithAccessToProtectedBranch",
+			ID:   "repos/get-apps-with-access-to-protected-branch",
+		}
+	)
 	params, err := decodeReposGetAppsWithAccessToProtectedBranchParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetAppsWithAccessToProtectedBranch",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24555,12 +27621,18 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetAutolink",
+			ID:   "repos/get-autolink",
+		}
+	)
 	params, err := decodeReposGetAutolinkParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetAutolink",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24600,12 +27672,18 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetBranch",
+			ID:   "repos/get-branch",
+		}
+	)
 	params, err := decodeReposGetBranchParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetBranch",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24645,12 +27723,18 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetBranchProtection",
+			ID:   "repos/get-branch-protection",
+		}
+	)
 	params, err := decodeReposGetBranchProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetBranchProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24690,12 +27774,18 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetClones",
+			ID:   "repos/get-clones",
+		}
+	)
 	params, err := decodeReposGetClonesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetClones",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24735,12 +27825,18 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetCodeFrequencyStats",
+			ID:   "repos/get-code-frequency-stats",
+		}
+	)
 	params, err := decodeReposGetCodeFrequencyStatsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetCodeFrequencyStats",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24780,12 +27876,18 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetCollaboratorPermissionLevel",
+			ID:   "repos/get-collaborator-permission-level",
+		}
+	)
 	params, err := decodeReposGetCollaboratorPermissionLevelParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetCollaboratorPermissionLevel",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24825,12 +27927,18 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetCombinedStatusForRef",
+			ID:   "repos/get-combined-status-for-ref",
+		}
+	)
 	params, err := decodeReposGetCombinedStatusForRefParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetCombinedStatusForRef",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24870,12 +27978,18 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetCommit",
+			ID:   "repos/get-commit",
+		}
+	)
 	params, err := decodeReposGetCommitParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetCommit",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24915,12 +28029,18 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetCommitActivityStats",
+			ID:   "repos/get-commit-activity-stats",
+		}
+	)
 	params, err := decodeReposGetCommitActivityStatsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetCommitActivityStats",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24960,12 +28080,18 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetCommitComment",
+			ID:   "repos/get-commit-comment",
+		}
+	)
 	params, err := decodeReposGetCommitCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetCommitComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25005,12 +28131,18 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetCommitSignatureProtection",
+			ID:   "repos/get-commit-signature-protection",
+		}
+	)
 	params, err := decodeReposGetCommitSignatureProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetCommitSignatureProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25050,12 +28182,18 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetCommunityProfileMetrics",
+			ID:   "repos/get-community-profile-metrics",
+		}
+	)
 	params, err := decodeReposGetCommunityProfileMetricsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetCommunityProfileMetrics",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25095,12 +28233,18 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetContributorsStats",
+			ID:   "repos/get-contributors-stats",
+		}
+	)
 	params, err := decodeReposGetContributorsStatsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetContributorsStats",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25140,12 +28284,18 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetDeployKey",
+			ID:   "repos/get-deploy-key",
+		}
+	)
 	params, err := decodeReposGetDeployKeyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetDeployKey",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25185,12 +28335,18 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetDeployment",
+			ID:   "repos/get-deployment",
+		}
+	)
 	params, err := decodeReposGetDeploymentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetDeployment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25230,12 +28386,18 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetDeploymentStatus",
+			ID:   "repos/get-deployment-status",
+		}
+	)
 	params, err := decodeReposGetDeploymentStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetDeploymentStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25275,12 +28437,18 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetLatestPagesBuild",
+			ID:   "repos/get-latest-pages-build",
+		}
+	)
 	params, err := decodeReposGetLatestPagesBuildParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetLatestPagesBuild",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25320,12 +28488,18 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetLatestRelease",
+			ID:   "repos/get-latest-release",
+		}
+	)
 	params, err := decodeReposGetLatestReleaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetLatestRelease",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25365,12 +28539,18 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetPages",
+			ID:   "repos/get-pages",
+		}
+	)
 	params, err := decodeReposGetPagesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetPages",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25410,12 +28590,18 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetPagesBuild",
+			ID:   "repos/get-pages-build",
+		}
+	)
 	params, err := decodeReposGetPagesBuildParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetPagesBuild",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25455,12 +28641,18 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetPagesHealthCheck",
+			ID:   "repos/get-pages-health-check",
+		}
+	)
 	params, err := decodeReposGetPagesHealthCheckParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetPagesHealthCheck",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25500,12 +28692,18 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetParticipationStats",
+			ID:   "repos/get-participation-stats",
+		}
+	)
 	params, err := decodeReposGetParticipationStatsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetParticipationStats",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25545,12 +28743,18 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetPullRequestReviewProtection",
+			ID:   "repos/get-pull-request-review-protection",
+		}
+	)
 	params, err := decodeReposGetPullRequestReviewProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetPullRequestReviewProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25590,12 +28794,18 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetPunchCardStats",
+			ID:   "repos/get-punch-card-stats",
+		}
+	)
 	params, err := decodeReposGetPunchCardStatsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetPunchCardStats",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25635,12 +28845,18 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetReadme",
+			ID:   "repos/get-readme",
+		}
+	)
 	params, err := decodeReposGetReadmeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetReadme",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25680,12 +28896,18 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetReadmeInDirectory",
+			ID:   "repos/get-readme-in-directory",
+		}
+	)
 	params, err := decodeReposGetReadmeInDirectoryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetReadmeInDirectory",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25725,12 +28947,18 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetRelease",
+			ID:   "repos/get-release",
+		}
+	)
 	params, err := decodeReposGetReleaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetRelease",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25770,12 +28998,18 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetReleaseAsset",
+			ID:   "repos/get-release-asset",
+		}
+	)
 	params, err := decodeReposGetReleaseAssetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetReleaseAsset",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25815,12 +29049,18 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetReleaseByTag",
+			ID:   "repos/get-release-by-tag",
+		}
+	)
 	params, err := decodeReposGetReleaseByTagParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetReleaseByTag",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25860,12 +29100,18 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetStatusChecksProtection",
+			ID:   "repos/get-status-checks-protection",
+		}
+	)
 	params, err := decodeReposGetStatusChecksProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetStatusChecksProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25905,12 +29151,18 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetTeamsWithAccessToProtectedBranch",
+			ID:   "repos/get-teams-with-access-to-protected-branch",
+		}
+	)
 	params, err := decodeReposGetTeamsWithAccessToProtectedBranchParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetTeamsWithAccessToProtectedBranch",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25950,12 +29202,18 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetTopPaths",
+			ID:   "repos/get-top-paths",
+		}
+	)
 	params, err := decodeReposGetTopPathsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetTopPaths",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25995,12 +29253,18 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetTopReferrers",
+			ID:   "repos/get-top-referrers",
+		}
+	)
 	params, err := decodeReposGetTopReferrersParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetTopReferrers",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26040,12 +29304,18 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetUsersWithAccessToProtectedBranch",
+			ID:   "repos/get-users-with-access-to-protected-branch",
+		}
+	)
 	params, err := decodeReposGetUsersWithAccessToProtectedBranchParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetUsersWithAccessToProtectedBranch",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26085,12 +29355,18 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetViews",
+			ID:   "repos/get-views",
+		}
+	)
 	params, err := decodeReposGetViewsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetViews",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26130,12 +29406,18 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetWebhook",
+			ID:   "repos/get-webhook",
+		}
+	)
 	params, err := decodeReposGetWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetWebhook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26175,12 +29457,18 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetWebhookConfigForRepo",
+			ID:   "repos/get-webhook-config-for-repo",
+		}
+	)
 	params, err := decodeReposGetWebhookConfigForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetWebhookConfigForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26220,12 +29508,18 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposGetWebhookDelivery",
+			ID:   "repos/get-webhook-delivery",
+		}
+	)
 	params, err := decodeReposGetWebhookDeliveryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposGetWebhookDelivery",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26265,12 +29559,18 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListAutolinks",
+			ID:   "repos/list-autolinks",
+		}
+	)
 	params, err := decodeReposListAutolinksParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListAutolinks",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26310,12 +29610,18 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListBranches",
+			ID:   "repos/list-branches",
+		}
+	)
 	params, err := decodeReposListBranchesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListBranches",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26355,12 +29661,18 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListBranchesForHeadCommit",
+			ID:   "repos/list-branches-for-head-commit",
+		}
+	)
 	params, err := decodeReposListBranchesForHeadCommitParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListBranchesForHeadCommit",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26400,12 +29712,18 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListCollaborators",
+			ID:   "repos/list-collaborators",
+		}
+	)
 	params, err := decodeReposListCollaboratorsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListCollaborators",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26445,12 +29763,18 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListCommentsForCommit",
+			ID:   "repos/list-comments-for-commit",
+		}
+	)
 	params, err := decodeReposListCommentsForCommitParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListCommentsForCommit",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26490,12 +29814,18 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListCommitCommentsForRepo",
+			ID:   "repos/list-commit-comments-for-repo",
+		}
+	)
 	params, err := decodeReposListCommitCommentsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListCommitCommentsForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26535,12 +29865,18 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListCommitStatusesForRef",
+			ID:   "repos/list-commit-statuses-for-ref",
+		}
+	)
 	params, err := decodeReposListCommitStatusesForRefParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListCommitStatusesForRef",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26580,12 +29916,18 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListCommits",
+			ID:   "repos/list-commits",
+		}
+	)
 	params, err := decodeReposListCommitsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListCommits",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26625,12 +29967,18 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListContributors",
+			ID:   "repos/list-contributors",
+		}
+	)
 	params, err := decodeReposListContributorsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListContributors",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26670,12 +30018,18 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListDeployKeys",
+			ID:   "repos/list-deploy-keys",
+		}
+	)
 	params, err := decodeReposListDeployKeysParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListDeployKeys",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26715,12 +30069,18 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListDeploymentStatuses",
+			ID:   "repos/list-deployment-statuses",
+		}
+	)
 	params, err := decodeReposListDeploymentStatusesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListDeploymentStatuses",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26760,12 +30120,18 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListDeployments",
+			ID:   "repos/list-deployments",
+		}
+	)
 	params, err := decodeReposListDeploymentsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListDeployments",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26805,12 +30171,18 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListForAuthenticatedUser",
+			ID:   "repos/list-for-authenticated-user",
+		}
+	)
 	params, err := decodeReposListForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26850,12 +30222,18 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListForOrg",
+			ID:   "repos/list-for-org",
+		}
+	)
 	params, err := decodeReposListForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26895,12 +30273,18 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListForUser",
+			ID:   "repos/list-for-user",
+		}
+	)
 	params, err := decodeReposListForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26940,12 +30324,18 @@ func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListForks",
+			ID:   "repos/list-forks",
+		}
+	)
 	params, err := decodeReposListForksParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListForks",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26985,12 +30375,18 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListInvitations",
+			ID:   "repos/list-invitations",
+		}
+	)
 	params, err := decodeReposListInvitationsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListInvitations",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27030,12 +30426,18 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListInvitationsForAuthenticatedUser",
+			ID:   "repos/list-invitations-for-authenticated-user",
+		}
+	)
 	params, err := decodeReposListInvitationsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListInvitationsForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27075,12 +30477,18 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListLanguages",
+			ID:   "repos/list-languages",
+		}
+	)
 	params, err := decodeReposListLanguagesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListLanguages",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27120,12 +30528,18 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListPagesBuilds",
+			ID:   "repos/list-pages-builds",
+		}
+	)
 	params, err := decodeReposListPagesBuildsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListPagesBuilds",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27165,12 +30579,18 @@ func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListPublic",
+			ID:   "repos/list-public",
+		}
+	)
 	params, err := decodeReposListPublicParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListPublic",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27210,12 +30630,18 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListPullRequestsAssociatedWithCommit",
+			ID:   "repos/list-pull-requests-associated-with-commit",
+		}
+	)
 	params, err := decodeReposListPullRequestsAssociatedWithCommitParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListPullRequestsAssociatedWithCommit",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27255,12 +30681,18 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListReleaseAssets",
+			ID:   "repos/list-release-assets",
+		}
+	)
 	params, err := decodeReposListReleaseAssetsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListReleaseAssets",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27300,12 +30732,18 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListReleases",
+			ID:   "repos/list-releases",
+		}
+	)
 	params, err := decodeReposListReleasesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListReleases",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27345,12 +30783,18 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListTags",
+			ID:   "repos/list-tags",
+		}
+	)
 	params, err := decodeReposListTagsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListTags",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27390,12 +30834,18 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListTeams",
+			ID:   "repos/list-teams",
+		}
+	)
 	params, err := decodeReposListTeamsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListTeams",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27435,12 +30885,18 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListWebhookDeliveries",
+			ID:   "repos/list-webhook-deliveries",
+		}
+	)
 	params, err := decodeReposListWebhookDeliveriesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListWebhookDeliveries",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27480,12 +30936,18 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposListWebhooks",
+			ID:   "repos/list-webhooks",
+		}
+	)
 	params, err := decodeReposListWebhooksParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposListWebhooks",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27525,12 +30987,18 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposMerge",
+			ID:   "repos/merge",
+		}
+	)
 	params, err := decodeReposMergeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposMerge",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27538,8 +31006,8 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 	request, close, err := s.decodeReposMergeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposMerge",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27580,12 +31048,18 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposMergeUpstream",
+			ID:   "repos/merge-upstream",
+		}
+	)
 	params, err := decodeReposMergeUpstreamParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposMergeUpstream",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27593,8 +31067,8 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 	request, close, err := s.decodeReposMergeUpstreamRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposMergeUpstream",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27635,12 +31109,18 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposPingWebhook",
+			ID:   "repos/ping-webhook",
+		}
+	)
 	params, err := decodeReposPingWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposPingWebhook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27680,12 +31160,18 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposRedeliverWebhookDelivery",
+			ID:   "repos/redeliver-webhook-delivery",
+		}
+	)
 	params, err := decodeReposRedeliverWebhookDeliveryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposRedeliverWebhookDelivery",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27725,12 +31211,18 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposRemoveAppAccessRestrictions",
+			ID:   "repos/remove-app-access-restrictions",
+		}
+	)
 	params, err := decodeReposRemoveAppAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposRemoveAppAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27738,8 +31230,8 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 	request, close, err := s.decodeReposRemoveAppAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposRemoveAppAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27780,12 +31272,18 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposRemoveCollaborator",
+			ID:   "repos/remove-collaborator",
+		}
+	)
 	params, err := decodeReposRemoveCollaboratorParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposRemoveCollaborator",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27825,12 +31323,18 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposRemoveStatusCheckContexts",
+			ID:   "repos/remove-status-check-contexts",
+		}
+	)
 	params, err := decodeReposRemoveStatusCheckContextsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposRemoveStatusCheckContexts",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27838,8 +31342,8 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 	request, close, err := s.decodeReposRemoveStatusCheckContextsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposRemoveStatusCheckContexts",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27880,12 +31384,18 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposRemoveStatusCheckProtection",
+			ID:   "repos/remove-status-check-protection",
+		}
+	)
 	params, err := decodeReposRemoveStatusCheckProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposRemoveStatusCheckProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27925,12 +31435,18 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposRemoveTeamAccessRestrictions",
+			ID:   "repos/remove-team-access-restrictions",
+		}
+	)
 	params, err := decodeReposRemoveTeamAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposRemoveTeamAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27938,8 +31454,8 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 	request, close, err := s.decodeReposRemoveTeamAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposRemoveTeamAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27980,12 +31496,18 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposRemoveUserAccessRestrictions",
+			ID:   "repos/remove-user-access-restrictions",
+		}
+	)
 	params, err := decodeReposRemoveUserAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposRemoveUserAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27993,8 +31515,8 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 	request, close, err := s.decodeReposRemoveUserAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposRemoveUserAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28035,12 +31557,18 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposRenameBranch",
+			ID:   "repos/rename-branch",
+		}
+	)
 	params, err := decodeReposRenameBranchParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposRenameBranch",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28048,8 +31576,8 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 	request, close, err := s.decodeReposRenameBranchRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposRenameBranch",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28090,12 +31618,18 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposReplaceAllTopics",
+			ID:   "repos/replace-all-topics",
+		}
+	)
 	params, err := decodeReposReplaceAllTopicsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposReplaceAllTopics",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28103,8 +31637,8 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 	request, close, err := s.decodeReposReplaceAllTopicsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposReplaceAllTopics",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28145,12 +31679,18 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposRequestPagesBuild",
+			ID:   "repos/request-pages-build",
+		}
+	)
 	params, err := decodeReposRequestPagesBuildParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposRequestPagesBuild",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28190,12 +31730,18 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposSetAdminBranchProtection",
+			ID:   "repos/set-admin-branch-protection",
+		}
+	)
 	params, err := decodeReposSetAdminBranchProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposSetAdminBranchProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28235,12 +31781,18 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposSetAppAccessRestrictions",
+			ID:   "repos/set-app-access-restrictions",
+		}
+	)
 	params, err := decodeReposSetAppAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposSetAppAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28248,8 +31800,8 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 	request, close, err := s.decodeReposSetAppAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposSetAppAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28290,12 +31842,18 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposSetStatusCheckContexts",
+			ID:   "repos/set-status-check-contexts",
+		}
+	)
 	params, err := decodeReposSetStatusCheckContextsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposSetStatusCheckContexts",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28303,8 +31861,8 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 	request, close, err := s.decodeReposSetStatusCheckContextsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposSetStatusCheckContexts",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28345,12 +31903,18 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposSetTeamAccessRestrictions",
+			ID:   "repos/set-team-access-restrictions",
+		}
+	)
 	params, err := decodeReposSetTeamAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposSetTeamAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28358,8 +31922,8 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 	request, close, err := s.decodeReposSetTeamAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposSetTeamAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28400,12 +31964,18 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposSetUserAccessRestrictions",
+			ID:   "repos/set-user-access-restrictions",
+		}
+	)
 	params, err := decodeReposSetUserAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposSetUserAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28413,8 +31983,8 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 	request, close, err := s.decodeReposSetUserAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposSetUserAccessRestrictions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28455,12 +32025,18 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposTestPushWebhook",
+			ID:   "repos/test-push-webhook",
+		}
+	)
 	params, err := decodeReposTestPushWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposTestPushWebhook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28500,12 +32076,18 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposTransfer",
+			ID:   "repos/transfer",
+		}
+	)
 	params, err := decodeReposTransferParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposTransfer",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28513,8 +32095,8 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 	request, close, err := s.decodeReposTransferRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposTransfer",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28555,12 +32137,18 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposUpdate",
+			ID:   "repos/update",
+		}
+	)
 	params, err := decodeReposUpdateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposUpdate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28568,8 +32156,8 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 	request, close, err := s.decodeReposUpdateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposUpdate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28610,12 +32198,18 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposUpdateBranchProtection",
+			ID:   "repos/update-branch-protection",
+		}
+	)
 	params, err := decodeReposUpdateBranchProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposUpdateBranchProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28623,8 +32217,8 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 	request, close, err := s.decodeReposUpdateBranchProtectionRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposUpdateBranchProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28665,12 +32259,18 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposUpdateCommitComment",
+			ID:   "repos/update-commit-comment",
+		}
+	)
 	params, err := decodeReposUpdateCommitCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposUpdateCommitComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28678,8 +32278,8 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 	request, close, err := s.decodeReposUpdateCommitCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposUpdateCommitComment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28720,12 +32320,18 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposUpdateInvitation",
+			ID:   "repos/update-invitation",
+		}
+	)
 	params, err := decodeReposUpdateInvitationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposUpdateInvitation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28733,8 +32339,8 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 	request, close, err := s.decodeReposUpdateInvitationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposUpdateInvitation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28775,12 +32381,18 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposUpdatePullRequestReviewProtection",
+			ID:   "repos/update-pull-request-review-protection",
+		}
+	)
 	params, err := decodeReposUpdatePullRequestReviewProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposUpdatePullRequestReviewProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28788,8 +32400,8 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 	request, close, err := s.decodeReposUpdatePullRequestReviewProtectionRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposUpdatePullRequestReviewProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28830,12 +32442,18 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposUpdateRelease",
+			ID:   "repos/update-release",
+		}
+	)
 	params, err := decodeReposUpdateReleaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposUpdateRelease",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28843,8 +32461,8 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 	request, close, err := s.decodeReposUpdateReleaseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposUpdateRelease",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28885,12 +32503,18 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposUpdateReleaseAsset",
+			ID:   "repos/update-release-asset",
+		}
+	)
 	params, err := decodeReposUpdateReleaseAssetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposUpdateReleaseAsset",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28898,8 +32522,8 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 	request, close, err := s.decodeReposUpdateReleaseAssetRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposUpdateReleaseAsset",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28940,12 +32564,18 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposUpdateStatusCheckProtection",
+			ID:   "repos/update-status-check-protection",
+		}
+	)
 	params, err := decodeReposUpdateStatusCheckProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposUpdateStatusCheckProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28953,8 +32583,8 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 	request, close, err := s.decodeReposUpdateStatusCheckProtectionRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposUpdateStatusCheckProtection",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28995,12 +32625,18 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposUpdateWebhook",
+			ID:   "repos/update-webhook",
+		}
+	)
 	params, err := decodeReposUpdateWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposUpdateWebhook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29008,8 +32644,8 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 	request, close, err := s.decodeReposUpdateWebhookRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposUpdateWebhook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29050,12 +32686,18 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReposUpdateWebhookConfigForRepo",
+			ID:   "repos/update-webhook-config-for-repo",
+		}
+	)
 	params, err := decodeReposUpdateWebhookConfigForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReposUpdateWebhookConfigForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29063,8 +32705,8 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 	request, close, err := s.decodeReposUpdateWebhookConfigForRepoRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReposUpdateWebhookConfigForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29105,12 +32747,18 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ScimDeleteUserFromOrg",
+			ID:   "scim/delete-user-from-org",
+		}
+	)
 	params, err := decodeScimDeleteUserFromOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ScimDeleteUserFromOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29150,12 +32798,18 @@ func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SearchCode",
+			ID:   "search/code",
+		}
+	)
 	params, err := decodeSearchCodeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "SearchCode",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29195,12 +32849,18 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SearchCommits",
+			ID:   "search/commits",
+		}
+	)
 	params, err := decodeSearchCommitsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "SearchCommits",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29240,12 +32900,18 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SearchIssuesAndPullRequests",
+			ID:   "search/issues-and-pull-requests",
+		}
+	)
 	params, err := decodeSearchIssuesAndPullRequestsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "SearchIssuesAndPullRequests",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29285,12 +32951,18 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SearchLabels",
+			ID:   "search/labels",
+		}
+	)
 	params, err := decodeSearchLabelsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "SearchLabels",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29330,12 +33002,18 @@ func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SearchRepos",
+			ID:   "search/repos",
+		}
+	)
 	params, err := decodeSearchReposParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "SearchRepos",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29375,12 +33053,18 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SearchTopics",
+			ID:   "search/topics",
+		}
+	)
 	params, err := decodeSearchTopicsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "SearchTopics",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29420,12 +33104,18 @@ func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SearchUsers",
+			ID:   "search/users",
+		}
+	)
 	params, err := decodeSearchUsersParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "SearchUsers",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29465,12 +33155,18 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SecretScanningGetAlert",
+			ID:   "secret-scanning/get-alert",
+		}
+	)
 	params, err := decodeSecretScanningGetAlertParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "SecretScanningGetAlert",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29510,12 +33206,18 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SecretScanningListAlertsForOrg",
+			ID:   "secret-scanning/list-alerts-for-org",
+		}
+	)
 	params, err := decodeSecretScanningListAlertsForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "SecretScanningListAlertsForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29555,12 +33257,18 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SecretScanningListAlertsForRepo",
+			ID:   "secret-scanning/list-alerts-for-repo",
+		}
+	)
 	params, err := decodeSecretScanningListAlertsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "SecretScanningListAlertsForRepo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29600,12 +33308,18 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SecretScanningUpdateAlert",
+			ID:   "secret-scanning/update-alert",
+		}
+	)
 	params, err := decodeSecretScanningUpdateAlertParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "SecretScanningUpdateAlert",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29613,8 +33327,8 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 	request, close, err := s.decodeSecretScanningUpdateAlertRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SecretScanningUpdateAlert",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29655,12 +33369,18 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsAddMemberLegacy",
+			ID:   "teams/add-member-legacy",
+		}
+	)
 	params, err := decodeTeamsAddMemberLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsAddMemberLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29700,12 +33420,18 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsAddOrUpdateMembershipForUserInOrg",
+			ID:   "teams/add-or-update-membership-for-user-in-org",
+		}
+	)
 	params, err := decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsAddOrUpdateMembershipForUserInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29713,8 +33439,8 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 	request, close, err := s.decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsAddOrUpdateMembershipForUserInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29755,12 +33481,18 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsAddOrUpdateMembershipForUserLegacy",
+			ID:   "teams/add-or-update-membership-for-user-legacy",
+		}
+	)
 	params, err := decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsAddOrUpdateMembershipForUserLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29768,8 +33500,8 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 	request, close, err := s.decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsAddOrUpdateMembershipForUserLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29810,12 +33542,18 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsAddOrUpdateProjectPermissionsInOrg",
+			ID:   "teams/add-or-update-project-permissions-in-org",
+		}
+	)
 	params, err := decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsAddOrUpdateProjectPermissionsInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29823,8 +33561,8 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 	request, close, err := s.decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsAddOrUpdateProjectPermissionsInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29865,12 +33603,18 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsAddOrUpdateProjectPermissionsLegacy",
+			ID:   "teams/add-or-update-project-permissions-legacy",
+		}
+	)
 	params, err := decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsAddOrUpdateProjectPermissionsLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29878,8 +33622,8 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 	request, close, err := s.decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsAddOrUpdateProjectPermissionsLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29920,12 +33664,18 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsAddOrUpdateRepoPermissionsInOrg",
+			ID:   "teams/add-or-update-repo-permissions-in-org",
+		}
+	)
 	params, err := decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsAddOrUpdateRepoPermissionsInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29933,8 +33683,8 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 	request, close, err := s.decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsAddOrUpdateRepoPermissionsInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29975,12 +33725,18 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsAddOrUpdateRepoPermissionsLegacy",
+			ID:   "teams/add-or-update-repo-permissions-legacy",
+		}
+	)
 	params, err := decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsAddOrUpdateRepoPermissionsLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29988,8 +33744,8 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 	request, close, err := s.decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsAddOrUpdateRepoPermissionsLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30030,12 +33786,18 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsCheckPermissionsForProjectInOrg",
+			ID:   "teams/check-permissions-for-project-in-org",
+		}
+	)
 	params, err := decodeTeamsCheckPermissionsForProjectInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsCheckPermissionsForProjectInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30075,12 +33837,18 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsCheckPermissionsForProjectLegacy",
+			ID:   "teams/check-permissions-for-project-legacy",
+		}
+	)
 	params, err := decodeTeamsCheckPermissionsForProjectLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsCheckPermissionsForProjectLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30120,12 +33888,18 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsCheckPermissionsForRepoInOrg",
+			ID:   "teams/check-permissions-for-repo-in-org",
+		}
+	)
 	params, err := decodeTeamsCheckPermissionsForRepoInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsCheckPermissionsForRepoInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30165,12 +33939,18 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsCheckPermissionsForRepoLegacy",
+			ID:   "teams/check-permissions-for-repo-legacy",
+		}
+	)
 	params, err := decodeTeamsCheckPermissionsForRepoLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsCheckPermissionsForRepoLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30210,12 +33990,18 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsCreate",
+			ID:   "teams/create",
+		}
+	)
 	params, err := decodeTeamsCreateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsCreate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30223,8 +34009,8 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 	request, close, err := s.decodeTeamsCreateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsCreate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30265,12 +34051,18 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsCreateDiscussionCommentInOrg",
+			ID:   "teams/create-discussion-comment-in-org",
+		}
+	)
 	params, err := decodeTeamsCreateDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsCreateDiscussionCommentInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30278,8 +34070,8 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 	request, close, err := s.decodeTeamsCreateDiscussionCommentInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsCreateDiscussionCommentInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30320,12 +34112,18 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsCreateDiscussionCommentLegacy",
+			ID:   "teams/create-discussion-comment-legacy",
+		}
+	)
 	params, err := decodeTeamsCreateDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsCreateDiscussionCommentLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30333,8 +34131,8 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 	request, close, err := s.decodeTeamsCreateDiscussionCommentLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsCreateDiscussionCommentLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30375,12 +34173,18 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsCreateDiscussionInOrg",
+			ID:   "teams/create-discussion-in-org",
+		}
+	)
 	params, err := decodeTeamsCreateDiscussionInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsCreateDiscussionInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30388,8 +34192,8 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 	request, close, err := s.decodeTeamsCreateDiscussionInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsCreateDiscussionInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30430,12 +34234,18 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsCreateDiscussionLegacy",
+			ID:   "teams/create-discussion-legacy",
+		}
+	)
 	params, err := decodeTeamsCreateDiscussionLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsCreateDiscussionLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30443,8 +34253,8 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 	request, close, err := s.decodeTeamsCreateDiscussionLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsCreateDiscussionLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30485,12 +34295,18 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
+			ID:   "teams/create-or-update-idp-group-connections-in-org",
+		}
+	)
 	params, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30498,8 +34314,8 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 	request, close, err := s.decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30540,12 +34356,18 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
+			ID:   "teams/create-or-update-idp-group-connections-legacy",
+		}
+	)
 	params, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30553,8 +34375,8 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 	request, close, err := s.decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30595,12 +34417,18 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsDeleteDiscussionCommentInOrg",
+			ID:   "teams/delete-discussion-comment-in-org",
+		}
+	)
 	params, err := decodeTeamsDeleteDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsDeleteDiscussionCommentInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30640,12 +34468,18 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsDeleteDiscussionCommentLegacy",
+			ID:   "teams/delete-discussion-comment-legacy",
+		}
+	)
 	params, err := decodeTeamsDeleteDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsDeleteDiscussionCommentLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30685,12 +34519,18 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsDeleteDiscussionInOrg",
+			ID:   "teams/delete-discussion-in-org",
+		}
+	)
 	params, err := decodeTeamsDeleteDiscussionInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsDeleteDiscussionInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30730,12 +34570,18 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsDeleteDiscussionLegacy",
+			ID:   "teams/delete-discussion-legacy",
+		}
+	)
 	params, err := decodeTeamsDeleteDiscussionLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsDeleteDiscussionLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30775,12 +34621,18 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsDeleteInOrg",
+			ID:   "teams/delete-in-org",
+		}
+	)
 	params, err := decodeTeamsDeleteInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsDeleteInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30820,12 +34672,18 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsDeleteLegacy",
+			ID:   "teams/delete-legacy",
+		}
+	)
 	params, err := decodeTeamsDeleteLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsDeleteLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30865,12 +34723,18 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsGetByName",
+			ID:   "teams/get-by-name",
+		}
+	)
 	params, err := decodeTeamsGetByNameParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsGetByName",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30910,12 +34774,18 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsGetDiscussionCommentInOrg",
+			ID:   "teams/get-discussion-comment-in-org",
+		}
+	)
 	params, err := decodeTeamsGetDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsGetDiscussionCommentInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30955,12 +34825,18 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsGetDiscussionCommentLegacy",
+			ID:   "teams/get-discussion-comment-legacy",
+		}
+	)
 	params, err := decodeTeamsGetDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsGetDiscussionCommentLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31000,12 +34876,18 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsGetDiscussionInOrg",
+			ID:   "teams/get-discussion-in-org",
+		}
+	)
 	params, err := decodeTeamsGetDiscussionInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsGetDiscussionInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31045,12 +34927,18 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsGetDiscussionLegacy",
+			ID:   "teams/get-discussion-legacy",
+		}
+	)
 	params, err := decodeTeamsGetDiscussionLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsGetDiscussionLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31090,12 +34978,18 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsGetLegacy",
+			ID:   "teams/get-legacy",
+		}
+	)
 	params, err := decodeTeamsGetLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsGetLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31135,12 +35029,18 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsGetMemberLegacy",
+			ID:   "teams/get-member-legacy",
+		}
+	)
 	params, err := decodeTeamsGetMemberLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsGetMemberLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31180,12 +35080,18 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsGetMembershipForUserInOrg",
+			ID:   "teams/get-membership-for-user-in-org",
+		}
+	)
 	params, err := decodeTeamsGetMembershipForUserInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsGetMembershipForUserInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31225,12 +35131,18 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsGetMembershipForUserLegacy",
+			ID:   "teams/get-membership-for-user-legacy",
+		}
+	)
 	params, err := decodeTeamsGetMembershipForUserLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsGetMembershipForUserLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31270,12 +35182,18 @@ func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsList",
+			ID:   "teams/list",
+		}
+	)
 	params, err := decodeTeamsListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31315,12 +35233,18 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListChildInOrg",
+			ID:   "teams/list-child-in-org",
+		}
+	)
 	params, err := decodeTeamsListChildInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListChildInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31360,12 +35284,18 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListChildLegacy",
+			ID:   "teams/list-child-legacy",
+		}
+	)
 	params, err := decodeTeamsListChildLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListChildLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31405,12 +35335,18 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListDiscussionCommentsInOrg",
+			ID:   "teams/list-discussion-comments-in-org",
+		}
+	)
 	params, err := decodeTeamsListDiscussionCommentsInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListDiscussionCommentsInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31450,12 +35386,18 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListDiscussionCommentsLegacy",
+			ID:   "teams/list-discussion-comments-legacy",
+		}
+	)
 	params, err := decodeTeamsListDiscussionCommentsLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListDiscussionCommentsLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31495,12 +35437,18 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListDiscussionsInOrg",
+			ID:   "teams/list-discussions-in-org",
+		}
+	)
 	params, err := decodeTeamsListDiscussionsInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListDiscussionsInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31540,12 +35488,18 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListDiscussionsLegacy",
+			ID:   "teams/list-discussions-legacy",
+		}
+	)
 	params, err := decodeTeamsListDiscussionsLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListDiscussionsLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31585,12 +35539,18 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListForAuthenticatedUser",
+			ID:   "teams/list-for-authenticated-user",
+		}
+	)
 	params, err := decodeTeamsListForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31630,12 +35590,18 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListIdpGroupsForLegacy",
+			ID:   "teams/list-idp-groups-for-legacy",
+		}
+	)
 	params, err := decodeTeamsListIdpGroupsForLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListIdpGroupsForLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31675,12 +35641,18 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListIdpGroupsForOrg",
+			ID:   "teams/list-idp-groups-for-org",
+		}
+	)
 	params, err := decodeTeamsListIdpGroupsForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListIdpGroupsForOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31720,12 +35692,18 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListIdpGroupsInOrg",
+			ID:   "teams/list-idp-groups-in-org",
+		}
+	)
 	params, err := decodeTeamsListIdpGroupsInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListIdpGroupsInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31765,12 +35743,18 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListMembersInOrg",
+			ID:   "teams/list-members-in-org",
+		}
+	)
 	params, err := decodeTeamsListMembersInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListMembersInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31810,12 +35794,18 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListMembersLegacy",
+			ID:   "teams/list-members-legacy",
+		}
+	)
 	params, err := decodeTeamsListMembersLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListMembersLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31855,12 +35845,18 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListPendingInvitationsInOrg",
+			ID:   "teams/list-pending-invitations-in-org",
+		}
+	)
 	params, err := decodeTeamsListPendingInvitationsInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListPendingInvitationsInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31900,12 +35896,18 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListPendingInvitationsLegacy",
+			ID:   "teams/list-pending-invitations-legacy",
+		}
+	)
 	params, err := decodeTeamsListPendingInvitationsLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListPendingInvitationsLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31945,12 +35947,18 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListProjectsInOrg",
+			ID:   "teams/list-projects-in-org",
+		}
+	)
 	params, err := decodeTeamsListProjectsInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListProjectsInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31990,12 +35998,18 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListProjectsLegacy",
+			ID:   "teams/list-projects-legacy",
+		}
+	)
 	params, err := decodeTeamsListProjectsLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListProjectsLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32035,12 +36049,18 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListReposInOrg",
+			ID:   "teams/list-repos-in-org",
+		}
+	)
 	params, err := decodeTeamsListReposInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListReposInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32080,12 +36100,18 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsListReposLegacy",
+			ID:   "teams/list-repos-legacy",
+		}
+	)
 	params, err := decodeTeamsListReposLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsListReposLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32125,12 +36151,18 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsRemoveMemberLegacy",
+			ID:   "teams/remove-member-legacy",
+		}
+	)
 	params, err := decodeTeamsRemoveMemberLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsRemoveMemberLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32170,12 +36202,18 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsRemoveMembershipForUserInOrg",
+			ID:   "teams/remove-membership-for-user-in-org",
+		}
+	)
 	params, err := decodeTeamsRemoveMembershipForUserInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsRemoveMembershipForUserInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32215,12 +36253,18 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsRemoveMembershipForUserLegacy",
+			ID:   "teams/remove-membership-for-user-legacy",
+		}
+	)
 	params, err := decodeTeamsRemoveMembershipForUserLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsRemoveMembershipForUserLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32260,12 +36304,18 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsRemoveProjectInOrg",
+			ID:   "teams/remove-project-in-org",
+		}
+	)
 	params, err := decodeTeamsRemoveProjectInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsRemoveProjectInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32305,12 +36355,18 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsRemoveProjectLegacy",
+			ID:   "teams/remove-project-legacy",
+		}
+	)
 	params, err := decodeTeamsRemoveProjectLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsRemoveProjectLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32350,12 +36406,18 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsRemoveRepoInOrg",
+			ID:   "teams/remove-repo-in-org",
+		}
+	)
 	params, err := decodeTeamsRemoveRepoInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsRemoveRepoInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32395,12 +36457,18 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsRemoveRepoLegacy",
+			ID:   "teams/remove-repo-legacy",
+		}
+	)
 	params, err := decodeTeamsRemoveRepoLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsRemoveRepoLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32440,12 +36508,18 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsUpdateDiscussionCommentInOrg",
+			ID:   "teams/update-discussion-comment-in-org",
+		}
+	)
 	params, err := decodeTeamsUpdateDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsUpdateDiscussionCommentInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32453,8 +36527,8 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 	request, close, err := s.decodeTeamsUpdateDiscussionCommentInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsUpdateDiscussionCommentInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32495,12 +36569,18 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsUpdateDiscussionCommentLegacy",
+			ID:   "teams/update-discussion-comment-legacy",
+		}
+	)
 	params, err := decodeTeamsUpdateDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsUpdateDiscussionCommentLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32508,8 +36588,8 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 	request, close, err := s.decodeTeamsUpdateDiscussionCommentLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsUpdateDiscussionCommentLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32550,12 +36630,18 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsUpdateDiscussionInOrg",
+			ID:   "teams/update-discussion-in-org",
+		}
+	)
 	params, err := decodeTeamsUpdateDiscussionInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsUpdateDiscussionInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32563,8 +36649,8 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 	request, close, err := s.decodeTeamsUpdateDiscussionInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsUpdateDiscussionInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32605,12 +36691,18 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsUpdateDiscussionLegacy",
+			ID:   "teams/update-discussion-legacy",
+		}
+	)
 	params, err := decodeTeamsUpdateDiscussionLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsUpdateDiscussionLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32618,8 +36710,8 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 	request, close, err := s.decodeTeamsUpdateDiscussionLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsUpdateDiscussionLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32660,12 +36752,18 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsUpdateInOrg",
+			ID:   "teams/update-in-org",
+		}
+	)
 	params, err := decodeTeamsUpdateInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsUpdateInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32673,8 +36771,8 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 	request, close, err := s.decodeTeamsUpdateInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsUpdateInOrg",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32715,12 +36813,18 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TeamsUpdateLegacy",
+			ID:   "teams/update-legacy",
+		}
+	)
 	params, err := decodeTeamsUpdateLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TeamsUpdateLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32728,8 +36832,8 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 	request, close, err := s.decodeTeamsUpdateLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TeamsUpdateLegacy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32770,12 +36874,18 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersAddEmailForAuthenticated",
+			ID:   "users/add-email-for-authenticated",
+		}
+	)
 	request, close, err := s.decodeUsersAddEmailForAuthenticatedRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "UsersAddEmailForAuthenticated",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32816,12 +36926,18 @@ func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersBlock",
+			ID:   "users/block",
+		}
+	)
 	params, err := decodeUsersBlockParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersBlock",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32861,12 +36977,18 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersCheckBlocked",
+			ID:   "users/check-blocked",
+		}
+	)
 	params, err := decodeUsersCheckBlockedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersCheckBlocked",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32906,12 +37028,18 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersCheckFollowingForUser",
+			ID:   "users/check-following-for-user",
+		}
+	)
 	params, err := decodeUsersCheckFollowingForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersCheckFollowingForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32951,12 +37079,18 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersCheckPersonIsFollowedByAuthenticated",
+			ID:   "users/check-person-is-followed-by-authenticated",
+		}
+	)
 	params, err := decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersCheckPersonIsFollowedByAuthenticated",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32996,12 +37130,18 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersCreateGpgKeyForAuthenticated",
+			ID:   "users/create-gpg-key-for-authenticated",
+		}
+	)
 	request, close, err := s.decodeUsersCreateGpgKeyForAuthenticatedRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "UsersCreateGpgKeyForAuthenticated",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33042,12 +37182,18 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersCreatePublicSSHKeyForAuthenticated",
+			ID:   "users/create-public-ssh-key-for-authenticated",
+		}
+	)
 	request, close, err := s.decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "UsersCreatePublicSSHKeyForAuthenticated",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33088,12 +37234,18 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersDeleteEmailForAuthenticated",
+			ID:   "users/delete-email-for-authenticated",
+		}
+	)
 	request, close, err := s.decodeUsersDeleteEmailForAuthenticatedRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "UsersDeleteEmailForAuthenticated",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33134,12 +37286,18 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersDeleteGpgKeyForAuthenticated",
+			ID:   "users/delete-gpg-key-for-authenticated",
+		}
+	)
 	params, err := decodeUsersDeleteGpgKeyForAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersDeleteGpgKeyForAuthenticated",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33179,12 +37337,18 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersDeletePublicSSHKeyForAuthenticated",
+			ID:   "users/delete-public-ssh-key-for-authenticated",
+		}
+	)
 	params, err := decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersDeletePublicSSHKeyForAuthenticated",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33224,12 +37388,18 @@ func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersFollow",
+			ID:   "users/follow",
+		}
+	)
 	params, err := decodeUsersFollowParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersFollow",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33269,7 +37439,9 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.UsersGetAuthenticated(ctx)
 	if err != nil {
@@ -33305,12 +37477,18 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersGetByUsername",
+			ID:   "users/get-by-username",
+		}
+	)
 	params, err := decodeUsersGetByUsernameParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersGetByUsername",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33350,12 +37528,18 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersGetContextForUser",
+			ID:   "users/get-context-for-user",
+		}
+	)
 	params, err := decodeUsersGetContextForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersGetContextForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33395,12 +37579,18 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersGetGpgKeyForAuthenticated",
+			ID:   "users/get-gpg-key-for-authenticated",
+		}
+	)
 	params, err := decodeUsersGetGpgKeyForAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersGetGpgKeyForAuthenticated",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33440,12 +37630,18 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersGetPublicSSHKeyForAuthenticated",
+			ID:   "users/get-public-ssh-key-for-authenticated",
+		}
+	)
 	params, err := decodeUsersGetPublicSSHKeyForAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersGetPublicSSHKeyForAuthenticated",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33485,12 +37681,18 @@ func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersList",
+			ID:   "users/list",
+		}
+	)
 	params, err := decodeUsersListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33530,7 +37732,9 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.UsersListBlockedByAuthenticated(ctx)
 	if err != nil {
@@ -33566,12 +37770,18 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersListEmailsForAuthenticated",
+			ID:   "users/list-emails-for-authenticated",
+		}
+	)
 	params, err := decodeUsersListEmailsForAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersListEmailsForAuthenticated",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33611,12 +37821,18 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersListFollowedByAuthenticated",
+			ID:   "users/list-followed-by-authenticated",
+		}
+	)
 	params, err := decodeUsersListFollowedByAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersListFollowedByAuthenticated",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33656,12 +37872,18 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersListFollowersForAuthenticatedUser",
+			ID:   "users/list-followers-for-authenticated-user",
+		}
+	)
 	params, err := decodeUsersListFollowersForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersListFollowersForAuthenticatedUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33701,12 +37923,18 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersListFollowersForUser",
+			ID:   "users/list-followers-for-user",
+		}
+	)
 	params, err := decodeUsersListFollowersForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersListFollowersForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33746,12 +37974,18 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersListFollowingForUser",
+			ID:   "users/list-following-for-user",
+		}
+	)
 	params, err := decodeUsersListFollowingForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersListFollowingForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33791,12 +38025,18 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersListGpgKeysForAuthenticated",
+			ID:   "users/list-gpg-keys-for-authenticated",
+		}
+	)
 	params, err := decodeUsersListGpgKeysForAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersListGpgKeysForAuthenticated",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33836,12 +38076,18 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersListGpgKeysForUser",
+			ID:   "users/list-gpg-keys-for-user",
+		}
+	)
 	params, err := decodeUsersListGpgKeysForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersListGpgKeysForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33881,12 +38127,18 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersListPublicEmailsForAuthenticated",
+			ID:   "users/list-public-emails-for-authenticated",
+		}
+	)
 	params, err := decodeUsersListPublicEmailsForAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersListPublicEmailsForAuthenticated",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33926,12 +38178,18 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersListPublicKeysForUser",
+			ID:   "users/list-public-keys-for-user",
+		}
+	)
 	params, err := decodeUsersListPublicKeysForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersListPublicKeysForUser",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33971,12 +38229,18 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersListPublicSSHKeysForAuthenticated",
+			ID:   "users/list-public-ssh-keys-for-authenticated",
+		}
+	)
 	params, err := decodeUsersListPublicSSHKeysForAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersListPublicSSHKeysForAuthenticated",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -34016,12 +38280,18 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersSetPrimaryEmailVisibilityForAuthenticated",
+			ID:   "users/set-primary-email-visibility-for-authenticated",
+		}
+	)
 	request, close, err := s.decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "UsersSetPrimaryEmailVisibilityForAuthenticated",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -34062,12 +38332,18 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersUnblock",
+			ID:   "users/unblock",
+		}
+	)
 	params, err := decodeUsersUnblockParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersUnblock",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -34107,12 +38383,18 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersUnfollow",
+			ID:   "users/unfollow",
+		}
+	)
 	params, err := decodeUsersUnfollowParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "UsersUnfollow",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -34152,12 +38434,18 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UsersUpdateAuthenticated",
+			ID:   "users/update-authenticated",
+		}
+	)
 	request, close, err := s.decodeUsersUpdateAuthenticatedRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "UsersUpdateAuthenticated",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return

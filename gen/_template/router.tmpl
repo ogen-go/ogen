@@ -37,13 +37,21 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // Route is route object.
 type Route struct {
 	name string
+	operationID string
 	count int
 	args [{{ $router.MaxParametersCount }}]string
 }
 
+// Name returns ogen operation name.
+//
+// It is guaranteed to be unique and not empty.
+func (r Route) Name() string {
+	return r.name
+}
+
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
-	return r.name
+	return r.operationID
 }
 
 // Args returns parsed arguments.
@@ -162,6 +170,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 		case {{ quote $route.Method }}:
 			// Leaf: {{ $op.Name }}
 			r.name = {{ quote $op.Name }}
+			r.operationID = {{ quote $op.Spec.OperationID }}
 			r.args = args
 			r.count = {{ $.ParameterIndex }}
 			return r, true
@@ -178,6 +187,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
             {{- range $route := $routes }}{{- $op := $route.Operation }}
 			case {{ quote $route.Method }}:
 				r.name = {{ quote $op.Name }}
+				r.operationID = {{ quote $op.Spec.OperationID }}
 				r.args = args
 				r.count = {{ $.ParameterIndex }}
 				return r, true

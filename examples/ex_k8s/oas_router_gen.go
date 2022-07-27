@@ -10917,14 +10917,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name  string
-	count int
-	args  [2]string
+	name        string
+	operationID string
+	count       int
+	args        [2]string
+}
+
+// Name returns ogen operation name.
+//
+// It is guaranteed to be unique and not empty.
+func (r Route) Name() string {
+	return r.name
 }
 
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
-	return r.name
+	return r.operationID
 }
 
 // Args returns parsed arguments.
@@ -10973,6 +10981,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					case "GET":
 						// Leaf: GetServiceAccountIssuerOpenIDConfiguration
 						r.name = "GetServiceAccountIssuerOpenIDConfiguration"
+						r.operationID = "getServiceAccountIssuerOpenIDConfiguration"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -11002,6 +11011,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "GetCoreAPIVersions"
+							r.operationID = "getCoreAPIVersions"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -11021,6 +11031,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "GetCoreV1APIResources"
+								r.operationID = "getCoreV1APIResources"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -11051,6 +11062,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "ListCoreV1ComponentStatus"
+										r.operationID = "listCoreV1ComponentStatus"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -11076,6 +11088,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ReadCoreV1ComponentStatus
 											r.name = "ReadCoreV1ComponentStatus"
+											r.operationID = "readCoreV1ComponentStatus"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -11096,6 +11109,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: ListCoreV1ConfigMapForAllNamespaces
 										r.name = "ListCoreV1ConfigMapForAllNamespaces"
+										r.operationID = "listCoreV1ConfigMapForAllNamespaces"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -11127,6 +11141,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: ListCoreV1EndpointsForAllNamespaces
 										r.name = "ListCoreV1EndpointsForAllNamespaces"
+										r.operationID = "listCoreV1EndpointsForAllNamespaces"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -11146,6 +11161,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: ListCoreV1EventForAllNamespaces
 										r.name = "ListCoreV1EventForAllNamespaces"
+										r.operationID = "listCoreV1EventForAllNamespaces"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -11166,6 +11182,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: ListCoreV1LimitRangeForAllNamespaces
 									r.name = "ListCoreV1LimitRangeForAllNamespaces"
+									r.operationID = "listCoreV1LimitRangeForAllNamespaces"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -11195,6 +11212,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "ListCoreV1Namespace"
+										r.operationID = "listCoreV1Namespace"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -11223,6 +11241,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ReadCoreV1Namespace"
+											r.operationID = "readCoreV1Namespace"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -11253,6 +11272,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ListCoreV1NamespacedConfigMap"
+													r.operationID = "listCoreV1NamespacedConfigMap"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -11278,6 +11298,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReadCoreV1NamespacedConfigMap
 														r.name = "ReadCoreV1NamespacedConfigMap"
+														r.operationID = "readCoreV1NamespacedConfigMap"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -11308,6 +11329,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ListCoreV1NamespacedEndpoints"
+														r.operationID = "listCoreV1NamespacedEndpoints"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -11333,6 +11355,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReadCoreV1NamespacedEndpoints
 															r.name = "ReadCoreV1NamespacedEndpoints"
+															r.operationID = "readCoreV1NamespacedEndpoints"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -11352,6 +11375,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ListCoreV1NamespacedEvent"
+														r.operationID = "listCoreV1NamespacedEvent"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -11377,6 +11401,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReadCoreV1NamespacedEvent
 															r.name = "ReadCoreV1NamespacedEvent"
+															r.operationID = "readCoreV1NamespacedEvent"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -11397,6 +11422,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ListCoreV1NamespacedLimitRange"
+													r.operationID = "listCoreV1NamespacedLimitRange"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -11422,6 +11448,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReadCoreV1NamespacedLimitRange
 														r.name = "ReadCoreV1NamespacedLimitRange"
+														r.operationID = "readCoreV1NamespacedLimitRange"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -11452,6 +11479,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ListCoreV1NamespacedPersistentVolumeClaim"
+														r.operationID = "listCoreV1NamespacedPersistentVolumeClaim"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -11480,6 +11508,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ReadCoreV1NamespacedPersistentVolumeClaim"
+															r.operationID = "readCoreV1NamespacedPersistentVolumeClaim"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -11500,6 +11529,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReadCoreV1NamespacedPersistentVolumeClaimStatus
 																r.name = "ReadCoreV1NamespacedPersistentVolumeClaimStatus"
+																r.operationID = "readCoreV1NamespacedPersistentVolumeClaimStatus"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -11531,6 +11561,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ListCoreV1NamespacedPod"
+															r.operationID = "listCoreV1NamespacedPod"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -11559,6 +11590,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ReadCoreV1NamespacedPod"
+																r.operationID = "readCoreV1NamespacedPod"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -11590,6 +11622,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "GET":
 																		// Leaf: ReadCoreV1NamespacedPodEphemeralcontainers
 																		r.name = "ReadCoreV1NamespacedPodEphemeralcontainers"
+																		r.operationID = "readCoreV1NamespacedPodEphemeralcontainers"
 																		r.args = args
 																		r.count = 2
 																		return r, true
@@ -11609,6 +11642,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "GET":
 																		// Leaf: ReadCoreV1NamespacedPodLog
 																		r.name = "ReadCoreV1NamespacedPodLog"
+																		r.operationID = "readCoreV1NamespacedPodLog"
 																		r.args = args
 																		r.count = 2
 																		return r, true
@@ -11628,6 +11662,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "GET":
 																		// Leaf: ReadCoreV1NamespacedPodStatus
 																		r.name = "ReadCoreV1NamespacedPodStatus"
+																		r.operationID = "readCoreV1NamespacedPodStatus"
 																		r.args = args
 																		r.count = 2
 																		return r, true
@@ -11649,6 +11684,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ListCoreV1NamespacedPodTemplate"
+															r.operationID = "listCoreV1NamespacedPodTemplate"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -11674,6 +11710,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReadCoreV1NamespacedPodTemplate
 																r.name = "ReadCoreV1NamespacedPodTemplate"
+																r.operationID = "readCoreV1NamespacedPodTemplate"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -11706,6 +11743,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ListCoreV1NamespacedReplicationController"
+														r.operationID = "listCoreV1NamespacedReplicationController"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -11734,6 +11772,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ReadCoreV1NamespacedReplicationController"
+															r.operationID = "readCoreV1NamespacedReplicationController"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -11765,6 +11804,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: ReadCoreV1NamespacedReplicationControllerScale
 																	r.name = "ReadCoreV1NamespacedReplicationControllerScale"
+																	r.operationID = "readCoreV1NamespacedReplicationControllerScale"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -11784,6 +11824,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: ReadCoreV1NamespacedReplicationControllerStatus
 																	r.name = "ReadCoreV1NamespacedReplicationControllerStatus"
+																	r.operationID = "readCoreV1NamespacedReplicationControllerStatus"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -11805,6 +11846,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ListCoreV1NamespacedResourceQuota"
+														r.operationID = "listCoreV1NamespacedResourceQuota"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -11833,6 +11875,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ReadCoreV1NamespacedResourceQuota"
+															r.operationID = "readCoreV1NamespacedResourceQuota"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -11853,6 +11896,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReadCoreV1NamespacedResourceQuotaStatus
 																r.name = "ReadCoreV1NamespacedResourceQuotaStatus"
+																r.operationID = "readCoreV1NamespacedResourceQuotaStatus"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -11896,6 +11940,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ListCoreV1NamespacedSecret"
+															r.operationID = "listCoreV1NamespacedSecret"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -11921,6 +11966,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReadCoreV1NamespacedSecret
 																r.name = "ReadCoreV1NamespacedSecret"
+																r.operationID = "readCoreV1NamespacedSecret"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -11951,6 +11997,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ListCoreV1NamespacedServiceAccount"
+																r.operationID = "listCoreV1NamespacedServiceAccount"
 																r.args = args
 																r.count = 1
 																return r, true
@@ -11976,6 +12023,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: ReadCoreV1NamespacedServiceAccount
 																	r.name = "ReadCoreV1NamespacedServiceAccount"
+																	r.operationID = "readCoreV1NamespacedServiceAccount"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -11995,6 +12043,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ListCoreV1NamespacedService"
+																r.operationID = "listCoreV1NamespacedService"
 																r.args = args
 																r.count = 1
 																return r, true
@@ -12023,6 +12072,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "GET":
 																	r.name = "ReadCoreV1NamespacedService"
+																	r.operationID = "readCoreV1NamespacedService"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -12043,6 +12093,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "GET":
 																		// Leaf: ReadCoreV1NamespacedServiceStatus
 																		r.name = "ReadCoreV1NamespacedServiceStatus"
+																		r.operationID = "readCoreV1NamespacedServiceStatus"
 																		r.args = args
 																		r.count = 2
 																		return r, true
@@ -12066,6 +12117,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReadCoreV1NamespaceStatus
 														r.name = "ReadCoreV1NamespaceStatus"
+														r.operationID = "readCoreV1NamespaceStatus"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -12088,6 +12140,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "ListCoreV1Node"
+										r.operationID = "listCoreV1Node"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -12116,6 +12169,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ReadCoreV1Node"
+											r.operationID = "readCoreV1Node"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -12136,6 +12190,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ReadCoreV1NodeStatus
 												r.name = "ReadCoreV1NodeStatus"
+												r.operationID = "readCoreV1NodeStatus"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -12180,6 +12235,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ListCoreV1PersistentVolumeClaimForAllNamespaces
 											r.name = "ListCoreV1PersistentVolumeClaimForAllNamespaces"
+											r.operationID = "listCoreV1PersistentVolumeClaimForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -12198,6 +12254,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ListCoreV1PersistentVolume"
+											r.operationID = "listCoreV1PersistentVolume"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -12226,6 +12283,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ReadCoreV1PersistentVolume"
+												r.operationID = "readCoreV1PersistentVolume"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -12246,6 +12304,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadCoreV1PersistentVolumeStatus
 													r.name = "ReadCoreV1PersistentVolumeStatus"
+													r.operationID = "readCoreV1PersistentVolumeStatus"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -12279,6 +12338,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ListCoreV1PodForAllNamespaces
 											r.name = "ListCoreV1PodForAllNamespaces"
+											r.operationID = "listCoreV1PodForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -12298,6 +12358,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ListCoreV1PodTemplateForAllNamespaces
 											r.name = "ListCoreV1PodTemplateForAllNamespaces"
+											r.operationID = "listCoreV1PodTemplateForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -12330,6 +12391,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: ListCoreV1ReplicationControllerForAllNamespaces
 										r.name = "ListCoreV1ReplicationControllerForAllNamespaces"
+										r.operationID = "listCoreV1ReplicationControllerForAllNamespaces"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -12349,6 +12411,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: ListCoreV1ResourceQuotaForAllNamespaces
 										r.name = "ListCoreV1ResourceQuotaForAllNamespaces"
+										r.operationID = "listCoreV1ResourceQuotaForAllNamespaces"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -12380,6 +12443,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: ListCoreV1SecretForAllNamespaces
 										r.name = "ListCoreV1SecretForAllNamespaces"
+										r.operationID = "listCoreV1SecretForAllNamespaces"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -12410,6 +12474,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ListCoreV1ServiceAccountForAllNamespaces
 											r.name = "ListCoreV1ServiceAccountForAllNamespaces"
+											r.operationID = "listCoreV1ServiceAccountForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -12429,6 +12494,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ListCoreV1ServiceForAllNamespaces
 											r.name = "ListCoreV1ServiceForAllNamespaces"
+											r.operationID = "listCoreV1ServiceForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -12461,6 +12527,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: WatchCoreV1ConfigMapListForAllNamespaces
 										r.name = "WatchCoreV1ConfigMapListForAllNamespaces"
+										r.operationID = "watchCoreV1ConfigMapListForAllNamespaces"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -12491,6 +12558,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: WatchCoreV1EndpointsListForAllNamespaces
 											r.name = "WatchCoreV1EndpointsListForAllNamespaces"
+											r.operationID = "watchCoreV1EndpointsListForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -12510,6 +12578,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: WatchCoreV1EventListForAllNamespaces
 											r.name = "WatchCoreV1EventListForAllNamespaces"
+											r.operationID = "watchCoreV1EventListForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -12530,6 +12599,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: WatchCoreV1LimitRangeListForAllNamespaces
 										r.name = "WatchCoreV1LimitRangeListForAllNamespaces"
+										r.operationID = "watchCoreV1LimitRangeListForAllNamespaces"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -12559,6 +12629,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "WatchCoreV1NamespaceList"
+											r.operationID = "watchCoreV1NamespaceList"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -12587,6 +12658,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "WatchCoreV1Namespace"
+												r.operationID = "watchCoreV1Namespace"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -12617,6 +12689,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "WatchCoreV1NamespacedConfigMapList"
+														r.operationID = "watchCoreV1NamespacedConfigMapList"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -12642,6 +12715,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: WatchCoreV1NamespacedConfigMap
 															r.name = "WatchCoreV1NamespacedConfigMap"
+															r.operationID = "watchCoreV1NamespacedConfigMap"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -12672,6 +12746,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "WatchCoreV1NamespacedEndpointsList"
+															r.operationID = "watchCoreV1NamespacedEndpointsList"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -12697,6 +12772,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: WatchCoreV1NamespacedEndpoints
 																r.name = "WatchCoreV1NamespacedEndpoints"
+																r.operationID = "watchCoreV1NamespacedEndpoints"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -12716,6 +12792,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "WatchCoreV1NamespacedEventList"
+															r.operationID = "watchCoreV1NamespacedEventList"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -12741,6 +12818,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: WatchCoreV1NamespacedEvent
 																r.name = "WatchCoreV1NamespacedEvent"
+																r.operationID = "watchCoreV1NamespacedEvent"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -12761,6 +12839,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "WatchCoreV1NamespacedLimitRangeList"
+														r.operationID = "watchCoreV1NamespacedLimitRangeList"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -12786,6 +12865,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: WatchCoreV1NamespacedLimitRange
 															r.name = "WatchCoreV1NamespacedLimitRange"
+															r.operationID = "watchCoreV1NamespacedLimitRange"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -12816,6 +12896,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "WatchCoreV1NamespacedPersistentVolumeClaimList"
+															r.operationID = "watchCoreV1NamespacedPersistentVolumeClaimList"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -12841,6 +12922,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: WatchCoreV1NamespacedPersistentVolumeClaim
 																r.name = "WatchCoreV1NamespacedPersistentVolumeClaim"
+																r.operationID = "watchCoreV1NamespacedPersistentVolumeClaim"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -12871,6 +12953,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "WatchCoreV1NamespacedPodList"
+																r.operationID = "watchCoreV1NamespacedPodList"
 																r.args = args
 																r.count = 1
 																return r, true
@@ -12896,6 +12979,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: WatchCoreV1NamespacedPod
 																	r.name = "WatchCoreV1NamespacedPod"
+																	r.operationID = "watchCoreV1NamespacedPod"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -12915,6 +12999,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "WatchCoreV1NamespacedPodTemplateList"
+																r.operationID = "watchCoreV1NamespacedPodTemplateList"
 																r.args = args
 																r.count = 1
 																return r, true
@@ -12940,6 +13025,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: WatchCoreV1NamespacedPodTemplate
 																	r.name = "WatchCoreV1NamespacedPodTemplate"
+																	r.operationID = "watchCoreV1NamespacedPodTemplate"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -12972,6 +13058,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "WatchCoreV1NamespacedReplicationControllerList"
+															r.operationID = "watchCoreV1NamespacedReplicationControllerList"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -12997,6 +13084,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: WatchCoreV1NamespacedReplicationController
 																r.name = "WatchCoreV1NamespacedReplicationController"
+																r.operationID = "watchCoreV1NamespacedReplicationController"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -13016,6 +13104,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "WatchCoreV1NamespacedResourceQuotaList"
+															r.operationID = "watchCoreV1NamespacedResourceQuotaList"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -13041,6 +13130,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: WatchCoreV1NamespacedResourceQuota
 																r.name = "WatchCoreV1NamespacedResourceQuota"
+																r.operationID = "watchCoreV1NamespacedResourceQuota"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -13072,6 +13162,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "WatchCoreV1NamespacedSecretList"
+															r.operationID = "watchCoreV1NamespacedSecretList"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -13097,6 +13188,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: WatchCoreV1NamespacedSecret
 																r.name = "WatchCoreV1NamespacedSecret"
+																r.operationID = "watchCoreV1NamespacedSecret"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -13127,6 +13219,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "WatchCoreV1NamespacedServiceAccountList"
+																r.operationID = "watchCoreV1NamespacedServiceAccountList"
 																r.args = args
 																r.count = 1
 																return r, true
@@ -13152,6 +13245,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: WatchCoreV1NamespacedServiceAccount
 																	r.name = "WatchCoreV1NamespacedServiceAccount"
+																	r.operationID = "watchCoreV1NamespacedServiceAccount"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -13171,6 +13265,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "WatchCoreV1NamespacedServiceList"
+																r.operationID = "watchCoreV1NamespacedServiceList"
 																r.args = args
 																r.count = 1
 																return r, true
@@ -13196,6 +13291,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: WatchCoreV1NamespacedService
 																	r.name = "WatchCoreV1NamespacedService"
+																	r.operationID = "watchCoreV1NamespacedService"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -13220,6 +13316,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "WatchCoreV1NodeList"
+											r.operationID = "watchCoreV1NodeList"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -13245,6 +13342,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchCoreV1Node
 												r.name = "WatchCoreV1Node"
+												r.operationID = "watchCoreV1Node"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -13288,6 +13386,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchCoreV1PersistentVolumeClaimListForAllNamespaces
 												r.name = "WatchCoreV1PersistentVolumeClaimListForAllNamespaces"
+												r.operationID = "watchCoreV1PersistentVolumeClaimListForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -13306,6 +13405,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "WatchCoreV1PersistentVolumeList"
+												r.operationID = "watchCoreV1PersistentVolumeList"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -13331,6 +13431,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchCoreV1PersistentVolume
 													r.name = "WatchCoreV1PersistentVolume"
+													r.operationID = "watchCoreV1PersistentVolume"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -13363,6 +13464,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchCoreV1PodListForAllNamespaces
 												r.name = "WatchCoreV1PodListForAllNamespaces"
+												r.operationID = "watchCoreV1PodListForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -13382,6 +13484,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchCoreV1PodTemplateListForAllNamespaces
 												r.name = "WatchCoreV1PodTemplateListForAllNamespaces"
+												r.operationID = "watchCoreV1PodTemplateListForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -13414,6 +13517,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: WatchCoreV1ReplicationControllerListForAllNamespaces
 											r.name = "WatchCoreV1ReplicationControllerListForAllNamespaces"
+											r.operationID = "watchCoreV1ReplicationControllerListForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -13433,6 +13537,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: WatchCoreV1ResourceQuotaListForAllNamespaces
 											r.name = "WatchCoreV1ResourceQuotaListForAllNamespaces"
+											r.operationID = "watchCoreV1ResourceQuotaListForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -13464,6 +13569,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: WatchCoreV1SecretListForAllNamespaces
 											r.name = "WatchCoreV1SecretListForAllNamespaces"
+											r.operationID = "watchCoreV1SecretListForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -13494,6 +13600,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchCoreV1ServiceAccountListForAllNamespaces
 												r.name = "WatchCoreV1ServiceAccountListForAllNamespaces"
+												r.operationID = "watchCoreV1ServiceAccountListForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -13513,6 +13620,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchCoreV1ServiceListForAllNamespaces
 												r.name = "WatchCoreV1ServiceListForAllNamespaces"
+												r.operationID = "watchCoreV1ServiceListForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -13536,6 +13644,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "GetAPIVersions"
+							r.operationID = "getAPIVersions"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -13566,6 +13675,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "GetAdmissionregistrationAPIGroup"
+									r.operationID = "getAdmissionregistrationAPIGroup"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -13585,6 +13695,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "GetAdmissionregistrationV1APIResources"
+										r.operationID = "getAdmissionregistrationV1APIResources"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -13604,6 +13715,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ListAdmissionregistrationV1MutatingWebhookConfiguration"
+											r.operationID = "listAdmissionregistrationV1MutatingWebhookConfiguration"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -13629,6 +13741,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ReadAdmissionregistrationV1MutatingWebhookConfiguration
 												r.name = "ReadAdmissionregistrationV1MutatingWebhookConfiguration"
+												r.operationID = "readAdmissionregistrationV1MutatingWebhookConfiguration"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -13648,6 +13761,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ListAdmissionregistrationV1ValidatingWebhookConfiguration"
+											r.operationID = "listAdmissionregistrationV1ValidatingWebhookConfiguration"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -13673,6 +13787,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ReadAdmissionregistrationV1ValidatingWebhookConfiguration
 												r.name = "ReadAdmissionregistrationV1ValidatingWebhookConfiguration"
+												r.operationID = "readAdmissionregistrationV1ValidatingWebhookConfiguration"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -13703,6 +13818,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "WatchAdmissionregistrationV1MutatingWebhookConfigurationList"
+												r.operationID = "watchAdmissionregistrationV1MutatingWebhookConfigurationList"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -13728,6 +13844,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchAdmissionregistrationV1MutatingWebhookConfiguration
 													r.name = "WatchAdmissionregistrationV1MutatingWebhookConfiguration"
+													r.operationID = "watchAdmissionregistrationV1MutatingWebhookConfiguration"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -13747,6 +13864,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList"
+												r.operationID = "watchAdmissionregistrationV1ValidatingWebhookConfigurationList"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -13772,6 +13890,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchAdmissionregistrationV1ValidatingWebhookConfiguration
 													r.name = "WatchAdmissionregistrationV1ValidatingWebhookConfiguration"
+													r.operationID = "watchAdmissionregistrationV1ValidatingWebhookConfiguration"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -13816,6 +13935,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "GetApiextensionsAPIGroup"
+											r.operationID = "getApiextensionsAPIGroup"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -13835,6 +13955,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "GetApiextensionsV1APIResources"
+												r.operationID = "getApiextensionsV1APIResources"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -13854,6 +13975,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ListApiextensionsV1CustomResourceDefinition"
+													r.operationID = "listApiextensionsV1CustomResourceDefinition"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -13882,6 +14004,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ReadApiextensionsV1CustomResourceDefinition"
+														r.operationID = "readApiextensionsV1CustomResourceDefinition"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -13902,6 +14025,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReadApiextensionsV1CustomResourceDefinitionStatus
 															r.name = "ReadApiextensionsV1CustomResourceDefinitionStatus"
+															r.operationID = "readApiextensionsV1CustomResourceDefinitionStatus"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -13922,6 +14046,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "WatchApiextensionsV1CustomResourceDefinitionList"
+													r.operationID = "watchApiextensionsV1CustomResourceDefinitionList"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -13947,6 +14072,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchApiextensionsV1CustomResourceDefinition
 														r.name = "WatchApiextensionsV1CustomResourceDefinition"
+														r.operationID = "watchApiextensionsV1CustomResourceDefinition"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -13968,6 +14094,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "GetApiregistrationAPIGroup"
+											r.operationID = "getApiregistrationAPIGroup"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -13987,6 +14114,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "GetApiregistrationV1APIResources"
+												r.operationID = "getApiregistrationV1APIResources"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -14006,6 +14134,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ListApiregistrationV1APIService"
+													r.operationID = "listApiregistrationV1APIService"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -14034,6 +14163,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ReadApiregistrationV1APIService"
+														r.operationID = "readApiregistrationV1APIService"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -14054,6 +14184,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReadApiregistrationV1APIServiceStatus
 															r.name = "ReadApiregistrationV1APIServiceStatus"
+															r.operationID = "readApiregistrationV1APIServiceStatus"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -14074,6 +14205,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "WatchApiregistrationV1APIServiceList"
+													r.operationID = "watchApiregistrationV1APIServiceList"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -14099,6 +14231,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchApiregistrationV1APIService
 														r.name = "WatchApiregistrationV1APIService"
+														r.operationID = "watchApiregistrationV1APIService"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -14121,6 +14254,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "GetAppsAPIGroup"
+										r.operationID = "getAppsAPIGroup"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -14140,6 +14274,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "GetAppsV1APIResources"
+											r.operationID = "getAppsV1APIResources"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -14160,6 +14295,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ListAppsV1ControllerRevisionForAllNamespaces
 												r.name = "ListAppsV1ControllerRevisionForAllNamespaces"
+												r.operationID = "listAppsV1ControllerRevisionForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -14190,6 +14326,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ListAppsV1DaemonSetForAllNamespaces
 													r.name = "ListAppsV1DaemonSetForAllNamespaces"
+													r.operationID = "listAppsV1DaemonSetForAllNamespaces"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -14209,6 +14346,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ListAppsV1DeploymentForAllNamespaces
 													r.name = "ListAppsV1DeploymentForAllNamespaces"
+													r.operationID = "listAppsV1DeploymentForAllNamespaces"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -14259,6 +14397,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ListAppsV1NamespacedControllerRevision"
+														r.operationID = "listAppsV1NamespacedControllerRevision"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -14284,6 +14423,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReadAppsV1NamespacedControllerRevision
 															r.name = "ReadAppsV1NamespacedControllerRevision"
+															r.operationID = "readAppsV1NamespacedControllerRevision"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -14314,6 +14454,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ListAppsV1NamespacedDaemonSet"
+															r.operationID = "listAppsV1NamespacedDaemonSet"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -14342,6 +14483,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ReadAppsV1NamespacedDaemonSet"
+																r.operationID = "readAppsV1NamespacedDaemonSet"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -14362,6 +14504,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: ReadAppsV1NamespacedDaemonSetStatus
 																	r.name = "ReadAppsV1NamespacedDaemonSetStatus"
+																	r.operationID = "readAppsV1NamespacedDaemonSetStatus"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -14382,6 +14525,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ListAppsV1NamespacedDeployment"
+															r.operationID = "listAppsV1NamespacedDeployment"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -14410,6 +14554,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ReadAppsV1NamespacedDeployment"
+																r.operationID = "readAppsV1NamespacedDeployment"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -14441,6 +14586,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "GET":
 																		// Leaf: ReadAppsV1NamespacedDeploymentScale
 																		r.name = "ReadAppsV1NamespacedDeploymentScale"
+																		r.operationID = "readAppsV1NamespacedDeploymentScale"
 																		r.args = args
 																		r.count = 2
 																		return r, true
@@ -14460,6 +14606,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "GET":
 																		// Leaf: ReadAppsV1NamespacedDeploymentStatus
 																		r.name = "ReadAppsV1NamespacedDeploymentStatus"
+																		r.operationID = "readAppsV1NamespacedDeploymentStatus"
 																		r.args = args
 																		r.count = 2
 																		return r, true
@@ -14482,6 +14629,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ListAppsV1NamespacedReplicaSet"
+														r.operationID = "listAppsV1NamespacedReplicaSet"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -14510,6 +14658,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ReadAppsV1NamespacedReplicaSet"
+															r.operationID = "readAppsV1NamespacedReplicaSet"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -14541,6 +14690,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: ReadAppsV1NamespacedReplicaSetScale
 																	r.name = "ReadAppsV1NamespacedReplicaSetScale"
+																	r.operationID = "readAppsV1NamespacedReplicaSetScale"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -14560,6 +14710,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: ReadAppsV1NamespacedReplicaSetStatus
 																	r.name = "ReadAppsV1NamespacedReplicaSetStatus"
+																	r.operationID = "readAppsV1NamespacedReplicaSetStatus"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -14581,6 +14732,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ListAppsV1NamespacedStatefulSet"
+														r.operationID = "listAppsV1NamespacedStatefulSet"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -14609,6 +14761,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ReadAppsV1NamespacedStatefulSet"
+															r.operationID = "readAppsV1NamespacedStatefulSet"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -14640,6 +14793,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: ReadAppsV1NamespacedStatefulSetScale
 																	r.name = "ReadAppsV1NamespacedStatefulSetScale"
+																	r.operationID = "readAppsV1NamespacedStatefulSetScale"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -14659,6 +14813,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: ReadAppsV1NamespacedStatefulSetStatus
 																	r.name = "ReadAppsV1NamespacedStatefulSetStatus"
+																	r.operationID = "readAppsV1NamespacedStatefulSetStatus"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -14683,6 +14838,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ListAppsV1ReplicaSetForAllNamespaces
 												r.name = "ListAppsV1ReplicaSetForAllNamespaces"
+												r.operationID = "listAppsV1ReplicaSetForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -14702,6 +14858,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ListAppsV1StatefulSetForAllNamespaces
 												r.name = "ListAppsV1StatefulSetForAllNamespaces"
+												r.operationID = "listAppsV1StatefulSetForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -14732,6 +14889,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchAppsV1ControllerRevisionListForAllNamespaces
 													r.name = "WatchAppsV1ControllerRevisionListForAllNamespaces"
+													r.operationID = "watchAppsV1ControllerRevisionListForAllNamespaces"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -14762,6 +14920,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchAppsV1DaemonSetListForAllNamespaces
 														r.name = "WatchAppsV1DaemonSetListForAllNamespaces"
+														r.operationID = "watchAppsV1DaemonSetListForAllNamespaces"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -14781,6 +14940,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchAppsV1DeploymentListForAllNamespaces
 														r.name = "WatchAppsV1DeploymentListForAllNamespaces"
+														r.operationID = "watchAppsV1DeploymentListForAllNamespaces"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -14831,6 +14991,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "WatchAppsV1NamespacedControllerRevisionList"
+															r.operationID = "watchAppsV1NamespacedControllerRevisionList"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -14856,6 +15017,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: WatchAppsV1NamespacedControllerRevision
 																r.name = "WatchAppsV1NamespacedControllerRevision"
+																r.operationID = "watchAppsV1NamespacedControllerRevision"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -14886,6 +15048,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "WatchAppsV1NamespacedDaemonSetList"
+																r.operationID = "watchAppsV1NamespacedDaemonSetList"
 																r.args = args
 																r.count = 1
 																return r, true
@@ -14911,6 +15074,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: WatchAppsV1NamespacedDaemonSet
 																	r.name = "WatchAppsV1NamespacedDaemonSet"
+																	r.operationID = "watchAppsV1NamespacedDaemonSet"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -14930,6 +15094,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "WatchAppsV1NamespacedDeploymentList"
+																r.operationID = "watchAppsV1NamespacedDeploymentList"
 																r.args = args
 																r.count = 1
 																return r, true
@@ -14955,6 +15120,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: WatchAppsV1NamespacedDeployment
 																	r.name = "WatchAppsV1NamespacedDeployment"
+																	r.operationID = "watchAppsV1NamespacedDeployment"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -14975,6 +15141,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "WatchAppsV1NamespacedReplicaSetList"
+															r.operationID = "watchAppsV1NamespacedReplicaSetList"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -15000,6 +15167,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: WatchAppsV1NamespacedReplicaSet
 																r.name = "WatchAppsV1NamespacedReplicaSet"
+																r.operationID = "watchAppsV1NamespacedReplicaSet"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -15019,6 +15187,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "WatchAppsV1NamespacedStatefulSetList"
+															r.operationID = "watchAppsV1NamespacedStatefulSetList"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -15044,6 +15213,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: WatchAppsV1NamespacedStatefulSet
 																r.name = "WatchAppsV1NamespacedStatefulSet"
+																r.operationID = "watchAppsV1NamespacedStatefulSet"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -15066,6 +15236,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchAppsV1ReplicaSetListForAllNamespaces
 													r.name = "WatchAppsV1ReplicaSetListForAllNamespaces"
+													r.operationID = "watchAppsV1ReplicaSetListForAllNamespaces"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -15085,6 +15256,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchAppsV1StatefulSetListForAllNamespaces
 													r.name = "WatchAppsV1StatefulSetListForAllNamespaces"
+													r.operationID = "watchAppsV1StatefulSetListForAllNamespaces"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -15129,6 +15301,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "GetAuthenticationAPIGroup"
+											r.operationID = "getAuthenticationAPIGroup"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -15149,6 +15322,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: GetAuthenticationV1APIResources
 												r.name = "GetAuthenticationV1APIResources"
+												r.operationID = "getAuthenticationV1APIResources"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -15168,6 +15342,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "GetAuthorizationAPIGroup"
+											r.operationID = "getAuthorizationAPIGroup"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -15188,6 +15363,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: GetAuthorizationV1APIResources
 												r.name = "GetAuthorizationV1APIResources"
+												r.operationID = "getAuthorizationV1APIResources"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -15208,6 +15384,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "GetAutoscalingAPIGroup"
+										r.operationID = "getAutoscalingAPIGroup"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -15238,6 +15415,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "GetAutoscalingV1APIResources"
+												r.operationID = "getAutoscalingV1APIResources"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -15258,6 +15436,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces
 													r.name = "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces"
+													r.operationID = "listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -15296,6 +15475,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ListAutoscalingV1NamespacedHorizontalPodAutoscaler"
+														r.operationID = "listAutoscalingV1NamespacedHorizontalPodAutoscaler"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -15324,6 +15504,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler"
+															r.operationID = "readAutoscalingV1NamespacedHorizontalPodAutoscaler"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -15344,6 +15525,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus
 																r.name = "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus"
+																r.operationID = "readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -15377,6 +15559,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces
 														r.name = "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces"
+														r.operationID = "watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -15415,6 +15598,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList"
+															r.operationID = "watchAutoscalingV1NamespacedHorizontalPodAutoscalerList"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -15440,6 +15624,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: WatchAutoscalingV1NamespacedHorizontalPodAutoscaler
 																r.name = "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler"
+																r.operationID = "watchAutoscalingV1NamespacedHorizontalPodAutoscaler"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -15473,6 +15658,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "GetAutoscalingV2beta1APIResources"
+													r.operationID = "getAutoscalingV2beta1APIResources"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -15493,6 +15679,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces
 														r.name = "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces"
+														r.operationID = "listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -15531,6 +15718,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
+															r.operationID = "listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -15559,6 +15747,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
+																r.operationID = "readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -15579,6 +15768,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus
 																	r.name = "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus"
+																	r.operationID = "readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -15612,6 +15802,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces
 															r.name = "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces"
+															r.operationID = "watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15650,6 +15841,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList"
+																r.operationID = "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList"
 																r.args = args
 																r.count = 1
 																return r, true
@@ -15675,6 +15867,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler
 																	r.name = "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
+																	r.operationID = "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -15697,6 +15890,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "GetAutoscalingV2beta2APIResources"
+													r.operationID = "getAutoscalingV2beta2APIResources"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -15717,6 +15911,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces
 														r.name = "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces"
+														r.operationID = "listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -15755,6 +15950,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
+															r.operationID = "listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -15783,6 +15979,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
+																r.operationID = "readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -15803,6 +16000,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus
 																	r.name = "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus"
+																	r.operationID = "readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -15836,6 +16034,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces
 															r.name = "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces"
+															r.operationID = "watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15874,6 +16073,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList"
+																r.operationID = "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList"
 																r.args = args
 																r.count = 1
 																return r, true
@@ -15899,6 +16099,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler
 																	r.name = "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
+																	r.operationID = "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -15926,6 +16127,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "GetBatchAPIGroup"
+								r.operationID = "getBatchAPIGroup"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -15956,6 +16158,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "GetBatchV1APIResources"
+										r.operationID = "getBatchV1APIResources"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -15976,6 +16179,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ListBatchV1CronJobForAllNamespaces
 											r.name = "ListBatchV1CronJobForAllNamespaces"
+											r.operationID = "listBatchV1CronJobForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -15995,6 +16199,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ListBatchV1JobForAllNamespaces
 											r.name = "ListBatchV1JobForAllNamespaces"
+											r.operationID = "listBatchV1JobForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -16044,6 +16249,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ListBatchV1NamespacedCronJob"
+													r.operationID = "listBatchV1NamespacedCronJob"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -16072,6 +16278,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ReadBatchV1NamespacedCronJob"
+														r.operationID = "readBatchV1NamespacedCronJob"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -16092,6 +16299,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReadBatchV1NamespacedCronJobStatus
 															r.name = "ReadBatchV1NamespacedCronJobStatus"
+															r.operationID = "readBatchV1NamespacedCronJobStatus"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -16112,6 +16320,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ListBatchV1NamespacedJob"
+													r.operationID = "listBatchV1NamespacedJob"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -16140,6 +16349,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ReadBatchV1NamespacedJob"
+														r.operationID = "readBatchV1NamespacedJob"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -16160,6 +16370,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReadBatchV1NamespacedJobStatus
 															r.name = "ReadBatchV1NamespacedJobStatus"
+															r.operationID = "readBatchV1NamespacedJobStatus"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -16194,6 +16405,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchBatchV1CronJobListForAllNamespaces
 												r.name = "WatchBatchV1CronJobListForAllNamespaces"
+												r.operationID = "watchBatchV1CronJobListForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -16213,6 +16425,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchBatchV1JobListForAllNamespaces
 												r.name = "WatchBatchV1JobListForAllNamespaces"
+												r.operationID = "watchBatchV1JobListForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -16262,6 +16475,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "WatchBatchV1NamespacedCronJobList"
+														r.operationID = "watchBatchV1NamespacedCronJobList"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -16287,6 +16501,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: WatchBatchV1NamespacedCronJob
 															r.name = "WatchBatchV1NamespacedCronJob"
+															r.operationID = "watchBatchV1NamespacedCronJob"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -16306,6 +16521,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "WatchBatchV1NamespacedJobList"
+														r.operationID = "watchBatchV1NamespacedJobList"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -16331,6 +16547,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: WatchBatchV1NamespacedJob
 															r.name = "WatchBatchV1NamespacedJob"
+															r.operationID = "watchBatchV1NamespacedJob"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -16354,6 +16571,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "GetBatchV1beta1APIResources"
+										r.operationID = "getBatchV1beta1APIResources"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -16374,6 +16592,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ListBatchV1beta1CronJobForAllNamespaces
 											r.name = "ListBatchV1beta1CronJobForAllNamespaces"
+											r.operationID = "listBatchV1beta1CronJobForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -16412,6 +16631,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ListBatchV1beta1NamespacedCronJob"
+												r.operationID = "listBatchV1beta1NamespacedCronJob"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -16440,6 +16660,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ReadBatchV1beta1NamespacedCronJob"
+													r.operationID = "readBatchV1beta1NamespacedCronJob"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -16460,6 +16681,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReadBatchV1beta1NamespacedCronJobStatus
 														r.name = "ReadBatchV1beta1NamespacedCronJobStatus"
+														r.operationID = "readBatchV1beta1NamespacedCronJobStatus"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -16493,6 +16715,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchBatchV1beta1CronJobListForAllNamespaces
 												r.name = "WatchBatchV1beta1CronJobListForAllNamespaces"
+												r.operationID = "watchBatchV1beta1CronJobListForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -16531,6 +16754,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "WatchBatchV1beta1NamespacedCronJobList"
+													r.operationID = "watchBatchV1beta1NamespacedCronJobList"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -16556,6 +16780,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchBatchV1beta1NamespacedCronJob
 														r.name = "WatchBatchV1beta1NamespacedCronJob"
+														r.operationID = "watchBatchV1beta1NamespacedCronJob"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -16591,6 +16816,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "GetCertificatesAPIGroup"
+									r.operationID = "getCertificatesAPIGroup"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -16610,6 +16836,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "GetCertificatesV1APIResources"
+										r.operationID = "getCertificatesV1APIResources"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -16629,6 +16856,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ListCertificatesV1CertificateSigningRequest"
+											r.operationID = "listCertificatesV1CertificateSigningRequest"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -16657,6 +16885,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ReadCertificatesV1CertificateSigningRequest"
+												r.operationID = "readCertificatesV1CertificateSigningRequest"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -16688,6 +16917,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReadCertificatesV1CertificateSigningRequestApproval
 														r.name = "ReadCertificatesV1CertificateSigningRequestApproval"
+														r.operationID = "readCertificatesV1CertificateSigningRequestApproval"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -16707,6 +16937,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReadCertificatesV1CertificateSigningRequestStatus
 														r.name = "ReadCertificatesV1CertificateSigningRequestStatus"
+														r.operationID = "readCertificatesV1CertificateSigningRequestStatus"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -16728,6 +16959,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "WatchCertificatesV1CertificateSigningRequestList"
+											r.operationID = "watchCertificatesV1CertificateSigningRequestList"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -16753,6 +16985,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchCertificatesV1CertificateSigningRequest
 												r.name = "WatchCertificatesV1CertificateSigningRequest"
+												r.operationID = "watchCertificatesV1CertificateSigningRequest"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -16774,6 +17007,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "GetCoordinationAPIGroup"
+									r.operationID = "getCoordinationAPIGroup"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -16793,6 +17027,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "GetCoordinationV1APIResources"
+										r.operationID = "getCoordinationV1APIResources"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -16813,6 +17048,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ListCoordinationV1LeaseForAllNamespaces
 											r.name = "ListCoordinationV1LeaseForAllNamespaces"
+											r.operationID = "listCoordinationV1LeaseForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -16851,6 +17087,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ListCoordinationV1NamespacedLease"
+												r.operationID = "listCoordinationV1NamespacedLease"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -16876,6 +17113,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadCoordinationV1NamespacedLease
 													r.name = "ReadCoordinationV1NamespacedLease"
+													r.operationID = "readCoordinationV1NamespacedLease"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -16908,6 +17146,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchCoordinationV1LeaseListForAllNamespaces
 												r.name = "WatchCoordinationV1LeaseListForAllNamespaces"
+												r.operationID = "watchCoordinationV1LeaseListForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -16946,6 +17185,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "WatchCoordinationV1NamespacedLeaseList"
+													r.operationID = "watchCoordinationV1NamespacedLeaseList"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -16971,6 +17211,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchCoordinationV1NamespacedLease
 														r.name = "WatchCoordinationV1NamespacedLease"
+														r.operationID = "watchCoordinationV1NamespacedLease"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -16995,6 +17236,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "GetDiscoveryAPIGroup"
+								r.operationID = "getDiscoveryAPIGroup"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -17025,6 +17267,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "GetDiscoveryV1APIResources"
+										r.operationID = "getDiscoveryV1APIResources"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -17045,6 +17288,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ListDiscoveryV1EndpointSliceForAllNamespaces
 											r.name = "ListDiscoveryV1EndpointSliceForAllNamespaces"
+											r.operationID = "listDiscoveryV1EndpointSliceForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -17083,6 +17327,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ListDiscoveryV1NamespacedEndpointSlice"
+												r.operationID = "listDiscoveryV1NamespacedEndpointSlice"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -17108,6 +17353,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadDiscoveryV1NamespacedEndpointSlice
 													r.name = "ReadDiscoveryV1NamespacedEndpointSlice"
+													r.operationID = "readDiscoveryV1NamespacedEndpointSlice"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -17140,6 +17386,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchDiscoveryV1EndpointSliceListForAllNamespaces
 												r.name = "WatchDiscoveryV1EndpointSliceListForAllNamespaces"
+												r.operationID = "watchDiscoveryV1EndpointSliceListForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -17178,6 +17425,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "WatchDiscoveryV1NamespacedEndpointSliceList"
+													r.operationID = "watchDiscoveryV1NamespacedEndpointSliceList"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -17203,6 +17451,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchDiscoveryV1NamespacedEndpointSlice
 														r.name = "WatchDiscoveryV1NamespacedEndpointSlice"
+														r.operationID = "watchDiscoveryV1NamespacedEndpointSlice"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -17225,6 +17474,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "GetDiscoveryV1beta1APIResources"
+										r.operationID = "getDiscoveryV1beta1APIResources"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -17245,6 +17495,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ListDiscoveryV1beta1EndpointSliceForAllNamespaces
 											r.name = "ListDiscoveryV1beta1EndpointSliceForAllNamespaces"
+											r.operationID = "listDiscoveryV1beta1EndpointSliceForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -17283,6 +17534,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ListDiscoveryV1beta1NamespacedEndpointSlice"
+												r.operationID = "listDiscoveryV1beta1NamespacedEndpointSlice"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -17308,6 +17560,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadDiscoveryV1beta1NamespacedEndpointSlice
 													r.name = "ReadDiscoveryV1beta1NamespacedEndpointSlice"
+													r.operationID = "readDiscoveryV1beta1NamespacedEndpointSlice"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -17340,6 +17593,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces
 												r.name = "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces"
+												r.operationID = "watchDiscoveryV1beta1EndpointSliceListForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -17378,6 +17632,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "WatchDiscoveryV1beta1NamespacedEndpointSliceList"
+													r.operationID = "watchDiscoveryV1beta1NamespacedEndpointSliceList"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -17403,6 +17658,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchDiscoveryV1beta1NamespacedEndpointSlice
 														r.name = "WatchDiscoveryV1beta1NamespacedEndpointSlice"
+														r.operationID = "watchDiscoveryV1beta1NamespacedEndpointSlice"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -17427,6 +17683,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "GetEventsAPIGroup"
+								r.operationID = "getEventsAPIGroup"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -17457,6 +17714,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "GetEventsV1APIResources"
+										r.operationID = "getEventsV1APIResources"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -17477,6 +17735,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ListEventsV1EventForAllNamespaces
 											r.name = "ListEventsV1EventForAllNamespaces"
+											r.operationID = "listEventsV1EventForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -17515,6 +17774,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ListEventsV1NamespacedEvent"
+												r.operationID = "listEventsV1NamespacedEvent"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -17540,6 +17800,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadEventsV1NamespacedEvent
 													r.name = "ReadEventsV1NamespacedEvent"
+													r.operationID = "readEventsV1NamespacedEvent"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -17572,6 +17833,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchEventsV1EventListForAllNamespaces
 												r.name = "WatchEventsV1EventListForAllNamespaces"
+												r.operationID = "watchEventsV1EventListForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -17610,6 +17872,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "WatchEventsV1NamespacedEventList"
+													r.operationID = "watchEventsV1NamespacedEventList"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -17635,6 +17898,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchEventsV1NamespacedEvent
 														r.name = "WatchEventsV1NamespacedEvent"
+														r.operationID = "watchEventsV1NamespacedEvent"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -17657,6 +17921,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "GetEventsV1beta1APIResources"
+										r.operationID = "getEventsV1beta1APIResources"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -17677,6 +17942,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ListEventsV1beta1EventForAllNamespaces
 											r.name = "ListEventsV1beta1EventForAllNamespaces"
+											r.operationID = "listEventsV1beta1EventForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -17715,6 +17981,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ListEventsV1beta1NamespacedEvent"
+												r.operationID = "listEventsV1beta1NamespacedEvent"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -17740,6 +18007,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadEventsV1beta1NamespacedEvent
 													r.name = "ReadEventsV1beta1NamespacedEvent"
+													r.operationID = "readEventsV1beta1NamespacedEvent"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -17772,6 +18040,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchEventsV1beta1EventListForAllNamespaces
 												r.name = "WatchEventsV1beta1EventListForAllNamespaces"
+												r.operationID = "watchEventsV1beta1EventListForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -17810,6 +18079,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "WatchEventsV1beta1NamespacedEventList"
+													r.operationID = "watchEventsV1beta1NamespacedEventList"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -17835,6 +18105,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchEventsV1beta1NamespacedEvent
 														r.name = "WatchEventsV1beta1NamespacedEvent"
+														r.operationID = "watchEventsV1beta1NamespacedEvent"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -17859,6 +18130,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "GetFlowcontrolApiserverAPIGroup"
+								r.operationID = "getFlowcontrolApiserverAPIGroup"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -17889,6 +18161,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "GetFlowcontrolApiserverV1beta1APIResources"
+										r.operationID = "getFlowcontrolApiserverV1beta1APIResources"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -17908,6 +18181,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ListFlowcontrolApiserverV1beta1FlowSchema"
+											r.operationID = "listFlowcontrolApiserverV1beta1FlowSchema"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -17936,6 +18210,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ReadFlowcontrolApiserverV1beta1FlowSchema"
+												r.operationID = "readFlowcontrolApiserverV1beta1FlowSchema"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -17956,6 +18231,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadFlowcontrolApiserverV1beta1FlowSchemaStatus
 													r.name = "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus"
+													r.operationID = "readFlowcontrolApiserverV1beta1FlowSchemaStatus"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -17976,6 +18252,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
+											r.operationID = "listFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -18004,6 +18281,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
+												r.operationID = "readFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -18024,6 +18302,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
 													r.name = "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus"
+													r.operationID = "readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -18055,6 +18334,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "WatchFlowcontrolApiserverV1beta1FlowSchemaList"
+												r.operationID = "watchFlowcontrolApiserverV1beta1FlowSchemaList"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -18080,6 +18360,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchFlowcontrolApiserverV1beta1FlowSchema
 													r.name = "WatchFlowcontrolApiserverV1beta1FlowSchema"
+													r.operationID = "watchFlowcontrolApiserverV1beta1FlowSchema"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -18099,6 +18380,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList"
+												r.operationID = "watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -18124,6 +18406,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 													r.name = "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
+													r.operationID = "watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -18145,6 +18428,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "GetFlowcontrolApiserverV1beta2APIResources"
+										r.operationID = "getFlowcontrolApiserverV1beta2APIResources"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -18164,6 +18448,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ListFlowcontrolApiserverV1beta2FlowSchema"
+											r.operationID = "listFlowcontrolApiserverV1beta2FlowSchema"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -18192,6 +18477,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ReadFlowcontrolApiserverV1beta2FlowSchema"
+												r.operationID = "readFlowcontrolApiserverV1beta2FlowSchema"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -18212,6 +18498,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadFlowcontrolApiserverV1beta2FlowSchemaStatus
 													r.name = "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus"
+													r.operationID = "readFlowcontrolApiserverV1beta2FlowSchemaStatus"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -18232,6 +18519,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
+											r.operationID = "listFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -18260,6 +18548,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
+												r.operationID = "readFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -18280,6 +18569,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
 													r.name = "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus"
+													r.operationID = "readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -18311,6 +18601,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "WatchFlowcontrolApiserverV1beta2FlowSchemaList"
+												r.operationID = "watchFlowcontrolApiserverV1beta2FlowSchemaList"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -18336,6 +18627,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchFlowcontrolApiserverV1beta2FlowSchema
 													r.name = "WatchFlowcontrolApiserverV1beta2FlowSchema"
+													r.operationID = "watchFlowcontrolApiserverV1beta2FlowSchema"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -18355,6 +18647,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList"
+												r.operationID = "watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -18380,6 +18673,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 													r.name = "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
+													r.operationID = "watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -18403,6 +18697,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "GetInternalApiserverAPIGroup"
+								r.operationID = "getInternalApiserverAPIGroup"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -18422,6 +18717,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "GetInternalApiserverV1alpha1APIResources"
+									r.operationID = "getInternalApiserverV1alpha1APIResources"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -18441,6 +18737,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "ListInternalApiserverV1alpha1StorageVersion"
+										r.operationID = "listInternalApiserverV1alpha1StorageVersion"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -18469,6 +18766,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ReadInternalApiserverV1alpha1StorageVersion"
+											r.operationID = "readInternalApiserverV1alpha1StorageVersion"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -18489,6 +18787,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ReadInternalApiserverV1alpha1StorageVersionStatus
 												r.name = "ReadInternalApiserverV1alpha1StorageVersionStatus"
+												r.operationID = "readInternalApiserverV1alpha1StorageVersionStatus"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -18509,6 +18808,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "WatchInternalApiserverV1alpha1StorageVersionList"
+										r.operationID = "watchInternalApiserverV1alpha1StorageVersionList"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -18534,6 +18834,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: WatchInternalApiserverV1alpha1StorageVersion
 											r.name = "WatchInternalApiserverV1alpha1StorageVersion"
+											r.operationID = "watchInternalApiserverV1alpha1StorageVersion"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -18566,6 +18867,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "GetNetworkingAPIGroup"
+									r.operationID = "getNetworkingAPIGroup"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -18585,6 +18887,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "GetNetworkingV1APIResources"
+										r.operationID = "getNetworkingV1APIResources"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -18615,6 +18918,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ListNetworkingV1IngressClass"
+												r.operationID = "listNetworkingV1IngressClass"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -18640,6 +18944,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadNetworkingV1IngressClass
 													r.name = "ReadNetworkingV1IngressClass"
+													r.operationID = "readNetworkingV1IngressClass"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -18660,6 +18965,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ListNetworkingV1IngressForAllNamespaces
 												r.name = "ListNetworkingV1IngressForAllNamespaces"
+												r.operationID = "listNetworkingV1IngressForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -18721,6 +19027,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ListNetworkingV1NamespacedIngress"
+														r.operationID = "listNetworkingV1NamespacedIngress"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -18749,6 +19056,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ReadNetworkingV1NamespacedIngress"
+															r.operationID = "readNetworkingV1NamespacedIngress"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -18769,6 +19077,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReadNetworkingV1NamespacedIngressStatus
 																r.name = "ReadNetworkingV1NamespacedIngressStatus"
+																r.operationID = "readNetworkingV1NamespacedIngressStatus"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -18789,6 +19098,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ListNetworkingV1NamespacedNetworkPolicy"
+														r.operationID = "listNetworkingV1NamespacedNetworkPolicy"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -18814,6 +19124,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReadNetworkingV1NamespacedNetworkPolicy
 															r.name = "ReadNetworkingV1NamespacedNetworkPolicy"
+															r.operationID = "readNetworkingV1NamespacedNetworkPolicy"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -18836,6 +19147,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ListNetworkingV1NetworkPolicyForAllNamespaces
 												r.name = "ListNetworkingV1NetworkPolicyForAllNamespaces"
+												r.operationID = "listNetworkingV1NetworkPolicyForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -18877,6 +19189,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "WatchNetworkingV1IngressClassList"
+													r.operationID = "watchNetworkingV1IngressClassList"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -18902,6 +19215,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchNetworkingV1IngressClass
 														r.name = "WatchNetworkingV1IngressClass"
+														r.operationID = "watchNetworkingV1IngressClass"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -18922,6 +19236,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchNetworkingV1IngressListForAllNamespaces
 													r.name = "WatchNetworkingV1IngressListForAllNamespaces"
+													r.operationID = "watchNetworkingV1IngressListForAllNamespaces"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -18983,6 +19298,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "WatchNetworkingV1NamespacedIngressList"
+															r.operationID = "watchNetworkingV1NamespacedIngressList"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -19008,6 +19324,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: WatchNetworkingV1NamespacedIngress
 																r.name = "WatchNetworkingV1NamespacedIngress"
+																r.operationID = "watchNetworkingV1NamespacedIngress"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -19027,6 +19344,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "WatchNetworkingV1NamespacedNetworkPolicyList"
+															r.operationID = "watchNetworkingV1NamespacedNetworkPolicyList"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -19052,6 +19370,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: WatchNetworkingV1NamespacedNetworkPolicy
 																r.name = "WatchNetworkingV1NamespacedNetworkPolicy"
+																r.operationID = "watchNetworkingV1NamespacedNetworkPolicy"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -19074,6 +19393,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchNetworkingV1NetworkPolicyListForAllNamespaces
 													r.name = "WatchNetworkingV1NetworkPolicyListForAllNamespaces"
+													r.operationID = "watchNetworkingV1NetworkPolicyListForAllNamespaces"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -19096,6 +19416,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "GetNodeAPIGroup"
+									r.operationID = "getNodeAPIGroup"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -19126,6 +19447,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "GetNodeV1APIResources"
+											r.operationID = "getNodeV1APIResources"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -19145,6 +19467,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ListNodeV1RuntimeClass"
+												r.operationID = "listNodeV1RuntimeClass"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19170,6 +19493,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadNodeV1RuntimeClass
 													r.name = "ReadNodeV1RuntimeClass"
+													r.operationID = "readNodeV1RuntimeClass"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -19189,6 +19513,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "WatchNodeV1RuntimeClassList"
+												r.operationID = "watchNodeV1RuntimeClassList"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19214,6 +19539,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchNodeV1RuntimeClass
 													r.name = "WatchNodeV1RuntimeClass"
+													r.operationID = "watchNodeV1RuntimeClass"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -19234,6 +19560,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "GetNodeV1alpha1APIResources"
+											r.operationID = "getNodeV1alpha1APIResources"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -19253,6 +19580,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ListNodeV1alpha1RuntimeClass"
+												r.operationID = "listNodeV1alpha1RuntimeClass"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19278,6 +19606,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadNodeV1alpha1RuntimeClass
 													r.name = "ReadNodeV1alpha1RuntimeClass"
+													r.operationID = "readNodeV1alpha1RuntimeClass"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -19297,6 +19626,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "WatchNodeV1alpha1RuntimeClassList"
+												r.operationID = "watchNodeV1alpha1RuntimeClassList"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19322,6 +19652,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchNodeV1alpha1RuntimeClass
 													r.name = "WatchNodeV1alpha1RuntimeClass"
+													r.operationID = "watchNodeV1alpha1RuntimeClass"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -19342,6 +19673,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "GetNodeV1beta1APIResources"
+											r.operationID = "getNodeV1beta1APIResources"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -19361,6 +19693,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ListNodeV1beta1RuntimeClass"
+												r.operationID = "listNodeV1beta1RuntimeClass"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19386,6 +19719,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadNodeV1beta1RuntimeClass
 													r.name = "ReadNodeV1beta1RuntimeClass"
+													r.operationID = "readNodeV1beta1RuntimeClass"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -19405,6 +19739,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "WatchNodeV1beta1RuntimeClassList"
+												r.operationID = "watchNodeV1beta1RuntimeClassList"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19430,6 +19765,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchNodeV1beta1RuntimeClass
 													r.name = "WatchNodeV1beta1RuntimeClass"
+													r.operationID = "watchNodeV1beta1RuntimeClass"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -19453,6 +19789,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "GetPolicyAPIGroup"
+								r.operationID = "getPolicyAPIGroup"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -19483,6 +19820,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "GetPolicyV1APIResources"
+										r.operationID = "getPolicyV1APIResources"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -19522,6 +19860,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ListPolicyV1NamespacedPodDisruptionBudget"
+												r.operationID = "listPolicyV1NamespacedPodDisruptionBudget"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -19550,6 +19889,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ReadPolicyV1NamespacedPodDisruptionBudget"
+													r.operationID = "readPolicyV1NamespacedPodDisruptionBudget"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -19570,6 +19910,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReadPolicyV1NamespacedPodDisruptionBudgetStatus
 														r.name = "ReadPolicyV1NamespacedPodDisruptionBudgetStatus"
+														r.operationID = "readPolicyV1NamespacedPodDisruptionBudgetStatus"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -19592,6 +19933,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ListPolicyV1PodDisruptionBudgetForAllNamespaces
 											r.name = "ListPolicyV1PodDisruptionBudgetForAllNamespaces"
+											r.operationID = "listPolicyV1PodDisruptionBudgetForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -19641,6 +19983,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "WatchPolicyV1NamespacedPodDisruptionBudgetList"
+													r.operationID = "watchPolicyV1NamespacedPodDisruptionBudgetList"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -19666,6 +20009,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchPolicyV1NamespacedPodDisruptionBudget
 														r.name = "WatchPolicyV1NamespacedPodDisruptionBudget"
+														r.operationID = "watchPolicyV1NamespacedPodDisruptionBudget"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -19687,6 +20031,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchPolicyV1PodDisruptionBudgetListForAllNamespaces
 												r.name = "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces"
+												r.operationID = "watchPolicyV1PodDisruptionBudgetListForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19707,6 +20052,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "GetPolicyV1beta1APIResources"
+										r.operationID = "getPolicyV1beta1APIResources"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -19746,6 +20092,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ListPolicyV1beta1NamespacedPodDisruptionBudget"
+												r.operationID = "listPolicyV1beta1NamespacedPodDisruptionBudget"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -19774,6 +20121,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ReadPolicyV1beta1NamespacedPodDisruptionBudget"
+													r.operationID = "readPolicyV1beta1NamespacedPodDisruptionBudget"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -19794,6 +20142,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus
 														r.name = "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus"
+														r.operationID = "readPolicyV1beta1NamespacedPodDisruptionBudgetStatus"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -19827,6 +20176,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces
 												r.name = "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces"
+												r.operationID = "listPolicyV1beta1PodDisruptionBudgetForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19845,6 +20195,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ListPolicyV1beta1PodSecurityPolicy"
+												r.operationID = "listPolicyV1beta1PodSecurityPolicy"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19870,6 +20221,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadPolicyV1beta1PodSecurityPolicy
 													r.name = "ReadPolicyV1beta1PodSecurityPolicy"
+													r.operationID = "readPolicyV1beta1PodSecurityPolicy"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -19921,6 +20273,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList"
+													r.operationID = "watchPolicyV1beta1NamespacedPodDisruptionBudgetList"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -19946,6 +20299,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchPolicyV1beta1NamespacedPodDisruptionBudget
 														r.name = "WatchPolicyV1beta1NamespacedPodDisruptionBudget"
+														r.operationID = "watchPolicyV1beta1NamespacedPodDisruptionBudget"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -19978,6 +20332,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 													r.name = "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces"
+													r.operationID = "watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -19996,6 +20351,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "WatchPolicyV1beta1PodSecurityPolicyList"
+													r.operationID = "watchPolicyV1beta1PodSecurityPolicyList"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -20021,6 +20377,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchPolicyV1beta1PodSecurityPolicy
 														r.name = "WatchPolicyV1beta1PodSecurityPolicy"
+														r.operationID = "watchPolicyV1beta1PodSecurityPolicy"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -20045,6 +20402,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "GetRbacAuthorizationAPIGroup"
+								r.operationID = "getRbacAuthorizationAPIGroup"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -20064,6 +20422,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "GetRbacAuthorizationV1APIResources"
+									r.operationID = "getRbacAuthorizationV1APIResources"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -20094,6 +20453,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ListRbacAuthorizationV1ClusterRoleBinding"
+											r.operationID = "listRbacAuthorizationV1ClusterRoleBinding"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -20119,6 +20479,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ReadRbacAuthorizationV1ClusterRoleBinding
 												r.name = "ReadRbacAuthorizationV1ClusterRoleBinding"
+												r.operationID = "readRbacAuthorizationV1ClusterRoleBinding"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -20138,6 +20499,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ListRbacAuthorizationV1ClusterRole"
+											r.operationID = "listRbacAuthorizationV1ClusterRole"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -20163,6 +20525,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ReadRbacAuthorizationV1ClusterRole
 												r.name = "ReadRbacAuthorizationV1ClusterRole"
+												r.operationID = "readRbacAuthorizationV1ClusterRole"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -20214,6 +20577,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ListRbacAuthorizationV1NamespacedRoleBinding"
+												r.operationID = "listRbacAuthorizationV1NamespacedRoleBinding"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -20239,6 +20603,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadRbacAuthorizationV1NamespacedRoleBinding
 													r.name = "ReadRbacAuthorizationV1NamespacedRoleBinding"
+													r.operationID = "readRbacAuthorizationV1NamespacedRoleBinding"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -20258,6 +20623,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ListRbacAuthorizationV1NamespacedRole"
+												r.operationID = "listRbacAuthorizationV1NamespacedRole"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -20283,6 +20649,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadRbacAuthorizationV1NamespacedRole
 													r.name = "ReadRbacAuthorizationV1NamespacedRole"
+													r.operationID = "readRbacAuthorizationV1NamespacedRole"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -20316,6 +20683,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ListRbacAuthorizationV1RoleBindingForAllNamespaces
 											r.name = "ListRbacAuthorizationV1RoleBindingForAllNamespaces"
+											r.operationID = "listRbacAuthorizationV1RoleBindingForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -20335,6 +20703,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ListRbacAuthorizationV1RoleForAllNamespaces
 											r.name = "ListRbacAuthorizationV1RoleForAllNamespaces"
+											r.operationID = "listRbacAuthorizationV1RoleForAllNamespaces"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -20376,6 +20745,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "WatchRbacAuthorizationV1ClusterRoleBindingList"
+												r.operationID = "watchRbacAuthorizationV1ClusterRoleBindingList"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -20401,6 +20771,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchRbacAuthorizationV1ClusterRoleBinding
 													r.name = "WatchRbacAuthorizationV1ClusterRoleBinding"
+													r.operationID = "watchRbacAuthorizationV1ClusterRoleBinding"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -20420,6 +20791,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "WatchRbacAuthorizationV1ClusterRoleList"
+												r.operationID = "watchRbacAuthorizationV1ClusterRoleList"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -20445,6 +20817,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchRbacAuthorizationV1ClusterRole
 													r.name = "WatchRbacAuthorizationV1ClusterRole"
+													r.operationID = "watchRbacAuthorizationV1ClusterRole"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -20496,6 +20869,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "WatchRbacAuthorizationV1NamespacedRoleBindingList"
+													r.operationID = "watchRbacAuthorizationV1NamespacedRoleBindingList"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -20521,6 +20895,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchRbacAuthorizationV1NamespacedRoleBinding
 														r.name = "WatchRbacAuthorizationV1NamespacedRoleBinding"
+														r.operationID = "watchRbacAuthorizationV1NamespacedRoleBinding"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -20540,6 +20915,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "WatchRbacAuthorizationV1NamespacedRoleList"
+													r.operationID = "watchRbacAuthorizationV1NamespacedRoleList"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -20565,6 +20941,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchRbacAuthorizationV1NamespacedRole
 														r.name = "WatchRbacAuthorizationV1NamespacedRole"
+														r.operationID = "watchRbacAuthorizationV1NamespacedRole"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -20598,6 +20975,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchRbacAuthorizationV1RoleBindingListForAllNamespaces
 												r.name = "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces"
+												r.operationID = "watchRbacAuthorizationV1RoleBindingListForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -20617,6 +20995,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchRbacAuthorizationV1RoleListForAllNamespaces
 												r.name = "WatchRbacAuthorizationV1RoleListForAllNamespaces"
+												r.operationID = "watchRbacAuthorizationV1RoleListForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -20650,6 +21029,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "GetSchedulingAPIGroup"
+									r.operationID = "getSchedulingAPIGroup"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -20669,6 +21049,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "GetSchedulingV1APIResources"
+										r.operationID = "getSchedulingV1APIResources"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -20688,6 +21069,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ListSchedulingV1PriorityClass"
+											r.operationID = "listSchedulingV1PriorityClass"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -20713,6 +21095,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ReadSchedulingV1PriorityClass
 												r.name = "ReadSchedulingV1PriorityClass"
+												r.operationID = "readSchedulingV1PriorityClass"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -20732,6 +21115,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "WatchSchedulingV1PriorityClassList"
+											r.operationID = "watchSchedulingV1PriorityClassList"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -20757,6 +21141,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: WatchSchedulingV1PriorityClass
 												r.name = "WatchSchedulingV1PriorityClass"
+												r.operationID = "watchSchedulingV1PriorityClass"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -20778,6 +21163,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "GetStorageAPIGroup"
+									r.operationID = "getStorageAPIGroup"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -20808,6 +21194,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "GetStorageV1APIResources"
+											r.operationID = "getStorageV1APIResources"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -20838,6 +21225,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ListStorageV1CSIDriver"
+													r.operationID = "listStorageV1CSIDriver"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -20863,6 +21251,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReadStorageV1CSIDriver
 														r.name = "ReadStorageV1CSIDriver"
+														r.operationID = "readStorageV1CSIDriver"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -20882,6 +21271,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ListStorageV1CSINode"
+													r.operationID = "listStorageV1CSINode"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -20907,6 +21297,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReadStorageV1CSINode
 														r.name = "ReadStorageV1CSINode"
+														r.operationID = "readStorageV1CSINode"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -20927,6 +21318,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ListStorageV1StorageClass"
+												r.operationID = "listStorageV1StorageClass"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -20952,6 +21344,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReadStorageV1StorageClass
 													r.name = "ReadStorageV1StorageClass"
+													r.operationID = "readStorageV1StorageClass"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -20971,6 +21364,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ListStorageV1VolumeAttachment"
+												r.operationID = "listStorageV1VolumeAttachment"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -20999,6 +21393,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ReadStorageV1VolumeAttachment"
+													r.operationID = "readStorageV1VolumeAttachment"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -21019,6 +21414,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReadStorageV1VolumeAttachmentStatus
 														r.name = "ReadStorageV1VolumeAttachmentStatus"
+														r.operationID = "readStorageV1VolumeAttachmentStatus"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -21061,6 +21457,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "WatchStorageV1CSIDriverList"
+														r.operationID = "watchStorageV1CSIDriverList"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21086,6 +21483,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: WatchStorageV1CSIDriver
 															r.name = "WatchStorageV1CSIDriver"
+															r.operationID = "watchStorageV1CSIDriver"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -21105,6 +21503,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "WatchStorageV1CSINodeList"
+														r.operationID = "watchStorageV1CSINodeList"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21130,6 +21529,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: WatchStorageV1CSINode
 															r.name = "WatchStorageV1CSINode"
+															r.operationID = "watchStorageV1CSINode"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -21150,6 +21550,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "WatchStorageV1StorageClassList"
+													r.operationID = "watchStorageV1StorageClassList"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21175,6 +21576,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchStorageV1StorageClass
 														r.name = "WatchStorageV1StorageClass"
+														r.operationID = "watchStorageV1StorageClass"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -21194,6 +21596,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "WatchStorageV1VolumeAttachmentList"
+													r.operationID = "watchStorageV1VolumeAttachmentList"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21219,6 +21622,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: WatchStorageV1VolumeAttachment
 														r.name = "WatchStorageV1VolumeAttachment"
+														r.operationID = "watchStorageV1VolumeAttachment"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -21240,6 +21644,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "GetStorageV1alpha1APIResources"
+											r.operationID = "getStorageV1alpha1APIResources"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -21260,6 +21665,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ListStorageV1alpha1CSIStorageCapacityForAllNamespaces
 												r.name = "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces"
+												r.operationID = "listStorageV1alpha1CSIStorageCapacityForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -21298,6 +21704,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ListStorageV1alpha1NamespacedCSIStorageCapacity"
+													r.operationID = "listStorageV1alpha1NamespacedCSIStorageCapacity"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -21323,6 +21730,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReadStorageV1alpha1NamespacedCSIStorageCapacity
 														r.name = "ReadStorageV1alpha1NamespacedCSIStorageCapacity"
+														r.operationID = "readStorageV1alpha1NamespacedCSIStorageCapacity"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -21355,6 +21763,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces
 													r.name = "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces"
+													r.operationID = "watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21393,6 +21802,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "WatchStorageV1alpha1NamespacedCSIStorageCapacityList"
+														r.operationID = "watchStorageV1alpha1NamespacedCSIStorageCapacityList"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -21418,6 +21828,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: WatchStorageV1alpha1NamespacedCSIStorageCapacity
 															r.name = "WatchStorageV1alpha1NamespacedCSIStorageCapacity"
+															r.operationID = "watchStorageV1alpha1NamespacedCSIStorageCapacity"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -21440,6 +21851,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "GetStorageV1beta1APIResources"
+											r.operationID = "getStorageV1beta1APIResources"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -21460,6 +21872,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ListStorageV1beta1CSIStorageCapacityForAllNamespaces
 												r.name = "ListStorageV1beta1CSIStorageCapacityForAllNamespaces"
+												r.operationID = "listStorageV1beta1CSIStorageCapacityForAllNamespaces"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -21498,6 +21911,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ListStorageV1beta1NamespacedCSIStorageCapacity"
+													r.operationID = "listStorageV1beta1NamespacedCSIStorageCapacity"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -21523,6 +21937,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReadStorageV1beta1NamespacedCSIStorageCapacity
 														r.name = "ReadStorageV1beta1NamespacedCSIStorageCapacity"
+														r.operationID = "readStorageV1beta1NamespacedCSIStorageCapacity"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -21555,6 +21970,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 													r.name = "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces"
+													r.operationID = "watchStorageV1beta1CSIStorageCapacityListForAllNamespaces"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21593,6 +22009,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "WatchStorageV1beta1NamespacedCSIStorageCapacityList"
+														r.operationID = "watchStorageV1beta1NamespacedCSIStorageCapacityList"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -21618,6 +22035,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: WatchStorageV1beta1NamespacedCSIStorageCapacity
 															r.name = "WatchStorageV1beta1NamespacedCSIStorageCapacity"
+															r.operationID = "watchStorageV1beta1NamespacedCSIStorageCapacity"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -21651,6 +22069,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					case "GET":
 						// Leaf: LogFileHandler
 						r.name = "LogFileHandler"
+						r.operationID = "logFileHandler"
 						r.args = args
 						r.count = 1
 						return r, true
@@ -21670,6 +22089,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					case "GET":
 						// Leaf: GetCodeVersion
 						r.name = "GetCodeVersion"
+						r.operationID = "getCodeVersion"
 						r.args = args
 						r.count = 0
 						return r, true

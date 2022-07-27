@@ -30,7 +30,9 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.AnyContentTypeBinaryStringSchema(ctx)
 	if err != nil {
@@ -66,7 +68,9 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.AnyContentTypeBinaryStringSchemaDefault(ctx)
 	if err != nil {
@@ -102,12 +106,18 @@ func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "Combined",
+			ID:   "combined",
+		}
+	)
 	params, err := decodeCombinedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "Combined",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -147,7 +157,9 @@ func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.Headers200(ctx)
 	if err != nil {
@@ -183,12 +195,18 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "HeadersCombined",
+			ID:   "headersCombined",
+		}
+	)
 	params, err := decodeHeadersCombinedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "HeadersCombined",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -228,7 +246,9 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.HeadersDefault(ctx)
 	if err != nil {
@@ -264,7 +284,9 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.HeadersPattern(ctx)
 	if err != nil {
@@ -300,12 +322,18 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "IntersectPatternCode",
+			ID:   "intersectPatternCode",
+		}
+	)
 	params, err := decodeIntersectPatternCodeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "IntersectPatternCode",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -345,7 +373,9 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.MultipleGenericResponses(ctx)
 	if err != nil {
@@ -381,7 +411,9 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.OctetStreamBinaryStringSchema(ctx)
 	if err != nil {
@@ -417,7 +449,9 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.OctetStreamEmptySchema(ctx)
 	if err != nil {
@@ -453,7 +487,9 @@ func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.TextPlainBinaryStringSchema(ctx)
 	if err != nil {

@@ -30,12 +30,18 @@ func (s *Server) handleTestQueryParameterRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestQueryParameter",
+			ID:   "test_query_parameter",
+		}
+	)
 	params, err := decodeTestQueryParameterParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TestQueryParameter",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -43,8 +49,8 @@ func (s *Server) handleTestQueryParameterRequest(args [0]string, w http.Response
 	request, close, err := s.decodeTestQueryParameterRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestQueryParameter",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -85,12 +91,18 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestAny",
+			ID:   "test_request_Any",
+		}
+	)
 	request, close, err := s.decodeTestRequestAnyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestAny",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -131,12 +143,18 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestBoolean",
+			ID:   "test_request_boolean",
+		}
+	)
 	request, close, err := s.decodeTestRequestBooleanRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestBoolean",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -177,12 +195,18 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestBooleanArray",
+			ID:   "test_request_boolean_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestBooleanArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestBooleanArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -223,12 +247,18 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestBooleanArrayArray",
+			ID:   "test_request_boolean_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestBooleanArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestBooleanArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -269,12 +299,18 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestBooleanNullable",
+			ID:   "test_request_boolean_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestBooleanNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestBooleanNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -315,12 +351,18 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestBooleanNullableArray",
+			ID:   "test_request_boolean_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestBooleanNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestBooleanNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -361,12 +403,18 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestBooleanNullableArrayArray",
+			ID:   "test_request_boolean_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestBooleanNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestBooleanNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -407,12 +455,18 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestEmptyStruct",
+			ID:   "test_request_EmptyStruct",
+		}
+	)
 	request, close, err := s.decodeTestRequestEmptyStructRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestEmptyStruct",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -453,12 +507,18 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestFormatTest",
+			ID:   "test_request_FormatTest",
+		}
+	)
 	request, close, err := s.decodeTestRequestFormatTestRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestFormatTest",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -499,12 +559,18 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestInteger",
+			ID:   "test_request_integer",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestInteger",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -545,12 +611,18 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerArray",
+			ID:   "test_request_integer_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestIntegerArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -591,12 +663,18 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerArrayArray",
+			ID:   "test_request_integer_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestIntegerArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -637,12 +715,18 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerInt32",
+			ID:   "test_request_integer_int32",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestIntegerInt32",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -683,12 +767,18 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerInt32Array",
+			ID:   "test_request_integer_int32_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestIntegerInt32Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -729,12 +819,18 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerInt32ArrayArray",
+			ID:   "test_request_integer_int32_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestIntegerInt32ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -775,12 +871,18 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerInt32Nullable",
+			ID:   "test_request_integer_int32_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestIntegerInt32Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -821,12 +923,18 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerInt32NullableArray",
+			ID:   "test_request_integer_int32_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestIntegerInt32NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -867,12 +975,18 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerInt32NullableArrayArray",
+			ID:   "test_request_integer_int32_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestIntegerInt32NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -913,12 +1027,18 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerInt64",
+			ID:   "test_request_integer_int64",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestIntegerInt64",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -959,12 +1079,18 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerInt64Array",
+			ID:   "test_request_integer_int64_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestIntegerInt64Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1005,12 +1131,18 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerInt64ArrayArray",
+			ID:   "test_request_integer_int64_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestIntegerInt64ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1051,12 +1183,18 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerInt64Nullable",
+			ID:   "test_request_integer_int64_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestIntegerInt64Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1097,12 +1235,18 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerInt64NullableArray",
+			ID:   "test_request_integer_int64_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestIntegerInt64NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1143,12 +1287,18 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerInt64NullableArrayArray",
+			ID:   "test_request_integer_int64_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestIntegerInt64NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1189,12 +1339,18 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerNullable",
+			ID:   "test_request_integer_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestIntegerNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1235,12 +1391,18 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerNullableArray",
+			ID:   "test_request_integer_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestIntegerNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1281,12 +1443,18 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerNullableArrayArray",
+			ID:   "test_request_integer_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestIntegerNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestIntegerNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1327,12 +1495,18 @@ func (s *Server) handleTestRequestNullRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNull",
+			ID:   "test_request_null",
+		}
+	)
 	request, close, err := s.decodeTestRequestNullRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNull",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1373,12 +1547,18 @@ func (s *Server) handleTestRequestNullArrayRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNullArray",
+			ID:   "test_request_null_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNullArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNullArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1419,12 +1599,18 @@ func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNullArrayArray",
+			ID:   "test_request_null_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNullArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNullArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1465,12 +1651,18 @@ func (s *Server) handleTestRequestNullNullableRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNullNullable",
+			ID:   "test_request_null_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestNullNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNullNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1511,12 +1703,18 @@ func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNullNullableArray",
+			ID:   "test_request_null_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNullNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNullNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1557,12 +1755,18 @@ func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNullNullableArrayArray",
+			ID:   "test_request_null_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNullNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNullNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1603,12 +1807,18 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumber",
+			ID:   "test_request_number",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumber",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1649,12 +1859,18 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberArray",
+			ID:   "test_request_number_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1695,12 +1911,18 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberArrayArray",
+			ID:   "test_request_number_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1741,12 +1963,18 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberDouble",
+			ID:   "test_request_number_double",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberDoubleRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberDouble",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1787,12 +2015,18 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberDoubleArray",
+			ID:   "test_request_number_double_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberDoubleArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberDoubleArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1833,12 +2067,18 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberDoubleArrayArray",
+			ID:   "test_request_number_double_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberDoubleArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberDoubleArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1879,12 +2119,18 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberDoubleNullable",
+			ID:   "test_request_number_double_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberDoubleNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberDoubleNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1925,12 +2171,18 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberDoubleNullableArray",
+			ID:   "test_request_number_double_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberDoubleNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberDoubleNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1971,12 +2223,18 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberDoubleNullableArrayArray",
+			ID:   "test_request_number_double_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberDoubleNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberDoubleNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2017,12 +2275,18 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberFloat",
+			ID:   "test_request_number_float",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberFloatRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberFloat",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2063,12 +2327,18 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberFloatArray",
+			ID:   "test_request_number_float_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberFloatArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberFloatArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2109,12 +2379,18 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberFloatArrayArray",
+			ID:   "test_request_number_float_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberFloatArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberFloatArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2155,12 +2431,18 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberFloatNullable",
+			ID:   "test_request_number_float_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberFloatNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberFloatNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2201,12 +2483,18 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberFloatNullableArray",
+			ID:   "test_request_number_float_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberFloatNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberFloatNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2247,12 +2535,18 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberFloatNullableArrayArray",
+			ID:   "test_request_number_float_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberFloatNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberFloatNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2293,12 +2587,18 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberInt32",
+			ID:   "test_request_number_int32",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberInt32",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2339,12 +2639,18 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberInt32Array",
+			ID:   "test_request_number_int32_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberInt32Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2385,12 +2691,18 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberInt32ArrayArray",
+			ID:   "test_request_number_int32_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberInt32ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2431,12 +2743,18 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberInt32Nullable",
+			ID:   "test_request_number_int32_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberInt32Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2477,12 +2795,18 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberInt32NullableArray",
+			ID:   "test_request_number_int32_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberInt32NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2523,12 +2847,18 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberInt32NullableArrayArray",
+			ID:   "test_request_number_int32_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberInt32NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2569,12 +2899,18 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberInt64",
+			ID:   "test_request_number_int64",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberInt64",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2615,12 +2951,18 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberInt64Array",
+			ID:   "test_request_number_int64_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberInt64Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2661,12 +3003,18 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberInt64ArrayArray",
+			ID:   "test_request_number_int64_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberInt64ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2707,12 +3055,18 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberInt64Nullable",
+			ID:   "test_request_number_int64_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberInt64Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2753,12 +3107,18 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberInt64NullableArray",
+			ID:   "test_request_number_int64_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberInt64NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2799,12 +3159,18 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberInt64NullableArrayArray",
+			ID:   "test_request_number_int64_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberInt64NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2845,12 +3211,18 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberNullable",
+			ID:   "test_request_number_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2891,12 +3263,18 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberNullableArray",
+			ID:   "test_request_number_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2937,12 +3315,18 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestNumberNullableArrayArray",
+			ID:   "test_request_number_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestNumberNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestNumberNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2983,12 +3367,18 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredAny",
+			ID:   "test_request_required_Any",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredAnyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredAny",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3029,12 +3419,18 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredBoolean",
+			ID:   "test_request_required_boolean",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredBooleanRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredBoolean",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3075,12 +3471,18 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredBooleanArray",
+			ID:   "test_request_required_boolean_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredBooleanArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredBooleanArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3121,12 +3523,18 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredBooleanArrayArray",
+			ID:   "test_request_required_boolean_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredBooleanArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredBooleanArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3167,12 +3575,18 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredBooleanNullable",
+			ID:   "test_request_required_boolean_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredBooleanNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredBooleanNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3213,12 +3627,18 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredBooleanNullableArray",
+			ID:   "test_request_required_boolean_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredBooleanNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredBooleanNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3259,12 +3679,18 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredBooleanNullableArrayArray",
+			ID:   "test_request_required_boolean_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredBooleanNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3305,12 +3731,18 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredEmptyStruct",
+			ID:   "test_request_required_EmptyStruct",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredEmptyStructRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredEmptyStruct",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3351,12 +3783,18 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredFormatTest",
+			ID:   "test_request_required_FormatTest",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredFormatTestRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredFormatTest",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3397,12 +3835,18 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredInteger",
+			ID:   "test_request_required_integer",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredInteger",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3443,12 +3887,18 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerArray",
+			ID:   "test_request_required_integer_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredIntegerArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3489,12 +3939,18 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerArrayArray",
+			ID:   "test_request_required_integer_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredIntegerArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3535,12 +3991,18 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerInt32",
+			ID:   "test_request_required_integer_int32",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredIntegerInt32",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3581,12 +4043,18 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerInt32Array",
+			ID:   "test_request_required_integer_int32_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredIntegerInt32Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3627,12 +4095,18 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerInt32ArrayArray",
+			ID:   "test_request_required_integer_int32_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredIntegerInt32ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3673,12 +4147,18 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerInt32Nullable",
+			ID:   "test_request_required_integer_int32_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredIntegerInt32Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3719,12 +4199,18 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerInt32NullableArray",
+			ID:   "test_request_required_integer_int32_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredIntegerInt32NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3765,12 +4251,18 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerInt32NullableArrayArray",
+			ID:   "test_request_required_integer_int32_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredIntegerInt32NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3811,12 +4303,18 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerInt64",
+			ID:   "test_request_required_integer_int64",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredIntegerInt64",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3857,12 +4355,18 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerInt64Array",
+			ID:   "test_request_required_integer_int64_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredIntegerInt64Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3903,12 +4407,18 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerInt64ArrayArray",
+			ID:   "test_request_required_integer_int64_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredIntegerInt64ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3949,12 +4459,18 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerInt64Nullable",
+			ID:   "test_request_required_integer_int64_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredIntegerInt64Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3995,12 +4511,18 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerInt64NullableArray",
+			ID:   "test_request_required_integer_int64_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredIntegerInt64NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4041,12 +4563,18 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerInt64NullableArrayArray",
+			ID:   "test_request_required_integer_int64_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredIntegerInt64NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4087,12 +4615,18 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerNullable",
+			ID:   "test_request_required_integer_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredIntegerNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4133,12 +4667,18 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerNullableArray",
+			ID:   "test_request_required_integer_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredIntegerNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4179,12 +4719,18 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerNullableArrayArray",
+			ID:   "test_request_required_integer_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredIntegerNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4225,12 +4771,18 @@ func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNull",
+			ID:   "test_request_required_null",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNullRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNull",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4271,12 +4823,18 @@ func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNullArray",
+			ID:   "test_request_required_null_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNullArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNullArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4317,12 +4875,18 @@ func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNullArrayArray",
+			ID:   "test_request_required_null_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNullArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNullArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4363,12 +4927,18 @@ func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNullNullable",
+			ID:   "test_request_required_null_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNullNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNullNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4409,12 +4979,18 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNullNullableArray",
+			ID:   "test_request_required_null_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNullNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNullNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4455,12 +5031,18 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNullNullableArrayArray",
+			ID:   "test_request_required_null_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNullNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNullNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4501,12 +5083,18 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumber",
+			ID:   "test_request_required_number",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumber",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4547,12 +5135,18 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberArray",
+			ID:   "test_request_required_number_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4593,12 +5187,18 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberArrayArray",
+			ID:   "test_request_required_number_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4639,12 +5239,18 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberDouble",
+			ID:   "test_request_required_number_double",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberDoubleRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberDouble",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4685,12 +5291,18 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberDoubleArray",
+			ID:   "test_request_required_number_double_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberDoubleArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberDoubleArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4731,12 +5343,18 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberDoubleArrayArray",
+			ID:   "test_request_required_number_double_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberDoubleArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4777,12 +5395,18 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberDoubleNullable",
+			ID:   "test_request_required_number_double_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberDoubleNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberDoubleNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4823,12 +5447,18 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberDoubleNullableArray",
+			ID:   "test_request_required_number_double_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberDoubleNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4869,12 +5499,18 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberDoubleNullableArrayArray",
+			ID:   "test_request_required_number_double_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberDoubleNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4915,12 +5551,18 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberFloat",
+			ID:   "test_request_required_number_float",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberFloatRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberFloat",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4961,12 +5603,18 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberFloatArray",
+			ID:   "test_request_required_number_float_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberFloatArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberFloatArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5007,12 +5655,18 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberFloatArrayArray",
+			ID:   "test_request_required_number_float_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberFloatArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberFloatArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5053,12 +5707,18 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberFloatNullable",
+			ID:   "test_request_required_number_float_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberFloatNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberFloatNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5099,12 +5759,18 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberFloatNullableArray",
+			ID:   "test_request_required_number_float_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberFloatNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberFloatNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5145,12 +5811,18 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberFloatNullableArrayArray",
+			ID:   "test_request_required_number_float_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberFloatNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5191,12 +5863,18 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberInt32",
+			ID:   "test_request_required_number_int32",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberInt32",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5237,12 +5915,18 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberInt32Array",
+			ID:   "test_request_required_number_int32_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberInt32Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5283,12 +5967,18 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberInt32ArrayArray",
+			ID:   "test_request_required_number_int32_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberInt32ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5329,12 +6019,18 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberInt32Nullable",
+			ID:   "test_request_required_number_int32_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberInt32Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5375,12 +6071,18 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberInt32NullableArray",
+			ID:   "test_request_required_number_int32_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberInt32NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5421,12 +6123,18 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberInt32NullableArrayArray",
+			ID:   "test_request_required_number_int32_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberInt32NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5467,12 +6175,18 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberInt64",
+			ID:   "test_request_required_number_int64",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberInt64",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5513,12 +6227,18 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberInt64Array",
+			ID:   "test_request_required_number_int64_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberInt64Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5559,12 +6279,18 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberInt64ArrayArray",
+			ID:   "test_request_required_number_int64_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberInt64ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5605,12 +6331,18 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberInt64Nullable",
+			ID:   "test_request_required_number_int64_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberInt64Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5651,12 +6383,18 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberInt64NullableArray",
+			ID:   "test_request_required_number_int64_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberInt64NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5697,12 +6435,18 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberInt64NullableArrayArray",
+			ID:   "test_request_required_number_int64_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberInt64NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5743,12 +6487,18 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberNullable",
+			ID:   "test_request_required_number_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5789,12 +6539,18 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberNullableArray",
+			ID:   "test_request_required_number_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5835,12 +6591,18 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredNumberNullableArrayArray",
+			ID:   "test_request_required_number_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredNumberNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredNumberNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5881,12 +6643,18 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredString",
+			ID:   "test_request_required_string",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredString",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5927,12 +6695,18 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringArray",
+			ID:   "test_request_required_string_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5973,12 +6747,18 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringArrayArray",
+			ID:   "test_request_required_string_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6019,12 +6799,18 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringBinary",
+			ID:   "test_request_required_string_binary",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringBinaryRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringBinary",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6065,12 +6851,18 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringBinaryArray",
+			ID:   "test_request_required_string_binary_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringBinaryArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringBinaryArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6111,12 +6903,18 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringBinaryArrayArray",
+			ID:   "test_request_required_string_binary_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringBinaryArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringBinaryArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6157,12 +6955,18 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringBinaryNullable",
+			ID:   "test_request_required_string_binary_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringBinaryNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringBinaryNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6203,12 +7007,18 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringBinaryNullableArray",
+			ID:   "test_request_required_string_binary_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringBinaryNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringBinaryNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6249,12 +7059,18 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringBinaryNullableArrayArray",
+			ID:   "test_request_required_string_binary_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringBinaryNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6295,12 +7111,18 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringByte",
+			ID:   "test_request_required_string_byte",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringByteRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringByte",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6341,12 +7163,18 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringByteArray",
+			ID:   "test_request_required_string_byte_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringByteArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringByteArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6387,12 +7215,18 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringByteArrayArray",
+			ID:   "test_request_required_string_byte_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringByteArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringByteArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6433,12 +7267,18 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringByteNullable",
+			ID:   "test_request_required_string_byte_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringByteNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringByteNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6479,12 +7319,18 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringByteNullableArray",
+			ID:   "test_request_required_string_byte_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringByteNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringByteNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6525,12 +7371,18 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringByteNullableArrayArray",
+			ID:   "test_request_required_string_byte_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringByteNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6571,12 +7423,18 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDate",
+			ID:   "test_request_required_string_date",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6617,12 +7475,18 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDateArray",
+			ID:   "test_request_required_string_date_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDateArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDateArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6663,12 +7527,18 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDateArrayArray",
+			ID:   "test_request_required_string_date_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDateArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDateArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6709,12 +7579,18 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDateNullable",
+			ID:   "test_request_required_string_date_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDateNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDateNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6755,12 +7631,18 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDateNullableArray",
+			ID:   "test_request_required_string_date_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDateNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDateNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6801,12 +7683,18 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDateNullableArrayArray",
+			ID:   "test_request_required_string_date_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDateNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6847,12 +7735,18 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDateTime",
+			ID:   "test_request_required_string_date-time",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDateTimeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDateTime",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6893,12 +7787,18 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDateTimeArray",
+			ID:   "test_request_required_string_date-time_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDateTimeArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDateTimeArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6939,12 +7839,18 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDateTimeArrayArray",
+			ID:   "test_request_required_string_date-time_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDateTimeArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6985,12 +7891,18 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDateTimeNullable",
+			ID:   "test_request_required_string_date-time_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDateTimeNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDateTimeNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7031,12 +7943,18 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDateTimeNullableArray",
+			ID:   "test_request_required_string_date-time_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDateTimeNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7077,12 +7995,18 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDateTimeNullableArrayArray",
+			ID:   "test_request_required_string_date-time_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDateTimeNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7123,12 +8047,18 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDuration",
+			ID:   "test_request_required_string_duration",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDurationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDuration",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7169,12 +8099,18 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDurationArray",
+			ID:   "test_request_required_string_duration_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDurationArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDurationArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7215,12 +8151,18 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDurationArrayArray",
+			ID:   "test_request_required_string_duration_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDurationArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDurationArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7261,12 +8203,18 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDurationNullable",
+			ID:   "test_request_required_string_duration_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDurationNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDurationNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7307,12 +8255,18 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDurationNullableArray",
+			ID:   "test_request_required_string_duration_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDurationNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDurationNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7353,12 +8307,18 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringDurationNullableArrayArray",
+			ID:   "test_request_required_string_duration_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringDurationNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7399,12 +8359,18 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringEmail",
+			ID:   "test_request_required_string_email",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringEmailRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringEmail",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7445,12 +8411,18 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringEmailArray",
+			ID:   "test_request_required_string_email_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringEmailArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringEmailArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7491,12 +8463,18 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringEmailArrayArray",
+			ID:   "test_request_required_string_email_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringEmailArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringEmailArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7537,12 +8515,18 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringEmailNullable",
+			ID:   "test_request_required_string_email_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringEmailNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringEmailNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7583,12 +8567,18 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringEmailNullableArray",
+			ID:   "test_request_required_string_email_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringEmailNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringEmailNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7629,12 +8619,18 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringEmailNullableArrayArray",
+			ID:   "test_request_required_string_email_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringEmailNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7675,12 +8671,18 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringHostname",
+			ID:   "test_request_required_string_hostname",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringHostnameRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringHostname",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7721,12 +8723,18 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringHostnameArray",
+			ID:   "test_request_required_string_hostname_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringHostnameArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringHostnameArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7767,12 +8775,18 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringHostnameArrayArray",
+			ID:   "test_request_required_string_hostname_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringHostnameArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringHostnameArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7813,12 +8827,18 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringHostnameNullable",
+			ID:   "test_request_required_string_hostname_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringHostnameNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringHostnameNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7859,12 +8879,18 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringHostnameNullableArray",
+			ID:   "test_request_required_string_hostname_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringHostnameNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringHostnameNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7905,12 +8931,18 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringHostnameNullableArrayArray",
+			ID:   "test_request_required_string_hostname_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringHostnameNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7951,12 +8983,18 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIP",
+			ID:   "test_request_required_string_ip",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIPRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIP",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7997,12 +9035,18 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIPArray",
+			ID:   "test_request_required_string_ip_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIPArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIPArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8043,12 +9087,18 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIPArrayArray",
+			ID:   "test_request_required_string_ip_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIPArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIPArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8089,12 +9139,18 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIPNullable",
+			ID:   "test_request_required_string_ip_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIPNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIPNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8135,12 +9191,18 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIPNullableArray",
+			ID:   "test_request_required_string_ip_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIPNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIPNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8181,12 +9243,18 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIPNullableArrayArray",
+			ID:   "test_request_required_string_ip_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIPNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8227,12 +9295,18 @@ func (s *Server) handleTestRequestRequiredStringInt32Request(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringInt32",
+			ID:   "test_request_required_string_int32",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringInt32",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8273,12 +9347,18 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringInt32Array",
+			ID:   "test_request_required_string_int32_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringInt32Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8319,12 +9399,18 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringInt32ArrayArray",
+			ID:   "test_request_required_string_int32_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringInt32ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8365,12 +9451,18 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringInt32Nullable",
+			ID:   "test_request_required_string_int32_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringInt32Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8411,12 +9503,18 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringInt32NullableArray",
+			ID:   "test_request_required_string_int32_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringInt32NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8457,12 +9555,18 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayArrayRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringInt32NullableArrayArray",
+			ID:   "test_request_required_string_int32_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringInt32NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8503,12 +9607,18 @@ func (s *Server) handleTestRequestRequiredStringInt64Request(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringInt64",
+			ID:   "test_request_required_string_int64",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringInt64",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8549,12 +9659,18 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringInt64Array",
+			ID:   "test_request_required_string_int64_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringInt64Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8595,12 +9711,18 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringInt64ArrayArray",
+			ID:   "test_request_required_string_int64_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringInt64ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8641,12 +9763,18 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringInt64Nullable",
+			ID:   "test_request_required_string_int64_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringInt64Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8687,12 +9815,18 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringInt64NullableArray",
+			ID:   "test_request_required_string_int64_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringInt64NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8733,12 +9867,18 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayArrayRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringInt64NullableArrayArray",
+			ID:   "test_request_required_string_int64_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringInt64NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8779,12 +9919,18 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIpv4",
+			ID:   "test_request_required_string_ipv4",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv4Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIpv4",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8825,12 +9971,18 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIpv4Array",
+			ID:   "test_request_required_string_ipv4_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv4ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIpv4Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8871,12 +10023,18 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIpv4ArrayArray",
+			ID:   "test_request_required_string_ipv4_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIpv4ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8917,12 +10075,18 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIpv4Nullable",
+			ID:   "test_request_required_string_ipv4_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv4NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIpv4Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8963,12 +10127,18 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIpv4NullableArray",
+			ID:   "test_request_required_string_ipv4_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv4NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIpv4NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9009,12 +10179,18 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIpv4NullableArrayArray",
+			ID:   "test_request_required_string_ipv4_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIpv4NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9055,12 +10231,18 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIpv6",
+			ID:   "test_request_required_string_ipv6",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv6Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIpv6",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9101,12 +10283,18 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIpv6Array",
+			ID:   "test_request_required_string_ipv6_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv6ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIpv6Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9147,12 +10335,18 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIpv6ArrayArray",
+			ID:   "test_request_required_string_ipv6_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIpv6ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9193,12 +10387,18 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIpv6Nullable",
+			ID:   "test_request_required_string_ipv6_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv6NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIpv6Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9239,12 +10439,18 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIpv6NullableArray",
+			ID:   "test_request_required_string_ipv6_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv6NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIpv6NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9285,12 +10491,18 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringIpv6NullableArrayArray",
+			ID:   "test_request_required_string_ipv6_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringIpv6NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9331,12 +10543,18 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringNullable",
+			ID:   "test_request_required_string_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9377,12 +10595,18 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringNullableArray",
+			ID:   "test_request_required_string_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9423,12 +10647,18 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringNullableArrayArray",
+			ID:   "test_request_required_string_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9469,12 +10699,18 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringPassword",
+			ID:   "test_request_required_string_password",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringPasswordRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringPassword",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9515,12 +10751,18 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringPasswordArray",
+			ID:   "test_request_required_string_password_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringPasswordArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringPasswordArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9561,12 +10803,18 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringPasswordArrayArray",
+			ID:   "test_request_required_string_password_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringPasswordArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringPasswordArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9607,12 +10855,18 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringPasswordNullable",
+			ID:   "test_request_required_string_password_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringPasswordNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringPasswordNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9653,12 +10907,18 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringPasswordNullableArray",
+			ID:   "test_request_required_string_password_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringPasswordNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringPasswordNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9699,12 +10959,18 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringPasswordNullableArrayArray",
+			ID:   "test_request_required_string_password_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringPasswordNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9745,12 +11011,18 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringTime",
+			ID:   "test_request_required_string_time",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringTimeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringTime",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9791,12 +11063,18 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringTimeArray",
+			ID:   "test_request_required_string_time_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringTimeArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringTimeArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9837,12 +11115,18 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringTimeArrayArray",
+			ID:   "test_request_required_string_time_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringTimeArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringTimeArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9883,12 +11167,18 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringTimeNullable",
+			ID:   "test_request_required_string_time_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringTimeNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringTimeNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9929,12 +11219,18 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringTimeNullableArray",
+			ID:   "test_request_required_string_time_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringTimeNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringTimeNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9975,12 +11271,18 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringTimeNullableArrayArray",
+			ID:   "test_request_required_string_time_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringTimeNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10021,12 +11323,18 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringURI",
+			ID:   "test_request_required_string_uri",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringURIRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringURI",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10067,12 +11375,18 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringURIArray",
+			ID:   "test_request_required_string_uri_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringURIArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringURIArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10113,12 +11427,18 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringURIArrayArray",
+			ID:   "test_request_required_string_uri_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringURIArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringURIArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10159,12 +11479,18 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringURINullable",
+			ID:   "test_request_required_string_uri_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringURINullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringURINullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10205,12 +11531,18 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringURINullableArray",
+			ID:   "test_request_required_string_uri_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringURINullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringURINullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10251,12 +11583,18 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringURINullableArrayArray",
+			ID:   "test_request_required_string_uri_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringURINullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringURINullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10297,12 +11635,18 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUUID",
+			ID:   "test_request_required_string_uuid",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUUIDRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUUID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10343,12 +11687,18 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUUIDArray",
+			ID:   "test_request_required_string_uuid_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUUIDArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUUIDArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10389,12 +11739,18 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUUIDArrayArray",
+			ID:   "test_request_required_string_uuid_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUUIDArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUUIDArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10435,12 +11791,18 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUUIDNullable",
+			ID:   "test_request_required_string_uuid_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUUIDNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUUIDNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10481,12 +11843,18 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUUIDNullableArray",
+			ID:   "test_request_required_string_uuid_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUUIDNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUUIDNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10527,12 +11895,18 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUUIDNullableArrayArray",
+			ID:   "test_request_required_string_uuid_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUUIDNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10573,12 +11947,18 @@ func (s *Server) handleTestRequestRequiredStringUnixRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnix",
+			ID:   "test_request_required_string_unix",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnix",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10619,12 +11999,18 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixArray",
+			ID:   "test_request_required_string_unix_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10665,12 +12051,18 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixArrayArray",
+			ID:   "test_request_required_string_unix_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10711,12 +12103,18 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixMicro",
+			ID:   "test_request_required_string_unix-micro",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMicroRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixMicro",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10757,12 +12155,18 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixMicroArray",
+			ID:   "test_request_required_string_unix-micro_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMicroArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixMicroArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10803,12 +12207,18 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixMicroArrayArray",
+			ID:   "test_request_required_string_unix-micro_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixMicroArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10849,12 +12259,18 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixMicroNullable",
+			ID:   "test_request_required_string_unix-micro_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMicroNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixMicroNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10895,12 +12311,18 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixMicroNullableArray",
+			ID:   "test_request_required_string_unix-micro_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixMicroNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10941,12 +12363,18 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixMicroNullableArrayArray",
+			ID:   "test_request_required_string_unix-micro_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixMicroNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10987,12 +12415,18 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixMilli",
+			ID:   "test_request_required_string_unix-milli",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMilliRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixMilli",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11033,12 +12467,18 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixMilliArray",
+			ID:   "test_request_required_string_unix-milli_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMilliArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixMilliArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11079,12 +12519,18 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixMilliArrayArray",
+			ID:   "test_request_required_string_unix-milli_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixMilliArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11125,12 +12571,18 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixMilliNullable",
+			ID:   "test_request_required_string_unix-milli_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMilliNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixMilliNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11171,12 +12623,18 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixMilliNullableArray",
+			ID:   "test_request_required_string_unix-milli_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixMilliNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11217,12 +12675,18 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixMilliNullableArrayArray",
+			ID:   "test_request_required_string_unix-milli_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixMilliNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11263,12 +12727,18 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixNano",
+			ID:   "test_request_required_string_unix-nano",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNanoRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixNano",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11309,12 +12779,18 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixNanoArray",
+			ID:   "test_request_required_string_unix-nano_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNanoArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixNanoArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11355,12 +12831,18 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixNanoArrayArray",
+			ID:   "test_request_required_string_unix-nano_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixNanoArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11401,12 +12883,18 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixNanoNullable",
+			ID:   "test_request_required_string_unix-nano_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNanoNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixNanoNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11447,12 +12935,18 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixNanoNullableArray",
+			ID:   "test_request_required_string_unix-nano_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixNanoNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11493,12 +12987,18 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixNanoNullableArrayArray",
+			ID:   "test_request_required_string_unix-nano_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixNanoNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11539,12 +13039,18 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixNullable",
+			ID:   "test_request_required_string_unix_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11585,12 +13091,18 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixNullableArray",
+			ID:   "test_request_required_string_unix_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11631,12 +13143,18 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixNullableArrayArray",
+			ID:   "test_request_required_string_unix_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11677,12 +13195,18 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixSeconds",
+			ID:   "test_request_required_string_unix-seconds",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixSeconds",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11723,12 +13247,18 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixSecondsArray",
+			ID:   "test_request_required_string_unix-seconds_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixSecondsArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11769,12 +13299,18 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixSecondsArrayArray",
+			ID:   "test_request_required_string_unix-seconds_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixSecondsArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11815,12 +13351,18 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixSecondsNullable",
+			ID:   "test_request_required_string_unix-seconds_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixSecondsNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11861,12 +13403,18 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixSecondsNullableArray",
+			ID:   "test_request_required_string_unix-seconds_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixSecondsNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11907,12 +13455,18 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredStringUnixSecondsNullableArrayArray",
+			ID:   "test_request_required_string_unix-seconds_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestRequiredStringUnixSecondsNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11953,12 +13507,18 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestString",
+			ID:   "test_request_string",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestString",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11999,12 +13559,18 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringArray",
+			ID:   "test_request_string_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12045,12 +13611,18 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringArrayArray",
+			ID:   "test_request_string_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12091,12 +13663,18 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringBinary",
+			ID:   "test_request_string_binary",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringBinaryRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringBinary",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12137,12 +13715,18 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringBinaryArray",
+			ID:   "test_request_string_binary_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringBinaryArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringBinaryArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12183,12 +13767,18 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringBinaryArrayArray",
+			ID:   "test_request_string_binary_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringBinaryArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringBinaryArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12229,12 +13819,18 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringBinaryNullable",
+			ID:   "test_request_string_binary_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringBinaryNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringBinaryNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12275,12 +13871,18 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringBinaryNullableArray",
+			ID:   "test_request_string_binary_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringBinaryNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringBinaryNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12321,12 +13923,18 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringBinaryNullableArrayArray",
+			ID:   "test_request_string_binary_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringBinaryNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringBinaryNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12367,12 +13975,18 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringByte",
+			ID:   "test_request_string_byte",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringByteRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringByte",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12413,12 +14027,18 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringByteArray",
+			ID:   "test_request_string_byte_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringByteArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringByteArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12459,12 +14079,18 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringByteArrayArray",
+			ID:   "test_request_string_byte_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringByteArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringByteArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12505,12 +14131,18 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringByteNullable",
+			ID:   "test_request_string_byte_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringByteNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringByteNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12551,12 +14183,18 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringByteNullableArray",
+			ID:   "test_request_string_byte_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringByteNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringByteNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12597,12 +14235,18 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringByteNullableArrayArray",
+			ID:   "test_request_string_byte_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringByteNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringByteNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12643,12 +14287,18 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDate",
+			ID:   "test_request_string_date",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12689,12 +14339,18 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDateArray",
+			ID:   "test_request_string_date_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDateArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDateArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12735,12 +14391,18 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDateArrayArray",
+			ID:   "test_request_string_date_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDateArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDateArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12781,12 +14443,18 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDateNullable",
+			ID:   "test_request_string_date_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDateNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDateNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12827,12 +14495,18 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDateNullableArray",
+			ID:   "test_request_string_date_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDateNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDateNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12873,12 +14547,18 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDateNullableArrayArray",
+			ID:   "test_request_string_date_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDateNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDateNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12919,12 +14599,18 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDateTime",
+			ID:   "test_request_string_date-time",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDateTimeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDateTime",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12965,12 +14651,18 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDateTimeArray",
+			ID:   "test_request_string_date-time_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDateTimeArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDateTimeArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13011,12 +14703,18 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDateTimeArrayArray",
+			ID:   "test_request_string_date-time_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDateTimeArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDateTimeArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13057,12 +14755,18 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDateTimeNullable",
+			ID:   "test_request_string_date-time_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDateTimeNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDateTimeNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13103,12 +14807,18 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDateTimeNullableArray",
+			ID:   "test_request_string_date-time_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDateTimeNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDateTimeNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13149,12 +14859,18 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDateTimeNullableArrayArray",
+			ID:   "test_request_string_date-time_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDateTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDateTimeNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13195,12 +14911,18 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDuration",
+			ID:   "test_request_string_duration",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDurationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDuration",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13241,12 +14963,18 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDurationArray",
+			ID:   "test_request_string_duration_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDurationArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDurationArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13287,12 +15015,18 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDurationArrayArray",
+			ID:   "test_request_string_duration_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDurationArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDurationArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13333,12 +15067,18 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDurationNullable",
+			ID:   "test_request_string_duration_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDurationNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDurationNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13379,12 +15119,18 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDurationNullableArray",
+			ID:   "test_request_string_duration_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDurationNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDurationNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13425,12 +15171,18 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringDurationNullableArrayArray",
+			ID:   "test_request_string_duration_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringDurationNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringDurationNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13471,12 +15223,18 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringEmail",
+			ID:   "test_request_string_email",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringEmailRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringEmail",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13517,12 +15275,18 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringEmailArray",
+			ID:   "test_request_string_email_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringEmailArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringEmailArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13563,12 +15327,18 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringEmailArrayArray",
+			ID:   "test_request_string_email_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringEmailArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringEmailArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13609,12 +15379,18 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringEmailNullable",
+			ID:   "test_request_string_email_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringEmailNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringEmailNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13655,12 +15431,18 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringEmailNullableArray",
+			ID:   "test_request_string_email_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringEmailNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringEmailNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13701,12 +15483,18 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringEmailNullableArrayArray",
+			ID:   "test_request_string_email_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringEmailNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringEmailNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13747,12 +15535,18 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringHostname",
+			ID:   "test_request_string_hostname",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringHostnameRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringHostname",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13793,12 +15587,18 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringHostnameArray",
+			ID:   "test_request_string_hostname_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringHostnameArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringHostnameArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13839,12 +15639,18 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringHostnameArrayArray",
+			ID:   "test_request_string_hostname_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringHostnameArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringHostnameArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13885,12 +15691,18 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringHostnameNullable",
+			ID:   "test_request_string_hostname_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringHostnameNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringHostnameNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13931,12 +15743,18 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringHostnameNullableArray",
+			ID:   "test_request_string_hostname_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringHostnameNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringHostnameNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13977,12 +15795,18 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringHostnameNullableArrayArray",
+			ID:   "test_request_string_hostname_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringHostnameNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringHostnameNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14023,12 +15847,18 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIP",
+			ID:   "test_request_string_ip",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIPRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIP",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14069,12 +15899,18 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIPArray",
+			ID:   "test_request_string_ip_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIPArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIPArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14115,12 +15951,18 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIPArrayArray",
+			ID:   "test_request_string_ip_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIPArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIPArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14161,12 +16003,18 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIPNullable",
+			ID:   "test_request_string_ip_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIPNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIPNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14207,12 +16055,18 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIPNullableArray",
+			ID:   "test_request_string_ip_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIPNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIPNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14253,12 +16107,18 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIPNullableArrayArray",
+			ID:   "test_request_string_ip_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIPNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIPNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14299,12 +16159,18 @@ func (s *Server) handleTestRequestStringInt32Request(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringInt32",
+			ID:   "test_request_string_int32",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringInt32",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14345,12 +16211,18 @@ func (s *Server) handleTestRequestStringInt32ArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringInt32Array",
+			ID:   "test_request_string_int32_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringInt32Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14391,12 +16263,18 @@ func (s *Server) handleTestRequestStringInt32ArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringInt32ArrayArray",
+			ID:   "test_request_string_int32_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringInt32ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14437,12 +16315,18 @@ func (s *Server) handleTestRequestStringInt32NullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringInt32Nullable",
+			ID:   "test_request_string_int32_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringInt32Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14483,12 +16367,18 @@ func (s *Server) handleTestRequestStringInt32NullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringInt32NullableArray",
+			ID:   "test_request_string_int32_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringInt32NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14529,12 +16419,18 @@ func (s *Server) handleTestRequestStringInt32NullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringInt32NullableArrayArray",
+			ID:   "test_request_string_int32_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringInt32NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14575,12 +16471,18 @@ func (s *Server) handleTestRequestStringInt64Request(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringInt64",
+			ID:   "test_request_string_int64",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringInt64",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14621,12 +16523,18 @@ func (s *Server) handleTestRequestStringInt64ArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringInt64Array",
+			ID:   "test_request_string_int64_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringInt64Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14667,12 +16575,18 @@ func (s *Server) handleTestRequestStringInt64ArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringInt64ArrayArray",
+			ID:   "test_request_string_int64_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringInt64ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14713,12 +16627,18 @@ func (s *Server) handleTestRequestStringInt64NullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringInt64Nullable",
+			ID:   "test_request_string_int64_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringInt64Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14759,12 +16679,18 @@ func (s *Server) handleTestRequestStringInt64NullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringInt64NullableArray",
+			ID:   "test_request_string_int64_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringInt64NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14805,12 +16731,18 @@ func (s *Server) handleTestRequestStringInt64NullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringInt64NullableArrayArray",
+			ID:   "test_request_string_int64_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringInt64NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14851,12 +16783,18 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIpv4",
+			ID:   "test_request_string_ipv4",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIpv4Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIpv4",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14897,12 +16835,18 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIpv4Array",
+			ID:   "test_request_string_ipv4_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIpv4ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIpv4Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14943,12 +16887,18 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIpv4ArrayArray",
+			ID:   "test_request_string_ipv4_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIpv4ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIpv4ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14989,12 +16939,18 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIpv4Nullable",
+			ID:   "test_request_string_ipv4_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIpv4NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIpv4Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15035,12 +16991,18 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIpv4NullableArray",
+			ID:   "test_request_string_ipv4_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIpv4NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIpv4NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15081,12 +17043,18 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIpv4NullableArrayArray",
+			ID:   "test_request_string_ipv4_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIpv4NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIpv4NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15127,12 +17095,18 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIpv6",
+			ID:   "test_request_string_ipv6",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIpv6Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIpv6",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15173,12 +17147,18 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIpv6Array",
+			ID:   "test_request_string_ipv6_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIpv6ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIpv6Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15219,12 +17199,18 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIpv6ArrayArray",
+			ID:   "test_request_string_ipv6_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIpv6ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIpv6ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15265,12 +17251,18 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIpv6Nullable",
+			ID:   "test_request_string_ipv6_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIpv6NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIpv6Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15311,12 +17303,18 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIpv6NullableArray",
+			ID:   "test_request_string_ipv6_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIpv6NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIpv6NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15357,12 +17355,18 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringIpv6NullableArrayArray",
+			ID:   "test_request_string_ipv6_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringIpv6NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringIpv6NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15403,12 +17407,18 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringNullable",
+			ID:   "test_request_string_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15449,12 +17459,18 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringNullableArray",
+			ID:   "test_request_string_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15495,12 +17511,18 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringNullableArrayArray",
+			ID:   "test_request_string_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15541,12 +17563,18 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringPassword",
+			ID:   "test_request_string_password",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringPasswordRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringPassword",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15587,12 +17615,18 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringPasswordArray",
+			ID:   "test_request_string_password_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringPasswordArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringPasswordArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15633,12 +17667,18 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringPasswordArrayArray",
+			ID:   "test_request_string_password_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringPasswordArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringPasswordArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15679,12 +17719,18 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringPasswordNullable",
+			ID:   "test_request_string_password_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringPasswordNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringPasswordNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15725,12 +17771,18 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringPasswordNullableArray",
+			ID:   "test_request_string_password_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringPasswordNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringPasswordNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15771,12 +17823,18 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringPasswordNullableArrayArray",
+			ID:   "test_request_string_password_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringPasswordNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringPasswordNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15817,12 +17875,18 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringTime",
+			ID:   "test_request_string_time",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringTimeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringTime",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15863,12 +17927,18 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringTimeArray",
+			ID:   "test_request_string_time_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringTimeArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringTimeArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15909,12 +17979,18 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringTimeArrayArray",
+			ID:   "test_request_string_time_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringTimeArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringTimeArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15955,12 +18031,18 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringTimeNullable",
+			ID:   "test_request_string_time_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringTimeNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringTimeNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16001,12 +18083,18 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringTimeNullableArray",
+			ID:   "test_request_string_time_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringTimeNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringTimeNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16047,12 +18135,18 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringTimeNullableArrayArray",
+			ID:   "test_request_string_time_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringTimeNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16093,12 +18187,18 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringURI",
+			ID:   "test_request_string_uri",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringURIRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringURI",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16139,12 +18239,18 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringURIArray",
+			ID:   "test_request_string_uri_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringURIArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringURIArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16185,12 +18291,18 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringURIArrayArray",
+			ID:   "test_request_string_uri_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringURIArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringURIArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16231,12 +18343,18 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringURINullable",
+			ID:   "test_request_string_uri_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringURINullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringURINullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16277,12 +18395,18 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringURINullableArray",
+			ID:   "test_request_string_uri_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringURINullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringURINullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16323,12 +18447,18 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringURINullableArrayArray",
+			ID:   "test_request_string_uri_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringURINullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringURINullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16369,12 +18499,18 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUUID",
+			ID:   "test_request_string_uuid",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUUIDRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUUID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16415,12 +18551,18 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUUIDArray",
+			ID:   "test_request_string_uuid_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUUIDArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUUIDArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16461,12 +18603,18 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUUIDArrayArray",
+			ID:   "test_request_string_uuid_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUUIDArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUUIDArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16507,12 +18655,18 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUUIDNullable",
+			ID:   "test_request_string_uuid_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUUIDNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUUIDNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16553,12 +18707,18 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUUIDNullableArray",
+			ID:   "test_request_string_uuid_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUUIDNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUUIDNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16599,12 +18759,18 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUUIDNullableArrayArray",
+			ID:   "test_request_string_uuid_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUUIDNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUUIDNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16645,12 +18811,18 @@ func (s *Server) handleTestRequestStringUnixRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnix",
+			ID:   "test_request_string_unix",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnix",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16691,12 +18863,18 @@ func (s *Server) handleTestRequestStringUnixArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixArray",
+			ID:   "test_request_string_unix_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16737,12 +18915,18 @@ func (s *Server) handleTestRequestStringUnixArrayArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixArrayArray",
+			ID:   "test_request_string_unix_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16783,12 +18967,18 @@ func (s *Server) handleTestRequestStringUnixMicroRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixMicro",
+			ID:   "test_request_string_unix-micro",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixMicroRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixMicro",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16829,12 +19019,18 @@ func (s *Server) handleTestRequestStringUnixMicroArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixMicroArray",
+			ID:   "test_request_string_unix-micro_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixMicroArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixMicroArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16875,12 +19071,18 @@ func (s *Server) handleTestRequestStringUnixMicroArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixMicroArrayArray",
+			ID:   "test_request_string_unix-micro_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixMicroArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixMicroArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16921,12 +19123,18 @@ func (s *Server) handleTestRequestStringUnixMicroNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixMicroNullable",
+			ID:   "test_request_string_unix-micro_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixMicroNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixMicroNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16967,12 +19175,18 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixMicroNullableArray",
+			ID:   "test_request_string_unix-micro_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixMicroNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixMicroNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17013,12 +19227,18 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixMicroNullableArrayArray",
+			ID:   "test_request_string_unix-micro_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixMicroNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17059,12 +19279,18 @@ func (s *Server) handleTestRequestStringUnixMilliRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixMilli",
+			ID:   "test_request_string_unix-milli",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixMilliRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixMilli",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17105,12 +19331,18 @@ func (s *Server) handleTestRequestStringUnixMilliArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixMilliArray",
+			ID:   "test_request_string_unix-milli_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixMilliArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixMilliArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17151,12 +19383,18 @@ func (s *Server) handleTestRequestStringUnixMilliArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixMilliArrayArray",
+			ID:   "test_request_string_unix-milli_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixMilliArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixMilliArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17197,12 +19435,18 @@ func (s *Server) handleTestRequestStringUnixMilliNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixMilliNullable",
+			ID:   "test_request_string_unix-milli_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixMilliNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixMilliNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17243,12 +19487,18 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixMilliNullableArray",
+			ID:   "test_request_string_unix-milli_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixMilliNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixMilliNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17289,12 +19539,18 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixMilliNullableArrayArray",
+			ID:   "test_request_string_unix-milli_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixMilliNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17335,12 +19591,18 @@ func (s *Server) handleTestRequestStringUnixNanoRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixNano",
+			ID:   "test_request_string_unix-nano",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixNanoRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixNano",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17381,12 +19643,18 @@ func (s *Server) handleTestRequestStringUnixNanoArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixNanoArray",
+			ID:   "test_request_string_unix-nano_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixNanoArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixNanoArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17427,12 +19695,18 @@ func (s *Server) handleTestRequestStringUnixNanoArrayArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixNanoArrayArray",
+			ID:   "test_request_string_unix-nano_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixNanoArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixNanoArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17473,12 +19747,18 @@ func (s *Server) handleTestRequestStringUnixNanoNullableRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixNanoNullable",
+			ID:   "test_request_string_unix-nano_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixNanoNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixNanoNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17519,12 +19799,18 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixNanoNullableArray",
+			ID:   "test_request_string_unix-nano_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixNanoNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixNanoNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17565,12 +19851,18 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayArrayRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixNanoNullableArrayArray",
+			ID:   "test_request_string_unix-nano_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixNanoNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17611,12 +19903,18 @@ func (s *Server) handleTestRequestStringUnixNullableRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixNullable",
+			ID:   "test_request_string_unix_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17657,12 +19955,18 @@ func (s *Server) handleTestRequestStringUnixNullableArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixNullableArray",
+			ID:   "test_request_string_unix_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17703,12 +20007,18 @@ func (s *Server) handleTestRequestStringUnixNullableArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixNullableArrayArray",
+			ID:   "test_request_string_unix_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17749,12 +20059,18 @@ func (s *Server) handleTestRequestStringUnixSecondsRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixSeconds",
+			ID:   "test_request_string_unix-seconds",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixSecondsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixSeconds",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17795,12 +20111,18 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixSecondsArray",
+			ID:   "test_request_string_unix-seconds_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixSecondsArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixSecondsArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17841,12 +20163,18 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixSecondsArrayArray",
+			ID:   "test_request_string_unix-seconds_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixSecondsArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixSecondsArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17887,12 +20215,18 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixSecondsNullable",
+			ID:   "test_request_string_unix-seconds_nullable",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixSecondsNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixSecondsNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17933,12 +20267,18 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixSecondsNullableArray",
+			ID:   "test_request_string_unix-seconds_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixSecondsNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixSecondsNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17979,12 +20319,18 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayArrayRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestStringUnixSecondsNullableArrayArray",
+			ID:   "test_request_string_unix-seconds_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestRequestStringUnixSecondsNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18025,12 +20371,18 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseAny",
+			ID:   "test_response_Any",
+		}
+	)
 	request, close, err := s.decodeTestResponseAnyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseAny",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18071,12 +20423,18 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseBoolean",
+			ID:   "test_response_boolean",
+		}
+	)
 	request, close, err := s.decodeTestResponseBooleanRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseBoolean",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18117,12 +20475,18 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseBooleanArray",
+			ID:   "test_response_boolean_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseBooleanArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseBooleanArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18163,12 +20527,18 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseBooleanArrayArray",
+			ID:   "test_response_boolean_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseBooleanArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseBooleanArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18209,12 +20579,18 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseBooleanNullable",
+			ID:   "test_response_boolean_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseBooleanNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseBooleanNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18255,12 +20631,18 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseBooleanNullableArray",
+			ID:   "test_response_boolean_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseBooleanNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseBooleanNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18301,12 +20683,18 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseBooleanNullableArrayArray",
+			ID:   "test_response_boolean_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseBooleanNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseBooleanNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18347,12 +20735,18 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseEmptyStruct",
+			ID:   "test_response_EmptyStruct",
+		}
+	)
 	request, close, err := s.decodeTestResponseEmptyStructRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseEmptyStruct",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18393,12 +20787,18 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseFormatTest",
+			ID:   "test_response_FormatTest",
+		}
+	)
 	request, close, err := s.decodeTestResponseFormatTestRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseFormatTest",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18439,12 +20839,18 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseInteger",
+			ID:   "test_response_integer",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseInteger",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18485,12 +20891,18 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerArray",
+			ID:   "test_response_integer_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseIntegerArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18531,12 +20943,18 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerArrayArray",
+			ID:   "test_response_integer_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseIntegerArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18577,12 +20995,18 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerInt32",
+			ID:   "test_response_integer_int32",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseIntegerInt32",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18623,12 +21047,18 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerInt32Array",
+			ID:   "test_response_integer_int32_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseIntegerInt32Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18669,12 +21099,18 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerInt32ArrayArray",
+			ID:   "test_response_integer_int32_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseIntegerInt32ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18715,12 +21151,18 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerInt32Nullable",
+			ID:   "test_response_integer_int32_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseIntegerInt32Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18761,12 +21203,18 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerInt32NullableArray",
+			ID:   "test_response_integer_int32_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseIntegerInt32NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18807,12 +21255,18 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerInt32NullableArrayArray",
+			ID:   "test_response_integer_int32_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseIntegerInt32NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18853,12 +21307,18 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerInt64",
+			ID:   "test_response_integer_int64",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseIntegerInt64",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18899,12 +21359,18 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerInt64Array",
+			ID:   "test_response_integer_int64_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseIntegerInt64Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18945,12 +21411,18 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerInt64ArrayArray",
+			ID:   "test_response_integer_int64_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseIntegerInt64ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18991,12 +21463,18 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerInt64Nullable",
+			ID:   "test_response_integer_int64_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseIntegerInt64Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19037,12 +21515,18 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerInt64NullableArray",
+			ID:   "test_response_integer_int64_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseIntegerInt64NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19083,12 +21567,18 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerInt64NullableArrayArray",
+			ID:   "test_response_integer_int64_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseIntegerInt64NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19129,12 +21619,18 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerNullable",
+			ID:   "test_response_integer_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseIntegerNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19175,12 +21671,18 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerNullableArray",
+			ID:   "test_response_integer_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseIntegerNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19221,12 +21723,18 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerNullableArrayArray",
+			ID:   "test_response_integer_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseIntegerNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseIntegerNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19267,12 +21775,18 @@ func (s *Server) handleTestResponseNullRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNull",
+			ID:   "test_response_null",
+		}
+	)
 	request, close, err := s.decodeTestResponseNullRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNull",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19313,12 +21827,18 @@ func (s *Server) handleTestResponseNullArrayRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNullArray",
+			ID:   "test_response_null_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNullArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNullArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19359,12 +21879,18 @@ func (s *Server) handleTestResponseNullArrayArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNullArrayArray",
+			ID:   "test_response_null_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNullArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNullArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19405,12 +21931,18 @@ func (s *Server) handleTestResponseNullNullableRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNullNullable",
+			ID:   "test_response_null_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseNullNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNullNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19451,12 +21983,18 @@ func (s *Server) handleTestResponseNullNullableArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNullNullableArray",
+			ID:   "test_response_null_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNullNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNullNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19497,12 +22035,18 @@ func (s *Server) handleTestResponseNullNullableArrayArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNullNullableArrayArray",
+			ID:   "test_response_null_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNullNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNullNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19543,12 +22087,18 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumber",
+			ID:   "test_response_number",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumber",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19589,12 +22139,18 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberArray",
+			ID:   "test_response_number_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19635,12 +22191,18 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberArrayArray",
+			ID:   "test_response_number_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19681,12 +22243,18 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberDouble",
+			ID:   "test_response_number_double",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberDoubleRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberDouble",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19727,12 +22295,18 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberDoubleArray",
+			ID:   "test_response_number_double_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberDoubleArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberDoubleArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19773,12 +22347,18 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberDoubleArrayArray",
+			ID:   "test_response_number_double_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberDoubleArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberDoubleArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19819,12 +22399,18 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberDoubleNullable",
+			ID:   "test_response_number_double_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberDoubleNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberDoubleNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19865,12 +22451,18 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberDoubleNullableArray",
+			ID:   "test_response_number_double_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberDoubleNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberDoubleNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19911,12 +22503,18 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberDoubleNullableArrayArray",
+			ID:   "test_response_number_double_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberDoubleNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberDoubleNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19957,12 +22555,18 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberFloat",
+			ID:   "test_response_number_float",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberFloatRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberFloat",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20003,12 +22607,18 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberFloatArray",
+			ID:   "test_response_number_float_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberFloatArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberFloatArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20049,12 +22659,18 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberFloatArrayArray",
+			ID:   "test_response_number_float_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberFloatArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberFloatArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20095,12 +22711,18 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberFloatNullable",
+			ID:   "test_response_number_float_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberFloatNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberFloatNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20141,12 +22763,18 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberFloatNullableArray",
+			ID:   "test_response_number_float_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberFloatNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberFloatNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20187,12 +22815,18 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberFloatNullableArrayArray",
+			ID:   "test_response_number_float_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberFloatNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberFloatNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20233,12 +22867,18 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberInt32",
+			ID:   "test_response_number_int32",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberInt32",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20279,12 +22919,18 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberInt32Array",
+			ID:   "test_response_number_int32_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberInt32Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20325,12 +22971,18 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberInt32ArrayArray",
+			ID:   "test_response_number_int32_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberInt32ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20371,12 +23023,18 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberInt32Nullable",
+			ID:   "test_response_number_int32_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberInt32Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20417,12 +23075,18 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberInt32NullableArray",
+			ID:   "test_response_number_int32_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberInt32NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20463,12 +23127,18 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberInt32NullableArrayArray",
+			ID:   "test_response_number_int32_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberInt32NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20509,12 +23179,18 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberInt64",
+			ID:   "test_response_number_int64",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberInt64",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20555,12 +23231,18 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberInt64Array",
+			ID:   "test_response_number_int64_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberInt64Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20601,12 +23283,18 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberInt64ArrayArray",
+			ID:   "test_response_number_int64_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberInt64ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20647,12 +23335,18 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberInt64Nullable",
+			ID:   "test_response_number_int64_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberInt64Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20693,12 +23387,18 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberInt64NullableArray",
+			ID:   "test_response_number_int64_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberInt64NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20739,12 +23439,18 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberInt64NullableArrayArray",
+			ID:   "test_response_number_int64_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberInt64NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20785,12 +23491,18 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberNullable",
+			ID:   "test_response_number_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20831,12 +23543,18 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberNullableArray",
+			ID:   "test_response_number_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20877,12 +23595,18 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseNumberNullableArrayArray",
+			ID:   "test_response_number_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseNumberNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseNumberNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20923,12 +23647,18 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseString",
+			ID:   "test_response_string",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseString",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20969,12 +23699,18 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringArray",
+			ID:   "test_response_string_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21015,12 +23751,18 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringArrayArray",
+			ID:   "test_response_string_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21061,12 +23803,18 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringBinary",
+			ID:   "test_response_string_binary",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringBinaryRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringBinary",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21107,12 +23855,18 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringBinaryArray",
+			ID:   "test_response_string_binary_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringBinaryArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringBinaryArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21153,12 +23907,18 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringBinaryArrayArray",
+			ID:   "test_response_string_binary_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringBinaryArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringBinaryArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21199,12 +23959,18 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringBinaryNullable",
+			ID:   "test_response_string_binary_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringBinaryNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringBinaryNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21245,12 +24011,18 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringBinaryNullableArray",
+			ID:   "test_response_string_binary_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringBinaryNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringBinaryNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21291,12 +24063,18 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringBinaryNullableArrayArray",
+			ID:   "test_response_string_binary_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringBinaryNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringBinaryNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21337,12 +24115,18 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringByte",
+			ID:   "test_response_string_byte",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringByteRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringByte",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21383,12 +24167,18 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringByteArray",
+			ID:   "test_response_string_byte_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringByteArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringByteArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21429,12 +24219,18 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringByteArrayArray",
+			ID:   "test_response_string_byte_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringByteArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringByteArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21475,12 +24271,18 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringByteNullable",
+			ID:   "test_response_string_byte_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringByteNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringByteNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21521,12 +24323,18 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringByteNullableArray",
+			ID:   "test_response_string_byte_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringByteNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringByteNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21567,12 +24375,18 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringByteNullableArrayArray",
+			ID:   "test_response_string_byte_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringByteNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringByteNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21613,12 +24427,18 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDate",
+			ID:   "test_response_string_date",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21659,12 +24479,18 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDateArray",
+			ID:   "test_response_string_date_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDateArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDateArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21705,12 +24531,18 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDateArrayArray",
+			ID:   "test_response_string_date_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDateArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDateArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21751,12 +24583,18 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDateNullable",
+			ID:   "test_response_string_date_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDateNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDateNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21797,12 +24635,18 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDateNullableArray",
+			ID:   "test_response_string_date_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDateNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDateNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21843,12 +24687,18 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDateNullableArrayArray",
+			ID:   "test_response_string_date_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDateNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDateNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21889,12 +24739,18 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDateTime",
+			ID:   "test_response_string_date-time",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDateTimeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDateTime",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21935,12 +24791,18 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDateTimeArray",
+			ID:   "test_response_string_date-time_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDateTimeArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDateTimeArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21981,12 +24843,18 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDateTimeArrayArray",
+			ID:   "test_response_string_date-time_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDateTimeArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDateTimeArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22027,12 +24895,18 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDateTimeNullable",
+			ID:   "test_response_string_date-time_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDateTimeNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDateTimeNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22073,12 +24947,18 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDateTimeNullableArray",
+			ID:   "test_response_string_date-time_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDateTimeNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDateTimeNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22119,12 +24999,18 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDateTimeNullableArrayArray",
+			ID:   "test_response_string_date-time_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDateTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDateTimeNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22165,12 +25051,18 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDuration",
+			ID:   "test_response_string_duration",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDurationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDuration",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22211,12 +25103,18 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDurationArray",
+			ID:   "test_response_string_duration_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDurationArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDurationArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22257,12 +25155,18 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDurationArrayArray",
+			ID:   "test_response_string_duration_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDurationArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDurationArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22303,12 +25207,18 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDurationNullable",
+			ID:   "test_response_string_duration_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDurationNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDurationNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22349,12 +25259,18 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDurationNullableArray",
+			ID:   "test_response_string_duration_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDurationNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDurationNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22395,12 +25311,18 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringDurationNullableArrayArray",
+			ID:   "test_response_string_duration_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringDurationNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringDurationNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22441,12 +25363,18 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringEmail",
+			ID:   "test_response_string_email",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringEmailRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringEmail",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22487,12 +25415,18 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringEmailArray",
+			ID:   "test_response_string_email_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringEmailArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringEmailArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22533,12 +25467,18 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringEmailArrayArray",
+			ID:   "test_response_string_email_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringEmailArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringEmailArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22579,12 +25519,18 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringEmailNullable",
+			ID:   "test_response_string_email_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringEmailNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringEmailNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22625,12 +25571,18 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringEmailNullableArray",
+			ID:   "test_response_string_email_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringEmailNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringEmailNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22671,12 +25623,18 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringEmailNullableArrayArray",
+			ID:   "test_response_string_email_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringEmailNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringEmailNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22717,12 +25675,18 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringHostname",
+			ID:   "test_response_string_hostname",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringHostnameRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringHostname",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22763,12 +25727,18 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringHostnameArray",
+			ID:   "test_response_string_hostname_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringHostnameArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringHostnameArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22809,12 +25779,18 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringHostnameArrayArray",
+			ID:   "test_response_string_hostname_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringHostnameArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringHostnameArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22855,12 +25831,18 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringHostnameNullable",
+			ID:   "test_response_string_hostname_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringHostnameNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringHostnameNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22901,12 +25883,18 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringHostnameNullableArray",
+			ID:   "test_response_string_hostname_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringHostnameNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringHostnameNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22947,12 +25935,18 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringHostnameNullableArrayArray",
+			ID:   "test_response_string_hostname_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringHostnameNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringHostnameNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22993,12 +25987,18 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIP",
+			ID:   "test_response_string_ip",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIPRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIP",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23039,12 +26039,18 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIPArray",
+			ID:   "test_response_string_ip_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIPArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIPArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23085,12 +26091,18 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIPArrayArray",
+			ID:   "test_response_string_ip_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIPArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIPArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23131,12 +26143,18 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIPNullable",
+			ID:   "test_response_string_ip_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIPNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIPNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23177,12 +26195,18 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIPNullableArray",
+			ID:   "test_response_string_ip_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIPNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIPNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23223,12 +26247,18 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIPNullableArrayArray",
+			ID:   "test_response_string_ip_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIPNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIPNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23269,12 +26299,18 @@ func (s *Server) handleTestResponseStringInt32Request(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringInt32",
+			ID:   "test_response_string_int32",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringInt32Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringInt32",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23315,12 +26351,18 @@ func (s *Server) handleTestResponseStringInt32ArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringInt32Array",
+			ID:   "test_response_string_int32_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringInt32ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringInt32Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23361,12 +26403,18 @@ func (s *Server) handleTestResponseStringInt32ArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringInt32ArrayArray",
+			ID:   "test_response_string_int32_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringInt32ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringInt32ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23407,12 +26455,18 @@ func (s *Server) handleTestResponseStringInt32NullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringInt32Nullable",
+			ID:   "test_response_string_int32_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringInt32NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringInt32Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23453,12 +26507,18 @@ func (s *Server) handleTestResponseStringInt32NullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringInt32NullableArray",
+			ID:   "test_response_string_int32_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringInt32NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringInt32NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23499,12 +26559,18 @@ func (s *Server) handleTestResponseStringInt32NullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringInt32NullableArrayArray",
+			ID:   "test_response_string_int32_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringInt32NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23545,12 +26611,18 @@ func (s *Server) handleTestResponseStringInt64Request(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringInt64",
+			ID:   "test_response_string_int64",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringInt64Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringInt64",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23591,12 +26663,18 @@ func (s *Server) handleTestResponseStringInt64ArrayRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringInt64Array",
+			ID:   "test_response_string_int64_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringInt64ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringInt64Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23637,12 +26715,18 @@ func (s *Server) handleTestResponseStringInt64ArrayArrayRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringInt64ArrayArray",
+			ID:   "test_response_string_int64_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringInt64ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringInt64ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23683,12 +26767,18 @@ func (s *Server) handleTestResponseStringInt64NullableRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringInt64Nullable",
+			ID:   "test_response_string_int64_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringInt64NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringInt64Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23729,12 +26819,18 @@ func (s *Server) handleTestResponseStringInt64NullableArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringInt64NullableArray",
+			ID:   "test_response_string_int64_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringInt64NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringInt64NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23775,12 +26871,18 @@ func (s *Server) handleTestResponseStringInt64NullableArrayArrayRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringInt64NullableArrayArray",
+			ID:   "test_response_string_int64_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringInt64NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23821,12 +26923,18 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIpv4",
+			ID:   "test_response_string_ipv4",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIpv4Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIpv4",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23867,12 +26975,18 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIpv4Array",
+			ID:   "test_response_string_ipv4_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIpv4ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIpv4Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23913,12 +27027,18 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIpv4ArrayArray",
+			ID:   "test_response_string_ipv4_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIpv4ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIpv4ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23959,12 +27079,18 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIpv4Nullable",
+			ID:   "test_response_string_ipv4_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIpv4NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIpv4Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24005,12 +27131,18 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIpv4NullableArray",
+			ID:   "test_response_string_ipv4_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIpv4NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIpv4NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24051,12 +27183,18 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIpv4NullableArrayArray",
+			ID:   "test_response_string_ipv4_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIpv4NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIpv4NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24097,12 +27235,18 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIpv6",
+			ID:   "test_response_string_ipv6",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIpv6Request(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIpv6",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24143,12 +27287,18 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIpv6Array",
+			ID:   "test_response_string_ipv6_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIpv6ArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIpv6Array",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24189,12 +27339,18 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIpv6ArrayArray",
+			ID:   "test_response_string_ipv6_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIpv6ArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIpv6ArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24235,12 +27391,18 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIpv6Nullable",
+			ID:   "test_response_string_ipv6_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIpv6NullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIpv6Nullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24281,12 +27443,18 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIpv6NullableArray",
+			ID:   "test_response_string_ipv6_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIpv6NullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIpv6NullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24327,12 +27495,18 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringIpv6NullableArrayArray",
+			ID:   "test_response_string_ipv6_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringIpv6NullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringIpv6NullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24373,12 +27547,18 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringNullable",
+			ID:   "test_response_string_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24419,12 +27599,18 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringNullableArray",
+			ID:   "test_response_string_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24465,12 +27651,18 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringNullableArrayArray",
+			ID:   "test_response_string_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24511,12 +27703,18 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringPassword",
+			ID:   "test_response_string_password",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringPasswordRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringPassword",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24557,12 +27755,18 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringPasswordArray",
+			ID:   "test_response_string_password_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringPasswordArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringPasswordArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24603,12 +27807,18 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringPasswordArrayArray",
+			ID:   "test_response_string_password_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringPasswordArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringPasswordArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24649,12 +27859,18 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringPasswordNullable",
+			ID:   "test_response_string_password_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringPasswordNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringPasswordNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24695,12 +27911,18 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringPasswordNullableArray",
+			ID:   "test_response_string_password_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringPasswordNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringPasswordNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24741,12 +27963,18 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringPasswordNullableArrayArray",
+			ID:   "test_response_string_password_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringPasswordNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringPasswordNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24787,12 +28015,18 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringTime",
+			ID:   "test_response_string_time",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringTimeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringTime",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24833,12 +28067,18 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringTimeArray",
+			ID:   "test_response_string_time_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringTimeArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringTimeArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24879,12 +28119,18 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringTimeArrayArray",
+			ID:   "test_response_string_time_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringTimeArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringTimeArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24925,12 +28171,18 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringTimeNullable",
+			ID:   "test_response_string_time_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringTimeNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringTimeNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24971,12 +28223,18 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringTimeNullableArray",
+			ID:   "test_response_string_time_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringTimeNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringTimeNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25017,12 +28275,18 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringTimeNullableArrayArray",
+			ID:   "test_response_string_time_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringTimeNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25063,12 +28327,18 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringURI",
+			ID:   "test_response_string_uri",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringURIRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringURI",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25109,12 +28379,18 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringURIArray",
+			ID:   "test_response_string_uri_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringURIArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringURIArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25155,12 +28431,18 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringURIArrayArray",
+			ID:   "test_response_string_uri_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringURIArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringURIArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25201,12 +28483,18 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringURINullable",
+			ID:   "test_response_string_uri_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringURINullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringURINullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25247,12 +28535,18 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringURINullableArray",
+			ID:   "test_response_string_uri_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringURINullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringURINullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25293,12 +28587,18 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringURINullableArrayArray",
+			ID:   "test_response_string_uri_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringURINullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringURINullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25339,12 +28639,18 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUUID",
+			ID:   "test_response_string_uuid",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUUIDRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUUID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25385,12 +28691,18 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUUIDArray",
+			ID:   "test_response_string_uuid_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUUIDArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUUIDArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25431,12 +28743,18 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUUIDArrayArray",
+			ID:   "test_response_string_uuid_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUUIDArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUUIDArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25477,12 +28795,18 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUUIDNullable",
+			ID:   "test_response_string_uuid_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUUIDNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUUIDNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25523,12 +28847,18 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUUIDNullableArray",
+			ID:   "test_response_string_uuid_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUUIDNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUUIDNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25569,12 +28899,18 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUUIDNullableArrayArray",
+			ID:   "test_response_string_uuid_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUUIDNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUUIDNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25615,12 +28951,18 @@ func (s *Server) handleTestResponseStringUnixRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnix",
+			ID:   "test_response_string_unix",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnix",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25661,12 +29003,18 @@ func (s *Server) handleTestResponseStringUnixArrayRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixArray",
+			ID:   "test_response_string_unix_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25707,12 +29055,18 @@ func (s *Server) handleTestResponseStringUnixArrayArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixArrayArray",
+			ID:   "test_response_string_unix_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25753,12 +29107,18 @@ func (s *Server) handleTestResponseStringUnixMicroRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixMicro",
+			ID:   "test_response_string_unix-micro",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixMicroRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixMicro",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25799,12 +29159,18 @@ func (s *Server) handleTestResponseStringUnixMicroArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixMicroArray",
+			ID:   "test_response_string_unix-micro_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixMicroArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixMicroArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25845,12 +29211,18 @@ func (s *Server) handleTestResponseStringUnixMicroArrayArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixMicroArrayArray",
+			ID:   "test_response_string_unix-micro_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixMicroArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixMicroArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25891,12 +29263,18 @@ func (s *Server) handleTestResponseStringUnixMicroNullableRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixMicroNullable",
+			ID:   "test_response_string_unix-micro_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixMicroNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixMicroNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25937,12 +29315,18 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixMicroNullableArray",
+			ID:   "test_response_string_unix-micro_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixMicroNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixMicroNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25983,12 +29367,18 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayArrayRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixMicroNullableArrayArray",
+			ID:   "test_response_string_unix-micro_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixMicroNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixMicroNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26029,12 +29419,18 @@ func (s *Server) handleTestResponseStringUnixMilliRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixMilli",
+			ID:   "test_response_string_unix-milli",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixMilliRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixMilli",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26075,12 +29471,18 @@ func (s *Server) handleTestResponseStringUnixMilliArrayRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixMilliArray",
+			ID:   "test_response_string_unix-milli_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixMilliArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixMilliArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26121,12 +29523,18 @@ func (s *Server) handleTestResponseStringUnixMilliArrayArrayRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixMilliArrayArray",
+			ID:   "test_response_string_unix-milli_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixMilliArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixMilliArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26167,12 +29575,18 @@ func (s *Server) handleTestResponseStringUnixMilliNullableRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixMilliNullable",
+			ID:   "test_response_string_unix-milli_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixMilliNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixMilliNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26213,12 +29627,18 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixMilliNullableArray",
+			ID:   "test_response_string_unix-milli_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixMilliNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixMilliNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26259,12 +29679,18 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayArrayRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixMilliNullableArrayArray",
+			ID:   "test_response_string_unix-milli_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixMilliNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixMilliNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26305,12 +29731,18 @@ func (s *Server) handleTestResponseStringUnixNanoRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixNano",
+			ID:   "test_response_string_unix-nano",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixNanoRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixNano",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26351,12 +29783,18 @@ func (s *Server) handleTestResponseStringUnixNanoArrayRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixNanoArray",
+			ID:   "test_response_string_unix-nano_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixNanoArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixNanoArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26397,12 +29835,18 @@ func (s *Server) handleTestResponseStringUnixNanoArrayArrayRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixNanoArrayArray",
+			ID:   "test_response_string_unix-nano_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixNanoArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixNanoArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26443,12 +29887,18 @@ func (s *Server) handleTestResponseStringUnixNanoNullableRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixNanoNullable",
+			ID:   "test_response_string_unix-nano_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixNanoNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixNanoNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26489,12 +29939,18 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixNanoNullableArray",
+			ID:   "test_response_string_unix-nano_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixNanoNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixNanoNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26535,12 +29991,18 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayArrayRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixNanoNullableArrayArray",
+			ID:   "test_response_string_unix-nano_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixNanoNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixNanoNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26581,12 +30043,18 @@ func (s *Server) handleTestResponseStringUnixNullableRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixNullable",
+			ID:   "test_response_string_unix_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26627,12 +30095,18 @@ func (s *Server) handleTestResponseStringUnixNullableArrayRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixNullableArray",
+			ID:   "test_response_string_unix_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26673,12 +30147,18 @@ func (s *Server) handleTestResponseStringUnixNullableArrayArrayRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixNullableArrayArray",
+			ID:   "test_response_string_unix_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26719,12 +30199,18 @@ func (s *Server) handleTestResponseStringUnixSecondsRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixSeconds",
+			ID:   "test_response_string_unix-seconds",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixSecondsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixSeconds",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26765,12 +30251,18 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixSecondsArray",
+			ID:   "test_response_string_unix-seconds_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixSecondsArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixSecondsArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26811,12 +30303,18 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayArrayRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixSecondsArrayArray",
+			ID:   "test_response_string_unix-seconds_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixSecondsArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixSecondsArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26857,12 +30355,18 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixSecondsNullable",
+			ID:   "test_response_string_unix-seconds_nullable",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixSecondsNullableRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixSecondsNullable",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26903,12 +30407,18 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixSecondsNullableArray",
+			ID:   "test_response_string_unix-seconds_nullable_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixSecondsNullableArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixSecondsNullableArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26949,12 +30459,18 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayArrayRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseStringUnixSecondsNullableArrayArray",
+			ID:   "test_response_string_unix-seconds_nullable_array_array",
+		}
+	)
 	request, close, err := s.decodeTestResponseStringUnixSecondsNullableArrayArrayRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestResponseStringUnixSecondsNullableArrayArray",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return

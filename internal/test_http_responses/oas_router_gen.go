@@ -290,14 +290,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name  string
-	count int
-	args  [0]string
+	name        string
+	operationID string
+	count       int
+	args        [0]string
+}
+
+// Name returns ogen operation name.
+//
+// It is guaranteed to be unique and not empty.
+func (r Route) Name() string {
+	return r.name
 }
 
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
-	return r.name
+	return r.operationID
 }
 
 // Args returns parsed arguments.
@@ -345,6 +353,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					switch method {
 					case "GET":
 						r.name = "AnyContentTypeBinaryStringSchema"
+						r.operationID = "anyContentTypeBinaryStringSchema"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -365,6 +374,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: AnyContentTypeBinaryStringSchemaDefault
 							r.name = "AnyContentTypeBinaryStringSchemaDefault"
+							r.operationID = "anyContentTypeBinaryStringSchemaDefault"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -385,6 +395,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					case "GET":
 						// Leaf: Combined
 						r.name = "Combined"
+						r.operationID = "combined"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -415,6 +426,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: Headers200
 							r.name = "Headers200"
+							r.operationID = "headers200"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -434,6 +446,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: HeadersCombined
 							r.name = "HeadersCombined"
+							r.operationID = "headersCombined"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -453,6 +466,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: HeadersDefault
 							r.name = "HeadersDefault"
+							r.operationID = "headersDefault"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -472,6 +486,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: HeadersPattern
 							r.name = "HeadersPattern"
+							r.operationID = "headersPattern"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -492,6 +507,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					case "GET":
 						// Leaf: IntersectPatternCode
 						r.name = "IntersectPatternCode"
+						r.operationID = "intersectPatternCode"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -511,6 +527,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					case "GET":
 						// Leaf: MultipleGenericResponses
 						r.name = "MultipleGenericResponses"
+						r.operationID = "multipleGenericResponses"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -541,6 +558,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: OctetStreamBinaryStringSchema
 							r.name = "OctetStreamBinaryStringSchema"
+							r.operationID = "octetStreamBinaryStringSchema"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -560,6 +578,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: OctetStreamEmptySchema
 							r.name = "OctetStreamEmptySchema"
+							r.operationID = "octetStreamEmptySchema"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -580,6 +599,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					case "GET":
 						// Leaf: TextPlainBinaryStringSchema
 						r.name = "TextPlainBinaryStringSchema"
+						r.operationID = "textPlainBinaryStringSchema"
 						r.args = args
 						r.count = 0
 						return r, true

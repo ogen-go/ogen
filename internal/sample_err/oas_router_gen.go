@@ -57,14 +57,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name  string
-	count int
-	args  [0]string
+	name        string
+	operationID string
+	count       int
+	args        [0]string
+}
+
+// Name returns ogen operation name.
+//
+// It is guaranteed to be unique and not empty.
+func (r Route) Name() string {
+	return r.name
 }
 
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
-	return r.name
+	return r.operationID
 }
 
 // Args returns parsed arguments.
@@ -102,12 +110,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				case "GET":
 					// Leaf: DataGet
 					r.name = "DataGet"
+					r.operationID = "dataGet"
 					r.args = args
 					r.count = 0
 					return r, true
 				case "POST":
 					// Leaf: DataCreate
 					r.name = "DataCreate"
+					r.operationID = "dataCreate"
 					r.args = args
 					r.count = 0
 					return r, true

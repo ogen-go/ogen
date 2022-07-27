@@ -30,13 +30,19 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetAPIVersions",
+			ID:   "getAPIVersions",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetAPIVersions", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetAPIVersions",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -76,13 +82,19 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetAdmissionregistrationAPIGroup",
+			ID:   "getAdmissionregistrationAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetAdmissionregistrationAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetAdmissionregistrationAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -122,13 +134,19 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetAdmissionregistrationV1APIResources",
+			ID:   "getAdmissionregistrationV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetAdmissionregistrationV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetAdmissionregistrationV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -168,13 +186,19 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetApiextensionsAPIGroup",
+			ID:   "getApiextensionsAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetApiextensionsAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetApiextensionsAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -214,13 +238,19 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetApiextensionsV1APIResources",
+			ID:   "getApiextensionsV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetApiextensionsV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetApiextensionsV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -260,13 +290,19 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetApiregistrationAPIGroup",
+			ID:   "getApiregistrationAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetApiregistrationAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetApiregistrationAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -306,13 +342,19 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetApiregistrationV1APIResources",
+			ID:   "getApiregistrationV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetApiregistrationV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetApiregistrationV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -352,13 +394,19 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetAppsAPIGroup",
+			ID:   "getAppsAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetAppsAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetAppsAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -398,13 +446,19 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetAppsV1APIResources",
+			ID:   "getAppsV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetAppsV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetAppsV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -444,13 +498,19 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetAuthenticationAPIGroup",
+			ID:   "getAuthenticationAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetAuthenticationAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetAuthenticationAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -490,13 +550,19 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetAuthenticationV1APIResources",
+			ID:   "getAuthenticationV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetAuthenticationV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetAuthenticationV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -536,13 +602,19 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetAuthorizationAPIGroup",
+			ID:   "getAuthorizationAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetAuthorizationAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetAuthorizationAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -582,13 +654,19 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetAuthorizationV1APIResources",
+			ID:   "getAuthorizationV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetAuthorizationV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetAuthorizationV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -628,13 +706,19 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetAutoscalingAPIGroup",
+			ID:   "getAutoscalingAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetAutoscalingAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetAutoscalingAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -674,13 +758,19 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetAutoscalingV1APIResources",
+			ID:   "getAutoscalingV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetAutoscalingV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetAutoscalingV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -720,13 +810,19 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetAutoscalingV2beta1APIResources",
+			ID:   "getAutoscalingV2beta1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetAutoscalingV2beta1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetAutoscalingV2beta1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -766,13 +862,19 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetAutoscalingV2beta2APIResources",
+			ID:   "getAutoscalingV2beta2APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetAutoscalingV2beta2APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetAutoscalingV2beta2APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -812,13 +914,19 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetBatchAPIGroup",
+			ID:   "getBatchAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetBatchAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetBatchAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -858,13 +966,19 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetBatchV1APIResources",
+			ID:   "getBatchV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetBatchV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetBatchV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -904,13 +1018,19 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetBatchV1beta1APIResources",
+			ID:   "getBatchV1beta1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetBatchV1beta1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetBatchV1beta1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -950,13 +1070,19 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetCertificatesAPIGroup",
+			ID:   "getCertificatesAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetCertificatesAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetCertificatesAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -996,13 +1122,19 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetCertificatesV1APIResources",
+			ID:   "getCertificatesV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetCertificatesV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetCertificatesV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1042,13 +1174,19 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetCodeVersion",
+			ID:   "getCodeVersion",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetCodeVersion", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetCodeVersion",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1088,13 +1226,19 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetCoordinationAPIGroup",
+			ID:   "getCoordinationAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetCoordinationAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetCoordinationAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1134,13 +1278,19 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetCoordinationV1APIResources",
+			ID:   "getCoordinationV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetCoordinationV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetCoordinationV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1180,13 +1330,19 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetCoreAPIVersions",
+			ID:   "getCoreAPIVersions",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetCoreAPIVersions", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetCoreAPIVersions",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1226,13 +1382,19 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetCoreV1APIResources",
+			ID:   "getCoreV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetCoreV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetCoreV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1272,13 +1434,19 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetDiscoveryAPIGroup",
+			ID:   "getDiscoveryAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetDiscoveryAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetDiscoveryAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1318,13 +1486,19 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetDiscoveryV1APIResources",
+			ID:   "getDiscoveryV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetDiscoveryV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetDiscoveryV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1364,13 +1538,19 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetDiscoveryV1beta1APIResources",
+			ID:   "getDiscoveryV1beta1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetDiscoveryV1beta1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetDiscoveryV1beta1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1410,13 +1590,19 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetEventsAPIGroup",
+			ID:   "getEventsAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetEventsAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetEventsAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1456,13 +1642,19 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetEventsV1APIResources",
+			ID:   "getEventsV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetEventsV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetEventsV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1502,13 +1694,19 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetEventsV1beta1APIResources",
+			ID:   "getEventsV1beta1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetEventsV1beta1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetEventsV1beta1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1548,13 +1746,19 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetFlowcontrolApiserverAPIGroup",
+			ID:   "getFlowcontrolApiserverAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetFlowcontrolApiserverAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetFlowcontrolApiserverAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1594,13 +1798,19 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetFlowcontrolApiserverV1beta1APIResources",
+			ID:   "getFlowcontrolApiserverV1beta1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetFlowcontrolApiserverV1beta1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1640,13 +1850,19 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetFlowcontrolApiserverV1beta2APIResources",
+			ID:   "getFlowcontrolApiserverV1beta2APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta2APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetFlowcontrolApiserverV1beta2APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1686,13 +1902,19 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetInternalApiserverAPIGroup",
+			ID:   "getInternalApiserverAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetInternalApiserverAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetInternalApiserverAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1732,13 +1954,19 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetInternalApiserverV1alpha1APIResources",
+			ID:   "getInternalApiserverV1alpha1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetInternalApiserverV1alpha1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetInternalApiserverV1alpha1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1778,13 +2006,19 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetNetworkingAPIGroup",
+			ID:   "getNetworkingAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetNetworkingAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetNetworkingAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1824,13 +2058,19 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetNetworkingV1APIResources",
+			ID:   "getNetworkingV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetNetworkingV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetNetworkingV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1870,13 +2110,19 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetNodeAPIGroup",
+			ID:   "getNodeAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetNodeAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetNodeAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1916,13 +2162,19 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetNodeV1APIResources",
+			ID:   "getNodeV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetNodeV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetNodeV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1962,13 +2214,19 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetNodeV1alpha1APIResources",
+			ID:   "getNodeV1alpha1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetNodeV1alpha1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetNodeV1alpha1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2008,13 +2266,19 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetNodeV1beta1APIResources",
+			ID:   "getNodeV1beta1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetNodeV1beta1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetNodeV1beta1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2054,13 +2318,19 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetPolicyAPIGroup",
+			ID:   "getPolicyAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetPolicyAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetPolicyAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2100,13 +2370,19 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetPolicyV1APIResources",
+			ID:   "getPolicyV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetPolicyV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetPolicyV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2146,13 +2422,19 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetPolicyV1beta1APIResources",
+			ID:   "getPolicyV1beta1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetPolicyV1beta1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetPolicyV1beta1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2192,13 +2474,19 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetRbacAuthorizationAPIGroup",
+			ID:   "getRbacAuthorizationAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetRbacAuthorizationAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetRbacAuthorizationAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2238,13 +2526,19 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetRbacAuthorizationV1APIResources",
+			ID:   "getRbacAuthorizationV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetRbacAuthorizationV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetRbacAuthorizationV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2284,13 +2578,19 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetSchedulingAPIGroup",
+			ID:   "getSchedulingAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetSchedulingAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetSchedulingAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2330,13 +2630,19 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetSchedulingV1APIResources",
+			ID:   "getSchedulingV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetSchedulingV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetSchedulingV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2376,13 +2682,19 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetServiceAccountIssuerOpenIDConfiguration",
+			ID:   "getServiceAccountIssuerOpenIDConfiguration",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetServiceAccountIssuerOpenIDConfiguration", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetServiceAccountIssuerOpenIDConfiguration",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2422,13 +2734,19 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetStorageAPIGroup",
+			ID:   "getStorageAPIGroup",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetStorageAPIGroup", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetStorageAPIGroup",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2468,13 +2786,19 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetStorageV1APIResources",
+			ID:   "getStorageV1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetStorageV1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetStorageV1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2514,13 +2838,19 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetStorageV1alpha1APIResources",
+			ID:   "getStorageV1alpha1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetStorageV1alpha1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetStorageV1alpha1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2560,13 +2890,19 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetStorageV1beta1APIResources",
+			ID:   "getStorageV1beta1APIResources",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "GetStorageV1beta1APIResources", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "GetStorageV1beta1APIResources",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2606,13 +2942,19 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAdmissionregistrationV1MutatingWebhookConfiguration",
+			ID:   "listAdmissionregistrationV1MutatingWebhookConfiguration",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAdmissionregistrationV1MutatingWebhookConfiguration", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAdmissionregistrationV1MutatingWebhookConfiguration",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2620,8 +2962,8 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 	params, err := decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAdmissionregistrationV1MutatingWebhookConfiguration",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2661,13 +3003,19 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAdmissionregistrationV1ValidatingWebhookConfiguration",
+			ID:   "listAdmissionregistrationV1ValidatingWebhookConfiguration",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAdmissionregistrationV1ValidatingWebhookConfiguration", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAdmissionregistrationV1ValidatingWebhookConfiguration",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2675,8 +3023,8 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 	params, err := decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAdmissionregistrationV1ValidatingWebhookConfiguration",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2716,13 +3064,19 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListApiextensionsV1CustomResourceDefinition",
+			ID:   "listApiextensionsV1CustomResourceDefinition",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListApiextensionsV1CustomResourceDefinition", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListApiextensionsV1CustomResourceDefinition",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2730,8 +3084,8 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 	params, err := decodeListApiextensionsV1CustomResourceDefinitionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListApiextensionsV1CustomResourceDefinition",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2771,13 +3125,19 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListApiregistrationV1APIService",
+			ID:   "listApiregistrationV1APIService",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListApiregistrationV1APIService", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListApiregistrationV1APIService",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2785,8 +3145,8 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 	params, err := decodeListApiregistrationV1APIServiceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListApiregistrationV1APIService",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2826,13 +3186,19 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAppsV1ControllerRevisionForAllNamespaces",
+			ID:   "listAppsV1ControllerRevisionForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1ControllerRevisionForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAppsV1ControllerRevisionForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2840,8 +3206,8 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 	params, err := decodeListAppsV1ControllerRevisionForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAppsV1ControllerRevisionForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2881,13 +3247,19 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAppsV1DaemonSetForAllNamespaces",
+			ID:   "listAppsV1DaemonSetForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1DaemonSetForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAppsV1DaemonSetForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2895,8 +3267,8 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 	params, err := decodeListAppsV1DaemonSetForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAppsV1DaemonSetForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2936,13 +3308,19 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAppsV1DeploymentForAllNamespaces",
+			ID:   "listAppsV1DeploymentForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1DeploymentForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAppsV1DeploymentForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2950,8 +3328,8 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 	params, err := decodeListAppsV1DeploymentForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAppsV1DeploymentForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2991,13 +3369,19 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAppsV1NamespacedControllerRevision",
+			ID:   "listAppsV1NamespacedControllerRevision",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1NamespacedControllerRevision", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAppsV1NamespacedControllerRevision",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3005,8 +3389,8 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 	params, err := decodeListAppsV1NamespacedControllerRevisionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAppsV1NamespacedControllerRevision",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3046,13 +3430,19 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAppsV1NamespacedDaemonSet",
+			ID:   "listAppsV1NamespacedDaemonSet",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1NamespacedDaemonSet", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAppsV1NamespacedDaemonSet",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3060,8 +3450,8 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 	params, err := decodeListAppsV1NamespacedDaemonSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAppsV1NamespacedDaemonSet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3101,13 +3491,19 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAppsV1NamespacedDeployment",
+			ID:   "listAppsV1NamespacedDeployment",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1NamespacedDeployment", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAppsV1NamespacedDeployment",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3115,8 +3511,8 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 	params, err := decodeListAppsV1NamespacedDeploymentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAppsV1NamespacedDeployment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3156,13 +3552,19 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAppsV1NamespacedReplicaSet",
+			ID:   "listAppsV1NamespacedReplicaSet",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1NamespacedReplicaSet", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAppsV1NamespacedReplicaSet",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3170,8 +3572,8 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 	params, err := decodeListAppsV1NamespacedReplicaSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAppsV1NamespacedReplicaSet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3211,13 +3613,19 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAppsV1NamespacedStatefulSet",
+			ID:   "listAppsV1NamespacedStatefulSet",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1NamespacedStatefulSet", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAppsV1NamespacedStatefulSet",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3225,8 +3633,8 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 	params, err := decodeListAppsV1NamespacedStatefulSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAppsV1NamespacedStatefulSet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3266,13 +3674,19 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAppsV1ReplicaSetForAllNamespaces",
+			ID:   "listAppsV1ReplicaSetForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1ReplicaSetForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAppsV1ReplicaSetForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3280,8 +3694,8 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 	params, err := decodeListAppsV1ReplicaSetForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAppsV1ReplicaSetForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3321,13 +3735,19 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAppsV1StatefulSetForAllNamespaces",
+			ID:   "listAppsV1StatefulSetForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1StatefulSetForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAppsV1StatefulSetForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3335,8 +3755,8 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 	params, err := decodeListAppsV1StatefulSetForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAppsV1StatefulSetForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3376,13 +3796,19 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
+			ID:   "listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3390,8 +3816,8 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 	params, err := decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3431,13 +3857,19 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			ID:   "listAutoscalingV1NamespacedHorizontalPodAutoscaler",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAutoscalingV1NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAutoscalingV1NamespacedHorizontalPodAutoscaler",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3445,8 +3877,8 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	params, err := decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAutoscalingV1NamespacedHorizontalPodAutoscaler",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3486,13 +3918,19 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
+			ID:   "listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3500,8 +3938,8 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 	params, err := decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3541,13 +3979,19 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			ID:   "listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3555,8 +3999,8 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	params, err := decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3596,13 +4040,19 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
+			ID:   "listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3610,8 +4060,8 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 	params, err := decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3651,13 +4101,19 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			ID:   "listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3665,8 +4121,8 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	params, err := decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3706,13 +4162,19 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListBatchV1CronJobForAllNamespaces",
+			ID:   "listBatchV1CronJobForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListBatchV1CronJobForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListBatchV1CronJobForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3720,8 +4182,8 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 	params, err := decodeListBatchV1CronJobForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListBatchV1CronJobForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3761,13 +4223,19 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListBatchV1JobForAllNamespaces",
+			ID:   "listBatchV1JobForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListBatchV1JobForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListBatchV1JobForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3775,8 +4243,8 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 	params, err := decodeListBatchV1JobForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListBatchV1JobForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3816,13 +4284,19 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListBatchV1NamespacedCronJob",
+			ID:   "listBatchV1NamespacedCronJob",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListBatchV1NamespacedCronJob", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListBatchV1NamespacedCronJob",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3830,8 +4304,8 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 	params, err := decodeListBatchV1NamespacedCronJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListBatchV1NamespacedCronJob",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3871,13 +4345,19 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListBatchV1NamespacedJob",
+			ID:   "listBatchV1NamespacedJob",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListBatchV1NamespacedJob", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListBatchV1NamespacedJob",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3885,8 +4365,8 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 	params, err := decodeListBatchV1NamespacedJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListBatchV1NamespacedJob",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3926,13 +4406,19 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListBatchV1beta1CronJobForAllNamespaces",
+			ID:   "listBatchV1beta1CronJobForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListBatchV1beta1CronJobForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListBatchV1beta1CronJobForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3940,8 +4426,8 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 	params, err := decodeListBatchV1beta1CronJobForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListBatchV1beta1CronJobForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3981,13 +4467,19 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListBatchV1beta1NamespacedCronJob",
+			ID:   "listBatchV1beta1NamespacedCronJob",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListBatchV1beta1NamespacedCronJob", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListBatchV1beta1NamespacedCronJob",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3995,8 +4487,8 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 	params, err := decodeListBatchV1beta1NamespacedCronJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListBatchV1beta1NamespacedCronJob",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4036,13 +4528,19 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCertificatesV1CertificateSigningRequest",
+			ID:   "listCertificatesV1CertificateSigningRequest",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCertificatesV1CertificateSigningRequest", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCertificatesV1CertificateSigningRequest",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4050,8 +4548,8 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 	params, err := decodeListCertificatesV1CertificateSigningRequestParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCertificatesV1CertificateSigningRequest",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4091,13 +4589,19 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoordinationV1LeaseForAllNamespaces",
+			ID:   "listCoordinationV1LeaseForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoordinationV1LeaseForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoordinationV1LeaseForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4105,8 +4609,8 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 	params, err := decodeListCoordinationV1LeaseForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoordinationV1LeaseForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4146,13 +4650,19 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoordinationV1NamespacedLease",
+			ID:   "listCoordinationV1NamespacedLease",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoordinationV1NamespacedLease", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoordinationV1NamespacedLease",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4160,8 +4670,8 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 	params, err := decodeListCoordinationV1NamespacedLeaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoordinationV1NamespacedLease",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4201,13 +4711,19 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1ComponentStatus",
+			ID:   "listCoreV1ComponentStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1ComponentStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1ComponentStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4215,8 +4731,8 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 	params, err := decodeListCoreV1ComponentStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1ComponentStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4256,13 +4772,19 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1ConfigMapForAllNamespaces",
+			ID:   "listCoreV1ConfigMapForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1ConfigMapForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1ConfigMapForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4270,8 +4792,8 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 	params, err := decodeListCoreV1ConfigMapForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1ConfigMapForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4311,13 +4833,19 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1EndpointsForAllNamespaces",
+			ID:   "listCoreV1EndpointsForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1EndpointsForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1EndpointsForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4325,8 +4853,8 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 	params, err := decodeListCoreV1EndpointsForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1EndpointsForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4366,13 +4894,19 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1EventForAllNamespaces",
+			ID:   "listCoreV1EventForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1EventForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1EventForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4380,8 +4914,8 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 	params, err := decodeListCoreV1EventForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1EventForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4421,13 +4955,19 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1LimitRangeForAllNamespaces",
+			ID:   "listCoreV1LimitRangeForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1LimitRangeForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1LimitRangeForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4435,8 +4975,8 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 	params, err := decodeListCoreV1LimitRangeForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1LimitRangeForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4476,13 +5016,19 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1Namespace",
+			ID:   "listCoreV1Namespace",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1Namespace", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1Namespace",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4490,8 +5036,8 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 	params, err := decodeListCoreV1NamespaceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1Namespace",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4531,13 +5077,19 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1NamespacedConfigMap",
+			ID:   "listCoreV1NamespacedConfigMap",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedConfigMap", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1NamespacedConfigMap",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4545,8 +5097,8 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 	params, err := decodeListCoreV1NamespacedConfigMapParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1NamespacedConfigMap",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4586,13 +5138,19 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1NamespacedEndpoints",
+			ID:   "listCoreV1NamespacedEndpoints",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedEndpoints", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1NamespacedEndpoints",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4600,8 +5158,8 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 	params, err := decodeListCoreV1NamespacedEndpointsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1NamespacedEndpoints",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4641,13 +5199,19 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1NamespacedEvent",
+			ID:   "listCoreV1NamespacedEvent",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedEvent", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1NamespacedEvent",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4655,8 +5219,8 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 	params, err := decodeListCoreV1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1NamespacedEvent",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4696,13 +5260,19 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1NamespacedLimitRange",
+			ID:   "listCoreV1NamespacedLimitRange",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedLimitRange", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1NamespacedLimitRange",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4710,8 +5280,8 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 	params, err := decodeListCoreV1NamespacedLimitRangeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1NamespacedLimitRange",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4751,13 +5321,19 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1NamespacedPersistentVolumeClaim",
+			ID:   "listCoreV1NamespacedPersistentVolumeClaim",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedPersistentVolumeClaim", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1NamespacedPersistentVolumeClaim",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4765,8 +5341,8 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 	params, err := decodeListCoreV1NamespacedPersistentVolumeClaimParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1NamespacedPersistentVolumeClaim",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4806,13 +5382,19 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1NamespacedPod",
+			ID:   "listCoreV1NamespacedPod",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedPod", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1NamespacedPod",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4820,8 +5402,8 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 	params, err := decodeListCoreV1NamespacedPodParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1NamespacedPod",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4861,13 +5443,19 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1NamespacedPodTemplate",
+			ID:   "listCoreV1NamespacedPodTemplate",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedPodTemplate", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1NamespacedPodTemplate",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4875,8 +5463,8 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 	params, err := decodeListCoreV1NamespacedPodTemplateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1NamespacedPodTemplate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4916,13 +5504,19 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1NamespacedReplicationController",
+			ID:   "listCoreV1NamespacedReplicationController",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedReplicationController", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1NamespacedReplicationController",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4930,8 +5524,8 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 	params, err := decodeListCoreV1NamespacedReplicationControllerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1NamespacedReplicationController",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4971,13 +5565,19 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1NamespacedResourceQuota",
+			ID:   "listCoreV1NamespacedResourceQuota",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedResourceQuota", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1NamespacedResourceQuota",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4985,8 +5585,8 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 	params, err := decodeListCoreV1NamespacedResourceQuotaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1NamespacedResourceQuota",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5026,13 +5626,19 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1NamespacedSecret",
+			ID:   "listCoreV1NamespacedSecret",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedSecret", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1NamespacedSecret",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5040,8 +5646,8 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 	params, err := decodeListCoreV1NamespacedSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1NamespacedSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5081,13 +5687,19 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1NamespacedService",
+			ID:   "listCoreV1NamespacedService",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedService", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1NamespacedService",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5095,8 +5707,8 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 	params, err := decodeListCoreV1NamespacedServiceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1NamespacedService",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5136,13 +5748,19 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1NamespacedServiceAccount",
+			ID:   "listCoreV1NamespacedServiceAccount",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedServiceAccount", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1NamespacedServiceAccount",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5150,8 +5768,8 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 	params, err := decodeListCoreV1NamespacedServiceAccountParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1NamespacedServiceAccount",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5191,13 +5809,19 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1Node",
+			ID:   "listCoreV1Node",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1Node", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1Node",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5205,8 +5829,8 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 	params, err := decodeListCoreV1NodeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1Node",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5246,13 +5870,19 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1PersistentVolume",
+			ID:   "listCoreV1PersistentVolume",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1PersistentVolume", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1PersistentVolume",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5260,8 +5890,8 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 	params, err := decodeListCoreV1PersistentVolumeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1PersistentVolume",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5301,13 +5931,19 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1PersistentVolumeClaimForAllNamespaces",
+			ID:   "listCoreV1PersistentVolumeClaimForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1PersistentVolumeClaimForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1PersistentVolumeClaimForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5315,8 +5951,8 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 	params, err := decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1PersistentVolumeClaimForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5356,13 +5992,19 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1PodForAllNamespaces",
+			ID:   "listCoreV1PodForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1PodForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1PodForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5370,8 +6012,8 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 	params, err := decodeListCoreV1PodForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1PodForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5411,13 +6053,19 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1PodTemplateForAllNamespaces",
+			ID:   "listCoreV1PodTemplateForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1PodTemplateForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1PodTemplateForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5425,8 +6073,8 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 	params, err := decodeListCoreV1PodTemplateForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1PodTemplateForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5466,13 +6114,19 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1ReplicationControllerForAllNamespaces",
+			ID:   "listCoreV1ReplicationControllerForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1ReplicationControllerForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1ReplicationControllerForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5480,8 +6134,8 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 	params, err := decodeListCoreV1ReplicationControllerForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1ReplicationControllerForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5521,13 +6175,19 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1ResourceQuotaForAllNamespaces",
+			ID:   "listCoreV1ResourceQuotaForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1ResourceQuotaForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1ResourceQuotaForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5535,8 +6195,8 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 	params, err := decodeListCoreV1ResourceQuotaForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1ResourceQuotaForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5576,13 +6236,19 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1SecretForAllNamespaces",
+			ID:   "listCoreV1SecretForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1SecretForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1SecretForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5590,8 +6256,8 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 	params, err := decodeListCoreV1SecretForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1SecretForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5631,13 +6297,19 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1ServiceAccountForAllNamespaces",
+			ID:   "listCoreV1ServiceAccountForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1ServiceAccountForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1ServiceAccountForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5645,8 +6317,8 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 	params, err := decodeListCoreV1ServiceAccountForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1ServiceAccountForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5686,13 +6358,19 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListCoreV1ServiceForAllNamespaces",
+			ID:   "listCoreV1ServiceForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1ServiceForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListCoreV1ServiceForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5700,8 +6378,8 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 	params, err := decodeListCoreV1ServiceForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListCoreV1ServiceForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5741,13 +6419,19 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListDiscoveryV1EndpointSliceForAllNamespaces",
+			ID:   "listDiscoveryV1EndpointSliceForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListDiscoveryV1EndpointSliceForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListDiscoveryV1EndpointSliceForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5755,8 +6439,8 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 	params, err := decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListDiscoveryV1EndpointSliceForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5796,13 +6480,19 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListDiscoveryV1NamespacedEndpointSlice",
+			ID:   "listDiscoveryV1NamespacedEndpointSlice",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListDiscoveryV1NamespacedEndpointSlice", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListDiscoveryV1NamespacedEndpointSlice",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5810,8 +6500,8 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 	params, err := decodeListDiscoveryV1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListDiscoveryV1NamespacedEndpointSlice",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5851,13 +6541,19 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListDiscoveryV1beta1EndpointSliceForAllNamespaces",
+			ID:   "listDiscoveryV1beta1EndpointSliceForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListDiscoveryV1beta1EndpointSliceForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListDiscoveryV1beta1EndpointSliceForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5865,8 +6561,8 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 	params, err := decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListDiscoveryV1beta1EndpointSliceForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5906,13 +6602,19 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListDiscoveryV1beta1NamespacedEndpointSlice",
+			ID:   "listDiscoveryV1beta1NamespacedEndpointSlice",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListDiscoveryV1beta1NamespacedEndpointSlice", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListDiscoveryV1beta1NamespacedEndpointSlice",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5920,8 +6622,8 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	params, err := decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListDiscoveryV1beta1NamespacedEndpointSlice",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5961,13 +6663,19 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListEventsV1EventForAllNamespaces",
+			ID:   "listEventsV1EventForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListEventsV1EventForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListEventsV1EventForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5975,8 +6683,8 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 	params, err := decodeListEventsV1EventForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListEventsV1EventForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6016,13 +6724,19 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListEventsV1NamespacedEvent",
+			ID:   "listEventsV1NamespacedEvent",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListEventsV1NamespacedEvent", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListEventsV1NamespacedEvent",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6030,8 +6744,8 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 	params, err := decodeListEventsV1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListEventsV1NamespacedEvent",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6071,13 +6785,19 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListEventsV1beta1EventForAllNamespaces",
+			ID:   "listEventsV1beta1EventForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListEventsV1beta1EventForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListEventsV1beta1EventForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6085,8 +6805,8 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 	params, err := decodeListEventsV1beta1EventForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListEventsV1beta1EventForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6126,13 +6846,19 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListEventsV1beta1NamespacedEvent",
+			ID:   "listEventsV1beta1NamespacedEvent",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListEventsV1beta1NamespacedEvent", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListEventsV1beta1NamespacedEvent",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6140,8 +6866,8 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 	params, err := decodeListEventsV1beta1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListEventsV1beta1NamespacedEvent",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6181,13 +6907,19 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListFlowcontrolApiserverV1beta1FlowSchema",
+			ID:   "listFlowcontrolApiserverV1beta1FlowSchema",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1FlowSchema", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListFlowcontrolApiserverV1beta1FlowSchema",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6195,8 +6927,8 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 	params, err := decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListFlowcontrolApiserverV1beta1FlowSchema",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6236,13 +6968,19 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			ID:   "listFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6250,8 +6988,8 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	params, err := decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6291,13 +7029,19 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListFlowcontrolApiserverV1beta2FlowSchema",
+			ID:   "listFlowcontrolApiserverV1beta2FlowSchema",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2FlowSchema", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListFlowcontrolApiserverV1beta2FlowSchema",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6305,8 +7049,8 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 	params, err := decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListFlowcontrolApiserverV1beta2FlowSchema",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6346,13 +7090,19 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			ID:   "listFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6360,8 +7110,8 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	params, err := decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6401,13 +7151,19 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListInternalApiserverV1alpha1StorageVersion",
+			ID:   "listInternalApiserverV1alpha1StorageVersion",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListInternalApiserverV1alpha1StorageVersion", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListInternalApiserverV1alpha1StorageVersion",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6415,8 +7171,8 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 	params, err := decodeListInternalApiserverV1alpha1StorageVersionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListInternalApiserverV1alpha1StorageVersion",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6456,13 +7212,19 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListNetworkingV1IngressClass",
+			ID:   "listNetworkingV1IngressClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListNetworkingV1IngressClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListNetworkingV1IngressClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6470,8 +7232,8 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 	params, err := decodeListNetworkingV1IngressClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListNetworkingV1IngressClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6511,13 +7273,19 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListNetworkingV1IngressForAllNamespaces",
+			ID:   "listNetworkingV1IngressForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListNetworkingV1IngressForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListNetworkingV1IngressForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6525,8 +7293,8 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 	params, err := decodeListNetworkingV1IngressForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListNetworkingV1IngressForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6566,13 +7334,19 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListNetworkingV1NamespacedIngress",
+			ID:   "listNetworkingV1NamespacedIngress",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListNetworkingV1NamespacedIngress", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListNetworkingV1NamespacedIngress",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6580,8 +7354,8 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 	params, err := decodeListNetworkingV1NamespacedIngressParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListNetworkingV1NamespacedIngress",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6621,13 +7395,19 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListNetworkingV1NamespacedNetworkPolicy",
+			ID:   "listNetworkingV1NamespacedNetworkPolicy",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListNetworkingV1NamespacedNetworkPolicy", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListNetworkingV1NamespacedNetworkPolicy",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6635,8 +7415,8 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 	params, err := decodeListNetworkingV1NamespacedNetworkPolicyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListNetworkingV1NamespacedNetworkPolicy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6676,13 +7456,19 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListNetworkingV1NetworkPolicyForAllNamespaces",
+			ID:   "listNetworkingV1NetworkPolicyForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListNetworkingV1NetworkPolicyForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListNetworkingV1NetworkPolicyForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6690,8 +7476,8 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 	params, err := decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListNetworkingV1NetworkPolicyForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6731,13 +7517,19 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListNodeV1RuntimeClass",
+			ID:   "listNodeV1RuntimeClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListNodeV1RuntimeClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListNodeV1RuntimeClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6745,8 +7537,8 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 	params, err := decodeListNodeV1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListNodeV1RuntimeClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6786,13 +7578,19 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListNodeV1alpha1RuntimeClass",
+			ID:   "listNodeV1alpha1RuntimeClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListNodeV1alpha1RuntimeClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListNodeV1alpha1RuntimeClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6800,8 +7598,8 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 	params, err := decodeListNodeV1alpha1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListNodeV1alpha1RuntimeClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6841,13 +7639,19 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListNodeV1beta1RuntimeClass",
+			ID:   "listNodeV1beta1RuntimeClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListNodeV1beta1RuntimeClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListNodeV1beta1RuntimeClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6855,8 +7659,8 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 	params, err := decodeListNodeV1beta1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListNodeV1beta1RuntimeClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6896,13 +7700,19 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListPolicyV1NamespacedPodDisruptionBudget",
+			ID:   "listPolicyV1NamespacedPodDisruptionBudget",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListPolicyV1NamespacedPodDisruptionBudget", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListPolicyV1NamespacedPodDisruptionBudget",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6910,8 +7720,8 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 	params, err := decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListPolicyV1NamespacedPodDisruptionBudget",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6951,13 +7761,19 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListPolicyV1PodDisruptionBudgetForAllNamespaces",
+			ID:   "listPolicyV1PodDisruptionBudgetForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListPolicyV1PodDisruptionBudgetForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListPolicyV1PodDisruptionBudgetForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6965,8 +7781,8 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 	params, err := decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListPolicyV1PodDisruptionBudgetForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7006,13 +7822,19 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListPolicyV1beta1NamespacedPodDisruptionBudget",
+			ID:   "listPolicyV1beta1NamespacedPodDisruptionBudget",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListPolicyV1beta1NamespacedPodDisruptionBudget", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListPolicyV1beta1NamespacedPodDisruptionBudget",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7020,8 +7842,8 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	params, err := decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListPolicyV1beta1NamespacedPodDisruptionBudget",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7061,13 +7883,19 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
+			ID:   "listPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7075,8 +7903,8 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 	params, err := decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7116,13 +7944,19 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListPolicyV1beta1PodSecurityPolicy",
+			ID:   "listPolicyV1beta1PodSecurityPolicy",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListPolicyV1beta1PodSecurityPolicy", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListPolicyV1beta1PodSecurityPolicy",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7130,8 +7964,8 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 	params, err := decodeListPolicyV1beta1PodSecurityPolicyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListPolicyV1beta1PodSecurityPolicy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7171,13 +8005,19 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListRbacAuthorizationV1ClusterRole",
+			ID:   "listRbacAuthorizationV1ClusterRole",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRole", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListRbacAuthorizationV1ClusterRole",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7185,8 +8025,8 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 	params, err := decodeListRbacAuthorizationV1ClusterRoleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListRbacAuthorizationV1ClusterRole",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7226,13 +8066,19 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListRbacAuthorizationV1ClusterRoleBinding",
+			ID:   "listRbacAuthorizationV1ClusterRoleBinding",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRoleBinding", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListRbacAuthorizationV1ClusterRoleBinding",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7240,8 +8086,8 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 	params, err := decodeListRbacAuthorizationV1ClusterRoleBindingParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListRbacAuthorizationV1ClusterRoleBinding",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7281,13 +8127,19 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListRbacAuthorizationV1NamespacedRole",
+			ID:   "listRbacAuthorizationV1NamespacedRole",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRole", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListRbacAuthorizationV1NamespacedRole",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7295,8 +8147,8 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 	params, err := decodeListRbacAuthorizationV1NamespacedRoleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListRbacAuthorizationV1NamespacedRole",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7336,13 +8188,19 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListRbacAuthorizationV1NamespacedRoleBinding",
+			ID:   "listRbacAuthorizationV1NamespacedRoleBinding",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRoleBinding", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListRbacAuthorizationV1NamespacedRoleBinding",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7350,8 +8208,8 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	params, err := decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListRbacAuthorizationV1NamespacedRoleBinding",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7391,13 +8249,19 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListRbacAuthorizationV1RoleBindingForAllNamespaces",
+			ID:   "listRbacAuthorizationV1RoleBindingForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleBindingForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListRbacAuthorizationV1RoleBindingForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7405,8 +8269,8 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 	params, err := decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListRbacAuthorizationV1RoleBindingForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7446,13 +8310,19 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListRbacAuthorizationV1RoleForAllNamespaces",
+			ID:   "listRbacAuthorizationV1RoleForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListRbacAuthorizationV1RoleForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7460,8 +8330,8 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 	params, err := decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListRbacAuthorizationV1RoleForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7501,13 +8371,19 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListSchedulingV1PriorityClass",
+			ID:   "listSchedulingV1PriorityClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListSchedulingV1PriorityClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListSchedulingV1PriorityClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7515,8 +8391,8 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 	params, err := decodeListSchedulingV1PriorityClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListSchedulingV1PriorityClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7556,13 +8432,19 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListStorageV1CSIDriver",
+			ID:   "listStorageV1CSIDriver",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListStorageV1CSIDriver", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListStorageV1CSIDriver",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7570,8 +8452,8 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 	params, err := decodeListStorageV1CSIDriverParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListStorageV1CSIDriver",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7611,13 +8493,19 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListStorageV1CSINode",
+			ID:   "listStorageV1CSINode",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListStorageV1CSINode", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListStorageV1CSINode",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7625,8 +8513,8 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 	params, err := decodeListStorageV1CSINodeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListStorageV1CSINode",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7666,13 +8554,19 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListStorageV1StorageClass",
+			ID:   "listStorageV1StorageClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListStorageV1StorageClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListStorageV1StorageClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7680,8 +8574,8 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 	params, err := decodeListStorageV1StorageClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListStorageV1StorageClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7721,13 +8615,19 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListStorageV1VolumeAttachment",
+			ID:   "listStorageV1VolumeAttachment",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListStorageV1VolumeAttachment", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListStorageV1VolumeAttachment",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7735,8 +8635,8 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 	params, err := decodeListStorageV1VolumeAttachmentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListStorageV1VolumeAttachment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7776,13 +8676,19 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces",
+			ID:   "listStorageV1alpha1CSIStorageCapacityForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7790,8 +8696,8 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 	params, err := decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7831,13 +8737,19 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListStorageV1alpha1NamespacedCSIStorageCapacity",
+			ID:   "listStorageV1alpha1NamespacedCSIStorageCapacity",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListStorageV1alpha1NamespacedCSIStorageCapacity", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListStorageV1alpha1NamespacedCSIStorageCapacity",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7845,8 +8757,8 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	params, err := decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListStorageV1alpha1NamespacedCSIStorageCapacity",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7886,13 +8798,19 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListStorageV1beta1CSIStorageCapacityForAllNamespaces",
+			ID:   "listStorageV1beta1CSIStorageCapacityForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListStorageV1beta1CSIStorageCapacityForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListStorageV1beta1CSIStorageCapacityForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7900,8 +8818,8 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 	params, err := decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListStorageV1beta1CSIStorageCapacityForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7941,13 +8859,19 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ListStorageV1beta1NamespacedCSIStorageCapacity",
+			ID:   "listStorageV1beta1NamespacedCSIStorageCapacity",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ListStorageV1beta1NamespacedCSIStorageCapacity", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ListStorageV1beta1NamespacedCSIStorageCapacity",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7955,8 +8879,8 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	params, err := decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ListStorageV1beta1NamespacedCSIStorageCapacity",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7996,13 +8920,19 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "LogFileHandler",
+			ID:   "logFileHandler",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "LogFileHandler", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "LogFileHandler",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8010,8 +8940,8 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeLogFileHandlerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "LogFileHandler",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8051,13 +8981,19 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "LogFileListHandler",
+			ID:   "logFileListHandler",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "LogFileListHandler", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "LogFileListHandler",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8097,13 +9033,19 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAdmissionregistrationV1MutatingWebhookConfiguration",
+			ID:   "readAdmissionregistrationV1MutatingWebhookConfiguration",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAdmissionregistrationV1MutatingWebhookConfiguration", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAdmissionregistrationV1MutatingWebhookConfiguration",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8111,8 +9053,8 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 	params, err := decodeReadAdmissionregistrationV1MutatingWebhookConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAdmissionregistrationV1MutatingWebhookConfiguration",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8152,13 +9094,19 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAdmissionregistrationV1ValidatingWebhookConfiguration",
+			ID:   "readAdmissionregistrationV1ValidatingWebhookConfiguration",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAdmissionregistrationV1ValidatingWebhookConfiguration", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAdmissionregistrationV1ValidatingWebhookConfiguration",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8166,8 +9114,8 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 	params, err := decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAdmissionregistrationV1ValidatingWebhookConfiguration",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8207,13 +9155,19 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadApiextensionsV1CustomResourceDefinition",
+			ID:   "readApiextensionsV1CustomResourceDefinition",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinition", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadApiextensionsV1CustomResourceDefinition",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8221,8 +9175,8 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 	params, err := decodeReadApiextensionsV1CustomResourceDefinitionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadApiextensionsV1CustomResourceDefinition",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8262,13 +9216,19 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadApiextensionsV1CustomResourceDefinitionStatus",
+			ID:   "readApiextensionsV1CustomResourceDefinitionStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinitionStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadApiextensionsV1CustomResourceDefinitionStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8276,8 +9236,8 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 	params, err := decodeReadApiextensionsV1CustomResourceDefinitionStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadApiextensionsV1CustomResourceDefinitionStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8317,13 +9277,19 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadApiregistrationV1APIService",
+			ID:   "readApiregistrationV1APIService",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadApiregistrationV1APIService", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadApiregistrationV1APIService",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8331,8 +9297,8 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 	params, err := decodeReadApiregistrationV1APIServiceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadApiregistrationV1APIService",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8372,13 +9338,19 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadApiregistrationV1APIServiceStatus",
+			ID:   "readApiregistrationV1APIServiceStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadApiregistrationV1APIServiceStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadApiregistrationV1APIServiceStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8386,8 +9358,8 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 	params, err := decodeReadApiregistrationV1APIServiceStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadApiregistrationV1APIServiceStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8427,13 +9399,19 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAppsV1NamespacedControllerRevision",
+			ID:   "readAppsV1NamespacedControllerRevision",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedControllerRevision", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAppsV1NamespacedControllerRevision",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8441,8 +9419,8 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 	params, err := decodeReadAppsV1NamespacedControllerRevisionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAppsV1NamespacedControllerRevision",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8482,13 +9460,19 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAppsV1NamespacedDaemonSet",
+			ID:   "readAppsV1NamespacedDaemonSet",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSet", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAppsV1NamespacedDaemonSet",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8496,8 +9480,8 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 	params, err := decodeReadAppsV1NamespacedDaemonSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAppsV1NamespacedDaemonSet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8537,13 +9521,19 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAppsV1NamespacedDaemonSetStatus",
+			ID:   "readAppsV1NamespacedDaemonSetStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSetStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAppsV1NamespacedDaemonSetStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8551,8 +9541,8 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 	params, err := decodeReadAppsV1NamespacedDaemonSetStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAppsV1NamespacedDaemonSetStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8592,13 +9582,19 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAppsV1NamespacedDeployment",
+			ID:   "readAppsV1NamespacedDeployment",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeployment", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAppsV1NamespacedDeployment",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8606,8 +9602,8 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 	params, err := decodeReadAppsV1NamespacedDeploymentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAppsV1NamespacedDeployment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8647,13 +9643,19 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAppsV1NamespacedDeploymentScale",
+			ID:   "readAppsV1NamespacedDeploymentScale",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentScale", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAppsV1NamespacedDeploymentScale",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8661,8 +9663,8 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 	params, err := decodeReadAppsV1NamespacedDeploymentScaleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAppsV1NamespacedDeploymentScale",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8702,13 +9704,19 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAppsV1NamespacedDeploymentStatus",
+			ID:   "readAppsV1NamespacedDeploymentStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAppsV1NamespacedDeploymentStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8716,8 +9724,8 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 	params, err := decodeReadAppsV1NamespacedDeploymentStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAppsV1NamespacedDeploymentStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8757,13 +9765,19 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAppsV1NamespacedReplicaSet",
+			ID:   "readAppsV1NamespacedReplicaSet",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSet", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAppsV1NamespacedReplicaSet",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8771,8 +9785,8 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 	params, err := decodeReadAppsV1NamespacedReplicaSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAppsV1NamespacedReplicaSet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8812,13 +9826,19 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAppsV1NamespacedReplicaSetScale",
+			ID:   "readAppsV1NamespacedReplicaSetScale",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetScale", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAppsV1NamespacedReplicaSetScale",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8826,8 +9846,8 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 	params, err := decodeReadAppsV1NamespacedReplicaSetScaleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAppsV1NamespacedReplicaSetScale",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8867,13 +9887,19 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAppsV1NamespacedReplicaSetStatus",
+			ID:   "readAppsV1NamespacedReplicaSetStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAppsV1NamespacedReplicaSetStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8881,8 +9907,8 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 	params, err := decodeReadAppsV1NamespacedReplicaSetStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAppsV1NamespacedReplicaSetStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8922,13 +9948,19 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAppsV1NamespacedStatefulSet",
+			ID:   "readAppsV1NamespacedStatefulSet",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSet", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAppsV1NamespacedStatefulSet",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8936,8 +9968,8 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 	params, err := decodeReadAppsV1NamespacedStatefulSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAppsV1NamespacedStatefulSet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8977,13 +10009,19 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAppsV1NamespacedStatefulSetScale",
+			ID:   "readAppsV1NamespacedStatefulSetScale",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetScale", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAppsV1NamespacedStatefulSetScale",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8991,8 +10029,8 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 	params, err := decodeReadAppsV1NamespacedStatefulSetScaleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAppsV1NamespacedStatefulSetScale",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9032,13 +10070,19 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAppsV1NamespacedStatefulSetStatus",
+			ID:   "readAppsV1NamespacedStatefulSetStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAppsV1NamespacedStatefulSetStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9046,8 +10090,8 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 	params, err := decodeReadAppsV1NamespacedStatefulSetStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAppsV1NamespacedStatefulSetStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9087,13 +10131,19 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			ID:   "readAutoscalingV1NamespacedHorizontalPodAutoscaler",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9101,8 +10151,8 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	params, err := decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9142,13 +10192,19 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
+			ID:   "readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9156,8 +10212,8 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 	params, err := decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9197,13 +10253,19 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			ID:   "readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9211,8 +10273,8 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	params, err := decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9252,13 +10314,19 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
+			ID:   "readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9266,8 +10334,8 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 	params, err := decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9307,13 +10375,19 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			ID:   "readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9321,8 +10395,8 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	params, err := decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9362,13 +10436,19 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
+			ID:   "readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9376,8 +10456,8 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 	params, err := decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9417,13 +10497,19 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadBatchV1NamespacedCronJob",
+			ID:   "readBatchV1NamespacedCronJob",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJob", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadBatchV1NamespacedCronJob",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9431,8 +10517,8 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 	params, err := decodeReadBatchV1NamespacedCronJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadBatchV1NamespacedCronJob",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9472,13 +10558,19 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadBatchV1NamespacedCronJobStatus",
+			ID:   "readBatchV1NamespacedCronJobStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJobStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadBatchV1NamespacedCronJobStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9486,8 +10578,8 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 	params, err := decodeReadBatchV1NamespacedCronJobStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadBatchV1NamespacedCronJobStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9527,13 +10619,19 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadBatchV1NamespacedJob",
+			ID:   "readBatchV1NamespacedJob",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadBatchV1NamespacedJob", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadBatchV1NamespacedJob",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9541,8 +10639,8 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 	params, err := decodeReadBatchV1NamespacedJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadBatchV1NamespacedJob",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9582,13 +10680,19 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadBatchV1NamespacedJobStatus",
+			ID:   "readBatchV1NamespacedJobStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadBatchV1NamespacedJobStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadBatchV1NamespacedJobStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9596,8 +10700,8 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 	params, err := decodeReadBatchV1NamespacedJobStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadBatchV1NamespacedJobStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9637,13 +10741,19 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadBatchV1beta1NamespacedCronJob",
+			ID:   "readBatchV1beta1NamespacedCronJob",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJob", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadBatchV1beta1NamespacedCronJob",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9651,8 +10761,8 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 	params, err := decodeReadBatchV1beta1NamespacedCronJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadBatchV1beta1NamespacedCronJob",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9692,13 +10802,19 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadBatchV1beta1NamespacedCronJobStatus",
+			ID:   "readBatchV1beta1NamespacedCronJobStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJobStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadBatchV1beta1NamespacedCronJobStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9706,8 +10822,8 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 	params, err := decodeReadBatchV1beta1NamespacedCronJobStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadBatchV1beta1NamespacedCronJobStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9747,13 +10863,19 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCertificatesV1CertificateSigningRequest",
+			ID:   "readCertificatesV1CertificateSigningRequest",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequest", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCertificatesV1CertificateSigningRequest",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9761,8 +10883,8 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 	params, err := decodeReadCertificatesV1CertificateSigningRequestParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCertificatesV1CertificateSigningRequest",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9802,13 +10924,19 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCertificatesV1CertificateSigningRequestApproval",
+			ID:   "readCertificatesV1CertificateSigningRequestApproval",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestApproval", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCertificatesV1CertificateSigningRequestApproval",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9816,8 +10944,8 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 	params, err := decodeReadCertificatesV1CertificateSigningRequestApprovalParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCertificatesV1CertificateSigningRequestApproval",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9857,13 +10985,19 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCertificatesV1CertificateSigningRequestStatus",
+			ID:   "readCertificatesV1CertificateSigningRequestStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCertificatesV1CertificateSigningRequestStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9871,8 +11005,8 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 	params, err := decodeReadCertificatesV1CertificateSigningRequestStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCertificatesV1CertificateSigningRequestStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9912,13 +11046,19 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoordinationV1NamespacedLease",
+			ID:   "readCoordinationV1NamespacedLease",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoordinationV1NamespacedLease", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoordinationV1NamespacedLease",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9926,8 +11066,8 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 	params, err := decodeReadCoordinationV1NamespacedLeaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoordinationV1NamespacedLease",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9967,13 +11107,19 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1ComponentStatus",
+			ID:   "readCoreV1ComponentStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1ComponentStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1ComponentStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9981,8 +11127,8 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 	params, err := decodeReadCoreV1ComponentStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1ComponentStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10022,13 +11168,19 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1Namespace",
+			ID:   "readCoreV1Namespace",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1Namespace", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1Namespace",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10036,8 +11188,8 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 	params, err := decodeReadCoreV1NamespaceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1Namespace",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10077,13 +11229,19 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespaceStatus",
+			ID:   "readCoreV1NamespaceStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespaceStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespaceStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10091,8 +11249,8 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 	params, err := decodeReadCoreV1NamespaceStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespaceStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10132,13 +11290,19 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedConfigMap",
+			ID:   "readCoreV1NamespacedConfigMap",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedConfigMap", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedConfigMap",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10146,8 +11310,8 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 	params, err := decodeReadCoreV1NamespacedConfigMapParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedConfigMap",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10187,13 +11351,19 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedEndpoints",
+			ID:   "readCoreV1NamespacedEndpoints",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedEndpoints", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedEndpoints",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10201,8 +11371,8 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 	params, err := decodeReadCoreV1NamespacedEndpointsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedEndpoints",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10242,13 +11412,19 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedEvent",
+			ID:   "readCoreV1NamespacedEvent",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedEvent", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedEvent",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10256,8 +11432,8 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 	params, err := decodeReadCoreV1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedEvent",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10297,13 +11473,19 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedLimitRange",
+			ID:   "readCoreV1NamespacedLimitRange",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedLimitRange", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedLimitRange",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10311,8 +11493,8 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 	params, err := decodeReadCoreV1NamespacedLimitRangeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedLimitRange",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10352,13 +11534,19 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedPersistentVolumeClaim",
+			ID:   "readCoreV1NamespacedPersistentVolumeClaim",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaim", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedPersistentVolumeClaim",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10366,8 +11554,8 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 	params, err := decodeReadCoreV1NamespacedPersistentVolumeClaimParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedPersistentVolumeClaim",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10407,13 +11595,19 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedPersistentVolumeClaimStatus",
+			ID:   "readCoreV1NamespacedPersistentVolumeClaimStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaimStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedPersistentVolumeClaimStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10421,8 +11615,8 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 	params, err := decodeReadCoreV1NamespacedPersistentVolumeClaimStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedPersistentVolumeClaimStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10462,13 +11656,19 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedPod",
+			ID:   "readCoreV1NamespacedPod",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedPod", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedPod",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10476,8 +11676,8 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 	params, err := decodeReadCoreV1NamespacedPodParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedPod",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10517,13 +11717,19 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedPodEphemeralcontainers",
+			ID:   "readCoreV1NamespacedPodEphemeralcontainers",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodEphemeralcontainers", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedPodEphemeralcontainers",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10531,8 +11737,8 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 	params, err := decodeReadCoreV1NamespacedPodEphemeralcontainersParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedPodEphemeralcontainers",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10572,13 +11778,19 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedPodLog",
+			ID:   "readCoreV1NamespacedPodLog",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodLog", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedPodLog",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10586,8 +11798,8 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 	params, err := decodeReadCoreV1NamespacedPodLogParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedPodLog",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10627,13 +11839,19 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedPodStatus",
+			ID:   "readCoreV1NamespacedPodStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedPodStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10641,8 +11859,8 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 	params, err := decodeReadCoreV1NamespacedPodStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedPodStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10682,13 +11900,19 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedPodTemplate",
+			ID:   "readCoreV1NamespacedPodTemplate",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodTemplate", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedPodTemplate",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10696,8 +11920,8 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 	params, err := decodeReadCoreV1NamespacedPodTemplateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedPodTemplate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10737,13 +11961,19 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedReplicationController",
+			ID:   "readCoreV1NamespacedReplicationController",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationController", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedReplicationController",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10751,8 +11981,8 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 	params, err := decodeReadCoreV1NamespacedReplicationControllerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedReplicationController",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10792,13 +12022,19 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedReplicationControllerScale",
+			ID:   "readCoreV1NamespacedReplicationControllerScale",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerScale", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedReplicationControllerScale",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10806,8 +12042,8 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 	params, err := decodeReadCoreV1NamespacedReplicationControllerScaleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedReplicationControllerScale",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10847,13 +12083,19 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedReplicationControllerStatus",
+			ID:   "readCoreV1NamespacedReplicationControllerStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedReplicationControllerStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10861,8 +12103,8 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 	params, err := decodeReadCoreV1NamespacedReplicationControllerStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedReplicationControllerStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10902,13 +12144,19 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedResourceQuota",
+			ID:   "readCoreV1NamespacedResourceQuota",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuota", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedResourceQuota",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10916,8 +12164,8 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 	params, err := decodeReadCoreV1NamespacedResourceQuotaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedResourceQuota",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10957,13 +12205,19 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedResourceQuotaStatus",
+			ID:   "readCoreV1NamespacedResourceQuotaStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuotaStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedResourceQuotaStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10971,8 +12225,8 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 	params, err := decodeReadCoreV1NamespacedResourceQuotaStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedResourceQuotaStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11012,13 +12266,19 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedSecret",
+			ID:   "readCoreV1NamespacedSecret",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedSecret", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedSecret",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11026,8 +12286,8 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 	params, err := decodeReadCoreV1NamespacedSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11067,13 +12327,19 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedService",
+			ID:   "readCoreV1NamespacedService",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedService", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedService",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11081,8 +12347,8 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 	params, err := decodeReadCoreV1NamespacedServiceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedService",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11122,13 +12388,19 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedServiceAccount",
+			ID:   "readCoreV1NamespacedServiceAccount",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceAccount", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedServiceAccount",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11136,8 +12408,8 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 	params, err := decodeReadCoreV1NamespacedServiceAccountParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedServiceAccount",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11177,13 +12449,19 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NamespacedServiceStatus",
+			ID:   "readCoreV1NamespacedServiceStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NamespacedServiceStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11191,8 +12469,8 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 	params, err := decodeReadCoreV1NamespacedServiceStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NamespacedServiceStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11232,13 +12510,19 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1Node",
+			ID:   "readCoreV1Node",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1Node", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1Node",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11246,8 +12530,8 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeReadCoreV1NodeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1Node",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11287,13 +12571,19 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1NodeStatus",
+			ID:   "readCoreV1NodeStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NodeStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1NodeStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11301,8 +12591,8 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 	params, err := decodeReadCoreV1NodeStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1NodeStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11342,13 +12632,19 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1PersistentVolume",
+			ID:   "readCoreV1PersistentVolume",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1PersistentVolume", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1PersistentVolume",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11356,8 +12652,8 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 	params, err := decodeReadCoreV1PersistentVolumeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1PersistentVolume",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11397,13 +12693,19 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadCoreV1PersistentVolumeStatus",
+			ID:   "readCoreV1PersistentVolumeStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1PersistentVolumeStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadCoreV1PersistentVolumeStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11411,8 +12713,8 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 	params, err := decodeReadCoreV1PersistentVolumeStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadCoreV1PersistentVolumeStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11452,13 +12754,19 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadDiscoveryV1NamespacedEndpointSlice",
+			ID:   "readDiscoveryV1NamespacedEndpointSlice",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadDiscoveryV1NamespacedEndpointSlice", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadDiscoveryV1NamespacedEndpointSlice",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11466,8 +12774,8 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 	params, err := decodeReadDiscoveryV1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadDiscoveryV1NamespacedEndpointSlice",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11507,13 +12815,19 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadDiscoveryV1beta1NamespacedEndpointSlice",
+			ID:   "readDiscoveryV1beta1NamespacedEndpointSlice",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadDiscoveryV1beta1NamespacedEndpointSlice", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadDiscoveryV1beta1NamespacedEndpointSlice",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11521,8 +12835,8 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	params, err := decodeReadDiscoveryV1beta1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadDiscoveryV1beta1NamespacedEndpointSlice",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11562,13 +12876,19 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadEventsV1NamespacedEvent",
+			ID:   "readEventsV1NamespacedEvent",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadEventsV1NamespacedEvent", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadEventsV1NamespacedEvent",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11576,8 +12896,8 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 	params, err := decodeReadEventsV1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadEventsV1NamespacedEvent",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11617,13 +12937,19 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadEventsV1beta1NamespacedEvent",
+			ID:   "readEventsV1beta1NamespacedEvent",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadEventsV1beta1NamespacedEvent", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadEventsV1beta1NamespacedEvent",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11631,8 +12957,8 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 	params, err := decodeReadEventsV1beta1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadEventsV1beta1NamespacedEvent",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11672,13 +12998,19 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadFlowcontrolApiserverV1beta1FlowSchema",
+			ID:   "readFlowcontrolApiserverV1beta1FlowSchema",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchema", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadFlowcontrolApiserverV1beta1FlowSchema",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11686,8 +13018,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 	params, err := decodeReadFlowcontrolApiserverV1beta1FlowSchemaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadFlowcontrolApiserverV1beta1FlowSchema",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11727,13 +13059,19 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus",
+			ID:   "readFlowcontrolApiserverV1beta1FlowSchemaStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11741,8 +13079,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 	params, err := decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11782,13 +13120,19 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			ID:   "readFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11796,8 +13140,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	params, err := decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11837,13 +13181,19 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
+			ID:   "readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11851,8 +13201,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	params, err := decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11892,13 +13242,19 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadFlowcontrolApiserverV1beta2FlowSchema",
+			ID:   "readFlowcontrolApiserverV1beta2FlowSchema",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchema", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadFlowcontrolApiserverV1beta2FlowSchema",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11906,8 +13262,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 	params, err := decodeReadFlowcontrolApiserverV1beta2FlowSchemaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadFlowcontrolApiserverV1beta2FlowSchema",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11947,13 +13303,19 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus",
+			ID:   "readFlowcontrolApiserverV1beta2FlowSchemaStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11961,8 +13323,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 	params, err := decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12002,13 +13364,19 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			ID:   "readFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12016,8 +13384,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	params, err := decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12057,13 +13425,19 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
+			ID:   "readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12071,8 +13445,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	params, err := decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12112,13 +13486,19 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadInternalApiserverV1alpha1StorageVersion",
+			ID:   "readInternalApiserverV1alpha1StorageVersion",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersion", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadInternalApiserverV1alpha1StorageVersion",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12126,8 +13506,8 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 	params, err := decodeReadInternalApiserverV1alpha1StorageVersionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadInternalApiserverV1alpha1StorageVersion",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12167,13 +13547,19 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadInternalApiserverV1alpha1StorageVersionStatus",
+			ID:   "readInternalApiserverV1alpha1StorageVersionStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersionStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadInternalApiserverV1alpha1StorageVersionStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12181,8 +13567,8 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 	params, err := decodeReadInternalApiserverV1alpha1StorageVersionStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadInternalApiserverV1alpha1StorageVersionStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12222,13 +13608,19 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadNetworkingV1IngressClass",
+			ID:   "readNetworkingV1IngressClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadNetworkingV1IngressClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadNetworkingV1IngressClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12236,8 +13628,8 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 	params, err := decodeReadNetworkingV1IngressClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadNetworkingV1IngressClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12277,13 +13669,19 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadNetworkingV1NamespacedIngress",
+			ID:   "readNetworkingV1NamespacedIngress",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngress", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadNetworkingV1NamespacedIngress",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12291,8 +13689,8 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 	params, err := decodeReadNetworkingV1NamespacedIngressParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadNetworkingV1NamespacedIngress",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12332,13 +13730,19 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadNetworkingV1NamespacedIngressStatus",
+			ID:   "readNetworkingV1NamespacedIngressStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngressStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadNetworkingV1NamespacedIngressStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12346,8 +13750,8 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 	params, err := decodeReadNetworkingV1NamespacedIngressStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadNetworkingV1NamespacedIngressStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12387,13 +13791,19 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadNetworkingV1NamespacedNetworkPolicy",
+			ID:   "readNetworkingV1NamespacedNetworkPolicy",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedNetworkPolicy", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadNetworkingV1NamespacedNetworkPolicy",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12401,8 +13811,8 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 	params, err := decodeReadNetworkingV1NamespacedNetworkPolicyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadNetworkingV1NamespacedNetworkPolicy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12442,13 +13852,19 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadNodeV1RuntimeClass",
+			ID:   "readNodeV1RuntimeClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadNodeV1RuntimeClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadNodeV1RuntimeClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12456,8 +13872,8 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 	params, err := decodeReadNodeV1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadNodeV1RuntimeClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12497,13 +13913,19 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadNodeV1alpha1RuntimeClass",
+			ID:   "readNodeV1alpha1RuntimeClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadNodeV1alpha1RuntimeClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadNodeV1alpha1RuntimeClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12511,8 +13933,8 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 	params, err := decodeReadNodeV1alpha1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadNodeV1alpha1RuntimeClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12552,13 +13974,19 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadNodeV1beta1RuntimeClass",
+			ID:   "readNodeV1beta1RuntimeClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadNodeV1beta1RuntimeClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadNodeV1beta1RuntimeClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12566,8 +13994,8 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 	params, err := decodeReadNodeV1beta1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadNodeV1beta1RuntimeClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12607,13 +14035,19 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadPolicyV1NamespacedPodDisruptionBudget",
+			ID:   "readPolicyV1NamespacedPodDisruptionBudget",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudget", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadPolicyV1NamespacedPodDisruptionBudget",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12621,8 +14055,8 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 	params, err := decodeReadPolicyV1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadPolicyV1NamespacedPodDisruptionBudget",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12662,13 +14096,19 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadPolicyV1NamespacedPodDisruptionBudgetStatus",
+			ID:   "readPolicyV1NamespacedPodDisruptionBudgetStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudgetStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadPolicyV1NamespacedPodDisruptionBudgetStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12676,8 +14116,8 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 	params, err := decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadPolicyV1NamespacedPodDisruptionBudgetStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12717,13 +14157,19 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadPolicyV1beta1NamespacedPodDisruptionBudget",
+			ID:   "readPolicyV1beta1NamespacedPodDisruptionBudget",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudget", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadPolicyV1beta1NamespacedPodDisruptionBudget",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12731,8 +14177,8 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	params, err := decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadPolicyV1beta1NamespacedPodDisruptionBudget",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12772,13 +14218,19 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
+			ID:   "readPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12786,8 +14238,8 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 	params, err := decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12827,13 +14279,19 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadPolicyV1beta1PodSecurityPolicy",
+			ID:   "readPolicyV1beta1PodSecurityPolicy",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadPolicyV1beta1PodSecurityPolicy", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadPolicyV1beta1PodSecurityPolicy",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12841,8 +14299,8 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 	params, err := decodeReadPolicyV1beta1PodSecurityPolicyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadPolicyV1beta1PodSecurityPolicy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12882,13 +14340,19 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadRbacAuthorizationV1ClusterRole",
+			ID:   "readRbacAuthorizationV1ClusterRole",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRole", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadRbacAuthorizationV1ClusterRole",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12896,8 +14360,8 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 	params, err := decodeReadRbacAuthorizationV1ClusterRoleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadRbacAuthorizationV1ClusterRole",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12937,13 +14401,19 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadRbacAuthorizationV1ClusterRoleBinding",
+			ID:   "readRbacAuthorizationV1ClusterRoleBinding",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRoleBinding", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadRbacAuthorizationV1ClusterRoleBinding",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12951,8 +14421,8 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 	params, err := decodeReadRbacAuthorizationV1ClusterRoleBindingParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadRbacAuthorizationV1ClusterRoleBinding",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12992,13 +14462,19 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadRbacAuthorizationV1NamespacedRole",
+			ID:   "readRbacAuthorizationV1NamespacedRole",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRole", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadRbacAuthorizationV1NamespacedRole",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13006,8 +14482,8 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 	params, err := decodeReadRbacAuthorizationV1NamespacedRoleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadRbacAuthorizationV1NamespacedRole",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13047,13 +14523,19 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadRbacAuthorizationV1NamespacedRoleBinding",
+			ID:   "readRbacAuthorizationV1NamespacedRoleBinding",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRoleBinding", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadRbacAuthorizationV1NamespacedRoleBinding",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13061,8 +14543,8 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	params, err := decodeReadRbacAuthorizationV1NamespacedRoleBindingParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadRbacAuthorizationV1NamespacedRoleBinding",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13102,13 +14584,19 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadSchedulingV1PriorityClass",
+			ID:   "readSchedulingV1PriorityClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadSchedulingV1PriorityClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadSchedulingV1PriorityClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13116,8 +14604,8 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 	params, err := decodeReadSchedulingV1PriorityClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadSchedulingV1PriorityClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13157,13 +14645,19 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadStorageV1CSIDriver",
+			ID:   "readStorageV1CSIDriver",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadStorageV1CSIDriver", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadStorageV1CSIDriver",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13171,8 +14665,8 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 	params, err := decodeReadStorageV1CSIDriverParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadStorageV1CSIDriver",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13212,13 +14706,19 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadStorageV1CSINode",
+			ID:   "readStorageV1CSINode",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadStorageV1CSINode", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadStorageV1CSINode",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13226,8 +14726,8 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 	params, err := decodeReadStorageV1CSINodeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadStorageV1CSINode",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13267,13 +14767,19 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadStorageV1StorageClass",
+			ID:   "readStorageV1StorageClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadStorageV1StorageClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadStorageV1StorageClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13281,8 +14787,8 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 	params, err := decodeReadStorageV1StorageClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadStorageV1StorageClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13322,13 +14828,19 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadStorageV1VolumeAttachment",
+			ID:   "readStorageV1VolumeAttachment",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadStorageV1VolumeAttachment", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadStorageV1VolumeAttachment",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13336,8 +14848,8 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 	params, err := decodeReadStorageV1VolumeAttachmentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadStorageV1VolumeAttachment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13377,13 +14889,19 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadStorageV1VolumeAttachmentStatus",
+			ID:   "readStorageV1VolumeAttachmentStatus",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadStorageV1VolumeAttachmentStatus", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadStorageV1VolumeAttachmentStatus",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13391,8 +14909,8 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 	params, err := decodeReadStorageV1VolumeAttachmentStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadStorageV1VolumeAttachmentStatus",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13432,13 +14950,19 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadStorageV1alpha1NamespacedCSIStorageCapacity",
+			ID:   "readStorageV1alpha1NamespacedCSIStorageCapacity",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadStorageV1alpha1NamespacedCSIStorageCapacity", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadStorageV1alpha1NamespacedCSIStorageCapacity",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13446,8 +14970,8 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	params, err := decodeReadStorageV1alpha1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadStorageV1alpha1NamespacedCSIStorageCapacity",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13487,13 +15011,19 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReadStorageV1beta1NamespacedCSIStorageCapacity",
+			ID:   "readStorageV1beta1NamespacedCSIStorageCapacity",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "ReadStorageV1beta1NamespacedCSIStorageCapacity", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "ReadStorageV1beta1NamespacedCSIStorageCapacity",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13501,8 +15031,8 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	params, err := decodeReadStorageV1beta1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "ReadStorageV1beta1NamespacedCSIStorageCapacity",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13542,13 +15072,19 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAdmissionregistrationV1MutatingWebhookConfiguration",
+			ID:   "watchAdmissionregistrationV1MutatingWebhookConfiguration",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfiguration", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAdmissionregistrationV1MutatingWebhookConfiguration",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13556,8 +15092,8 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 	params, err := decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAdmissionregistrationV1MutatingWebhookConfiguration",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13597,13 +15133,19 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAdmissionregistrationV1MutatingWebhookConfigurationList",
+			ID:   "watchAdmissionregistrationV1MutatingWebhookConfigurationList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfigurationList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAdmissionregistrationV1MutatingWebhookConfigurationList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13611,8 +15153,8 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 	params, err := decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAdmissionregistrationV1MutatingWebhookConfigurationList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13652,13 +15194,19 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAdmissionregistrationV1ValidatingWebhookConfiguration",
+			ID:   "watchAdmissionregistrationV1ValidatingWebhookConfiguration",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfiguration", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAdmissionregistrationV1ValidatingWebhookConfiguration",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13666,8 +15214,8 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	params, err := decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAdmissionregistrationV1ValidatingWebhookConfiguration",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13707,13 +15255,19 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList",
+			ID:   "watchAdmissionregistrationV1ValidatingWebhookConfigurationList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13721,8 +15275,8 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	params, err := decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13762,13 +15316,19 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchApiextensionsV1CustomResourceDefinition",
+			ID:   "watchApiextensionsV1CustomResourceDefinition",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinition", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchApiextensionsV1CustomResourceDefinition",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13776,8 +15336,8 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 	params, err := decodeWatchApiextensionsV1CustomResourceDefinitionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchApiextensionsV1CustomResourceDefinition",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13817,13 +15377,19 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchApiextensionsV1CustomResourceDefinitionList",
+			ID:   "watchApiextensionsV1CustomResourceDefinitionList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinitionList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchApiextensionsV1CustomResourceDefinitionList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13831,8 +15397,8 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 	params, err := decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchApiextensionsV1CustomResourceDefinitionList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13872,13 +15438,19 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchApiregistrationV1APIService",
+			ID:   "watchApiregistrationV1APIService",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchApiregistrationV1APIService", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchApiregistrationV1APIService",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13886,8 +15458,8 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 	params, err := decodeWatchApiregistrationV1APIServiceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchApiregistrationV1APIService",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13927,13 +15499,19 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchApiregistrationV1APIServiceList",
+			ID:   "watchApiregistrationV1APIServiceList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchApiregistrationV1APIServiceList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchApiregistrationV1APIServiceList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13941,8 +15519,8 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 	params, err := decodeWatchApiregistrationV1APIServiceListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchApiregistrationV1APIServiceList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13982,13 +15560,19 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAppsV1ControllerRevisionListForAllNamespaces",
+			ID:   "watchAppsV1ControllerRevisionListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1ControllerRevisionListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAppsV1ControllerRevisionListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13996,8 +15580,8 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 	params, err := decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAppsV1ControllerRevisionListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14037,13 +15621,19 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAppsV1DaemonSetListForAllNamespaces",
+			ID:   "watchAppsV1DaemonSetListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1DaemonSetListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAppsV1DaemonSetListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14051,8 +15641,8 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 	params, err := decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAppsV1DaemonSetListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14092,13 +15682,19 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAppsV1DeploymentListForAllNamespaces",
+			ID:   "watchAppsV1DeploymentListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1DeploymentListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAppsV1DeploymentListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14106,8 +15702,8 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 	params, err := decodeWatchAppsV1DeploymentListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAppsV1DeploymentListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14147,13 +15743,19 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAppsV1NamespacedControllerRevision",
+			ID:   "watchAppsV1NamespacedControllerRevision",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevision", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAppsV1NamespacedControllerRevision",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14161,8 +15763,8 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 	params, err := decodeWatchAppsV1NamespacedControllerRevisionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAppsV1NamespacedControllerRevision",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14202,13 +15804,19 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAppsV1NamespacedControllerRevisionList",
+			ID:   "watchAppsV1NamespacedControllerRevisionList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevisionList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAppsV1NamespacedControllerRevisionList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14216,8 +15824,8 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 	params, err := decodeWatchAppsV1NamespacedControllerRevisionListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAppsV1NamespacedControllerRevisionList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14257,13 +15865,19 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAppsV1NamespacedDaemonSet",
+			ID:   "watchAppsV1NamespacedDaemonSet",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSet", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAppsV1NamespacedDaemonSet",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14271,8 +15885,8 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 	params, err := decodeWatchAppsV1NamespacedDaemonSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAppsV1NamespacedDaemonSet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14312,13 +15926,19 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAppsV1NamespacedDaemonSetList",
+			ID:   "watchAppsV1NamespacedDaemonSetList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSetList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAppsV1NamespacedDaemonSetList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14326,8 +15946,8 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 	params, err := decodeWatchAppsV1NamespacedDaemonSetListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAppsV1NamespacedDaemonSetList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14367,13 +15987,19 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAppsV1NamespacedDeployment",
+			ID:   "watchAppsV1NamespacedDeployment",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedDeployment", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAppsV1NamespacedDeployment",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14381,8 +16007,8 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 	params, err := decodeWatchAppsV1NamespacedDeploymentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAppsV1NamespacedDeployment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14422,13 +16048,19 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAppsV1NamespacedDeploymentList",
+			ID:   "watchAppsV1NamespacedDeploymentList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedDeploymentList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAppsV1NamespacedDeploymentList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14436,8 +16068,8 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 	params, err := decodeWatchAppsV1NamespacedDeploymentListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAppsV1NamespacedDeploymentList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14477,13 +16109,19 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAppsV1NamespacedReplicaSet",
+			ID:   "watchAppsV1NamespacedReplicaSet",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSet", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAppsV1NamespacedReplicaSet",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14491,8 +16129,8 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 	params, err := decodeWatchAppsV1NamespacedReplicaSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAppsV1NamespacedReplicaSet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14532,13 +16170,19 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAppsV1NamespacedReplicaSetList",
+			ID:   "watchAppsV1NamespacedReplicaSetList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSetList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAppsV1NamespacedReplicaSetList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14546,8 +16190,8 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 	params, err := decodeWatchAppsV1NamespacedReplicaSetListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAppsV1NamespacedReplicaSetList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14587,13 +16231,19 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAppsV1NamespacedStatefulSet",
+			ID:   "watchAppsV1NamespacedStatefulSet",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSet", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAppsV1NamespacedStatefulSet",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14601,8 +16251,8 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 	params, err := decodeWatchAppsV1NamespacedStatefulSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAppsV1NamespacedStatefulSet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14642,13 +16292,19 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAppsV1NamespacedStatefulSetList",
+			ID:   "watchAppsV1NamespacedStatefulSetList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSetList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAppsV1NamespacedStatefulSetList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14656,8 +16312,8 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 	params, err := decodeWatchAppsV1NamespacedStatefulSetListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAppsV1NamespacedStatefulSetList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14697,13 +16353,19 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAppsV1ReplicaSetListForAllNamespaces",
+			ID:   "watchAppsV1ReplicaSetListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1ReplicaSetListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAppsV1ReplicaSetListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14711,8 +16373,8 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 	params, err := decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAppsV1ReplicaSetListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14752,13 +16414,19 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAppsV1StatefulSetListForAllNamespaces",
+			ID:   "watchAppsV1StatefulSetListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1StatefulSetListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAppsV1StatefulSetListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14766,8 +16434,8 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 	params, err := decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAppsV1StatefulSetListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14807,13 +16475,19 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
+			ID:   "watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14821,8 +16495,8 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 	params, err := decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14862,13 +16536,19 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			ID:   "watchAutoscalingV1NamespacedHorizontalPodAutoscaler",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14876,8 +16556,8 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 	params, err := decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14917,13 +16597,19 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
+			ID:   "watchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14931,8 +16617,8 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 	params, err := decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14972,13 +16658,19 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
+			ID:   "watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14986,8 +16678,8 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 	params, err := decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15027,13 +16719,19 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			ID:   "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15041,8 +16739,8 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 	params, err := decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15082,13 +16780,19 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
+			ID:   "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15096,8 +16800,8 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 	params, err := decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15137,13 +16841,19 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
+			ID:   "watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15151,8 +16861,8 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 	params, err := decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15192,13 +16902,19 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			ID:   "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15206,8 +16922,8 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 	params, err := decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15247,13 +16963,19 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
+			ID:   "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15261,8 +16983,8 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 	params, err := decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15302,13 +17024,19 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchBatchV1CronJobListForAllNamespaces",
+			ID:   "watchBatchV1CronJobListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1CronJobListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchBatchV1CronJobListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15316,8 +17044,8 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 	params, err := decodeWatchBatchV1CronJobListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchBatchV1CronJobListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15357,13 +17085,19 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchBatchV1JobListForAllNamespaces",
+			ID:   "watchBatchV1JobListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1JobListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchBatchV1JobListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15371,8 +17105,8 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 	params, err := decodeWatchBatchV1JobListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchBatchV1JobListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15412,13 +17146,19 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchBatchV1NamespacedCronJob",
+			ID:   "watchBatchV1NamespacedCronJob",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJob", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchBatchV1NamespacedCronJob",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15426,8 +17166,8 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 	params, err := decodeWatchBatchV1NamespacedCronJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchBatchV1NamespacedCronJob",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15467,13 +17207,19 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchBatchV1NamespacedCronJobList",
+			ID:   "watchBatchV1NamespacedCronJobList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJobList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchBatchV1NamespacedCronJobList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15481,8 +17227,8 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 	params, err := decodeWatchBatchV1NamespacedCronJobListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchBatchV1NamespacedCronJobList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15522,13 +17268,19 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchBatchV1NamespacedJob",
+			ID:   "watchBatchV1NamespacedJob",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1NamespacedJob", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchBatchV1NamespacedJob",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15536,8 +17288,8 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 	params, err := decodeWatchBatchV1NamespacedJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchBatchV1NamespacedJob",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15577,13 +17329,19 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchBatchV1NamespacedJobList",
+			ID:   "watchBatchV1NamespacedJobList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1NamespacedJobList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchBatchV1NamespacedJobList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15591,8 +17349,8 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 	params, err := decodeWatchBatchV1NamespacedJobListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchBatchV1NamespacedJobList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15632,13 +17390,19 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchBatchV1beta1CronJobListForAllNamespaces",
+			ID:   "watchBatchV1beta1CronJobListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1beta1CronJobListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchBatchV1beta1CronJobListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15646,8 +17410,8 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 	params, err := decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchBatchV1beta1CronJobListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15687,13 +17451,19 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchBatchV1beta1NamespacedCronJob",
+			ID:   "watchBatchV1beta1NamespacedCronJob",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJob", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchBatchV1beta1NamespacedCronJob",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15701,8 +17471,8 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 	params, err := decodeWatchBatchV1beta1NamespacedCronJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchBatchV1beta1NamespacedCronJob",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15742,13 +17512,19 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchBatchV1beta1NamespacedCronJobList",
+			ID:   "watchBatchV1beta1NamespacedCronJobList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJobList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchBatchV1beta1NamespacedCronJobList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15756,8 +17532,8 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 	params, err := decodeWatchBatchV1beta1NamespacedCronJobListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchBatchV1beta1NamespacedCronJobList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15797,13 +17573,19 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCertificatesV1CertificateSigningRequest",
+			ID:   "watchCertificatesV1CertificateSigningRequest",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequest", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCertificatesV1CertificateSigningRequest",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15811,8 +17593,8 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 	params, err := decodeWatchCertificatesV1CertificateSigningRequestParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCertificatesV1CertificateSigningRequest",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15852,13 +17634,19 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCertificatesV1CertificateSigningRequestList",
+			ID:   "watchCertificatesV1CertificateSigningRequestList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequestList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCertificatesV1CertificateSigningRequestList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15866,8 +17654,8 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 	params, err := decodeWatchCertificatesV1CertificateSigningRequestListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCertificatesV1CertificateSigningRequestList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15907,13 +17695,19 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoordinationV1LeaseListForAllNamespaces",
+			ID:   "watchCoordinationV1LeaseListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoordinationV1LeaseListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoordinationV1LeaseListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15921,8 +17715,8 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 	params, err := decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoordinationV1LeaseListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15962,13 +17756,19 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoordinationV1NamespacedLease",
+			ID:   "watchCoordinationV1NamespacedLease",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLease", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoordinationV1NamespacedLease",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15976,8 +17776,8 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 	params, err := decodeWatchCoordinationV1NamespacedLeaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoordinationV1NamespacedLease",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16017,13 +17817,19 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoordinationV1NamespacedLeaseList",
+			ID:   "watchCoordinationV1NamespacedLeaseList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLeaseList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoordinationV1NamespacedLeaseList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16031,8 +17837,8 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 	params, err := decodeWatchCoordinationV1NamespacedLeaseListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoordinationV1NamespacedLeaseList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16072,13 +17878,19 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1ConfigMapListForAllNamespaces",
+			ID:   "watchCoreV1ConfigMapListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1ConfigMapListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1ConfigMapListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16086,8 +17898,8 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 	params, err := decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1ConfigMapListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16127,13 +17939,19 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1EndpointsListForAllNamespaces",
+			ID:   "watchCoreV1EndpointsListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1EndpointsListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1EndpointsListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16141,8 +17959,8 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 	params, err := decodeWatchCoreV1EndpointsListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1EndpointsListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16182,13 +18000,19 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1EventListForAllNamespaces",
+			ID:   "watchCoreV1EventListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1EventListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1EventListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16196,8 +18020,8 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 	params, err := decodeWatchCoreV1EventListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1EventListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16237,13 +18061,19 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1LimitRangeListForAllNamespaces",
+			ID:   "watchCoreV1LimitRangeListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1LimitRangeListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1LimitRangeListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16251,8 +18081,8 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 	params, err := decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1LimitRangeListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16292,13 +18122,19 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1Namespace",
+			ID:   "watchCoreV1Namespace",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1Namespace", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1Namespace",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16306,8 +18142,8 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 	params, err := decodeWatchCoreV1NamespaceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1Namespace",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16347,13 +18183,19 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespaceList",
+			ID:   "watchCoreV1NamespaceList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespaceList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespaceList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16361,8 +18203,8 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 	params, err := decodeWatchCoreV1NamespaceListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespaceList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16402,13 +18244,19 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedConfigMap",
+			ID:   "watchCoreV1NamespacedConfigMap",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMap", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedConfigMap",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16416,8 +18264,8 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 	params, err := decodeWatchCoreV1NamespacedConfigMapParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedConfigMap",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16457,13 +18305,19 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedConfigMapList",
+			ID:   "watchCoreV1NamespacedConfigMapList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMapList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedConfigMapList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16471,8 +18325,8 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 	params, err := decodeWatchCoreV1NamespacedConfigMapListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedConfigMapList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16512,13 +18366,19 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedEndpoints",
+			ID:   "watchCoreV1NamespacedEndpoints",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpoints", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedEndpoints",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16526,8 +18386,8 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 	params, err := decodeWatchCoreV1NamespacedEndpointsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedEndpoints",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16567,13 +18427,19 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedEndpointsList",
+			ID:   "watchCoreV1NamespacedEndpointsList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpointsList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedEndpointsList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16581,8 +18447,8 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 	params, err := decodeWatchCoreV1NamespacedEndpointsListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedEndpointsList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16622,13 +18488,19 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedEvent",
+			ID:   "watchCoreV1NamespacedEvent",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedEvent", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedEvent",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16636,8 +18508,8 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 	params, err := decodeWatchCoreV1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedEvent",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16677,13 +18549,19 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedEventList",
+			ID:   "watchCoreV1NamespacedEventList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedEventList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedEventList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16691,8 +18569,8 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 	params, err := decodeWatchCoreV1NamespacedEventListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedEventList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16732,13 +18610,19 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedLimitRange",
+			ID:   "watchCoreV1NamespacedLimitRange",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRange", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedLimitRange",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16746,8 +18630,8 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 	params, err := decodeWatchCoreV1NamespacedLimitRangeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedLimitRange",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16787,13 +18671,19 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedLimitRangeList",
+			ID:   "watchCoreV1NamespacedLimitRangeList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRangeList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedLimitRangeList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16801,8 +18691,8 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 	params, err := decodeWatchCoreV1NamespacedLimitRangeListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedLimitRangeList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16842,13 +18732,19 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedPersistentVolumeClaim",
+			ID:   "watchCoreV1NamespacedPersistentVolumeClaim",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaim", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedPersistentVolumeClaim",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16856,8 +18752,8 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 	params, err := decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedPersistentVolumeClaim",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16897,13 +18793,19 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedPersistentVolumeClaimList",
+			ID:   "watchCoreV1NamespacedPersistentVolumeClaimList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaimList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedPersistentVolumeClaimList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16911,8 +18813,8 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 	params, err := decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedPersistentVolumeClaimList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16952,13 +18854,19 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedPod",
+			ID:   "watchCoreV1NamespacedPod",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedPod", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedPod",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16966,8 +18874,8 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 	params, err := decodeWatchCoreV1NamespacedPodParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedPod",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17007,13 +18915,19 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedPodList",
+			ID:   "watchCoreV1NamespacedPodList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedPodList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17021,8 +18935,8 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 	params, err := decodeWatchCoreV1NamespacedPodListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedPodList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17062,13 +18976,19 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedPodTemplate",
+			ID:   "watchCoreV1NamespacedPodTemplate",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplate", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedPodTemplate",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17076,8 +18996,8 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 	params, err := decodeWatchCoreV1NamespacedPodTemplateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedPodTemplate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17117,13 +19037,19 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedPodTemplateList",
+			ID:   "watchCoreV1NamespacedPodTemplateList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplateList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedPodTemplateList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17131,8 +19057,8 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 	params, err := decodeWatchCoreV1NamespacedPodTemplateListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedPodTemplateList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17172,13 +19098,19 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedReplicationController",
+			ID:   "watchCoreV1NamespacedReplicationController",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationController", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedReplicationController",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17186,8 +19118,8 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 	params, err := decodeWatchCoreV1NamespacedReplicationControllerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedReplicationController",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17227,13 +19159,19 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedReplicationControllerList",
+			ID:   "watchCoreV1NamespacedReplicationControllerList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationControllerList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedReplicationControllerList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17241,8 +19179,8 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 	params, err := decodeWatchCoreV1NamespacedReplicationControllerListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedReplicationControllerList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17282,13 +19220,19 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedResourceQuota",
+			ID:   "watchCoreV1NamespacedResourceQuota",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuota", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedResourceQuota",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17296,8 +19240,8 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 	params, err := decodeWatchCoreV1NamespacedResourceQuotaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedResourceQuota",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17337,13 +19281,19 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedResourceQuotaList",
+			ID:   "watchCoreV1NamespacedResourceQuotaList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuotaList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedResourceQuotaList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17351,8 +19301,8 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 	params, err := decodeWatchCoreV1NamespacedResourceQuotaListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedResourceQuotaList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17392,13 +19342,19 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedSecret",
+			ID:   "watchCoreV1NamespacedSecret",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedSecret", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedSecret",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17406,8 +19362,8 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 	params, err := decodeWatchCoreV1NamespacedSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedSecret",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17447,13 +19403,19 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedSecretList",
+			ID:   "watchCoreV1NamespacedSecretList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedSecretList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedSecretList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17461,8 +19423,8 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 	params, err := decodeWatchCoreV1NamespacedSecretListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedSecretList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17502,13 +19464,19 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedService",
+			ID:   "watchCoreV1NamespacedService",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedService", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedService",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17516,8 +19484,8 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 	params, err := decodeWatchCoreV1NamespacedServiceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedService",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17557,13 +19525,19 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedServiceAccount",
+			ID:   "watchCoreV1NamespacedServiceAccount",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccount", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedServiceAccount",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17571,8 +19545,8 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 	params, err := decodeWatchCoreV1NamespacedServiceAccountParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedServiceAccount",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17612,13 +19586,19 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedServiceAccountList",
+			ID:   "watchCoreV1NamespacedServiceAccountList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccountList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedServiceAccountList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17626,8 +19606,8 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 	params, err := decodeWatchCoreV1NamespacedServiceAccountListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedServiceAccountList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17667,13 +19647,19 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NamespacedServiceList",
+			ID:   "watchCoreV1NamespacedServiceList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NamespacedServiceList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17681,8 +19667,8 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 	params, err := decodeWatchCoreV1NamespacedServiceListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NamespacedServiceList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17722,13 +19708,19 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1Node",
+			ID:   "watchCoreV1Node",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1Node", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1Node",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17736,8 +19728,8 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 	params, err := decodeWatchCoreV1NodeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1Node",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17777,13 +19769,19 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1NodeList",
+			ID:   "watchCoreV1NodeList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NodeList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1NodeList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17791,8 +19789,8 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 	params, err := decodeWatchCoreV1NodeListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1NodeList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17832,13 +19830,19 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1PersistentVolume",
+			ID:   "watchCoreV1PersistentVolume",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1PersistentVolume", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1PersistentVolume",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17846,8 +19850,8 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 	params, err := decodeWatchCoreV1PersistentVolumeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1PersistentVolume",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17887,13 +19891,19 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1PersistentVolumeClaimListForAllNamespaces",
+			ID:   "watchCoreV1PersistentVolumeClaimListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeClaimListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1PersistentVolumeClaimListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17901,8 +19911,8 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 	params, err := decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1PersistentVolumeClaimListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17942,13 +19952,19 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1PersistentVolumeList",
+			ID:   "watchCoreV1PersistentVolumeList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1PersistentVolumeList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17956,8 +19972,8 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 	params, err := decodeWatchCoreV1PersistentVolumeListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1PersistentVolumeList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17997,13 +20013,19 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1PodListForAllNamespaces",
+			ID:   "watchCoreV1PodListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1PodListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1PodListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18011,8 +20033,8 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 	params, err := decodeWatchCoreV1PodListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1PodListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18052,13 +20074,19 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1PodTemplateListForAllNamespaces",
+			ID:   "watchCoreV1PodTemplateListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1PodTemplateListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1PodTemplateListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18066,8 +20094,8 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 	params, err := decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1PodTemplateListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18107,13 +20135,19 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1ReplicationControllerListForAllNamespaces",
+			ID:   "watchCoreV1ReplicationControllerListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1ReplicationControllerListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1ReplicationControllerListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18121,8 +20155,8 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 	params, err := decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1ReplicationControllerListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18162,13 +20196,19 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1ResourceQuotaListForAllNamespaces",
+			ID:   "watchCoreV1ResourceQuotaListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1ResourceQuotaListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1ResourceQuotaListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18176,8 +20216,8 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 	params, err := decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1ResourceQuotaListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18217,13 +20257,19 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1SecretListForAllNamespaces",
+			ID:   "watchCoreV1SecretListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1SecretListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1SecretListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18231,8 +20277,8 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 	params, err := decodeWatchCoreV1SecretListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1SecretListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18272,13 +20318,19 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1ServiceAccountListForAllNamespaces",
+			ID:   "watchCoreV1ServiceAccountListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1ServiceAccountListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1ServiceAccountListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18286,8 +20338,8 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 	params, err := decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1ServiceAccountListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18327,13 +20379,19 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchCoreV1ServiceListForAllNamespaces",
+			ID:   "watchCoreV1ServiceListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1ServiceListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchCoreV1ServiceListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18341,8 +20399,8 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 	params, err := decodeWatchCoreV1ServiceListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchCoreV1ServiceListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18382,13 +20440,19 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchDiscoveryV1EndpointSliceListForAllNamespaces",
+			ID:   "watchDiscoveryV1EndpointSliceListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchDiscoveryV1EndpointSliceListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchDiscoveryV1EndpointSliceListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18396,8 +20460,8 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 	params, err := decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchDiscoveryV1EndpointSliceListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18437,13 +20501,19 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchDiscoveryV1NamespacedEndpointSlice",
+			ID:   "watchDiscoveryV1NamespacedEndpointSlice",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSlice", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchDiscoveryV1NamespacedEndpointSlice",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18451,8 +20521,8 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 	params, err := decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchDiscoveryV1NamespacedEndpointSlice",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18492,13 +20562,19 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchDiscoveryV1NamespacedEndpointSliceList",
+			ID:   "watchDiscoveryV1NamespacedEndpointSliceList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSliceList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchDiscoveryV1NamespacedEndpointSliceList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18506,8 +20582,8 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 	params, err := decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchDiscoveryV1NamespacedEndpointSliceList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18547,13 +20623,19 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
+			ID:   "watchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18561,8 +20643,8 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 	params, err := decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18602,13 +20684,19 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchDiscoveryV1beta1NamespacedEndpointSlice",
+			ID:   "watchDiscoveryV1beta1NamespacedEndpointSlice",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSlice", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchDiscoveryV1beta1NamespacedEndpointSlice",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18616,8 +20704,8 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 	params, err := decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchDiscoveryV1beta1NamespacedEndpointSlice",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18657,13 +20745,19 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchDiscoveryV1beta1NamespacedEndpointSliceList",
+			ID:   "watchDiscoveryV1beta1NamespacedEndpointSliceList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSliceList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchDiscoveryV1beta1NamespacedEndpointSliceList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18671,8 +20765,8 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 	params, err := decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchDiscoveryV1beta1NamespacedEndpointSliceList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18712,13 +20806,19 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchEventsV1EventListForAllNamespaces",
+			ID:   "watchEventsV1EventListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchEventsV1EventListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchEventsV1EventListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18726,8 +20826,8 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 	params, err := decodeWatchEventsV1EventListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchEventsV1EventListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18767,13 +20867,19 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchEventsV1NamespacedEvent",
+			ID:   "watchEventsV1NamespacedEvent",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchEventsV1NamespacedEvent", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchEventsV1NamespacedEvent",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18781,8 +20887,8 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 	params, err := decodeWatchEventsV1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchEventsV1NamespacedEvent",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18822,13 +20928,19 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchEventsV1NamespacedEventList",
+			ID:   "watchEventsV1NamespacedEventList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchEventsV1NamespacedEventList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchEventsV1NamespacedEventList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18836,8 +20948,8 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 	params, err := decodeWatchEventsV1NamespacedEventListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchEventsV1NamespacedEventList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18877,13 +20989,19 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchEventsV1beta1EventListForAllNamespaces",
+			ID:   "watchEventsV1beta1EventListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchEventsV1beta1EventListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchEventsV1beta1EventListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18891,8 +21009,8 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 	params, err := decodeWatchEventsV1beta1EventListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchEventsV1beta1EventListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18932,13 +21050,19 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchEventsV1beta1NamespacedEvent",
+			ID:   "watchEventsV1beta1NamespacedEvent",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEvent", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchEventsV1beta1NamespacedEvent",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18946,8 +21070,8 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 	params, err := decodeWatchEventsV1beta1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchEventsV1beta1NamespacedEvent",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18987,13 +21111,19 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchEventsV1beta1NamespacedEventList",
+			ID:   "watchEventsV1beta1NamespacedEventList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEventList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchEventsV1beta1NamespacedEventList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19001,8 +21131,8 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 	params, err := decodeWatchEventsV1beta1NamespacedEventListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchEventsV1beta1NamespacedEventList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19042,13 +21172,19 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchFlowcontrolApiserverV1beta1FlowSchema",
+			ID:   "watchFlowcontrolApiserverV1beta1FlowSchema",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchema", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchFlowcontrolApiserverV1beta1FlowSchema",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19056,8 +21192,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 	params, err := decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchFlowcontrolApiserverV1beta1FlowSchema",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19097,13 +21233,19 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchFlowcontrolApiserverV1beta1FlowSchemaList",
+			ID:   "watchFlowcontrolApiserverV1beta1FlowSchemaList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchemaList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchFlowcontrolApiserverV1beta1FlowSchemaList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19111,8 +21253,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 	params, err := decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchFlowcontrolApiserverV1beta1FlowSchemaList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19152,13 +21294,19 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			ID:   "watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19166,8 +21314,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	params, err := decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19207,13 +21355,19 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
+			ID:   "watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19221,8 +21375,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	params, err := decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19262,13 +21416,19 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchFlowcontrolApiserverV1beta2FlowSchema",
+			ID:   "watchFlowcontrolApiserverV1beta2FlowSchema",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchema", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchFlowcontrolApiserverV1beta2FlowSchema",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19276,8 +21436,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 	params, err := decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchFlowcontrolApiserverV1beta2FlowSchema",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19317,13 +21477,19 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchFlowcontrolApiserverV1beta2FlowSchemaList",
+			ID:   "watchFlowcontrolApiserverV1beta2FlowSchemaList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchemaList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchFlowcontrolApiserverV1beta2FlowSchemaList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19331,8 +21497,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 	params, err := decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchFlowcontrolApiserverV1beta2FlowSchemaList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19372,13 +21538,19 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			ID:   "watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19386,8 +21558,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	params, err := decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19427,13 +21599,19 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
+			ID:   "watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19441,8 +21619,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	params, err := decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19482,13 +21660,19 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchInternalApiserverV1alpha1StorageVersion",
+			ID:   "watchInternalApiserverV1alpha1StorageVersion",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersion", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchInternalApiserverV1alpha1StorageVersion",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19496,8 +21680,8 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 	params, err := decodeWatchInternalApiserverV1alpha1StorageVersionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchInternalApiserverV1alpha1StorageVersion",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19537,13 +21721,19 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchInternalApiserverV1alpha1StorageVersionList",
+			ID:   "watchInternalApiserverV1alpha1StorageVersionList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersionList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchInternalApiserverV1alpha1StorageVersionList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19551,8 +21741,8 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 	params, err := decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchInternalApiserverV1alpha1StorageVersionList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19592,13 +21782,19 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchNetworkingV1IngressClass",
+			ID:   "watchNetworkingV1IngressClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchNetworkingV1IngressClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchNetworkingV1IngressClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19606,8 +21802,8 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 	params, err := decodeWatchNetworkingV1IngressClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchNetworkingV1IngressClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19647,13 +21843,19 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchNetworkingV1IngressClassList",
+			ID:   "watchNetworkingV1IngressClassList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchNetworkingV1IngressClassList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchNetworkingV1IngressClassList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19661,8 +21863,8 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 	params, err := decodeWatchNetworkingV1IngressClassListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchNetworkingV1IngressClassList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19702,13 +21904,19 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchNetworkingV1IngressListForAllNamespaces",
+			ID:   "watchNetworkingV1IngressListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchNetworkingV1IngressListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchNetworkingV1IngressListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19716,8 +21924,8 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 	params, err := decodeWatchNetworkingV1IngressListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchNetworkingV1IngressListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19757,13 +21965,19 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchNetworkingV1NamespacedIngress",
+			ID:   "watchNetworkingV1NamespacedIngress",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngress", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchNetworkingV1NamespacedIngress",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19771,8 +21985,8 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 	params, err := decodeWatchNetworkingV1NamespacedIngressParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchNetworkingV1NamespacedIngress",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19812,13 +22026,19 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchNetworkingV1NamespacedIngressList",
+			ID:   "watchNetworkingV1NamespacedIngressList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngressList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchNetworkingV1NamespacedIngressList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19826,8 +22046,8 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 	params, err := decodeWatchNetworkingV1NamespacedIngressListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchNetworkingV1NamespacedIngressList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19867,13 +22087,19 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchNetworkingV1NamespacedNetworkPolicy",
+			ID:   "watchNetworkingV1NamespacedNetworkPolicy",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicy", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchNetworkingV1NamespacedNetworkPolicy",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19881,8 +22107,8 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 	params, err := decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchNetworkingV1NamespacedNetworkPolicy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19922,13 +22148,19 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchNetworkingV1NamespacedNetworkPolicyList",
+			ID:   "watchNetworkingV1NamespacedNetworkPolicyList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicyList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchNetworkingV1NamespacedNetworkPolicyList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19936,8 +22168,8 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 	params, err := decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchNetworkingV1NamespacedNetworkPolicyList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19977,13 +22209,19 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchNetworkingV1NetworkPolicyListForAllNamespaces",
+			ID:   "watchNetworkingV1NetworkPolicyListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchNetworkingV1NetworkPolicyListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchNetworkingV1NetworkPolicyListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19991,8 +22229,8 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 	params, err := decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchNetworkingV1NetworkPolicyListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20032,13 +22270,19 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchNodeV1RuntimeClass",
+			ID:   "watchNodeV1RuntimeClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchNodeV1RuntimeClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchNodeV1RuntimeClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20046,8 +22290,8 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 	params, err := decodeWatchNodeV1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchNodeV1RuntimeClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20087,13 +22331,19 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchNodeV1RuntimeClassList",
+			ID:   "watchNodeV1RuntimeClassList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchNodeV1RuntimeClassList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchNodeV1RuntimeClassList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20101,8 +22351,8 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 	params, err := decodeWatchNodeV1RuntimeClassListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchNodeV1RuntimeClassList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20142,13 +22392,19 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchNodeV1alpha1RuntimeClass",
+			ID:   "watchNodeV1alpha1RuntimeClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchNodeV1alpha1RuntimeClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20156,8 +22412,8 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 	params, err := decodeWatchNodeV1alpha1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchNodeV1alpha1RuntimeClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20197,13 +22453,19 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchNodeV1alpha1RuntimeClassList",
+			ID:   "watchNodeV1alpha1RuntimeClassList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClassList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchNodeV1alpha1RuntimeClassList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20211,8 +22473,8 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 	params, err := decodeWatchNodeV1alpha1RuntimeClassListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchNodeV1alpha1RuntimeClassList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20252,13 +22514,19 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchNodeV1beta1RuntimeClass",
+			ID:   "watchNodeV1beta1RuntimeClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchNodeV1beta1RuntimeClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20266,8 +22534,8 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 	params, err := decodeWatchNodeV1beta1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchNodeV1beta1RuntimeClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20307,13 +22575,19 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchNodeV1beta1RuntimeClassList",
+			ID:   "watchNodeV1beta1RuntimeClassList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClassList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchNodeV1beta1RuntimeClassList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20321,8 +22595,8 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 	params, err := decodeWatchNodeV1beta1RuntimeClassListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchNodeV1beta1RuntimeClassList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20362,13 +22636,19 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchPolicyV1NamespacedPodDisruptionBudget",
+			ID:   "watchPolicyV1NamespacedPodDisruptionBudget",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudget", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchPolicyV1NamespacedPodDisruptionBudget",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20376,8 +22656,8 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 	params, err := decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchPolicyV1NamespacedPodDisruptionBudget",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20417,13 +22697,19 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchPolicyV1NamespacedPodDisruptionBudgetList",
+			ID:   "watchPolicyV1NamespacedPodDisruptionBudgetList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudgetList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchPolicyV1NamespacedPodDisruptionBudgetList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20431,8 +22717,8 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 	params, err := decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchPolicyV1NamespacedPodDisruptionBudgetList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20472,13 +22758,19 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces",
+			ID:   "watchPolicyV1PodDisruptionBudgetListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20486,8 +22778,8 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 	params, err := decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20527,13 +22819,19 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchPolicyV1beta1NamespacedPodDisruptionBudget",
+			ID:   "watchPolicyV1beta1NamespacedPodDisruptionBudget",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudget", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchPolicyV1beta1NamespacedPodDisruptionBudget",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20541,8 +22839,8 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 	params, err := decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchPolicyV1beta1NamespacedPodDisruptionBudget",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20582,13 +22880,19 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList",
+			ID:   "watchPolicyV1beta1NamespacedPodDisruptionBudgetList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20596,8 +22900,8 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 	params, err := decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20637,13 +22941,19 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
+			ID:   "watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20651,8 +22961,8 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 	params, err := decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20692,13 +23002,19 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchPolicyV1beta1PodSecurityPolicy",
+			ID:   "watchPolicyV1beta1PodSecurityPolicy",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicy", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchPolicyV1beta1PodSecurityPolicy",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20706,8 +23022,8 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 	params, err := decodeWatchPolicyV1beta1PodSecurityPolicyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchPolicyV1beta1PodSecurityPolicy",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20747,13 +23063,19 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchPolicyV1beta1PodSecurityPolicyList",
+			ID:   "watchPolicyV1beta1PodSecurityPolicyList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicyList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchPolicyV1beta1PodSecurityPolicyList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20761,8 +23083,8 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 	params, err := decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchPolicyV1beta1PodSecurityPolicyList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20802,13 +23124,19 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchRbacAuthorizationV1ClusterRole",
+			ID:   "watchRbacAuthorizationV1ClusterRole",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRole", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchRbacAuthorizationV1ClusterRole",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20816,8 +23144,8 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 	params, err := decodeWatchRbacAuthorizationV1ClusterRoleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchRbacAuthorizationV1ClusterRole",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20857,13 +23185,19 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchRbacAuthorizationV1ClusterRoleBinding",
+			ID:   "watchRbacAuthorizationV1ClusterRoleBinding",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBinding", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchRbacAuthorizationV1ClusterRoleBinding",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20871,8 +23205,8 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 	params, err := decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchRbacAuthorizationV1ClusterRoleBinding",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20912,13 +23246,19 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchRbacAuthorizationV1ClusterRoleBindingList",
+			ID:   "watchRbacAuthorizationV1ClusterRoleBindingList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBindingList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchRbacAuthorizationV1ClusterRoleBindingList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20926,8 +23266,8 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 	params, err := decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchRbacAuthorizationV1ClusterRoleBindingList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20967,13 +23307,19 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchRbacAuthorizationV1ClusterRoleList",
+			ID:   "watchRbacAuthorizationV1ClusterRoleList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchRbacAuthorizationV1ClusterRoleList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20981,8 +23327,8 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 	params, err := decodeWatchRbacAuthorizationV1ClusterRoleListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchRbacAuthorizationV1ClusterRoleList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21022,13 +23368,19 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchRbacAuthorizationV1NamespacedRole",
+			ID:   "watchRbacAuthorizationV1NamespacedRole",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRole", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchRbacAuthorizationV1NamespacedRole",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21036,8 +23388,8 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchRbacAuthorizationV1NamespacedRole",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21077,13 +23429,19 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchRbacAuthorizationV1NamespacedRoleBinding",
+			ID:   "watchRbacAuthorizationV1NamespacedRoleBinding",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBinding", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchRbacAuthorizationV1NamespacedRoleBinding",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21091,8 +23449,8 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchRbacAuthorizationV1NamespacedRoleBinding",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21132,13 +23490,19 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchRbacAuthorizationV1NamespacedRoleBindingList",
+			ID:   "watchRbacAuthorizationV1NamespacedRoleBindingList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBindingList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchRbacAuthorizationV1NamespacedRoleBindingList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21146,8 +23510,8 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchRbacAuthorizationV1NamespacedRoleBindingList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21187,13 +23551,19 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchRbacAuthorizationV1NamespacedRoleList",
+			ID:   "watchRbacAuthorizationV1NamespacedRoleList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchRbacAuthorizationV1NamespacedRoleList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21201,8 +23571,8 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchRbacAuthorizationV1NamespacedRoleList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21242,13 +23612,19 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces",
+			ID:   "watchRbacAuthorizationV1RoleBindingListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21256,8 +23632,8 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 	params, err := decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21297,13 +23673,19 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchRbacAuthorizationV1RoleListForAllNamespaces",
+			ID:   "watchRbacAuthorizationV1RoleListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchRbacAuthorizationV1RoleListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21311,8 +23693,8 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 	params, err := decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchRbacAuthorizationV1RoleListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21352,13 +23734,19 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchSchedulingV1PriorityClass",
+			ID:   "watchSchedulingV1PriorityClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchSchedulingV1PriorityClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchSchedulingV1PriorityClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21366,8 +23754,8 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 	params, err := decodeWatchSchedulingV1PriorityClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchSchedulingV1PriorityClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21407,13 +23795,19 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchSchedulingV1PriorityClassList",
+			ID:   "watchSchedulingV1PriorityClassList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchSchedulingV1PriorityClassList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchSchedulingV1PriorityClassList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21421,8 +23815,8 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 	params, err := decodeWatchSchedulingV1PriorityClassListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchSchedulingV1PriorityClassList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21462,13 +23856,19 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchStorageV1CSIDriver",
+			ID:   "watchStorageV1CSIDriver",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1CSIDriver", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchStorageV1CSIDriver",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21476,8 +23876,8 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 	params, err := decodeWatchStorageV1CSIDriverParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchStorageV1CSIDriver",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21517,13 +23917,19 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchStorageV1CSIDriverList",
+			ID:   "watchStorageV1CSIDriverList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1CSIDriverList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchStorageV1CSIDriverList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21531,8 +23937,8 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 	params, err := decodeWatchStorageV1CSIDriverListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchStorageV1CSIDriverList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21572,13 +23978,19 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchStorageV1CSINode",
+			ID:   "watchStorageV1CSINode",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1CSINode", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchStorageV1CSINode",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21586,8 +23998,8 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 	params, err := decodeWatchStorageV1CSINodeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchStorageV1CSINode",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21627,13 +24039,19 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchStorageV1CSINodeList",
+			ID:   "watchStorageV1CSINodeList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1CSINodeList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchStorageV1CSINodeList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21641,8 +24059,8 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 	params, err := decodeWatchStorageV1CSINodeListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchStorageV1CSINodeList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21682,13 +24100,19 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchStorageV1StorageClass",
+			ID:   "watchStorageV1StorageClass",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1StorageClass", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchStorageV1StorageClass",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21696,8 +24120,8 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 	params, err := decodeWatchStorageV1StorageClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchStorageV1StorageClass",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21737,13 +24161,19 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchStorageV1StorageClassList",
+			ID:   "watchStorageV1StorageClassList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1StorageClassList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchStorageV1StorageClassList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21751,8 +24181,8 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 	params, err := decodeWatchStorageV1StorageClassListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchStorageV1StorageClassList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21792,13 +24222,19 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchStorageV1VolumeAttachment",
+			ID:   "watchStorageV1VolumeAttachment",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1VolumeAttachment", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchStorageV1VolumeAttachment",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21806,8 +24242,8 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 	params, err := decodeWatchStorageV1VolumeAttachmentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchStorageV1VolumeAttachment",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21847,13 +24283,19 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchStorageV1VolumeAttachmentList",
+			ID:   "watchStorageV1VolumeAttachmentList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1VolumeAttachmentList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchStorageV1VolumeAttachmentList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21861,8 +24303,8 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 	params, err := decodeWatchStorageV1VolumeAttachmentListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchStorageV1VolumeAttachmentList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21902,13 +24344,19 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
+			ID:   "watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21916,8 +24364,8 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 	params, err := decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21957,13 +24405,19 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchStorageV1alpha1NamespacedCSIStorageCapacity",
+			ID:   "watchStorageV1alpha1NamespacedCSIStorageCapacity",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacity", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchStorageV1alpha1NamespacedCSIStorageCapacity",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21971,8 +24425,8 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 	params, err := decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchStorageV1alpha1NamespacedCSIStorageCapacity",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22012,13 +24466,19 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchStorageV1alpha1NamespacedCSIStorageCapacityList",
+			ID:   "watchStorageV1alpha1NamespacedCSIStorageCapacityList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacityList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchStorageV1alpha1NamespacedCSIStorageCapacityList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22026,8 +24486,8 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 	params, err := decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchStorageV1alpha1NamespacedCSIStorageCapacityList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22067,13 +24527,19 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
+			ID:   "watchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22081,8 +24547,8 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 	params, err := decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22122,13 +24588,19 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchStorageV1beta1NamespacedCSIStorageCapacity",
+			ID:   "watchStorageV1beta1NamespacedCSIStorageCapacity",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacity", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchStorageV1beta1NamespacedCSIStorageCapacity",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22136,8 +24608,8 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 	params, err := decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchStorageV1beta1NamespacedCSIStorageCapacity",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22177,13 +24649,19 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "WatchStorageV1beta1NamespacedCSIStorageCapacityList",
+			ID:   "watchStorageV1beta1NamespacedCSIStorageCapacityList",
+		}
+	)
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacityList", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "WatchStorageV1beta1NamespacedCSIStorageCapacityList",
-			Security:  "BearerToken",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "BearerToken",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22191,8 +24669,8 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 	params, err := decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "WatchStorageV1beta1NamespacedCSIStorageCapacityList",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return

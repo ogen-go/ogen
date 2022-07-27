@@ -2086,14 +2086,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name  string
-	count int
-	args  [0]string
+	name        string
+	operationID string
+	count       int
+	args        [0]string
+}
+
+// Name returns ogen operation name.
+//
+// It is guaranteed to be unique and not empty.
+func (r Route) Name() string {
+	return r.name
 }
 
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
-	return r.name
+	return r.operationID
 }
 
 // Args returns parsed arguments.
@@ -2153,6 +2161,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: AddStickerToSet
 							r.name = "AddStickerToSet"
+							r.operationID = "addStickerToSet"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2183,6 +2192,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: AnswerCallbackQuery
 								r.name = "AnswerCallbackQuery"
+								r.operationID = "answerCallbackQuery"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2202,6 +2212,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: AnswerInlineQuery
 								r.name = "AnswerInlineQuery"
+								r.operationID = "answerInlineQuery"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2221,6 +2232,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: AnswerPreCheckoutQuery
 								r.name = "AnswerPreCheckoutQuery"
+								r.operationID = "answerPreCheckoutQuery"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2240,6 +2252,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: AnswerShippingQuery
 								r.name = "AnswerShippingQuery"
+								r.operationID = "answerShippingQuery"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2259,6 +2272,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: AnswerWebAppQuery
 								r.name = "AnswerWebAppQuery"
+								r.operationID = "answerWebAppQuery"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2279,6 +2293,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: ApproveChatJoinRequest
 							r.name = "ApproveChatJoinRequest"
+							r.operationID = "approveChatJoinRequest"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2310,6 +2325,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: BanChatMember
 							r.name = "BanChatMember"
+							r.operationID = "banChatMember"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2329,6 +2345,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: BanChatSenderChat
 							r.name = "BanChatSenderChat"
+							r.operationID = "banChatSenderChat"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2360,6 +2377,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: Close
 							r.name = "Close"
+							r.operationID = "close"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2379,6 +2397,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: CopyMessage
 							r.name = "CopyMessage"
+							r.operationID = "copyMessage"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2409,6 +2428,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: CreateChatInviteLink
 								r.name = "CreateChatInviteLink"
+								r.operationID = "createChatInviteLink"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2428,6 +2448,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: CreateNewStickerSet
 								r.name = "CreateNewStickerSet"
+								r.operationID = "createNewStickerSet"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2460,6 +2481,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: DeclineChatJoinRequest
 							r.name = "DeclineChatJoinRequest"
+							r.operationID = "declineChatJoinRequest"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2501,6 +2523,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: DeleteChatPhoto
 									r.name = "DeleteChatPhoto"
+									r.operationID = "deleteChatPhoto"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2520,6 +2543,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: DeleteChatStickerSet
 									r.name = "DeleteChatStickerSet"
+									r.operationID = "deleteChatStickerSet"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2551,6 +2575,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: DeleteMessage
 									r.name = "DeleteMessage"
+									r.operationID = "deleteMessage"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2570,6 +2595,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: DeleteMyCommands
 									r.name = "DeleteMyCommands"
+									r.operationID = "deleteMyCommands"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2590,6 +2616,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: DeleteStickerFromSet
 								r.name = "DeleteStickerFromSet"
+								r.operationID = "deleteStickerFromSet"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2609,6 +2636,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: DeleteWebhook
 								r.name = "DeleteWebhook"
+								r.operationID = "deleteWebhook"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2652,6 +2680,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: EditChatInviteLink
 								r.name = "EditChatInviteLink"
+								r.operationID = "editChatInviteLink"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2682,6 +2711,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: EditMessageCaption
 									r.name = "EditMessageCaption"
+									r.operationID = "editMessageCaption"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2701,6 +2731,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: EditMessageLiveLocation
 									r.name = "EditMessageLiveLocation"
+									r.operationID = "editMessageLiveLocation"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2720,6 +2751,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: EditMessageMedia
 									r.name = "EditMessageMedia"
+									r.operationID = "editMessageMedia"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2739,6 +2771,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: EditMessageReplyMarkup
 									r.name = "EditMessageReplyMarkup"
+									r.operationID = "editMessageReplyMarkup"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2758,6 +2791,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: EditMessageText
 									r.name = "EditMessageText"
+									r.operationID = "editMessageText"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2779,6 +2813,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: ExportChatInviteLink
 							r.name = "ExportChatInviteLink"
+							r.operationID = "exportChatInviteLink"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2799,6 +2834,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					case "POST":
 						// Leaf: ForwardMessage
 						r.name = "ForwardMessage"
+						r.operationID = "forwardMessage"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -2828,6 +2864,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						switch method {
 						case "POST":
 							r.name = "GetChat"
+							r.operationID = "getChat"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2848,6 +2885,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: GetChatAdministrators
 								r.name = "GetChatAdministrators"
+								r.operationID = "getChatAdministrators"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -2877,6 +2915,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "POST":
 									r.name = "GetChatMember"
+									r.operationID = "getChatMember"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2897,6 +2936,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: GetChatMemberCount
 										r.name = "GetChatMemberCount"
+										r.operationID = "getChatMemberCount"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -2917,6 +2957,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: GetChatMenuButton
 									r.name = "GetChatMenuButton"
+									r.operationID = "getChatMenuButton"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -2938,6 +2979,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: GetFile
 							r.name = "GetFile"
+							r.operationID = "getFile"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2957,6 +2999,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: GetGameHighScores
 							r.name = "GetGameHighScores"
+							r.operationID = "getGameHighScores"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -2987,6 +3030,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: GetMe
 								r.name = "GetMe"
+								r.operationID = "getMe"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -3017,6 +3061,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: GetMyCommands
 									r.name = "GetMyCommands"
+									r.operationID = "getMyCommands"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -3036,6 +3081,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: GetMyDefaultAdministratorRights
 									r.name = "GetMyDefaultAdministratorRights"
+									r.operationID = "getMyDefaultAdministratorRights"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -3057,6 +3103,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: GetStickerSet
 							r.name = "GetStickerSet"
+							r.operationID = "getStickerSet"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -3087,6 +3134,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: GetUpdates
 								r.name = "GetUpdates"
+								r.operationID = "getUpdates"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -3106,6 +3154,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: GetUserProfilePhotos
 								r.name = "GetUserProfilePhotos"
+								r.operationID = "getUserProfilePhotos"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -3126,6 +3175,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: GetWebhookInfo
 							r.name = "GetWebhookInfo"
+							r.operationID = "getWebhookInfo"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -3157,6 +3207,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: LeaveChat
 							r.name = "LeaveChat"
+							r.operationID = "leaveChat"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -3176,6 +3227,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: LogOut
 							r.name = "LogOut"
+							r.operationID = "logOut"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -3207,6 +3259,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: PinChatMessage
 							r.name = "PinChatMessage"
+							r.operationID = "pinChatMessage"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -3226,6 +3279,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: PromoteChatMember
 							r.name = "PromoteChatMember"
+							r.operationID = "promoteChatMember"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -3257,6 +3311,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: RestrictChatMember
 							r.name = "RestrictChatMember"
+							r.operationID = "restrictChatMember"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -3276,6 +3331,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: RevokeChatInviteLink
 							r.name = "RevokeChatInviteLink"
+							r.operationID = "revokeChatInviteLink"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -3340,6 +3396,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SendAnimation
 										r.name = "SendAnimation"
+										r.operationID = "sendAnimation"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3359,6 +3416,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SendAudio
 										r.name = "SendAudio"
+										r.operationID = "sendAudio"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3390,6 +3448,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SendChatAction
 										r.name = "SendChatAction"
+										r.operationID = "sendChatAction"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3409,6 +3468,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SendContact
 										r.name = "SendContact"
+										r.operationID = "sendContact"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3440,6 +3500,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SendDice
 										r.name = "SendDice"
+										r.operationID = "sendDice"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3459,6 +3520,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SendDocument
 										r.name = "SendDocument"
+										r.operationID = "sendDocument"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3479,6 +3541,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: SendGame
 									r.name = "SendGame"
+									r.operationID = "sendGame"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -3498,6 +3561,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: SendInvoice
 									r.name = "SendInvoice"
+									r.operationID = "sendInvoice"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -3517,6 +3581,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: SendLocation
 									r.name = "SendLocation"
+									r.operationID = "sendLocation"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -3547,6 +3612,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SendMediaGroup
 										r.name = "SendMediaGroup"
+										r.operationID = "sendMediaGroup"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3566,6 +3632,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SendMessage
 										r.name = "SendMessage"
+										r.operationID = "sendMessage"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3597,6 +3664,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SendPhoto
 										r.name = "SendPhoto"
+										r.operationID = "sendPhoto"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3616,6 +3684,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SendPoll
 										r.name = "SendPoll"
+										r.operationID = "sendPoll"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3636,6 +3705,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: SendSticker
 									r.name = "SendSticker"
+									r.operationID = "sendSticker"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -3666,6 +3736,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SendVenue
 										r.name = "SendVenue"
+										r.operationID = "sendVenue"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3684,6 +3755,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "SendVideo"
+										r.operationID = "sendVideo"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3704,6 +3776,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "POST":
 											// Leaf: SendVideoNote
 											r.name = "SendVideoNote"
+											r.operationID = "sendVideoNote"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -3724,6 +3797,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SendVoice
 										r.name = "SendVoice"
+										r.operationID = "sendVoice"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3767,6 +3841,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SetChatAdministratorCustomTitle
 										r.name = "SetChatAdministratorCustomTitle"
+										r.operationID = "setChatAdministratorCustomTitle"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3786,6 +3861,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SetChatDescription
 										r.name = "SetChatDescription"
+										r.operationID = "setChatDescription"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3805,6 +3881,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SetChatMenuButton
 										r.name = "SetChatMenuButton"
+										r.operationID = "setChatMenuButton"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3835,6 +3912,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "POST":
 											// Leaf: SetChatPermissions
 											r.name = "SetChatPermissions"
+											r.operationID = "setChatPermissions"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -3854,6 +3932,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "POST":
 											// Leaf: SetChatPhoto
 											r.name = "SetChatPhoto"
+											r.operationID = "setChatPhoto"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -3874,6 +3953,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SetChatStickerSet
 										r.name = "SetChatStickerSet"
+										r.operationID = "setChatStickerSet"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3893,6 +3973,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SetChatTitle
 										r.name = "SetChatTitle"
+										r.operationID = "setChatTitle"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3913,6 +3994,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: SetGameScore
 									r.name = "SetGameScore"
+									r.operationID = "setGameScore"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -3943,6 +4025,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SetMyCommands
 										r.name = "SetMyCommands"
+										r.operationID = "setMyCommands"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3962,6 +4045,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SetMyDefaultAdministratorRights
 										r.name = "SetMyDefaultAdministratorRights"
+										r.operationID = "setMyDefaultAdministratorRights"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -3982,6 +4066,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: SetPassportDataErrors
 									r.name = "SetPassportDataErrors"
+									r.operationID = "setPassportDataErrors"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -4012,6 +4097,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SetStickerPositionInSet
 										r.name = "SetStickerPositionInSet"
+										r.operationID = "setStickerPositionInSet"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -4031,6 +4117,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "POST":
 										// Leaf: SetStickerSetThumb
 										r.name = "SetStickerSetThumb"
+										r.operationID = "setStickerSetThumb"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -4051,6 +4138,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: SetWebhook
 									r.name = "SetWebhook"
+									r.operationID = "setWebhook"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -4083,6 +4171,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: StopMessageLiveLocation
 								r.name = "StopMessageLiveLocation"
+								r.operationID = "stopMessageLiveLocation"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -4102,6 +4191,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: StopPoll
 								r.name = "StopPoll"
+								r.operationID = "stopPoll"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -4156,6 +4246,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: UnbanChatMember
 									r.name = "UnbanChatMember"
+									r.operationID = "unbanChatMember"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -4175,6 +4266,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: UnbanChatSenderChat
 									r.name = "UnbanChatSenderChat"
+									r.operationID = "unbanChatSenderChat"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -4206,6 +4298,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: UnpinAllChatMessages
 									r.name = "UnpinAllChatMessages"
+									r.operationID = "unpinAllChatMessages"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -4225,6 +4318,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: UnpinChatMessage
 									r.name = "UnpinChatMessage"
+									r.operationID = "unpinChatMessage"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -4246,6 +4340,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: UploadStickerFile
 							r.name = "UploadStickerFile"
+							r.operationID = "uploadStickerFile"
 							r.args = args
 							r.count = 0
 							return r, true

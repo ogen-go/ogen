@@ -432,14 +432,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name  string
-	count int
-	args  [1]string
+	name        string
+	operationID string
+	count       int
+	args        [1]string
+}
+
+// Name returns ogen operation name.
+//
+// It is guaranteed to be unique and not empty.
+func (r Route) Name() string {
+	return r.name
 }
 
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
-	return r.name
+	return r.operationID
 }
 
 // Args returns parsed arguments.
@@ -476,6 +484,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				switch method {
 				case "GET":
 					r.name = "DescribeInstance"
+					r.operationID = "describeInstance"
 					r.args = args
 					r.count = 0
 					return r, true
@@ -496,6 +505,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					case "PUT":
 						// Leaf: CreateSyncAction
 						r.name = "CreateSyncAction"
+						r.operationID = "createSyncAction"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -525,16 +535,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "DescribeBalloonConfig"
+							r.operationID = "describeBalloonConfig"
 							r.args = args
 							r.count = 0
 							return r, true
 						case "PATCH":
 							r.name = "PatchBalloon"
+							r.operationID = "patchBalloon"
 							r.args = args
 							r.count = 0
 							return r, true
 						case "PUT":
 							r.name = "PutBalloon"
+							r.operationID = "putBalloon"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -555,12 +568,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: DescribeBalloonStats
 								r.name = "DescribeBalloonStats"
+								r.operationID = "describeBalloonStats"
 								r.args = args
 								r.count = 0
 								return r, true
 							case "PATCH":
 								// Leaf: PatchBalloonStatsInterval
 								r.name = "PatchBalloonStatsInterval"
+								r.operationID = "patchBalloonStatsInterval"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -581,6 +596,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "PUT":
 							// Leaf: PutGuestBootSource
 							r.name = "PutGuestBootSource"
+							r.operationID = "putGuestBootSource"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -606,12 +622,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					case "PATCH":
 						// Leaf: PatchGuestDriveByID
 						r.name = "PatchGuestDriveByID"
+						r.operationID = "patchGuestDriveByID"
 						r.args = args
 						r.count = 1
 						return r, true
 					case "PUT":
 						// Leaf: PutGuestDriveByID
 						r.name = "PutGuestDriveByID"
+						r.operationID = "putGuestDriveByID"
 						r.args = args
 						r.count = 1
 						return r, true
@@ -631,6 +649,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					case "PUT":
 						// Leaf: PutLogger
 						r.name = "PutLogger"
+						r.operationID = "putLogger"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -661,18 +680,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: GetMachineConfiguration
 							r.name = "GetMachineConfiguration"
+							r.operationID = "getMachineConfiguration"
 							r.args = args
 							r.count = 0
 							return r, true
 						case "PATCH":
 							// Leaf: PatchMachineConfiguration
 							r.name = "PatchMachineConfiguration"
+							r.operationID = "patchMachineConfiguration"
 							r.args = args
 							r.count = 0
 							return r, true
 						case "PUT":
 							// Leaf: PutMachineConfiguration
 							r.name = "PutMachineConfiguration"
+							r.operationID = "putMachineConfiguration"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -692,6 +714,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "PUT":
 							// Leaf: PutMetrics
 							r.name = "PutMetrics"
+							r.operationID = "putMetrics"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -710,16 +733,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "MmdsGet"
+							r.operationID = ""
 							r.args = args
 							r.count = 0
 							return r, true
 						case "PATCH":
 							r.name = "MmdsPatch"
+							r.operationID = ""
 							r.args = args
 							r.count = 0
 							return r, true
 						case "PUT":
 							r.name = "MmdsPut"
+							r.operationID = ""
 							r.args = args
 							r.count = 0
 							return r, true
@@ -740,6 +766,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "PUT":
 								// Leaf: MmdsConfigPut
 								r.name = "MmdsConfigPut"
+								r.operationID = ""
 								r.args = args
 								r.count = 0
 								return r, true
@@ -766,12 +793,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					case "PATCH":
 						// Leaf: PatchGuestNetworkInterfaceByID
 						r.name = "PatchGuestNetworkInterfaceByID"
+						r.operationID = "patchGuestNetworkInterfaceByID"
 						r.args = args
 						r.count = 1
 						return r, true
 					case "PUT":
 						// Leaf: PutGuestNetworkInterfaceByID
 						r.name = "PutGuestNetworkInterfaceByID"
+						r.operationID = "putGuestNetworkInterfaceByID"
 						r.args = args
 						r.count = 1
 						return r, true
@@ -802,6 +831,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "PUT":
 							// Leaf: CreateSnapshot
 							r.name = "CreateSnapshot"
+							r.operationID = "createSnapshot"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -821,6 +851,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "PUT":
 							// Leaf: LoadSnapshot
 							r.name = "LoadSnapshot"
+							r.operationID = "loadSnapshot"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -851,6 +882,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						switch method {
 						case "PATCH":
 							r.name = "PatchVm"
+							r.operationID = "patchVm"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -871,6 +903,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: GetExportVmConfig
 								r.name = "GetExportVmConfig"
+								r.operationID = "getExportVmConfig"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -891,6 +924,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "PUT":
 							// Leaf: PutGuestVsock
 							r.name = "PutGuestVsock"
+							r.operationID = "putGuestVsock"
 							r.args = args
 							r.count = 0
 							return r, true
