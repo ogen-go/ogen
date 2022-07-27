@@ -14474,14 +14474,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name  string
-	count int
-	args  [5]string
+	name        string
+	operationID string
+	count       int
+	args        [5]string
+}
+
+// Name returns ogen operation name.
+//
+// It is guaranteed to be unique and not empty.
+func (r Route) Name() string {
+	return r.name
 }
 
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
-	return r.name
+	return r.operationID
 }
 
 // Args returns parsed arguments.
@@ -14518,6 +14526,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				switch method {
 				case "GET":
 					r.name = "MetaRoot"
+					r.operationID = "meta/root"
 					r.args = args
 					r.count = 0
 					return r, true
@@ -14548,6 +14557,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "AppsGetAuthenticated"
+							r.operationID = "apps/get-authenticated"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -14588,6 +14598,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: AppsCreateFromManifest
 									r.name = "AppsCreateFromManifest"
+									r.operationID = "apps/create-from-manifest"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -14630,12 +14641,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: AppsGetWebhookConfigForApp
 										r.name = "AppsGetWebhookConfigForApp"
+										r.operationID = "apps/get-webhook-config-for-app"
 										r.args = args
 										r.count = 0
 										return r, true
 									case "PATCH":
 										// Leaf: AppsUpdateWebhookConfigForApp
 										r.name = "AppsUpdateWebhookConfigForApp"
+										r.operationID = "apps/update-webhook-config-for-app"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -14654,6 +14667,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "AppsListWebhookDeliveries"
+										r.operationID = "apps/list-webhook-deliveries"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -14682,6 +14696,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "AppsGetWebhookDelivery"
+											r.operationID = "apps/get-webhook-delivery"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -14702,6 +14717,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "POST":
 												// Leaf: AppsRedeliverWebhookDelivery
 												r.name = "AppsRedeliverWebhookDelivery"
+												r.operationID = "apps/redeliver-webhook-delivery"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -14732,6 +14748,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "DELETE":
 									r.name = "AppsDeleteInstallation"
+									r.operationID = "apps/delete-installation"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -14763,6 +14780,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "POST":
 											// Leaf: AppsCreateInstallationAccessToken
 											r.name = "AppsCreateInstallationAccessToken"
+											r.operationID = "apps/create-installation-access-token"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -14782,12 +14800,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "DELETE":
 											// Leaf: AppsUnsuspendInstallation
 											r.name = "AppsUnsuspendInstallation"
+											r.operationID = "apps/unsuspend-installation"
 											r.args = args
 											r.count = 1
 											return r, true
 										case "PUT":
 											// Leaf: AppsSuspendInstallation
 											r.name = "AppsSuspendInstallation"
+											r.operationID = "apps/suspend-installation"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -14820,6 +14840,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "OAuthAuthorizationsListGrants"
+									r.operationID = "oauth-authorizations/list-grants"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -14845,12 +14866,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "DELETE":
 										// Leaf: OAuthAuthorizationsDeleteGrant
 										r.name = "OAuthAuthorizationsDeleteGrant"
+										r.operationID = "oauth-authorizations/delete-grant"
 										r.args = args
 										r.count = 1
 										return r, true
 									case "GET":
 										// Leaf: OAuthAuthorizationsGetGrant
 										r.name = "OAuthAuthorizationsGetGrant"
+										r.operationID = "oauth-authorizations/get-grant"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -14896,6 +14919,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "DELETE":
 										// Leaf: AppsDeleteAuthorization
 										r.name = "AppsDeleteAuthorization"
+										r.operationID = "apps/delete-authorization"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -14914,16 +14938,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "DELETE":
 										r.name = "AppsDeleteToken"
+										r.operationID = "apps/delete-token"
 										r.args = args
 										r.count = 1
 										return r, true
 									case "PATCH":
 										r.name = "AppsResetToken"
+										r.operationID = "apps/reset-token"
 										r.args = args
 										r.count = 1
 										return r, true
 									case "POST":
 										r.name = "AppsCheckToken"
+										r.operationID = "apps/check-token"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -14944,6 +14971,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "POST":
 											// Leaf: AppsScopeToken
 											r.name = "AppsScopeToken"
+											r.operationID = "apps/scope-token"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -14971,6 +14999,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: AppsGetBySlug
 								r.name = "AppsGetBySlug"
+								r.operationID = "apps/get-by-slug"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -14990,11 +15019,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "OAuthAuthorizationsListAuthorizations"
+							r.operationID = "oauth-authorizations/list-authorizations"
 							r.args = args
 							r.count = 0
 							return r, true
 						case "POST":
 							r.name = "OAuthAuthorizationsCreateAuthorization"
+							r.operationID = "oauth-authorizations/create-authorization"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -15034,6 +15065,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "PUT":
 									r.name = "OAuthAuthorizationsGetOrCreateAuthorizationForApp"
+									r.operationID = "oauth-authorizations/get-or-create-authorization-for-app"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -15059,6 +15091,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "PUT":
 										// Leaf: OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 										r.name = "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint"
+										r.operationID = "oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint"
 										r.args = args
 										r.count = 2
 										return r, true
@@ -15078,18 +15111,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "DELETE":
 								// Leaf: OAuthAuthorizationsDeleteAuthorization
 								r.name = "OAuthAuthorizationsDeleteAuthorization"
+								r.operationID = "oauth-authorizations/delete-authorization"
 								r.args = args
 								r.count = 1
 								return r, true
 							case "GET":
 								// Leaf: OAuthAuthorizationsGetAuthorization
 								r.name = "OAuthAuthorizationsGetAuthorization"
+								r.operationID = "oauth-authorizations/get-authorization"
 								r.args = args
 								r.count = 1
 								return r, true
 							case "PATCH":
 								// Leaf: OAuthAuthorizationsUpdateAuthorization
 								r.name = "OAuthAuthorizationsUpdateAuthorization"
+								r.operationID = "oauth-authorizations/update-authorization"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -15110,6 +15146,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					switch method {
 					case "GET":
 						r.name = "CodesOfConductGetAllCodesOfConduct"
+						r.operationID = "codes-of-conduct/get-all-codes-of-conduct"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -15135,6 +15172,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: CodesOfConductGetConductCode
 							r.name = "CodesOfConductGetConductCode"
+							r.operationID = "codes-of-conduct/get-conduct-code"
 							r.args = args
 							r.count = 1
 							return r, true
@@ -15166,6 +15204,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: EmojisGet
 							r.name = "EmojisGet"
+							r.operationID = "emojis/get"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -15237,11 +15276,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "EnterpriseAdminGetGithubActionsPermissionsEnterprise"
+											r.operationID = "enterprise-admin/get-github-actions-permissions-enterprise"
 											r.args = args
 											r.count = 1
 											return r, true
 										case "PUT":
 											r.name = "EnterpriseAdminSetGithubActionsPermissionsEnterprise"
+											r.operationID = "enterprise-admin/set-github-actions-permissions-enterprise"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -15272,11 +15313,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise"
+													r.operationID = "enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise"
 													r.args = args
 													r.count = 1
 													return r, true
 												case "PUT":
 													r.name = "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise"
+													r.operationID = "enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -15302,12 +15345,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "DELETE":
 														// Leaf: EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise
 														r.name = "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise"
+														r.operationID = "enterprise-admin/disable-selected-organization-github-actions-enterprise"
 														r.args = args
 														r.count = 2
 														return r, true
 													case "PUT":
 														// Leaf: EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise
 														r.name = "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise"
+														r.operationID = "enterprise-admin/enable-selected-organization-github-actions-enterprise"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -15328,12 +15373,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: EnterpriseAdminGetAllowedActionsEnterprise
 													r.name = "EnterpriseAdminGetAllowedActionsEnterprise"
+													r.operationID = "enterprise-admin/get-allowed-actions-enterprise"
 													r.args = args
 													r.count = 1
 													return r, true
 												case "PUT":
 													// Leaf: EnterpriseAdminSetAllowedActionsEnterprise
 													r.name = "EnterpriseAdminSetAllowedActionsEnterprise"
+													r.operationID = "enterprise-admin/set-allowed-actions-enterprise"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -15365,11 +15412,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise"
+												r.operationID = "enterprise-admin/list-self-hosted-runner-groups-for-enterprise"
 												r.args = args
 												r.count = 1
 												return r, true
 											case "POST":
 												r.name = "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise"
+												r.operationID = "enterprise-admin/create-self-hosted-runner-group-for-enterprise"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -15398,16 +15447,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "DELETE":
 													r.name = "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise"
+													r.operationID = "enterprise-admin/delete-self-hosted-runner-group-from-enterprise"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "GET":
 													r.name = "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise"
+													r.operationID = "enterprise-admin/get-self-hosted-runner-group-for-enterprise"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "PATCH":
 													r.name = "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise"
+													r.operationID = "enterprise-admin/update-self-hosted-runner-group-for-enterprise"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -15438,11 +15490,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise"
+															r.operationID = "enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise"
 															r.args = args
 															r.count = 2
 															return r, true
 														case "PUT":
 															r.name = "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise"
+															r.operationID = "enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -15468,12 +15522,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "DELETE":
 																// Leaf: EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise
 																r.name = "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise"
+																r.operationID = "enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "PUT":
 																// Leaf: EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise
 																r.name = "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise"
+																r.operationID = "enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -15493,11 +15549,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise"
+															r.operationID = "enterprise-admin/list-self-hosted-runners-in-group-for-enterprise"
 															r.args = args
 															r.count = 2
 															return r, true
 														case "PUT":
 															r.name = "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise"
+															r.operationID = "enterprise-admin/set-self-hosted-runners-in-group-for-enterprise"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -15523,12 +15581,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "DELETE":
 																// Leaf: EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise
 																r.name = "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise"
+																r.operationID = "enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "PUT":
 																// Leaf: EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise
 																r.name = "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise"
+																r.operationID = "enterprise-admin/add-self-hosted-runner-to-group-for-enterprise"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -15551,6 +15611,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "EnterpriseAdminListSelfHostedRunnersForEnterprise"
+												r.operationID = "enterprise-admin/list-self-hosted-runners-for-enterprise"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -15582,6 +15643,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: EnterpriseAdminListRunnerApplicationsForEnterprise
 														r.name = "EnterpriseAdminListRunnerApplicationsForEnterprise"
+														r.operationID = "enterprise-admin/list-runner-applications-for-enterprise"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -15612,6 +15674,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: EnterpriseAdminCreateRegistrationTokenForEnterprise
 															r.name = "EnterpriseAdminCreateRegistrationTokenForEnterprise"
+															r.operationID = "enterprise-admin/create-registration-token-for-enterprise"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -15631,6 +15694,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: EnterpriseAdminCreateRemoveTokenForEnterprise
 															r.name = "EnterpriseAdminCreateRemoveTokenForEnterprise"
+															r.operationID = "enterprise-admin/create-remove-token-for-enterprise"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -15650,12 +15714,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "DELETE":
 													// Leaf: EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise
 													r.name = "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise"
+													r.operationID = "enterprise-admin/delete-self-hosted-runner-from-enterprise"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "GET":
 													// Leaf: EnterpriseAdminGetSelfHostedRunnerForEnterprise
 													r.name = "EnterpriseAdminGetSelfHostedRunnerForEnterprise"
+													r.operationID = "enterprise-admin/get-self-hosted-runner-for-enterprise"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -15678,6 +15744,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: EnterpriseAdminGetAuditLog
 										r.name = "EnterpriseAdminGetAuditLog"
+										r.operationID = "enterprise-admin/get-audit-log"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -15709,6 +15776,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: BillingGetGithubActionsBillingGhe
 										r.name = "BillingGetGithubActionsBillingGhe"
+										r.operationID = "billing/get-github-actions-billing-ghe"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -15728,6 +15796,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: BillingGetGithubPackagesBillingGhe
 										r.name = "BillingGetGithubPackagesBillingGhe"
+										r.operationID = "billing/get-github-packages-billing-ghe"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -15747,6 +15816,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: BillingGetSharedStorageBillingGhe
 										r.name = "BillingGetSharedStorageBillingGhe"
+										r.operationID = "billing/get-shared-storage-billing-ghe"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -15769,6 +15839,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: ActivityListPublicEvents
 							r.name = "ActivityListPublicEvents"
+							r.operationID = "activity/list-public-events"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -15789,6 +15860,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					case "GET":
 						// Leaf: ActivityGetFeeds
 						r.name = "ActivityGetFeeds"
+						r.operationID = "activity/get-feeds"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -15818,11 +15890,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "GistsList"
+							r.operationID = "gists/list"
 							r.args = args
 							r.count = 0
 							return r, true
 						case "POST":
 							r.name = "GistsCreate"
+							r.operationID = "gists/create"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -15854,6 +15928,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: GistsListPublic
 									r.name = "GistsListPublic"
+									r.operationID = "gists/list-public"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -15873,6 +15948,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: GistsListStarred
 									r.name = "GistsListStarred"
+									r.operationID = "gists/list-starred"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -15894,11 +15970,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "DELETE":
 								r.name = "GistsDelete"
+								r.operationID = "gists/delete"
 								r.args = args
 								r.count = 1
 								return r, true
 							case "GET":
 								r.name = "GistsGet"
+								r.operationID = "gists/get"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -15940,11 +16018,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "GistsListComments"
+											r.operationID = "gists/list-comments"
 											r.args = args
 											r.count = 1
 											return r, true
 										case "POST":
 											r.name = "GistsCreateComment"
+											r.operationID = "gists/create-comment"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -15970,18 +16050,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "DELETE":
 												// Leaf: GistsDeleteComment
 												r.name = "GistsDeleteComment"
+												r.operationID = "gists/delete-comment"
 												r.args = args
 												r.count = 2
 												return r, true
 											case "GET":
 												// Leaf: GistsGetComment
 												r.name = "GistsGetComment"
+												r.operationID = "gists/get-comment"
 												r.args = args
 												r.count = 2
 												return r, true
 											case "PATCH":
 												// Leaf: GistsUpdateComment
 												r.name = "GistsUpdateComment"
+												r.operationID = "gists/update-comment"
 												r.args = args
 												r.count = 2
 												return r, true
@@ -16002,6 +16085,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: GistsListCommits
 											r.name = "GistsListCommits"
+											r.operationID = "gists/list-commits"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -16022,12 +16106,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: GistsListForks
 										r.name = "GistsListForks"
+										r.operationID = "gists/list-forks"
 										r.args = args
 										r.count = 1
 										return r, true
 									case "POST":
 										// Leaf: GistsFork
 										r.name = "GistsFork"
+										r.operationID = "gists/fork"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -16047,18 +16133,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "DELETE":
 										// Leaf: GistsUnstar
 										r.name = "GistsUnstar"
+										r.operationID = "gists/unstar"
 										r.args = args
 										r.count = 1
 										return r, true
 									case "GET":
 										// Leaf: GistsCheckIsStarred
 										r.name = "GistsCheckIsStarred"
+										r.operationID = "gists/check-is-starred"
 										r.args = args
 										r.count = 1
 										return r, true
 									case "PUT":
 										// Leaf: GistsStar
 										r.name = "GistsStar"
+										r.operationID = "gists/star"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -16077,6 +16166,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: GistsGetRevision
 									r.name = "GistsGetRevision"
+									r.operationID = "gists/get-revision"
 									r.args = args
 									r.count = 2
 									return r, true
@@ -16097,6 +16187,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "GitignoreGetAllTemplates"
+							r.operationID = "gitignore/get-all-templates"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -16122,6 +16213,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: GitignoreGetTemplate
 								r.name = "GitignoreGetTemplate"
+								r.operationID = "gitignore/get-template"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -16165,6 +16257,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: AppsListReposAccessibleToInstallation
 								r.name = "AppsListReposAccessibleToInstallation"
+								r.operationID = "apps/list-repos-accessible-to-installation"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -16184,6 +16277,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "DELETE":
 								// Leaf: AppsRevokeInstallationAccessToken
 								r.name = "AppsRevokeInstallationAccessToken"
+								r.operationID = "apps/revoke-installation-access-token"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -16204,6 +16298,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: IssuesList
 							r.name = "IssuesList"
+							r.operationID = "issues/list"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -16223,6 +16318,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					switch method {
 					case "GET":
 						r.name = "LicensesGetAllCommonlyUsed"
+						r.operationID = "licenses/get-all-commonly-used"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -16248,6 +16344,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: LicensesGet
 							r.name = "LicensesGet"
+							r.operationID = "licenses/get"
 							r.args = args
 							r.count = 1
 							return r, true
@@ -16295,6 +16392,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: AppsGetSubscriptionPlanForAccount
 								r.name = "AppsGetSubscriptionPlanForAccount"
+								r.operationID = "apps/get-subscription-plan-for-account"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -16313,6 +16411,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "AppsListPlans"
+								r.operationID = "apps/list-plans"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -16353,6 +16452,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: AppsListAccountsForPlan
 										r.name = "AppsListAccountsForPlan"
+										r.operationID = "apps/list-accounts-for-plan"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -16390,6 +16490,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: AppsGetSubscriptionPlanForAccountStubbed
 									r.name = "AppsGetSubscriptionPlanForAccountStubbed"
+									r.operationID = "apps/get-subscription-plan-for-account-stubbed"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -16408,6 +16509,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "AppsListPlansStubbed"
+									r.operationID = "apps/list-plans-stubbed"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -16448,6 +16550,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: AppsListAccountsForPlanStubbed
 											r.name = "AppsListAccountsForPlanStubbed"
+											r.operationID = "apps/list-accounts-for-plan-stubbed"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -16471,6 +16574,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: MetaGet
 							r.name = "MetaGet"
+							r.operationID = "meta/get"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -16542,6 +16646,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: ActivityListPublicEventsForRepoNetwork
 									r.name = "ActivityListPublicEventsForRepoNetwork"
+									r.operationID = "activity/list-public-events-for-repo-network"
 									r.args = args
 									r.count = 2
 									return r, true
@@ -16562,11 +16667,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "ActivityListNotificationsForAuthenticatedUser"
+							r.operationID = "activity/list-notifications-for-authenticated-user"
 							r.args = args
 							r.count = 0
 							return r, true
 						case "PUT":
 							r.name = "ActivityMarkNotificationsAsRead"
+							r.operationID = "activity/mark-notifications-as-read"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -16595,11 +16702,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "ActivityGetThread"
+								r.operationID = "activity/get-thread"
 								r.args = args
 								r.count = 1
 								return r, true
 							case "PATCH":
 								r.name = "ActivityMarkThreadAsRead"
+								r.operationID = "activity/mark-thread-as-read"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -16620,18 +16729,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: ActivityDeleteThreadSubscription
 									r.name = "ActivityDeleteThreadSubscription"
+									r.operationID = "activity/delete-thread-subscription"
 									r.args = args
 									r.count = 1
 									return r, true
 								case "GET":
 									// Leaf: ActivityGetThreadSubscriptionForAuthenticatedUser
 									r.name = "ActivityGetThreadSubscriptionForAuthenticatedUser"
+									r.operationID = "activity/get-thread-subscription-for-authenticated-user"
 									r.args = args
 									r.count = 1
 									return r, true
 								case "PUT":
 									// Leaf: ActivitySetThreadSubscription
 									r.name = "ActivitySetThreadSubscription"
+									r.operationID = "activity/set-thread-subscription"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -16665,6 +16777,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: OrgsList
 							r.name = "OrgsList"
+							r.operationID = "orgs/list"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -16692,6 +16805,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "OrgsGet"
+							r.operationID = "orgs/get"
 							r.args = args
 							r.count = 1
 							return r, true
@@ -16744,11 +16858,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ActionsGetGithubActionsPermissionsOrganization"
+											r.operationID = "actions/get-github-actions-permissions-organization"
 											r.args = args
 											r.count = 1
 											return r, true
 										case "PUT":
 											r.name = "ActionsSetGithubActionsPermissionsOrganization"
+											r.operationID = "actions/set-github-actions-permissions-organization"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -16779,11 +16895,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization"
+													r.operationID = "actions/list-selected-repositories-enabled-github-actions-organization"
 													r.args = args
 													r.count = 1
 													return r, true
 												case "PUT":
 													r.name = "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization"
+													r.operationID = "actions/set-selected-repositories-enabled-github-actions-organization"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -16809,12 +16927,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "DELETE":
 														// Leaf: ActionsDisableSelectedRepositoryGithubActionsOrganization
 														r.name = "ActionsDisableSelectedRepositoryGithubActionsOrganization"
+														r.operationID = "actions/disable-selected-repository-github-actions-organization"
 														r.args = args
 														r.count = 2
 														return r, true
 													case "PUT":
 														// Leaf: ActionsEnableSelectedRepositoryGithubActionsOrganization
 														r.name = "ActionsEnableSelectedRepositoryGithubActionsOrganization"
+														r.operationID = "actions/enable-selected-repository-github-actions-organization"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -16835,12 +16955,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ActionsGetAllowedActionsOrganization
 													r.name = "ActionsGetAllowedActionsOrganization"
+													r.operationID = "actions/get-allowed-actions-organization"
 													r.args = args
 													r.count = 1
 													return r, true
 												case "PUT":
 													// Leaf: ActionsSetAllowedActionsOrganization
 													r.name = "ActionsSetAllowedActionsOrganization"
+													r.operationID = "actions/set-allowed-actions-organization"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -16872,11 +16994,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ActionsListSelfHostedRunnerGroupsForOrg"
+												r.operationID = "actions/list-self-hosted-runner-groups-for-org"
 												r.args = args
 												r.count = 1
 												return r, true
 											case "POST":
 												r.name = "ActionsCreateSelfHostedRunnerGroupForOrg"
+												r.operationID = "actions/create-self-hosted-runner-group-for-org"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -16905,16 +17029,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "DELETE":
 													r.name = "ActionsDeleteSelfHostedRunnerGroupFromOrg"
+													r.operationID = "actions/delete-self-hosted-runner-group-from-org"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "GET":
 													r.name = "ActionsGetSelfHostedRunnerGroupForOrg"
+													r.operationID = "actions/get-self-hosted-runner-group-for-org"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "PATCH":
 													r.name = "ActionsUpdateSelfHostedRunnerGroupForOrg"
+													r.operationID = "actions/update-self-hosted-runner-group-for-org"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -16945,11 +17072,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg"
+															r.operationID = "actions/list-repo-access-to-self-hosted-runner-group-in-org"
 															r.args = args
 															r.count = 2
 															return r, true
 														case "PUT":
 															r.name = "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg"
+															r.operationID = "actions/set-repo-access-to-self-hosted-runner-group-in-org"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -16975,12 +17104,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "DELETE":
 																// Leaf: ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg
 																r.name = "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg"
+																r.operationID = "actions/remove-repo-access-to-self-hosted-runner-group-in-org"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "PUT":
 																// Leaf: ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg
 																r.name = "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg"
+																r.operationID = "actions/add-repo-access-to-self-hosted-runner-group-in-org"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -17000,11 +17131,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ActionsListSelfHostedRunnersInGroupForOrg"
+															r.operationID = "actions/list-self-hosted-runners-in-group-for-org"
 															r.args = args
 															r.count = 2
 															return r, true
 														case "PUT":
 															r.name = "ActionsSetSelfHostedRunnersInGroupForOrg"
+															r.operationID = "actions/set-self-hosted-runners-in-group-for-org"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -17030,12 +17163,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "DELETE":
 																// Leaf: ActionsRemoveSelfHostedRunnerFromGroupForOrg
 																r.name = "ActionsRemoveSelfHostedRunnerFromGroupForOrg"
+																r.operationID = "actions/remove-self-hosted-runner-from-group-for-org"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "PUT":
 																// Leaf: ActionsAddSelfHostedRunnerToGroupForOrg
 																r.name = "ActionsAddSelfHostedRunnerToGroupForOrg"
+																r.operationID = "actions/add-self-hosted-runner-to-group-for-org"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -17058,6 +17193,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ActionsListSelfHostedRunnersForOrg"
+												r.operationID = "actions/list-self-hosted-runners-for-org"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -17089,6 +17225,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ActionsListRunnerApplicationsForOrg
 														r.name = "ActionsListRunnerApplicationsForOrg"
+														r.operationID = "actions/list-runner-applications-for-org"
 														r.args = args
 														r.count = 1
 														return r, true
@@ -17119,6 +17256,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: ActionsCreateRegistrationTokenForOrg
 															r.name = "ActionsCreateRegistrationTokenForOrg"
+															r.operationID = "actions/create-registration-token-for-org"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -17138,6 +17276,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: ActionsCreateRemoveTokenForOrg
 															r.name = "ActionsCreateRemoveTokenForOrg"
+															r.operationID = "actions/create-remove-token-for-org"
 															r.args = args
 															r.count = 1
 															return r, true
@@ -17157,12 +17296,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "DELETE":
 													// Leaf: ActionsDeleteSelfHostedRunnerFromOrg
 													r.name = "ActionsDeleteSelfHostedRunnerFromOrg"
+													r.operationID = "actions/delete-self-hosted-runner-from-org"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "GET":
 													// Leaf: ActionsGetSelfHostedRunnerForOrg
 													r.name = "ActionsGetSelfHostedRunnerForOrg"
+													r.operationID = "actions/get-self-hosted-runner-for-org"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -17183,6 +17324,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ActionsListOrgSecrets"
+											r.operationID = "actions/list-org-secrets"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -17214,6 +17356,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ActionsGetOrgPublicKey
 													r.name = "ActionsGetOrgPublicKey"
+													r.operationID = "actions/get-org-public-key"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -17235,16 +17378,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "DELETE":
 												r.name = "ActionsDeleteOrgSecret"
+												r.operationID = "actions/delete-org-secret"
 												r.args = args
 												r.count = 2
 												return r, true
 											case "GET":
 												r.name = "ActionsGetOrgSecret"
+												r.operationID = "actions/get-org-secret"
 												r.args = args
 												r.count = 2
 												return r, true
 											case "PUT":
 												r.name = "ActionsCreateOrUpdateOrgSecret"
+												r.operationID = "actions/create-or-update-org-secret"
 												r.args = args
 												r.count = 2
 												return r, true
@@ -17264,11 +17410,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ActionsListSelectedReposForOrgSecret"
+													r.operationID = "actions/list-selected-repos-for-org-secret"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "PUT":
 													r.name = "ActionsSetSelectedReposForOrgSecret"
+													r.operationID = "actions/set-selected-repos-for-org-secret"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -17294,12 +17442,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "DELETE":
 														// Leaf: ActionsRemoveSelectedRepoFromOrgSecret
 														r.name = "ActionsRemoveSelectedRepoFromOrgSecret"
+														r.operationID = "actions/remove-selected-repo-from-org-secret"
 														r.args = args
 														r.count = 3
 														return r, true
 													case "PUT":
 														// Leaf: ActionsAddSelectedRepoToOrgSecret
 														r.name = "ActionsAddSelectedRepoToOrgSecret"
+														r.operationID = "actions/add-selected-repo-to-org-secret"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -17323,6 +17473,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: OrgsGetAuditLog
 										r.name = "OrgsGetAuditLog"
+										r.operationID = "orgs/get-audit-log"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -17342,6 +17493,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "OrgsListBlockedUsers"
+									r.operationID = "orgs/list-blocked-users"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -17367,18 +17519,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "DELETE":
 										// Leaf: OrgsUnblockUser
 										r.name = "OrgsUnblockUser"
+										r.operationID = "orgs/unblock-user"
 										r.args = args
 										r.count = 2
 										return r, true
 									case "GET":
 										// Leaf: OrgsCheckBlockedUser
 										r.name = "OrgsCheckBlockedUser"
+										r.operationID = "orgs/check-blocked-user"
 										r.args = args
 										r.count = 2
 										return r, true
 									case "PUT":
 										// Leaf: OrgsBlockUser
 										r.name = "OrgsBlockUser"
+										r.operationID = "orgs/block-user"
 										r.args = args
 										r.count = 2
 										return r, true
@@ -17398,6 +17553,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "OrgsListSamlSSOAuthorizations"
+									r.operationID = "orgs/list-saml-sso-authorizations"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -17423,6 +17579,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "DELETE":
 										// Leaf: OrgsRemoveSamlSSOAuthorization
 										r.name = "OrgsRemoveSamlSSOAuthorization"
+										r.operationID = "orgs/remove-saml-sso-authorization"
 										r.args = args
 										r.count = 2
 										return r, true
@@ -17443,6 +17600,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: ActivityListPublicOrgEvents
 									r.name = "ActivityListPublicOrgEvents"
+									r.operationID = "activity/list-public-org-events"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -17462,6 +17620,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: OrgsListFailedInvitations
 									r.name = "OrgsListFailedInvitations"
+									r.operationID = "orgs/list-failed-invitations"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -17480,11 +17639,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "OrgsListWebhooks"
+									r.operationID = "orgs/list-webhooks"
 									r.args = args
 									r.count = 1
 									return r, true
 								case "POST":
 									r.name = "OrgsCreateWebhook"
+									r.operationID = "orgs/create-webhook"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -17513,16 +17674,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "DELETE":
 										r.name = "OrgsDeleteWebhook"
+										r.operationID = "orgs/delete-webhook"
 										r.args = args
 										r.count = 2
 										return r, true
 									case "GET":
 										r.name = "OrgsGetWebhook"
+										r.operationID = "orgs/get-webhook"
 										r.args = args
 										r.count = 2
 										return r, true
 									case "PATCH":
 										r.name = "OrgsUpdateWebhook"
+										r.operationID = "orgs/update-webhook"
 										r.args = args
 										r.count = 2
 										return r, true
@@ -17554,12 +17718,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: OrgsGetWebhookConfigForOrg
 												r.name = "OrgsGetWebhookConfigForOrg"
+												r.operationID = "orgs/get-webhook-config-for-org"
 												r.args = args
 												r.count = 2
 												return r, true
 											case "PATCH":
 												// Leaf: OrgsUpdateWebhookConfigForOrg
 												r.name = "OrgsUpdateWebhookConfigForOrg"
+												r.operationID = "orgs/update-webhook-config-for-org"
 												r.args = args
 												r.count = 2
 												return r, true
@@ -17578,6 +17744,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "OrgsListWebhookDeliveries"
+												r.operationID = "orgs/list-webhook-deliveries"
 												r.args = args
 												r.count = 2
 												return r, true
@@ -17606,6 +17773,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "OrgsGetWebhookDelivery"
+													r.operationID = "orgs/get-webhook-delivery"
 													r.args = args
 													r.count = 3
 													return r, true
@@ -17626,6 +17794,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: OrgsRedeliverWebhookDelivery
 														r.name = "OrgsRedeliverWebhookDelivery"
+														r.operationID = "orgs/redeliver-webhook-delivery"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -17647,6 +17816,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "POST":
 												// Leaf: OrgsPingWebhook
 												r.name = "OrgsPingWebhook"
+												r.operationID = "orgs/ping-webhook"
 												r.args = args
 												r.count = 2
 												return r, true
@@ -17691,12 +17861,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "DELETE":
 											// Leaf: InteractionsRemoveRestrictionsForOrg
 											r.name = "InteractionsRemoveRestrictionsForOrg"
+											r.operationID = "interactions/remove-restrictions-for-org"
 											r.args = args
 											r.count = 1
 											return r, true
 										case "PUT":
 											// Leaf: InteractionsSetRestrictionsForOrg
 											r.name = "InteractionsSetRestrictionsForOrg"
+											r.operationID = "interactions/set-restrictions-for-org"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -17715,11 +17887,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "OrgsListPendingInvitations"
+											r.operationID = "orgs/list-pending-invitations"
 											r.args = args
 											r.count = 1
 											return r, true
 										case "POST":
 											r.name = "OrgsCreateInvitation"
+											r.operationID = "orgs/create-invitation"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -17748,6 +17922,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "DELETE":
 												r.name = "OrgsCancelInvitation"
+												r.operationID = "orgs/cancel-invitation"
 												r.args = args
 												r.count = 2
 												return r, true
@@ -17768,6 +17943,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: OrgsListInvitationTeams
 													r.name = "OrgsListInvitationTeams"
+													r.operationID = "orgs/list-invitation-teams"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -17790,6 +17966,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: IssuesListForOrg
 										r.name = "IssuesListForOrg"
+										r.operationID = "issues/list-for-org"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -17820,6 +17997,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "OrgsListMembers"
+										r.operationID = "orgs/list-members"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -17845,12 +18023,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "DELETE":
 											// Leaf: OrgsRemoveMember
 											r.name = "OrgsRemoveMember"
+											r.operationID = "orgs/remove-member"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "GET":
 											// Leaf: OrgsCheckMembershipForUser
 											r.name = "OrgsCheckMembershipForUser"
+											r.operationID = "orgs/check-membership-for-user"
 											r.args = args
 											r.count = 2
 											return r, true
@@ -17875,18 +18055,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "DELETE":
 											// Leaf: OrgsRemoveMembershipForUser
 											r.name = "OrgsRemoveMembershipForUser"
+											r.operationID = "orgs/remove-membership-for-user"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "GET":
 											// Leaf: OrgsGetMembershipForUser
 											r.name = "OrgsGetMembershipForUser"
+											r.operationID = "orgs/get-membership-for-user"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "PUT":
 											// Leaf: OrgsSetMembershipForUser
 											r.name = "OrgsSetMembershipForUser"
+											r.operationID = "orgs/set-membership-for-user"
 											r.args = args
 											r.count = 2
 											return r, true
@@ -17906,11 +18089,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "MigrationsListForOrg"
+										r.operationID = "migrations/list-for-org"
 										r.args = args
 										r.count = 1
 										return r, true
 									case "POST":
 										r.name = "MigrationsStartForOrg"
+										r.operationID = "migrations/start-for-org"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -17939,6 +18124,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "MigrationsGetStatusForOrg"
+											r.operationID = "migrations/get-status-for-org"
 											r.args = args
 											r.count = 2
 											return r, true
@@ -17970,12 +18156,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "DELETE":
 													// Leaf: MigrationsDeleteArchiveForOrg
 													r.name = "MigrationsDeleteArchiveForOrg"
+													r.operationID = "migrations/delete-archive-for-org"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "GET":
 													// Leaf: MigrationsDownloadArchiveForOrg
 													r.name = "MigrationsDownloadArchiveForOrg"
+													r.operationID = "migrations/download-archive-for-org"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -18026,6 +18214,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "DELETE":
 															// Leaf: MigrationsUnlockRepoForOrg
 															r.name = "MigrationsUnlockRepoForOrg"
+															r.operationID = "migrations/unlock-repo-for-org"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -18046,6 +18235,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: MigrationsListReposForOrg
 														r.name = "MigrationsListReposForOrg"
+														r.operationID = "migrations/list-repos-for-org"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -18069,6 +18259,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "OrgsListOutsideCollaborators"
+									r.operationID = "orgs/list-outside-collaborators"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -18094,12 +18285,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "DELETE":
 										// Leaf: OrgsRemoveOutsideCollaborator
 										r.name = "OrgsRemoveOutsideCollaborator"
+										r.operationID = "orgs/remove-outside-collaborator"
 										r.args = args
 										r.count = 2
 										return r, true
 									case "PUT":
 										// Leaf: OrgsConvertMemberToOutsideCollaborator
 										r.name = "OrgsConvertMemberToOutsideCollaborator"
+										r.operationID = "orgs/convert-member-to-outside-collaborator"
 										r.args = args
 										r.count = 2
 										return r, true
@@ -18130,6 +18323,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "PackagesListPackagesForOrganization"
+										r.operationID = "packages/list-packages-for-organization"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -18178,11 +18372,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "DELETE":
 												r.name = "PackagesDeletePackageForOrg"
+												r.operationID = "packages/delete-package-for-org"
 												r.args = args
 												r.count = 3
 												return r, true
 											case "GET":
 												r.name = "PackagesGetPackageForOrganization"
+												r.operationID = "packages/get-package-for-organization"
 												r.args = args
 												r.count = 3
 												return r, true
@@ -18214,6 +18410,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: PackagesRestorePackageForOrg
 														r.name = "PackagesRestorePackageForOrg"
+														r.operationID = "packages/restore-package-for-org"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -18232,6 +18429,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "PackagesGetAllPackageVersionsForPackageOwnedByOrg"
+														r.operationID = "packages/get-all-package-versions-for-package-owned-by-org"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -18260,11 +18458,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "DELETE":
 															r.name = "PackagesDeletePackageVersionForOrg"
+															r.operationID = "packages/delete-package-version-for-org"
 															r.args = args
 															r.count = 4
 															return r, true
 														case "GET":
 															r.name = "PackagesGetPackageVersionForOrganization"
+															r.operationID = "packages/get-package-version-for-organization"
 															r.args = args
 															r.count = 4
 															return r, true
@@ -18285,6 +18485,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: PackagesRestorePackageVersionForOrg
 																r.name = "PackagesRestorePackageVersionForOrg"
+																r.operationID = "packages/restore-package-version-for-org"
 																r.args = args
 																r.count = 4
 																return r, true
@@ -18310,12 +18511,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: ProjectsListForOrg
 										r.name = "ProjectsListForOrg"
+										r.operationID = "projects/list-for-org"
 										r.args = args
 										r.count = 1
 										return r, true
 									case "POST":
 										// Leaf: ProjectsCreateForOrg
 										r.name = "ProjectsCreateForOrg"
+										r.operationID = "projects/create-for-org"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -18334,6 +18537,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "OrgsListPublicMembers"
+										r.operationID = "orgs/list-public-members"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -18359,18 +18563,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "DELETE":
 											// Leaf: OrgsRemovePublicMembershipForAuthenticatedUser
 											r.name = "OrgsRemovePublicMembershipForAuthenticatedUser"
+											r.operationID = "orgs/remove-public-membership-for-authenticated-user"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "GET":
 											// Leaf: OrgsCheckPublicMembershipForUser
 											r.name = "OrgsCheckPublicMembershipForUser"
+											r.operationID = "orgs/check-public-membership-for-user"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "PUT":
 											// Leaf: OrgsSetPublicMembershipForAuthenticatedUser
 											r.name = "OrgsSetPublicMembershipForAuthenticatedUser"
+											r.operationID = "orgs/set-public-membership-for-authenticated-user"
 											r.args = args
 											r.count = 2
 											return r, true
@@ -18392,12 +18599,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: ReposListForOrg
 									r.name = "ReposListForOrg"
+									r.operationID = "repos/list-for-org"
 									r.args = args
 									r.count = 1
 									return r, true
 								case "POST":
 									// Leaf: ReposCreateInOrg
 									r.name = "ReposCreateInOrg"
+									r.operationID = "repos/create-in-org"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -18428,6 +18637,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: SecretScanningListAlertsForOrg
 										r.name = "SecretScanningListAlertsForOrg"
+										r.operationID = "secret-scanning/list-alerts-for-org"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -18458,6 +18668,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: BillingGetGithubActionsBillingOrg
 											r.name = "BillingGetGithubActionsBillingOrg"
+											r.operationID = "billing/get-github-actions-billing-org"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -18477,6 +18688,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: BillingGetGithubPackagesBillingOrg
 											r.name = "BillingGetGithubPackagesBillingOrg"
+											r.operationID = "billing/get-github-packages-billing-org"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -18496,6 +18708,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: BillingGetSharedStorageBillingOrg
 											r.name = "BillingGetSharedStorageBillingOrg"
+											r.operationID = "billing/get-shared-storage-billing-org"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -18528,6 +18741,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: TeamsListIdpGroupsForOrg
 										r.name = "TeamsListIdpGroupsForOrg"
+										r.operationID = "teams/list-idp-groups-for-org"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -18546,11 +18760,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "TeamsList"
+										r.operationID = "teams/list"
 										r.args = args
 										r.count = 1
 										return r, true
 									case "POST":
 										r.name = "TeamsCreate"
+										r.operationID = "teams/create"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -18579,16 +18795,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "DELETE":
 											r.name = "TeamsDeleteInOrg"
+											r.operationID = "teams/delete-in-org"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "GET":
 											r.name = "TeamsGetByName"
+											r.operationID = "teams/get-by-name"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "PATCH":
 											r.name = "TeamsUpdateInOrg"
+											r.operationID = "teams/update-in-org"
 											r.args = args
 											r.count = 2
 											return r, true
@@ -18619,11 +18838,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "TeamsListDiscussionsInOrg"
+													r.operationID = "teams/list-discussions-in-org"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "POST":
 													r.name = "TeamsCreateDiscussionInOrg"
+													r.operationID = "teams/create-discussion-in-org"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -18652,16 +18873,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "DELETE":
 														r.name = "TeamsDeleteDiscussionInOrg"
+														r.operationID = "teams/delete-discussion-in-org"
 														r.args = args
 														r.count = 3
 														return r, true
 													case "GET":
 														r.name = "TeamsGetDiscussionInOrg"
+														r.operationID = "teams/get-discussion-in-org"
 														r.args = args
 														r.count = 3
 														return r, true
 													case "PATCH":
 														r.name = "TeamsUpdateDiscussionInOrg"
+														r.operationID = "teams/update-discussion-in-org"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -18692,11 +18916,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "TeamsListDiscussionCommentsInOrg"
+																r.operationID = "teams/list-discussion-comments-in-org"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "POST":
 																r.name = "TeamsCreateDiscussionCommentInOrg"
+																r.operationID = "teams/create-discussion-comment-in-org"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -18725,16 +18951,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "DELETE":
 																	r.name = "TeamsDeleteDiscussionCommentInOrg"
+																	r.operationID = "teams/delete-discussion-comment-in-org"
 																	r.args = args
 																	r.count = 4
 																	return r, true
 																case "GET":
 																	r.name = "TeamsGetDiscussionCommentInOrg"
+																	r.operationID = "teams/get-discussion-comment-in-org"
 																	r.args = args
 																	r.count = 4
 																	return r, true
 																case "PATCH":
 																	r.name = "TeamsUpdateDiscussionCommentInOrg"
+																	r.operationID = "teams/update-discussion-comment-in-org"
 																	r.args = args
 																	r.count = 4
 																	return r, true
@@ -18754,11 +18983,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	switch method {
 																	case "GET":
 																		r.name = "ReactionsListForTeamDiscussionCommentInOrg"
+																		r.operationID = "reactions/list-for-team-discussion-comment-in-org"
 																		r.args = args
 																		r.count = 4
 																		return r, true
 																	case "POST":
 																		r.name = "ReactionsCreateForTeamDiscussionCommentInOrg"
+																		r.operationID = "reactions/create-for-team-discussion-comment-in-org"
 																		r.args = args
 																		r.count = 4
 																		return r, true
@@ -18784,6 +19015,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																		case "DELETE":
 																			// Leaf: ReactionsDeleteForTeamDiscussionComment
 																			r.name = "ReactionsDeleteForTeamDiscussionComment"
+																			r.operationID = "reactions/delete-for-team-discussion-comment"
 																			r.args = args
 																			r.count = 5
 																			return r, true
@@ -18805,11 +19037,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ReactionsListForTeamDiscussionInOrg"
+																r.operationID = "reactions/list-for-team-discussion-in-org"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "POST":
 																r.name = "ReactionsCreateForTeamDiscussionInOrg"
+																r.operationID = "reactions/create-for-team-discussion-in-org"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -18835,6 +19069,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "DELETE":
 																	// Leaf: ReactionsDeleteForTeamDiscussion
 																	r.name = "ReactionsDeleteForTeamDiscussion"
+																	r.operationID = "reactions/delete-for-team-discussion"
 																	r.args = args
 																	r.count = 4
 																	return r, true
@@ -18858,6 +19093,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: TeamsListPendingInvitationsInOrg
 													r.name = "TeamsListPendingInvitationsInOrg"
+													r.operationID = "teams/list-pending-invitations-in-org"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -18876,6 +19112,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "TeamsListMembersInOrg"
+													r.operationID = "teams/list-members-in-org"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -18901,18 +19138,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "DELETE":
 														// Leaf: TeamsRemoveMembershipForUserInOrg
 														r.name = "TeamsRemoveMembershipForUserInOrg"
+														r.operationID = "teams/remove-membership-for-user-in-org"
 														r.args = args
 														r.count = 3
 														return r, true
 													case "GET":
 														// Leaf: TeamsGetMembershipForUserInOrg
 														r.name = "TeamsGetMembershipForUserInOrg"
+														r.operationID = "teams/get-membership-for-user-in-org"
 														r.args = args
 														r.count = 3
 														return r, true
 													case "PUT":
 														// Leaf: TeamsAddOrUpdateMembershipForUserInOrg
 														r.name = "TeamsAddOrUpdateMembershipForUserInOrg"
+														r.operationID = "teams/add-or-update-membership-for-user-in-org"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -18932,6 +19172,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "TeamsListProjectsInOrg"
+													r.operationID = "teams/list-projects-in-org"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -18957,18 +19198,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "DELETE":
 														// Leaf: TeamsRemoveProjectInOrg
 														r.name = "TeamsRemoveProjectInOrg"
+														r.operationID = "teams/remove-project-in-org"
 														r.args = args
 														r.count = 3
 														return r, true
 													case "GET":
 														// Leaf: TeamsCheckPermissionsForProjectInOrg
 														r.name = "TeamsCheckPermissionsForProjectInOrg"
+														r.operationID = "teams/check-permissions-for-project-in-org"
 														r.args = args
 														r.count = 3
 														return r, true
 													case "PUT":
 														// Leaf: TeamsAddOrUpdateProjectPermissionsInOrg
 														r.name = "TeamsAddOrUpdateProjectPermissionsInOrg"
+														r.operationID = "teams/add-or-update-project-permissions-in-org"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -18988,6 +19232,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "TeamsListReposInOrg"
+													r.operationID = "teams/list-repos-in-org"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -19033,18 +19278,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "DELETE":
 															// Leaf: TeamsRemoveRepoInOrg
 															r.name = "TeamsRemoveRepoInOrg"
+															r.operationID = "teams/remove-repo-in-org"
 															r.args = args
 															r.count = 4
 															return r, true
 														case "GET":
 															// Leaf: TeamsCheckPermissionsForRepoInOrg
 															r.name = "TeamsCheckPermissionsForRepoInOrg"
+															r.operationID = "teams/check-permissions-for-repo-in-org"
 															r.args = args
 															r.count = 4
 															return r, true
 														case "PUT":
 															// Leaf: TeamsAddOrUpdateRepoPermissionsInOrg
 															r.name = "TeamsAddOrUpdateRepoPermissionsInOrg"
+															r.operationID = "teams/add-or-update-repo-permissions-in-org"
 															r.args = args
 															r.count = 4
 															return r, true
@@ -19077,12 +19325,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: TeamsListIdpGroupsInOrg
 														r.name = "TeamsListIdpGroupsInOrg"
+														r.operationID = "teams/list-idp-groups-in-org"
 														r.args = args
 														r.count = 2
 														return r, true
 													case "PATCH":
 														// Leaf: TeamsCreateOrUpdateIdpGroupConnectionsInOrg
 														r.name = "TeamsCreateOrUpdateIdpGroupConnectionsInOrg"
+														r.operationID = "teams/create-or-update-idp-group-connections-in-org"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -19102,6 +19352,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: TeamsListChildInOrg
 														r.name = "TeamsListChildInOrg"
+														r.operationID = "teams/list-child-in-org"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -19159,16 +19410,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "DELETE":
 								r.name = "ProjectsDeleteCard"
+								r.operationID = "projects/delete-card"
 								r.args = args
 								r.count = 1
 								return r, true
 							case "GET":
 								r.name = "ProjectsGetCard"
+								r.operationID = "projects/get-card"
 								r.args = args
 								r.count = 1
 								return r, true
 							case "PATCH":
 								r.name = "ProjectsUpdateCard"
+								r.operationID = "projects/update-card"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -19189,6 +19443,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: ProjectsMoveCard
 									r.name = "ProjectsMoveCard"
+									r.operationID = "projects/move-card"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -19211,16 +19466,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						switch method {
 						case "DELETE":
 							r.name = "ProjectsDeleteColumn"
+							r.operationID = "projects/delete-column"
 							r.args = args
 							r.count = 1
 							return r, true
 						case "GET":
 							r.name = "ProjectsGetColumn"
+							r.operationID = "projects/get-column"
 							r.args = args
 							r.count = 1
 							return r, true
 						case "PATCH":
 							r.name = "ProjectsUpdateColumn"
+							r.operationID = "projects/update-column"
 							r.args = args
 							r.count = 1
 							return r, true
@@ -19252,6 +19510,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: ProjectsListCards
 									r.name = "ProjectsListCards"
+									r.operationID = "projects/list-cards"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -19271,6 +19530,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: ProjectsMoveColumn
 									r.name = "ProjectsMoveColumn"
+									r.operationID = "projects/move-column"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -19294,16 +19554,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					switch method {
 					case "DELETE":
 						r.name = "ProjectsDelete"
+						r.operationID = "projects/delete"
 						r.args = args
 						r.count = 1
 						return r, true
 					case "GET":
 						r.name = "ProjectsGet"
+						r.operationID = "projects/get"
 						r.args = args
 						r.count = 1
 						return r, true
 					case "PATCH":
 						r.name = "ProjectsUpdate"
+						r.operationID = "projects/update"
 						r.args = args
 						r.count = 1
 						return r, true
@@ -19334,6 +19597,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "ProjectsListCollaborators"
+								r.operationID = "projects/list-collaborators"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -19362,11 +19626,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "DELETE":
 									r.name = "ProjectsRemoveCollaborator"
+									r.operationID = "projects/remove-collaborator"
 									r.args = args
 									r.count = 2
 									return r, true
 								case "PUT":
 									r.name = "ProjectsAddCollaborator"
+									r.operationID = "projects/add-collaborator"
 									r.args = args
 									r.count = 2
 									return r, true
@@ -19387,6 +19653,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: ProjectsGetPermissionForUser
 										r.name = "ProjectsGetPermissionForUser"
+										r.operationID = "projects/get-permission-for-user"
 										r.args = args
 										r.count = 2
 										return r, true
@@ -19408,12 +19675,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: ProjectsListColumns
 								r.name = "ProjectsListColumns"
+								r.operationID = "projects/list-columns"
 								r.args = args
 								r.count = 1
 								return r, true
 							case "POST":
 								// Leaf: ProjectsCreateColumn
 								r.name = "ProjectsCreateColumn"
+								r.operationID = "projects/create-column"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -19446,6 +19715,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: RateLimitGet
 							r.name = "RateLimitGet"
+							r.operationID = "rate-limit/get"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -19481,6 +19751,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "DELETE":
 								// Leaf: ReactionsDeleteLegacy
 								r.name = "ReactionsDeleteLegacy"
+								r.operationID = "reactions/delete-legacy"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -19539,16 +19810,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "DELETE":
 										r.name = "ReposDelete"
+										r.operationID = "repos/delete"
 										r.args = args
 										r.count = 2
 										return r, true
 									case "GET":
 										r.name = "ReposGet"
+										r.operationID = "repos/get"
 										r.args = args
 										r.count = 2
 										return r, true
 									case "PATCH":
 										r.name = "ReposUpdate"
+										r.operationID = "repos/update"
 										r.args = args
 										r.count = 2
 										return r, true
@@ -19601,6 +19875,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ActionsListArtifactsForRepo"
+														r.operationID = "actions/list-artifacts-for-repo"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -19629,11 +19904,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "DELETE":
 															r.name = "ActionsDeleteArtifact"
+															r.operationID = "actions/delete-artifact"
 															r.args = args
 															r.count = 3
 															return r, true
 														case "GET":
 															r.name = "ActionsGetArtifact"
+															r.operationID = "actions/get-artifact"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -19659,6 +19936,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ActionsDownloadArtifact
 																r.name = "ActionsDownloadArtifact"
+																r.operationID = "actions/download-artifact"
 																r.args = args
 																r.count = 4
 																return r, true
@@ -19688,6 +19966,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ActionsGetJobForWorkflowRun"
+														r.operationID = "actions/get-job-for-workflow-run"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -19708,6 +19987,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ActionsDownloadJobLogsForWorkflowRun
 															r.name = "ActionsDownloadJobLogsForWorkflowRun"
+															r.operationID = "actions/download-job-logs-for-workflow-run"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -19727,11 +20007,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ActionsGetGithubActionsPermissionsRepository"
+														r.operationID = "actions/get-github-actions-permissions-repository"
 														r.args = args
 														r.count = 2
 														return r, true
 													case "PUT":
 														r.name = "ActionsSetGithubActionsPermissionsRepository"
+														r.operationID = "actions/set-github-actions-permissions-repository"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -19752,12 +20034,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ActionsGetAllowedActionsRepository
 															r.name = "ActionsGetAllowedActionsRepository"
+															r.operationID = "actions/get-allowed-actions-repository"
 															r.args = args
 															r.count = 2
 															return r, true
 														case "PUT":
 															// Leaf: ActionsSetAllowedActionsRepository
 															r.name = "ActionsSetAllowedActionsRepository"
+															r.operationID = "actions/set-allowed-actions-repository"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -19788,6 +20072,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ActionsListSelfHostedRunnersForRepo"
+															r.operationID = "actions/list-self-hosted-runners-for-repo"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -19819,6 +20104,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: ActionsListRunnerApplicationsForRepo
 																	r.name = "ActionsListRunnerApplicationsForRepo"
+																	r.operationID = "actions/list-runner-applications-for-repo"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -19849,6 +20135,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: ActionsCreateRegistrationTokenForRepo
 																		r.name = "ActionsCreateRegistrationTokenForRepo"
+																		r.operationID = "actions/create-registration-token-for-repo"
 																		r.args = args
 																		r.count = 2
 																		return r, true
@@ -19868,6 +20155,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: ActionsCreateRemoveTokenForRepo
 																		r.name = "ActionsCreateRemoveTokenForRepo"
+																		r.operationID = "actions/create-remove-token-for-repo"
 																		r.args = args
 																		r.count = 2
 																		return r, true
@@ -19887,12 +20175,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "DELETE":
 																// Leaf: ActionsDeleteSelfHostedRunnerFromRepo
 																r.name = "ActionsDeleteSelfHostedRunnerFromRepo"
+																r.operationID = "actions/delete-self-hosted-runner-from-repo"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "GET":
 																// Leaf: ActionsGetSelfHostedRunnerForRepo
 																r.name = "ActionsGetSelfHostedRunnerForRepo"
+																r.operationID = "actions/get-self-hosted-runner-for-repo"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -19912,6 +20202,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ActionsListWorkflowRunsForRepo"
+															r.operationID = "actions/list-workflow-runs-for-repo"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -19940,11 +20231,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "DELETE":
 																r.name = "ActionsDeleteWorkflowRun"
+																r.operationID = "actions/delete-workflow-run"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "GET":
 																r.name = "ActionsGetWorkflowRun"
+																r.operationID = "actions/get-workflow-run"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -19998,6 +20291,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																			case "GET":
 																				// Leaf: ActionsGetReviewsForRun
 																				r.name = "ActionsGetReviewsForRun"
+																				r.operationID = "actions/get-reviews-for-run"
 																				r.args = args
 																				r.count = 3
 																				return r, true
@@ -20017,6 +20311,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																			case "POST":
 																				// Leaf: ActionsApproveWorkflowRun
 																				r.name = "ActionsApproveWorkflowRun"
+																				r.operationID = "actions/approve-workflow-run"
 																				r.args = args
 																				r.count = 3
 																				return r, true
@@ -20037,6 +20332,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																		case "GET":
 																			// Leaf: ActionsListWorkflowRunArtifacts
 																			r.name = "ActionsListWorkflowRunArtifacts"
+																			r.operationID = "actions/list-workflow-run-artifacts"
 																			r.args = args
 																			r.count = 3
 																			return r, true
@@ -20057,6 +20353,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: ActionsCancelWorkflowRun
 																		r.name = "ActionsCancelWorkflowRun"
+																		r.operationID = "actions/cancel-workflow-run"
 																		r.args = args
 																		r.count = 3
 																		return r, true
@@ -20076,6 +20373,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "GET":
 																		// Leaf: ActionsListJobsForWorkflowRun
 																		r.name = "ActionsListJobsForWorkflowRun"
+																		r.operationID = "actions/list-jobs-for-workflow-run"
 																		r.args = args
 																		r.count = 3
 																		return r, true
@@ -20095,12 +20393,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "DELETE":
 																		// Leaf: ActionsDeleteWorkflowRunLogs
 																		r.name = "ActionsDeleteWorkflowRunLogs"
+																		r.operationID = "actions/delete-workflow-run-logs"
 																		r.args = args
 																		r.count = 3
 																		return r, true
 																	case "GET":
 																		// Leaf: ActionsDownloadWorkflowRunLogs
 																		r.name = "ActionsDownloadWorkflowRunLogs"
+																		r.operationID = "actions/download-workflow-run-logs"
 																		r.args = args
 																		r.count = 3
 																		return r, true
@@ -20120,6 +20420,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: ActionsReviewPendingDeploymentsForRun
 																		r.name = "ActionsReviewPendingDeploymentsForRun"
+																		r.operationID = "actions/review-pending-deployments-for-run"
 																		r.args = args
 																		r.count = 3
 																		return r, true
@@ -20150,6 +20451,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																		case "POST":
 																			// Leaf: ActionsReRunWorkflow
 																			r.name = "ActionsReRunWorkflow"
+																			r.operationID = "actions/re-run-workflow"
 																			r.args = args
 																			r.count = 3
 																			return r, true
@@ -20169,6 +20471,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																		case "POST":
 																			// Leaf: ActionsRetryWorkflow
 																			r.name = "ActionsRetryWorkflow"
+																			r.operationID = "actions/retry-workflow"
 																			r.args = args
 																			r.count = 3
 																			return r, true
@@ -20189,6 +20492,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "GET":
 																		// Leaf: ActionsGetWorkflowRunUsage
 																		r.name = "ActionsGetWorkflowRunUsage"
+																		r.operationID = "actions/get-workflow-run-usage"
 																		r.args = args
 																		r.count = 3
 																		return r, true
@@ -20211,6 +20515,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ActionsListRepoSecrets"
+														r.operationID = "actions/list-repo-secrets"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -20242,6 +20547,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ActionsGetRepoPublicKey
 																r.name = "ActionsGetRepoPublicKey"
+																r.operationID = "actions/get-repo-public-key"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -20260,18 +20566,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "DELETE":
 															// Leaf: ActionsDeleteRepoSecret
 															r.name = "ActionsDeleteRepoSecret"
+															r.operationID = "actions/delete-repo-secret"
 															r.args = args
 															r.count = 3
 															return r, true
 														case "GET":
 															// Leaf: ActionsGetRepoSecret
 															r.name = "ActionsGetRepoSecret"
+															r.operationID = "actions/get-repo-secret"
 															r.args = args
 															r.count = 3
 															return r, true
 														case "PUT":
 															// Leaf: ActionsCreateOrUpdateRepoSecret
 															r.name = "ActionsCreateOrUpdateRepoSecret"
+															r.operationID = "actions/create-or-update-repo-secret"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -20292,6 +20601,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ActionsListRepoWorkflows
 														r.name = "ActionsListRepoWorkflows"
+														r.operationID = "actions/list-repo-workflows"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -20311,6 +20621,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "IssuesListAssignees"
+													r.operationID = "issues/list-assignees"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -20336,6 +20647,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: IssuesCheckUserCanBeAssigned
 														r.name = "IssuesCheckUserCanBeAssigned"
+														r.operationID = "issues/check-user-can-be-assigned"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -20366,11 +20678,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ReposListAutolinks"
+														r.operationID = "repos/list-autolinks"
 														r.args = args
 														r.count = 2
 														return r, true
 													case "POST":
 														r.name = "ReposCreateAutolink"
+														r.operationID = "repos/create-autolink"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -20396,12 +20710,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "DELETE":
 															// Leaf: ReposDeleteAutolink
 															r.name = "ReposDeleteAutolink"
+															r.operationID = "repos/delete-autolink"
 															r.args = args
 															r.count = 3
 															return r, true
 														case "GET":
 															// Leaf: ReposGetAutolink
 															r.name = "ReposGetAutolink"
+															r.operationID = "repos/get-autolink"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -20422,12 +20738,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "DELETE":
 														// Leaf: ReposDisableAutomatedSecurityFixes
 														r.name = "ReposDisableAutomatedSecurityFixes"
+														r.operationID = "repos/disable-automated-security-fixes"
 														r.args = args
 														r.count = 2
 														return r, true
 													case "PUT":
 														// Leaf: ReposEnableAutomatedSecurityFixes
 														r.name = "ReposEnableAutomatedSecurityFixes"
+														r.operationID = "repos/enable-automated-security-fixes"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -20448,6 +20766,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ReposListBranches"
+												r.operationID = "repos/list-branches"
 												r.args = args
 												r.count = 2
 												return r, true
@@ -20476,6 +20795,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ReposGetBranch"
+													r.operationID = "repos/get-branch"
 													r.args = args
 													r.count = 3
 													return r, true
@@ -20506,16 +20826,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "DELETE":
 															r.name = "ReposDeleteBranchProtection"
+															r.operationID = "repos/delete-branch-protection"
 															r.args = args
 															r.count = 3
 															return r, true
 														case "GET":
 															r.name = "ReposGetBranchProtection"
+															r.operationID = "repos/get-branch-protection"
 															r.args = args
 															r.count = 3
 															return r, true
 														case "PUT":
 															r.name = "ReposUpdateBranchProtection"
+															r.operationID = "repos/update-branch-protection"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -20547,18 +20870,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "DELETE":
 																	// Leaf: ReposDeleteAdminBranchProtection
 																	r.name = "ReposDeleteAdminBranchProtection"
+																	r.operationID = "repos/delete-admin-branch-protection"
 																	r.args = args
 																	r.count = 3
 																	return r, true
 																case "GET":
 																	// Leaf: ReposGetAdminBranchProtection
 																	r.name = "ReposGetAdminBranchProtection"
+																	r.operationID = "repos/get-admin-branch-protection"
 																	r.args = args
 																	r.count = 3
 																	return r, true
 																case "POST":
 																	// Leaf: ReposSetAdminBranchProtection
 																	r.name = "ReposSetAdminBranchProtection"
+																	r.operationID = "repos/set-admin-branch-protection"
 																	r.args = args
 																	r.count = 3
 																	return r, true
@@ -20600,18 +20926,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																		case "DELETE":
 																			// Leaf: ReposDeletePullRequestReviewProtection
 																			r.name = "ReposDeletePullRequestReviewProtection"
+																			r.operationID = "repos/delete-pull-request-review-protection"
 																			r.args = args
 																			r.count = 3
 																			return r, true
 																		case "GET":
 																			// Leaf: ReposGetPullRequestReviewProtection
 																			r.name = "ReposGetPullRequestReviewProtection"
+																			r.operationID = "repos/get-pull-request-review-protection"
 																			r.args = args
 																			r.count = 3
 																			return r, true
 																		case "PATCH":
 																			// Leaf: ReposUpdatePullRequestReviewProtection
 																			r.name = "ReposUpdatePullRequestReviewProtection"
+																			r.operationID = "repos/update-pull-request-review-protection"
 																			r.args = args
 																			r.count = 3
 																			return r, true
@@ -20642,18 +20971,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																			case "DELETE":
 																				// Leaf: ReposDeleteCommitSignatureProtection
 																				r.name = "ReposDeleteCommitSignatureProtection"
+																				r.operationID = "repos/delete-commit-signature-protection"
 																				r.args = args
 																				r.count = 3
 																				return r, true
 																			case "GET":
 																				// Leaf: ReposGetCommitSignatureProtection
 																				r.name = "ReposGetCommitSignatureProtection"
+																				r.operationID = "repos/get-commit-signature-protection"
 																				r.args = args
 																				r.count = 3
 																				return r, true
 																			case "POST":
 																				// Leaf: ReposCreateCommitSignatureProtection
 																				r.name = "ReposCreateCommitSignatureProtection"
+																				r.operationID = "repos/create-commit-signature-protection"
 																				r.args = args
 																				r.count = 3
 																				return r, true
@@ -20672,16 +21004,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																			switch method {
 																			case "DELETE":
 																				r.name = "ReposRemoveStatusCheckProtection"
+																				r.operationID = "repos/remove-status-check-protection"
 																				r.args = args
 																				r.count = 3
 																				return r, true
 																			case "GET":
 																				r.name = "ReposGetStatusChecksProtection"
+																				r.operationID = "repos/get-status-checks-protection"
 																				r.args = args
 																				r.count = 3
 																				return r, true
 																			case "PATCH":
 																				r.name = "ReposUpdateStatusCheckProtection"
+																				r.operationID = "repos/update-status-check-protection"
 																				r.args = args
 																				r.count = 3
 																				return r, true
@@ -20702,24 +21037,28 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																				case "DELETE":
 																					// Leaf: ReposRemoveStatusCheckContexts
 																					r.name = "ReposRemoveStatusCheckContexts"
+																					r.operationID = "repos/remove-status-check-contexts"
 																					r.args = args
 																					r.count = 3
 																					return r, true
 																				case "GET":
 																					// Leaf: ReposGetAllStatusCheckContexts
 																					r.name = "ReposGetAllStatusCheckContexts"
+																					r.operationID = "repos/get-all-status-check-contexts"
 																					r.args = args
 																					r.count = 3
 																					return r, true
 																				case "POST":
 																					// Leaf: ReposAddStatusCheckContexts
 																					r.name = "ReposAddStatusCheckContexts"
+																					r.operationID = "repos/add-status-check-contexts"
 																					r.args = args
 																					r.count = 3
 																					return r, true
 																				case "PUT":
 																					// Leaf: ReposSetStatusCheckContexts
 																					r.name = "ReposSetStatusCheckContexts"
+																					r.operationID = "repos/set-status-check-contexts"
 																					r.args = args
 																					r.count = 3
 																					return r, true
@@ -20741,11 +21080,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	switch method {
 																	case "DELETE":
 																		r.name = "ReposDeleteAccessRestrictions"
+																		r.operationID = "repos/delete-access-restrictions"
 																		r.args = args
 																		r.count = 3
 																		return r, true
 																	case "GET":
 																		r.name = "ReposGetAccessRestrictions"
+																		r.operationID = "repos/get-access-restrictions"
 																		r.args = args
 																		r.count = 3
 																		return r, true
@@ -20777,24 +21118,28 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																			case "DELETE":
 																				// Leaf: ReposRemoveAppAccessRestrictions
 																				r.name = "ReposRemoveAppAccessRestrictions"
+																				r.operationID = "repos/remove-app-access-restrictions"
 																				r.args = args
 																				r.count = 3
 																				return r, true
 																			case "GET":
 																				// Leaf: ReposGetAppsWithAccessToProtectedBranch
 																				r.name = "ReposGetAppsWithAccessToProtectedBranch"
+																				r.operationID = "repos/get-apps-with-access-to-protected-branch"
 																				r.args = args
 																				r.count = 3
 																				return r, true
 																			case "POST":
 																				// Leaf: ReposAddAppAccessRestrictions
 																				r.name = "ReposAddAppAccessRestrictions"
+																				r.operationID = "repos/add-app-access-restrictions"
 																				r.args = args
 																				r.count = 3
 																				return r, true
 																			case "PUT":
 																				// Leaf: ReposSetAppAccessRestrictions
 																				r.name = "ReposSetAppAccessRestrictions"
+																				r.operationID = "repos/set-app-access-restrictions"
 																				r.args = args
 																				r.count = 3
 																				return r, true
@@ -20814,24 +21159,28 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																			case "DELETE":
 																				// Leaf: ReposRemoveTeamAccessRestrictions
 																				r.name = "ReposRemoveTeamAccessRestrictions"
+																				r.operationID = "repos/remove-team-access-restrictions"
 																				r.args = args
 																				r.count = 3
 																				return r, true
 																			case "GET":
 																				// Leaf: ReposGetTeamsWithAccessToProtectedBranch
 																				r.name = "ReposGetTeamsWithAccessToProtectedBranch"
+																				r.operationID = "repos/get-teams-with-access-to-protected-branch"
 																				r.args = args
 																				r.count = 3
 																				return r, true
 																			case "POST":
 																				// Leaf: ReposAddTeamAccessRestrictions
 																				r.name = "ReposAddTeamAccessRestrictions"
+																				r.operationID = "repos/add-team-access-restrictions"
 																				r.args = args
 																				r.count = 3
 																				return r, true
 																			case "PUT":
 																				// Leaf: ReposSetTeamAccessRestrictions
 																				r.name = "ReposSetTeamAccessRestrictions"
+																				r.operationID = "repos/set-team-access-restrictions"
 																				r.args = args
 																				r.count = 3
 																				return r, true
@@ -20851,24 +21200,28 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																			case "DELETE":
 																				// Leaf: ReposRemoveUserAccessRestrictions
 																				r.name = "ReposRemoveUserAccessRestrictions"
+																				r.operationID = "repos/remove-user-access-restrictions"
 																				r.args = args
 																				r.count = 3
 																				return r, true
 																			case "GET":
 																				// Leaf: ReposGetUsersWithAccessToProtectedBranch
 																				r.name = "ReposGetUsersWithAccessToProtectedBranch"
+																				r.operationID = "repos/get-users-with-access-to-protected-branch"
 																				r.args = args
 																				r.count = 3
 																				return r, true
 																			case "POST":
 																				// Leaf: ReposAddUserAccessRestrictions
 																				r.name = "ReposAddUserAccessRestrictions"
+																				r.operationID = "repos/add-user-access-restrictions"
 																				r.args = args
 																				r.count = 3
 																				return r, true
 																			case "PUT":
 																				// Leaf: ReposSetUserAccessRestrictions
 																				r.name = "ReposSetUserAccessRestrictions"
+																				r.operationID = "repos/set-user-access-restrictions"
 																				r.args = args
 																				r.count = 3
 																				return r, true
@@ -20893,6 +21246,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: ReposRenameBranch
 															r.name = "ReposRenameBranch"
+															r.operationID = "repos/rename-branch"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -20945,6 +21299,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ChecksGet"
+														r.operationID = "checks/get"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -20965,6 +21320,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ChecksListAnnotations
 															r.name = "ChecksListAnnotations"
+															r.operationID = "checks/list-annotations"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -20984,6 +21340,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "ChecksCreateSuite"
+														r.operationID = "checks/create-suite"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -21015,6 +21372,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "PATCH":
 																// Leaf: ChecksSetSuitesPreferences
 																r.name = "ChecksSetSuitesPreferences"
+																r.operationID = "checks/set-suites-preferences"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -21036,6 +21394,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ChecksGetSuite"
+															r.operationID = "checks/get-suite"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -21067,6 +21426,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: ChecksListForSuite
 																	r.name = "ChecksListForSuite"
+																	r.operationID = "checks/list-for-suite"
 																	r.args = args
 																	r.count = 3
 																	return r, true
@@ -21086,6 +21446,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: ChecksRerequestSuite
 																	r.name = "ChecksRerequestSuite"
+																	r.operationID = "checks/rerequest-suite"
 																	r.args = args
 																	r.count = 3
 																	return r, true
@@ -21141,6 +21502,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "CodeScanningListAlertsForRepo"
+																r.operationID = "code-scanning/list-alerts-for-repo"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -21169,11 +21531,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "GET":
 																	r.name = "CodeScanningGetAlert"
+																	r.operationID = "code-scanning/get-alert"
 																	r.args = args
 																	r.count = 3
 																	return r, true
 																case "PATCH":
 																	r.name = "CodeScanningUpdateAlert"
+																	r.operationID = "code-scanning/update-alert"
 																	r.args = args
 																	r.count = 3
 																	return r, true
@@ -21194,6 +21558,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "GET":
 																		// Leaf: CodeScanningListAlertInstances
 																		r.name = "CodeScanningListAlertInstances"
+																		r.operationID = "code-scanning/list-alert-instances"
 																		r.args = args
 																		r.count = 3
 																		return r, true
@@ -21214,6 +21579,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "CodeScanningListRecentAnalyses"
+																r.operationID = "code-scanning/list-recent-analyses"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -21239,12 +21605,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "DELETE":
 																	// Leaf: CodeScanningDeleteAnalysis
 																	r.name = "CodeScanningDeleteAnalysis"
+																	r.operationID = "code-scanning/delete-analysis"
 																	r.args = args
 																	r.count = 3
 																	return r, true
 																case "GET":
 																	// Leaf: CodeScanningGetAnalysis
 																	r.name = "CodeScanningGetAnalysis"
+																	r.operationID = "code-scanning/get-analysis"
 																	r.args = args
 																	r.count = 3
 																	return r, true
@@ -21265,6 +21633,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "CodeScanningUploadSarif"
+															r.operationID = "code-scanning/upload-sarif"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -21290,6 +21659,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: CodeScanningGetSarif
 																r.name = "CodeScanningGetSarif"
+																r.operationID = "code-scanning/get-sarif"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -21310,6 +21680,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ReposListCollaborators"
+														r.operationID = "repos/list-collaborators"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -21338,16 +21709,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "DELETE":
 															r.name = "ReposRemoveCollaborator"
+															r.operationID = "repos/remove-collaborator"
 															r.args = args
 															r.count = 3
 															return r, true
 														case "GET":
 															r.name = "ReposCheckCollaborator"
+															r.operationID = "repos/check-collaborator"
 															r.args = args
 															r.count = 3
 															return r, true
 														case "PUT":
 															r.name = "ReposAddCollaborator"
+															r.operationID = "repos/add-collaborator"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -21368,6 +21742,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetCollaboratorPermissionLevel
 																r.name = "ReposGetCollaboratorPermissionLevel"
+																r.operationID = "repos/get-collaborator-permission-level"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -21410,6 +21785,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ReposListCommitCommentsForRepo"
+																r.operationID = "repos/list-commit-comments-for-repo"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -21438,16 +21814,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "DELETE":
 																	r.name = "ReposDeleteCommitComment"
+																	r.operationID = "repos/delete-commit-comment"
 																	r.args = args
 																	r.count = 3
 																	return r, true
 																case "GET":
 																	r.name = "ReposGetCommitComment"
+																	r.operationID = "repos/get-commit-comment"
 																	r.args = args
 																	r.count = 3
 																	return r, true
 																case "PATCH":
 																	r.name = "ReposUpdateCommitComment"
+																	r.operationID = "repos/update-commit-comment"
 																	r.args = args
 																	r.count = 3
 																	return r, true
@@ -21467,11 +21846,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	switch method {
 																	case "GET":
 																		r.name = "ReactionsListForCommitComment"
+																		r.operationID = "reactions/list-for-commit-comment"
 																		r.args = args
 																		r.count = 3
 																		return r, true
 																	case "POST":
 																		r.name = "ReactionsCreateForCommitComment"
+																		r.operationID = "reactions/create-for-commit-comment"
 																		r.args = args
 																		r.count = 3
 																		return r, true
@@ -21497,6 +21878,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																		case "DELETE":
 																			// Leaf: ReactionsDeleteForCommitComment
 																			r.name = "ReactionsDeleteForCommitComment"
+																			r.operationID = "reactions/delete-for-commit-comment"
 																			r.args = args
 																			r.count = 4
 																			return r, true
@@ -21518,6 +21900,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ReposListCommits"
+																r.operationID = "repos/list-commits"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -21546,6 +21929,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "GET":
 																	r.name = "ReposGetCommit"
+																	r.operationID = "repos/get-commit"
 																	r.args = args
 																	r.count = 3
 																	return r, true
@@ -21577,6 +21961,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																		case "GET":
 																			// Leaf: ReposListBranchesForHeadCommit
 																			r.name = "ReposListBranchesForHeadCommit"
+																			r.operationID = "repos/list-branches-for-head-commit"
 																			r.args = args
 																			r.count = 3
 																			return r, true
@@ -21618,6 +22003,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																				case "GET":
 																					// Leaf: ChecksListForRef
 																					r.name = "ChecksListForRef"
+																					r.operationID = "checks/list-for-ref"
 																					r.args = args
 																					r.count = 3
 																					return r, true
@@ -21637,6 +22023,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																				case "GET":
 																					// Leaf: ChecksListSuitesForRef
 																					r.name = "ChecksListSuitesForRef"
+																					r.operationID = "checks/list-suites-for-ref"
 																					r.args = args
 																					r.count = 3
 																					return r, true
@@ -21657,12 +22044,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																			case "GET":
 																				// Leaf: ReposListCommentsForCommit
 																				r.name = "ReposListCommentsForCommit"
+																				r.operationID = "repos/list-comments-for-commit"
 																				r.args = args
 																				r.count = 3
 																				return r, true
 																			case "POST":
 																				// Leaf: ReposCreateCommitComment
 																				r.name = "ReposCreateCommitComment"
+																				r.operationID = "repos/create-commit-comment"
 																				r.args = args
 																				r.count = 3
 																				return r, true
@@ -21683,6 +22072,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																		case "GET":
 																			// Leaf: ReposListPullRequestsAssociatedWithCommit
 																			r.name = "ReposListPullRequestsAssociatedWithCommit"
+																			r.operationID = "repos/list-pull-requests-associated-with-commit"
 																			r.args = args
 																			r.count = 3
 																			return r, true
@@ -21701,6 +22091,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																		switch method {
 																		case "GET":
 																			r.name = "ReposGetCombinedStatusForRef"
+																			r.operationID = "repos/get-combined-status-for-ref"
 																			r.args = args
 																			r.count = 3
 																			return r, true
@@ -21721,6 +22112,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																			case "GET":
 																				// Leaf: ReposListCommitStatusesForRef
 																				r.name = "ReposListCommitStatusesForRef"
+																				r.operationID = "repos/list-commit-statuses-for-ref"
 																				r.args = args
 																				r.count = 3
 																				return r, true
@@ -21744,6 +22136,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetCommunityProfileMetrics
 																r.name = "ReposGetCommunityProfileMetrics"
+																r.operationID = "repos/get-community-profile-metrics"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -21769,6 +22162,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposCompareCommits
 															r.name = "ReposCompareCommits"
+															r.operationID = "repos/compare-commits"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -21831,6 +22225,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: AppsCreateContentAttachment
 																	r.name = "AppsCreateContentAttachment"
+																	r.operationID = "apps/create-content-attachment"
 																	r.args = args
 																	r.count = 3
 																	return r, true
@@ -21856,12 +22251,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "DELETE":
 																// Leaf: ReposDeleteFile
 																r.name = "ReposDeleteFile"
+																r.operationID = "repos/delete-file"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "PUT":
 																// Leaf: ReposCreateOrUpdateFileContents
 																r.name = "ReposCreateOrUpdateFileContents"
+																r.operationID = "repos/create-or-update-file-contents"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -21882,6 +22279,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposListContributors
 															r.name = "ReposListContributors"
+															r.operationID = "repos/list-contributors"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -21914,11 +22312,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ReposListDeployments"
+													r.operationID = "repos/list-deployments"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "POST":
 													r.name = "ReposCreateDeployment"
+													r.operationID = "repos/create-deployment"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -21947,11 +22347,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "DELETE":
 														r.name = "ReposDeleteDeployment"
+														r.operationID = "repos/delete-deployment"
 														r.args = args
 														r.count = 3
 														return r, true
 													case "GET":
 														r.name = "ReposGetDeployment"
+														r.operationID = "repos/get-deployment"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -21971,11 +22373,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ReposListDeploymentStatuses"
+															r.operationID = "repos/list-deployment-statuses"
 															r.args = args
 															r.count = 3
 															return r, true
 														case "POST":
 															r.name = "ReposCreateDeploymentStatus"
+															r.operationID = "repos/create-deployment-status"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -22001,6 +22405,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetDeploymentStatus
 																r.name = "ReposGetDeploymentStatus"
+																r.operationID = "repos/get-deployment-status"
 																r.args = args
 																r.count = 4
 																return r, true
@@ -22023,6 +22428,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: ReposCreateDispatchEvent
 													r.name = "ReposCreateDispatchEvent"
+													r.operationID = "repos/create-dispatch-event"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -22059,6 +22465,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "DELETE":
 													// Leaf: ReposDeleteAnEnvironment
 													r.name = "ReposDeleteAnEnvironment"
+													r.operationID = "repos/delete-an-environment"
 													r.args = args
 													r.count = 3
 													return r, true
@@ -22078,6 +22485,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ActivityListRepoEvents
 													r.name = "ActivityListRepoEvents"
+													r.operationID = "activity/list-repo-events"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -22098,12 +22506,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ReposListForks
 												r.name = "ReposListForks"
+												r.operationID = "repos/list-forks"
 												r.args = args
 												r.count = 2
 												return r, true
 											case "POST":
 												// Leaf: ReposCreateFork
 												r.name = "ReposCreateFork"
+												r.operationID = "repos/create-fork"
 												r.args = args
 												r.count = 2
 												return r, true
@@ -22134,6 +22544,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: ReposCreateUsingTemplate
 													r.name = "ReposCreateUsingTemplate"
+													r.operationID = "repos/create-using-template"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -22163,6 +22574,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "GitCreateBlob"
+														r.operationID = "git/create-blob"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -22188,6 +22600,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: GitGetBlob
 															r.name = "GitGetBlob"
+															r.operationID = "git/get-blob"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -22207,6 +22620,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "GitCreateCommit"
+														r.operationID = "git/create-commit"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -22232,6 +22646,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: GitGetCommit
 															r.name = "GitGetCommit"
+															r.operationID = "git/get-commit"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -22257,6 +22672,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: GitListMatchingRefs
 														r.name = "GitListMatchingRefs"
+														r.operationID = "git/list-matching-refs"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -22292,6 +22708,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: GitGetRef
 															r.name = "GitGetRef"
+															r.operationID = "git/get-ref"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -22310,6 +22727,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "GitCreateRef"
+															r.operationID = "git/create-ref"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -22335,12 +22753,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "DELETE":
 																// Leaf: GitDeleteRef
 																r.name = "GitDeleteRef"
+																r.operationID = "git/delete-ref"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "PATCH":
 																// Leaf: GitUpdateRef
 																r.name = "GitUpdateRef"
+																r.operationID = "git/update-ref"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -22372,6 +22792,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "GitCreateTag"
+															r.operationID = "git/create-tag"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -22397,6 +22818,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: GitGetTag
 																r.name = "GitGetTag"
+																r.operationID = "git/get-tag"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -22416,6 +22838,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "GitCreateTree"
+															r.operationID = "git/create-tree"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -22441,6 +22864,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: GitGetTree
 																r.name = "GitGetTree"
+																r.operationID = "git/get-tree"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -22463,11 +22887,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ReposListWebhooks"
+												r.operationID = "repos/list-webhooks"
 												r.args = args
 												r.count = 2
 												return r, true
 											case "POST":
 												r.name = "ReposCreateWebhook"
+												r.operationID = "repos/create-webhook"
 												r.args = args
 												r.count = 2
 												return r, true
@@ -22496,16 +22922,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "DELETE":
 													r.name = "ReposDeleteWebhook"
+													r.operationID = "repos/delete-webhook"
 													r.args = args
 													r.count = 3
 													return r, true
 												case "GET":
 													r.name = "ReposGetWebhook"
+													r.operationID = "repos/get-webhook"
 													r.args = args
 													r.count = 3
 													return r, true
 												case "PATCH":
 													r.name = "ReposUpdateWebhook"
+													r.operationID = "repos/update-webhook"
 													r.args = args
 													r.count = 3
 													return r, true
@@ -22537,12 +22966,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposGetWebhookConfigForRepo
 															r.name = "ReposGetWebhookConfigForRepo"
+															r.operationID = "repos/get-webhook-config-for-repo"
 															r.args = args
 															r.count = 3
 															return r, true
 														case "PATCH":
 															// Leaf: ReposUpdateWebhookConfigForRepo
 															r.name = "ReposUpdateWebhookConfigForRepo"
+															r.operationID = "repos/update-webhook-config-for-repo"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -22561,6 +22992,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ReposListWebhookDeliveries"
+															r.operationID = "repos/list-webhook-deliveries"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -22589,6 +23021,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ReposGetWebhookDelivery"
+																r.operationID = "repos/get-webhook-delivery"
 																r.args = args
 																r.count = 4
 																return r, true
@@ -22609,6 +23042,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: ReposRedeliverWebhookDelivery
 																	r.name = "ReposRedeliverWebhookDelivery"
+																	r.operationID = "repos/redeliver-webhook-delivery"
 																	r.args = args
 																	r.count = 4
 																	return r, true
@@ -22630,6 +23064,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: ReposPingWebhook
 															r.name = "ReposPingWebhook"
+															r.operationID = "repos/ping-webhook"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -22649,6 +23084,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: ReposTestPushWebhook
 															r.name = "ReposTestPushWebhook"
+															r.operationID = "repos/test-push-webhook"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -22681,21 +23117,25 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "DELETE":
 													r.name = "MigrationsCancelImport"
+													r.operationID = "migrations/cancel-import"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "GET":
 													r.name = "MigrationsGetImportStatus"
+													r.operationID = "migrations/get-import-status"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "PATCH":
 													r.name = "MigrationsUpdateImport"
+													r.operationID = "migrations/update-import"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "PUT":
 													r.name = "MigrationsStartImport"
+													r.operationID = "migrations/start-import"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -22726,6 +23166,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "MigrationsGetCommitAuthors"
+															r.operationID = "migrations/get-commit-authors"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -22751,6 +23192,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "PATCH":
 																// Leaf: MigrationsMapCommitAuthor
 																r.name = "MigrationsMapCommitAuthor"
+																r.operationID = "migrations/map-commit-author"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -22782,6 +23224,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: MigrationsGetLargeFiles
 																r.name = "MigrationsGetLargeFiles"
+																r.operationID = "migrations/get-large-files"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -22801,6 +23244,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "PATCH":
 																// Leaf: MigrationsSetLfsPreference
 																r.name = "MigrationsSetLfsPreference"
+																r.operationID = "migrations/set-lfs-preference"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -22834,12 +23278,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "DELETE":
 														// Leaf: InteractionsRemoveRestrictionsForRepo
 														r.name = "InteractionsRemoveRestrictionsForRepo"
+														r.operationID = "interactions/remove-restrictions-for-repo"
 														r.args = args
 														r.count = 2
 														return r, true
 													case "PUT":
 														// Leaf: InteractionsSetRestrictionsForRepo
 														r.name = "InteractionsSetRestrictionsForRepo"
+														r.operationID = "interactions/set-restrictions-for-repo"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -22858,6 +23304,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "ReposListInvitations"
+														r.operationID = "repos/list-invitations"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -22883,12 +23330,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "DELETE":
 															// Leaf: ReposDeleteInvitation
 															r.name = "ReposDeleteInvitation"
+															r.operationID = "repos/delete-invitation"
 															r.args = args
 															r.count = 3
 															return r, true
 														case "PATCH":
 															// Leaf: ReposUpdateInvitation
 															r.name = "ReposUpdateInvitation"
+															r.operationID = "repos/update-invitation"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -22909,11 +23358,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "IssuesListForRepo"
+													r.operationID = "issues/list-for-repo"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "POST":
 													r.name = "IssuesCreate"
+													r.operationID = "issues/create"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -22944,6 +23395,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "IssuesListCommentsForRepo"
+															r.operationID = "issues/list-comments-for-repo"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -22972,16 +23424,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "DELETE":
 																r.name = "IssuesDeleteComment"
+																r.operationID = "issues/delete-comment"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "GET":
 																r.name = "IssuesGetComment"
+																r.operationID = "issues/get-comment"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "PATCH":
 																r.name = "IssuesUpdateComment"
+																r.operationID = "issues/update-comment"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -23001,11 +23456,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "GET":
 																	r.name = "ReactionsListForIssueComment"
+																	r.operationID = "reactions/list-for-issue-comment"
 																	r.args = args
 																	r.count = 3
 																	return r, true
 																case "POST":
 																	r.name = "ReactionsCreateForIssueComment"
+																	r.operationID = "reactions/create-for-issue-comment"
 																	r.args = args
 																	r.count = 3
 																	return r, true
@@ -23031,6 +23488,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "DELETE":
 																		// Leaf: ReactionsDeleteForIssueComment
 																		r.name = "ReactionsDeleteForIssueComment"
+																		r.operationID = "reactions/delete-for-issue-comment"
 																		r.args = args
 																		r.count = 4
 																		return r, true
@@ -23052,6 +23510,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "IssuesListEventsForRepo"
+															r.operationID = "issues/list-events-for-repo"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -23077,6 +23536,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: IssuesGetEvent
 																r.name = "IssuesGetEvent"
+																r.operationID = "issues/get-event"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -23099,11 +23559,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "IssuesGet"
+														r.operationID = "issues/get"
 														r.args = args
 														r.count = 3
 														return r, true
 													case "PATCH":
 														r.name = "IssuesUpdate"
+														r.operationID = "issues/update"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -23135,12 +23597,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "DELETE":
 																// Leaf: IssuesRemoveAssignees
 																r.name = "IssuesRemoveAssignees"
+																r.operationID = "issues/remove-assignees"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "POST":
 																// Leaf: IssuesAddAssignees
 																r.name = "IssuesAddAssignees"
+																r.operationID = "issues/add-assignees"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -23160,12 +23624,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: IssuesListComments
 																r.name = "IssuesListComments"
+																r.operationID = "issues/list-comments"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "POST":
 																// Leaf: IssuesCreateComment
 																r.name = "IssuesCreateComment"
+																r.operationID = "issues/create-comment"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -23195,11 +23661,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "DELETE":
 																	r.name = "IssuesRemoveAllLabels"
+																	r.operationID = "issues/remove-all-labels"
 																	r.args = args
 																	r.count = 3
 																	return r, true
 																case "GET":
 																	r.name = "IssuesListLabelsOnIssue"
+																	r.operationID = "issues/list-labels-on-issue"
 																	r.args = args
 																	r.count = 3
 																	return r, true
@@ -23225,6 +23693,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "DELETE":
 																		// Leaf: IssuesRemoveLabel
 																		r.name = "IssuesRemoveLabel"
+																		r.operationID = "issues/remove-label"
 																		r.args = args
 																		r.count = 4
 																		return r, true
@@ -23245,12 +23714,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "DELETE":
 																	// Leaf: IssuesUnlock
 																	r.name = "IssuesUnlock"
+																	r.operationID = "issues/unlock"
 																	r.args = args
 																	r.count = 3
 																	return r, true
 																case "PUT":
 																	// Leaf: IssuesLock
 																	r.name = "IssuesLock"
+																	r.operationID = "issues/lock"
 																	r.args = args
 																	r.count = 3
 																	return r, true
@@ -23270,11 +23741,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "GET":
 																r.name = "ReactionsListForIssue"
+																r.operationID = "reactions/list-for-issue"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "POST":
 																r.name = "ReactionsCreateForIssue"
+																r.operationID = "reactions/create-for-issue"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -23300,6 +23773,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "DELETE":
 																	// Leaf: ReactionsDeleteForIssue
 																	r.name = "ReactionsDeleteForIssue"
+																	r.operationID = "reactions/delete-for-issue"
 																	r.args = args
 																	r.count = 4
 																	return r, true
@@ -23323,11 +23797,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ReposListDeployKeys"
+												r.operationID = "repos/list-deploy-keys"
 												r.args = args
 												r.count = 2
 												return r, true
 											case "POST":
 												r.name = "ReposCreateDeployKey"
+												r.operationID = "repos/create-deploy-key"
 												r.args = args
 												r.count = 2
 												return r, true
@@ -23353,12 +23829,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "DELETE":
 													// Leaf: ReposDeleteDeployKey
 													r.name = "ReposDeleteDeployKey"
+													r.operationID = "repos/delete-deploy-key"
 													r.args = args
 													r.count = 3
 													return r, true
 												case "GET":
 													// Leaf: ReposGetDeployKey
 													r.name = "ReposGetDeployKey"
+													r.operationID = "repos/get-deploy-key"
 													r.args = args
 													r.count = 3
 													return r, true
@@ -23400,11 +23878,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "IssuesListLabelsForRepo"
+														r.operationID = "issues/list-labels-for-repo"
 														r.args = args
 														r.count = 2
 														return r, true
 													case "POST":
 														r.name = "IssuesCreateLabel"
+														r.operationID = "issues/create-label"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -23430,18 +23910,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "DELETE":
 															// Leaf: IssuesDeleteLabel
 															r.name = "IssuesDeleteLabel"
+															r.operationID = "issues/delete-label"
 															r.args = args
 															r.count = 3
 															return r, true
 														case "GET":
 															// Leaf: IssuesGetLabel
 															r.name = "IssuesGetLabel"
+															r.operationID = "issues/get-label"
 															r.args = args
 															r.count = 3
 															return r, true
 														case "PATCH":
 															// Leaf: IssuesUpdateLabel
 															r.name = "IssuesUpdateLabel"
+															r.operationID = "issues/update-label"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -23462,6 +23945,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReposListLanguages
 														r.name = "ReposListLanguages"
+														r.operationID = "repos/list-languages"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -23482,12 +23966,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "DELETE":
 													// Leaf: ReposDisableLfsForRepo
 													r.name = "ReposDisableLfsForRepo"
+													r.operationID = "repos/disable-lfs-for-repo"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "PUT":
 													// Leaf: ReposEnableLfsForRepo
 													r.name = "ReposEnableLfsForRepo"
+													r.operationID = "repos/enable-lfs-for-repo"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -23507,6 +23993,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: LicensesGetForRepo
 													r.name = "LicensesGetForRepo"
+													r.operationID = "licenses/get-for-repo"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -23549,6 +24036,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: ReposMergeUpstream
 														r.name = "ReposMergeUpstream"
+														r.operationID = "repos/merge-upstream"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -23568,6 +24056,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: ReposMerge
 														r.name = "ReposMerge"
+														r.operationID = "repos/merge"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -23587,11 +24076,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "IssuesListMilestones"
+													r.operationID = "issues/list-milestones"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "POST":
 													r.name = "IssuesCreateMilestone"
+													r.operationID = "issues/create-milestone"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -23620,16 +24111,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "DELETE":
 														r.name = "IssuesDeleteMilestone"
+														r.operationID = "issues/delete-milestone"
 														r.args = args
 														r.count = 3
 														return r, true
 													case "GET":
 														r.name = "IssuesGetMilestone"
+														r.operationID = "issues/get-milestone"
 														r.args = args
 														r.count = 3
 														return r, true
 													case "PATCH":
 														r.name = "IssuesUpdateMilestone"
+														r.operationID = "issues/update-milestone"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -23650,6 +24144,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: IssuesListLabelsForMilestone
 															r.name = "IssuesListLabelsForMilestone"
+															r.operationID = "issues/list-labels-for-milestone"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -23672,12 +24167,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ActivityListRepoNotificationsForAuthenticatedUser
 												r.name = "ActivityListRepoNotificationsForAuthenticatedUser"
+												r.operationID = "activity/list-repo-notifications-for-authenticated-user"
 												r.args = args
 												r.count = 2
 												return r, true
 											case "PUT":
 												// Leaf: ActivityMarkRepoNotificationsAsRead
 												r.name = "ActivityMarkRepoNotificationsAsRead"
+												r.operationID = "activity/mark-repo-notifications-as-read"
 												r.args = args
 												r.count = 2
 												return r, true
@@ -23707,16 +24204,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "DELETE":
 													r.name = "ReposDeletePagesSite"
+													r.operationID = "repos/delete-pages-site"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "GET":
 													r.name = "ReposGetPages"
+													r.operationID = "repos/get-pages"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "POST":
 													r.name = "ReposCreatePagesSite"
+													r.operationID = "repos/create-pages-site"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -23747,11 +24247,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "ReposListPagesBuilds"
+															r.operationID = "repos/list-pages-builds"
 															r.args = args
 															r.count = 2
 															return r, true
 														case "POST":
 															r.name = "ReposRequestPagesBuild"
+															r.operationID = "repos/request-pages-build"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -23783,6 +24285,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: ReposGetLatestPagesBuild
 																	r.name = "ReposGetLatestPagesBuild"
+																	r.operationID = "repos/get-latest-pages-build"
 																	r.args = args
 																	r.count = 2
 																	return r, true
@@ -23801,6 +24304,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetPagesBuild
 																r.name = "ReposGetPagesBuild"
+																r.operationID = "repos/get-pages-build"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -23821,6 +24325,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposGetPagesHealthCheck
 															r.name = "ReposGetPagesHealthCheck"
+															r.operationID = "repos/get-pages-health-check"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -23842,12 +24347,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ProjectsListForRepo
 													r.name = "ProjectsListForRepo"
+													r.operationID = "projects/list-for-repo"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "POST":
 													// Leaf: ProjectsCreateForRepo
 													r.name = "ProjectsCreateForRepo"
+													r.operationID = "projects/create-for-repo"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -23866,11 +24373,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "PullsList"
+													r.operationID = "pulls/list"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "POST":
 													r.name = "PullsCreate"
+													r.operationID = "pulls/create"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -23901,6 +24410,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "PullsListReviewCommentsForRepo"
+															r.operationID = "pulls/list-review-comments-for-repo"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -23929,16 +24439,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "DELETE":
 																r.name = "PullsDeleteReviewComment"
+																r.operationID = "pulls/delete-review-comment"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "GET":
 																r.name = "PullsGetReviewComment"
+																r.operationID = "pulls/get-review-comment"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "PATCH":
 																r.name = "PullsUpdateReviewComment"
+																r.operationID = "pulls/update-review-comment"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -23958,11 +24471,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "GET":
 																	r.name = "ReactionsListForPullRequestReviewComment"
+																	r.operationID = "reactions/list-for-pull-request-review-comment"
 																	r.args = args
 																	r.count = 3
 																	return r, true
 																case "POST":
 																	r.name = "ReactionsCreateForPullRequestReviewComment"
+																	r.operationID = "reactions/create-for-pull-request-review-comment"
 																	r.args = args
 																	r.count = 3
 																	return r, true
@@ -23988,6 +24503,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "DELETE":
 																		// Leaf: ReactionsDeleteForPullRequestComment
 																		r.name = "ReactionsDeleteForPullRequestComment"
+																		r.operationID = "reactions/delete-for-pull-request-comment"
 																		r.args = args
 																		r.count = 4
 																		return r, true
@@ -24012,11 +24528,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "GET":
 														r.name = "PullsGet"
+														r.operationID = "pulls/get"
 														r.args = args
 														r.count = 3
 														return r, true
 													case "PATCH":
 														r.name = "PullsUpdate"
+														r.operationID = "pulls/update"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -24058,11 +24576,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "GET":
 																	r.name = "PullsListReviewComments"
+																	r.operationID = "pulls/list-review-comments"
 																	r.args = args
 																	r.count = 3
 																	return r, true
 																case "POST":
 																	r.name = "PullsCreateReviewComment"
+																	r.operationID = "pulls/create-review-comment"
 																	r.args = args
 																	r.count = 3
 																	return r, true
@@ -24103,6 +24623,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																		case "POST":
 																			// Leaf: PullsCreateReplyForReviewComment
 																			r.name = "PullsCreateReplyForReviewComment"
+																			r.operationID = "pulls/create-reply-for-review-comment"
 																			r.args = args
 																			r.count = 4
 																			return r, true
@@ -24124,6 +24645,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "GET":
 																	// Leaf: PullsListCommits
 																	r.name = "PullsListCommits"
+																	r.operationID = "pulls/list-commits"
 																	r.args = args
 																	r.count = 3
 																	return r, true
@@ -24144,6 +24666,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: PullsListFiles
 																r.name = "PullsListFiles"
+																r.operationID = "pulls/list-files"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -24163,12 +24686,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: PullsCheckIfMerged
 																r.name = "PullsCheckIfMerged"
+																r.operationID = "pulls/check-if-merged"
 																r.args = args
 																r.count = 3
 																return r, true
 															case "PUT":
 																// Leaf: PullsMerge
 																r.name = "PullsMerge"
+																r.operationID = "pulls/merge"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -24199,12 +24724,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "DELETE":
 																	// Leaf: PullsRemoveRequestedReviewers
 																	r.name = "PullsRemoveRequestedReviewers"
+																	r.operationID = "pulls/remove-requested-reviewers"
 																	r.args = args
 																	r.count = 3
 																	return r, true
 																case "GET":
 																	// Leaf: PullsListRequestedReviewers
 																	r.name = "PullsListRequestedReviewers"
+																	r.operationID = "pulls/list-requested-reviewers"
 																	r.args = args
 																	r.count = 3
 																	return r, true
@@ -24223,11 +24750,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "GET":
 																	r.name = "PullsListReviews"
+																	r.operationID = "pulls/list-reviews"
 																	r.args = args
 																	r.count = 3
 																	return r, true
 																case "POST":
 																	r.name = "PullsCreateReview"
+																	r.operationID = "pulls/create-review"
 																	r.args = args
 																	r.count = 3
 																	return r, true
@@ -24256,16 +24785,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	switch method {
 																	case "DELETE":
 																		r.name = "PullsDeletePendingReview"
+																		r.operationID = "pulls/delete-pending-review"
 																		r.args = args
 																		r.count = 4
 																		return r, true
 																	case "GET":
 																		r.name = "PullsGetReview"
+																		r.operationID = "pulls/get-review"
 																		r.args = args
 																		r.count = 4
 																		return r, true
 																	case "PUT":
 																		r.name = "PullsUpdateReview"
+																		r.operationID = "pulls/update-review"
 																		r.args = args
 																		r.count = 4
 																		return r, true
@@ -24297,6 +24829,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																			case "GET":
 																				// Leaf: PullsListCommentsForReview
 																				r.name = "PullsListCommentsForReview"
+																				r.operationID = "pulls/list-comments-for-review"
 																				r.args = args
 																				r.count = 4
 																				return r, true
@@ -24316,6 +24849,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																			case "PUT":
 																				// Leaf: PullsDismissReview
 																				r.name = "PullsDismissReview"
+																				r.operationID = "pulls/dismiss-review"
 																				r.args = args
 																				r.count = 4
 																				return r, true
@@ -24335,6 +24869,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																			case "POST":
 																				// Leaf: PullsSubmitReview
 																				r.name = "PullsSubmitReview"
+																				r.operationID = "pulls/submit-review"
 																				r.args = args
 																				r.count = 4
 																				return r, true
@@ -24358,6 +24893,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "PUT":
 																// Leaf: PullsUpdateBranch
 																r.name = "PullsUpdateBranch"
+																r.operationID = "pulls/update-branch"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -24391,6 +24927,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ReposGetReadme"
+													r.operationID = "repos/get-readme"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -24416,6 +24953,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReposGetReadmeInDirectory
 														r.name = "ReposGetReadmeInDirectory"
+														r.operationID = "repos/get-readme-in-directory"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -24435,11 +24973,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "ReposListReleases"
+													r.operationID = "repos/list-releases"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "POST":
 													r.name = "ReposCreateRelease"
+													r.operationID = "repos/create-release"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -24476,18 +25016,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "DELETE":
 															// Leaf: ReposDeleteReleaseAsset
 															r.name = "ReposDeleteReleaseAsset"
+															r.operationID = "repos/delete-release-asset"
 															r.args = args
 															r.count = 3
 															return r, true
 														case "GET":
 															// Leaf: ReposGetReleaseAsset
 															r.name = "ReposGetReleaseAsset"
+															r.operationID = "repos/get-release-asset"
 															r.args = args
 															r.count = 3
 															return r, true
 														case "PATCH":
 															// Leaf: ReposUpdateReleaseAsset
 															r.name = "ReposUpdateReleaseAsset"
+															r.operationID = "repos/update-release-asset"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -24507,6 +25050,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposGetLatestRelease
 															r.name = "ReposGetLatestRelease"
+															r.operationID = "repos/get-latest-release"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -24531,6 +25075,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposGetReleaseByTag
 															r.name = "ReposGetReleaseByTag"
+															r.operationID = "repos/get-release-by-tag"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -24552,16 +25097,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "DELETE":
 														r.name = "ReposDeleteRelease"
+														r.operationID = "repos/delete-release"
 														r.args = args
 														r.count = 3
 														return r, true
 													case "GET":
 														r.name = "ReposGetRelease"
+														r.operationID = "repos/get-release"
 														r.args = args
 														r.count = 3
 														return r, true
 													case "PATCH":
 														r.name = "ReposUpdateRelease"
+														r.operationID = "repos/update-release"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -24593,6 +25141,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposListReleaseAssets
 																r.name = "ReposListReleaseAssets"
+																r.operationID = "repos/list-release-assets"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -24612,6 +25161,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: ReactionsCreateForRelease
 																r.name = "ReactionsCreateForRelease"
+																r.operationID = "reactions/create-for-release"
 																r.args = args
 																r.count = 3
 																return r, true
@@ -24645,6 +25195,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "SecretScanningListAlertsForRepo"
+													r.operationID = "secret-scanning/list-alerts-for-repo"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -24670,12 +25221,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: SecretScanningGetAlert
 														r.name = "SecretScanningGetAlert"
+														r.operationID = "secret-scanning/get-alert"
 														r.args = args
 														r.count = 3
 														return r, true
 													case "PATCH":
 														// Leaf: SecretScanningUpdateAlert
 														r.name = "SecretScanningUpdateAlert"
+														r.operationID = "secret-scanning/update-alert"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -24729,6 +25282,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetCodeFrequencyStats
 																r.name = "ReposGetCodeFrequencyStats"
+																r.operationID = "repos/get-code-frequency-stats"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -24748,6 +25302,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetCommitActivityStats
 																r.name = "ReposGetCommitActivityStats"
+																r.operationID = "repos/get-commit-activity-stats"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -24767,6 +25322,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetContributorsStats
 																r.name = "ReposGetContributorsStats"
+																r.operationID = "repos/get-contributors-stats"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -24798,6 +25354,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetParticipationStats
 																r.name = "ReposGetParticipationStats"
+																r.operationID = "repos/get-participation-stats"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -24817,6 +25374,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetPunchCardStats
 																r.name = "ReposGetPunchCardStats"
+																r.operationID = "repos/get-punch-card-stats"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -24843,6 +25401,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: ReposCreateCommitStatus
 														r.name = "ReposCreateCommitStatus"
+														r.operationID = "repos/create-commit-status"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -24874,6 +25433,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ActivityListWatchersForRepo
 														r.name = "ActivityListWatchersForRepo"
+														r.operationID = "activity/list-watchers-for-repo"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -24893,18 +25453,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "DELETE":
 														// Leaf: ActivityDeleteRepoSubscription
 														r.name = "ActivityDeleteRepoSubscription"
+														r.operationID = "activity/delete-repo-subscription"
 														r.args = args
 														r.count = 2
 														return r, true
 													case "GET":
 														// Leaf: ActivityGetRepoSubscription
 														r.name = "ActivityGetRepoSubscription"
+														r.operationID = "activity/get-repo-subscription"
 														r.args = args
 														r.count = 2
 														return r, true
 													case "PUT":
 														// Leaf: ActivitySetRepoSubscription
 														r.name = "ActivitySetRepoSubscription"
+														r.operationID = "activity/set-repo-subscription"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -24948,6 +25511,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReposListTags
 														r.name = "ReposListTags"
+														r.operationID = "repos/list-tags"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -24972,6 +25536,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ReposDownloadTarballArchive
 														r.name = "ReposDownloadTarballArchive"
+														r.operationID = "repos/download-tarball-archive"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -24992,6 +25557,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReposListTeams
 													r.name = "ReposListTeams"
+													r.operationID = "repos/list-teams"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -25011,12 +25577,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReposGetAllTopics
 													r.name = "ReposGetAllTopics"
+													r.operationID = "repos/get-all-topics"
 													r.args = args
 													r.count = 2
 													return r, true
 												case "PUT":
 													// Leaf: ReposReplaceAllTopics
 													r.name = "ReposReplaceAllTopics"
+													r.operationID = "repos/replace-all-topics"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -25058,6 +25626,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposGetClones
 															r.name = "ReposGetClones"
+															r.operationID = "repos/get-clones"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -25088,6 +25657,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetTopPaths
 																r.name = "ReposGetTopPaths"
+																r.operationID = "repos/get-top-paths"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -25107,6 +25677,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "GET":
 																// Leaf: ReposGetTopReferrers
 																r.name = "ReposGetTopReferrers"
+																r.operationID = "repos/get-top-referrers"
 																r.args = args
 																r.count = 2
 																return r, true
@@ -25127,6 +25698,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "GET":
 															// Leaf: ReposGetViews
 															r.name = "ReposGetViews"
+															r.operationID = "repos/get-views"
 															r.args = args
 															r.count = 2
 															return r, true
@@ -25147,6 +25719,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: ReposTransfer
 														r.name = "ReposTransfer"
+														r.operationID = "repos/transfer"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -25168,18 +25741,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "DELETE":
 												// Leaf: ReposDisableVulnerabilityAlerts
 												r.name = "ReposDisableVulnerabilityAlerts"
+												r.operationID = "repos/disable-vulnerability-alerts"
 												r.args = args
 												r.count = 2
 												return r, true
 											case "GET":
 												// Leaf: ReposCheckVulnerabilityAlerts
 												r.name = "ReposCheckVulnerabilityAlerts"
+												r.operationID = "repos/check-vulnerability-alerts"
 												r.args = args
 												r.count = 2
 												return r, true
 											case "PUT":
 												// Leaf: ReposEnableVulnerabilityAlerts
 												r.name = "ReposEnableVulnerabilityAlerts"
+												r.operationID = "repos/enable-vulnerability-alerts"
 												r.args = args
 												r.count = 2
 												return r, true
@@ -25204,6 +25780,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ReposDownloadZipballArchive
 												r.name = "ReposDownloadZipballArchive"
+												r.operationID = "repos/download-zipball-archive"
 												r.args = args
 												r.count = 3
 												return r, true
@@ -25225,6 +25802,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "ReposListPublic"
+									r.operationID = "repos/list-public"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -25284,6 +25862,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "GET":
 												r.name = "ActionsListEnvironmentSecrets"
+												r.operationID = "actions/list-environment-secrets"
 												r.args = args
 												r.count = 2
 												return r, true
@@ -25315,6 +25894,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "GET":
 														// Leaf: ActionsGetEnvironmentPublicKey
 														r.name = "ActionsGetEnvironmentPublicKey"
+														r.operationID = "actions/get-environment-public-key"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -25333,18 +25913,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "DELETE":
 													// Leaf: ActionsDeleteEnvironmentSecret
 													r.name = "ActionsDeleteEnvironmentSecret"
+													r.operationID = "actions/delete-environment-secret"
 													r.args = args
 													r.count = 3
 													return r, true
 												case "GET":
 													// Leaf: ActionsGetEnvironmentSecret
 													r.name = "ActionsGetEnvironmentSecret"
+													r.operationID = "actions/get-environment-secret"
 													r.args = args
 													r.count = 3
 													return r, true
 												case "PUT":
 													// Leaf: ActionsCreateOrUpdateEnvironmentSecret
 													r.name = "ActionsCreateOrUpdateEnvironmentSecret"
+													r.operationID = "actions/create-or-update-environment-secret"
 													r.args = args
 													r.count = 3
 													return r, true
@@ -25423,11 +26006,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "EnterpriseAdminListProvisionedGroupsEnterprise"
+										r.operationID = "enterprise-admin/list-provisioned-groups-enterprise"
 										r.args = args
 										r.count = 1
 										return r, true
 									case "POST":
 										r.name = "EnterpriseAdminProvisionAndInviteEnterpriseGroup"
+										r.operationID = "enterprise-admin/provision-and-invite-enterprise-group"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -25453,24 +26038,28 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "DELETE":
 											// Leaf: EnterpriseAdminDeleteScimGroupFromEnterprise
 											r.name = "EnterpriseAdminDeleteScimGroupFromEnterprise"
+											r.operationID = "enterprise-admin/delete-scim-group-from-enterprise"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "GET":
 											// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseGroup
 											r.name = "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup"
+											r.operationID = "enterprise-admin/get-provisioning-information-for-enterprise-group"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "PATCH":
 											// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseGroup
 											r.name = "EnterpriseAdminUpdateAttributeForEnterpriseGroup"
+											r.operationID = "enterprise-admin/update-attribute-for-enterprise-group"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "PUT":
 											// Leaf: EnterpriseAdminSetInformationForProvisionedEnterpriseGroup
 											r.name = "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup"
+											r.operationID = "enterprise-admin/set-information-for-provisioned-enterprise-group"
 											r.args = args
 											r.count = 2
 											return r, true
@@ -25490,11 +26079,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "EnterpriseAdminListProvisionedIdentitiesEnterprise"
+										r.operationID = "enterprise-admin/list-provisioned-identities-enterprise"
 										r.args = args
 										r.count = 1
 										return r, true
 									case "POST":
 										r.name = "EnterpriseAdminProvisionAndInviteEnterpriseUser"
+										r.operationID = "enterprise-admin/provision-and-invite-enterprise-user"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -25520,24 +26111,28 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "DELETE":
 											// Leaf: EnterpriseAdminDeleteUserFromEnterprise
 											r.name = "EnterpriseAdminDeleteUserFromEnterprise"
+											r.operationID = "enterprise-admin/delete-user-from-enterprise"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "GET":
 											// Leaf: EnterpriseAdminGetProvisioningInformationForEnterpriseUser
 											r.name = "EnterpriseAdminGetProvisioningInformationForEnterpriseUser"
+											r.operationID = "enterprise-admin/get-provisioning-information-for-enterprise-user"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "PATCH":
 											// Leaf: EnterpriseAdminUpdateAttributeForEnterpriseUser
 											r.name = "EnterpriseAdminUpdateAttributeForEnterpriseUser"
+											r.operationID = "enterprise-admin/update-attribute-for-enterprise-user"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "PUT":
 											// Leaf: EnterpriseAdminSetInformationForProvisionedEnterpriseUser
 											r.name = "EnterpriseAdminSetInformationForProvisionedEnterpriseUser"
+											r.operationID = "enterprise-admin/set-information-for-provisioned-enterprise-user"
 											r.args = args
 											r.count = 2
 											return r, true
@@ -25585,6 +26180,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: ScimDeleteUserFromOrg
 									r.name = "ScimDeleteUserFromOrg"
+									r.operationID = "scim/delete-user-from-org"
 									r.args = args
 									r.count = 2
 									return r, true
@@ -25628,6 +26224,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: SearchCode
 									r.name = "SearchCode"
+									r.operationID = "search/code"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -25647,6 +26244,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: SearchCommits
 									r.name = "SearchCommits"
+									r.operationID = "search/commits"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -25667,6 +26265,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: SearchIssuesAndPullRequests
 								r.name = "SearchIssuesAndPullRequests"
+								r.operationID = "search/issues-and-pull-requests"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -25686,6 +26285,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: SearchLabels
 								r.name = "SearchLabels"
+								r.operationID = "search/labels"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -25705,6 +26305,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: SearchRepos
 								r.name = "SearchRepos"
+								r.operationID = "search/repos"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -25724,6 +26325,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: SearchTopics
 								r.name = "SearchTopics"
+								r.operationID = "search/topics"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -25743,6 +26345,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: SearchUsers
 								r.name = "SearchUsers"
+								r.operationID = "search/users"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -25772,16 +26375,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					switch method {
 					case "DELETE":
 						r.name = "TeamsDeleteLegacy"
+						r.operationID = "teams/delete-legacy"
 						r.args = args
 						r.count = 1
 						return r, true
 					case "GET":
 						r.name = "TeamsGetLegacy"
+						r.operationID = "teams/get-legacy"
 						r.args = args
 						r.count = 1
 						return r, true
 					case "PATCH":
 						r.name = "TeamsUpdateLegacy"
+						r.operationID = "teams/update-legacy"
 						r.args = args
 						r.count = 1
 						return r, true
@@ -25812,11 +26418,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "TeamsListDiscussionsLegacy"
+								r.operationID = "teams/list-discussions-legacy"
 								r.args = args
 								r.count = 1
 								return r, true
 							case "POST":
 								r.name = "TeamsCreateDiscussionLegacy"
+								r.operationID = "teams/create-discussion-legacy"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -25845,16 +26453,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "DELETE":
 									r.name = "TeamsDeleteDiscussionLegacy"
+									r.operationID = "teams/delete-discussion-legacy"
 									r.args = args
 									r.count = 2
 									return r, true
 								case "GET":
 									r.name = "TeamsGetDiscussionLegacy"
+									r.operationID = "teams/get-discussion-legacy"
 									r.args = args
 									r.count = 2
 									return r, true
 								case "PATCH":
 									r.name = "TeamsUpdateDiscussionLegacy"
+									r.operationID = "teams/update-discussion-legacy"
 									r.args = args
 									r.count = 2
 									return r, true
@@ -25885,11 +26496,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "TeamsListDiscussionCommentsLegacy"
+											r.operationID = "teams/list-discussion-comments-legacy"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "POST":
 											r.name = "TeamsCreateDiscussionCommentLegacy"
+											r.operationID = "teams/create-discussion-comment-legacy"
 											r.args = args
 											r.count = 2
 											return r, true
@@ -25918,16 +26531,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "DELETE":
 												r.name = "TeamsDeleteDiscussionCommentLegacy"
+												r.operationID = "teams/delete-discussion-comment-legacy"
 												r.args = args
 												r.count = 3
 												return r, true
 											case "GET":
 												r.name = "TeamsGetDiscussionCommentLegacy"
+												r.operationID = "teams/get-discussion-comment-legacy"
 												r.args = args
 												r.count = 3
 												return r, true
 											case "PATCH":
 												r.name = "TeamsUpdateDiscussionCommentLegacy"
+												r.operationID = "teams/update-discussion-comment-legacy"
 												r.args = args
 												r.count = 3
 												return r, true
@@ -25948,12 +26564,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: ReactionsListForTeamDiscussionCommentLegacy
 													r.name = "ReactionsListForTeamDiscussionCommentLegacy"
+													r.operationID = "reactions/list-for-team-discussion-comment-legacy"
 													r.args = args
 													r.count = 3
 													return r, true
 												case "POST":
 													// Leaf: ReactionsCreateForTeamDiscussionCommentLegacy
 													r.name = "ReactionsCreateForTeamDiscussionCommentLegacy"
+													r.operationID = "reactions/create-for-team-discussion-comment-legacy"
 													r.args = args
 													r.count = 3
 													return r, true
@@ -25975,12 +26593,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ReactionsListForTeamDiscussionLegacy
 											r.name = "ReactionsListForTeamDiscussionLegacy"
+											r.operationID = "reactions/list-for-team-discussion-legacy"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "POST":
 											// Leaf: ReactionsCreateForTeamDiscussionLegacy
 											r.name = "ReactionsCreateForTeamDiscussionLegacy"
+											r.operationID = "reactions/create-for-team-discussion-legacy"
 											r.args = args
 											r.count = 2
 											return r, true
@@ -26003,6 +26623,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: TeamsListPendingInvitationsLegacy
 								r.name = "TeamsListPendingInvitationsLegacy"
+								r.operationID = "teams/list-pending-invitations-legacy"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -26021,6 +26642,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "TeamsListMembersLegacy"
+								r.operationID = "teams/list-members-legacy"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -26046,18 +26668,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: TeamsRemoveMemberLegacy
 									r.name = "TeamsRemoveMemberLegacy"
+									r.operationID = "teams/remove-member-legacy"
 									r.args = args
 									r.count = 2
 									return r, true
 								case "GET":
 									// Leaf: TeamsGetMemberLegacy
 									r.name = "TeamsGetMemberLegacy"
+									r.operationID = "teams/get-member-legacy"
 									r.args = args
 									r.count = 2
 									return r, true
 								case "PUT":
 									// Leaf: TeamsAddMemberLegacy
 									r.name = "TeamsAddMemberLegacy"
+									r.operationID = "teams/add-member-legacy"
 									r.args = args
 									r.count = 2
 									return r, true
@@ -26082,18 +26707,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: TeamsRemoveMembershipForUserLegacy
 									r.name = "TeamsRemoveMembershipForUserLegacy"
+									r.operationID = "teams/remove-membership-for-user-legacy"
 									r.args = args
 									r.count = 2
 									return r, true
 								case "GET":
 									// Leaf: TeamsGetMembershipForUserLegacy
 									r.name = "TeamsGetMembershipForUserLegacy"
+									r.operationID = "teams/get-membership-for-user-legacy"
 									r.args = args
 									r.count = 2
 									return r, true
 								case "PUT":
 									// Leaf: TeamsAddOrUpdateMembershipForUserLegacy
 									r.name = "TeamsAddOrUpdateMembershipForUserLegacy"
+									r.operationID = "teams/add-or-update-membership-for-user-legacy"
 									r.args = args
 									r.count = 2
 									return r, true
@@ -26113,6 +26741,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "TeamsListProjectsLegacy"
+								r.operationID = "teams/list-projects-legacy"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -26138,18 +26767,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: TeamsRemoveProjectLegacy
 									r.name = "TeamsRemoveProjectLegacy"
+									r.operationID = "teams/remove-project-legacy"
 									r.args = args
 									r.count = 2
 									return r, true
 								case "GET":
 									// Leaf: TeamsCheckPermissionsForProjectLegacy
 									r.name = "TeamsCheckPermissionsForProjectLegacy"
+									r.operationID = "teams/check-permissions-for-project-legacy"
 									r.args = args
 									r.count = 2
 									return r, true
 								case "PUT":
 									// Leaf: TeamsAddOrUpdateProjectPermissionsLegacy
 									r.name = "TeamsAddOrUpdateProjectPermissionsLegacy"
+									r.operationID = "teams/add-or-update-project-permissions-legacy"
 									r.args = args
 									r.count = 2
 									return r, true
@@ -26169,6 +26801,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "TeamsListReposLegacy"
+								r.operationID = "teams/list-repos-legacy"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -26214,18 +26847,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "DELETE":
 										// Leaf: TeamsRemoveRepoLegacy
 										r.name = "TeamsRemoveRepoLegacy"
+										r.operationID = "teams/remove-repo-legacy"
 										r.args = args
 										r.count = 3
 										return r, true
 									case "GET":
 										// Leaf: TeamsCheckPermissionsForRepoLegacy
 										r.name = "TeamsCheckPermissionsForRepoLegacy"
+										r.operationID = "teams/check-permissions-for-repo-legacy"
 										r.args = args
 										r.count = 3
 										return r, true
 									case "PUT":
 										// Leaf: TeamsAddOrUpdateRepoPermissionsLegacy
 										r.name = "TeamsAddOrUpdateRepoPermissionsLegacy"
+										r.operationID = "teams/add-or-update-repo-permissions-legacy"
 										r.args = args
 										r.count = 3
 										return r, true
@@ -26258,12 +26894,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: TeamsListIdpGroupsForLegacy
 									r.name = "TeamsListIdpGroupsForLegacy"
+									r.operationID = "teams/list-idp-groups-for-legacy"
 									r.args = args
 									r.count = 1
 									return r, true
 								case "PATCH":
 									// Leaf: TeamsCreateOrUpdateIdpGroupConnectionsLegacy
 									r.name = "TeamsCreateOrUpdateIdpGroupConnectionsLegacy"
+									r.operationID = "teams/create-or-update-idp-group-connections-legacy"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -26283,6 +26921,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: TeamsListChildLegacy
 									r.name = "TeamsListChildLegacy"
+									r.operationID = "teams/list-child-legacy"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -26304,11 +26943,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					switch method {
 					case "GET":
 						r.name = "UsersGetAuthenticated"
+						r.operationID = "users/get-authenticated"
 						r.args = args
 						r.count = 0
 						return r, true
 					case "PATCH":
 						r.name = "UsersUpdateAuthenticated"
+						r.operationID = "users/update-authenticated"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -26339,6 +26980,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "UsersListBlockedByAuthenticated"
+								r.operationID = "users/list-blocked-by-authenticated"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -26364,18 +27006,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: UsersUnblock
 									r.name = "UsersUnblock"
+									r.operationID = "users/unblock"
 									r.args = args
 									r.count = 1
 									return r, true
 								case "GET":
 									// Leaf: UsersCheckBlocked
 									r.name = "UsersCheckBlocked"
+									r.operationID = "users/check-blocked"
 									r.args = args
 									r.count = 1
 									return r, true
 								case "PUT":
 									// Leaf: UsersBlock
 									r.name = "UsersBlock"
+									r.operationID = "users/block"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -26407,6 +27052,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "PATCH":
 									// Leaf: UsersSetPrimaryEmailVisibilityForAuthenticated
 									r.name = "UsersSetPrimaryEmailVisibilityForAuthenticated"
+									r.operationID = "users/set-primary-email-visibility-for-authenticated"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -26426,18 +27072,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: UsersDeleteEmailForAuthenticated
 									r.name = "UsersDeleteEmailForAuthenticated"
+									r.operationID = "users/delete-email-for-authenticated"
 									r.args = args
 									r.count = 0
 									return r, true
 								case "GET":
 									// Leaf: UsersListEmailsForAuthenticated
 									r.name = "UsersListEmailsForAuthenticated"
+									r.operationID = "users/list-emails-for-authenticated"
 									r.args = args
 									r.count = 0
 									return r, true
 								case "POST":
 									// Leaf: UsersAddEmailForAuthenticated
 									r.name = "UsersAddEmailForAuthenticated"
+									r.operationID = "users/add-email-for-authenticated"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -26469,6 +27118,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: UsersListFollowersForAuthenticatedUser
 									r.name = "UsersListFollowersForAuthenticatedUser"
+									r.operationID = "users/list-followers-for-authenticated-user"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -26487,6 +27137,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "UsersListFollowedByAuthenticated"
+									r.operationID = "users/list-followed-by-authenticated"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -26512,18 +27163,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "DELETE":
 										// Leaf: UsersUnfollow
 										r.name = "UsersUnfollow"
+										r.operationID = "users/unfollow"
 										r.args = args
 										r.count = 1
 										return r, true
 									case "GET":
 										// Leaf: UsersCheckPersonIsFollowedByAuthenticated
 										r.name = "UsersCheckPersonIsFollowedByAuthenticated"
+										r.operationID = "users/check-person-is-followed-by-authenticated"
 										r.args = args
 										r.count = 1
 										return r, true
 									case "PUT":
 										// Leaf: UsersFollow
 										r.name = "UsersFollow"
+										r.operationID = "users/follow"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -26544,11 +27198,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "UsersListGpgKeysForAuthenticated"
+								r.operationID = "users/list-gpg-keys-for-authenticated"
 								r.args = args
 								r.count = 0
 								return r, true
 							case "POST":
 								r.name = "UsersCreateGpgKeyForAuthenticated"
+								r.operationID = "users/create-gpg-key-for-authenticated"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -26574,12 +27230,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: UsersDeleteGpgKeyForAuthenticated
 									r.name = "UsersDeleteGpgKeyForAuthenticated"
+									r.operationID = "users/delete-gpg-key-for-authenticated"
 									r.args = args
 									r.count = 1
 									return r, true
 								case "GET":
 									// Leaf: UsersGetGpgKeyForAuthenticated
 									r.name = "UsersGetGpgKeyForAuthenticated"
+									r.operationID = "users/get-gpg-key-for-authenticated"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -26641,6 +27299,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "AppsListInstallationReposForAuthenticatedUser"
+											r.operationID = "apps/list-installation-repos-for-authenticated-user"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -26666,12 +27325,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "DELETE":
 												// Leaf: AppsRemoveRepoFromInstallation
 												r.name = "AppsRemoveRepoFromInstallation"
+												r.operationID = "apps/remove-repo-from-installation"
 												r.args = args
 												r.count = 2
 												return r, true
 											case "PUT":
 												// Leaf: AppsAddRepoToInstallation
 												r.name = "AppsAddRepoToInstallation"
+												r.operationID = "apps/add-repo-to-installation"
 												r.args = args
 												r.count = 2
 												return r, true
@@ -26693,12 +27354,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "DELETE":
 										// Leaf: InteractionsRemoveRestrictionsForAuthenticatedUser
 										r.name = "InteractionsRemoveRestrictionsForAuthenticatedUser"
+										r.operationID = "interactions/remove-restrictions-for-authenticated-user"
 										r.args = args
 										r.count = 0
 										return r, true
 									case "PUT":
 										// Leaf: InteractionsSetRestrictionsForAuthenticatedUser
 										r.name = "InteractionsSetRestrictionsForAuthenticatedUser"
+										r.operationID = "interactions/set-restrictions-for-authenticated-user"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -26719,6 +27382,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: IssuesListForAuthenticatedUser
 									r.name = "IssuesListForAuthenticatedUser"
+									r.operationID = "issues/list-for-authenticated-user"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -26738,11 +27402,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "UsersListPublicSSHKeysForAuthenticated"
+								r.operationID = "users/list-public-ssh-keys-for-authenticated"
 								r.args = args
 								r.count = 0
 								return r, true
 							case "POST":
 								r.name = "UsersCreatePublicSSHKeyForAuthenticated"
+								r.operationID = "users/create-public-ssh-key-for-authenticated"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -26768,12 +27434,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "DELETE":
 									// Leaf: UsersDeletePublicSSHKeyForAuthenticated
 									r.name = "UsersDeletePublicSSHKeyForAuthenticated"
+									r.operationID = "users/delete-public-ssh-key-for-authenticated"
 									r.args = args
 									r.count = 1
 									return r, true
 								case "GET":
 									// Leaf: UsersGetPublicSSHKeyForAuthenticated
 									r.name = "UsersGetPublicSSHKeyForAuthenticated"
+									r.operationID = "users/get-public-ssh-key-for-authenticated"
 									r.args = args
 									r.count = 1
 									return r, true
@@ -26804,6 +27472,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "AppsListSubscriptionsForAuthenticatedUser"
+									r.operationID = "apps/list-subscriptions-for-authenticated-user"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -26824,6 +27493,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: AppsListSubscriptionsForAuthenticatedUserStubbed
 										r.name = "AppsListSubscriptionsForAuthenticatedUserStubbed"
+										r.operationID = "apps/list-subscriptions-for-authenticated-user-stubbed"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -26843,6 +27513,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "OrgsListMembershipsForAuthenticatedUser"
+									r.operationID = "orgs/list-memberships-for-authenticated-user"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -26868,12 +27539,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: OrgsGetMembershipForAuthenticatedUser
 										r.name = "OrgsGetMembershipForAuthenticatedUser"
+										r.operationID = "orgs/get-membership-for-authenticated-user"
 										r.args = args
 										r.count = 1
 										return r, true
 									case "PATCH":
 										// Leaf: OrgsUpdateMembershipForAuthenticatedUser
 										r.name = "OrgsUpdateMembershipForAuthenticatedUser"
+										r.operationID = "orgs/update-membership-for-authenticated-user"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -26893,11 +27566,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "MigrationsListForAuthenticatedUser"
+									r.operationID = "migrations/list-for-authenticated-user"
 									r.args = args
 									r.count = 0
 									return r, true
 								case "POST":
 									r.name = "MigrationsStartForAuthenticatedUser"
+									r.operationID = "migrations/start-for-authenticated-user"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -26926,6 +27601,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "MigrationsGetStatusForAuthenticatedUser"
+										r.operationID = "migrations/get-status-for-authenticated-user"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -26957,12 +27633,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "DELETE":
 												// Leaf: MigrationsDeleteArchiveForAuthenticatedUser
 												r.name = "MigrationsDeleteArchiveForAuthenticatedUser"
+												r.operationID = "migrations/delete-archive-for-authenticated-user"
 												r.args = args
 												r.count = 1
 												return r, true
 											case "GET":
 												// Leaf: MigrationsGetArchiveForAuthenticatedUser
 												r.name = "MigrationsGetArchiveForAuthenticatedUser"
+												r.operationID = "migrations/get-archive-for-authenticated-user"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -27013,6 +27691,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "DELETE":
 														// Leaf: MigrationsUnlockRepoForAuthenticatedUser
 														r.name = "MigrationsUnlockRepoForAuthenticatedUser"
+														r.operationID = "migrations/unlock-repo-for-authenticated-user"
 														r.args = args
 														r.count = 2
 														return r, true
@@ -27033,6 +27712,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "GET":
 													// Leaf: MigrationsListReposForUser
 													r.name = "MigrationsListReposForUser"
+													r.operationID = "migrations/list-repos-for-user"
 													r.args = args
 													r.count = 1
 													return r, true
@@ -27057,6 +27737,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: OrgsListForAuthenticatedUser
 								r.name = "OrgsListForAuthenticatedUser"
+								r.operationID = "orgs/list-for-authenticated-user"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -27086,6 +27767,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "PackagesListPackagesForAuthenticatedUser"
+									r.operationID = "packages/list-packages-for-authenticated-user"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -27134,11 +27816,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "DELETE":
 											r.name = "PackagesDeletePackageForAuthenticatedUser"
+											r.operationID = "packages/delete-package-for-authenticated-user"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "GET":
 											r.name = "PackagesGetPackageForAuthenticatedUser"
+											r.operationID = "packages/get-package-for-authenticated-user"
 											r.args = args
 											r.count = 2
 											return r, true
@@ -27170,6 +27854,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: PackagesRestorePackageForAuthenticatedUser
 													r.name = "PackagesRestorePackageForAuthenticatedUser"
+													r.operationID = "packages/restore-package-for-authenticated-user"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -27188,6 +27873,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "GET":
 													r.name = "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser"
+													r.operationID = "packages/get-all-package-versions-for-package-owned-by-authenticated-user"
 													r.args = args
 													r.count = 2
 													return r, true
@@ -27216,11 +27902,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "DELETE":
 														r.name = "PackagesDeletePackageVersionForAuthenticatedUser"
+														r.operationID = "packages/delete-package-version-for-authenticated-user"
 														r.args = args
 														r.count = 3
 														return r, true
 													case "GET":
 														r.name = "PackagesGetPackageVersionForAuthenticatedUser"
+														r.operationID = "packages/get-package-version-for-authenticated-user"
 														r.args = args
 														r.count = 3
 														return r, true
@@ -27241,6 +27929,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: PackagesRestorePackageVersionForAuthenticatedUser
 															r.name = "PackagesRestorePackageVersionForAuthenticatedUser"
+															r.operationID = "packages/restore-package-version-for-authenticated-user"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -27266,6 +27955,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: ProjectsCreateForAuthenticatedUser
 									r.name = "ProjectsCreateForAuthenticatedUser"
+									r.operationID = "projects/create-for-authenticated-user"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -27285,6 +27975,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: UsersListPublicEmailsForAuthenticated
 									r.name = "UsersListPublicEmailsForAuthenticated"
+									r.operationID = "users/list-public-emails-for-authenticated"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -27304,11 +27995,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "ReposListForAuthenticatedUser"
+								r.operationID = "repos/list-for-authenticated-user"
 								r.args = args
 								r.count = 0
 								return r, true
 							case "POST":
 								r.name = "ReposCreateForAuthenticatedUser"
+								r.operationID = "repos/create-for-authenticated-user"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -27328,6 +28021,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "ReposListInvitationsForAuthenticatedUser"
+									r.operationID = "repos/list-invitations-for-authenticated-user"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -27353,12 +28047,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "DELETE":
 										// Leaf: ReposDeclineInvitation
 										r.name = "ReposDeclineInvitation"
+										r.operationID = "repos/decline-invitation"
 										r.args = args
 										r.count = 1
 										return r, true
 									case "PATCH":
 										// Leaf: ReposAcceptInvitation
 										r.name = "ReposAcceptInvitation"
+										r.operationID = "repos/accept-invitation"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -27390,6 +28086,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "GET":
 									r.name = "ActivityListReposStarredByAuthenticatedUser"
+									r.operationID = "activity/list-repos-starred-by-authenticated-user"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -27435,18 +28132,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "DELETE":
 											// Leaf: ActivityUnstarRepoForAuthenticatedUser
 											r.name = "ActivityUnstarRepoForAuthenticatedUser"
+											r.operationID = "activity/unstar-repo-for-authenticated-user"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "GET":
 											// Leaf: ActivityCheckRepoIsStarredByAuthenticatedUser
 											r.name = "ActivityCheckRepoIsStarredByAuthenticatedUser"
+											r.operationID = "activity/check-repo-is-starred-by-authenticated-user"
 											r.args = args
 											r.count = 2
 											return r, true
 										case "PUT":
 											// Leaf: ActivityStarRepoForAuthenticatedUser
 											r.name = "ActivityStarRepoForAuthenticatedUser"
+											r.operationID = "activity/star-repo-for-authenticated-user"
 											r.args = args
 											r.count = 2
 											return r, true
@@ -27468,6 +28168,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: ActivityListWatchedReposForAuthenticatedUser
 									r.name = "ActivityListWatchedReposForAuthenticatedUser"
+									r.operationID = "activity/list-watched-repos-for-authenticated-user"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -27488,6 +28189,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: TeamsListForAuthenticatedUser
 								r.name = "TeamsListForAuthenticatedUser"
+								r.operationID = "teams/list-for-authenticated-user"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -27507,6 +28209,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "UsersList"
+							r.operationID = "users/list"
 							r.args = args
 							r.count = 0
 							return r, true
@@ -27535,6 +28238,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "GET":
 								r.name = "UsersGetByUsername"
+								r.operationID = "users/get-by-username"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -27565,6 +28269,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "GET":
 										r.name = "ActivityListEventsForAuthenticatedUser"
+										r.operationID = "activity/list-events-for-authenticated-user"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -27601,6 +28306,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ActivityListOrgEventsForAuthenticatedUser
 												r.name = "ActivityListOrgEventsForAuthenticatedUser"
+												r.operationID = "activity/list-org-events-for-authenticated-user"
 												r.args = args
 												r.count = 2
 												return r, true
@@ -27620,6 +28326,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ActivityListPublicEventsForUser
 												r.name = "ActivityListPublicEventsForUser"
+												r.operationID = "activity/list-public-events-for-user"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -27652,6 +28359,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: UsersListFollowersForUser
 											r.name = "UsersListFollowersForUser"
+											r.operationID = "users/list-followers-for-user"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -27670,6 +28378,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "UsersListFollowingForUser"
+											r.operationID = "users/list-following-for-user"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -27695,6 +28404,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: UsersCheckFollowingForUser
 												r.name = "UsersCheckFollowingForUser"
+												r.operationID = "users/check-following-for-user"
 												r.args = args
 												r.count = 2
 												return r, true
@@ -27727,6 +28437,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: GistsListForUser
 											r.name = "GistsListForUser"
+											r.operationID = "gists/list-for-user"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -27746,6 +28457,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: UsersListGpgKeysForUser
 											r.name = "UsersListGpgKeysForUser"
+											r.operationID = "users/list-gpg-keys-for-user"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -27766,6 +28478,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: UsersGetContextForUser
 										r.name = "UsersGetContextForUser"
+										r.operationID = "users/get-context-for-user"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -27785,6 +28498,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: UsersListPublicKeysForUser
 										r.name = "UsersListPublicKeysForUser"
+										r.operationID = "users/list-public-keys-for-user"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -27804,6 +28518,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: OrgsListForUser
 										r.name = "OrgsListForUser"
+										r.operationID = "orgs/list-for-user"
 										r.args = args
 										r.count = 1
 										return r, true
@@ -27833,6 +28548,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "PackagesListPackagesForUser"
+											r.operationID = "packages/list-packages-for-user"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -27881,11 +28597,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "DELETE":
 													r.name = "PackagesDeletePackageForUser"
+													r.operationID = "packages/delete-package-for-user"
 													r.args = args
 													r.count = 3
 													return r, true
 												case "GET":
 													r.name = "PackagesGetPackageForUser"
+													r.operationID = "packages/get-package-for-user"
 													r.args = args
 													r.count = 3
 													return r, true
@@ -27917,6 +28635,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: PackagesRestorePackageForUser
 															r.name = "PackagesRestorePackageForUser"
+															r.operationID = "packages/restore-package-for-user"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -27935,6 +28654,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "GET":
 															r.name = "PackagesGetAllPackageVersionsForPackageOwnedByUser"
+															r.operationID = "packages/get-all-package-versions-for-package-owned-by-user"
 															r.args = args
 															r.count = 3
 															return r, true
@@ -27963,11 +28683,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "DELETE":
 																r.name = "PackagesDeletePackageVersionForUser"
+																r.operationID = "packages/delete-package-version-for-user"
 																r.args = args
 																r.count = 4
 																return r, true
 															case "GET":
 																r.name = "PackagesGetPackageVersionForUser"
+																r.operationID = "packages/get-package-version-for-user"
 																r.args = args
 																r.count = 4
 																return r, true
@@ -27988,6 +28710,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: PackagesRestorePackageVersionForUser
 																	r.name = "PackagesRestorePackageVersionForUser"
+																	r.operationID = "packages/restore-package-version-for-user"
 																	r.args = args
 																	r.count = 4
 																	return r, true
@@ -28013,6 +28736,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ProjectsListForUser
 											r.name = "ProjectsListForUser"
+											r.operationID = "projects/list-for-user"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -28043,6 +28767,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "GET":
 											r.name = "ActivityListReceivedEventsForUser"
+											r.operationID = "activity/list-received-events-for-user"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -28063,6 +28788,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: ActivityListReceivedPublicEventsForUser
 												r.name = "ActivityListReceivedPublicEventsForUser"
+												r.operationID = "activity/list-received-public-events-for-user"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -28083,6 +28809,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ReposListForUser
 											r.name = "ReposListForUser"
+											r.operationID = "repos/list-for-user"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -28125,6 +28852,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: BillingGetGithubActionsBillingUser
 												r.name = "BillingGetGithubActionsBillingUser"
+												r.operationID = "billing/get-github-actions-billing-user"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -28144,6 +28872,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: BillingGetGithubPackagesBillingUser
 												r.name = "BillingGetGithubPackagesBillingUser"
+												r.operationID = "billing/get-github-packages-billing-user"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -28163,6 +28892,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "GET":
 												// Leaf: BillingGetSharedStorageBillingUser
 												r.name = "BillingGetSharedStorageBillingUser"
+												r.operationID = "billing/get-shared-storage-billing-user"
 												r.args = args
 												r.count = 1
 												return r, true
@@ -28183,6 +28913,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "GET":
 											// Leaf: ActivityListReposWatchedByUser
 											r.name = "ActivityListReposWatchedByUser"
+											r.operationID = "activity/list-repos-watched-by-user"
 											r.args = args
 											r.count = 1
 											return r, true
@@ -28207,6 +28938,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					case "GET":
 						// Leaf: MetaGetZen
 						r.name = "MetaGetZen"
+						r.operationID = "meta/get-zen"
 						r.args = args
 						r.count = 0
 						return r, true

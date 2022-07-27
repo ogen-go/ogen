@@ -30,12 +30,18 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "DataGetFormat",
+			ID:   "dataGetFormat",
+		}
+	)
 	params, err := decodeDataGetFormatParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "DataGetFormat",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -75,12 +81,18 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "DefaultTest",
+			ID:   "defaultTest",
+		}
+	)
 	params, err := decodeDefaultTestParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "DefaultTest",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -88,8 +100,8 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 	request, close, err := s.decodeDefaultTestRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "DefaultTest",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -130,7 +142,9 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.ErrorGet(ctx)
 	if err != nil {
@@ -166,12 +180,18 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "FoobarGet",
+			ID:   "foobarGet",
+		}
+	)
 	params, err := decodeFoobarGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "FoobarGet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -211,12 +231,18 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "FoobarPost",
+			ID:   "foobarPost",
+		}
+	)
 	request, close, err := s.decodeFoobarPostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "FoobarPost",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -255,7 +281,9 @@ func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.FoobarPut(ctx)
 	if err != nil {
@@ -291,12 +319,18 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetHeader",
+			ID:   "getHeader",
+		}
+	)
 	params, err := decodeGetHeaderParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GetHeader",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -336,7 +370,9 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.NoAdditionalPropertiesTest(ctx)
 	if err != nil {
@@ -372,7 +408,9 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.NullableDefaultResponse(ctx)
 	if err != nil {
@@ -408,12 +446,18 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "OneofBug",
+			ID:   "oneofBug",
+		}
+	)
 	request, close, err := s.decodeOneofBugRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "OneofBug",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -452,7 +496,9 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.PatternRecursiveMapGet(ctx)
 	if err != nil {
@@ -488,12 +534,18 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PetCreate",
+			ID:   "petCreate",
+		}
+	)
 	request, close, err := s.decodePetCreateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PetCreate",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -534,12 +586,18 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PetFriendsNamesByID",
+			ID:   "petFriendsNamesByID",
+		}
+	)
 	params, err := decodePetFriendsNamesByIDParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PetFriendsNamesByID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -579,12 +637,18 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PetGet",
+			ID:   "petGet",
+		}
+	)
 	params, err := decodePetGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PetGet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -624,12 +688,18 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PetGetAvatarByID",
+			ID:   "petGetAvatarByID",
+		}
+	)
 	params, err := decodePetGetAvatarByIDParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PetGetAvatarByID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -669,12 +739,18 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PetGetAvatarByName",
+			ID:   "petGetAvatarByName",
+		}
+	)
 	params, err := decodePetGetAvatarByNameParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PetGetAvatarByName",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -714,12 +790,18 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PetGetByName",
+			ID:   "petGetByName",
+		}
+	)
 	params, err := decodePetGetByNameParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PetGetByName",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -759,12 +841,18 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PetNameByID",
+			ID:   "petNameByID",
+		}
+	)
 	params, err := decodePetNameByIDParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PetNameByID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -802,12 +890,18 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PetUpdateNameAliasPost",
+			ID:   "",
+		}
+	)
 	request, close, err := s.decodePetUpdateNameAliasPostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PetUpdateNameAliasPost",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -846,12 +940,18 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PetUpdateNamePost",
+			ID:   "",
+		}
+	)
 	request, close, err := s.decodePetUpdateNamePostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PetUpdateNamePost",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -892,12 +992,18 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PetUploadAvatarByID",
+			ID:   "petUploadAvatarByID",
+		}
+	)
 	params, err := decodePetUploadAvatarByIDParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PetUploadAvatarByID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -905,8 +1011,8 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 	request, close, err := s.decodePetUploadAvatarByIDRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PetUploadAvatarByID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -945,7 +1051,9 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.RecursiveArrayGet(ctx)
 	if err != nil {
@@ -979,7 +1087,9 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.RecursiveMapGet(ctx)
 	if err != nil {
@@ -1015,13 +1125,19 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SecurityTest",
+			ID:   "securityTest",
+		}
+	)
 	ctx, err = s.securityAPIKey(ctx, "SecurityTest", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
-			Operation: "SecurityTest",
-			Security:  "APIKey",
-			Err:       err,
+			OperationContext: opErrContext,
+			Security:         "APIKey",
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1059,7 +1175,9 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.StringIntMapGet(ctx)
 	if err != nil {
@@ -1095,12 +1213,18 @@ func (s *Server) handleTestContentParameterRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestContentParameter",
+			ID:   "testContentParameter",
+		}
+	)
 	params, err := decodeTestContentParameterParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TestContentParameter",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1140,12 +1264,18 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestFloatValidation",
+			ID:   "testFloatValidation",
+		}
+	)
 	request, close, err := s.decodeTestFloatValidationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestFloatValidation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1186,7 +1316,9 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.TestNullableOneofs(ctx)
 	if err != nil {
@@ -1222,12 +1354,18 @@ func (s *Server) handleTestObjectQueryParameterRequest(args [0]string, w http.Re
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestObjectQueryParameter",
+			ID:   "testObjectQueryParameter",
+		}
+	)
 	params, err := decodeTestObjectQueryParameterParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "TestObjectQueryParameter",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return

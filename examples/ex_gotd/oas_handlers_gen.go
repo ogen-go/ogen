@@ -32,12 +32,18 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AddStickerToSet",
+			ID:   "addStickerToSet",
+		}
+	)
 	request, close, err := s.decodeAddStickerToSetRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "AddStickerToSet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -87,12 +93,18 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AnswerCallbackQuery",
+			ID:   "answerCallbackQuery",
+		}
+	)
 	request, close, err := s.decodeAnswerCallbackQueryRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "AnswerCallbackQuery",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -142,12 +154,18 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AnswerInlineQuery",
+			ID:   "answerInlineQuery",
+		}
+	)
 	request, close, err := s.decodeAnswerInlineQueryRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "AnswerInlineQuery",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -197,12 +215,18 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AnswerPreCheckoutQuery",
+			ID:   "answerPreCheckoutQuery",
+		}
+	)
 	request, close, err := s.decodeAnswerPreCheckoutQueryRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "AnswerPreCheckoutQuery",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -252,12 +276,18 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AnswerShippingQuery",
+			ID:   "answerShippingQuery",
+		}
+	)
 	request, close, err := s.decodeAnswerShippingQueryRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "AnswerShippingQuery",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -307,12 +337,18 @@ func (s *Server) handleAnswerWebAppQueryRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AnswerWebAppQuery",
+			ID:   "answerWebAppQuery",
+		}
+	)
 	request, close, err := s.decodeAnswerWebAppQueryRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "AnswerWebAppQuery",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -362,12 +398,18 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ApproveChatJoinRequest",
+			ID:   "approveChatJoinRequest",
+		}
+	)
 	request, close, err := s.decodeApproveChatJoinRequestRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ApproveChatJoinRequest",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -417,12 +459,18 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "BanChatMember",
+			ID:   "banChatMember",
+		}
+	)
 	request, close, err := s.decodeBanChatMemberRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "BanChatMember",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -472,12 +520,18 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "BanChatSenderChat",
+			ID:   "banChatSenderChat",
+		}
+	)
 	request, close, err := s.decodeBanChatSenderChatRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "BanChatSenderChat",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -527,7 +581,9 @@ func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.Close(ctx)
 	if err != nil {
@@ -572,12 +628,18 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "CopyMessage",
+			ID:   "copyMessage",
+		}
+	)
 	request, close, err := s.decodeCopyMessageRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "CopyMessage",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -627,12 +689,18 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "CreateChatInviteLink",
+			ID:   "createChatInviteLink",
+		}
+	)
 	request, close, err := s.decodeCreateChatInviteLinkRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "CreateChatInviteLink",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -682,12 +750,18 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "CreateNewStickerSet",
+			ID:   "createNewStickerSet",
+		}
+	)
 	request, close, err := s.decodeCreateNewStickerSetRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "CreateNewStickerSet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -737,12 +811,18 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "DeclineChatJoinRequest",
+			ID:   "declineChatJoinRequest",
+		}
+	)
 	request, close, err := s.decodeDeclineChatJoinRequestRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "DeclineChatJoinRequest",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -792,12 +872,18 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "DeleteChatPhoto",
+			ID:   "deleteChatPhoto",
+		}
+	)
 	request, close, err := s.decodeDeleteChatPhotoRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "DeleteChatPhoto",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -847,12 +933,18 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "DeleteChatStickerSet",
+			ID:   "deleteChatStickerSet",
+		}
+	)
 	request, close, err := s.decodeDeleteChatStickerSetRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "DeleteChatStickerSet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -902,12 +994,18 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "DeleteMessage",
+			ID:   "deleteMessage",
+		}
+	)
 	request, close, err := s.decodeDeleteMessageRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "DeleteMessage",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -957,12 +1055,18 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "DeleteMyCommands",
+			ID:   "deleteMyCommands",
+		}
+	)
 	request, close, err := s.decodeDeleteMyCommandsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "DeleteMyCommands",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1012,12 +1116,18 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "DeleteStickerFromSet",
+			ID:   "deleteStickerFromSet",
+		}
+	)
 	request, close, err := s.decodeDeleteStickerFromSetRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "DeleteStickerFromSet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1067,12 +1177,18 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "DeleteWebhook",
+			ID:   "deleteWebhook",
+		}
+	)
 	request, close, err := s.decodeDeleteWebhookRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "DeleteWebhook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1122,12 +1238,18 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EditChatInviteLink",
+			ID:   "editChatInviteLink",
+		}
+	)
 	request, close, err := s.decodeEditChatInviteLinkRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EditChatInviteLink",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1177,12 +1299,18 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EditMessageCaption",
+			ID:   "editMessageCaption",
+		}
+	)
 	request, close, err := s.decodeEditMessageCaptionRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EditMessageCaption",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1232,12 +1360,18 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EditMessageLiveLocation",
+			ID:   "editMessageLiveLocation",
+		}
+	)
 	request, close, err := s.decodeEditMessageLiveLocationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EditMessageLiveLocation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1287,12 +1421,18 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EditMessageMedia",
+			ID:   "editMessageMedia",
+		}
+	)
 	request, close, err := s.decodeEditMessageMediaRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EditMessageMedia",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1342,12 +1482,18 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EditMessageReplyMarkup",
+			ID:   "editMessageReplyMarkup",
+		}
+	)
 	request, close, err := s.decodeEditMessageReplyMarkupRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EditMessageReplyMarkup",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1397,12 +1543,18 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "EditMessageText",
+			ID:   "editMessageText",
+		}
+	)
 	request, close, err := s.decodeEditMessageTextRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "EditMessageText",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1452,12 +1604,18 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ExportChatInviteLink",
+			ID:   "exportChatInviteLink",
+		}
+	)
 	request, close, err := s.decodeExportChatInviteLinkRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ExportChatInviteLink",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1507,12 +1665,18 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ForwardMessage",
+			ID:   "forwardMessage",
+		}
+	)
 	request, close, err := s.decodeForwardMessageRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ForwardMessage",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1562,12 +1726,18 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetChat",
+			ID:   "getChat",
+		}
+	)
 	request, close, err := s.decodeGetChatRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GetChat",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1617,12 +1787,18 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetChatAdministrators",
+			ID:   "getChatAdministrators",
+		}
+	)
 	request, close, err := s.decodeGetChatAdministratorsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GetChatAdministrators",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1672,12 +1848,18 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetChatMember",
+			ID:   "getChatMember",
+		}
+	)
 	request, close, err := s.decodeGetChatMemberRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GetChatMember",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1727,12 +1909,18 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetChatMemberCount",
+			ID:   "getChatMemberCount",
+		}
+	)
 	request, close, err := s.decodeGetChatMemberCountRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GetChatMemberCount",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1782,12 +1970,18 @@ func (s *Server) handleGetChatMenuButtonRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetChatMenuButton",
+			ID:   "getChatMenuButton",
+		}
+	)
 	request, close, err := s.decodeGetChatMenuButtonRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GetChatMenuButton",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1837,12 +2031,18 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetFile",
+			ID:   "getFile",
+		}
+	)
 	request, close, err := s.decodeGetFileRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GetFile",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1892,12 +2092,18 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetGameHighScores",
+			ID:   "getGameHighScores",
+		}
+	)
 	request, close, err := s.decodeGetGameHighScoresRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GetGameHighScores",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1947,7 +2153,9 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.GetMe(ctx)
 	if err != nil {
@@ -1992,12 +2200,18 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetMyCommands",
+			ID:   "getMyCommands",
+		}
+	)
 	request, close, err := s.decodeGetMyCommandsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GetMyCommands",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2047,12 +2261,18 @@ func (s *Server) handleGetMyDefaultAdministratorRightsRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetMyDefaultAdministratorRights",
+			ID:   "getMyDefaultAdministratorRights",
+		}
+	)
 	request, close, err := s.decodeGetMyDefaultAdministratorRightsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GetMyDefaultAdministratorRights",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2102,12 +2322,18 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetStickerSet",
+			ID:   "getStickerSet",
+		}
+	)
 	request, close, err := s.decodeGetStickerSetRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GetStickerSet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2157,12 +2383,18 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetUpdates",
+			ID:   "getUpdates",
+		}
+	)
 	request, close, err := s.decodeGetUpdatesRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GetUpdates",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2212,12 +2444,18 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetUserProfilePhotos",
+			ID:   "getUserProfilePhotos",
+		}
+	)
 	request, close, err := s.decodeGetUserProfilePhotosRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "GetUserProfilePhotos",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2267,7 +2505,9 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.GetWebhookInfo(ctx)
 	if err != nil {
@@ -2312,12 +2552,18 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "LeaveChat",
+			ID:   "leaveChat",
+		}
+	)
 	request, close, err := s.decodeLeaveChatRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "LeaveChat",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2367,7 +2613,9 @@ func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.LogOut(ctx)
 	if err != nil {
@@ -2412,12 +2660,18 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PinChatMessage",
+			ID:   "pinChatMessage",
+		}
+	)
 	request, close, err := s.decodePinChatMessageRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PinChatMessage",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2467,12 +2721,18 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PromoteChatMember",
+			ID:   "promoteChatMember",
+		}
+	)
 	request, close, err := s.decodePromoteChatMemberRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PromoteChatMember",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2522,12 +2782,18 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "RestrictChatMember",
+			ID:   "restrictChatMember",
+		}
+	)
 	request, close, err := s.decodeRestrictChatMemberRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "RestrictChatMember",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2577,12 +2843,18 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "RevokeChatInviteLink",
+			ID:   "revokeChatInviteLink",
+		}
+	)
 	request, close, err := s.decodeRevokeChatInviteLinkRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "RevokeChatInviteLink",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2632,12 +2904,18 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendAnimation",
+			ID:   "sendAnimation",
+		}
+	)
 	request, close, err := s.decodeSendAnimationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendAnimation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2687,12 +2965,18 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendAudio",
+			ID:   "sendAudio",
+		}
+	)
 	request, close, err := s.decodeSendAudioRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendAudio",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2742,12 +3026,18 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendChatAction",
+			ID:   "sendChatAction",
+		}
+	)
 	request, close, err := s.decodeSendChatActionRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendChatAction",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2797,12 +3087,18 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendContact",
+			ID:   "sendContact",
+		}
+	)
 	request, close, err := s.decodeSendContactRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendContact",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2852,12 +3148,18 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendDice",
+			ID:   "sendDice",
+		}
+	)
 	request, close, err := s.decodeSendDiceRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendDice",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2907,12 +3209,18 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendDocument",
+			ID:   "sendDocument",
+		}
+	)
 	request, close, err := s.decodeSendDocumentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendDocument",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2962,12 +3270,18 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendGame",
+			ID:   "sendGame",
+		}
+	)
 	request, close, err := s.decodeSendGameRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendGame",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3017,12 +3331,18 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendInvoice",
+			ID:   "sendInvoice",
+		}
+	)
 	request, close, err := s.decodeSendInvoiceRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendInvoice",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3072,12 +3392,18 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendLocation",
+			ID:   "sendLocation",
+		}
+	)
 	request, close, err := s.decodeSendLocationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendLocation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3127,12 +3453,18 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendMediaGroup",
+			ID:   "sendMediaGroup",
+		}
+	)
 	request, close, err := s.decodeSendMediaGroupRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendMediaGroup",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3182,12 +3514,18 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendMessage",
+			ID:   "sendMessage",
+		}
+	)
 	request, close, err := s.decodeSendMessageRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendMessage",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3237,12 +3575,18 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendPhoto",
+			ID:   "sendPhoto",
+		}
+	)
 	request, close, err := s.decodeSendPhotoRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendPhoto",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3292,12 +3636,18 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendPoll",
+			ID:   "sendPoll",
+		}
+	)
 	request, close, err := s.decodeSendPollRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendPoll",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3347,12 +3697,18 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendSticker",
+			ID:   "sendSticker",
+		}
+	)
 	request, close, err := s.decodeSendStickerRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendSticker",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3402,12 +3758,18 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendVenue",
+			ID:   "sendVenue",
+		}
+	)
 	request, close, err := s.decodeSendVenueRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendVenue",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3457,12 +3819,18 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendVideo",
+			ID:   "sendVideo",
+		}
+	)
 	request, close, err := s.decodeSendVideoRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendVideo",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3512,12 +3880,18 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendVideoNote",
+			ID:   "sendVideoNote",
+		}
+	)
 	request, close, err := s.decodeSendVideoNoteRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendVideoNote",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3567,12 +3941,18 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SendVoice",
+			ID:   "sendVoice",
+		}
+	)
 	request, close, err := s.decodeSendVoiceRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SendVoice",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3622,12 +4002,18 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SetChatAdministratorCustomTitle",
+			ID:   "setChatAdministratorCustomTitle",
+		}
+	)
 	request, close, err := s.decodeSetChatAdministratorCustomTitleRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SetChatAdministratorCustomTitle",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3677,12 +4063,18 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SetChatDescription",
+			ID:   "setChatDescription",
+		}
+	)
 	request, close, err := s.decodeSetChatDescriptionRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SetChatDescription",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3732,12 +4124,18 @@ func (s *Server) handleSetChatMenuButtonRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SetChatMenuButton",
+			ID:   "setChatMenuButton",
+		}
+	)
 	request, close, err := s.decodeSetChatMenuButtonRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SetChatMenuButton",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3787,12 +4185,18 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SetChatPermissions",
+			ID:   "setChatPermissions",
+		}
+	)
 	request, close, err := s.decodeSetChatPermissionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SetChatPermissions",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3842,12 +4246,18 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SetChatPhoto",
+			ID:   "setChatPhoto",
+		}
+	)
 	request, close, err := s.decodeSetChatPhotoRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SetChatPhoto",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3897,12 +4307,18 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SetChatStickerSet",
+			ID:   "setChatStickerSet",
+		}
+	)
 	request, close, err := s.decodeSetChatStickerSetRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SetChatStickerSet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3952,12 +4368,18 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SetChatTitle",
+			ID:   "setChatTitle",
+		}
+	)
 	request, close, err := s.decodeSetChatTitleRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SetChatTitle",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4007,12 +4429,18 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SetGameScore",
+			ID:   "setGameScore",
+		}
+	)
 	request, close, err := s.decodeSetGameScoreRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SetGameScore",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4062,12 +4490,18 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SetMyCommands",
+			ID:   "setMyCommands",
+		}
+	)
 	request, close, err := s.decodeSetMyCommandsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SetMyCommands",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4117,12 +4551,18 @@ func (s *Server) handleSetMyDefaultAdministratorRightsRequest(args [0]string, w 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SetMyDefaultAdministratorRights",
+			ID:   "setMyDefaultAdministratorRights",
+		}
+	)
 	request, close, err := s.decodeSetMyDefaultAdministratorRightsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SetMyDefaultAdministratorRights",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4172,12 +4612,18 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SetPassportDataErrors",
+			ID:   "setPassportDataErrors",
+		}
+	)
 	request, close, err := s.decodeSetPassportDataErrorsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SetPassportDataErrors",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4227,12 +4673,18 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SetStickerPositionInSet",
+			ID:   "setStickerPositionInSet",
+		}
+	)
 	request, close, err := s.decodeSetStickerPositionInSetRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SetStickerPositionInSet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4282,12 +4734,18 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SetStickerSetThumb",
+			ID:   "setStickerSetThumb",
+		}
+	)
 	request, close, err := s.decodeSetStickerSetThumbRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SetStickerSetThumb",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4337,12 +4795,18 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SetWebhook",
+			ID:   "setWebhook",
+		}
+	)
 	request, close, err := s.decodeSetWebhookRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SetWebhook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4392,12 +4856,18 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "StopMessageLiveLocation",
+			ID:   "stopMessageLiveLocation",
+		}
+	)
 	request, close, err := s.decodeStopMessageLiveLocationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "StopMessageLiveLocation",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4447,12 +4917,18 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "StopPoll",
+			ID:   "stopPoll",
+		}
+	)
 	request, close, err := s.decodeStopPollRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "StopPoll",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4502,12 +4978,18 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UnbanChatMember",
+			ID:   "unbanChatMember",
+		}
+	)
 	request, close, err := s.decodeUnbanChatMemberRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "UnbanChatMember",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4557,12 +5039,18 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UnbanChatSenderChat",
+			ID:   "unbanChatSenderChat",
+		}
+	)
 	request, close, err := s.decodeUnbanChatSenderChatRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "UnbanChatSenderChat",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4612,12 +5100,18 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UnpinAllChatMessages",
+			ID:   "unpinAllChatMessages",
+		}
+	)
 	request, close, err := s.decodeUnpinAllChatMessagesRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "UnpinAllChatMessages",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4667,12 +5161,18 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UnpinChatMessage",
+			ID:   "unpinChatMessage",
+		}
+	)
 	request, close, err := s.decodeUnpinChatMessageRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "UnpinChatMessage",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4722,12 +5222,18 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "UploadStickerFile",
+			ID:   "uploadStickerFile",
+		}
+	)
 	request, close, err := s.decodeUploadStickerFileRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "UploadStickerFile",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return

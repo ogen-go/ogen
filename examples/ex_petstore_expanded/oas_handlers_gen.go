@@ -30,12 +30,18 @@ func (s *Server) handleAddPetRequest(args [0]string, w http.ResponseWriter, r *h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "AddPet",
+			ID:   "addPet",
+		}
+	)
 	request, close, err := s.decodeAddPetRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "AddPet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -76,12 +82,18 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "DeletePet",
+			ID:   "deletePet",
+		}
+	)
 	params, err := decodeDeletePetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "DeletePet",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -121,12 +133,18 @@ func (s *Server) handleFindPetByIDRequest(args [1]string, w http.ResponseWriter,
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "FindPetByID",
+			ID:   "find pet by id",
+		}
+	)
 	params, err := decodeFindPetByIDParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "FindPetByID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -166,12 +184,18 @@ func (s *Server) handleFindPetsRequest(args [0]string, w http.ResponseWriter, r 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "FindPets",
+			ID:   "findPets",
+		}
+	)
 	params, err := decodeFindPetsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "FindPets",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return

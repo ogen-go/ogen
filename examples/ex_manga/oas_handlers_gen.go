@@ -30,12 +30,18 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetBook",
+			ID:   "getBook",
+		}
+	)
 	params, err := decodeGetBookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GetBook",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -75,12 +81,18 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetPageCoverImage",
+			ID:   "getPageCoverImage",
+		}
+	)
 	params, err := decodeGetPageCoverImageParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GetPageCoverImage",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -120,12 +132,18 @@ func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetPageImage",
+			ID:   "getPageImage",
+		}
+	)
 	params, err := decodeGetPageImageParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GetPageImage",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -165,12 +183,18 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "GetPageThumbnailImage",
+			ID:   "getPageThumbnailImage",
+		}
+	)
 	params, err := decodeGetPageThumbnailImageParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "GetPageThumbnailImage",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -210,12 +234,18 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "Search",
+			ID:   "search",
+		}
+	)
 	params, err := decodeSearchParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "Search",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -255,12 +285,18 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SearchByTagID",
+			ID:   "searchByTagID",
+		}
+	)
 	params, err := decodeSearchByTagIDParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "SearchByTagID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return

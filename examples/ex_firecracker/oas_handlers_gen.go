@@ -30,12 +30,18 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "CreateSnapshot",
+			ID:   "createSnapshot",
+		}
+	)
 	request, close, err := s.decodeCreateSnapshotRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "CreateSnapshot",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -76,12 +82,18 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "CreateSyncAction",
+			ID:   "createSyncAction",
+		}
+	)
 	request, close, err := s.decodeCreateSyncActionRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "CreateSyncAction",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -122,7 +134,9 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.Respo
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.DescribeBalloonConfig(ctx)
 	if err != nil {
@@ -158,7 +172,9 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.Respon
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.DescribeBalloonStats(ctx)
 	if err != nil {
@@ -194,7 +210,9 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWr
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.DescribeInstance(ctx)
 	if err != nil {
@@ -230,7 +248,9 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.GetExportVmConfig(ctx)
 	if err != nil {
@@ -266,7 +286,9 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.GetMachineConfiguration(ctx)
 	if err != nil {
@@ -302,12 +324,18 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "LoadSnapshot",
+			ID:   "loadSnapshot",
+		}
+	)
 	request, close, err := s.decodeLoadSnapshotRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "LoadSnapshot",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -346,12 +374,18 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MmdsConfigPut",
+			ID:   "",
+		}
+	)
 	request, close, err := s.decodeMmdsConfigPutRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "MmdsConfigPut",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -390,7 +424,9 @@ func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.MmdsGet(ctx)
 	if err != nil {
@@ -424,12 +460,18 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MmdsPatch",
+			ID:   "",
+		}
+	)
 	request, close, err := s.decodeMmdsPatchRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "MmdsPatch",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -468,12 +510,18 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "MmdsPut",
+			ID:   "",
+		}
+	)
 	request, close, err := s.decodeMmdsPutRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "MmdsPut",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -514,12 +562,18 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PatchBalloon",
+			ID:   "patchBalloon",
+		}
+	)
 	request, close, err := s.decodePatchBalloonRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PatchBalloon",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -560,12 +614,18 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PatchBalloonStatsInterval",
+			ID:   "patchBalloonStatsInterval",
+		}
+	)
 	request, close, err := s.decodePatchBalloonStatsIntervalRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PatchBalloonStatsInterval",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -606,12 +666,18 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PatchGuestDriveByID",
+			ID:   "patchGuestDriveByID",
+		}
+	)
 	params, err := decodePatchGuestDriveByIDParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PatchGuestDriveByID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -619,8 +685,8 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 	request, close, err := s.decodePatchGuestDriveByIDRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PatchGuestDriveByID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -661,12 +727,18 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PatchGuestNetworkInterfaceByID",
+			ID:   "patchGuestNetworkInterfaceByID",
+		}
+	)
 	params, err := decodePatchGuestNetworkInterfaceByIDParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PatchGuestNetworkInterfaceByID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -674,8 +746,8 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 	request, close, err := s.decodePatchGuestNetworkInterfaceByIDRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PatchGuestNetworkInterfaceByID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -716,12 +788,18 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PatchMachineConfiguration",
+			ID:   "patchMachineConfiguration",
+		}
+	)
 	request, close, err := s.decodePatchMachineConfigurationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PatchMachineConfiguration",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -762,12 +840,18 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PatchVm",
+			ID:   "patchVm",
+		}
+	)
 	request, close, err := s.decodePatchVmRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PatchVm",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -808,12 +892,18 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PutBalloon",
+			ID:   "putBalloon",
+		}
+	)
 	request, close, err := s.decodePutBalloonRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PutBalloon",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -854,12 +944,18 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PutGuestBootSource",
+			ID:   "putGuestBootSource",
+		}
+	)
 	request, close, err := s.decodePutGuestBootSourceRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PutGuestBootSource",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -900,12 +996,18 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PutGuestDriveByID",
+			ID:   "putGuestDriveByID",
+		}
+	)
 	params, err := decodePutGuestDriveByIDParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PutGuestDriveByID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -913,8 +1015,8 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 	request, close, err := s.decodePutGuestDriveByIDRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PutGuestDriveByID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -955,12 +1057,18 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PutGuestNetworkInterfaceByID",
+			ID:   "putGuestNetworkInterfaceByID",
+		}
+	)
 	params, err := decodePutGuestNetworkInterfaceByIDParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			Operation: "PutGuestNetworkInterfaceByID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -968,8 +1076,8 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 	request, close, err := s.decodePutGuestNetworkInterfaceByIDRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PutGuestNetworkInterfaceByID",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1010,12 +1118,18 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PutGuestVsock",
+			ID:   "putGuestVsock",
+		}
+	)
 	request, close, err := s.decodePutGuestVsockRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PutGuestVsock",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1056,12 +1170,18 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PutLogger",
+			ID:   "putLogger",
+		}
+	)
 	request, close, err := s.decodePutLoggerRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PutLogger",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1102,12 +1222,18 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PutMachineConfiguration",
+			ID:   "putMachineConfiguration",
+		}
+	)
 	request, close, err := s.decodePutMachineConfigurationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PutMachineConfiguration",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1148,12 +1274,18 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "PutMetrics",
+			ID:   "putMetrics",
+		}
+	)
 	request, close, err := s.decodePutMetricsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "PutMetrics",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return

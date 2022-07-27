@@ -537,14 +537,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name  string
-	count int
-	args  [0]string
+	name        string
+	operationID string
+	count       int
+	args        [0]string
+}
+
+// Name returns ogen operation name.
+//
+// It is guaranteed to be unique and not empty.
+func (r Route) Name() string {
+	return r.name
 }
 
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
-	return r.name
+	return r.operationID
 }
 
 // Args returns parsed arguments.
@@ -604,6 +612,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: MarketBondsGet
 							r.name = "MarketBondsGet"
+							r.operationID = ""
 							r.args = args
 							r.count = 0
 							return r, true
@@ -634,6 +643,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: MarketCandlesGet
 								r.name = "MarketCandlesGet"
+								r.operationID = ""
 								r.args = args
 								r.count = 0
 								return r, true
@@ -653,6 +663,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: MarketCurrenciesGet
 								r.name = "MarketCurrenciesGet"
+								r.operationID = ""
 								r.args = args
 								r.count = 0
 								return r, true
@@ -673,6 +684,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: MarketEtfsGet
 							r.name = "MarketEtfsGet"
+							r.operationID = ""
 							r.args = args
 							r.count = 0
 							return r, true
@@ -692,6 +704,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: MarketOrderbookGet
 							r.name = "MarketOrderbookGet"
+							r.operationID = ""
 							r.args = args
 							r.count = 0
 							return r, true
@@ -733,6 +746,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: MarketSearchByFigiGet
 									r.name = "MarketSearchByFigiGet"
+									r.operationID = ""
 									r.args = args
 									r.count = 0
 									return r, true
@@ -752,6 +766,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: MarketSearchByTickerGet
 									r.name = "MarketSearchByTickerGet"
+									r.operationID = ""
 									r.args = args
 									r.count = 0
 									return r, true
@@ -772,6 +787,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: MarketStocksGet
 								r.name = "MarketStocksGet"
+								r.operationID = ""
 								r.args = args
 								r.count = 0
 								return r, true
@@ -804,6 +820,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: OperationsGet
 							r.name = "OperationsGet"
+							r.operationID = ""
 							r.args = args
 							r.count = 0
 							return r, true
@@ -822,6 +839,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						switch method {
 						case "GET":
 							r.name = "OrdersGet"
+							r.operationID = ""
 							r.args = args
 							r.count = 0
 							return r, true
@@ -853,6 +871,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: OrdersCancelPost
 									r.name = "OrdersCancelPost"
+									r.operationID = ""
 									r.args = args
 									r.count = 0
 									return r, true
@@ -872,6 +891,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: OrdersLimitOrderPost
 									r.name = "OrdersLimitOrderPost"
+									r.operationID = ""
 									r.args = args
 									r.count = 0
 									return r, true
@@ -891,6 +911,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: OrdersMarketOrderPost
 									r.name = "OrdersMarketOrderPost"
+									r.operationID = ""
 									r.args = args
 									r.count = 0
 									return r, true
@@ -912,6 +933,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					switch method {
 					case "GET":
 						r.name = "PortfolioGet"
+						r.operationID = ""
 						r.args = args
 						r.count = 0
 						return r, true
@@ -932,6 +954,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: PortfolioCurrenciesGet
 							r.name = "PortfolioCurrenciesGet"
+							r.operationID = ""
 							r.args = args
 							r.count = 0
 							return r, true
@@ -974,6 +997,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: SandboxClearPost
 								r.name = "SandboxClearPost"
+								r.operationID = ""
 								r.args = args
 								r.count = 0
 								return r, true
@@ -993,6 +1017,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: SandboxCurrenciesBalancePost
 								r.name = "SandboxCurrenciesBalancePost"
+								r.operationID = ""
 								r.args = args
 								r.count = 0
 								return r, true
@@ -1013,6 +1038,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: SandboxPositionsBalancePost
 							r.name = "SandboxPositionsBalancePost"
+							r.operationID = ""
 							r.args = args
 							r.count = 0
 							return r, true
@@ -1043,6 +1069,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: SandboxRegisterPost
 								r.name = "SandboxRegisterPost"
+								r.operationID = ""
 								r.args = args
 								r.count = 0
 								return r, true
@@ -1062,6 +1089,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: SandboxRemovePost
 								r.name = "SandboxRemovePost"
+								r.operationID = ""
 								r.args = args
 								r.count = 0
 								return r, true
@@ -1083,6 +1111,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					case "GET":
 						// Leaf: UserAccountsGet
 						r.name = "UserAccountsGet"
+						r.operationID = ""
 						r.args = args
 						r.count = 0
 						return r, true

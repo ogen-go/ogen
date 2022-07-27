@@ -551,14 +551,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name  string
-	count int
-	args  [3]string
+	name        string
+	operationID string
+	count       int
+	args        [3]string
+}
+
+// Name returns ogen operation name.
+//
+// It is guaranteed to be unique and not empty.
+func (r Route) Name() string {
+	return r.name
 }
 
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
-	return r.name
+	return r.operationID
 }
 
 // Args returns parsed arguments.
@@ -640,6 +648,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: APICaptcha2chcaptchaIDGet
 									r.name = "APICaptcha2chcaptchaIDGet"
+									r.operationID = ""
 									r.args = args
 									r.count = 0
 									return r, true
@@ -659,6 +668,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: APICaptcha2chcaptchaShowGet
 									r.name = "APICaptcha2chcaptchaShowGet"
+									r.operationID = ""
 									r.args = args
 									r.count = 0
 									return r, true
@@ -684,6 +694,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: APICaptchaAppIDPublicKeyGet
 								r.name = "APICaptchaAppIDPublicKeyGet"
+								r.operationID = ""
 								r.args = args
 								r.count = 1
 								return r, true
@@ -714,6 +725,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: APICaptchaInvisibleRecaptchaIDGet
 									r.name = "APICaptchaInvisibleRecaptchaIDGet"
+									r.operationID = ""
 									r.args = args
 									r.count = 0
 									return r, true
@@ -733,6 +745,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: APICaptchaInvisibleRecaptchaMobileGet
 									r.name = "APICaptchaInvisibleRecaptchaMobileGet"
+									r.operationID = ""
 									r.args = args
 									r.count = 0
 									return r, true
@@ -764,6 +777,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: APICaptchaRecaptchaIDGet
 									r.name = "APICaptchaRecaptchaIDGet"
+									r.operationID = ""
 									r.args = args
 									r.count = 0
 									return r, true
@@ -783,6 +797,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: APICaptchaRecaptchaMobileGet
 									r.name = "APICaptchaRecaptchaMobileGet"
+									r.operationID = ""
 									r.args = args
 									r.count = 0
 									return r, true
@@ -804,6 +819,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: APIDislikeGet
 							r.name = "APIDislikeGet"
+							r.operationID = ""
 							r.args = args
 							r.count = 0
 							return r, true
@@ -823,6 +839,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "GET":
 							// Leaf: APILikeGet
 							r.name = "APILikeGet"
+							r.operationID = ""
 							r.args = args
 							r.count = 0
 							return r, true
@@ -898,6 +915,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									case "GET":
 										// Leaf: APIMobileV2AfterBoardThreadNumGet
 										r.name = "APIMobileV2AfterBoardThreadNumGet"
+										r.operationID = ""
 										r.args = args
 										r.count = 3
 										return r, true
@@ -919,6 +937,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: APIMobileV2BoardsGet
 								r.name = "APIMobileV2BoardsGet"
+								r.operationID = ""
 								r.args = args
 								r.count = 0
 								return r, true
@@ -963,6 +982,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: APIMobileV2InfoBoardThreadGet
 									r.name = "APIMobileV2InfoBoardThreadGet"
+									r.operationID = ""
 									r.args = args
 									r.count = 2
 									return r, true
@@ -1008,6 +1028,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "GET":
 									// Leaf: APIMobileV2PostBoardNumGet
 									r.name = "APIMobileV2PostBoardNumGet"
+									r.operationID = ""
 									r.args = args
 									r.count = 2
 									return r, true
@@ -1052,6 +1073,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: UserPassloginPost
 								r.name = "UserPassloginPost"
+								r.operationID = ""
 								r.args = args
 								r.count = 0
 								return r, true
@@ -1071,6 +1093,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: UserPostingPost
 								r.name = "UserPostingPost"
+								r.operationID = ""
 								r.args = args
 								r.count = 0
 								return r, true
@@ -1091,6 +1114,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						case "POST":
 							// Leaf: UserReportPost
 							r.name = "UserReportPost"
+							r.operationID = ""
 							r.args = args
 							r.count = 0
 							return r, true

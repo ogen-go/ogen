@@ -186,14 +186,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name  string
-	count int
-	args  [1]string
+	name        string
+	operationID string
+	count       int
+	args        [1]string
+}
+
+// Name returns ogen operation name.
+//
+// It is guaranteed to be unique and not empty.
+func (r Route) Name() string {
+	return r.name
 }
 
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
-	return r.name
+	return r.operationID
 }
 
 // Args returns parsed arguments.
@@ -230,11 +238,13 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				switch method {
 				case "GET":
 					r.name = "ListPet"
+					r.operationID = "listPet"
 					r.args = args
 					r.count = 0
 					return r, true
 				case "POST":
 					r.name = "CreatePet"
+					r.operationID = "createPet"
 					r.args = args
 					r.count = 0
 					return r, true
@@ -263,16 +273,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					switch method {
 					case "DELETE":
 						r.name = "DeletePet"
+						r.operationID = "deletePet"
 						r.args = args
 						r.count = 1
 						return r, true
 					case "GET":
 						r.name = "ReadPet"
+						r.operationID = "readPet"
 						r.args = args
 						r.count = 1
 						return r, true
 					case "PATCH":
 						r.name = "UpdatePet"
+						r.operationID = "updatePet"
 						r.args = args
 						r.count = 1
 						return r, true
@@ -304,12 +317,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: ListPetCategories
 								r.name = "ListPetCategories"
+								r.operationID = "listPetCategories"
 								r.args = args
 								r.count = 1
 								return r, true
 							case "POST":
 								// Leaf: CreatePetCategories
 								r.name = "CreatePetCategories"
+								r.operationID = "createPetCategories"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -329,12 +344,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "GET":
 								// Leaf: ListPetFriends
 								r.name = "ListPetFriends"
+								r.operationID = "listPetFriends"
 								r.args = args
 								r.count = 1
 								return r, true
 							case "POST":
 								// Leaf: CreatePetFriends
 								r.name = "CreatePetFriends"
+								r.operationID = "createPetFriends"
 								r.args = args
 								r.count = 1
 								return r, true
@@ -354,18 +371,21 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "DELETE":
 								// Leaf: DeletePetOwner
 								r.name = "DeletePetOwner"
+								r.operationID = "deletePetOwner"
 								r.args = args
 								r.count = 1
 								return r, true
 							case "GET":
 								// Leaf: ReadPetOwner
 								r.name = "ReadPetOwner"
+								r.operationID = "readPetOwner"
 								r.args = args
 								r.count = 1
 								return r, true
 							case "POST":
 								// Leaf: CreatePetOwner
 								r.name = "CreatePetOwner"
+								r.operationID = "createPetOwner"
 								r.args = args
 								r.count = 1
 								return r, true

@@ -12577,14 +12577,22 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 // Route is route object.
 type Route struct {
-	name  string
-	count int
-	args  [0]string
+	name        string
+	operationID string
+	count       int
+	args        [0]string
+}
+
+// Name returns ogen operation name.
+//
+// It is guaranteed to be unique and not empty.
+func (r Route) Name() string {
+	return r.name
 }
 
 // OperationID returns OpenAPI operationId.
 func (r Route) OperationID() string {
-	return r.name
+	return r.operationID
 }
 
 // Args returns parsed arguments.
@@ -12633,6 +12641,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					case "POST":
 						// Leaf: TestQueryParameter
 						r.name = "TestQueryParameter"
+						r.operationID = "test_query_parameter"
 						r.args = args
 						r.count = 0
 						return r, true
@@ -12674,6 +12683,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: TestRequestAny
 								r.name = "TestRequestAny"
+								r.operationID = "test_request_Any"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -12693,6 +12703,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: TestRequestEmptyStruct
 								r.name = "TestRequestEmptyStruct"
+								r.operationID = "test_request_EmptyStruct"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -12712,6 +12723,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: TestRequestFormatTest
 								r.name = "TestRequestFormatTest"
+								r.operationID = "test_request_FormatTest"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -12730,6 +12742,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "POST":
 								r.name = "TestRequestBoolean"
+								r.operationID = "test_request_boolean"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -12760,6 +12773,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestRequestBooleanArray"
+										r.operationID = "test_request_boolean_array"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -12780,6 +12794,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "POST":
 											// Leaf: TestRequestBooleanArrayArray
 											r.name = "TestRequestBooleanArrayArray"
+											r.operationID = "test_request_boolean_array_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -12799,6 +12814,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestRequestBooleanNullable"
+										r.operationID = "test_request_boolean_nullable"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -12818,6 +12834,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestBooleanNullableArray"
+											r.operationID = "test_request_boolean_nullable_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -12838,6 +12855,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "POST":
 												// Leaf: TestRequestBooleanNullableArrayArray
 												r.name = "TestRequestBooleanNullableArrayArray"
+												r.operationID = "test_request_boolean_nullable_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -12860,6 +12878,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "POST":
 								r.name = "TestRequestInteger"
+								r.operationID = "test_request_integer"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -12890,6 +12909,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestRequestIntegerArray"
+										r.operationID = "test_request_integer_array"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -12910,6 +12930,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "POST":
 											// Leaf: TestRequestIntegerArrayArray
 											r.name = "TestRequestIntegerArrayArray"
+											r.operationID = "test_request_integer_array_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -12940,6 +12961,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestIntegerInt32"
+											r.operationID = "test_request_integer_int32"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -12970,6 +12992,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestIntegerInt32Array"
+													r.operationID = "test_request_integer_int32_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -12990,6 +13013,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestIntegerInt32ArrayArray
 														r.name = "TestRequestIntegerInt32ArrayArray"
+														r.operationID = "test_request_integer_int32_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -13009,6 +13033,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestIntegerInt32Nullable"
+													r.operationID = "test_request_integer_int32_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -13028,6 +13053,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestIntegerInt32NullableArray"
+														r.operationID = "test_request_integer_int32_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -13048,6 +13074,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestIntegerInt32NullableArrayArray
 															r.name = "TestRequestIntegerInt32NullableArrayArray"
+															r.operationID = "test_request_integer_int32_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -13070,6 +13097,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestIntegerInt64"
+											r.operationID = "test_request_integer_int64"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -13100,6 +13128,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestIntegerInt64Array"
+													r.operationID = "test_request_integer_int64_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -13120,6 +13149,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestIntegerInt64ArrayArray
 														r.name = "TestRequestIntegerInt64ArrayArray"
+														r.operationID = "test_request_integer_int64_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -13139,6 +13169,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestIntegerInt64Nullable"
+													r.operationID = "test_request_integer_int64_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -13158,6 +13189,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestIntegerInt64NullableArray"
+														r.operationID = "test_request_integer_int64_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -13178,6 +13210,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestIntegerInt64NullableArrayArray
 															r.name = "TestRequestIntegerInt64NullableArrayArray"
+															r.operationID = "test_request_integer_int64_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -13201,6 +13234,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestRequestIntegerNullable"
+										r.operationID = "test_request_integer_nullable"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -13220,6 +13254,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestIntegerNullableArray"
+											r.operationID = "test_request_integer_nullable_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -13240,6 +13275,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "POST":
 												// Leaf: TestRequestIntegerNullableArrayArray
 												r.name = "TestRequestIntegerNullableArrayArray"
+												r.operationID = "test_request_integer_nullable_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -13273,6 +13309,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "POST":
 									r.name = "TestRequestNull"
+									r.operationID = "test_request_null"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -13303,6 +13340,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestNullArray"
+											r.operationID = "test_request_null_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -13323,6 +13361,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "POST":
 												// Leaf: TestRequestNullArrayArray
 												r.name = "TestRequestNullArrayArray"
+												r.operationID = "test_request_null_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -13342,6 +13381,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestNullNullable"
+											r.operationID = "test_request_null_nullable"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -13361,6 +13401,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestNullNullableArray"
+												r.operationID = "test_request_null_nullable_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -13381,6 +13422,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: TestRequestNullNullableArrayArray
 													r.name = "TestRequestNullNullableArrayArray"
+													r.operationID = "test_request_null_nullable_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -13403,6 +13445,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "POST":
 									r.name = "TestRequestNumber"
+									r.operationID = "test_request_number"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -13433,6 +13476,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestNumberArray"
+											r.operationID = "test_request_number_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -13453,6 +13497,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "POST":
 												// Leaf: TestRequestNumberArrayArray
 												r.name = "TestRequestNumberArrayArray"
+												r.operationID = "test_request_number_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -13472,6 +13517,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestNumberDouble"
+											r.operationID = "test_request_number_double"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -13502,6 +13548,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestNumberDoubleArray"
+													r.operationID = "test_request_number_double_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -13522,6 +13569,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestNumberDoubleArrayArray
 														r.name = "TestRequestNumberDoubleArrayArray"
+														r.operationID = "test_request_number_double_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -13541,6 +13589,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestNumberDoubleNullable"
+													r.operationID = "test_request_number_double_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -13560,6 +13609,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestNumberDoubleNullableArray"
+														r.operationID = "test_request_number_double_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -13580,6 +13630,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestNumberDoubleNullableArrayArray
 															r.name = "TestRequestNumberDoubleNullableArrayArray"
+															r.operationID = "test_request_number_double_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -13602,6 +13653,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestNumberFloat"
+											r.operationID = "test_request_number_float"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -13632,6 +13684,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestNumberFloatArray"
+													r.operationID = "test_request_number_float_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -13652,6 +13705,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestNumberFloatArrayArray
 														r.name = "TestRequestNumberFloatArrayArray"
+														r.operationID = "test_request_number_float_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -13671,6 +13725,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestNumberFloatNullable"
+													r.operationID = "test_request_number_float_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -13690,6 +13745,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestNumberFloatNullableArray"
+														r.operationID = "test_request_number_float_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -13710,6 +13766,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestNumberFloatNullableArrayArray
 															r.name = "TestRequestNumberFloatNullableArrayArray"
+															r.operationID = "test_request_number_float_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -13743,6 +13800,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestNumberInt32"
+												r.operationID = "test_request_number_int32"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -13773,6 +13831,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestNumberInt32Array"
+														r.operationID = "test_request_number_int32_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -13793,6 +13852,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestNumberInt32ArrayArray
 															r.name = "TestRequestNumberInt32ArrayArray"
+															r.operationID = "test_request_number_int32_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -13812,6 +13872,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestNumberInt32Nullable"
+														r.operationID = "test_request_number_int32_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -13831,6 +13892,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestNumberInt32NullableArray"
+															r.operationID = "test_request_number_int32_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -13851,6 +13913,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestNumberInt32NullableArrayArray
 																r.name = "TestRequestNumberInt32NullableArrayArray"
+																r.operationID = "test_request_number_int32_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -13873,6 +13936,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestNumberInt64"
+												r.operationID = "test_request_number_int64"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -13903,6 +13967,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestNumberInt64Array"
+														r.operationID = "test_request_number_int64_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -13923,6 +13988,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestNumberInt64ArrayArray
 															r.name = "TestRequestNumberInt64ArrayArray"
+															r.operationID = "test_request_number_int64_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -13942,6 +14008,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestNumberInt64Nullable"
+														r.operationID = "test_request_number_int64_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -13961,6 +14028,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestNumberInt64NullableArray"
+															r.operationID = "test_request_number_int64_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -13981,6 +14049,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestNumberInt64NullableArrayArray
 																r.name = "TestRequestNumberInt64NullableArrayArray"
+																r.operationID = "test_request_number_int64_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -14004,6 +14073,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestNumberNullable"
+											r.operationID = "test_request_number_nullable"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -14023,6 +14093,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestNumberNullableArray"
+												r.operationID = "test_request_number_nullable_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -14043,6 +14114,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: TestRequestNumberNullableArrayArray
 													r.name = "TestRequestNumberNullableArrayArray"
+													r.operationID = "test_request_number_nullable_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -14078,6 +14150,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: TestRequestRequiredAny
 									r.name = "TestRequestRequiredAny"
+									r.operationID = "test_request_required_Any"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -14097,6 +14170,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: TestRequestRequiredEmptyStruct
 									r.name = "TestRequestRequiredEmptyStruct"
+									r.operationID = "test_request_required_EmptyStruct"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -14116,6 +14190,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								case "POST":
 									// Leaf: TestRequestRequiredFormatTest
 									r.name = "TestRequestRequiredFormatTest"
+									r.operationID = "test_request_required_FormatTest"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -14134,6 +14209,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "POST":
 									r.name = "TestRequestRequiredBoolean"
+									r.operationID = "test_request_required_boolean"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -14164,6 +14240,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestRequiredBooleanArray"
+											r.operationID = "test_request_required_boolean_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -14184,6 +14261,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "POST":
 												// Leaf: TestRequestRequiredBooleanArrayArray
 												r.name = "TestRequestRequiredBooleanArrayArray"
+												r.operationID = "test_request_required_boolean_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -14203,6 +14281,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestRequiredBooleanNullable"
+											r.operationID = "test_request_required_boolean_nullable"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -14222,6 +14301,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredBooleanNullableArray"
+												r.operationID = "test_request_required_boolean_nullable_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -14242,6 +14322,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: TestRequestRequiredBooleanNullableArrayArray
 													r.name = "TestRequestRequiredBooleanNullableArrayArray"
+													r.operationID = "test_request_required_boolean_nullable_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -14264,6 +14345,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "POST":
 									r.name = "TestRequestRequiredInteger"
+									r.operationID = "test_request_required_integer"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -14294,6 +14376,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestRequiredIntegerArray"
+											r.operationID = "test_request_required_integer_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -14314,6 +14397,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "POST":
 												// Leaf: TestRequestRequiredIntegerArrayArray
 												r.name = "TestRequestRequiredIntegerArrayArray"
+												r.operationID = "test_request_required_integer_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -14344,6 +14428,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredIntegerInt32"
+												r.operationID = "test_request_required_integer_int32"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -14374,6 +14459,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredIntegerInt32Array"
+														r.operationID = "test_request_required_integer_int32_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -14394,6 +14480,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestRequiredIntegerInt32ArrayArray
 															r.name = "TestRequestRequiredIntegerInt32ArrayArray"
+															r.operationID = "test_request_required_integer_int32_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -14413,6 +14500,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredIntegerInt32Nullable"
+														r.operationID = "test_request_required_integer_int32_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -14432,6 +14520,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredIntegerInt32NullableArray"
+															r.operationID = "test_request_required_integer_int32_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -14452,6 +14541,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestRequiredIntegerInt32NullableArrayArray
 																r.name = "TestRequestRequiredIntegerInt32NullableArrayArray"
+																r.operationID = "test_request_required_integer_int32_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -14474,6 +14564,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredIntegerInt64"
+												r.operationID = "test_request_required_integer_int64"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -14504,6 +14595,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredIntegerInt64Array"
+														r.operationID = "test_request_required_integer_int64_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -14524,6 +14616,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestRequiredIntegerInt64ArrayArray
 															r.name = "TestRequestRequiredIntegerInt64ArrayArray"
+															r.operationID = "test_request_required_integer_int64_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -14543,6 +14636,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredIntegerInt64Nullable"
+														r.operationID = "test_request_required_integer_int64_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -14562,6 +14656,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredIntegerInt64NullableArray"
+															r.operationID = "test_request_required_integer_int64_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -14582,6 +14677,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestRequiredIntegerInt64NullableArrayArray
 																r.name = "TestRequestRequiredIntegerInt64NullableArrayArray"
+																r.operationID = "test_request_required_integer_int64_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -14605,6 +14701,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestRequiredIntegerNullable"
+											r.operationID = "test_request_required_integer_nullable"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -14624,6 +14721,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredIntegerNullableArray"
+												r.operationID = "test_request_required_integer_nullable_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -14644,6 +14742,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: TestRequestRequiredIntegerNullableArrayArray
 													r.name = "TestRequestRequiredIntegerNullableArrayArray"
+													r.operationID = "test_request_required_integer_nullable_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -14677,6 +14776,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestRequestRequiredNull"
+										r.operationID = "test_request_required_null"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -14707,6 +14807,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredNullArray"
+												r.operationID = "test_request_required_null_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -14727,6 +14828,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: TestRequestRequiredNullArrayArray
 													r.name = "TestRequestRequiredNullArrayArray"
+													r.operationID = "test_request_required_null_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -14746,6 +14848,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredNullNullable"
+												r.operationID = "test_request_required_null_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -14765,6 +14868,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestRequiredNullNullableArray"
+													r.operationID = "test_request_required_null_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -14785,6 +14889,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestRequiredNullNullableArrayArray
 														r.name = "TestRequestRequiredNullNullableArrayArray"
+														r.operationID = "test_request_required_null_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -14807,6 +14912,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestRequestRequiredNumber"
+										r.operationID = "test_request_required_number"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -14837,6 +14943,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredNumberArray"
+												r.operationID = "test_request_required_number_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -14857,6 +14964,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: TestRequestRequiredNumberArrayArray
 													r.name = "TestRequestRequiredNumberArrayArray"
+													r.operationID = "test_request_required_number_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -14876,6 +14984,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredNumberDouble"
+												r.operationID = "test_request_required_number_double"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -14906,6 +15015,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredNumberDoubleArray"
+														r.operationID = "test_request_required_number_double_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -14926,6 +15036,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestRequiredNumberDoubleArrayArray
 															r.name = "TestRequestRequiredNumberDoubleArrayArray"
+															r.operationID = "test_request_required_number_double_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -14945,6 +15056,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredNumberDoubleNullable"
+														r.operationID = "test_request_required_number_double_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -14964,6 +15076,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredNumberDoubleNullableArray"
+															r.operationID = "test_request_required_number_double_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -14984,6 +15097,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestRequiredNumberDoubleNullableArrayArray
 																r.name = "TestRequestRequiredNumberDoubleNullableArrayArray"
+																r.operationID = "test_request_required_number_double_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -15006,6 +15120,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredNumberFloat"
+												r.operationID = "test_request_required_number_float"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -15036,6 +15151,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredNumberFloatArray"
+														r.operationID = "test_request_required_number_float_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -15056,6 +15172,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestRequiredNumberFloatArrayArray
 															r.name = "TestRequestRequiredNumberFloatArrayArray"
+															r.operationID = "test_request_required_number_float_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15075,6 +15192,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredNumberFloatNullable"
+														r.operationID = "test_request_required_number_float_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -15094,6 +15212,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredNumberFloatNullableArray"
+															r.operationID = "test_request_required_number_float_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15114,6 +15233,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestRequiredNumberFloatNullableArrayArray
 																r.name = "TestRequestRequiredNumberFloatNullableArrayArray"
+																r.operationID = "test_request_required_number_float_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -15147,6 +15267,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestRequiredNumberInt32"
+													r.operationID = "test_request_required_number_int32"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -15177,6 +15298,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredNumberInt32Array"
+															r.operationID = "test_request_required_number_int32_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15197,6 +15319,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestRequiredNumberInt32ArrayArray
 																r.name = "TestRequestRequiredNumberInt32ArrayArray"
+																r.operationID = "test_request_required_number_int32_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -15216,6 +15339,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredNumberInt32Nullable"
+															r.operationID = "test_request_required_number_int32_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15235,6 +15359,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestRequiredNumberInt32NullableArray"
+																r.operationID = "test_request_required_number_int32_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -15255,6 +15380,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestRequestRequiredNumberInt32NullableArrayArray
 																	r.name = "TestRequestRequiredNumberInt32NullableArrayArray"
+																	r.operationID = "test_request_required_number_int32_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -15277,6 +15403,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestRequiredNumberInt64"
+													r.operationID = "test_request_required_number_int64"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -15307,6 +15434,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredNumberInt64Array"
+															r.operationID = "test_request_required_number_int64_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15327,6 +15455,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestRequiredNumberInt64ArrayArray
 																r.name = "TestRequestRequiredNumberInt64ArrayArray"
+																r.operationID = "test_request_required_number_int64_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -15346,6 +15475,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredNumberInt64Nullable"
+															r.operationID = "test_request_required_number_int64_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15365,6 +15495,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestRequiredNumberInt64NullableArray"
+																r.operationID = "test_request_required_number_int64_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -15385,6 +15516,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestRequestRequiredNumberInt64NullableArrayArray
 																	r.name = "TestRequestRequiredNumberInt64NullableArrayArray"
+																	r.operationID = "test_request_required_number_int64_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -15408,6 +15540,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredNumberNullable"
+												r.operationID = "test_request_required_number_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -15427,6 +15560,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestRequiredNumberNullableArray"
+													r.operationID = "test_request_required_number_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -15447,6 +15581,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestRequiredNumberNullableArrayArray
 														r.name = "TestRequestRequiredNumberNullableArrayArray"
+														r.operationID = "test_request_required_number_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -15470,6 +15605,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "POST":
 									r.name = "TestRequestRequiredString"
+									r.operationID = "test_request_required_string"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -15500,6 +15636,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestRequiredStringArray"
+											r.operationID = "test_request_required_string_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -15520,6 +15657,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "POST":
 												// Leaf: TestRequestRequiredStringArrayArray
 												r.name = "TestRequestRequiredStringArrayArray"
+												r.operationID = "test_request_required_string_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -15550,6 +15688,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredStringBinary"
+												r.operationID = "test_request_required_string_binary"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -15580,6 +15719,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringBinaryArray"
+														r.operationID = "test_request_required_string_binary_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -15600,6 +15740,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestRequiredStringBinaryArrayArray
 															r.name = "TestRequestRequiredStringBinaryArrayArray"
+															r.operationID = "test_request_required_string_binary_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15619,6 +15760,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringBinaryNullable"
+														r.operationID = "test_request_required_string_binary_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -15638,6 +15780,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredStringBinaryNullableArray"
+															r.operationID = "test_request_required_string_binary_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15658,6 +15801,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestRequiredStringBinaryNullableArrayArray
 																r.name = "TestRequestRequiredStringBinaryNullableArrayArray"
+																r.operationID = "test_request_required_string_binary_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -15680,6 +15824,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredStringByte"
+												r.operationID = "test_request_required_string_byte"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -15710,6 +15855,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringByteArray"
+														r.operationID = "test_request_required_string_byte_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -15730,6 +15876,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestRequiredStringByteArrayArray
 															r.name = "TestRequestRequiredStringByteArrayArray"
+															r.operationID = "test_request_required_string_byte_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15749,6 +15896,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringByteNullable"
+														r.operationID = "test_request_required_string_byte_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -15768,6 +15916,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredStringByteNullableArray"
+															r.operationID = "test_request_required_string_byte_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15788,6 +15937,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestRequiredStringByteNullableArrayArray
 																r.name = "TestRequestRequiredStringByteNullableArrayArray"
+																r.operationID = "test_request_required_string_byte_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -15822,6 +15972,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredStringDate"
+												r.operationID = "test_request_required_string_date"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -15841,6 +15992,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestRequiredStringDateTime"
+													r.operationID = "test_request_required_string_date-time"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -15871,6 +16023,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredStringDateTimeArray"
+															r.operationID = "test_request_required_string_date-time_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15891,6 +16044,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestRequiredStringDateTimeArrayArray
 																r.name = "TestRequestRequiredStringDateTimeArrayArray"
+																r.operationID = "test_request_required_string_date-time_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -15910,6 +16064,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredStringDateTimeNullable"
+															r.operationID = "test_request_required_string_date-time_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15929,6 +16084,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestRequiredStringDateTimeNullableArray"
+																r.operationID = "test_request_required_string_date-time_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -15949,6 +16105,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestRequestRequiredStringDateTimeNullableArrayArray
 																	r.name = "TestRequestRequiredStringDateTimeNullableArrayArray"
+																	r.operationID = "test_request_required_string_date-time_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -15982,6 +16139,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringDateArray"
+														r.operationID = "test_request_required_string_date_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16002,6 +16160,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestRequiredStringDateArrayArray
 															r.name = "TestRequestRequiredStringDateArrayArray"
+															r.operationID = "test_request_required_string_date_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -16021,6 +16180,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringDateNullable"
+														r.operationID = "test_request_required_string_date_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16040,6 +16200,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredStringDateNullableArray"
+															r.operationID = "test_request_required_string_date_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -16060,6 +16221,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestRequiredStringDateNullableArrayArray
 																r.name = "TestRequestRequiredStringDateNullableArrayArray"
+																r.operationID = "test_request_required_string_date_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -16082,6 +16244,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredStringDuration"
+												r.operationID = "test_request_required_string_duration"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -16112,6 +16275,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringDurationArray"
+														r.operationID = "test_request_required_string_duration_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16132,6 +16296,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestRequiredStringDurationArrayArray
 															r.name = "TestRequestRequiredStringDurationArrayArray"
+															r.operationID = "test_request_required_string_duration_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -16151,6 +16316,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringDurationNullable"
+														r.operationID = "test_request_required_string_duration_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16170,6 +16336,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredStringDurationNullableArray"
+															r.operationID = "test_request_required_string_duration_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -16190,6 +16357,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestRequiredStringDurationNullableArrayArray
 																r.name = "TestRequestRequiredStringDurationNullableArrayArray"
+																r.operationID = "test_request_required_string_duration_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -16213,6 +16381,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestRequiredStringEmail"
+											r.operationID = "test_request_required_string_email"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -16243,6 +16412,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestRequiredStringEmailArray"
+													r.operationID = "test_request_required_string_email_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -16263,6 +16433,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestRequiredStringEmailArrayArray
 														r.name = "TestRequestRequiredStringEmailArrayArray"
+														r.operationID = "test_request_required_string_email_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16282,6 +16453,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestRequiredStringEmailNullable"
+													r.operationID = "test_request_required_string_email_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -16301,6 +16473,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringEmailNullableArray"
+														r.operationID = "test_request_required_string_email_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16321,6 +16494,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestRequiredStringEmailNullableArrayArray
 															r.name = "TestRequestRequiredStringEmailNullableArrayArray"
+															r.operationID = "test_request_required_string_email_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -16343,6 +16517,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestRequiredStringHostname"
+											r.operationID = "test_request_required_string_hostname"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -16373,6 +16548,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestRequiredStringHostnameArray"
+													r.operationID = "test_request_required_string_hostname_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -16393,6 +16569,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestRequiredStringHostnameArrayArray
 														r.name = "TestRequestRequiredStringHostnameArrayArray"
+														r.operationID = "test_request_required_string_hostname_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16412,6 +16589,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestRequiredStringHostnameNullable"
+													r.operationID = "test_request_required_string_hostname_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -16431,6 +16609,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringHostnameNullableArray"
+														r.operationID = "test_request_required_string_hostname_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16451,6 +16630,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestRequiredStringHostnameNullableArrayArray
 															r.name = "TestRequestRequiredStringHostnameNullableArrayArray"
+															r.operationID = "test_request_required_string_hostname_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -16495,6 +16675,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestRequiredStringInt32"
+													r.operationID = "test_request_required_string_int32"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -16525,6 +16706,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredStringInt32Array"
+															r.operationID = "test_request_required_string_int32_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -16545,6 +16727,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestRequiredStringInt32ArrayArray
 																r.name = "TestRequestRequiredStringInt32ArrayArray"
+																r.operationID = "test_request_required_string_int32_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -16564,6 +16747,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredStringInt32Nullable"
+															r.operationID = "test_request_required_string_int32_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -16583,6 +16767,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestRequiredStringInt32NullableArray"
+																r.operationID = "test_request_required_string_int32_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -16603,6 +16788,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestRequestRequiredStringInt32NullableArrayArray
 																	r.name = "TestRequestRequiredStringInt32NullableArrayArray"
+																	r.operationID = "test_request_required_string_int32_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -16625,6 +16811,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestRequiredStringInt64"
+													r.operationID = "test_request_required_string_int64"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -16655,6 +16842,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredStringInt64Array"
+															r.operationID = "test_request_required_string_int64_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -16675,6 +16863,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestRequiredStringInt64ArrayArray
 																r.name = "TestRequestRequiredStringInt64ArrayArray"
+																r.operationID = "test_request_required_string_int64_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -16694,6 +16883,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredStringInt64Nullable"
+															r.operationID = "test_request_required_string_int64_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -16713,6 +16903,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestRequiredStringInt64NullableArray"
+																r.operationID = "test_request_required_string_int64_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -16733,6 +16924,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestRequestRequiredStringInt64NullableArrayArray
 																	r.name = "TestRequestRequiredStringInt64NullableArrayArray"
+																	r.operationID = "test_request_required_string_int64_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -16756,6 +16948,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredStringIP"
+												r.operationID = "test_request_required_string_ip"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -16786,6 +16979,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringIPArray"
+														r.operationID = "test_request_required_string_ip_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16806,6 +17000,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestRequiredStringIPArrayArray
 															r.name = "TestRequestRequiredStringIPArrayArray"
+															r.operationID = "test_request_required_string_ip_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -16825,6 +17020,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringIPNullable"
+														r.operationID = "test_request_required_string_ip_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16844,6 +17040,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredStringIPNullableArray"
+															r.operationID = "test_request_required_string_ip_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -16864,6 +17061,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestRequiredStringIPNullableArrayArray
 																r.name = "TestRequestRequiredStringIPNullableArrayArray"
+																r.operationID = "test_request_required_string_ip_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -16896,6 +17094,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringIpv4"
+														r.operationID = "test_request_required_string_ipv4"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -16926,6 +17125,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestRequiredStringIpv4Array"
+																r.operationID = "test_request_required_string_ipv4_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -16946,6 +17146,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestRequestRequiredStringIpv4ArrayArray
 																	r.name = "TestRequestRequiredStringIpv4ArrayArray"
+																	r.operationID = "test_request_required_string_ipv4_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -16965,6 +17166,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestRequiredStringIpv4Nullable"
+																r.operationID = "test_request_required_string_ipv4_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -16984,6 +17186,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "POST":
 																	r.name = "TestRequestRequiredStringIpv4NullableArray"
+																	r.operationID = "test_request_required_string_ipv4_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17004,6 +17207,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: TestRequestRequiredStringIpv4NullableArrayArray
 																		r.name = "TestRequestRequiredStringIpv4NullableArrayArray"
+																		r.operationID = "test_request_required_string_ipv4_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -17026,6 +17230,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringIpv6"
+														r.operationID = "test_request_required_string_ipv6"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -17056,6 +17261,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestRequiredStringIpv6Array"
+																r.operationID = "test_request_required_string_ipv6_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17076,6 +17282,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestRequestRequiredStringIpv6ArrayArray
 																	r.name = "TestRequestRequiredStringIpv6ArrayArray"
+																	r.operationID = "test_request_required_string_ipv6_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17095,6 +17302,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestRequiredStringIpv6Nullable"
+																r.operationID = "test_request_required_string_ipv6_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17114,6 +17322,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "POST":
 																	r.name = "TestRequestRequiredStringIpv6NullableArray"
+																	r.operationID = "test_request_required_string_ipv6_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17134,6 +17343,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: TestRequestRequiredStringIpv6NullableArrayArray
 																		r.name = "TestRequestRequiredStringIpv6NullableArrayArray"
+																		r.operationID = "test_request_required_string_ipv6_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -17159,6 +17369,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestRequiredStringNullable"
+											r.operationID = "test_request_required_string_nullable"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -17178,6 +17389,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredStringNullableArray"
+												r.operationID = "test_request_required_string_nullable_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -17198,6 +17410,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: TestRequestRequiredStringNullableArrayArray
 													r.name = "TestRequestRequiredStringNullableArrayArray"
+													r.operationID = "test_request_required_string_nullable_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -17218,6 +17431,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestRequiredStringPassword"
+											r.operationID = "test_request_required_string_password"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -17248,6 +17462,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestRequiredStringPasswordArray"
+													r.operationID = "test_request_required_string_password_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -17268,6 +17483,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestRequiredStringPasswordArrayArray
 														r.name = "TestRequestRequiredStringPasswordArrayArray"
+														r.operationID = "test_request_required_string_password_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -17287,6 +17503,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestRequiredStringPasswordNullable"
+													r.operationID = "test_request_required_string_password_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -17306,6 +17523,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringPasswordNullableArray"
+														r.operationID = "test_request_required_string_password_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -17326,6 +17544,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestRequiredStringPasswordNullableArrayArray
 															r.name = "TestRequestRequiredStringPasswordNullableArrayArray"
+															r.operationID = "test_request_required_string_password_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -17348,6 +17567,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestRequiredStringTime"
+											r.operationID = "test_request_required_string_time"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -17378,6 +17598,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestRequiredStringTimeArray"
+													r.operationID = "test_request_required_string_time_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -17398,6 +17619,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestRequiredStringTimeArrayArray
 														r.name = "TestRequestRequiredStringTimeArrayArray"
+														r.operationID = "test_request_required_string_time_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -17417,6 +17639,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestRequiredStringTimeNullable"
+													r.operationID = "test_request_required_string_time_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -17436,6 +17659,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringTimeNullableArray"
+														r.operationID = "test_request_required_string_time_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -17456,6 +17680,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestRequiredStringTimeNullableArrayArray
 															r.name = "TestRequestRequiredStringTimeNullableArrayArray"
+															r.operationID = "test_request_required_string_time_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -17489,6 +17714,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredStringUnix"
+												r.operationID = "test_request_required_string_unix"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -17530,6 +17756,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredStringUnixMicro"
+															r.operationID = "test_request_required_string_unix-micro"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -17560,6 +17787,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "POST":
 																	r.name = "TestRequestRequiredStringUnixMicroArray"
+																	r.operationID = "test_request_required_string_unix-micro_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17580,6 +17808,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: TestRequestRequiredStringUnixMicroArrayArray
 																		r.name = "TestRequestRequiredStringUnixMicroArrayArray"
+																		r.operationID = "test_request_required_string_unix-micro_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -17599,6 +17828,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "POST":
 																	r.name = "TestRequestRequiredStringUnixMicroNullable"
+																	r.operationID = "test_request_required_string_unix-micro_nullable"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17618,6 +17848,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	switch method {
 																	case "POST":
 																		r.name = "TestRequestRequiredStringUnixMicroNullableArray"
+																		r.operationID = "test_request_required_string_unix-micro_nullable_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -17638,6 +17869,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																		case "POST":
 																			// Leaf: TestRequestRequiredStringUnixMicroNullableArrayArray
 																			r.name = "TestRequestRequiredStringUnixMicroNullableArrayArray"
+																			r.operationID = "test_request_required_string_unix-micro_nullable_array_array"
 																			r.args = args
 																			r.count = 0
 																			return r, true
@@ -17660,6 +17892,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredStringUnixMilli"
+															r.operationID = "test_request_required_string_unix-milli"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -17690,6 +17923,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "POST":
 																	r.name = "TestRequestRequiredStringUnixMilliArray"
+																	r.operationID = "test_request_required_string_unix-milli_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17710,6 +17944,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: TestRequestRequiredStringUnixMilliArrayArray
 																		r.name = "TestRequestRequiredStringUnixMilliArrayArray"
+																		r.operationID = "test_request_required_string_unix-milli_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -17729,6 +17964,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "POST":
 																	r.name = "TestRequestRequiredStringUnixMilliNullable"
+																	r.operationID = "test_request_required_string_unix-milli_nullable"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17748,6 +17984,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	switch method {
 																	case "POST":
 																		r.name = "TestRequestRequiredStringUnixMilliNullableArray"
+																		r.operationID = "test_request_required_string_unix-milli_nullable_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -17768,6 +18005,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																		case "POST":
 																			// Leaf: TestRequestRequiredStringUnixMilliNullableArrayArray
 																			r.name = "TestRequestRequiredStringUnixMilliNullableArrayArray"
+																			r.operationID = "test_request_required_string_unix-milli_nullable_array_array"
 																			r.args = args
 																			r.count = 0
 																			return r, true
@@ -17791,6 +18029,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringUnixNano"
+														r.operationID = "test_request_required_string_unix-nano"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -17821,6 +18060,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestRequiredStringUnixNanoArray"
+																r.operationID = "test_request_required_string_unix-nano_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17841,6 +18081,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestRequestRequiredStringUnixNanoArrayArray
 																	r.name = "TestRequestRequiredStringUnixNanoArrayArray"
+																	r.operationID = "test_request_required_string_unix-nano_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17860,6 +18101,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestRequiredStringUnixNanoNullable"
+																r.operationID = "test_request_required_string_unix-nano_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17879,6 +18121,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "POST":
 																	r.name = "TestRequestRequiredStringUnixNanoNullableArray"
+																	r.operationID = "test_request_required_string_unix-nano_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17899,6 +18142,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: TestRequestRequiredStringUnixNanoNullableArrayArray
 																		r.name = "TestRequestRequiredStringUnixNanoNullableArrayArray"
+																		r.operationID = "test_request_required_string_unix-nano_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -17921,6 +18165,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringUnixSeconds"
+														r.operationID = "test_request_required_string_unix-seconds"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -17951,6 +18196,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestRequiredStringUnixSecondsArray"
+																r.operationID = "test_request_required_string_unix-seconds_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17971,6 +18217,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestRequestRequiredStringUnixSecondsArrayArray
 																	r.name = "TestRequestRequiredStringUnixSecondsArrayArray"
+																	r.operationID = "test_request_required_string_unix-seconds_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17990,6 +18237,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestRequiredStringUnixSecondsNullable"
+																r.operationID = "test_request_required_string_unix-seconds_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -18009,6 +18257,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "POST":
 																	r.name = "TestRequestRequiredStringUnixSecondsNullableArray"
+																	r.operationID = "test_request_required_string_unix-seconds_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -18029,6 +18278,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: TestRequestRequiredStringUnixSecondsNullableArrayArray
 																		r.name = "TestRequestRequiredStringUnixSecondsNullableArrayArray"
+																		r.operationID = "test_request_required_string_unix-seconds_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -18063,6 +18313,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringUnixArray"
+														r.operationID = "test_request_required_string_unix_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18083,6 +18334,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestRequiredStringUnixArrayArray
 															r.name = "TestRequestRequiredStringUnixArrayArray"
+															r.operationID = "test_request_required_string_unix_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -18102,6 +18354,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringUnixNullable"
+														r.operationID = "test_request_required_string_unix_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18121,6 +18374,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredStringUnixNullableArray"
+															r.operationID = "test_request_required_string_unix_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -18141,6 +18395,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestRequiredStringUnixNullableArrayArray
 																r.name = "TestRequestRequiredStringUnixNullableArrayArray"
+																r.operationID = "test_request_required_string_unix_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -18163,6 +18418,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredStringURI"
+												r.operationID = "test_request_required_string_uri"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -18193,6 +18449,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringURIArray"
+														r.operationID = "test_request_required_string_uri_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18213,6 +18470,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestRequiredStringURIArrayArray
 															r.name = "TestRequestRequiredStringURIArrayArray"
+															r.operationID = "test_request_required_string_uri_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -18232,6 +18490,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringURINullable"
+														r.operationID = "test_request_required_string_uri_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18251,6 +18510,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredStringURINullableArray"
+															r.operationID = "test_request_required_string_uri_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -18271,6 +18531,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestRequiredStringURINullableArrayArray
 																r.name = "TestRequestRequiredStringURINullableArrayArray"
+																r.operationID = "test_request_required_string_uri_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -18293,6 +18554,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestRequiredStringUUID"
+												r.operationID = "test_request_required_string_uuid"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -18323,6 +18585,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringUUIDArray"
+														r.operationID = "test_request_required_string_uuid_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18343,6 +18606,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestRequiredStringUUIDArrayArray
 															r.name = "TestRequestRequiredStringUUIDArrayArray"
+															r.operationID = "test_request_required_string_uuid_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -18362,6 +18626,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestRequiredStringUUIDNullable"
+														r.operationID = "test_request_required_string_uuid_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18381,6 +18646,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestRequiredStringUUIDNullableArray"
+															r.operationID = "test_request_required_string_uuid_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -18401,6 +18667,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestRequiredStringUUIDNullableArrayArray
 																r.name = "TestRequestRequiredStringUUIDNullableArrayArray"
+																r.operationID = "test_request_required_string_uuid_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -18427,6 +18694,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "POST":
 								r.name = "TestRequestString"
+								r.operationID = "test_request_string"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -18457,6 +18725,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestRequestStringArray"
+										r.operationID = "test_request_string_array"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -18477,6 +18746,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "POST":
 											// Leaf: TestRequestStringArrayArray
 											r.name = "TestRequestStringArrayArray"
+											r.operationID = "test_request_string_array_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -18507,6 +18777,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestStringBinary"
+											r.operationID = "test_request_string_binary"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -18537,6 +18808,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringBinaryArray"
+													r.operationID = "test_request_string_binary_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -18557,6 +18829,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestStringBinaryArrayArray
 														r.name = "TestRequestStringBinaryArrayArray"
+														r.operationID = "test_request_string_binary_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18576,6 +18849,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringBinaryNullable"
+													r.operationID = "test_request_string_binary_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -18595,6 +18869,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestStringBinaryNullableArray"
+														r.operationID = "test_request_string_binary_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18615,6 +18890,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestStringBinaryNullableArrayArray
 															r.name = "TestRequestStringBinaryNullableArrayArray"
+															r.operationID = "test_request_string_binary_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -18637,6 +18913,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestStringByte"
+											r.operationID = "test_request_string_byte"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -18667,6 +18944,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringByteArray"
+													r.operationID = "test_request_string_byte_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -18687,6 +18965,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestStringByteArrayArray
 														r.name = "TestRequestStringByteArrayArray"
+														r.operationID = "test_request_string_byte_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18706,6 +18985,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringByteNullable"
+													r.operationID = "test_request_string_byte_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -18725,6 +19005,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestStringByteNullableArray"
+														r.operationID = "test_request_string_byte_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18745,6 +19026,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestStringByteNullableArrayArray
 															r.name = "TestRequestStringByteNullableArrayArray"
+															r.operationID = "test_request_string_byte_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -18779,6 +19061,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestStringDate"
+											r.operationID = "test_request_string_date"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -18798,6 +19081,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestStringDateTime"
+												r.operationID = "test_request_string_date-time"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -18828,6 +19112,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestStringDateTimeArray"
+														r.operationID = "test_request_string_date-time_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18848,6 +19133,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestStringDateTimeArrayArray
 															r.name = "TestRequestStringDateTimeArrayArray"
+															r.operationID = "test_request_string_date-time_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -18867,6 +19153,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestStringDateTimeNullable"
+														r.operationID = "test_request_string_date-time_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18886,6 +19173,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestStringDateTimeNullableArray"
+															r.operationID = "test_request_string_date-time_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -18906,6 +19194,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestStringDateTimeNullableArrayArray
 																r.name = "TestRequestStringDateTimeNullableArrayArray"
+																r.operationID = "test_request_string_date-time_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -18939,6 +19228,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringDateArray"
+													r.operationID = "test_request_string_date_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -18959,6 +19249,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestStringDateArrayArray
 														r.name = "TestRequestStringDateArrayArray"
+														r.operationID = "test_request_string_date_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18978,6 +19269,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringDateNullable"
+													r.operationID = "test_request_string_date_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -18997,6 +19289,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestStringDateNullableArray"
+														r.operationID = "test_request_string_date_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -19017,6 +19310,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestStringDateNullableArrayArray
 															r.name = "TestRequestStringDateNullableArrayArray"
+															r.operationID = "test_request_string_date_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19039,6 +19333,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestStringDuration"
+											r.operationID = "test_request_string_duration"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -19069,6 +19364,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringDurationArray"
+													r.operationID = "test_request_string_duration_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -19089,6 +19385,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestStringDurationArrayArray
 														r.name = "TestRequestStringDurationArrayArray"
+														r.operationID = "test_request_string_duration_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -19108,6 +19405,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringDurationNullable"
+													r.operationID = "test_request_string_duration_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -19127,6 +19425,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestStringDurationNullableArray"
+														r.operationID = "test_request_string_duration_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -19147,6 +19446,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestStringDurationNullableArrayArray
 															r.name = "TestRequestStringDurationNullableArrayArray"
+															r.operationID = "test_request_string_duration_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19170,6 +19470,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestRequestStringEmail"
+										r.operationID = "test_request_string_email"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -19200,6 +19501,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestStringEmailArray"
+												r.operationID = "test_request_string_email_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19220,6 +19522,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: TestRequestStringEmailArrayArray
 													r.name = "TestRequestStringEmailArrayArray"
+													r.operationID = "test_request_string_email_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -19239,6 +19542,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestStringEmailNullable"
+												r.operationID = "test_request_string_email_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19258,6 +19562,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringEmailNullableArray"
+													r.operationID = "test_request_string_email_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -19278,6 +19583,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestStringEmailNullableArrayArray
 														r.name = "TestRequestStringEmailNullableArrayArray"
+														r.operationID = "test_request_string_email_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -19300,6 +19606,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestRequestStringHostname"
+										r.operationID = "test_request_string_hostname"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -19330,6 +19637,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestStringHostnameArray"
+												r.operationID = "test_request_string_hostname_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19350,6 +19658,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: TestRequestStringHostnameArrayArray
 													r.name = "TestRequestStringHostnameArrayArray"
+													r.operationID = "test_request_string_hostname_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -19369,6 +19678,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestStringHostnameNullable"
+												r.operationID = "test_request_string_hostname_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19388,6 +19698,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringHostnameNullableArray"
+													r.operationID = "test_request_string_hostname_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -19408,6 +19719,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestStringHostnameNullableArrayArray
 														r.name = "TestRequestStringHostnameNullableArrayArray"
+														r.operationID = "test_request_string_hostname_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -19452,6 +19764,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestStringInt32"
+												r.operationID = "test_request_string_int32"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19482,6 +19795,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestStringInt32Array"
+														r.operationID = "test_request_string_int32_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -19502,6 +19816,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestStringInt32ArrayArray
 															r.name = "TestRequestStringInt32ArrayArray"
+															r.operationID = "test_request_string_int32_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19521,6 +19836,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestStringInt32Nullable"
+														r.operationID = "test_request_string_int32_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -19540,6 +19856,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestStringInt32NullableArray"
+															r.operationID = "test_request_string_int32_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19560,6 +19877,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestStringInt32NullableArrayArray
 																r.name = "TestRequestStringInt32NullableArrayArray"
+																r.operationID = "test_request_string_int32_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -19582,6 +19900,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestStringInt64"
+												r.operationID = "test_request_string_int64"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -19612,6 +19931,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestStringInt64Array"
+														r.operationID = "test_request_string_int64_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -19632,6 +19952,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestStringInt64ArrayArray
 															r.name = "TestRequestStringInt64ArrayArray"
+															r.operationID = "test_request_string_int64_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19651,6 +19972,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestStringInt64Nullable"
+														r.operationID = "test_request_string_int64_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -19670,6 +19992,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestStringInt64NullableArray"
+															r.operationID = "test_request_string_int64_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19690,6 +20013,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestStringInt64NullableArrayArray
 																r.name = "TestRequestStringInt64NullableArrayArray"
+																r.operationID = "test_request_string_int64_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -19713,6 +20037,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestStringIP"
+											r.operationID = "test_request_string_ip"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -19743,6 +20068,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringIPArray"
+													r.operationID = "test_request_string_ip_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -19763,6 +20089,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestStringIPArrayArray
 														r.name = "TestRequestStringIPArrayArray"
+														r.operationID = "test_request_string_ip_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -19782,6 +20109,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringIPNullable"
+													r.operationID = "test_request_string_ip_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -19801,6 +20129,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestStringIPNullableArray"
+														r.operationID = "test_request_string_ip_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -19821,6 +20150,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestStringIPNullableArrayArray
 															r.name = "TestRequestStringIPNullableArrayArray"
+															r.operationID = "test_request_string_ip_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19853,6 +20183,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringIpv4"
+													r.operationID = "test_request_string_ipv4"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -19883,6 +20214,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestStringIpv4Array"
+															r.operationID = "test_request_string_ipv4_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19903,6 +20235,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestStringIpv4ArrayArray
 																r.name = "TestRequestStringIpv4ArrayArray"
+																r.operationID = "test_request_string_ipv4_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -19922,6 +20255,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestStringIpv4Nullable"
+															r.operationID = "test_request_string_ipv4_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -19941,6 +20275,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestStringIpv4NullableArray"
+																r.operationID = "test_request_string_ipv4_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -19961,6 +20296,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestRequestStringIpv4NullableArrayArray
 																	r.name = "TestRequestStringIpv4NullableArrayArray"
+																	r.operationID = "test_request_string_ipv4_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -19983,6 +20319,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringIpv6"
+													r.operationID = "test_request_string_ipv6"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -20013,6 +20350,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestStringIpv6Array"
+															r.operationID = "test_request_string_ipv6_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -20033,6 +20371,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestStringIpv6ArrayArray
 																r.name = "TestRequestStringIpv6ArrayArray"
+																r.operationID = "test_request_string_ipv6_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -20052,6 +20391,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestStringIpv6Nullable"
+															r.operationID = "test_request_string_ipv6_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -20071,6 +20411,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestStringIpv6NullableArray"
+																r.operationID = "test_request_string_ipv6_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -20091,6 +20432,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestRequestStringIpv6NullableArrayArray
 																	r.name = "TestRequestStringIpv6NullableArrayArray"
+																	r.operationID = "test_request_string_ipv6_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -20116,6 +20458,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestRequestStringNullable"
+										r.operationID = "test_request_string_nullable"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -20135,6 +20478,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestStringNullableArray"
+											r.operationID = "test_request_string_nullable_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -20155,6 +20499,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "POST":
 												// Leaf: TestRequestStringNullableArrayArray
 												r.name = "TestRequestStringNullableArrayArray"
+												r.operationID = "test_request_string_nullable_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -20175,6 +20520,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestRequestStringPassword"
+										r.operationID = "test_request_string_password"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -20205,6 +20551,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestStringPasswordArray"
+												r.operationID = "test_request_string_password_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -20225,6 +20572,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: TestRequestStringPasswordArrayArray
 													r.name = "TestRequestStringPasswordArrayArray"
+													r.operationID = "test_request_string_password_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -20244,6 +20592,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestStringPasswordNullable"
+												r.operationID = "test_request_string_password_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -20263,6 +20612,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringPasswordNullableArray"
+													r.operationID = "test_request_string_password_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -20283,6 +20633,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestStringPasswordNullableArrayArray
 														r.name = "TestRequestStringPasswordNullableArrayArray"
+														r.operationID = "test_request_string_password_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -20305,6 +20656,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestRequestStringTime"
+										r.operationID = "test_request_string_time"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -20335,6 +20687,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestStringTimeArray"
+												r.operationID = "test_request_string_time_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -20355,6 +20708,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: TestRequestStringTimeArrayArray
 													r.name = "TestRequestStringTimeArrayArray"
+													r.operationID = "test_request_string_time_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -20374,6 +20728,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestRequestStringTimeNullable"
+												r.operationID = "test_request_string_time_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -20393,6 +20748,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringTimeNullableArray"
+													r.operationID = "test_request_string_time_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -20413,6 +20769,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestStringTimeNullableArrayArray
 														r.name = "TestRequestStringTimeNullableArrayArray"
+														r.operationID = "test_request_string_time_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -20446,6 +20803,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestStringUnix"
+											r.operationID = "test_request_string_unix"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -20487,6 +20845,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestStringUnixMicro"
+														r.operationID = "test_request_string_unix-micro"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -20517,6 +20876,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestStringUnixMicroArray"
+																r.operationID = "test_request_string_unix-micro_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -20537,6 +20897,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestRequestStringUnixMicroArrayArray
 																	r.name = "TestRequestStringUnixMicroArrayArray"
+																	r.operationID = "test_request_string_unix-micro_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -20556,6 +20917,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestStringUnixMicroNullable"
+																r.operationID = "test_request_string_unix-micro_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -20575,6 +20937,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "POST":
 																	r.name = "TestRequestStringUnixMicroNullableArray"
+																	r.operationID = "test_request_string_unix-micro_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -20595,6 +20958,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: TestRequestStringUnixMicroNullableArrayArray
 																		r.name = "TestRequestStringUnixMicroNullableArrayArray"
+																		r.operationID = "test_request_string_unix-micro_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -20617,6 +20981,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestStringUnixMilli"
+														r.operationID = "test_request_string_unix-milli"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -20647,6 +21012,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestStringUnixMilliArray"
+																r.operationID = "test_request_string_unix-milli_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -20667,6 +21033,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestRequestStringUnixMilliArrayArray
 																	r.name = "TestRequestStringUnixMilliArrayArray"
+																	r.operationID = "test_request_string_unix-milli_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -20686,6 +21053,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestStringUnixMilliNullable"
+																r.operationID = "test_request_string_unix-milli_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -20705,6 +21073,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "POST":
 																	r.name = "TestRequestStringUnixMilliNullableArray"
+																	r.operationID = "test_request_string_unix-milli_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -20725,6 +21094,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: TestRequestStringUnixMilliNullableArrayArray
 																		r.name = "TestRequestStringUnixMilliNullableArrayArray"
+																		r.operationID = "test_request_string_unix-milli_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -20748,6 +21118,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringUnixNano"
+													r.operationID = "test_request_string_unix-nano"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -20778,6 +21149,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestStringUnixNanoArray"
+															r.operationID = "test_request_string_unix-nano_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -20798,6 +21170,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestStringUnixNanoArrayArray
 																r.name = "TestRequestStringUnixNanoArrayArray"
+																r.operationID = "test_request_string_unix-nano_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -20817,6 +21190,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestStringUnixNanoNullable"
+															r.operationID = "test_request_string_unix-nano_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -20836,6 +21210,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestStringUnixNanoNullableArray"
+																r.operationID = "test_request_string_unix-nano_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -20856,6 +21231,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestRequestStringUnixNanoNullableArrayArray
 																	r.name = "TestRequestStringUnixNanoNullableArrayArray"
+																	r.operationID = "test_request_string_unix-nano_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -20878,6 +21254,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringUnixSeconds"
+													r.operationID = "test_request_string_unix-seconds"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -20908,6 +21285,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestStringUnixSecondsArray"
+															r.operationID = "test_request_string_unix-seconds_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -20928,6 +21306,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestRequestStringUnixSecondsArrayArray
 																r.name = "TestRequestStringUnixSecondsArrayArray"
+																r.operationID = "test_request_string_unix-seconds_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -20947,6 +21326,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestRequestStringUnixSecondsNullable"
+															r.operationID = "test_request_string_unix-seconds_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -20966,6 +21346,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestRequestStringUnixSecondsNullableArray"
+																r.operationID = "test_request_string_unix-seconds_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -20986,6 +21367,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestRequestStringUnixSecondsNullableArrayArray
 																	r.name = "TestRequestStringUnixSecondsNullableArrayArray"
+																	r.operationID = "test_request_string_unix-seconds_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -21020,6 +21402,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringUnixArray"
+													r.operationID = "test_request_string_unix_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21040,6 +21423,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestStringUnixArrayArray
 														r.name = "TestRequestStringUnixArrayArray"
+														r.operationID = "test_request_string_unix_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21059,6 +21443,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringUnixNullable"
+													r.operationID = "test_request_string_unix_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21078,6 +21463,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestStringUnixNullableArray"
+														r.operationID = "test_request_string_unix_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21098,6 +21484,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestStringUnixNullableArrayArray
 															r.name = "TestRequestStringUnixNullableArrayArray"
+															r.operationID = "test_request_string_unix_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -21120,6 +21507,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestStringURI"
+											r.operationID = "test_request_string_uri"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -21150,6 +21538,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringURIArray"
+													r.operationID = "test_request_string_uri_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21170,6 +21559,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestStringURIArrayArray
 														r.name = "TestRequestStringURIArrayArray"
+														r.operationID = "test_request_string_uri_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21189,6 +21579,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringURINullable"
+													r.operationID = "test_request_string_uri_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21208,6 +21599,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestStringURINullableArray"
+														r.operationID = "test_request_string_uri_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21228,6 +21620,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestStringURINullableArrayArray
 															r.name = "TestRequestStringURINullableArrayArray"
+															r.operationID = "test_request_string_uri_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -21250,6 +21643,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestRequestStringUUID"
+											r.operationID = "test_request_string_uuid"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -21280,6 +21674,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringUUIDArray"
+													r.operationID = "test_request_string_uuid_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21300,6 +21695,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestRequestStringUUIDArrayArray
 														r.name = "TestRequestStringUUIDArrayArray"
+														r.operationID = "test_request_string_uuid_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21319,6 +21715,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestRequestStringUUIDNullable"
+													r.operationID = "test_request_string_uuid_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21338,6 +21735,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestRequestStringUUIDNullableArray"
+														r.operationID = "test_request_string_uuid_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21358,6 +21756,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestRequestStringUUIDNullableArrayArray
 															r.name = "TestRequestStringUUIDNullableArrayArray"
+															r.operationID = "test_request_string_uuid_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -21396,6 +21795,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: TestResponseAny
 								r.name = "TestResponseAny"
+								r.operationID = "test_response_Any"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -21415,6 +21815,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: TestResponseEmptyStruct
 								r.name = "TestResponseEmptyStruct"
+								r.operationID = "test_response_EmptyStruct"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -21434,6 +21835,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							case "POST":
 								// Leaf: TestResponseFormatTest
 								r.name = "TestResponseFormatTest"
+								r.operationID = "test_response_FormatTest"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -21452,6 +21854,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "POST":
 								r.name = "TestResponseBoolean"
+								r.operationID = "test_response_boolean"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -21482,6 +21885,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestResponseBooleanArray"
+										r.operationID = "test_response_boolean_array"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -21502,6 +21906,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "POST":
 											// Leaf: TestResponseBooleanArrayArray
 											r.name = "TestResponseBooleanArrayArray"
+											r.operationID = "test_response_boolean_array_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -21521,6 +21926,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestResponseBooleanNullable"
+										r.operationID = "test_response_boolean_nullable"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -21540,6 +21946,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseBooleanNullableArray"
+											r.operationID = "test_response_boolean_nullable_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -21560,6 +21967,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "POST":
 												// Leaf: TestResponseBooleanNullableArrayArray
 												r.name = "TestResponseBooleanNullableArrayArray"
+												r.operationID = "test_response_boolean_nullable_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -21582,6 +21990,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "POST":
 								r.name = "TestResponseInteger"
+								r.operationID = "test_response_integer"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -21612,6 +22021,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestResponseIntegerArray"
+										r.operationID = "test_response_integer_array"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -21632,6 +22042,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "POST":
 											// Leaf: TestResponseIntegerArrayArray
 											r.name = "TestResponseIntegerArrayArray"
+											r.operationID = "test_response_integer_array_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -21662,6 +22073,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseIntegerInt32"
+											r.operationID = "test_response_integer_int32"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -21692,6 +22104,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseIntegerInt32Array"
+													r.operationID = "test_response_integer_int32_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21712,6 +22125,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestResponseIntegerInt32ArrayArray
 														r.name = "TestResponseIntegerInt32ArrayArray"
+														r.operationID = "test_response_integer_int32_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21731,6 +22145,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseIntegerInt32Nullable"
+													r.operationID = "test_response_integer_int32_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21750,6 +22165,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseIntegerInt32NullableArray"
+														r.operationID = "test_response_integer_int32_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21770,6 +22186,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestResponseIntegerInt32NullableArrayArray
 															r.name = "TestResponseIntegerInt32NullableArrayArray"
+															r.operationID = "test_response_integer_int32_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -21792,6 +22209,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseIntegerInt64"
+											r.operationID = "test_response_integer_int64"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -21822,6 +22240,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseIntegerInt64Array"
+													r.operationID = "test_response_integer_int64_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21842,6 +22261,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestResponseIntegerInt64ArrayArray
 														r.name = "TestResponseIntegerInt64ArrayArray"
+														r.operationID = "test_response_integer_int64_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21861,6 +22281,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseIntegerInt64Nullable"
+													r.operationID = "test_response_integer_int64_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -21880,6 +22301,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseIntegerInt64NullableArray"
+														r.operationID = "test_response_integer_int64_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -21900,6 +22322,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestResponseIntegerInt64NullableArrayArray
 															r.name = "TestResponseIntegerInt64NullableArrayArray"
+															r.operationID = "test_response_integer_int64_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -21923,6 +22346,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestResponseIntegerNullable"
+										r.operationID = "test_response_integer_nullable"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -21942,6 +22366,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseIntegerNullableArray"
+											r.operationID = "test_response_integer_nullable_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -21962,6 +22387,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "POST":
 												// Leaf: TestResponseIntegerNullableArrayArray
 												r.name = "TestResponseIntegerNullableArrayArray"
+												r.operationID = "test_response_integer_nullable_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -21995,6 +22421,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "POST":
 									r.name = "TestResponseNull"
+									r.operationID = "test_response_null"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -22025,6 +22452,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseNullArray"
+											r.operationID = "test_response_null_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -22045,6 +22473,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "POST":
 												// Leaf: TestResponseNullArrayArray
 												r.name = "TestResponseNullArrayArray"
+												r.operationID = "test_response_null_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -22064,6 +22493,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseNullNullable"
+											r.operationID = "test_response_null_nullable"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -22083,6 +22513,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestResponseNullNullableArray"
+												r.operationID = "test_response_null_nullable_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -22103,6 +22534,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: TestResponseNullNullableArrayArray
 													r.name = "TestResponseNullNullableArrayArray"
+													r.operationID = "test_response_null_nullable_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -22125,6 +22557,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								switch method {
 								case "POST":
 									r.name = "TestResponseNumber"
+									r.operationID = "test_response_number"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -22155,6 +22588,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseNumberArray"
+											r.operationID = "test_response_number_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -22175,6 +22609,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "POST":
 												// Leaf: TestResponseNumberArrayArray
 												r.name = "TestResponseNumberArrayArray"
+												r.operationID = "test_response_number_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -22194,6 +22629,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseNumberDouble"
+											r.operationID = "test_response_number_double"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -22224,6 +22660,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseNumberDoubleArray"
+													r.operationID = "test_response_number_double_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -22244,6 +22681,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestResponseNumberDoubleArrayArray
 														r.name = "TestResponseNumberDoubleArrayArray"
+														r.operationID = "test_response_number_double_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22263,6 +22701,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseNumberDoubleNullable"
+													r.operationID = "test_response_number_double_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -22282,6 +22721,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseNumberDoubleNullableArray"
+														r.operationID = "test_response_number_double_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22302,6 +22742,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestResponseNumberDoubleNullableArrayArray
 															r.name = "TestResponseNumberDoubleNullableArrayArray"
+															r.operationID = "test_response_number_double_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22324,6 +22765,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseNumberFloat"
+											r.operationID = "test_response_number_float"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -22354,6 +22796,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseNumberFloatArray"
+													r.operationID = "test_response_number_float_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -22374,6 +22817,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestResponseNumberFloatArrayArray
 														r.name = "TestResponseNumberFloatArrayArray"
+														r.operationID = "test_response_number_float_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22393,6 +22837,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseNumberFloatNullable"
+													r.operationID = "test_response_number_float_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -22412,6 +22857,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseNumberFloatNullableArray"
+														r.operationID = "test_response_number_float_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22432,6 +22878,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestResponseNumberFloatNullableArrayArray
 															r.name = "TestResponseNumberFloatNullableArrayArray"
+															r.operationID = "test_response_number_float_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22465,6 +22912,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestResponseNumberInt32"
+												r.operationID = "test_response_number_int32"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -22495,6 +22943,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseNumberInt32Array"
+														r.operationID = "test_response_number_int32_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22515,6 +22964,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestResponseNumberInt32ArrayArray
 															r.name = "TestResponseNumberInt32ArrayArray"
+															r.operationID = "test_response_number_int32_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22534,6 +22984,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseNumberInt32Nullable"
+														r.operationID = "test_response_number_int32_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22553,6 +23004,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestResponseNumberInt32NullableArray"
+															r.operationID = "test_response_number_int32_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22573,6 +23025,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestResponseNumberInt32NullableArrayArray
 																r.name = "TestResponseNumberInt32NullableArrayArray"
+																r.operationID = "test_response_number_int32_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -22595,6 +23048,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestResponseNumberInt64"
+												r.operationID = "test_response_number_int64"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -22625,6 +23079,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseNumberInt64Array"
+														r.operationID = "test_response_number_int64_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22645,6 +23100,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestResponseNumberInt64ArrayArray
 															r.name = "TestResponseNumberInt64ArrayArray"
+															r.operationID = "test_response_number_int64_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22664,6 +23120,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseNumberInt64Nullable"
+														r.operationID = "test_response_number_int64_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22683,6 +23140,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestResponseNumberInt64NullableArray"
+															r.operationID = "test_response_number_int64_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22703,6 +23161,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestResponseNumberInt64NullableArrayArray
 																r.name = "TestResponseNumberInt64NullableArrayArray"
+																r.operationID = "test_response_number_int64_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -22726,6 +23185,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseNumberNullable"
+											r.operationID = "test_response_number_nullable"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -22745,6 +23205,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestResponseNumberNullableArray"
+												r.operationID = "test_response_number_nullable_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -22765,6 +23226,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: TestResponseNumberNullableArrayArray
 													r.name = "TestResponseNumberNullableArrayArray"
+													r.operationID = "test_response_number_nullable_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -22788,6 +23250,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							switch method {
 							case "POST":
 								r.name = "TestResponseString"
+								r.operationID = "test_response_string"
 								r.args = args
 								r.count = 0
 								return r, true
@@ -22818,6 +23281,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestResponseStringArray"
+										r.operationID = "test_response_string_array"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -22838,6 +23302,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										case "POST":
 											// Leaf: TestResponseStringArrayArray
 											r.name = "TestResponseStringArrayArray"
+											r.operationID = "test_response_string_array_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -22868,6 +23333,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseStringBinary"
+											r.operationID = "test_response_string_binary"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -22898,6 +23364,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringBinaryArray"
+													r.operationID = "test_response_string_binary_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -22918,6 +23385,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestResponseStringBinaryArrayArray
 														r.name = "TestResponseStringBinaryArrayArray"
+														r.operationID = "test_response_string_binary_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22937,6 +23405,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringBinaryNullable"
+													r.operationID = "test_response_string_binary_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -22956,6 +23425,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseStringBinaryNullableArray"
+														r.operationID = "test_response_string_binary_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -22976,6 +23446,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestResponseStringBinaryNullableArrayArray
 															r.name = "TestResponseStringBinaryNullableArrayArray"
+															r.operationID = "test_response_string_binary_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -22998,6 +23469,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseStringByte"
+											r.operationID = "test_response_string_byte"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -23028,6 +23500,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringByteArray"
+													r.operationID = "test_response_string_byte_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -23048,6 +23521,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestResponseStringByteArrayArray
 														r.name = "TestResponseStringByteArrayArray"
+														r.operationID = "test_response_string_byte_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23067,6 +23541,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringByteNullable"
+													r.operationID = "test_response_string_byte_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -23086,6 +23561,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseStringByteNullableArray"
+														r.operationID = "test_response_string_byte_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23106,6 +23582,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestResponseStringByteNullableArrayArray
 															r.name = "TestResponseStringByteNullableArrayArray"
+															r.operationID = "test_response_string_byte_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -23140,6 +23617,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseStringDate"
+											r.operationID = "test_response_string_date"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -23159,6 +23637,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestResponseStringDateTime"
+												r.operationID = "test_response_string_date-time"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -23189,6 +23668,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseStringDateTimeArray"
+														r.operationID = "test_response_string_date-time_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23209,6 +23689,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestResponseStringDateTimeArrayArray
 															r.name = "TestResponseStringDateTimeArrayArray"
+															r.operationID = "test_response_string_date-time_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -23228,6 +23709,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseStringDateTimeNullable"
+														r.operationID = "test_response_string_date-time_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23247,6 +23729,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestResponseStringDateTimeNullableArray"
+															r.operationID = "test_response_string_date-time_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -23267,6 +23750,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestResponseStringDateTimeNullableArrayArray
 																r.name = "TestResponseStringDateTimeNullableArrayArray"
+																r.operationID = "test_response_string_date-time_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -23300,6 +23784,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringDateArray"
+													r.operationID = "test_response_string_date_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -23320,6 +23805,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestResponseStringDateArrayArray
 														r.name = "TestResponseStringDateArrayArray"
+														r.operationID = "test_response_string_date_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23339,6 +23825,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringDateNullable"
+													r.operationID = "test_response_string_date_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -23358,6 +23845,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseStringDateNullableArray"
+														r.operationID = "test_response_string_date_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23378,6 +23866,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestResponseStringDateNullableArrayArray
 															r.name = "TestResponseStringDateNullableArrayArray"
+															r.operationID = "test_response_string_date_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -23400,6 +23889,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseStringDuration"
+											r.operationID = "test_response_string_duration"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -23430,6 +23920,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringDurationArray"
+													r.operationID = "test_response_string_duration_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -23450,6 +23941,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestResponseStringDurationArrayArray
 														r.name = "TestResponseStringDurationArrayArray"
+														r.operationID = "test_response_string_duration_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23469,6 +23961,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringDurationNullable"
+													r.operationID = "test_response_string_duration_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -23488,6 +23981,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseStringDurationNullableArray"
+														r.operationID = "test_response_string_duration_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23508,6 +24002,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestResponseStringDurationNullableArrayArray
 															r.name = "TestResponseStringDurationNullableArrayArray"
+															r.operationID = "test_response_string_duration_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -23531,6 +24026,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestResponseStringEmail"
+										r.operationID = "test_response_string_email"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -23561,6 +24057,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestResponseStringEmailArray"
+												r.operationID = "test_response_string_email_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -23581,6 +24078,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: TestResponseStringEmailArrayArray
 													r.name = "TestResponseStringEmailArrayArray"
+													r.operationID = "test_response_string_email_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -23600,6 +24098,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestResponseStringEmailNullable"
+												r.operationID = "test_response_string_email_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -23619,6 +24118,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringEmailNullableArray"
+													r.operationID = "test_response_string_email_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -23639,6 +24139,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestResponseStringEmailNullableArrayArray
 														r.name = "TestResponseStringEmailNullableArrayArray"
+														r.operationID = "test_response_string_email_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23661,6 +24162,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestResponseStringHostname"
+										r.operationID = "test_response_string_hostname"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -23691,6 +24193,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestResponseStringHostnameArray"
+												r.operationID = "test_response_string_hostname_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -23711,6 +24214,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: TestResponseStringHostnameArrayArray
 													r.name = "TestResponseStringHostnameArrayArray"
+													r.operationID = "test_response_string_hostname_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -23730,6 +24234,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestResponseStringHostnameNullable"
+												r.operationID = "test_response_string_hostname_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -23749,6 +24254,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringHostnameNullableArray"
+													r.operationID = "test_response_string_hostname_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -23769,6 +24275,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestResponseStringHostnameNullableArrayArray
 														r.name = "TestResponseStringHostnameNullableArrayArray"
+														r.operationID = "test_response_string_hostname_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23813,6 +24320,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestResponseStringInt32"
+												r.operationID = "test_response_string_int32"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -23843,6 +24351,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseStringInt32Array"
+														r.operationID = "test_response_string_int32_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23863,6 +24372,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestResponseStringInt32ArrayArray
 															r.name = "TestResponseStringInt32ArrayArray"
+															r.operationID = "test_response_string_int32_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -23882,6 +24392,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseStringInt32Nullable"
+														r.operationID = "test_response_string_int32_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23901,6 +24412,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestResponseStringInt32NullableArray"
+															r.operationID = "test_response_string_int32_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -23921,6 +24433,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestResponseStringInt32NullableArrayArray
 																r.name = "TestResponseStringInt32NullableArrayArray"
+																r.operationID = "test_response_string_int32_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -23943,6 +24456,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestResponseStringInt64"
+												r.operationID = "test_response_string_int64"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -23973,6 +24487,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseStringInt64Array"
+														r.operationID = "test_response_string_int64_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -23993,6 +24508,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestResponseStringInt64ArrayArray
 															r.name = "TestResponseStringInt64ArrayArray"
+															r.operationID = "test_response_string_int64_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -24012,6 +24528,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseStringInt64Nullable"
+														r.operationID = "test_response_string_int64_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24031,6 +24548,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestResponseStringInt64NullableArray"
+															r.operationID = "test_response_string_int64_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -24051,6 +24569,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestResponseStringInt64NullableArrayArray
 																r.name = "TestResponseStringInt64NullableArrayArray"
+																r.operationID = "test_response_string_int64_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -24074,6 +24593,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseStringIP"
+											r.operationID = "test_response_string_ip"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -24104,6 +24624,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringIPArray"
+													r.operationID = "test_response_string_ip_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -24124,6 +24645,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestResponseStringIPArrayArray
 														r.name = "TestResponseStringIPArrayArray"
+														r.operationID = "test_response_string_ip_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24143,6 +24665,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringIPNullable"
+													r.operationID = "test_response_string_ip_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -24162,6 +24685,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseStringIPNullableArray"
+														r.operationID = "test_response_string_ip_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24182,6 +24706,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestResponseStringIPNullableArrayArray
 															r.name = "TestResponseStringIPNullableArrayArray"
+															r.operationID = "test_response_string_ip_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -24214,6 +24739,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringIpv4"
+													r.operationID = "test_response_string_ipv4"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -24244,6 +24770,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestResponseStringIpv4Array"
+															r.operationID = "test_response_string_ipv4_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -24264,6 +24791,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestResponseStringIpv4ArrayArray
 																r.name = "TestResponseStringIpv4ArrayArray"
+																r.operationID = "test_response_string_ipv4_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -24283,6 +24811,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestResponseStringIpv4Nullable"
+															r.operationID = "test_response_string_ipv4_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -24302,6 +24831,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestResponseStringIpv4NullableArray"
+																r.operationID = "test_response_string_ipv4_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -24322,6 +24852,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestResponseStringIpv4NullableArrayArray
 																	r.name = "TestResponseStringIpv4NullableArrayArray"
+																	r.operationID = "test_response_string_ipv4_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -24344,6 +24875,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringIpv6"
+													r.operationID = "test_response_string_ipv6"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -24374,6 +24906,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestResponseStringIpv6Array"
+															r.operationID = "test_response_string_ipv6_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -24394,6 +24927,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestResponseStringIpv6ArrayArray
 																r.name = "TestResponseStringIpv6ArrayArray"
+																r.operationID = "test_response_string_ipv6_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -24413,6 +24947,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestResponseStringIpv6Nullable"
+															r.operationID = "test_response_string_ipv6_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -24432,6 +24967,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestResponseStringIpv6NullableArray"
+																r.operationID = "test_response_string_ipv6_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -24452,6 +24988,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestResponseStringIpv6NullableArrayArray
 																	r.name = "TestResponseStringIpv6NullableArrayArray"
+																	r.operationID = "test_response_string_ipv6_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -24477,6 +25014,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestResponseStringNullable"
+										r.operationID = "test_response_string_nullable"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -24496,6 +25034,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseStringNullableArray"
+											r.operationID = "test_response_string_nullable_array"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -24516,6 +25055,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											case "POST":
 												// Leaf: TestResponseStringNullableArrayArray
 												r.name = "TestResponseStringNullableArrayArray"
+												r.operationID = "test_response_string_nullable_array_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -24536,6 +25076,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestResponseStringPassword"
+										r.operationID = "test_response_string_password"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -24566,6 +25107,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestResponseStringPasswordArray"
+												r.operationID = "test_response_string_password_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -24586,6 +25128,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: TestResponseStringPasswordArrayArray
 													r.name = "TestResponseStringPasswordArrayArray"
+													r.operationID = "test_response_string_password_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -24605,6 +25148,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestResponseStringPasswordNullable"
+												r.operationID = "test_response_string_password_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -24624,6 +25168,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringPasswordNullableArray"
+													r.operationID = "test_response_string_password_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -24644,6 +25189,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestResponseStringPasswordNullableArrayArray
 														r.name = "TestResponseStringPasswordNullableArrayArray"
+														r.operationID = "test_response_string_password_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24666,6 +25212,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									switch method {
 									case "POST":
 										r.name = "TestResponseStringTime"
+										r.operationID = "test_response_string_time"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -24696,6 +25243,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestResponseStringTimeArray"
+												r.operationID = "test_response_string_time_array"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -24716,6 +25264,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												case "POST":
 													// Leaf: TestResponseStringTimeArrayArray
 													r.name = "TestResponseStringTimeArrayArray"
+													r.operationID = "test_response_string_time_array_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -24735,6 +25284,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											switch method {
 											case "POST":
 												r.name = "TestResponseStringTimeNullable"
+												r.operationID = "test_response_string_time_nullable"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -24754,6 +25304,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringTimeNullableArray"
+													r.operationID = "test_response_string_time_nullable_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -24774,6 +25325,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestResponseStringTimeNullableArrayArray
 														r.name = "TestResponseStringTimeNullableArrayArray"
+														r.operationID = "test_response_string_time_nullable_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24807,6 +25359,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseStringUnix"
+											r.operationID = "test_response_string_unix"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -24848,6 +25401,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseStringUnixMicro"
+														r.operationID = "test_response_string_unix-micro"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -24878,6 +25432,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestResponseStringUnixMicroArray"
+																r.operationID = "test_response_string_unix-micro_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -24898,6 +25453,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestResponseStringUnixMicroArrayArray
 																	r.name = "TestResponseStringUnixMicroArrayArray"
+																	r.operationID = "test_response_string_unix-micro_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -24917,6 +25473,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestResponseStringUnixMicroNullable"
+																r.operationID = "test_response_string_unix-micro_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -24936,6 +25493,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "POST":
 																	r.name = "TestResponseStringUnixMicroNullableArray"
+																	r.operationID = "test_response_string_unix-micro_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -24956,6 +25514,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: TestResponseStringUnixMicroNullableArrayArray
 																		r.name = "TestResponseStringUnixMicroNullableArrayArray"
+																		r.operationID = "test_response_string_unix-micro_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -24978,6 +25537,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseStringUnixMilli"
+														r.operationID = "test_response_string_unix-milli"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25008,6 +25568,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestResponseStringUnixMilliArray"
+																r.operationID = "test_response_string_unix-milli_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -25028,6 +25589,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestResponseStringUnixMilliArrayArray
 																	r.name = "TestResponseStringUnixMilliArrayArray"
+																	r.operationID = "test_response_string_unix-milli_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -25047,6 +25609,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestResponseStringUnixMilliNullable"
+																r.operationID = "test_response_string_unix-milli_nullable"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -25066,6 +25629,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																switch method {
 																case "POST":
 																	r.name = "TestResponseStringUnixMilliNullableArray"
+																	r.operationID = "test_response_string_unix-milli_nullable_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -25086,6 +25650,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	case "POST":
 																		// Leaf: TestResponseStringUnixMilliNullableArrayArray
 																		r.name = "TestResponseStringUnixMilliNullableArrayArray"
+																		r.operationID = "test_response_string_unix-milli_nullable_array_array"
 																		r.args = args
 																		r.count = 0
 																		return r, true
@@ -25109,6 +25674,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringUnixNano"
+													r.operationID = "test_response_string_unix-nano"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -25139,6 +25705,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestResponseStringUnixNanoArray"
+															r.operationID = "test_response_string_unix-nano_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -25159,6 +25726,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestResponseStringUnixNanoArrayArray
 																r.name = "TestResponseStringUnixNanoArrayArray"
+																r.operationID = "test_response_string_unix-nano_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -25178,6 +25746,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestResponseStringUnixNanoNullable"
+															r.operationID = "test_response_string_unix-nano_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -25197,6 +25766,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestResponseStringUnixNanoNullableArray"
+																r.operationID = "test_response_string_unix-nano_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -25217,6 +25787,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestResponseStringUnixNanoNullableArrayArray
 																	r.name = "TestResponseStringUnixNanoNullableArrayArray"
+																	r.operationID = "test_response_string_unix-nano_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -25239,6 +25810,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringUnixSeconds"
+													r.operationID = "test_response_string_unix-seconds"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -25269,6 +25841,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestResponseStringUnixSecondsArray"
+															r.operationID = "test_response_string_unix-seconds_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -25289,6 +25862,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															case "POST":
 																// Leaf: TestResponseStringUnixSecondsArrayArray
 																r.name = "TestResponseStringUnixSecondsArrayArray"
+																r.operationID = "test_response_string_unix-seconds_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -25308,6 +25882,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														switch method {
 														case "POST":
 															r.name = "TestResponseStringUnixSecondsNullable"
+															r.operationID = "test_response_string_unix-seconds_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -25327,6 +25902,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															switch method {
 															case "POST":
 																r.name = "TestResponseStringUnixSecondsNullableArray"
+																r.operationID = "test_response_string_unix-seconds_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -25347,6 +25923,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																case "POST":
 																	// Leaf: TestResponseStringUnixSecondsNullableArrayArray
 																	r.name = "TestResponseStringUnixSecondsNullableArrayArray"
+																	r.operationID = "test_response_string_unix-seconds_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -25381,6 +25958,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringUnixArray"
+													r.operationID = "test_response_string_unix_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -25401,6 +25979,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestResponseStringUnixArrayArray
 														r.name = "TestResponseStringUnixArrayArray"
+														r.operationID = "test_response_string_unix_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25420,6 +25999,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringUnixNullable"
+													r.operationID = "test_response_string_unix_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -25439,6 +26019,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseStringUnixNullableArray"
+														r.operationID = "test_response_string_unix_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25459,6 +26040,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestResponseStringUnixNullableArrayArray
 															r.name = "TestResponseStringUnixNullableArrayArray"
+															r.operationID = "test_response_string_unix_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -25481,6 +26063,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseStringURI"
+											r.operationID = "test_response_string_uri"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -25511,6 +26094,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringURIArray"
+													r.operationID = "test_response_string_uri_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -25531,6 +26115,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestResponseStringURIArrayArray
 														r.name = "TestResponseStringURIArrayArray"
+														r.operationID = "test_response_string_uri_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25550,6 +26135,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringURINullable"
+													r.operationID = "test_response_string_uri_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -25569,6 +26155,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseStringURINullableArray"
+														r.operationID = "test_response_string_uri_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25589,6 +26176,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestResponseStringURINullableArrayArray
 															r.name = "TestResponseStringURINullableArrayArray"
+															r.operationID = "test_response_string_uri_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -25611,6 +26199,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										switch method {
 										case "POST":
 											r.name = "TestResponseStringUUID"
+											r.operationID = "test_response_string_uuid"
 											r.args = args
 											r.count = 0
 											return r, true
@@ -25641,6 +26230,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringUUIDArray"
+													r.operationID = "test_response_string_uuid_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -25661,6 +26251,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													case "POST":
 														// Leaf: TestResponseStringUUIDArrayArray
 														r.name = "TestResponseStringUUIDArrayArray"
+														r.operationID = "test_response_string_uuid_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25680,6 +26271,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												switch method {
 												case "POST":
 													r.name = "TestResponseStringUUIDNullable"
+													r.operationID = "test_response_string_uuid_nullable"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -25699,6 +26291,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													switch method {
 													case "POST":
 														r.name = "TestResponseStringUUIDNullableArray"
+														r.operationID = "test_response_string_uuid_nullable_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -25719,6 +26312,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														case "POST":
 															// Leaf: TestResponseStringUUIDNullableArrayArray
 															r.name = "TestResponseStringUUIDNullableArrayArray"
+															r.operationID = "test_response_string_uuid_nullable_array_array"
 															r.args = args
 															r.count = 0
 															return r, true

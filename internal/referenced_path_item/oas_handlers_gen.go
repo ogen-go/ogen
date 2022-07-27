@@ -25,7 +25,9 @@ func (s *Server) handleFooGetRequest(args [0]string, w http.ResponseWriter, r *h
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err error
+	)
 
 	response, err := s.h.FooGet(ctx)
 	if err != nil {

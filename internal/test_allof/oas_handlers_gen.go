@@ -30,12 +30,18 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "NullableStrings",
+			ID:   "nullableStrings",
+		}
+	)
 	request, close, err := s.decodeNullableStringsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "NullableStrings",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -76,12 +82,18 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ObjectsWithConflictingArrayProperty",
+			ID:   "objectsWithConflictingArrayProperty",
+		}
+	)
 	request, close, err := s.decodeObjectsWithConflictingArrayPropertyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ObjectsWithConflictingArrayProperty",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -122,12 +134,18 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ObjectsWithConflictingProperties",
+			ID:   "objectsWithConflictingProperties",
+		}
+	)
 	request, close, err := s.decodeObjectsWithConflictingPropertiesRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ObjectsWithConflictingProperties",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -168,12 +186,18 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReferencedAllof",
+			ID:   "referencedAllof",
+		}
+	)
 	request, close, err := s.decodeReferencedAllofRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReferencedAllof",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -214,12 +238,18 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "ReferencedAllofOptional",
+			ID:   "referencedAllofOptional",
+		}
+	)
 	request, close, err := s.decodeReferencedAllofOptionalRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "ReferencedAllofOptional",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -260,12 +290,18 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SimpleInteger",
+			ID:   "simpleInteger",
+		}
+	)
 	request, close, err := s.decodeSimpleIntegerRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SimpleInteger",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -306,12 +342,18 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "SimpleObjects",
+			ID:   "simpleObjects",
+		}
+	)
 	request, close, err := s.decodeSimpleObjectsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "SimpleObjects",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return

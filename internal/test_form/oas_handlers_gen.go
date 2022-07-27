@@ -30,12 +30,18 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestFormURLEncoded",
+			ID:   "testFormURLEncoded",
+		}
+	)
 	request, close, err := s.decodeTestFormURLEncodedRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestFormURLEncoded",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -76,12 +82,18 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestMultipart",
+			ID:   "testMultipart",
+		}
+	)
 	request, close, err := s.decodeTestMultipartRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestMultipart",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -122,12 +134,18 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestMultipartUpload",
+			ID:   "testMultipartUpload",
+		}
+	)
 	request, close, err := s.decodeTestMultipartUploadRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestMultipartUpload",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -168,12 +186,18 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
-	var err error
+	var (
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestShareFormSchema",
+			ID:   "testShareFormSchema",
+		}
+	)
 	request, close, err := s.decodeTestShareFormSchemaRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			Operation: "TestShareFormSchema",
-			Err:       err,
+			OperationContext: opErrContext,
+			Err:              err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
