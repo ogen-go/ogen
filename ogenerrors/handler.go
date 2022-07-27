@@ -8,6 +8,7 @@ import (
 	"github.com/go-faster/errors"
 
 	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // ErrorHandler is an error handler.
@@ -19,10 +20,16 @@ type ErrorHandler func(ctx context.Context, w http.ResponseWriter, r *http.Reque
 func ErrorCode(err error) (code int) {
 	code = http.StatusInternalServerError
 
-	var ogenErr Error
+	var (
+		ctError *validate.InvalidContentTypeError
+		ogenErr Error
+	)
 	switch {
 	case errors.Is(err, ht.ErrNotImplemented):
 		code = http.StatusNotImplemented
+	case errors.As(err, &ctError):
+		// Takes precedence over Error.
+		code = http.StatusUnsupportedMediaType
 	case errors.As(err, &ogenErr):
 		code = ogenErr.Code()
 	}
