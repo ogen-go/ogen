@@ -2,10 +2,10 @@ package ogenerrors
 
 import (
 	"context"
-	"encoding/json"
 	"net/http"
 
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/validate"
@@ -42,12 +42,12 @@ func DefaultErrorHandler(ctx context.Context, w http.ResponseWriter, r *http.Req
 	code := ErrorCode(err)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(code)
-	data, writeErr := json.Marshal(struct {
-		ErrorMessage string `json:"error_message"`
-	}{
-		ErrorMessage: err.Error(),
-	})
-	if writeErr == nil {
-		w.Write(data)
-	}
+
+	e := jx.GetEncoder()
+	e.ObjStart()
+	e.FieldStart("error_message")
+	e.StrEscape(err.Error())
+	e.ObjEnd()
+
+	_, _ = w.Write(e.Bytes())
 }
