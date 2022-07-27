@@ -3,7 +3,6 @@
 package api
 
 import (
-	"context"
 	"net/http"
 	"time"
 
@@ -18,16 +17,31 @@ import (
 //
 // GET /market/bonds
 func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketBondsGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "MarketBondsGet",
@@ -41,43 +55,54 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.MarketBondsGet(ctx)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeMarketBondsGetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleMarketCandlesGetRequest handles GET /market/candles operation.
 //
 // GET /market/candles
 func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketCandlesGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "MarketCandlesGet",
@@ -91,7 +116,8 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	params, err := decodeMarketCandlesGetParams(args, r)
@@ -100,43 +126,54 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.MarketCandlesGet(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeMarketCandlesGetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleMarketCurrenciesGetRequest handles GET /market/currencies operation.
 //
 // GET /market/currencies
 func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketCurrenciesGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "MarketCurrenciesGet",
@@ -150,43 +187,54 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.MarketCurrenciesGet(ctx)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeMarketCurrenciesGetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleMarketEtfsGetRequest handles GET /market/etfs operation.
 //
 // GET /market/etfs
 func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketEtfsGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "MarketEtfsGet",
@@ -200,43 +248,54 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.MarketEtfsGet(ctx)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeMarketEtfsGetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleMarketOrderbookGetRequest handles GET /market/orderbook operation.
 //
 // GET /market/orderbook
 func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketOrderbookGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "MarketOrderbookGet",
@@ -250,7 +309,8 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	params, err := decodeMarketOrderbookGetParams(args, r)
@@ -259,43 +319,54 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.MarketOrderbookGet(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeMarketOrderbookGetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleMarketSearchByFigiGetRequest handles GET /market/search/by-figi operation.
 //
 // GET /market/search/by-figi
 func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketSearchByFigiGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "MarketSearchByFigiGet",
@@ -309,7 +380,8 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	params, err := decodeMarketSearchByFigiGetParams(args, r)
@@ -318,43 +390,54 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.MarketSearchByFigiGet(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeMarketSearchByFigiGetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleMarketSearchByTickerGetRequest handles GET /market/search/by-ticker operation.
 //
 // GET /market/search/by-ticker
 func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketSearchByTickerGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "MarketSearchByTickerGet",
@@ -368,7 +451,8 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	params, err := decodeMarketSearchByTickerGetParams(args, r)
@@ -377,43 +461,54 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.MarketSearchByTickerGet(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeMarketSearchByTickerGetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleMarketStocksGetRequest handles GET /market/stocks operation.
 //
 // GET /market/stocks
 func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketStocksGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "MarketStocksGet",
@@ -427,43 +522,54 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.MarketStocksGet(ctx)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeMarketStocksGetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleOperationsGetRequest handles GET /operations operation.
 //
 // GET /operations
 func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OperationsGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "OperationsGet",
@@ -477,7 +583,8 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	params, err := decodeOperationsGetParams(args, r)
@@ -486,43 +593,54 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.OperationsGet(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeOperationsGetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleOrdersCancelPostRequest handles POST /orders/cancel operation.
 //
 // POST /orders/cancel
 func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrdersCancelPost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "OrdersCancelPost",
@@ -536,7 +654,8 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	params, err := decodeOrdersCancelPostParams(args, r)
@@ -545,43 +664,54 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.OrdersCancelPost(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeOrdersCancelPostResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleOrdersGetRequest handles GET /orders operation.
 //
 // GET /orders
 func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrdersGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "OrdersGet",
@@ -595,7 +725,8 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	params, err := decodeOrdersGetParams(args, r)
@@ -604,43 +735,54 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.OrdersGet(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeOrdersGetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleOrdersLimitOrderPostRequest handles POST /orders/limit-order operation.
 //
 // POST /orders/limit-order
 func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrdersLimitOrderPost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "OrdersLimitOrderPost",
@@ -654,7 +796,8 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	params, err := decodeOrdersLimitOrderPostParams(args, r)
@@ -663,7 +806,8 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	request, close, err := s.decodeOrdersLimitOrderPostRequest(r, span)
@@ -672,44 +816,55 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	defer close()
 
 	response, err := s.h.OrdersLimitOrderPost(ctx, request, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeOrdersLimitOrderPostResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleOrdersMarketOrderPostRequest handles POST /orders/market-order operation.
 //
 // POST /orders/market-order
 func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrdersMarketOrderPost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "OrdersMarketOrderPost",
@@ -723,7 +878,8 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	params, err := decodeOrdersMarketOrderPostParams(args, r)
@@ -732,7 +888,8 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	request, close, err := s.decodeOrdersMarketOrderPostRequest(r, span)
@@ -741,44 +898,55 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	defer close()
 
 	response, err := s.h.OrdersMarketOrderPost(ctx, request, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeOrdersMarketOrderPostResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePortfolioCurrenciesGetRequest handles GET /portfolio/currencies operation.
 //
 // GET /portfolio/currencies
 func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PortfolioCurrenciesGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "PortfolioCurrenciesGet",
@@ -792,7 +960,8 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	params, err := decodePortfolioCurrenciesGetParams(args, r)
@@ -801,43 +970,54 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.PortfolioCurrenciesGet(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodePortfolioCurrenciesGetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandlePortfolioGetRequest handles GET /portfolio operation.
 //
 // GET /portfolio
 func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PortfolioGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "PortfolioGet",
@@ -851,7 +1031,8 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	params, err := decodePortfolioGetParams(args, r)
@@ -860,43 +1041,54 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.PortfolioGet(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodePortfolioGetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSandboxClearPostRequest handles POST /sandbox/clear operation.
 //
 // POST /sandbox/clear
 func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxClearPost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "SandboxClearPost",
@@ -910,7 +1102,8 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	params, err := decodeSandboxClearPostParams(args, r)
@@ -919,43 +1112,54 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.SandboxClearPost(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeSandboxClearPostResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSandboxCurrenciesBalancePostRequest handles POST /sandbox/currencies/balance operation.
 //
 // POST /sandbox/currencies/balance
 func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxCurrenciesBalancePost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "SandboxCurrenciesBalancePost",
@@ -969,7 +1173,8 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	params, err := decodeSandboxCurrenciesBalancePostParams(args, r)
@@ -978,7 +1183,8 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	request, close, err := s.decodeSandboxCurrenciesBalancePostRequest(r, span)
@@ -987,44 +1193,55 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	defer close()
 
 	response, err := s.h.SandboxCurrenciesBalancePost(ctx, request, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeSandboxCurrenciesBalancePostResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSandboxPositionsBalancePostRequest handles POST /sandbox/positions/balance operation.
 //
 // POST /sandbox/positions/balance
 func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxPositionsBalancePost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "SandboxPositionsBalancePost",
@@ -1038,7 +1255,8 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	params, err := decodeSandboxPositionsBalancePostParams(args, r)
@@ -1047,7 +1265,8 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	request, close, err := s.decodeSandboxPositionsBalancePostRequest(r, span)
@@ -1056,44 +1275,55 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	defer close()
 
 	response, err := s.h.SandboxPositionsBalancePost(ctx, request, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeSandboxPositionsBalancePostResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSandboxRegisterPostRequest handles POST /sandbox/register operation.
 //
 // POST /sandbox/register
 func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxRegisterPost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "SandboxRegisterPost",
@@ -1107,7 +1337,8 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	request, close, err := s.decodeSandboxRegisterPostRequest(r, span)
@@ -1116,44 +1347,55 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	defer close()
 
 	response, err := s.h.SandboxRegisterPost(ctx, request)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeSandboxRegisterPostResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleSandboxRemovePostRequest handles POST /sandbox/remove operation.
 //
 // POST /sandbox/remove
 func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxRemovePost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "SandboxRemovePost",
@@ -1167,7 +1409,8 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	params, err := decodeSandboxRemovePostParams(args, r)
@@ -1176,43 +1419,54 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.SandboxRemovePost(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeSandboxRemovePostResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleUserAccountsGetRequest handles GET /user/accounts operation.
 //
 // GET /user/accounts
 func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "UserAccountsGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "UserAccountsGet",
@@ -1226,39 +1480,21 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 			Security:         "SSOAuth",
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("Security:SSOAuth", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.UserAccountsGet(ctx)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeUserAccountsGetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
-}
-
-func (s *Server) badRequest(
-	ctx context.Context,
-	w http.ResponseWriter,
-	r *http.Request,
-	span trace.Span,
-	otelAttrs []attribute.KeyValue,
-	err error,
-) {
-	span.RecordError(err)
-	span.SetStatus(codes.Error, "BadRequest")
-	s.errors.Add(ctx, 1, otelAttrs...)
-	s.cfg.ErrorHandler(ctx, w, r, err)
 }

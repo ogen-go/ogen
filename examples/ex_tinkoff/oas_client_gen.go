@@ -9,6 +9,7 @@ import (
 
 	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/trace"
 
@@ -57,38 +58,54 @@ func NewClient(serverURL string, sec SecuritySource, opts ...Option) (*Client, e
 //
 // GET /market/bonds
 func (c *Client) MarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketBondsGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/bonds"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "MarketBondsGet", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeMarketBondsGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -103,25 +120,39 @@ func (c *Client) MarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err
 //
 // GET /market/candles
 func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetParams) (res MarketCandlesGetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketCandlesGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/candles"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "figi" parameter.
@@ -181,18 +212,22 @@ func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetPa
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "MarketCandlesGet", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeMarketCandlesGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -207,38 +242,54 @@ func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetPa
 //
 // GET /market/currencies
 func (c *Client) MarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesGetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketCurrenciesGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/currencies"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "MarketCurrenciesGet", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeMarketCurrenciesGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -253,38 +304,54 @@ func (c *Client) MarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesG
 //
 // GET /market/etfs
 func (c *Client) MarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketEtfsGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/etfs"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "MarketEtfsGet", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeMarketEtfsGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -299,25 +366,39 @@ func (c *Client) MarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err e
 //
 // GET /market/orderbook
 func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookGetParams) (res MarketOrderbookGetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketOrderbookGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/orderbook"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "figi" parameter.
@@ -349,18 +430,22 @@ func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookG
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "MarketOrderbookGet", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeMarketOrderbookGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -375,25 +460,39 @@ func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookG
 //
 // GET /market/search/by-figi
 func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchByFigiGetParams) (res MarketSearchByFigiGetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketSearchByFigiGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/search/by-figi"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "figi" parameter.
@@ -411,18 +510,22 @@ func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchB
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "MarketSearchByFigiGet", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeMarketSearchByFigiGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -437,25 +540,39 @@ func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchB
 //
 // GET /market/search/by-ticker
 func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearchByTickerGetParams) (res MarketSearchByTickerGetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketSearchByTickerGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/search/by-ticker"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "ticker" parameter.
@@ -473,18 +590,22 @@ func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearc
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "MarketSearchByTickerGet", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeMarketSearchByTickerGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -499,38 +620,54 @@ func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearc
 //
 // GET /market/stocks
 func (c *Client) MarketStocksGet(ctx context.Context) (res MarketStocksGetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketStocksGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/stocks"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "MarketStocksGet", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeMarketStocksGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -545,25 +682,39 @@ func (c *Client) MarketStocksGet(ctx context.Context) (res MarketStocksGetRes, e
 //
 // GET /operations
 func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) (res OperationsGetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OperationsGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/operations"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "from" parameter.
@@ -629,18 +780,22 @@ func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) 
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "OperationsGet", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeOperationsGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -655,25 +810,39 @@ func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) 
 //
 // POST /orders/cancel
 func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostParams) (res OrdersCancelPostRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersCancelPost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders/cancel"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "orderId" parameter.
@@ -708,18 +877,22 @@ func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostPa
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "POST", u, nil)
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "OrdersCancelPost", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeOrdersCancelPostResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -734,25 +907,39 @@ func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostPa
 //
 // GET /orders
 func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res OrdersGetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
@@ -773,18 +960,22 @@ func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res Ord
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "OrdersGet", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeOrdersGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -799,6 +990,8 @@ func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res Ord
 //
 // POST /orders/limit-order
 func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderRequest, params OrdersLimitOrderPostParams) (res OrdersLimitOrderPostRes, err error) {
+	otelAttrs := []attribute.KeyValue{}
+	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -807,25 +1000,38 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersLimitOrderPost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders/limit-order"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "figi" parameter.
@@ -860,21 +1066,25 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeOrdersLimitOrderPostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "OrdersLimitOrderPost", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeOrdersLimitOrderPostResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -889,6 +1099,8 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 //
 // POST /orders/market-order
 func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderRequest, params OrdersMarketOrderPostParams) (res OrdersMarketOrderPostRes, err error) {
+	otelAttrs := []attribute.KeyValue{}
+	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -897,25 +1109,38 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersMarketOrderPost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders/market-order"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "figi" parameter.
@@ -950,21 +1175,25 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeOrdersMarketOrderPostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "OrdersMarketOrderPost", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeOrdersMarketOrderPostResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -979,25 +1208,39 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 //
 // GET /portfolio/currencies
 func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCurrenciesGetParams) (res PortfolioCurrenciesGetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PortfolioCurrenciesGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/portfolio/currencies"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
@@ -1018,18 +1261,22 @@ func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCur
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "PortfolioCurrenciesGet", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodePortfolioCurrenciesGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -1044,25 +1291,39 @@ func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCur
 //
 // GET /portfolio
 func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (res PortfolioGetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PortfolioGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/portfolio"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
@@ -1083,18 +1344,22 @@ func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (r
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "PortfolioGet", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodePortfolioGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -1109,25 +1374,39 @@ func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (r
 //
 // POST /sandbox/clear
 func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostParams) (res SandboxClearPostRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxClearPost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/clear"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
@@ -1148,18 +1427,22 @@ func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostPa
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "POST", u, nil)
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "SandboxClearPost", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeSandboxClearPostResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -1174,6 +1457,8 @@ func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostPa
 //
 // POST /sandbox/currencies/balance
 func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request SandboxSetCurrencyBalanceRequest, params SandboxCurrenciesBalancePostParams) (res SandboxCurrenciesBalancePostRes, err error) {
+	otelAttrs := []attribute.KeyValue{}
+	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -1182,25 +1467,38 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxCurrenciesBalancePost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/currencies/balance"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
@@ -1221,21 +1519,25 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeSandboxCurrenciesBalancePostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "SandboxCurrenciesBalancePost", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeSandboxCurrenciesBalancePostResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -1250,6 +1552,8 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 //
 // POST /sandbox/positions/balance
 func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (res SandboxPositionsBalancePostRes, err error) {
+	otelAttrs := []attribute.KeyValue{}
+	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -1258,25 +1562,38 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxPositionsBalancePost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/positions/balance"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
@@ -1297,21 +1614,25 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeSandboxPositionsBalancePostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "SandboxPositionsBalancePost", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeSandboxPositionsBalancePostResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -1326,6 +1647,8 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 //
 // POST /sandbox/register
 func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegisterRequest) (res SandboxRegisterPostRes, err error) {
+	otelAttrs := []attribute.KeyValue{}
+	// Validate request before sending.
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -1341,41 +1664,56 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxRegisterPost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/register"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeSandboxRegisterPostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "SandboxRegisterPost", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeSandboxRegisterPostResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -1390,25 +1728,39 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 //
 // POST /sandbox/remove
 func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePostParams) (res SandboxRemovePostRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxRemovePost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/remove"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
@@ -1429,18 +1781,22 @@ func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePost
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "POST", u, nil)
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "SandboxRemovePost", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeSandboxRemovePostResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -1455,38 +1811,54 @@ func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePost
 //
 // GET /user/accounts
 func (c *Client) UserAccountsGet(ctx context.Context) (res UserAccountsGetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UserAccountsGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/accounts"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "Security:SSOAuth"
 	if err := c.securitySSOAuth(ctx, "UserAccountsGet", r); err != nil {
-		return res, errors.Wrap(err, "security")
+		return res, errors.Wrap(err, "security \"SSOAuth\"")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeUserAccountsGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")

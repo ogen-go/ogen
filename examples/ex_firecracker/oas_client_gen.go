@@ -9,6 +9,7 @@ import (
 
 	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/trace"
 
@@ -55,6 +56,10 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 //
 // PUT /snapshot/create
 func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParams) (res CreateSnapshotRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("createSnapshot"),
+	}
+	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -63,39 +68,51 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("createSnapshot"),
-	}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CreateSnapshot",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/snapshot/create"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeCreateSnapshotRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeCreateSnapshotResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -110,6 +127,10 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 //
 // PUT /actions
 func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInfo) (res CreateSyncActionRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("createSyncAction"),
+	}
+	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -118,39 +139,51 @@ func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInf
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("createSyncAction"),
-	}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CreateSyncAction",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/actions"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeCreateSyncActionRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeCreateSyncActionResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -165,36 +198,51 @@ func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInf
 //
 // GET /balloon
 func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloonConfigRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeBalloonConfig"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "DescribeBalloonConfig",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeDescribeBalloonConfigResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -209,36 +257,51 @@ func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloon
 //
 // GET /balloon/statistics
 func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonStatsRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeBalloonStats"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "DescribeBalloonStats",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon/statistics"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeDescribeBalloonStatsResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -253,36 +316,51 @@ func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonS
 //
 // GET /
 func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("describeInstance"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "DescribeInstance",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeDescribeInstanceResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -297,36 +375,51 @@ func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes,
 //
 // GET /vm/config
 func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getExportVmConfig"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetExportVmConfig",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/vm/config"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeGetExportVmConfigResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -343,36 +436,51 @@ func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRe
 //
 // GET /machine-config
 func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineConfigurationRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("getMachineConfiguration"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetMachineConfiguration",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/machine-config"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeGetMachineConfigurationResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -388,39 +496,55 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 //
 // PUT /snapshot/load
 func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (res LoadSnapshotRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("loadSnapshot"),
 	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "LoadSnapshot",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/snapshot/load"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeLoadSnapshotRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeLoadSnapshotResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -435,37 +559,53 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 //
 // PUT /mmds/config
 func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res MmdsConfigPutRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MmdsConfigPut",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/mmds/config"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeMmdsConfigPutRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeMmdsConfigPutResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -480,34 +620,49 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res Mmd
 //
 // GET /mmds
 func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MmdsGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/mmds"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeMmdsGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -522,37 +677,53 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 //
 // PATCH /mmds
 func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res MmdsPatchRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MmdsPatch",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/mmds"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
 	if err := encodeMmdsPatchRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeMmdsPatchResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -567,37 +738,53 @@ func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res Mmds
 //
 // PUT /mmds
 func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MmdsPut",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/mmds"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodeMmdsPutRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeMmdsPutResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -613,39 +800,55 @@ func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutR
 //
 // PATCH /balloon
 func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res PatchBalloonRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchBalloon"),
 	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PatchBalloon",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
 	if err := encodePatchBalloonRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodePatchBalloonResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -661,39 +864,55 @@ func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res P
 //
 // PATCH /balloon/statistics
 func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonStatsUpdate) (res PatchBalloonStatsIntervalRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("patchBalloonStatsInterval"),
 	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PatchBalloonStatsInterval",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon/statistics"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
 	if err := encodePatchBalloonStatsIntervalRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodePatchBalloonStatsIntervalResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -709,6 +928,10 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 //
 // PATCH /drives/{drive_id}
 func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, params PatchGuestDriveByIDParams) (res PatchGuestDriveByIDRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("patchGuestDriveByID"),
+	}
+	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -717,25 +940,34 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("patchGuestDriveByID"),
-	}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PatchGuestDriveByID",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/drives/"
 	{
@@ -753,17 +985,20 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 		u.Path += e.Result()
 	}
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
 	if err := encodePatchGuestDriveByIDRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodePatchGuestDriveByIDResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -778,6 +1013,10 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 //
 // PATCH /network-interfaces/{iface_id}
 func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request PartialNetworkInterface, params PatchGuestNetworkInterfaceByIDParams) (res PatchGuestNetworkInterfaceByIDRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("patchGuestNetworkInterfaceByID"),
+	}
+	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -786,25 +1025,34 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("patchGuestNetworkInterfaceByID"),
-	}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PatchGuestNetworkInterfaceByID",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/network-interfaces/"
 	{
@@ -822,17 +1070,20 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 		u.Path += e.Result()
 	}
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
 	if err := encodePatchGuestNetworkInterfaceByIDRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodePatchGuestNetworkInterfaceByIDResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -848,6 +1099,10 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 //
 // PATCH /machine-config
 func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (res PatchMachineConfigurationRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("patchMachineConfiguration"),
+	}
+	// Validate request before sending.
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -863,39 +1118,51 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachi
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("patchMachineConfiguration"),
-	}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PatchMachineConfiguration",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/machine-config"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
 	if err := encodePatchMachineConfigurationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodePatchMachineConfigurationResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -910,6 +1177,10 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachi
 //
 // PATCH /vm
 func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("patchVm"),
+	}
+	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -918,39 +1189,51 @@ func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err e
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("patchVm"),
-	}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PatchVm",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/vm"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
 	if err := encodePatchVmRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodePatchVmResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -966,39 +1249,55 @@ func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err e
 //
 // PUT /balloon
 func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloonRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putBalloon"),
 	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PutBalloon",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/balloon"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodePutBalloonRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodePutBalloonResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -1014,39 +1313,55 @@ func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloo
 //
 // PUT /boot-source
 func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (res PutGuestBootSourceRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putGuestBootSource"),
 	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PutGuestBootSource",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/boot-source"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodePutGuestBootSourceRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodePutGuestBootSourceResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -1062,6 +1377,10 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 //
 // PUT /drives/{drive_id}
 func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params PutGuestDriveByIDParams) (res PutGuestDriveByIDRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("putGuestDriveByID"),
+	}
+	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -1070,25 +1389,34 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("putGuestDriveByID"),
-	}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PutGuestDriveByID",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/drives/"
 	{
@@ -1106,17 +1434,20 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 		u.Path += e.Result()
 	}
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodePutGuestDriveByIDRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodePutGuestDriveByIDResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -1131,6 +1462,10 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 //
 // PUT /network-interfaces/{iface_id}
 func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request NetworkInterface, params PutGuestNetworkInterfaceByIDParams) (res PutGuestNetworkInterfaceByIDRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("putGuestNetworkInterfaceByID"),
+	}
+	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -1139,25 +1474,34 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("putGuestNetworkInterfaceByID"),
-	}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PutGuestNetworkInterfaceByID",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/network-interfaces/"
 	{
@@ -1175,17 +1519,20 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 		u.Path += e.Result()
 	}
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodePutGuestNetworkInterfaceByIDRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodePutGuestNetworkInterfaceByIDResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -1201,6 +1548,10 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 //
 // PUT /vsock
 func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuestVsockRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("putGuestVsock"),
+	}
+	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -1209,39 +1560,51 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("putGuestVsock"),
-	}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PutGuestVsock",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/vsock"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodePutGuestVsockRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodePutGuestVsockResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -1256,6 +1619,10 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 //
 // PUT /logger
 func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("putLogger"),
+	}
+	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
 			return err
@@ -1264,39 +1631,51 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("putLogger"),
-	}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PutLogger",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/logger"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodePutLoggerRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodePutLoggerResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -1314,6 +1693,10 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 //
 // PUT /machine-config
 func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachineConfiguration) (res PutMachineConfigurationRes, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("putMachineConfiguration"),
+	}
+	// Validate request before sending.
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -1329,39 +1712,51 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachine
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("putMachineConfiguration"),
-	}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PutMachineConfiguration",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/machine-config"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodePutMachineConfigurationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodePutMachineConfigurationResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -1376,39 +1771,55 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachine
 //
 // PUT /metrics
 func (c *Client) PutMetrics(ctx context.Context, request Metrics) (res PutMetricsRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("putMetrics"),
 	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PutMetrics",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/metrics"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PUT", u, nil)
 	if err := encodePutMetricsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodePutMetricsResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")

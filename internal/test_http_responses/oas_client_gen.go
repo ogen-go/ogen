@@ -9,6 +9,7 @@ import (
 
 	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/trace"
 
@@ -53,36 +54,51 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 //
 // GET /anyContentTypeBinaryStringSchema
 func (c *Client) AnyContentTypeBinaryStringSchema(ctx context.Context) (res AnyContentTypeBinaryStringSchemaOK, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchema"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AnyContentTypeBinaryStringSchema",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/anyContentTypeBinaryStringSchema"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeAnyContentTypeBinaryStringSchemaResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -95,36 +111,51 @@ func (c *Client) AnyContentTypeBinaryStringSchema(ctx context.Context) (res AnyC
 //
 // GET /anyContentTypeBinaryStringSchemaDefault
 func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (res AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("anyContentTypeBinaryStringSchemaDefault"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AnyContentTypeBinaryStringSchemaDefault",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/anyContentTypeBinaryStringSchemaDefault"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -137,27 +168,41 @@ func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (r
 //
 // GET /combined
 func (c *Client) Combined(ctx context.Context, params CombinedParams) (res CombinedRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("combined"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "Combined",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/combined"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "type" parameter.
@@ -175,14 +220,17 @@ func (c *Client) Combined(ctx context.Context, params CombinedParams) (res Combi
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeCombinedResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -195,36 +243,51 @@ func (c *Client) Combined(ctx context.Context, params CombinedParams) (res Combi
 //
 // GET /headers200
 func (c *Client) Headers200(ctx context.Context) (res Headers200OK, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headers200"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "Headers200",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/headers200"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeHeaders200Response(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -237,27 +300,41 @@ func (c *Client) Headers200(ctx context.Context) (res Headers200OK, err error) {
 //
 // GET /headersCombined
 func (c *Client) HeadersCombined(ctx context.Context, params HeadersCombinedParams) (res HeadersCombinedRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersCombined"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "HeadersCombined",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/headersCombined"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "type" parameter.
@@ -275,14 +352,17 @@ func (c *Client) HeadersCombined(ctx context.Context, params HeadersCombinedPara
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeHeadersCombinedResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -295,36 +375,51 @@ func (c *Client) HeadersCombined(ctx context.Context, params HeadersCombinedPara
 //
 // GET /headersDefault
 func (c *Client) HeadersDefault(ctx context.Context) (res HeadersDefaultDef, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersDefault"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "HeadersDefault",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/headersDefault"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeHeadersDefaultResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -337,36 +432,51 @@ func (c *Client) HeadersDefault(ctx context.Context) (res HeadersDefaultDef, err
 //
 // GET /headersPattern
 func (c *Client) HeadersPattern(ctx context.Context) (res HeadersPattern4XX, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("headersPattern"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "HeadersPattern",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/headersPattern"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeHeadersPatternResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -382,27 +492,41 @@ func (c *Client) HeadersPattern(ctx context.Context) (res HeadersPattern4XX, err
 //
 // GET /intersectPatternCode
 func (c *Client) IntersectPatternCode(ctx context.Context, params IntersectPatternCodeParams) (res IntersectPatternCodeRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("intersectPatternCode"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IntersectPatternCode",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/intersectPatternCode"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "code" parameter.
@@ -420,14 +544,17 @@ func (c *Client) IntersectPatternCode(ctx context.Context, params IntersectPatte
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeIntersectPatternCodeResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -440,36 +567,51 @@ func (c *Client) IntersectPatternCode(ctx context.Context, params IntersectPatte
 //
 // GET /multipleGenericResponses
 func (c *Client) MultipleGenericResponses(ctx context.Context) (res MultipleGenericResponsesRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("multipleGenericResponses"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MultipleGenericResponses",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/multipleGenericResponses"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeMultipleGenericResponsesResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -482,36 +624,51 @@ func (c *Client) MultipleGenericResponses(ctx context.Context) (res MultipleGene
 //
 // GET /octetStreamBinaryStringSchema
 func (c *Client) OctetStreamBinaryStringSchema(ctx context.Context) (res OctetStreamBinaryStringSchemaOK, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamBinaryStringSchema"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OctetStreamBinaryStringSchema",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/octetStreamBinaryStringSchema"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeOctetStreamBinaryStringSchemaResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -524,36 +681,51 @@ func (c *Client) OctetStreamBinaryStringSchema(ctx context.Context) (res OctetSt
 //
 // GET /octetStreamEmptySchema
 func (c *Client) OctetStreamEmptySchema(ctx context.Context) (res OctetStreamEmptySchemaOK, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("octetStreamEmptySchema"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OctetStreamEmptySchema",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/octetStreamEmptySchema"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeOctetStreamEmptySchemaResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -566,36 +738,51 @@ func (c *Client) OctetStreamEmptySchema(ctx context.Context) (res OctetStreamEmp
 //
 // GET /textPlainBinaryStringSchema
 func (c *Client) TextPlainBinaryStringSchema(ctx context.Context) (res TextPlainBinaryStringSchemaOK, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("textPlainBinaryStringSchema"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TextPlainBinaryStringSchema",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/textPlainBinaryStringSchema"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeTextPlainBinaryStringSchemaResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")

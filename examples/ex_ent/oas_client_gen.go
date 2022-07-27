@@ -9,6 +9,7 @@ import (
 
 	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/trace"
 
@@ -55,39 +56,55 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 //
 // POST /pets
 func (c *Client) CreatePet(ctx context.Context, request CreatePetReq) (res CreatePetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPet"),
 	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CreatePet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeCreatePetRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeCreatePetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -102,25 +119,38 @@ func (c *Client) CreatePet(ctx context.Context, request CreatePetReq) (res Creat
 //
 // POST /pets/{id}/categories
 func (c *Client) CreatePetCategories(ctx context.Context, request CreatePetCategoriesReq, params CreatePetCategoriesParams) (res CreatePetCategoriesRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetCategories"),
 	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CreatePetCategories",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets/"
 	{
@@ -139,17 +169,20 @@ func (c *Client) CreatePetCategories(ctx context.Context, request CreatePetCateg
 	}
 	u.Path += "/categories"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeCreatePetCategoriesRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeCreatePetCategoriesResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -164,25 +197,38 @@ func (c *Client) CreatePetCategories(ctx context.Context, request CreatePetCateg
 //
 // POST /pets/{id}/friends
 func (c *Client) CreatePetFriends(ctx context.Context, request CreatePetFriendsReq, params CreatePetFriendsParams) (res CreatePetFriendsRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetFriends"),
 	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CreatePetFriends",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets/"
 	{
@@ -201,17 +247,20 @@ func (c *Client) CreatePetFriends(ctx context.Context, request CreatePetFriendsR
 	}
 	u.Path += "/friends"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeCreatePetFriendsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeCreatePetFriendsResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -226,25 +275,38 @@ func (c *Client) CreatePetFriends(ctx context.Context, request CreatePetFriendsR
 //
 // POST /pets/{id}/owner
 func (c *Client) CreatePetOwner(ctx context.Context, request CreatePetOwnerReq, params CreatePetOwnerParams) (res CreatePetOwnerRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetOwner"),
 	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CreatePetOwner",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets/"
 	{
@@ -263,17 +325,20 @@ func (c *Client) CreatePetOwner(ctx context.Context, request CreatePetOwnerReq, 
 	}
 	u.Path += "/owner"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeCreatePetOwnerRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeCreatePetOwnerResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -288,25 +353,37 @@ func (c *Client) CreatePetOwner(ctx context.Context, request CreatePetOwnerReq, 
 //
 // DELETE /pets/{id}
 func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res DeletePetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deletePet"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "DeletePet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets/"
 	{
@@ -324,14 +401,17 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 		u.Path += e.Result()
 	}
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeDeletePetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -346,25 +426,37 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 //
 // DELETE /pets/{id}/owner
 func (c *Client) DeletePetOwner(ctx context.Context, params DeletePetOwnerParams) (res DeletePetOwnerRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deletePetOwner"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "DeletePetOwner",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets/"
 	{
@@ -383,14 +475,17 @@ func (c *Client) DeletePetOwner(ctx context.Context, params DeletePetOwnerParams
 	}
 	u.Path += "/owner"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "DELETE", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeDeletePetOwnerResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -405,27 +500,41 @@ func (c *Client) DeletePetOwner(ctx context.Context, params DeletePetOwnerParams
 //
 // GET /pets
 func (c *Client) ListPet(ctx context.Context, params ListPetParams) (res ListPetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPet"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListPet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.
@@ -463,14 +572,17 @@ func (c *Client) ListPet(ctx context.Context, params ListPetParams) (res ListPet
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeListPetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -485,25 +597,37 @@ func (c *Client) ListPet(ctx context.Context, params ListPetParams) (res ListPet
 //
 // GET /pets/{id}/categories
 func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategoriesParams) (res ListPetCategoriesRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPetCategories"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListPetCategories",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets/"
 	{
@@ -521,6 +645,8 @@ func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategories
 		u.Path += e.Result()
 	}
 	u.Path += "/categories"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.
@@ -558,14 +684,17 @@ func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategories
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeListPetCategoriesResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -580,25 +709,37 @@ func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategories
 //
 // GET /pets/{id}/friends
 func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams) (res ListPetFriendsRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPetFriends"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListPetFriends",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets/"
 	{
@@ -616,6 +757,8 @@ func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams
 		u.Path += e.Result()
 	}
 	u.Path += "/friends"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.
@@ -653,14 +796,17 @@ func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeListPetFriendsResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -675,25 +821,37 @@ func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams
 //
 // GET /pets/{id}
 func (c *Client) ReadPet(ctx context.Context, params ReadPetParams) (res ReadPetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPet"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadPet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets/"
 	{
@@ -711,14 +869,17 @@ func (c *Client) ReadPet(ctx context.Context, params ReadPetParams) (res ReadPet
 		u.Path += e.Result()
 	}
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeReadPetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -733,25 +894,37 @@ func (c *Client) ReadPet(ctx context.Context, params ReadPetParams) (res ReadPet
 //
 // GET /pets/{id}/owner
 func (c *Client) ReadPetOwner(ctx context.Context, params ReadPetOwnerParams) (res ReadPetOwnerRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPetOwner"),
 	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadPetOwner",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets/"
 	{
@@ -770,14 +943,17 @@ func (c *Client) ReadPetOwner(ctx context.Context, params ReadPetOwnerParams) (r
 	}
 	u.Path += "/owner"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeReadPetOwnerResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -792,25 +968,38 @@ func (c *Client) ReadPetOwner(ctx context.Context, params ReadPetOwnerParams) (r
 //
 // PATCH /pets/{id}
 func (c *Client) UpdatePet(ctx context.Context, request UpdatePetReq, params UpdatePetParams) (res UpdatePetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("updatePet"),
 	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UpdatePet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets/"
 	{
@@ -828,17 +1017,20 @@ func (c *Client) UpdatePet(ctx context.Context, request UpdatePetReq, params Upd
 		u.Path += e.Result()
 	}
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "PATCH", u, nil)
 	if err := encodeUpdatePetRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeUpdatePetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")

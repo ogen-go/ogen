@@ -9,6 +9,7 @@ import (
 
 	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/trace"
 
@@ -55,25 +56,39 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 //
 // GET /api/captcha/2chcaptcha/id
 func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptcha2chcaptchaIDGetParams) (res Captcha, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptcha2chcaptchaIDGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/captcha/2chcaptcha/id"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.
@@ -111,14 +126,17 @@ func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptch
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeAPICaptcha2chcaptchaIDGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -133,25 +151,39 @@ func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptch
 //
 // GET /api/captcha/2chcaptcha/show
 func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICaptcha2chcaptchaShowGetParams) (res APICaptcha2chcaptchaShowGetRes, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptcha2chcaptchaShowGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/captcha/2chcaptcha/show"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "id" parameter.
@@ -169,14 +201,17 @@ func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICapt
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeAPICaptcha2chcaptchaShowGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -195,23 +230,35 @@ func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICapt
 //
 // GET /api/captcha/app/id/{public_key}
 func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICaptchaAppIDPublicKeyGetParams) (res Captcha, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaAppIDPublicKeyGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/captcha/app/id/"
 	{
@@ -228,6 +275,8 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 		}
 		u.Path += e.Result()
 	}
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.
@@ -265,14 +314,17 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeAPICaptchaAppIDPublicKeyGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -287,25 +339,39 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 //
 // GET /api/captcha/invisible_recaptcha/id
 func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params APICaptchaInvisibleRecaptchaIDGetParams) (res Captcha, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaInvisibleRecaptchaIDGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/captcha/invisible_recaptcha/id"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.
@@ -343,14 +409,17 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -365,34 +434,49 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 //
 // GET /api/captcha/invisible_recaptcha/mobile
 func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res APICaptchaInvisibleRecaptchaMobileGetOK, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaInvisibleRecaptchaMobileGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/captcha/invisible_recaptcha/mobile"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeAPICaptchaInvisibleRecaptchaMobileGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -407,25 +491,39 @@ func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res
 //
 // GET /api/captcha/recaptcha/id
 func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptchaRecaptchaIDGetParams) (res Captcha, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaRecaptchaIDGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/captcha/recaptcha/id"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.
@@ -463,14 +561,17 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeAPICaptchaRecaptchaIDGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -485,34 +586,49 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 //
 // GET /api/captcha/recaptcha/mobile
 func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (res APICaptchaRecaptchaMobileGetOK, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaRecaptchaMobileGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/captcha/recaptcha/mobile"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeAPICaptchaRecaptchaMobileGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -527,25 +643,39 @@ func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (res APICaptc
 //
 // GET /api/dislike
 func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) (res Like, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIDislikeGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/dislike"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.
@@ -577,14 +707,17 @@ func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) 
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeAPIDislikeGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -599,25 +732,39 @@ func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) 
 //
 // GET /api/like
 func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res Like, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APILikeGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/like"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.
@@ -649,14 +796,17 @@ func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res L
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeAPILikeGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -673,23 +823,35 @@ func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res L
 //
 // GET /api/mobile/v2/after/{board}/{thread}/{num}
 func (c *Client) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params APIMobileV2AfterBoardThreadNumGetParams) (res MobileThreadPostsAfter, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2AfterBoardThreadNumGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/mobile/v2/after/"
 	{
@@ -737,14 +899,17 @@ func (c *Client) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params A
 		u.Path += e.Result()
 	}
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -759,34 +924,49 @@ func (c *Client) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params A
 //
 // GET /api/mobile/v2/boards
 func (c *Client) APIMobileV2BoardsGet(ctx context.Context) (res Boards, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2BoardsGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/mobile/v2/boards"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeAPIMobileV2BoardsGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -801,23 +981,35 @@ func (c *Client) APIMobileV2BoardsGet(ctx context.Context) (res Boards, err erro
 //
 // GET /api/mobile/v2/info/{board}/{thread}
 func (c *Client) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMobileV2InfoBoardThreadGetParams) (res MobileThreadLastInfo, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2InfoBoardThreadGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/mobile/v2/info/"
 	{
@@ -850,14 +1042,17 @@ func (c *Client) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMo
 		u.Path += e.Result()
 	}
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeAPIMobileV2InfoBoardThreadGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -872,23 +1067,35 @@ func (c *Client) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMo
 //
 // GET /api/mobile/v2/post/{board}/{num}
 func (c *Client) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (res MobilePost, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2PostBoardNumGet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/mobile/v2/post/"
 	{
@@ -921,14 +1128,17 @@ func (c *Client) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobil
 		u.Path += e.Result()
 	}
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "GET", u, nil)
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeAPIMobileV2PostBoardNumGetResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -943,25 +1153,40 @@ func (c *Client) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobil
 //
 // POST /user/passlogin
 func (c *Client) UserPassloginPost(ctx context.Context, request OptUserPassloginPostReq, params UserPassloginPostParams) (res Passcode, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UserPassloginPost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/passlogin"
+
+	stage = "EncodeQueryParams"
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "json" parameter.
@@ -979,17 +1204,20 @@ func (c *Client) UserPassloginPost(ctx context.Context, request OptUserPasslogin
 	}
 	u.RawQuery = q.Values().Encode()
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeUserPassloginPostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeUserPassloginPostResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -1004,6 +1232,8 @@ func (c *Client) UserPassloginPost(ctx context.Context, request OptUserPasslogin
 //
 // POST /user/posting
 func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPostReqForm) (res UserPostingPostOK, err error) {
+	otelAttrs := []attribute.KeyValue{}
+	// Validate request before sending.
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -1019,37 +1249,51 @@ func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPost
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UserPostingPost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/posting"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeUserPostingPostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeUserPostingPostResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -1064,37 +1308,53 @@ func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPost
 //
 // POST /user/report
 func (c *Client) UserReportPost(ctx context.Context, request OptUserReportPostReq) (res Report, err error) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UserReportPost",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/report"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeUserReportPostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeUserReportPostResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")

@@ -3,7 +3,6 @@
 package api
 
 import (
-	"context"
 	"net/http"
 	"time"
 
@@ -19,18 +18,33 @@ import (
 //
 // POST /pets
 func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPet"),
 	}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreatePet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "CreatePet",
@@ -43,46 +57,57 @@ func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	defer close()
 
 	response, err := s.h.CreatePet(ctx, request)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeCreatePetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleCreatePetCategoriesRequest handles createPetCategories operation.
 //
 // POST /pets/{id}/categories
 func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetCategories"),
 	}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreatePetCategories",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "CreatePetCategories",
@@ -95,7 +120,8 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	request, close, err := s.decodeCreatePetCategoriesRequest(r, span)
@@ -104,46 +130,57 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	defer close()
 
 	response, err := s.h.CreatePetCategories(ctx, request, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeCreatePetCategoriesResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleCreatePetFriendsRequest handles createPetFriends operation.
 //
 // POST /pets/{id}/friends
 func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetFriends"),
 	}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreatePetFriends",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "CreatePetFriends",
@@ -156,7 +193,8 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	request, close, err := s.decodeCreatePetFriendsRequest(r, span)
@@ -165,46 +203,57 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	defer close()
 
 	response, err := s.h.CreatePetFriends(ctx, request, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeCreatePetFriendsResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleCreatePetOwnerRequest handles createPetOwner operation.
 //
 // POST /pets/{id}/owner
 func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("createPetOwner"),
 	}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "CreatePetOwner",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "CreatePetOwner",
@@ -217,7 +266,8 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	request, close, err := s.decodeCreatePetOwnerRequest(r, span)
@@ -226,46 +276,57 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	defer close()
 
 	response, err := s.h.CreatePetOwner(ctx, request, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeCreatePetOwnerResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleDeletePetRequest handles deletePet operation.
 //
 // DELETE /pets/{id}
 func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deletePet"),
 	}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeletePet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "DeletePet",
@@ -278,45 +339,56 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.DeletePet(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeDeletePetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleDeletePetOwnerRequest handles deletePetOwner operation.
 //
 // DELETE /pets/{id}/owner
 func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("deletePetOwner"),
 	}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeletePetOwner",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "DeletePetOwner",
@@ -329,45 +401,56 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWrit
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.DeletePetOwner(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeDeletePetOwnerResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleListPetRequest handles listPet operation.
 //
 // GET /pets
 func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPet"),
 	}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListPet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "ListPet",
@@ -380,45 +463,56 @@ func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.ListPet(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListPetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleListPetCategoriesRequest handles listPetCategories operation.
 //
 // GET /pets/{id}/categories
 func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPetCategories"),
 	}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListPetCategories",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "ListPetCategories",
@@ -431,45 +525,56 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseW
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.ListPetCategories(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListPetCategoriesResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleListPetFriendsRequest handles listPetFriends operation.
 //
 // GET /pets/{id}/friends
 func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("listPetFriends"),
 	}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListPetFriends",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "ListPetFriends",
@@ -482,45 +587,56 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWrit
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.ListPetFriends(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeListPetFriendsResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleReadPetRequest handles readPet operation.
 //
 // GET /pets/{id}
 func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPet"),
 	}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadPet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "ReadPet",
@@ -533,45 +649,56 @@ func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.ReadPet(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadPetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleReadPetOwnerRequest handles readPetOwner operation.
 //
 // GET /pets/{id}/owner
 func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("readPetOwner"),
 	}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadPetOwner",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "ReadPetOwner",
@@ -584,45 +711,56 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	response, err := s.h.ReadPetOwner(ctx, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeReadPetOwnerResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleUpdatePetRequest handles updatePet operation.
 //
 // PATCH /pets/{id}
 func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("updatePet"),
 	}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "UpdatePet",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "UpdatePet",
@@ -635,7 +773,8 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeParams", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	request, close, err := s.decodeUpdatePetRequest(r, span)
@@ -644,40 +783,22 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	defer close()
 
 	response, err := s.h.UpdatePet(ctx, request, params)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeUpdatePetResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
-}
-
-func (s *Server) badRequest(
-	ctx context.Context,
-	w http.ResponseWriter,
-	r *http.Request,
-	span trace.Span,
-	otelAttrs []attribute.KeyValue,
-	err error,
-) {
-	span.RecordError(err)
-	span.SetStatus(codes.Error, "BadRequest")
-	s.errors.Add(ctx, 1, otelAttrs...)
-	s.cfg.ErrorHandler(ctx, w, r, err)
 }
