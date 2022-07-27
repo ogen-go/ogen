@@ -169,6 +169,16 @@ func (s *Spec) RefRequestBody(n string) *NamedRequestBody {
 	return nil
 }
 
+// RefParameter returns a new Parameter referencing the given name.
+func (s *Spec) RefParameter(n string) *Parameter {
+	if s.Components != nil && s.Components.Parameters != nil {
+		if _, ok := s.Components.Parameters[n]; ok {
+			return NewParameter().SetRef("#/components/parameters/" + escapeRef(n))
+		}
+	}
+	return nil
+}
+
 // initComponents ensures the Components property is non-nil.
 func (s *Spec) initComponents() {
 	if s.Components == nil {
