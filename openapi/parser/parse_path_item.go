@@ -26,7 +26,7 @@ func (p *parser) parsePathItem(
 	if ref := item.Ref; ref != "" {
 		ops, err := p.resolvePathItem(path, ref, operationIDs, ctx)
 		if err != nil {
-			return nil, errors.Wrap(err, "resolve pathItem")
+			return nil, p.wrapRef(ctx.lastLoc(), item.Locator, err)
 		}
 		return ops, nil
 	}

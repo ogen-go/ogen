@@ -45,12 +45,11 @@ func (p *parser) parseResponse(resp *ogen.Response, ctx *resolveCtx) (_ *openapi
 		rerr = p.wrapLocation(ctx.lastLoc(), resp.Locator, rerr)
 	}()
 	if ref := resp.Ref; ref != "" {
-		resp, err := p.resolveResponse(ref, ctx)
+		resolved, err := p.resolveResponse(ref, ctx)
 		if err != nil {
-			return nil, errors.Wrapf(err, "resolve %q reference", ref)
+			return nil, p.wrapRef(ctx.lastLoc(), resp.Locator, err)
 		}
-
-		return resp, nil
+		return resolved, nil
 	}
 
 	content, err := p.parseContent(resp.Content, resp.Locator.Field("content"), ctx)

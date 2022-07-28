@@ -300,8 +300,13 @@ func (p *parser) resolveSecurityScheme(ref string, ctx *resolveCtx) (*ogen.Secur
 		}
 	}
 
-	p.refs.securitySchemes[ref] = component
-	return component, nil
+	ss, err := p.parseSecurityScheme(component, ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	p.refs.securitySchemes[ref] = ss
+	return ss, nil
 }
 
 func (p *parser) resolvePathItem(

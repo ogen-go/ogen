@@ -14,6 +14,7 @@ import (
 	"github.com/ogen-go/ogen/gen/genfs"
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/location"
+	"github.com/ogen-go/ogen/openapi/parser"
 )
 
 func testGenerate(t *testing.T, filename string, data []byte, aliases ctAliases, ignore ...string) {
@@ -155,6 +156,11 @@ func TestNegative(t *testing.T) {
 
 		spec, err := ogen.Parse(data)
 		a.NoError(err)
+
+		_, err = parser.Parse(spec, parser.Settings{
+			Filename: name,
+		})
+		a.NoError(err, "If the error is related to parser, move this test to parser package testdata")
 
 		_, err = gen.NewGenerator(spec, gen.Options{
 			Filename: name,

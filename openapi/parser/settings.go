@@ -30,6 +30,9 @@ type Settings struct {
 }
 
 func (s *Settings) setDefaults() {
+	if s.External == nil {
+		s.External = jsonschema.NoExternal{}
+	}
 	if s.DepthLimit == 0 {
 		s.DepthLimit = 1000
 	}

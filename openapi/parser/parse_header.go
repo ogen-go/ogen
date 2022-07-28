@@ -31,11 +31,11 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 		rerr = p.wrapLocation(ctx.lastLoc(), header.Locator, rerr)
 	}()
 	if ref := header.Ref; ref != "" {
-		parsed, err := p.resolveHeader(name, ref, ctx)
+		resolved, err := p.resolveHeader(name, ref, ctx)
 		if err != nil {
-			return nil, errors.Wrapf(err, "resolve %q reference", ref)
+			return nil, p.wrapRef(ctx.lastLoc(), header.Locator, err)
 		}
-		return parsed, nil
+		return resolved, nil
 	}
 
 	mustNotSpecified := func(name, got string) error {
@@ -82,13 +82,11 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 		Locator:     header.Locator,
 	}
 
-	if header.Content != nil {
-		// TODO: Validate content?
-		return op, nil
-	}
-
-	if err := p.validateParamStyle(op, ctx.lastLoc()); err != nil {
-		return nil, err
+	// TODO: Validate content?
+	if header.Content == nil {
+		if err := p.validateParamStyle(op, ctx.lastLoc()); err != nil {
+			return nil, err
+		}
 	}
 
 	return op, nil

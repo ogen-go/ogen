@@ -64,6 +64,10 @@ func TestPathParser(t *testing.T) {
 			},
 		},
 		{
+			Path:      "\x00",
+			ExpectErr: `parse "\x00": net/url: invalid control character in URL`,
+		},
+		{
 			Path:      "/foo/{bar}/{baz}",
 			Params:    []*openapi.Parameter{bar},
 			ExpectErr: `path parameter not specified: "baz"`,
