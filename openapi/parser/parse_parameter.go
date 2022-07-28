@@ -170,13 +170,11 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (_ *open
 		Locator:       param.Locator,
 	}
 
-	if param.Content != nil {
-		// TODO: Validate content?
-		return op, nil
-	}
-
-	if err := p.validateParamStyle(op, ctx.lastLoc()); err != nil {
-		return nil, err
+	// TODO: Validate content?
+	if param.Content == nil {
+		if err := p.validateParamStyle(op, ctx.lastLoc()); err != nil {
+			return nil, err
+		}
 	}
 
 	return op, nil

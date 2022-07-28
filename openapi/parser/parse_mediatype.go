@@ -23,12 +23,13 @@ func (p *parser) parseContent(
 
 	result := make(map[string]*openapi.MediaType, len(content))
 	for name, m := range content {
-		if _, _, err := mime.ParseMediaType(name); err != nil {
+		ct, _, err := mime.ParseMediaType(name)
+		if err != nil {
 			err := errors.Wrapf(err, "content type %q", name)
 			return nil, p.wrapLocation(ctx.lastLoc(), locator.Key(name), err)
 		}
 
-		result[name], err = p.parseMediaType(m, ctx)
+		result[name], err = p.parseMediaType(ct, m, ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, name)
 		}
@@ -56,12 +57,13 @@ func (p *parser) parseParameterContent(
 	}
 
 	for name, m := range content {
-		if _, _, err := mime.ParseMediaType(name); err != nil {
+		ct, _, err := mime.ParseMediaType(name)
+		if err != nil {
 			err := errors.Wrapf(err, "content type %q", name)
 			return nil, p.wrapLocation(ctx.lastLoc(), locator.Key(name), err)
 		}
 
-		media, err := p.parseMediaType(m, ctx)
+		media, err := p.parseMediaType(ct, m, ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, name)
 		}
@@ -74,7 +76,7 @@ func (p *parser) parseParameterContent(
 	panic("unreachable")
 }
 
-func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.MediaType, rerr error) {
+func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *resolveCtx) (_ *openapi.MediaType, rerr error) {
 	defer func() {
 		rerr = p.wrapLocation(ctx.lastLoc(), m.Locator, rerr)
 	}()
@@ -85,58 +87,64 @@ func (p *parser) parseMediaType(m ogen.Media, ctx *resolveCtx) (_ *openapi.Media
 	}
 
 	encodings := make(map[string]*openapi.Encoding, len(m.Encoding))
-	if s != nil && len(m.Encoding) > 0 {
-		names := make(map[string]jsonschema.Property, len(s.Properties))
-		for _, prop := range s.Properties {
-			names[prop.Name] = prop
-		}
-
-		parseEncoding := func(name string, prop jsonschema.Property, e ogen.Encoding) (rerr error) {
-			defer func() {
-				rerr = p.wrapLocation(ctx.lastLoc(), e.Locator, rerr)
-			}()
-
-			encoding := &openapi.Encoding{
-				ContentType:   e.ContentType,
-				Headers:       map[string]*openapi.Header{},
-				Style:         inferParamStyle(openapi.LocationQuery, e.Style),
-				Explode:       inferParamExplode(openapi.LocationQuery, e.Explode),
-				AllowReserved: e.AllowReserved,
-				Locator:       e.Locator,
-			}
-			encoding.Headers, err = p.parseHeaders(e.Headers, ctx)
-			if err != nil {
-				return p.wrapField("headers", ctx.lastLoc(), e.Locator, err)
-			}
-			encodings[name] = encoding
-
-			if err := p.validateParamStyle(&openapi.Parameter{
-				Name:          name,
-				Schema:        prop.Schema,
-				In:            openapi.LocationQuery,
-				Style:         encoding.Style,
-				Explode:       encoding.Explode,
-				Required:      prop.Required,
-				AllowReserved: encoding.AllowReserved,
-				Locator:       encoding.Locator,
-			}, ctx.lastLoc()); err != nil {
-				return errors.Wrap(err, "param style")
+	if len(m.Encoding) > 0 {
+		switch ct {
+		case "application/x-www-form-urlencoded", "multipart/form-data":
+			var names map[string]jsonschema.Property
+			if s != nil {
+				names = make(map[string]jsonschema.Property, len(s.Properties))
+				for _, prop := range s.Properties {
+					names[prop.Name] = prop
+				}
 			}
 
-			return nil
-		}
+			parseEncoding := func(name string, prop jsonschema.Property, e ogen.Encoding) (rerr error) {
+				defer func() {
+					rerr = p.wrapLocation(ctx.lastLoc(), e.Locator, rerr)
+				}()
 
-		encodingLoc := m.Locator.Field("encoding")
-		for name, e := range m.Encoding {
-			prop, ok := names[name]
-			if !ok {
-				loc := encodingLoc.Key(name)
-				err := errors.Errorf("unknown property %q", name)
-				return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
+				encoding := &openapi.Encoding{
+					ContentType:   e.ContentType,
+					Headers:       map[string]*openapi.Header{},
+					Style:         inferParamStyle(openapi.LocationQuery, e.Style),
+					Explode:       inferParamExplode(openapi.LocationQuery, e.Explode),
+					AllowReserved: e.AllowReserved,
+					Locator:       e.Locator,
+				}
+				encoding.Headers, err = p.parseHeaders(e.Headers, ctx)
+				if err != nil {
+					return p.wrapField("headers", ctx.lastLoc(), e.Locator, err)
+				}
+				encodings[name] = encoding
+
+				if err := p.validateParamStyle(&openapi.Parameter{
+					Name:          name,
+					Schema:        prop.Schema,
+					In:            openapi.LocationQuery,
+					Style:         encoding.Style,
+					Explode:       encoding.Explode,
+					Required:      prop.Required,
+					AllowReserved: encoding.AllowReserved,
+					Locator:       encoding.Locator,
+				}, ctx.lastLoc()); err != nil {
+					return errors.Wrap(err, "param style")
+				}
+
+				return nil
 			}
 
-			if err := parseEncoding(name, prop, e); err != nil {
-				return nil, errors.Wrapf(err, "encoding property %q", name)
+			encodingLoc := m.Locator.Field("encoding")
+			for name, e := range m.Encoding {
+				prop, ok := names[name]
+				if !ok {
+					loc := encodingLoc.Key(name)
+					err := errors.Errorf("unknown property %q", name)
+					return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
+				}
+
+				if err := parseEncoding(name, prop, e); err != nil {
+					return nil, errors.Wrapf(err, "encoding property %q", name)
+				}
 			}
 		}
 	}

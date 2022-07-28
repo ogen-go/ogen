@@ -82,13 +82,11 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 		Locator:     header.Locator,
 	}
 
-	if header.Content != nil {
-		// TODO: Validate content?
-		return op, nil
-	}
-
-	if err := p.validateParamStyle(op, ctx.lastLoc()); err != nil {
-		return nil, err
+	// TODO: Validate content?
+	if header.Content == nil {
+		if err := p.validateParamStyle(op, ctx.lastLoc()); err != nil {
+			return nil, err
+		}
 	}
 
 	return op, nil
