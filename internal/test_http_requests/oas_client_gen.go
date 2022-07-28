@@ -9,6 +9,7 @@ import (
 
 	"github.com/go-faster/errors"
 	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/trace"
 
@@ -52,6 +53,10 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 //
 // POST /allRequestBodies
 func (c *Client) AllRequestBodies(ctx context.Context, request AllRequestBodiesReq) (res AllRequestBodiesOK, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("allRequestBodies"),
+	}
+	// Validate request before sending.
 	switch request := request.(type) {
 	case *AllRequestBodiesApplicationJSON:
 		// Validation is not required for this type.
@@ -66,39 +71,51 @@ func (c *Client) AllRequestBodies(ctx context.Context, request AllRequestBodiesR
 	default:
 		return res, errors.Errorf("unexpected request type: %T", request)
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("allRequestBodies"),
-	}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AllRequestBodies",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/allRequestBodies"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeAllRequestBodiesRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeAllRequestBodiesResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
@@ -111,6 +128,10 @@ func (c *Client) AllRequestBodies(ctx context.Context, request AllRequestBodiesR
 //
 // POST /allRequestBodiesOptional
 func (c *Client) AllRequestBodiesOptional(ctx context.Context, request AllRequestBodiesOptionalReq) (res AllRequestBodiesOptionalOK, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("allRequestBodiesOptional"),
+	}
+	// Validate request before sending.
 	switch request := request.(type) {
 	case *AllRequestBodiesOptionalApplicationJSON:
 		// Validation is not required for this type.
@@ -125,39 +146,51 @@ func (c *Client) AllRequestBodiesOptional(ctx context.Context, request AllReques
 	default:
 		return res, errors.Errorf("unexpected request type: %T", request)
 	}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("allRequestBodiesOptional"),
-	}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AllRequestBodiesOptional",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
+
+	stage = "BuildURL"
 	u := uri.Clone(c.serverURL)
 	u.Path += "/allRequestBodiesOptional"
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	if err := encodeAllRequestBodiesOptionalRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decodeAllRequestBodiesOptionalResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")

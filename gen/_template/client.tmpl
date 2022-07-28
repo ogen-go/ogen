@@ -46,7 +46,14 @@ func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- en
 {{- template "godoc_def" $op.GoDoc }}
 // {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
 func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, request {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Responses.Type.Go }}, err error) {
+	otelAttrs := []attribute.KeyValue{
+	{{- if $op.Spec.OperationID }}
+		otelogen.OperationID({{ quote $op.Spec.OperationID }}),
+	{{- end }}
+	}
+
 	{{- if $op.Request }}{{/* Request validation */}}
+		// Validate request before sending.
 		{{- if $op.Request.Type.IsInterface }}
 			switch request := request.(type) {
 			{{- range $_, $media := $op.Request.Contents }}
@@ -75,34 +82,42 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 			{{- end }}
 		{{- end }}
 	{{- end }}{{/* Request validation */}}
+
+	// Run stopwatch.
 	startTime := time.Now()
-	otelAttrs := []attribute.KeyValue{
-	{{- if $op.Spec.OperationID }}
-		otelogen.OperationID({{ quote $op.Spec.OperationID }}),
-	{{- end }}
-	}
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, {{ quote $op.Name }},
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
+	// Track stage for error reporting.
+	var stage string
 	defer func() {
 		if err != nil {
 			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
 			c.errors.Add(ctx, 1, otelAttrs...)
-		} else {
-			elapsedDuration := time.Since(startTime)
-			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 		}
 		span.End()
 	}()
-	c.requests.Add(ctx, 1, otelAttrs...)
 
+	stage = "BuildURL"
 	{{- template "encode_path_parameters" $op }}
 
-	{{- if $op.HasQueryParams }}
+	{{ if $op.HasQueryParams }}
+	stage = "EncodeQueryParams"
 	{{- template "encode_query_parameters" $op }}
 	{{- end }}
 
+	stage = "EncodeRequest"
 	r := ht.NewRequest(ctx, {{ $op.Spec.HTTPMethod | upper | quote }}, u, nil)
 	{{- if $op.Request }}
 	if err := encode{{ $op.Name }}Request(request, r); err != nil {
@@ -110,23 +125,28 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	}
 	{{- end }}
 
-	{{- if $op.HasHeaderParams }}
+	{{ if $op.HasHeaderParams }}
+	stage = "EncodeHeaderParams"
 	{{- template "encode_header_parameters" $op }}
 	{{- end }}
 
 	{{- template "encode_cookie_params" $op }}
 	{{- range $s := $op.Security }}
-	if err := c.security{{ $s.Security.Type.Name }}(ctx, {{ quote $op.Name }}, r); err != nil {
-		return res, errors.Wrap(err, "security")
+	{{- $securityName := $s.Security.Type.Name }}
+	stage = {{ printf "Security:%s" $securityName | quote }}
+	if err := c.security{{ $securityName }}(ctx, {{ quote $op.Name }}, r); err != nil {
+		return res, errors.Wrap(err, {{ printf "security %q" $securityName | quote }})
 	}
 	{{- end }}
 
+	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
 	if err != nil {
 		return res, errors.Wrap(err, "do request")
 	}
 	defer resp.Body.Close()
 
+	stage = "DecodeResponse"
 	result, err := decode{{ $op.Name }}Response(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")

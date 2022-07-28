@@ -3,7 +3,6 @@
 package api
 
 import (
-	"context"
 	"net/http"
 	"time"
 
@@ -19,18 +18,33 @@ import (
 //
 // POST /allRequestBodies
 func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodies"),
 	}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "AllRequestBodies",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "AllRequestBodies",
@@ -43,46 +57,57 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWr
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	defer close()
 
 	response, err := s.h.AllRequestBodies(ctx, request)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeAllRequestBodiesResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
 // HandleAllRequestBodiesOptionalRequest handles allRequestBodiesOptional operation.
 //
 // POST /allRequestBodiesOptional
 func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("allRequestBodiesOptional"),
 	}
+
+	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "AllRequestBodiesOptional",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
-	s.requests.Add(ctx, 1, otelAttrs...)
 	defer span.End()
 
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
 	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
 		err          error
 		opErrContext = ogenerrors.OperationContext{
 			Name: "AllRequestBodiesOptional",
@@ -95,40 +120,22 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.Re
 			OperationContext: opErrContext,
 			Err:              err,
 		}
-		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 	defer close()
 
 	response, err := s.h.AllRequestBodiesOptional(ctx, request)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Internal")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
 	if err := encodeAllRequestBodiesOptionalResponse(response, w, span); err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, "Response")
-		s.errors.Add(ctx, 1, otelAttrs...)
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	elapsedDuration := time.Since(startTime)
-	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
-}
-
-func (s *Server) badRequest(
-	ctx context.Context,
-	w http.ResponseWriter,
-	r *http.Request,
-	span trace.Span,
-	otelAttrs []attribute.KeyValue,
-	err error,
-) {
-	span.RecordError(err)
-	span.SetStatus(codes.Error, "BadRequest")
-	s.errors.Add(ctx, 1, otelAttrs...)
-	s.cfg.ErrorHandler(ctx, w, r, err)
 }
