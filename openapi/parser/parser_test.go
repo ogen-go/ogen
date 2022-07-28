@@ -1,4 +1,4 @@
-package parser
+package parser_test
 
 import (
 	"embed"
@@ -10,6 +10,7 @@ import (
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/location"
+	"github.com/ogen-go/ogen/openapi/parser"
 )
 
 //go:embed _testdata
@@ -51,7 +52,7 @@ func TestNegative(t *testing.T) {
 		spec, err := ogen.Parse(data)
 		a.NoError(err)
 
-		_, err = Parse(spec, Settings{
+		_, err = parser.Parse(spec, parser.Settings{
 			Filename: name,
 		})
 		a.Error(err)
