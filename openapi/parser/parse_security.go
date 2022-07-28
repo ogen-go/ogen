@@ -23,11 +23,11 @@ func (p *parser) parseSecurityScheme(
 	}()
 
 	if ref := scheme.Ref; ref != "" {
-		sch, err := p.resolveSecurityScheme(ref, ctx)
+		resolved, err := p.resolveSecurityScheme(ref, ctx)
 		if err != nil {
-			return nil, errors.Wrap(err, "resolve security schema")
+			return nil, p.wrapRef(ctx.lastLoc(), scheme.Locator, err)
 		}
-		return sch, nil
+		return resolved, nil
 	}
 
 	if err := func() error {

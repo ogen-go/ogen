@@ -31,11 +31,11 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 		rerr = p.wrapLocation(ctx.lastLoc(), header.Locator, rerr)
 	}()
 	if ref := header.Ref; ref != "" {
-		parsed, err := p.resolveHeader(name, ref, ctx)
+		resolved, err := p.resolveHeader(name, ref, ctx)
 		if err != nil {
-			return nil, errors.Wrapf(err, "resolve %q reference", ref)
+			return nil, p.wrapRef(ctx.lastLoc(), header.Locator, err)
 		}
-		return parsed, nil
+		return resolved, nil
 	}
 
 	mustNotSpecified := func(name, got string) error {

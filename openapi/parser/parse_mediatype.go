@@ -48,7 +48,7 @@ func (p *parser) parseParameterContent(
 	}
 	if len(content) != 1 {
 		for key := range content {
-			locator = locator.Field(key)
+			locator = locator.Key(key)
 			break
 		}
 

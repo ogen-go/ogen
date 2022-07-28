@@ -122,7 +122,7 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (_ *open
 	if ref := param.Ref; ref != "" {
 		parsed, err := p.resolveParameter(ref, ctx)
 		if err != nil {
-			return nil, errors.Wrapf(err, "resolve %q reference", ref)
+			return nil, p.wrapRef(ctx.lastLoc(), param.Locator, err)
 		}
 		return parsed, nil
 	}

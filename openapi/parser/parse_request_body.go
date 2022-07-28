@@ -15,12 +15,11 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx *resolveCtx) (_ *o
 		rerr = p.wrapLocation(ctx.lastLoc(), body.Locator, rerr)
 	}()
 	if ref := body.Ref; ref != "" {
-		reqBody, err := p.resolveRequestBody(ref, ctx)
+		resolved, err := p.resolveRequestBody(ref, ctx)
 		if err != nil {
-			return nil, errors.Wrapf(err, "resolve %q reference", ref)
+			return nil, p.wrapRef(ctx.lastLoc(), body.Locator, err)
 		}
-
-		return reqBody, nil
+		return resolved, nil
 	}
 
 	content, err := func() (map[string]*openapi.MediaType, error) {
