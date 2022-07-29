@@ -130,14 +130,15 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 		schema.Type = typ
 	}
 
+	typ := schema.Type
 	switch {
 	case len(schema.Enum) > 0:
-		typ := schema.Type
 		if p.inferTypes && typ == "" {
 			inferred, err := inferJSONType(schema.Enum[0])
-			if err == nil {
-				typ = inferred
+			if err != nil {
+				return nil, errors.Wrap(err, "infer enum type")
 			}
+			typ = inferred
 		}
 	case len(schema.OneOf) > 0:
 		s := hook(&Schema{})
@@ -189,7 +190,6 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 		return s, nil
 	}
 
-	typ := schema.Type
 	// Try to infer schema type from properties.
 	if p.inferTypes && typ == "" {
 		switch {
