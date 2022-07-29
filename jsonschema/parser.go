@@ -130,15 +130,9 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 		typ := schema.Type
 		if p.inferTypes && typ == "" {
 			inferred, err := inferJSONType(schema.Enum[0])
-			if err != nil {
-				return nil, errors.Wrap(err, "infer enum type")
+			if err == nil {
+				typ = inferred
 			}
-			typ = inferred
-		}
-
-		t, err := parseType(typ)
-		if err != nil {
-			return nil, errors.Wrap(err, "type")
 		}
 
 		return hook(&Schema{

@@ -24,10 +24,19 @@ func inferJSONType(v json.RawMessage) (string, error) {
 }
 
 func parseEnumValues(s *Schema, rawValues []json.RawMessage) ([]interface{}, error) {
-	var (
-		values []interface{}
-		unique = map[interface{}]struct{}{}
-	)
+	for i := range rawValues {
+		for j := range rawValues {
+			if i == j {
+				continue
+			}
+			a, b := rawValues[i], rawValues[j]
+			if ok, _ := ogenjson.Equal(a, b); ok {
+				return nil, errors.Errorf("duplicate enum values: %q, at index %d and %d", a, i, j)
+			}
+		}
+	}
+
+	var values []interface{}
 	for _, raw := range rawValues {
 		val, err := parseJSONValue(s, raw)
 		if err != nil {
