@@ -1,4 +1,4 @@
-package parser_test
+package jsonschema_test
 
 import (
 	"embed"
@@ -6,12 +6,12 @@ import (
 	"strings"
 	"testing"
 
+	yaml "github.com/go-faster/yamlx"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/internal/testutil"
-	"github.com/ogen-go/ogen/openapi/parser"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 //go:embed _testdata
@@ -27,12 +27,14 @@ func TestNegative(t *testing.T) {
 		a := require.New(t)
 		_, name := path.Split(file)
 
-		spec, err := ogen.Parse(data)
+		var schema jsonschema.RawSchema
+		err := yaml.Unmarshal(data, &schema)
 		a.NoError(err)
 
-		_, err = parser.Parse(spec, parser.Settings{
+		p := jsonschema.NewParser(jsonschema.Settings{
 			Filename: name,
 		})
+		_, err = p.Parse(&schema)
 		a.Error(err)
 
 		var buf strings.Builder

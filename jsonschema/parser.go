@@ -7,6 +7,8 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
+
+	"github.com/ogen-go/ogen/internal/location"
 )
 
 // Parser parses JSON schemas.
@@ -67,7 +69,8 @@ func (p *Parser) parse1(schema *RawSchema, ctx *resolveCtx, hook func(*Schema) *
 		if len(schema.Enum) > 0 {
 			values, err := parseEnumValues(s, schema.Enum)
 			if err != nil {
-				return nil, errors.Wrap(err, "parse enum values")
+				err := errors.Wrap(err, "parse enum values")
+				return nil, p.wrapField("enum", ctx.lastLoc(), schema.Locator, err)
 			}
 			s.Enum = values
 			handleNullableEnum(s)
@@ -87,9 +90,8 @@ func (p *Parser) parse1(schema *RawSchema, ctx *resolveCtx, hook func(*Schema) *
 				s.DefaultSet = true
 				return nil
 			}(); err != nil {
-				loc := schema.Locator.Field("default")
 				err := errors.Wrap(err, "parse default")
-				return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
+				return nil, p.wrapField("default", ctx.lastLoc(), schema.Locator, err)
 			}
 		}
 		if a, ok := schema.XAnnotations["x-ogen-name"]; ok {
@@ -108,11 +110,14 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 	if schema == nil {
 		return nil, nil
 	}
+	wrapField := func(field string, err error) error {
+		return p.wrapField(field, ctx.lastLoc(), schema.Locator, err)
+	}
 
 	if ref := schema.Ref; ref != "" {
 		s, err := p.resolve(ref, ctx)
 		if err != nil {
-			return nil, errors.Wrapf(err, "resolve %q", ref)
+			return nil, wrapField("$ref", err)
 		}
 		return s, nil
 	}
@@ -120,14 +125,14 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 	if d := schema.Default; p.inferTypes && schema.Type == "" && len(d) > 0 {
 		typ, err := inferJSONType(json.RawMessage(d))
 		if err != nil {
-			return nil, errors.Wrap(err, "infer default type")
+			return nil, wrapField("default", err)
 		}
 		schema.Type = typ
 	}
 
+	typ := schema.Type
 	switch {
 	case len(schema.Enum) > 0:
-		typ := schema.Type
 		if p.inferTypes && typ == "" {
 			inferred, err := inferJSONType(schema.Enum[0])
 			if err != nil {
@@ -135,22 +140,12 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 			}
 			typ = inferred
 		}
-
-		t, err := parseType(typ)
-		if err != nil {
-			return nil, errors.Wrap(err, "type")
-		}
-
-		return hook(&Schema{
-			Type:   t,
-			Format: schema.Format,
-		}), nil
 	case len(schema.OneOf) > 0:
 		s := hook(&Schema{})
 
-		schemas, err := p.parseMany(schema.OneOf, ctx)
+		schemas, err := p.parseMany(schema.OneOf, schema.Locator, ctx)
 		if err != nil {
-			return nil, errors.Wrapf(err, "oneOf")
+			return nil, wrapField("oneOf", err)
 		}
 		s.OneOf = schemas
 
@@ -176,9 +171,9 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 			Pattern:   schema.Pattern,
 		})
 
-		schemas, err := p.parseMany(schema.AnyOf, ctx)
+		schemas, err := p.parseMany(schema.AnyOf, schema.Locator, ctx)
 		if err != nil {
-			return nil, errors.Wrapf(err, "anyOf")
+			return nil, wrapField("anyOf", err)
 		}
 		s.AnyOf = schemas
 
@@ -186,16 +181,15 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 	case len(schema.AllOf) > 0:
 		s := hook(&Schema{})
 
-		schemas, err := p.parseMany(schema.AllOf, ctx)
+		schemas, err := p.parseMany(schema.AllOf, schema.Locator, ctx)
 		if err != nil {
-			return nil, errors.Wrap(err, "allOf")
+			return nil, wrapField("allOf", err)
 		}
 		s.AllOf = schemas
 
 		return s, nil
 	}
 
-	typ := schema.Type
 	// Try to infer schema type from properties.
 	if p.inferTypes && typ == "" {
 		switch {
@@ -229,7 +223,8 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 	switch typ {
 	case "object":
 		if schema.Items != nil {
-			return nil, errors.New("object cannot contain 'items' field")
+			err := errors.New("object cannot contain 'items' field")
+			return nil, wrapField("items", err)
 		}
 		required := func(name string) bool {
 			for _, p := range schema.Required {
@@ -254,7 +249,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 				additional = true
 				item, err := p.parse(&ap.Schema, ctx)
 				if err != nil {
-					return nil, errors.Wrapf(err, "additionalProperties")
+					return nil, wrapField("additionalProperties", err)
 				}
 				s.Item = item
 			}
@@ -262,16 +257,21 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 		}
 
 		if pp := schema.PatternProperties; len(pp) > 0 {
+			ppLoc := schema.Locator.Field("patternProperties")
+
 			patterns := make([]PatternProperty, len(pp))
 			for idx, prop := range pp {
 				pattern := prop.Pattern
 				r, err := regexp.Compile(pattern)
 				if err != nil {
-					return nil, errors.Wrapf(err, "compile pattern %q", pattern)
+					loc := ppLoc.Key(pattern)
+					err := errors.Wrapf(err, "compile pattern %q", pattern)
+					return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
 				}
 				sch, err := p.parse(prop.Schema, ctx)
 				if err != nil {
-					return nil, errors.Wrapf(err, "pattern schema %q", pattern)
+					err := errors.Wrapf(err, "pattern schema %q", pattern)
+					return nil, p.wrapField(pattern, ctx.lastLoc(), ppLoc, err)
 				}
 				patterns[idx] = PatternProperty{
 					Pattern: r,
@@ -281,10 +281,12 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 			s.PatternProperties = patterns
 		}
 
+		propsLoc := schema.Locator.Field("properties")
 		for _, propSpec := range schema.Properties {
 			prop, err := p.parse(propSpec.Schema, ctx)
 			if err != nil {
-				return nil, errors.Wrapf(err, "property %q", propSpec.Name)
+				err := errors.Wrapf(err, "property %q", propSpec.Name)
+				return nil, p.wrapField(propSpec.Name, ctx.lastLoc(), propsLoc, err)
 			}
 
 			var description string
@@ -314,12 +316,13 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 			return array, nil
 		}
 		if len(schema.Properties) > 0 {
-			return nil, errors.New("array cannot contain properties")
+			err := errors.New("array cannot contain properties")
+			return nil, wrapField("properties", err)
 		}
 
 		item, err := p.parse(schema.Items, ctx)
 		if err != nil {
-			return nil, errors.Wrap(err, "item")
+			return nil, wrapField("items", err)
 		}
 
 		array.Item = item
@@ -327,13 +330,18 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 
 	case "number", "integer":
 		if mul := schema.MultipleOf; mul != nil {
-			rat := new(big.Rat)
-			if err := rat.UnmarshalText(mul); err != nil {
-				return nil, errors.Wrapf(err, "invalid number %q", mul)
-			}
-			// The value of "multipleOf" MUST be a number, strictly greater than 0.
-			if rat.Sign() != 1 {
-				return nil, errors.Errorf("invalid multipleOf value %q", mul)
+			if err := func() error {
+				rat := new(big.Rat)
+				if err := rat.UnmarshalText(mul); err != nil {
+					return errors.Wrapf(err, "invalid number %q", mul)
+				}
+				// The value of "multipleOf" MUST be a number, strictly greater than 0.
+				if rat.Sign() != 1 {
+					return errors.Errorf("invalid multipleOf value %q", mul)
+				}
+				return nil
+			}(); err != nil {
+				return nil, wrapField("multipleOf", err)
 			}
 		}
 
@@ -374,18 +382,18 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 		}), nil
 
 	default:
-		return nil, errors.Errorf("unexpected schema type: %q", schema.Type)
+		err := errors.Errorf("unexpected schema type: %q", schema.Type)
+		return nil, wrapField("type", err)
 	}
 }
 
-func (p *Parser) parseMany(schemas []*RawSchema, ctx *resolveCtx) ([]*Schema, error) {
+func (p *Parser) parseMany(schemas []*RawSchema, loc location.Locator, ctx *resolveCtx) ([]*Schema, error) {
 	result := make([]*Schema, 0, len(schemas))
 	for i, schema := range schemas {
 		s, err := p.parse(schema, ctx)
 		if err != nil {
-			return nil, errors.Wrapf(err, "[%d]", i)
+			return nil, p.wrapLocation(ctx.lastLoc(), loc.Index(i), err)
 		}
-
 		result = append(result, s)
 	}
 
@@ -422,22 +430,4 @@ func (p *Parser) extendInfo(schema *RawSchema, s *Schema) *Schema {
 
 	s.Locator = schema.Locator
 	return s
-}
-
-func parseType(typ string) (SchemaType, error) {
-	mapping := map[string]SchemaType{
-		"object":  Object,
-		"array":   Array,
-		"boolean": Boolean,
-		"integer": Integer,
-		"number":  Number,
-		"string":  String,
-	}
-
-	t, ok := mapping[typ]
-	if !ok {
-		return "", errors.Errorf("unexpected type: %q", typ)
-	}
-
-	return t, nil
 }
