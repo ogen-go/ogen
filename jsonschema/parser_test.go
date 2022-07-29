@@ -1,7 +1,7 @@
 package jsonschema
 
 import (
-	"fmt"
+	"strconv"
 	"strings"
 	"testing"
 
@@ -352,14 +352,20 @@ func TestInvalidMultipleOf(t *testing.T) {
 		"integer",
 		"number",
 	} {
+		typ := typ
 		t.Run(typ, func(t *testing.T) {
 			for _, v := range values {
 				_, err := parser.Parse(&RawSchema{
 					Type:       typ,
-					MultipleOf: []byte(fmt.Sprintf("%q", v)),
+					MultipleOf: strconv.AppendInt(nil, int64(v), 10),
 				})
 				require.Errorf(t, err, "%d", v)
 			}
 		})
+		_, err := parser.Parse(&RawSchema{
+			Type:       typ,
+			MultipleOf: []byte("true"),
+		})
+		require.Error(t, err)
 	}
 }
