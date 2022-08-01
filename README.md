@@ -6,11 +6,13 @@
 
 Opinionated OpenAPI v3 Code Generator for Go.
 
-[Getting started](https://ogen.dev/docs/intro).
+- [Getting started](https://ogen.dev/docs/intro)
+- [Sample project](https://github.com/ogen-go/example)
+- [Security policy](https://github.com/ogen-go/ogen/blob/-/SECURITY.md)
+- [Telegram group `@ogen_dev`](https://t.me/ogen_dev)
+- [Roadmap](https://github.com/ogen-go/ogen/blob/-/ROADMAP.md)
 
 Work is still in progress, so currently no backward compatibility is provided. However, we are close to alpha.
-
-Telegram group for development: [@ogen_dev](https://t.me/ogen_dev)
 
 # Install
 ```console
@@ -139,85 +141,47 @@ func NewIntID(v int) ID
 
 Code generation provides very efficient and flexible encoding and decoding of json:
 ```go
-// ReadJSON reads Error from json stream.
-func (s *Error) ReadJSON(r *json.Reader) error {
+// Decode decodes Error from json.
+func (s *Error) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Error to nil`)
+		return errors.New("invalid: unable to decode Error to nil")
 	}
-	return r.ObjBytes(func(r *json.Reader, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "code":
-			v, err := r.Int64()
-			s.Code = int64(v)
-			if err != nil {
-				return err
+			if err := func() error {
+				v, err := d.Int64()
+				s.Code = int64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"code\"")
 			}
 		case "message":
-			v, err := r.Str()
-			s.Message = string(v)
-			if err != nil {
-				return err
+			if err := func() error {
+				v, err := d.Str()
+				s.Message = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"message\"")
 			}
 		default:
-			return r.Skip()
+			return d.Skip()
 		}
 		return nil
 	})
 }
 ```
 
-# Roadmap
+# Links
 
-* Security (e.g. Bearer token)
-* Cookie params
-* Default value
-* Tests for `ip` package
-* Convenient global errors schema (e.g. 500, 404)
-  * Add convenience for `Error`, not only `ErrorWithCode`
-  * Handle case when `ref` is not used, but responses are equal
-* Webhook support
-* AnyOf
-* Full validation support
-* Client retries
-  * Retry strategy (e.g. exponential backoff)
-  * Configuring via `x-ogen-*` annotations
-  * Configuring via generation config
-* Separate JSON Schema generator
-* Tool for OAS validation for ogen compatibility
-  * Multiple error reporting with references
-    * JSON path
-    * Line and column (optional)
-* Tool for OAS backward compatibility check
-* DSL-based ent-like code-first approach for writing schemas
-* Reduce generated code via generics
-* Extreme optimizations
-  * Code generation for [regex](https://github.com/CAFxX/regexp2go)
-  * Streaming/iterator API support
-    * Enable via x-ogen-streaming extension
-    * Iteration over array or map elements of object
-    * Also can fit njson
-  * Advanced Code Generation
-    * HTTP
-      * URI
-      * Header
-      * Cookie
-    * Templating
-    * Encoding/Decoding
-      * MessagePack
-      * ProtoBuff
-  * String interning
-* Websocket support via extension?
-* Async support (Websocket, other protocols)
-  * [asyncapi](https://github.com/asyncapi/spec/blob/v2.2.0/spec/asyncapi.md)
-* More marshaling protocols support
-  * msgpack
-  * protobuf
-  * [ndjson](https://github.com/ndjson/ndjson-spec), newline-delimited json
-  * text/html
-* Automatic end-to-end tests support via routing header
-  * Header selects specific response variant
-  * Code-generated tests with full coverage
-* TechEmpower benchmark implementation
-* Integrations
-  * Tests with [autorest](https://github.com/Azure/autorest)
-  * Use testdata from [autorest](https://github.com/Azure/autorest.typescript/tree/main/test/integration/swaggers)
+- [Getting started](https://ogen.dev/docs/intro)
+- [Sample project](https://github.com/ogen-go/example)
+- [Security policy](https://github.com/ogen-go/ogen/blob/-/SECURITY.md)
+- [Telegram chat `@ogen_dev`](https://t.me/ogen_dev)
+- [Roadmap](https://github.com/ogen-go/ogen/blob/-/ROADMAP.md)
