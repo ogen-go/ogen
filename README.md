@@ -139,27 +139,37 @@ func NewIntID(v int) ID
 
 Code generation provides very efficient and flexible encoding and decoding of json:
 ```go
-// ReadJSON reads Error from json stream.
-func (s *Error) ReadJSON(r *json.Reader) error {
+// Decode decodes Error from json.
+func (s *Error) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return fmt.Errorf(`invalid: unable to decode Error to nil`)
+		return errors.New("invalid: unable to decode Error to nil")
 	}
-	return r.ObjBytes(func(r *json.Reader, k []byte) error {
+	return d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
 		case "code":
-			v, err := r.Int64()
-			s.Code = int64(v)
-			if err != nil {
-				return err
+			if err := func() error {
+				v, err := d.Int64()
+				s.Code = int64(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"code\"")
 			}
 		case "message":
-			v, err := r.Str()
-			s.Message = string(v)
-			if err != nil {
-				return err
+			if err := func() error {
+				v, err := d.Str()
+				s.Message = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"message\"")
 			}
 		default:
-			return r.Skip()
+			return d.Skip()
 		}
 		return nil
 	})
