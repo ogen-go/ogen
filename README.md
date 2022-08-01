@@ -6,11 +6,13 @@
 
 Opinionated OpenAPI v3 Code Generator for Go.
 
-[Getting started](https://ogen.dev/docs/intro).
+- [Getting started](https://ogen.dev/docs/intro)
+- [Sample project](https://github.com/ogen-go/example)
+- [Security policy](https://github.com/ogen-go/ogen/blob/-/SECURITY.md)
+- [Telegram group `@ogen_dev`](https://t.me/ogen_dev)
+- [Roadmap](https://github.com/ogen-go/ogen/blob/-/ROADMAP.md)
 
 Work is still in progress, so currently no backward compatibility is provided. However, we are close to alpha.
-
-Telegram group for development: [@ogen_dev](https://t.me/ogen_dev)
 
 # Install
 ```console
@@ -176,6 +178,10 @@ func (s *Error) Decode(d *jx.Decoder) error {
 }
 ```
 
-# Roadmap
+# Links
 
-See [`ROADMAP.md`](ROADMAP.md).
+- [Getting started](https://ogen.dev/docs/intro)
+- [Sample project](https://github.com/ogen-go/example)
+- [Security policy](https://github.com/ogen-go/ogen/blob/-/SECURITY.md)
+- [Telegram chat `@ogen_dev`](https://t.me/ogen_dev)
+- [Roadmap](https://github.com/ogen-go/ogen/blob/-/ROADMAP.md)
