@@ -64,6 +64,10 @@ func TestPathParser(t *testing.T) {
 			},
 		},
 		{
+			Path:      "\xF1",
+			ExpectErr: `path must be valid UTF-8 string`,
+		},
+		{
 			Path:      "\x00",
 			ExpectErr: `parse "\x00": net/url: invalid control character in URL`,
 		},
