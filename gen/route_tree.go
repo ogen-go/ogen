@@ -1,10 +1,6 @@
 package gen
 
 import (
-	"unicode/utf8"
-
-	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/gen/ir"
 )
 
@@ -42,9 +38,6 @@ func longestPrefix(k1, k2 string) int {
 
 func (t *RouteTree) addRoute(m Route) error {
 	path := m.Path
-	if !utf8.ValidString(path) {
-		return errors.New("invalid path: path must be valid UTF-8 string")
-	}
 
 	n := t.Root
 	if n == nil {

@@ -7,6 +7,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/openapi"
 )
 
 // Route describes route.
@@ -59,16 +60,42 @@ func (s *Router) Add(r Route) error {
 	return s.Tree.addRoute(r)
 }
 
+func checkRoutePath(p openapi.Path) error {
+	for i, part := range p {
+		if i == 0 {
+			continue
+		}
+		// Cond: i > 0
+		current := part.Param
+		prev := p[i-1].Param
+		if prev != nil && current != nil {
+			return errors.Errorf(
+				"can't handle two parameters in a row (%q and %q)",
+				prev.Name, current.Name,
+			)
+		}
+	}
+	return nil
+}
+
 func (g *Generator) route() error {
 	var maxParametersCount int
 	for _, op := range g.operations {
-		if err := g.router.Add(Route{
-			Method:    strings.ToUpper(op.Spec.HTTPMethod),
-			Path:      op.Spec.Path.String(),
-			Operation: op,
-		}); err != nil {
-			return errors.Wrapf(err, "add route %q", op.Name)
+		path := op.Spec.Path
+
+		if err := func() error {
+			if err := checkRoutePath(path); err != nil {
+				return err
+			}
+			return g.router.Add(Route{
+				Method:    strings.ToUpper(op.Spec.HTTPMethod),
+				Path:      path.String(),
+				Operation: op,
+			})
+		}(); err != nil {
+			return errors.Wrapf(err, "add route %q (op %q)", path, op.Name)
 		}
+
 		if count := op.PathParamsCount(); maxParametersCount < count {
 			maxParametersCount = count
 		}

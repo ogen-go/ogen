@@ -3,6 +3,7 @@ package parser
 import (
 	"net/url"
 	"strings"
+	"unicode/utf8"
 
 	"github.com/go-faster/errors"
 
@@ -51,6 +52,10 @@ func (p *pathParser) Parse() (openapi.Path, error) {
 }
 
 func (p *pathParser) parse() error {
+	if !utf8.ValidString(p.path) {
+		return errors.New("path must be valid UTF-8 string")
+	}
+
 	// Validate and unescape path.
 	//
 	// FIXME(tdakkota): OpenAPI spec, as always, is not clear about path validation.
