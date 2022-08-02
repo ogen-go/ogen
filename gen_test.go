@@ -135,6 +135,7 @@ func TestGenerate(t *testing.T) {
 				"sum types with same names",
 				"sum type parameter",
 				"unsupported content types",
+				"array defaults",
 			},
 			"manga.json":            {},
 			"telegram_bot_api.json": {},
