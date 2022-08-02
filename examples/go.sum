@@ -9,8 +9,6 @@ github.com/go-faster/errors v0.6.1 h1:nNIPOBkprlKzkThvS/0YaX8Zs9KewLCOSFQS5BU06F
 github.com/go-faster/errors v0.6.1/go.mod h1:5MGV2/2T9yvlrbhe9pD9LO5Z/2zCSq2T8j+Jpi2LAyY=
 github.com/go-faster/jx v0.38.1 h1:xHgCqbZA3OZNqwaZ6bXXMlGSBAMrENPJsBYT4g1xtAQ=
 github.com/go-faster/jx v0.38.1/go.mod h1:o7XQ3K95HwNxkBlrpUQIqjcXp4SmDIb9SyohdSVOeQs=
-github.com/go-faster/yamlx v0.0.0-20220711115722-810b8bfdedac h1:SlS3wbHlFz8YJhCiuTSuNRnQeaxOihFLndiy2pO/RH0=
-github.com/go-faster/yamlx v0.0.0-20220711115722-810b8bfdedac/go.mod h1:b+ejL9yLd6fuo3EukHdurhS0khqr/Z5F7CWeZ4AdEnQ=
 github.com/go-faster/yamlx v0.2.1 h1:siwZJO/r3gajIoJbrjoDMjEuVye8xMc8bwmnfNDaZb4=
 github.com/go-faster/yamlx v0.2.1/go.mod h1:AbOy9l8mnD+zAzBYndLxj9IKLEFpUvSi/At3Ygh0kUU=
 github.com/go-logr/logr v1.2.2/go.mod h1:jdQByPbusPIv2/zmleS9BjJVeZ6kBagPoEUsqbVz/1A=
@@ -67,3 +65,5 @@ gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 h1:YR8cESwS4TdDjEe65xsg0ogR
 gopkg.in/yaml.v2 v2.4.0 h1:D8xgwECY7CYvx+Y2n4sBz93Jn9JRvxdiyyo8CTfuKaY=
 gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
 gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
+gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
+gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
