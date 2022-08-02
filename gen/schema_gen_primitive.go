@@ -120,9 +120,17 @@ func parseSimple(schema *jsonschema.Schema) *ir.Type {
 func TypeFormatMapping() map[jsonschema.SchemaType]map[string]ir.PrimitiveType {
 	return map[jsonschema.SchemaType]map[string]ir.PrimitiveType{
 		jsonschema.Integer: {
+			"": ir.Int,
+
+			// Custom format, see https://github.com/ogen-go/ogen/issues/309.
 			"int32": ir.Int32,
 			"int64": ir.Int64,
-			"":      ir.Int,
+			// See https://github.com/ogen-go/ogen/issues/307.
+			"unix":         ir.Time,
+			"unix-seconds": ir.Time,
+			"unix-nano":    ir.Time,
+			"unix-micro":   ir.Time,
+			"unix-milli":   ir.Time,
 		},
 		jsonschema.Number: {
 			"float":  ir.Float32,

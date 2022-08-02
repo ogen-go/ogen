@@ -381,6 +381,396 @@ func encodeTestRequestIntegerNullableArrayArrayResponse(response Error, w http.R
 	return nil
 
 }
+func encodeTestRequestIntegerUnixResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixMicroResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixMicroArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixMicroArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixMicroNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixMicroNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixMicroNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixMilliResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixMilliArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixMilliArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixMilliNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixMilliNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixMilliNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixNanoResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixNanoArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixNanoArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixNanoNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixNanoNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixNanoNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixSecondsResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixSecondsArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixSecondsArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixSecondsNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixSecondsNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestIntegerUnixSecondsNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
 func encodeTestRequestNullResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -1188,6 +1578,396 @@ func encodeTestRequestRequiredIntegerNullableArrayResponse(response Error, w htt
 
 }
 func encodeTestRequestRequiredIntegerNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixMicroResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixMicroArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixMicroArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixMicroNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixMicroNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixMilliResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixMilliArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixMilliArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixMilliNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixMilliNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixNanoResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixNanoArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixNanoArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixNanoNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixNanoNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixSecondsResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixSecondsArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixSecondsArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixSecondsNullableResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixSecondsNullableArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayResponse(response Error, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -5549,6 +6329,516 @@ func encodeTestResponseIntegerNullableArrayArrayResponse(response [][]NilInt, w 
 	return nil
 
 }
+func encodeTestResponseIntegerUnixResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	json.EncodeUnixSeconds(e, response)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		json.EncodeUnixSeconds(e, elem)
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixMicroResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	json.EncodeUnixMicro(e, response)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixMicroArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		json.EncodeUnixMicro(e, elem)
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixMicroArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeUnixMicro(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixMicroNullableResponse(response NilUnixMicro, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e, json.EncodeUnixMicro)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixMicroNullableArrayResponse(response []NilUnixMicro, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		elem.Encode(e, json.EncodeUnixMicro)
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixMicroNullableArrayArrayResponse(response [][]NilUnixMicro, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			elem.Encode(e, json.EncodeUnixMicro)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixMilliResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	json.EncodeUnixMilli(e, response)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixMilliArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		json.EncodeUnixMilli(e, elem)
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixMilliArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeUnixMilli(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixMilliNullableResponse(response NilUnixMilli, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e, json.EncodeUnixMilli)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixMilliNullableArrayResponse(response []NilUnixMilli, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		elem.Encode(e, json.EncodeUnixMilli)
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixMilliNullableArrayArrayResponse(response [][]NilUnixMilli, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			elem.Encode(e, json.EncodeUnixMilli)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixNanoResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	json.EncodeUnixNano(e, response)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixNanoArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		json.EncodeUnixNano(e, elem)
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixNanoArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeUnixNano(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixNanoNullableResponse(response NilUnixNano, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e, json.EncodeUnixNano)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixNanoNullableArrayResponse(response []NilUnixNano, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		elem.Encode(e, json.EncodeUnixNano)
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixNanoNullableArrayArrayResponse(response [][]NilUnixNano, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			elem.Encode(e, json.EncodeUnixNano)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixNullableResponse(response NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e, json.EncodeUnixSeconds)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixNullableArrayResponse(response []NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		elem.Encode(e, json.EncodeUnixSeconds)
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixNullableArrayArrayResponse(response [][]NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			elem.Encode(e, json.EncodeUnixSeconds)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixSecondsResponse(response time.Time, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	json.EncodeUnixSeconds(e, response)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixSecondsArrayResponse(response []time.Time, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		json.EncodeUnixSeconds(e, elem)
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixSecondsArrayArrayResponse(response [][]time.Time, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixSecondsNullableResponse(response NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	response.Encode(e, json.EncodeUnixSeconds)
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixSecondsNullableArrayResponse(response []NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		elem.Encode(e, json.EncodeUnixSeconds)
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
+func encodeTestResponseIntegerUnixSecondsNullableArrayArrayResponse(response [][]NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range response {
+		e.ArrStart()
+		for _, elem := range elem {
+			elem.Encode(e, json.EncodeUnixSeconds)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+	if _, err := e.WriteTo(w); err != nil {
+		return errors.Wrap(err, "write")
+	}
+	return nil
+
+}
 func encodeTestResponseNullResponse(response struct{}, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -7907,7 +9197,7 @@ func encodeTestResponseStringUnixResponse(response time.Time, w http.ResponseWri
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 
-	json.EncodeUnixSeconds(e, response)
+	json.EncodeStringUnixSeconds(e, response)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -7922,7 +9212,7 @@ func encodeTestResponseStringUnixArrayResponse(response []time.Time, w http.Resp
 
 	e.ArrStart()
 	for _, elem := range response {
-		json.EncodeUnixSeconds(e, elem)
+		json.EncodeStringUnixSeconds(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7941,7 +9231,7 @@ func encodeTestResponseStringUnixArrayArrayResponse(response [][]time.Time, w ht
 	for _, elem := range response {
 		e.ArrStart()
 		for _, elem := range elem {
-			json.EncodeUnixSeconds(e, elem)
+			json.EncodeStringUnixSeconds(e, elem)
 		}
 		e.ArrEnd()
 	}
@@ -7958,7 +9248,7 @@ func encodeTestResponseStringUnixMicroResponse(response time.Time, w http.Respon
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 
-	json.EncodeUnixMicro(e, response)
+	json.EncodeStringUnixMicro(e, response)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -7973,7 +9263,7 @@ func encodeTestResponseStringUnixMicroArrayResponse(response []time.Time, w http
 
 	e.ArrStart()
 	for _, elem := range response {
-		json.EncodeUnixMicro(e, elem)
+		json.EncodeStringUnixMicro(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -7992,7 +9282,7 @@ func encodeTestResponseStringUnixMicroArrayArrayResponse(response [][]time.Time,
 	for _, elem := range response {
 		e.ArrStart()
 		for _, elem := range elem {
-			json.EncodeUnixMicro(e, elem)
+			json.EncodeStringUnixMicro(e, elem)
 		}
 		e.ArrEnd()
 	}
@@ -8003,20 +9293,20 @@ func encodeTestResponseStringUnixMicroArrayArrayResponse(response [][]time.Time,
 	return nil
 
 }
-func encodeTestResponseStringUnixMicroNullableResponse(response NilUnixMicro, w http.ResponseWriter, span trace.Span) error {
+func encodeTestResponseStringUnixMicroNullableResponse(response NilStringUnixMicro, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 
-	response.Encode(e, json.EncodeUnixMicro)
+	response.Encode(e, json.EncodeStringUnixMicro)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
 
 }
-func encodeTestResponseStringUnixMicroNullableArrayResponse(response []NilUnixMicro, w http.ResponseWriter, span trace.Span) error {
+func encodeTestResponseStringUnixMicroNullableArrayResponse(response []NilStringUnixMicro, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -8024,7 +9314,7 @@ func encodeTestResponseStringUnixMicroNullableArrayResponse(response []NilUnixMi
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.Encode(e, json.EncodeUnixMicro)
+		elem.Encode(e, json.EncodeStringUnixMicro)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8033,7 +9323,7 @@ func encodeTestResponseStringUnixMicroNullableArrayResponse(response []NilUnixMi
 	return nil
 
 }
-func encodeTestResponseStringUnixMicroNullableArrayArrayResponse(response [][]NilUnixMicro, w http.ResponseWriter, span trace.Span) error {
+func encodeTestResponseStringUnixMicroNullableArrayArrayResponse(response [][]NilStringUnixMicro, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -8043,7 +9333,7 @@ func encodeTestResponseStringUnixMicroNullableArrayArrayResponse(response [][]Ni
 	for _, elem := range response {
 		e.ArrStart()
 		for _, elem := range elem {
-			elem.Encode(e, json.EncodeUnixMicro)
+			elem.Encode(e, json.EncodeStringUnixMicro)
 		}
 		e.ArrEnd()
 	}
@@ -8060,7 +9350,7 @@ func encodeTestResponseStringUnixMilliResponse(response time.Time, w http.Respon
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 
-	json.EncodeUnixMilli(e, response)
+	json.EncodeStringUnixMilli(e, response)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -8075,7 +9365,7 @@ func encodeTestResponseStringUnixMilliArrayResponse(response []time.Time, w http
 
 	e.ArrStart()
 	for _, elem := range response {
-		json.EncodeUnixMilli(e, elem)
+		json.EncodeStringUnixMilli(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8094,7 +9384,7 @@ func encodeTestResponseStringUnixMilliArrayArrayResponse(response [][]time.Time,
 	for _, elem := range response {
 		e.ArrStart()
 		for _, elem := range elem {
-			json.EncodeUnixMilli(e, elem)
+			json.EncodeStringUnixMilli(e, elem)
 		}
 		e.ArrEnd()
 	}
@@ -8105,20 +9395,20 @@ func encodeTestResponseStringUnixMilliArrayArrayResponse(response [][]time.Time,
 	return nil
 
 }
-func encodeTestResponseStringUnixMilliNullableResponse(response NilUnixMilli, w http.ResponseWriter, span trace.Span) error {
+func encodeTestResponseStringUnixMilliNullableResponse(response NilStringUnixMilli, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 
-	response.Encode(e, json.EncodeUnixMilli)
+	response.Encode(e, json.EncodeStringUnixMilli)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
 
 }
-func encodeTestResponseStringUnixMilliNullableArrayResponse(response []NilUnixMilli, w http.ResponseWriter, span trace.Span) error {
+func encodeTestResponseStringUnixMilliNullableArrayResponse(response []NilStringUnixMilli, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -8126,7 +9416,7 @@ func encodeTestResponseStringUnixMilliNullableArrayResponse(response []NilUnixMi
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.Encode(e, json.EncodeUnixMilli)
+		elem.Encode(e, json.EncodeStringUnixMilli)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8135,7 +9425,7 @@ func encodeTestResponseStringUnixMilliNullableArrayResponse(response []NilUnixMi
 	return nil
 
 }
-func encodeTestResponseStringUnixMilliNullableArrayArrayResponse(response [][]NilUnixMilli, w http.ResponseWriter, span trace.Span) error {
+func encodeTestResponseStringUnixMilliNullableArrayArrayResponse(response [][]NilStringUnixMilli, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -8145,7 +9435,7 @@ func encodeTestResponseStringUnixMilliNullableArrayArrayResponse(response [][]Ni
 	for _, elem := range response {
 		e.ArrStart()
 		for _, elem := range elem {
-			elem.Encode(e, json.EncodeUnixMilli)
+			elem.Encode(e, json.EncodeStringUnixMilli)
 		}
 		e.ArrEnd()
 	}
@@ -8162,7 +9452,7 @@ func encodeTestResponseStringUnixNanoResponse(response time.Time, w http.Respons
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 
-	json.EncodeUnixNano(e, response)
+	json.EncodeStringUnixNano(e, response)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -8177,7 +9467,7 @@ func encodeTestResponseStringUnixNanoArrayResponse(response []time.Time, w http.
 
 	e.ArrStart()
 	for _, elem := range response {
-		json.EncodeUnixNano(e, elem)
+		json.EncodeStringUnixNano(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8196,7 +9486,7 @@ func encodeTestResponseStringUnixNanoArrayArrayResponse(response [][]time.Time, 
 	for _, elem := range response {
 		e.ArrStart()
 		for _, elem := range elem {
-			json.EncodeUnixNano(e, elem)
+			json.EncodeStringUnixNano(e, elem)
 		}
 		e.ArrEnd()
 	}
@@ -8207,20 +9497,20 @@ func encodeTestResponseStringUnixNanoArrayArrayResponse(response [][]time.Time, 
 	return nil
 
 }
-func encodeTestResponseStringUnixNanoNullableResponse(response NilUnixNano, w http.ResponseWriter, span trace.Span) error {
+func encodeTestResponseStringUnixNanoNullableResponse(response NilStringUnixNano, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 
-	response.Encode(e, json.EncodeUnixNano)
+	response.Encode(e, json.EncodeStringUnixNano)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
 
 }
-func encodeTestResponseStringUnixNanoNullableArrayResponse(response []NilUnixNano, w http.ResponseWriter, span trace.Span) error {
+func encodeTestResponseStringUnixNanoNullableArrayResponse(response []NilStringUnixNano, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -8228,7 +9518,7 @@ func encodeTestResponseStringUnixNanoNullableArrayResponse(response []NilUnixNan
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.Encode(e, json.EncodeUnixNano)
+		elem.Encode(e, json.EncodeStringUnixNano)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8237,7 +9527,7 @@ func encodeTestResponseStringUnixNanoNullableArrayResponse(response []NilUnixNan
 	return nil
 
 }
-func encodeTestResponseStringUnixNanoNullableArrayArrayResponse(response [][]NilUnixNano, w http.ResponseWriter, span trace.Span) error {
+func encodeTestResponseStringUnixNanoNullableArrayArrayResponse(response [][]NilStringUnixNano, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -8247,7 +9537,7 @@ func encodeTestResponseStringUnixNanoNullableArrayArrayResponse(response [][]Nil
 	for _, elem := range response {
 		e.ArrStart()
 		for _, elem := range elem {
-			elem.Encode(e, json.EncodeUnixNano)
+			elem.Encode(e, json.EncodeStringUnixNano)
 		}
 		e.ArrEnd()
 	}
@@ -8258,20 +9548,20 @@ func encodeTestResponseStringUnixNanoNullableArrayArrayResponse(response [][]Nil
 	return nil
 
 }
-func encodeTestResponseStringUnixNullableResponse(response NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
+func encodeTestResponseStringUnixNullableResponse(response NilStringUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 
-	response.Encode(e, json.EncodeUnixSeconds)
+	response.Encode(e, json.EncodeStringUnixSeconds)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
 
 }
-func encodeTestResponseStringUnixNullableArrayResponse(response []NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
+func encodeTestResponseStringUnixNullableArrayResponse(response []NilStringUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -8279,7 +9569,7 @@ func encodeTestResponseStringUnixNullableArrayResponse(response []NilUnixSeconds
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.Encode(e, json.EncodeUnixSeconds)
+		elem.Encode(e, json.EncodeStringUnixSeconds)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8288,7 +9578,7 @@ func encodeTestResponseStringUnixNullableArrayResponse(response []NilUnixSeconds
 	return nil
 
 }
-func encodeTestResponseStringUnixNullableArrayArrayResponse(response [][]NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
+func encodeTestResponseStringUnixNullableArrayArrayResponse(response [][]NilStringUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -8298,7 +9588,7 @@ func encodeTestResponseStringUnixNullableArrayArrayResponse(response [][]NilUnix
 	for _, elem := range response {
 		e.ArrStart()
 		for _, elem := range elem {
-			elem.Encode(e, json.EncodeUnixSeconds)
+			elem.Encode(e, json.EncodeStringUnixSeconds)
 		}
 		e.ArrEnd()
 	}
@@ -8315,7 +9605,7 @@ func encodeTestResponseStringUnixSecondsResponse(response time.Time, w http.Resp
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 
-	json.EncodeUnixSeconds(e, response)
+	json.EncodeStringUnixSeconds(e, response)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -8330,7 +9620,7 @@ func encodeTestResponseStringUnixSecondsArrayResponse(response []time.Time, w ht
 
 	e.ArrStart()
 	for _, elem := range response {
-		json.EncodeUnixSeconds(e, elem)
+		json.EncodeStringUnixSeconds(e, elem)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8349,7 +9639,7 @@ func encodeTestResponseStringUnixSecondsArrayArrayResponse(response [][]time.Tim
 	for _, elem := range response {
 		e.ArrStart()
 		for _, elem := range elem {
-			json.EncodeUnixSeconds(e, elem)
+			json.EncodeStringUnixSeconds(e, elem)
 		}
 		e.ArrEnd()
 	}
@@ -8360,20 +9650,20 @@ func encodeTestResponseStringUnixSecondsArrayArrayResponse(response [][]time.Tim
 	return nil
 
 }
-func encodeTestResponseStringUnixSecondsNullableResponse(response NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
+func encodeTestResponseStringUnixSecondsNullableResponse(response NilStringUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 
-	response.Encode(e, json.EncodeUnixSeconds)
+	response.Encode(e, json.EncodeStringUnixSeconds)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
 
 }
-func encodeTestResponseStringUnixSecondsNullableArrayResponse(response []NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
+func encodeTestResponseStringUnixSecondsNullableArrayResponse(response []NilStringUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -8381,7 +9671,7 @@ func encodeTestResponseStringUnixSecondsNullableArrayResponse(response []NilUnix
 
 	e.ArrStart()
 	for _, elem := range response {
-		elem.Encode(e, json.EncodeUnixSeconds)
+		elem.Encode(e, json.EncodeStringUnixSeconds)
 	}
 	e.ArrEnd()
 	if _, err := e.WriteTo(w); err != nil {
@@ -8390,7 +9680,7 @@ func encodeTestResponseStringUnixSecondsNullableArrayResponse(response []NilUnix
 	return nil
 
 }
-func encodeTestResponseStringUnixSecondsNullableArrayArrayResponse(response [][]NilUnixSeconds, w http.ResponseWriter, span trace.Span) error {
+func encodeTestResponseStringUnixSecondsNullableArrayArrayResponse(response [][]NilStringUnixSeconds, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -8400,7 +9690,7 @@ func encodeTestResponseStringUnixSecondsNullableArrayArrayResponse(response [][]
 	for _, elem := range response {
 		e.ArrStart()
 		for _, elem := range elem {
-			elem.Encode(e, json.EncodeUnixSeconds)
+			elem.Encode(e, json.EncodeStringUnixSeconds)
 		}
 		e.ArrEnd()
 	}

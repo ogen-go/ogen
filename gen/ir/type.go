@@ -174,6 +174,14 @@ func (t *Type) NamePostfix() string {
 			return "Null"
 		}
 		s := t.Schema
+		typePrefix := func(f string) string {
+			switch s.Type {
+			case jsonschema.String:
+				return "String" + capitalize.Capitalize(f)
+			default:
+				return f
+			}
+		}
 		switch f := s.Format; f {
 		case "uuid":
 			return "UUID"
@@ -199,13 +207,13 @@ func (t *Type) NamePostfix() string {
 			}
 			return "String" + capitalize.Capitalize(f)
 		case "unix", "unix-seconds":
-			return "UnixSeconds"
+			return typePrefix("UnixSeconds")
 		case "unix-nano":
-			return "UnixNano"
+			return typePrefix("UnixNano")
 		case "unix-micro":
-			return "UnixMicro"
+			return typePrefix("UnixMicro")
 		case "unix-milli":
-			return "UnixMilli"
+			return typePrefix("UnixMilli")
 		default:
 			return t.Primitive.String()
 		}

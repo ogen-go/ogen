@@ -9,21 +9,21 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestUnix(t *testing.T) {
+func TestStringUnix(t *testing.T) {
 	for _, format := range []struct {
 		name    string
 		encoder func(e *jx.Encoder, t time.Time)
 		decoder func(d *jx.Decoder) (time.Time, error)
 		creator func(val int64) time.Time
 	}{
-		{"Seconds", EncodeUnixSeconds, DecodeUnixSeconds, func(val int64) time.Time {
+		{"Seconds", EncodeStringUnixSeconds, DecodeStringUnixSeconds, func(val int64) time.Time {
 			return time.Unix(val, 0)
 		}},
-		{"Nano", EncodeUnixNano, DecodeUnixNano, func(val int64) time.Time {
+		{"Nano", EncodeStringUnixNano, DecodeStringUnixNano, func(val int64) time.Time {
 			return time.Unix(0, val)
 		}},
-		{"Micro", EncodeUnixMicro, DecodeUnixMicro, time.UnixMicro},
-		{"Milli", EncodeUnixMilli, DecodeUnixMilli, time.UnixMilli},
+		{"Micro", EncodeStringUnixMicro, DecodeStringUnixMicro, time.UnixMicro},
+		{"Milli", EncodeStringUnixMilli, DecodeStringUnixMilli, time.UnixMilli},
 	} {
 		format := format
 		t.Run(format.name, func(t *testing.T) {
@@ -32,13 +32,13 @@ func TestUnix(t *testing.T) {
 				wantVal int64
 				wantErr bool
 			}{
-				{`0`, 0, false},
-				{`1`, 1, false},
-				{`10`, 10, false},
-				{`10000`, 10000, false},
+				{`"0"`, 0, false},
+				{`"1"`, 1, false},
+				{`"10"`, 10, false},
+				{`"10000"`, 10000, false},
 
-				{`"1"`, 0, true},
-				{`true`, 0, true},
+				{"1", 0, true},
+				{`"foo"`, 0, true},
 			}
 			for i, tt := range tests {
 				tt := tt
@@ -68,8 +68,8 @@ func TestUnix(t *testing.T) {
 	}
 }
 
-func TestDecodeUnixNano(t *testing.T) {
-	got, err := DecodeUnixNano(jx.DecodeStr(`1586960586000000000`))
+func TestDecodeStringUnixNano(t *testing.T) {
+	got, err := DecodeStringUnixNano(jx.DecodeStr(`"1586960586000000000"`))
 	require.NoError(t, err)
 	want := time.Date(2020, 04, 15, 14, 23, 06, 0, time.UTC)
 	require.True(t, want.Equal(got))

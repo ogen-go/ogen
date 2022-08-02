@@ -245,6 +245,191 @@ func (c *Client) TestQueryParameter(ctx context.Context, request string, params 
 		}
 	}
 	{
+		// Encode "integer_unix" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "integer_unix",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.UnixSecondsToString(params.IntegerUnix))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "integer_unix-micro" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "integer_unix-micro",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.UnixMicroToString(params.IntegerUnixMicro))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "integer_unix-micro_array" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "integer_unix-micro_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
+				for i, item := range params.IntegerUnixMicroArray {
+					if err := func() error {
+						return e.EncodeValue(conv.UnixMicroToString(item))
+					}(); err != nil {
+						return errors.Wrapf(err, "[%d]", i)
+					}
+				}
+				return nil
+			})
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "integer_unix-milli" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "integer_unix-milli",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.UnixMilliToString(params.IntegerUnixMilli))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "integer_unix-milli_array" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "integer_unix-milli_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
+				for i, item := range params.IntegerUnixMilliArray {
+					if err := func() error {
+						return e.EncodeValue(conv.UnixMilliToString(item))
+					}(); err != nil {
+						return errors.Wrapf(err, "[%d]", i)
+					}
+				}
+				return nil
+			})
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "integer_unix-nano" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "integer_unix-nano",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.UnixNanoToString(params.IntegerUnixNano))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "integer_unix-nano_array" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "integer_unix-nano_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
+				for i, item := range params.IntegerUnixNanoArray {
+					if err := func() error {
+						return e.EncodeValue(conv.UnixNanoToString(item))
+					}(); err != nil {
+						return errors.Wrapf(err, "[%d]", i)
+					}
+				}
+				return nil
+			})
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "integer_unix-seconds" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "integer_unix-seconds",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.UnixSecondsToString(params.IntegerUnixSeconds))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "integer_unix-seconds_array" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "integer_unix-seconds_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
+				for i, item := range params.IntegerUnixSecondsArray {
+					if err := func() error {
+						return e.EncodeValue(conv.UnixSecondsToString(item))
+					}(); err != nil {
+						return errors.Wrapf(err, "[%d]", i)
+					}
+				}
+				return nil
+			})
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "integer_unix_array" parameter.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "integer_unix_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
+				for i, item := range params.IntegerUnixArray {
+					if err := func() error {
+						return e.EncodeValue(conv.UnixSecondsToString(item))
+					}(); err != nil {
+						return errors.Wrapf(err, "[%d]", i)
+					}
+				}
+				return nil
+			})
+		}); err != nil {
+			return res, errors.Wrap(err, "encode query")
+		}
+	}
+	{
 		// Encode "number" parameter.
 		cfg := uri.QueryParameterEncodingConfig{
 			Name:    "number",
@@ -3098,6 +3283,2056 @@ func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, reque
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestIntegerNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnix invokes test_request_integer_unix operation.
+//
+// POST /test_request_integer_unix
+func (c *Client) TestRequestIntegerUnix(ctx context.Context, request OptUnixSeconds) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnix",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixArray invokes test_request_integer_unix_array operation.
+//
+// POST /test_request_integer_unix_array
+func (c *Client) TestRequestIntegerUnixArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixArrayArray invokes test_request_integer_unix_array_array operation.
+//
+// POST /test_request_integer_unix_array_array
+func (c *Client) TestRequestIntegerUnixArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixMicro invokes test_request_integer_unix-micro operation.
+//
+// POST /test_request_integer_unix-micro
+func (c *Client) TestRequestIntegerUnixMicro(ctx context.Context, request OptUnixMicro) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-micro"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicro",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-micro"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixMicroRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixMicroResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixMicroArray invokes test_request_integer_unix-micro_array operation.
+//
+// POST /test_request_integer_unix-micro_array
+func (c *Client) TestRequestIntegerUnixMicroArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-micro_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-micro_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixMicroArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixMicroArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixMicroArrayArray invokes test_request_integer_unix-micro_array_array operation.
+//
+// POST /test_request_integer_unix-micro_array_array
+func (c *Client) TestRequestIntegerUnixMicroArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-micro_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-micro_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixMicroArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixMicroArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixMicroNullable invokes test_request_integer_unix-micro_nullable operation.
+//
+// POST /test_request_integer_unix-micro_nullable
+func (c *Client) TestRequestIntegerUnixMicroNullable(ctx context.Context, request OptNilUnixMicro) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-micro_nullable"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-micro_nullable"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixMicroNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixMicroNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixMicroNullableArray invokes test_request_integer_unix-micro_nullable_array operation.
+//
+// POST /test_request_integer_unix-micro_nullable_array
+func (c *Client) TestRequestIntegerUnixMicroNullableArray(ctx context.Context, request []NilUnixMicro) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-micro_nullable_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-micro_nullable_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixMicroNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixMicroNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixMicroNullableArrayArray invokes test_request_integer_unix-micro_nullable_array_array operation.
+//
+// POST /test_request_integer_unix-micro_nullable_array_array
+func (c *Client) TestRequestIntegerUnixMicroNullableArrayArray(ctx context.Context, request [][]NilUnixMicro) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-micro_nullable_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-micro_nullable_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixMicroNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixMicroNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixMilli invokes test_request_integer_unix-milli operation.
+//
+// POST /test_request_integer_unix-milli
+func (c *Client) TestRequestIntegerUnixMilli(ctx context.Context, request OptUnixMilli) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-milli"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilli",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-milli"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixMilliRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixMilliResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixMilliArray invokes test_request_integer_unix-milli_array operation.
+//
+// POST /test_request_integer_unix-milli_array
+func (c *Client) TestRequestIntegerUnixMilliArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-milli_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-milli_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixMilliArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixMilliArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixMilliArrayArray invokes test_request_integer_unix-milli_array_array operation.
+//
+// POST /test_request_integer_unix-milli_array_array
+func (c *Client) TestRequestIntegerUnixMilliArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-milli_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-milli_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixMilliArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixMilliArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixMilliNullable invokes test_request_integer_unix-milli_nullable operation.
+//
+// POST /test_request_integer_unix-milli_nullable
+func (c *Client) TestRequestIntegerUnixMilliNullable(ctx context.Context, request OptNilUnixMilli) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-milli_nullable"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-milli_nullable"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixMilliNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixMilliNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixMilliNullableArray invokes test_request_integer_unix-milli_nullable_array operation.
+//
+// POST /test_request_integer_unix-milli_nullable_array
+func (c *Client) TestRequestIntegerUnixMilliNullableArray(ctx context.Context, request []NilUnixMilli) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-milli_nullable_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-milli_nullable_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixMilliNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixMilliNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixMilliNullableArrayArray invokes test_request_integer_unix-milli_nullable_array_array operation.
+//
+// POST /test_request_integer_unix-milli_nullable_array_array
+func (c *Client) TestRequestIntegerUnixMilliNullableArrayArray(ctx context.Context, request [][]NilUnixMilli) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-milli_nullable_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-milli_nullable_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixMilliNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixMilliNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixNano invokes test_request_integer_unix-nano operation.
+//
+// POST /test_request_integer_unix-nano
+func (c *Client) TestRequestIntegerUnixNano(ctx context.Context, request OptUnixNano) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-nano"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNano",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-nano"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixNanoRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixNanoResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixNanoArray invokes test_request_integer_unix-nano_array operation.
+//
+// POST /test_request_integer_unix-nano_array
+func (c *Client) TestRequestIntegerUnixNanoArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-nano_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-nano_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixNanoArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixNanoArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixNanoArrayArray invokes test_request_integer_unix-nano_array_array operation.
+//
+// POST /test_request_integer_unix-nano_array_array
+func (c *Client) TestRequestIntegerUnixNanoArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-nano_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-nano_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixNanoArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixNanoArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixNanoNullable invokes test_request_integer_unix-nano_nullable operation.
+//
+// POST /test_request_integer_unix-nano_nullable
+func (c *Client) TestRequestIntegerUnixNanoNullable(ctx context.Context, request OptNilUnixNano) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-nano_nullable"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-nano_nullable"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixNanoNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixNanoNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixNanoNullableArray invokes test_request_integer_unix-nano_nullable_array operation.
+//
+// POST /test_request_integer_unix-nano_nullable_array
+func (c *Client) TestRequestIntegerUnixNanoNullableArray(ctx context.Context, request []NilUnixNano) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-nano_nullable_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-nano_nullable_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixNanoNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixNanoNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixNanoNullableArrayArray invokes test_request_integer_unix-nano_nullable_array_array operation.
+//
+// POST /test_request_integer_unix-nano_nullable_array_array
+func (c *Client) TestRequestIntegerUnixNanoNullableArrayArray(ctx context.Context, request [][]NilUnixNano) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-nano_nullable_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-nano_nullable_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixNanoNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixNanoNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixNullable invokes test_request_integer_unix_nullable operation.
+//
+// POST /test_request_integer_unix_nullable
+func (c *Client) TestRequestIntegerUnixNullable(ctx context.Context, request OptNilUnixSeconds) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix_nullable"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix_nullable"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixNullableArray invokes test_request_integer_unix_nullable_array operation.
+//
+// POST /test_request_integer_unix_nullable_array
+func (c *Client) TestRequestIntegerUnixNullableArray(ctx context.Context, request []NilUnixSeconds) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix_nullable_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix_nullable_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixNullableArrayArray invokes test_request_integer_unix_nullable_array_array operation.
+//
+// POST /test_request_integer_unix_nullable_array_array
+func (c *Client) TestRequestIntegerUnixNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix_nullable_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix_nullable_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixSeconds invokes test_request_integer_unix-seconds operation.
+//
+// POST /test_request_integer_unix-seconds
+func (c *Client) TestRequestIntegerUnixSeconds(ctx context.Context, request OptUnixSeconds) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-seconds"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSeconds",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-seconds"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixSecondsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixSecondsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixSecondsArray invokes test_request_integer_unix-seconds_array operation.
+//
+// POST /test_request_integer_unix-seconds_array
+func (c *Client) TestRequestIntegerUnixSecondsArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-seconds_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-seconds_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixSecondsArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixSecondsArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixSecondsArrayArray invokes test_request_integer_unix-seconds_array_array operation.
+//
+// POST /test_request_integer_unix-seconds_array_array
+func (c *Client) TestRequestIntegerUnixSecondsArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-seconds_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-seconds_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixSecondsArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixSecondsArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixSecondsNullable invokes test_request_integer_unix-seconds_nullable operation.
+//
+// POST /test_request_integer_unix-seconds_nullable
+func (c *Client) TestRequestIntegerUnixSecondsNullable(ctx context.Context, request OptNilUnixSeconds) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-seconds_nullable"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-seconds_nullable"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixSecondsNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixSecondsNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixSecondsNullableArray invokes test_request_integer_unix-seconds_nullable_array operation.
+//
+// POST /test_request_integer_unix-seconds_nullable_array
+func (c *Client) TestRequestIntegerUnixSecondsNullableArray(ctx context.Context, request []NilUnixSeconds) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-seconds_nullable_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-seconds_nullable_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixSecondsNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixSecondsNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestIntegerUnixSecondsNullableArrayArray invokes test_request_integer_unix-seconds_nullable_array_array operation.
+//
+// POST /test_request_integer_unix-seconds_nullable_array_array
+func (c *Client) TestRequestIntegerUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_unix-seconds_nullable_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_integer_unix-seconds_nullable_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestIntegerUnixSecondsNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestIntegerUnixSecondsNullableArrayArrayResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -7801,6 +10036,2166 @@ func (c *Client) TestRequestRequiredIntegerNullableArrayArray(ctx context.Contex
 
 	stage = "DecodeResponse"
 	result, err := decodeTestRequestRequiredIntegerNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnix invokes test_request_required_integer_unix operation.
+//
+// POST /test_request_required_integer_unix
+func (c *Client) TestRequestRequiredIntegerUnix(ctx context.Context, request time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnix",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixArray invokes test_request_required_integer_unix_array operation.
+//
+// POST /test_request_required_integer_unix_array
+func (c *Client) TestRequestRequiredIntegerUnixArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixArrayArray invokes test_request_required_integer_unix_array_array operation.
+//
+// POST /test_request_required_integer_unix_array_array
+func (c *Client) TestRequestRequiredIntegerUnixArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixMicro invokes test_request_required_integer_unix-micro operation.
+//
+// POST /test_request_required_integer_unix-micro
+func (c *Client) TestRequestRequiredIntegerUnixMicro(ctx context.Context, request time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-micro"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicro",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-micro"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixMicroRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixMicroResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixMicroArray invokes test_request_required_integer_unix-micro_array operation.
+//
+// POST /test_request_required_integer_unix-micro_array
+func (c *Client) TestRequestRequiredIntegerUnixMicroArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-micro_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-micro_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixMicroArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixMicroArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixMicroArrayArray invokes test_request_required_integer_unix-micro_array_array operation.
+//
+// POST /test_request_required_integer_unix-micro_array_array
+func (c *Client) TestRequestRequiredIntegerUnixMicroArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-micro_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-micro_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixMicroArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixMicroArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixMicroNullable invokes test_request_required_integer_unix-micro_nullable operation.
+//
+// POST /test_request_required_integer_unix-micro_nullable
+func (c *Client) TestRequestRequiredIntegerUnixMicroNullable(ctx context.Context, request NilUnixMicro) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-micro_nullable"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-micro_nullable"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixMicroNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixMicroNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixMicroNullableArray invokes test_request_required_integer_unix-micro_nullable_array operation.
+//
+// POST /test_request_required_integer_unix-micro_nullable_array
+func (c *Client) TestRequestRequiredIntegerUnixMicroNullableArray(ctx context.Context, request []NilUnixMicro) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-micro_nullable_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-micro_nullable_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixMicroNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixMicroNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixMicroNullableArrayArray invokes test_request_required_integer_unix-micro_nullable_array_array operation.
+//
+// POST /test_request_required_integer_unix-micro_nullable_array_array
+func (c *Client) TestRequestRequiredIntegerUnixMicroNullableArrayArray(ctx context.Context, request [][]NilUnixMicro) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-micro_nullable_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-micro_nullable_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixMilli invokes test_request_required_integer_unix-milli operation.
+//
+// POST /test_request_required_integer_unix-milli
+func (c *Client) TestRequestRequiredIntegerUnixMilli(ctx context.Context, request time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-milli"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilli",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-milli"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixMilliRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixMilliResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixMilliArray invokes test_request_required_integer_unix-milli_array operation.
+//
+// POST /test_request_required_integer_unix-milli_array
+func (c *Client) TestRequestRequiredIntegerUnixMilliArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-milli_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-milli_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixMilliArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixMilliArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixMilliArrayArray invokes test_request_required_integer_unix-milli_array_array operation.
+//
+// POST /test_request_required_integer_unix-milli_array_array
+func (c *Client) TestRequestRequiredIntegerUnixMilliArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-milli_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-milli_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixMilliArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixMilliArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixMilliNullable invokes test_request_required_integer_unix-milli_nullable operation.
+//
+// POST /test_request_required_integer_unix-milli_nullable
+func (c *Client) TestRequestRequiredIntegerUnixMilliNullable(ctx context.Context, request NilUnixMilli) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-milli_nullable"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-milli_nullable"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixMilliNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixMilliNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixMilliNullableArray invokes test_request_required_integer_unix-milli_nullable_array operation.
+//
+// POST /test_request_required_integer_unix-milli_nullable_array
+func (c *Client) TestRequestRequiredIntegerUnixMilliNullableArray(ctx context.Context, request []NilUnixMilli) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-milli_nullable_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-milli_nullable_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixMilliNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixMilliNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixMilliNullableArrayArray invokes test_request_required_integer_unix-milli_nullable_array_array operation.
+//
+// POST /test_request_required_integer_unix-milli_nullable_array_array
+func (c *Client) TestRequestRequiredIntegerUnixMilliNullableArrayArray(ctx context.Context, request [][]NilUnixMilli) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-milli_nullable_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-milli_nullable_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixNano invokes test_request_required_integer_unix-nano operation.
+//
+// POST /test_request_required_integer_unix-nano
+func (c *Client) TestRequestRequiredIntegerUnixNano(ctx context.Context, request time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-nano"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNano",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-nano"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixNanoRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixNanoResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixNanoArray invokes test_request_required_integer_unix-nano_array operation.
+//
+// POST /test_request_required_integer_unix-nano_array
+func (c *Client) TestRequestRequiredIntegerUnixNanoArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-nano_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-nano_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixNanoArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixNanoArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixNanoArrayArray invokes test_request_required_integer_unix-nano_array_array operation.
+//
+// POST /test_request_required_integer_unix-nano_array_array
+func (c *Client) TestRequestRequiredIntegerUnixNanoArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-nano_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-nano_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixNanoArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixNanoArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixNanoNullable invokes test_request_required_integer_unix-nano_nullable operation.
+//
+// POST /test_request_required_integer_unix-nano_nullable
+func (c *Client) TestRequestRequiredIntegerUnixNanoNullable(ctx context.Context, request NilUnixNano) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-nano_nullable"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-nano_nullable"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixNanoNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixNanoNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixNanoNullableArray invokes test_request_required_integer_unix-nano_nullable_array operation.
+//
+// POST /test_request_required_integer_unix-nano_nullable_array
+func (c *Client) TestRequestRequiredIntegerUnixNanoNullableArray(ctx context.Context, request []NilUnixNano) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-nano_nullable_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-nano_nullable_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixNanoNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixNanoNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixNanoNullableArrayArray invokes test_request_required_integer_unix-nano_nullable_array_array operation.
+//
+// POST /test_request_required_integer_unix-nano_nullable_array_array
+func (c *Client) TestRequestRequiredIntegerUnixNanoNullableArrayArray(ctx context.Context, request [][]NilUnixNano) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-nano_nullable_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-nano_nullable_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixNullable invokes test_request_required_integer_unix_nullable operation.
+//
+// POST /test_request_required_integer_unix_nullable
+func (c *Client) TestRequestRequiredIntegerUnixNullable(ctx context.Context, request NilUnixSeconds) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix_nullable"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix_nullable"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixNullableArray invokes test_request_required_integer_unix_nullable_array operation.
+//
+// POST /test_request_required_integer_unix_nullable_array
+func (c *Client) TestRequestRequiredIntegerUnixNullableArray(ctx context.Context, request []NilUnixSeconds) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix_nullable_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix_nullable_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixNullableArrayArray invokes test_request_required_integer_unix_nullable_array_array operation.
+//
+// POST /test_request_required_integer_unix_nullable_array_array
+func (c *Client) TestRequestRequiredIntegerUnixNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix_nullable_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix_nullable_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixSeconds invokes test_request_required_integer_unix-seconds operation.
+//
+// POST /test_request_required_integer_unix-seconds
+func (c *Client) TestRequestRequiredIntegerUnixSeconds(ctx context.Context, request time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-seconds"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSeconds",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-seconds"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixSecondsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixSecondsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixSecondsArray invokes test_request_required_integer_unix-seconds_array operation.
+//
+// POST /test_request_required_integer_unix-seconds_array
+func (c *Client) TestRequestRequiredIntegerUnixSecondsArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-seconds_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-seconds_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixSecondsArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixSecondsArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixSecondsArrayArray invokes test_request_required_integer_unix-seconds_array_array operation.
+//
+// POST /test_request_required_integer_unix-seconds_array_array
+func (c *Client) TestRequestRequiredIntegerUnixSecondsArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-seconds_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-seconds_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixSecondsArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixSecondsNullable invokes test_request_required_integer_unix-seconds_nullable operation.
+//
+// POST /test_request_required_integer_unix-seconds_nullable
+func (c *Client) TestRequestRequiredIntegerUnixSecondsNullable(ctx context.Context, request NilUnixSeconds) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-seconds_nullable"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-seconds_nullable"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixSecondsNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixSecondsNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixSecondsNullableArray invokes test_request_required_integer_unix-seconds_nullable_array operation.
+//
+// POST /test_request_required_integer_unix-seconds_nullable_array
+func (c *Client) TestRequestRequiredIntegerUnixSecondsNullableArray(ctx context.Context, request []NilUnixSeconds) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-seconds_nullable_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-seconds_nullable_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixSecondsNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixSecondsNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredIntegerUnixSecondsNullableArrayArray invokes test_request_required_integer_unix-seconds_nullable_array_array operation.
+//
+// POST /test_request_required_integer_unix-seconds_nullable_array_array
+func (c *Client) TestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res Error, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_unix-seconds_nullable_array_array"),
+	}
+	// Validate request before sending.
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_integer_unix-seconds_nullable_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -18695,7 +23090,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroArrayArray(ctx context.Contex
 // TestRequestRequiredStringUnixMicroNullable invokes test_request_required_string_unix-micro_nullable operation.
 //
 // POST /test_request_required_string_unix-micro_nullable
-func (c *Client) TestRequestRequiredStringUnixMicroNullable(ctx context.Context, request NilUnixMicro) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixMicroNullable(ctx context.Context, request NilStringUnixMicro) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_nullable"),
 	}
@@ -18756,7 +23151,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullable(ctx context.Context,
 // TestRequestRequiredStringUnixMicroNullableArray invokes test_request_required_string_unix-micro_nullable_array operation.
 //
 // POST /test_request_required_string_unix-micro_nullable_array
-func (c *Client) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Context, request []NilUnixMicro) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Context, request []NilStringUnixMicro) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_nullable_array"),
 	}
@@ -18825,7 +23220,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Con
 // TestRequestRequiredStringUnixMicroNullableArrayArray invokes test_request_required_string_unix-micro_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-micro_nullable_array_array
-func (c *Client) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx context.Context, request [][]NilUnixMicro) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx context.Context, request [][]NilStringUnixMicro) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-micro_nullable_array_array"),
 	}
@@ -19127,7 +23522,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliArrayArray(ctx context.Contex
 // TestRequestRequiredStringUnixMilliNullable invokes test_request_required_string_unix-milli_nullable operation.
 //
 // POST /test_request_required_string_unix-milli_nullable
-func (c *Client) TestRequestRequiredStringUnixMilliNullable(ctx context.Context, request NilUnixMilli) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixMilliNullable(ctx context.Context, request NilStringUnixMilli) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_nullable"),
 	}
@@ -19188,7 +23583,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullable(ctx context.Context,
 // TestRequestRequiredStringUnixMilliNullableArray invokes test_request_required_string_unix-milli_nullable_array operation.
 //
 // POST /test_request_required_string_unix-milli_nullable_array
-func (c *Client) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Context, request []NilUnixMilli) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Context, request []NilStringUnixMilli) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_nullable_array"),
 	}
@@ -19257,7 +23652,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Con
 // TestRequestRequiredStringUnixMilliNullableArrayArray invokes test_request_required_string_unix-milli_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-milli_nullable_array_array
-func (c *Client) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx context.Context, request [][]NilUnixMilli) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx context.Context, request [][]NilStringUnixMilli) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-milli_nullable_array_array"),
 	}
@@ -19559,7 +23954,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoArrayArray(ctx context.Context
 // TestRequestRequiredStringUnixNanoNullable invokes test_request_required_string_unix-nano_nullable operation.
 //
 // POST /test_request_required_string_unix-nano_nullable
-func (c *Client) TestRequestRequiredStringUnixNanoNullable(ctx context.Context, request NilUnixNano) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixNanoNullable(ctx context.Context, request NilStringUnixNano) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_nullable"),
 	}
@@ -19620,7 +24015,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullable(ctx context.Context, 
 // TestRequestRequiredStringUnixNanoNullableArray invokes test_request_required_string_unix-nano_nullable_array operation.
 //
 // POST /test_request_required_string_unix-nano_nullable_array
-func (c *Client) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Context, request []NilUnixNano) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Context, request []NilStringUnixNano) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_nullable_array"),
 	}
@@ -19689,7 +24084,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Cont
 // TestRequestRequiredStringUnixNanoNullableArrayArray invokes test_request_required_string_unix-nano_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-nano_nullable_array_array
-func (c *Client) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context.Context, request [][]NilUnixNano) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context.Context, request [][]NilStringUnixNano) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-nano_nullable_array_array"),
 	}
@@ -19775,7 +24170,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context
 // TestRequestRequiredStringUnixNullable invokes test_request_required_string_unix_nullable operation.
 //
 // POST /test_request_required_string_unix_nullable
-func (c *Client) TestRequestRequiredStringUnixNullable(ctx context.Context, request NilUnixSeconds) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixNullable(ctx context.Context, request NilStringUnixSeconds) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_nullable"),
 	}
@@ -19836,7 +24231,7 @@ func (c *Client) TestRequestRequiredStringUnixNullable(ctx context.Context, requ
 // TestRequestRequiredStringUnixNullableArray invokes test_request_required_string_unix_nullable_array operation.
 //
 // POST /test_request_required_string_unix_nullable_array
-func (c *Client) TestRequestRequiredStringUnixNullableArray(ctx context.Context, request []NilUnixSeconds) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixNullableArray(ctx context.Context, request []NilStringUnixSeconds) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_nullable_array"),
 	}
@@ -19905,7 +24300,7 @@ func (c *Client) TestRequestRequiredStringUnixNullableArray(ctx context.Context,
 // TestRequestRequiredStringUnixNullableArrayArray invokes test_request_required_string_unix_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix_nullable_array_array
-func (c *Client) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix_nullable_array_array"),
 	}
@@ -20207,7 +24602,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArrayArray(ctx context.Cont
 // TestRequestRequiredStringUnixSecondsNullable invokes test_request_required_string_unix-seconds_nullable operation.
 //
 // POST /test_request_required_string_unix-seconds_nullable
-func (c *Client) TestRequestRequiredStringUnixSecondsNullable(ctx context.Context, request NilUnixSeconds) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixSecondsNullable(ctx context.Context, request NilStringUnixSeconds) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_nullable"),
 	}
@@ -20268,7 +24663,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullable(ctx context.Contex
 // TestRequestRequiredStringUnixSecondsNullableArray invokes test_request_required_string_unix-seconds_nullable_array operation.
 //
 // POST /test_request_required_string_unix-seconds_nullable_array
-func (c *Client) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.Context, request []NilUnixSeconds) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.Context, request []NilStringUnixSeconds) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_nullable_array"),
 	}
@@ -20337,7 +24732,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.C
 // TestRequestRequiredStringUnixSecondsNullableArrayArray invokes test_request_required_string_unix-seconds_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-seconds_nullable_array_array
-func (c *Client) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_unix-seconds_nullable_array_array"),
 	}
@@ -27705,7 +32100,7 @@ func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, re
 // TestRequestStringUnix invokes test_request_string_unix operation.
 //
 // POST /test_request_string_unix
-func (c *Client) TestRequestStringUnix(ctx context.Context, request OptUnixSeconds) (res Error, err error) {
+func (c *Client) TestRequestStringUnix(ctx context.Context, request OptStringUnixSeconds) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix"),
 	}
@@ -27910,7 +32305,7 @@ func (c *Client) TestRequestStringUnixArrayArray(ctx context.Context, request []
 // TestRequestStringUnixMicro invokes test_request_string_unix-micro operation.
 //
 // POST /test_request_string_unix-micro
-func (c *Client) TestRequestStringUnixMicro(ctx context.Context, request OptUnixMicro) (res Error, err error) {
+func (c *Client) TestRequestStringUnixMicro(ctx context.Context, request OptStringUnixMicro) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro"),
 	}
@@ -28115,7 +32510,7 @@ func (c *Client) TestRequestStringUnixMicroArrayArray(ctx context.Context, reque
 // TestRequestStringUnixMicroNullable invokes test_request_string_unix-micro_nullable operation.
 //
 // POST /test_request_string_unix-micro_nullable
-func (c *Client) TestRequestStringUnixMicroNullable(ctx context.Context, request OptNilUnixMicro) (res Error, err error) {
+func (c *Client) TestRequestStringUnixMicroNullable(ctx context.Context, request OptNilStringUnixMicro) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_nullable"),
 	}
@@ -28176,7 +32571,7 @@ func (c *Client) TestRequestStringUnixMicroNullable(ctx context.Context, request
 // TestRequestStringUnixMicroNullableArray invokes test_request_string_unix-micro_nullable_array operation.
 //
 // POST /test_request_string_unix-micro_nullable_array
-func (c *Client) TestRequestStringUnixMicroNullableArray(ctx context.Context, request []NilUnixMicro) (res Error, err error) {
+func (c *Client) TestRequestStringUnixMicroNullableArray(ctx context.Context, request []NilStringUnixMicro) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_nullable_array"),
 	}
@@ -28237,7 +32632,7 @@ func (c *Client) TestRequestStringUnixMicroNullableArray(ctx context.Context, re
 // TestRequestStringUnixMicroNullableArrayArray invokes test_request_string_unix-micro_nullable_array_array operation.
 //
 // POST /test_request_string_unix-micro_nullable_array_array
-func (c *Client) TestRequestStringUnixMicroNullableArrayArray(ctx context.Context, request [][]NilUnixMicro) (res Error, err error) {
+func (c *Client) TestRequestStringUnixMicroNullableArrayArray(ctx context.Context, request [][]NilStringUnixMicro) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-micro_nullable_array_array"),
 	}
@@ -28320,7 +32715,7 @@ func (c *Client) TestRequestStringUnixMicroNullableArrayArray(ctx context.Contex
 // TestRequestStringUnixMilli invokes test_request_string_unix-milli operation.
 //
 // POST /test_request_string_unix-milli
-func (c *Client) TestRequestStringUnixMilli(ctx context.Context, request OptUnixMilli) (res Error, err error) {
+func (c *Client) TestRequestStringUnixMilli(ctx context.Context, request OptStringUnixMilli) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli"),
 	}
@@ -28525,7 +32920,7 @@ func (c *Client) TestRequestStringUnixMilliArrayArray(ctx context.Context, reque
 // TestRequestStringUnixMilliNullable invokes test_request_string_unix-milli_nullable operation.
 //
 // POST /test_request_string_unix-milli_nullable
-func (c *Client) TestRequestStringUnixMilliNullable(ctx context.Context, request OptNilUnixMilli) (res Error, err error) {
+func (c *Client) TestRequestStringUnixMilliNullable(ctx context.Context, request OptNilStringUnixMilli) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_nullable"),
 	}
@@ -28586,7 +32981,7 @@ func (c *Client) TestRequestStringUnixMilliNullable(ctx context.Context, request
 // TestRequestStringUnixMilliNullableArray invokes test_request_string_unix-milli_nullable_array operation.
 //
 // POST /test_request_string_unix-milli_nullable_array
-func (c *Client) TestRequestStringUnixMilliNullableArray(ctx context.Context, request []NilUnixMilli) (res Error, err error) {
+func (c *Client) TestRequestStringUnixMilliNullableArray(ctx context.Context, request []NilStringUnixMilli) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_nullable_array"),
 	}
@@ -28647,7 +33042,7 @@ func (c *Client) TestRequestStringUnixMilliNullableArray(ctx context.Context, re
 // TestRequestStringUnixMilliNullableArrayArray invokes test_request_string_unix-milli_nullable_array_array operation.
 //
 // POST /test_request_string_unix-milli_nullable_array_array
-func (c *Client) TestRequestStringUnixMilliNullableArrayArray(ctx context.Context, request [][]NilUnixMilli) (res Error, err error) {
+func (c *Client) TestRequestStringUnixMilliNullableArrayArray(ctx context.Context, request [][]NilStringUnixMilli) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-milli_nullable_array_array"),
 	}
@@ -28730,7 +33125,7 @@ func (c *Client) TestRequestStringUnixMilliNullableArrayArray(ctx context.Contex
 // TestRequestStringUnixNano invokes test_request_string_unix-nano operation.
 //
 // POST /test_request_string_unix-nano
-func (c *Client) TestRequestStringUnixNano(ctx context.Context, request OptUnixNano) (res Error, err error) {
+func (c *Client) TestRequestStringUnixNano(ctx context.Context, request OptStringUnixNano) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano"),
 	}
@@ -28935,7 +33330,7 @@ func (c *Client) TestRequestStringUnixNanoArrayArray(ctx context.Context, reques
 // TestRequestStringUnixNanoNullable invokes test_request_string_unix-nano_nullable operation.
 //
 // POST /test_request_string_unix-nano_nullable
-func (c *Client) TestRequestStringUnixNanoNullable(ctx context.Context, request OptNilUnixNano) (res Error, err error) {
+func (c *Client) TestRequestStringUnixNanoNullable(ctx context.Context, request OptNilStringUnixNano) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_nullable"),
 	}
@@ -28996,7 +33391,7 @@ func (c *Client) TestRequestStringUnixNanoNullable(ctx context.Context, request 
 // TestRequestStringUnixNanoNullableArray invokes test_request_string_unix-nano_nullable_array operation.
 //
 // POST /test_request_string_unix-nano_nullable_array
-func (c *Client) TestRequestStringUnixNanoNullableArray(ctx context.Context, request []NilUnixNano) (res Error, err error) {
+func (c *Client) TestRequestStringUnixNanoNullableArray(ctx context.Context, request []NilStringUnixNano) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_nullable_array"),
 	}
@@ -29057,7 +33452,7 @@ func (c *Client) TestRequestStringUnixNanoNullableArray(ctx context.Context, req
 // TestRequestStringUnixNanoNullableArrayArray invokes test_request_string_unix-nano_nullable_array_array operation.
 //
 // POST /test_request_string_unix-nano_nullable_array_array
-func (c *Client) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context, request [][]NilUnixNano) (res Error, err error) {
+func (c *Client) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context, request [][]NilStringUnixNano) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-nano_nullable_array_array"),
 	}
@@ -29140,7 +33535,7 @@ func (c *Client) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context
 // TestRequestStringUnixNullable invokes test_request_string_unix_nullable operation.
 //
 // POST /test_request_string_unix_nullable
-func (c *Client) TestRequestStringUnixNullable(ctx context.Context, request OptNilUnixSeconds) (res Error, err error) {
+func (c *Client) TestRequestStringUnixNullable(ctx context.Context, request OptNilStringUnixSeconds) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_nullable"),
 	}
@@ -29201,7 +33596,7 @@ func (c *Client) TestRequestStringUnixNullable(ctx context.Context, request OptN
 // TestRequestStringUnixNullableArray invokes test_request_string_unix_nullable_array operation.
 //
 // POST /test_request_string_unix_nullable_array
-func (c *Client) TestRequestStringUnixNullableArray(ctx context.Context, request []NilUnixSeconds) (res Error, err error) {
+func (c *Client) TestRequestStringUnixNullableArray(ctx context.Context, request []NilStringUnixSeconds) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_nullable_array"),
 	}
@@ -29262,7 +33657,7 @@ func (c *Client) TestRequestStringUnixNullableArray(ctx context.Context, request
 // TestRequestStringUnixNullableArrayArray invokes test_request_string_unix_nullable_array_array operation.
 //
 // POST /test_request_string_unix_nullable_array_array
-func (c *Client) TestRequestStringUnixNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res Error, err error) {
+func (c *Client) TestRequestStringUnixNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix_nullable_array_array"),
 	}
@@ -29345,7 +33740,7 @@ func (c *Client) TestRequestStringUnixNullableArrayArray(ctx context.Context, re
 // TestRequestStringUnixSeconds invokes test_request_string_unix-seconds operation.
 //
 // POST /test_request_string_unix-seconds
-func (c *Client) TestRequestStringUnixSeconds(ctx context.Context, request OptUnixSeconds) (res Error, err error) {
+func (c *Client) TestRequestStringUnixSeconds(ctx context.Context, request OptStringUnixSeconds) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds"),
 	}
@@ -29550,7 +33945,7 @@ func (c *Client) TestRequestStringUnixSecondsArrayArray(ctx context.Context, req
 // TestRequestStringUnixSecondsNullable invokes test_request_string_unix-seconds_nullable operation.
 //
 // POST /test_request_string_unix-seconds_nullable
-func (c *Client) TestRequestStringUnixSecondsNullable(ctx context.Context, request OptNilUnixSeconds) (res Error, err error) {
+func (c *Client) TestRequestStringUnixSecondsNullable(ctx context.Context, request OptNilStringUnixSeconds) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_nullable"),
 	}
@@ -29611,7 +34006,7 @@ func (c *Client) TestRequestStringUnixSecondsNullable(ctx context.Context, reque
 // TestRequestStringUnixSecondsNullableArray invokes test_request_string_unix-seconds_nullable_array operation.
 //
 // POST /test_request_string_unix-seconds_nullable_array
-func (c *Client) TestRequestStringUnixSecondsNullableArray(ctx context.Context, request []NilUnixSeconds) (res Error, err error) {
+func (c *Client) TestRequestStringUnixSecondsNullableArray(ctx context.Context, request []NilStringUnixSeconds) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_nullable_array"),
 	}
@@ -29672,7 +34067,7 @@ func (c *Client) TestRequestStringUnixSecondsNullableArray(ctx context.Context, 
 // TestRequestStringUnixSecondsNullableArrayArray invokes test_request_string_unix-seconds_nullable_array_array operation.
 //
 // POST /test_request_string_unix-seconds_nullable_array_array
-func (c *Client) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilUnixSeconds) (res Error, err error) {
+func (c *Client) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]NilStringUnixSeconds) (res Error, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_unix-seconds_nullable_array_array"),
 	}
@@ -31392,6 +35787,1836 @@ func (c *Client) TestResponseIntegerNullableArrayArray(ctx context.Context, requ
 
 	stage = "DecodeResponse"
 	result, err := decodeTestResponseIntegerNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnix invokes test_response_integer_unix operation.
+//
+// POST /test_response_integer_unix
+func (c *Client) TestResponseIntegerUnix(ctx context.Context, request string) (res time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnix",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixArray invokes test_response_integer_unix_array operation.
+//
+// POST /test_response_integer_unix_array
+func (c *Client) TestResponseIntegerUnixArray(ctx context.Context, request string) (res []time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixArrayArray invokes test_response_integer_unix_array_array operation.
+//
+// POST /test_response_integer_unix_array_array
+func (c *Client) TestResponseIntegerUnixArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix_array_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixMicro invokes test_response_integer_unix-micro operation.
+//
+// POST /test_response_integer_unix-micro
+func (c *Client) TestResponseIntegerUnixMicro(ctx context.Context, request string) (res time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-micro"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicro",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-micro"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixMicroRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixMicroResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixMicroArray invokes test_response_integer_unix-micro_array operation.
+//
+// POST /test_response_integer_unix-micro_array
+func (c *Client) TestResponseIntegerUnixMicroArray(ctx context.Context, request string) (res []time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-micro_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-micro_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixMicroArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixMicroArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixMicroArrayArray invokes test_response_integer_unix-micro_array_array operation.
+//
+// POST /test_response_integer_unix-micro_array_array
+func (c *Client) TestResponseIntegerUnixMicroArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-micro_array_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-micro_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixMicroArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixMicroArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixMicroNullable invokes test_response_integer_unix-micro_nullable operation.
+//
+// POST /test_response_integer_unix-micro_nullable
+func (c *Client) TestResponseIntegerUnixMicroNullable(ctx context.Context, request string) (res NilUnixMicro, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-micro_nullable"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-micro_nullable"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixMicroNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixMicroNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixMicroNullableArray invokes test_response_integer_unix-micro_nullable_array operation.
+//
+// POST /test_response_integer_unix-micro_nullable_array
+func (c *Client) TestResponseIntegerUnixMicroNullableArray(ctx context.Context, request string) (res []NilUnixMicro, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-micro_nullable_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-micro_nullable_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixMicroNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixMicroNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixMicroNullableArrayArray invokes test_response_integer_unix-micro_nullable_array_array operation.
+//
+// POST /test_response_integer_unix-micro_nullable_array_array
+func (c *Client) TestResponseIntegerUnixMicroNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixMicro, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-micro_nullable_array_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-micro_nullable_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixMicroNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixMicroNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixMilli invokes test_response_integer_unix-milli operation.
+//
+// POST /test_response_integer_unix-milli
+func (c *Client) TestResponseIntegerUnixMilli(ctx context.Context, request string) (res time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-milli"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilli",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-milli"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixMilliRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixMilliResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixMilliArray invokes test_response_integer_unix-milli_array operation.
+//
+// POST /test_response_integer_unix-milli_array
+func (c *Client) TestResponseIntegerUnixMilliArray(ctx context.Context, request string) (res []time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-milli_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-milli_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixMilliArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixMilliArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixMilliArrayArray invokes test_response_integer_unix-milli_array_array operation.
+//
+// POST /test_response_integer_unix-milli_array_array
+func (c *Client) TestResponseIntegerUnixMilliArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-milli_array_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-milli_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixMilliArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixMilliArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixMilliNullable invokes test_response_integer_unix-milli_nullable operation.
+//
+// POST /test_response_integer_unix-milli_nullable
+func (c *Client) TestResponseIntegerUnixMilliNullable(ctx context.Context, request string) (res NilUnixMilli, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-milli_nullable"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-milli_nullable"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixMilliNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixMilliNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixMilliNullableArray invokes test_response_integer_unix-milli_nullable_array operation.
+//
+// POST /test_response_integer_unix-milli_nullable_array
+func (c *Client) TestResponseIntegerUnixMilliNullableArray(ctx context.Context, request string) (res []NilUnixMilli, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-milli_nullable_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-milli_nullable_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixMilliNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixMilliNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixMilliNullableArrayArray invokes test_response_integer_unix-milli_nullable_array_array operation.
+//
+// POST /test_response_integer_unix-milli_nullable_array_array
+func (c *Client) TestResponseIntegerUnixMilliNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixMilli, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-milli_nullable_array_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-milli_nullable_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixMilliNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixMilliNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixNano invokes test_response_integer_unix-nano operation.
+//
+// POST /test_response_integer_unix-nano
+func (c *Client) TestResponseIntegerUnixNano(ctx context.Context, request string) (res time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-nano"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNano",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-nano"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixNanoRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixNanoResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixNanoArray invokes test_response_integer_unix-nano_array operation.
+//
+// POST /test_response_integer_unix-nano_array
+func (c *Client) TestResponseIntegerUnixNanoArray(ctx context.Context, request string) (res []time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-nano_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-nano_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixNanoArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixNanoArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixNanoArrayArray invokes test_response_integer_unix-nano_array_array operation.
+//
+// POST /test_response_integer_unix-nano_array_array
+func (c *Client) TestResponseIntegerUnixNanoArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-nano_array_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-nano_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixNanoArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixNanoArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixNanoNullable invokes test_response_integer_unix-nano_nullable operation.
+//
+// POST /test_response_integer_unix-nano_nullable
+func (c *Client) TestResponseIntegerUnixNanoNullable(ctx context.Context, request string) (res NilUnixNano, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-nano_nullable"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-nano_nullable"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixNanoNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixNanoNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixNanoNullableArray invokes test_response_integer_unix-nano_nullable_array operation.
+//
+// POST /test_response_integer_unix-nano_nullable_array
+func (c *Client) TestResponseIntegerUnixNanoNullableArray(ctx context.Context, request string) (res []NilUnixNano, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-nano_nullable_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-nano_nullable_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixNanoNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixNanoNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixNanoNullableArrayArray invokes test_response_integer_unix-nano_nullable_array_array operation.
+//
+// POST /test_response_integer_unix-nano_nullable_array_array
+func (c *Client) TestResponseIntegerUnixNanoNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixNano, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-nano_nullable_array_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-nano_nullable_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixNanoNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixNanoNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixNullable invokes test_response_integer_unix_nullable operation.
+//
+// POST /test_response_integer_unix_nullable
+func (c *Client) TestResponseIntegerUnixNullable(ctx context.Context, request string) (res NilUnixSeconds, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix_nullable"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix_nullable"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixNullableArray invokes test_response_integer_unix_nullable_array operation.
+//
+// POST /test_response_integer_unix_nullable_array
+func (c *Client) TestResponseIntegerUnixNullableArray(ctx context.Context, request string) (res []NilUnixSeconds, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix_nullable_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix_nullable_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixNullableArrayArray invokes test_response_integer_unix_nullable_array_array operation.
+//
+// POST /test_response_integer_unix_nullable_array_array
+func (c *Client) TestResponseIntegerUnixNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixSeconds, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix_nullable_array_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix_nullable_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixSeconds invokes test_response_integer_unix-seconds operation.
+//
+// POST /test_response_integer_unix-seconds
+func (c *Client) TestResponseIntegerUnixSeconds(ctx context.Context, request string) (res time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-seconds"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSeconds",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-seconds"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixSecondsRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixSecondsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixSecondsArray invokes test_response_integer_unix-seconds_array operation.
+//
+// POST /test_response_integer_unix-seconds_array
+func (c *Client) TestResponseIntegerUnixSecondsArray(ctx context.Context, request string) (res []time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-seconds_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-seconds_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixSecondsArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixSecondsArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixSecondsArrayArray invokes test_response_integer_unix-seconds_array_array operation.
+//
+// POST /test_response_integer_unix-seconds_array_array
+func (c *Client) TestResponseIntegerUnixSecondsArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-seconds_array_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-seconds_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixSecondsArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixSecondsArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixSecondsNullable invokes test_response_integer_unix-seconds_nullable operation.
+//
+// POST /test_response_integer_unix-seconds_nullable
+func (c *Client) TestResponseIntegerUnixSecondsNullable(ctx context.Context, request string) (res NilUnixSeconds, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-seconds_nullable"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-seconds_nullable"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixSecondsNullableRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixSecondsNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixSecondsNullableArray invokes test_response_integer_unix-seconds_nullable_array operation.
+//
+// POST /test_response_integer_unix-seconds_nullable_array
+func (c *Client) TestResponseIntegerUnixSecondsNullableArray(ctx context.Context, request string) (res []NilUnixSeconds, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-seconds_nullable_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-seconds_nullable_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixSecondsNullableArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixSecondsNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseIntegerUnixSecondsNullableArrayArray invokes test_response_integer_unix-seconds_nullable_array_array operation.
+//
+// POST /test_response_integer_unix-seconds_nullable_array_array
+func (c *Client) TestResponseIntegerUnixSecondsNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixSeconds, err error) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_unix-seconds_nullable_array_array"),
+	}
+	// Validate request before sending.
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	c.requests.Add(ctx, 1, otelAttrs...)
+
+	// Start a span for this request.
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	// Track stage for error reporting.
+	var stage string
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		}
+		span.End()
+	}()
+
+	stage = "BuildURL"
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_integer_unix-seconds_nullable_array_array"
+
+	stage = "EncodeRequest"
+	r := ht.NewRequest(ctx, "POST", u, nil)
+	if err := encodeTestResponseIntegerUnixSecondsNullableArrayArrayRequest(request, r); err != nil {
+		return res, errors.Wrap(err, "encode request")
+	}
+
+	stage = "SendRequest"
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	stage = "DecodeResponse"
+	result, err := decodeTestResponseIntegerUnixSecondsNullableArrayArrayResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -40186,7 +46411,7 @@ func (c *Client) TestResponseStringUnixMicroArrayArray(ctx context.Context, requ
 // TestResponseStringUnixMicroNullable invokes test_response_string_unix-micro_nullable operation.
 //
 // POST /test_response_string_unix-micro_nullable
-func (c *Client) TestResponseStringUnixMicroNullable(ctx context.Context, request string) (res NilUnixMicro, err error) {
+func (c *Client) TestResponseStringUnixMicroNullable(ctx context.Context, request string) (res NilStringUnixMicro, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_nullable"),
 	}
@@ -40247,7 +46472,7 @@ func (c *Client) TestResponseStringUnixMicroNullable(ctx context.Context, reques
 // TestResponseStringUnixMicroNullableArray invokes test_response_string_unix-micro_nullable_array operation.
 //
 // POST /test_response_string_unix-micro_nullable_array
-func (c *Client) TestResponseStringUnixMicroNullableArray(ctx context.Context, request string) (res []NilUnixMicro, err error) {
+func (c *Client) TestResponseStringUnixMicroNullableArray(ctx context.Context, request string) (res []NilStringUnixMicro, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_nullable_array"),
 	}
@@ -40308,7 +46533,7 @@ func (c *Client) TestResponseStringUnixMicroNullableArray(ctx context.Context, r
 // TestResponseStringUnixMicroNullableArrayArray invokes test_response_string_unix-micro_nullable_array_array operation.
 //
 // POST /test_response_string_unix-micro_nullable_array_array
-func (c *Client) TestResponseStringUnixMicroNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixMicro, err error) {
+func (c *Client) TestResponseStringUnixMicroNullableArrayArray(ctx context.Context, request string) (res [][]NilStringUnixMicro, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-micro_nullable_array_array"),
 	}
@@ -40552,7 +46777,7 @@ func (c *Client) TestResponseStringUnixMilliArrayArray(ctx context.Context, requ
 // TestResponseStringUnixMilliNullable invokes test_response_string_unix-milli_nullable operation.
 //
 // POST /test_response_string_unix-milli_nullable
-func (c *Client) TestResponseStringUnixMilliNullable(ctx context.Context, request string) (res NilUnixMilli, err error) {
+func (c *Client) TestResponseStringUnixMilliNullable(ctx context.Context, request string) (res NilStringUnixMilli, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_nullable"),
 	}
@@ -40613,7 +46838,7 @@ func (c *Client) TestResponseStringUnixMilliNullable(ctx context.Context, reques
 // TestResponseStringUnixMilliNullableArray invokes test_response_string_unix-milli_nullable_array operation.
 //
 // POST /test_response_string_unix-milli_nullable_array
-func (c *Client) TestResponseStringUnixMilliNullableArray(ctx context.Context, request string) (res []NilUnixMilli, err error) {
+func (c *Client) TestResponseStringUnixMilliNullableArray(ctx context.Context, request string) (res []NilStringUnixMilli, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_nullable_array"),
 	}
@@ -40674,7 +46899,7 @@ func (c *Client) TestResponseStringUnixMilliNullableArray(ctx context.Context, r
 // TestResponseStringUnixMilliNullableArrayArray invokes test_response_string_unix-milli_nullable_array_array operation.
 //
 // POST /test_response_string_unix-milli_nullable_array_array
-func (c *Client) TestResponseStringUnixMilliNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixMilli, err error) {
+func (c *Client) TestResponseStringUnixMilliNullableArrayArray(ctx context.Context, request string) (res [][]NilStringUnixMilli, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-milli_nullable_array_array"),
 	}
@@ -40918,7 +47143,7 @@ func (c *Client) TestResponseStringUnixNanoArrayArray(ctx context.Context, reque
 // TestResponseStringUnixNanoNullable invokes test_response_string_unix-nano_nullable operation.
 //
 // POST /test_response_string_unix-nano_nullable
-func (c *Client) TestResponseStringUnixNanoNullable(ctx context.Context, request string) (res NilUnixNano, err error) {
+func (c *Client) TestResponseStringUnixNanoNullable(ctx context.Context, request string) (res NilStringUnixNano, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_nullable"),
 	}
@@ -40979,7 +47204,7 @@ func (c *Client) TestResponseStringUnixNanoNullable(ctx context.Context, request
 // TestResponseStringUnixNanoNullableArray invokes test_response_string_unix-nano_nullable_array operation.
 //
 // POST /test_response_string_unix-nano_nullable_array
-func (c *Client) TestResponseStringUnixNanoNullableArray(ctx context.Context, request string) (res []NilUnixNano, err error) {
+func (c *Client) TestResponseStringUnixNanoNullableArray(ctx context.Context, request string) (res []NilStringUnixNano, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_nullable_array"),
 	}
@@ -41040,7 +47265,7 @@ func (c *Client) TestResponseStringUnixNanoNullableArray(ctx context.Context, re
 // TestResponseStringUnixNanoNullableArrayArray invokes test_response_string_unix-nano_nullable_array_array operation.
 //
 // POST /test_response_string_unix-nano_nullable_array_array
-func (c *Client) TestResponseStringUnixNanoNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixNano, err error) {
+func (c *Client) TestResponseStringUnixNanoNullableArrayArray(ctx context.Context, request string) (res [][]NilStringUnixNano, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-nano_nullable_array_array"),
 	}
@@ -41101,7 +47326,7 @@ func (c *Client) TestResponseStringUnixNanoNullableArrayArray(ctx context.Contex
 // TestResponseStringUnixNullable invokes test_response_string_unix_nullable operation.
 //
 // POST /test_response_string_unix_nullable
-func (c *Client) TestResponseStringUnixNullable(ctx context.Context, request string) (res NilUnixSeconds, err error) {
+func (c *Client) TestResponseStringUnixNullable(ctx context.Context, request string) (res NilStringUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_nullable"),
 	}
@@ -41162,7 +47387,7 @@ func (c *Client) TestResponseStringUnixNullable(ctx context.Context, request str
 // TestResponseStringUnixNullableArray invokes test_response_string_unix_nullable_array operation.
 //
 // POST /test_response_string_unix_nullable_array
-func (c *Client) TestResponseStringUnixNullableArray(ctx context.Context, request string) (res []NilUnixSeconds, err error) {
+func (c *Client) TestResponseStringUnixNullableArray(ctx context.Context, request string) (res []NilStringUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_nullable_array"),
 	}
@@ -41223,7 +47448,7 @@ func (c *Client) TestResponseStringUnixNullableArray(ctx context.Context, reques
 // TestResponseStringUnixNullableArrayArray invokes test_response_string_unix_nullable_array_array operation.
 //
 // POST /test_response_string_unix_nullable_array_array
-func (c *Client) TestResponseStringUnixNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixSeconds, err error) {
+func (c *Client) TestResponseStringUnixNullableArrayArray(ctx context.Context, request string) (res [][]NilStringUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix_nullable_array_array"),
 	}
@@ -41467,7 +47692,7 @@ func (c *Client) TestResponseStringUnixSecondsArrayArray(ctx context.Context, re
 // TestResponseStringUnixSecondsNullable invokes test_response_string_unix-seconds_nullable operation.
 //
 // POST /test_response_string_unix-seconds_nullable
-func (c *Client) TestResponseStringUnixSecondsNullable(ctx context.Context, request string) (res NilUnixSeconds, err error) {
+func (c *Client) TestResponseStringUnixSecondsNullable(ctx context.Context, request string) (res NilStringUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_nullable"),
 	}
@@ -41528,7 +47753,7 @@ func (c *Client) TestResponseStringUnixSecondsNullable(ctx context.Context, requ
 // TestResponseStringUnixSecondsNullableArray invokes test_response_string_unix-seconds_nullable_array operation.
 //
 // POST /test_response_string_unix-seconds_nullable_array
-func (c *Client) TestResponseStringUnixSecondsNullableArray(ctx context.Context, request string) (res []NilUnixSeconds, err error) {
+func (c *Client) TestResponseStringUnixSecondsNullableArray(ctx context.Context, request string) (res []NilStringUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_nullable_array"),
 	}
@@ -41589,7 +47814,7 @@ func (c *Client) TestResponseStringUnixSecondsNullableArray(ctx context.Context,
 // TestResponseStringUnixSecondsNullableArrayArray invokes test_response_string_unix-seconds_nullable_array_array operation.
 //
 // POST /test_response_string_unix-seconds_nullable_array_array
-func (c *Client) TestResponseStringUnixSecondsNullableArrayArray(ctx context.Context, request string) (res [][]NilUnixSeconds, err error) {
+func (c *Client) TestResponseStringUnixSecondsNullableArrayArray(ctx context.Context, request string) (res [][]NilStringUnixSeconds, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_unix-seconds_nullable_array_array"),
 	}

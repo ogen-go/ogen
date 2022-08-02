@@ -587,6 +587,158 @@ func (o NilStringInt64) Or(d int64) int64 {
 	return d
 }
 
+// NewNilStringUnixMicro returns new NilStringUnixMicro with value set to v.
+func NewNilStringUnixMicro(v time.Time) NilStringUnixMicro {
+	return NilStringUnixMicro{
+		Value: v,
+	}
+}
+
+// NilStringUnixMicro is nullable time.Time.
+type NilStringUnixMicro struct {
+	Value time.Time
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilStringUnixMicro) SetTo(v time.Time) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilStringUnixMicro) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilStringUnixMicro) Get() (v time.Time, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilStringUnixMicro) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilStringUnixMilli returns new NilStringUnixMilli with value set to v.
+func NewNilStringUnixMilli(v time.Time) NilStringUnixMilli {
+	return NilStringUnixMilli{
+		Value: v,
+	}
+}
+
+// NilStringUnixMilli is nullable time.Time.
+type NilStringUnixMilli struct {
+	Value time.Time
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilStringUnixMilli) SetTo(v time.Time) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilStringUnixMilli) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilStringUnixMilli) Get() (v time.Time, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilStringUnixMilli) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilStringUnixNano returns new NilStringUnixNano with value set to v.
+func NewNilStringUnixNano(v time.Time) NilStringUnixNano {
+	return NilStringUnixNano{
+		Value: v,
+	}
+}
+
+// NilStringUnixNano is nullable time.Time.
+type NilStringUnixNano struct {
+	Value time.Time
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilStringUnixNano) SetTo(v time.Time) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilStringUnixNano) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilStringUnixNano) Get() (v time.Time, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilStringUnixNano) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilStringUnixSeconds returns new NilStringUnixSeconds with value set to v.
+func NewNilStringUnixSeconds(v time.Time) NilStringUnixSeconds {
+	return NilStringUnixSeconds{
+		Value: v,
+	}
+}
+
+// NilStringUnixSeconds is nullable time.Time.
+type NilStringUnixSeconds struct {
+	Value time.Time
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilStringUnixSeconds) SetTo(v time.Time) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilStringUnixSeconds) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilStringUnixSeconds) Get() (v time.Time, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilStringUnixSeconds) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilTime returns new NilTime with value set to v.
 func NewNilTime(v time.Time) NilTime {
 	return NilTime{
@@ -2285,6 +2437,226 @@ func (o OptNilStringInt64) Or(d int64) int64 {
 	return d
 }
 
+// NewOptNilStringUnixMicro returns new OptNilStringUnixMicro with value set to v.
+func NewOptNilStringUnixMicro(v time.Time) OptNilStringUnixMicro {
+	return OptNilStringUnixMicro{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilStringUnixMicro is optional nullable time.Time.
+type OptNilStringUnixMicro struct {
+	Value time.Time
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilStringUnixMicro was set.
+func (o OptNilStringUnixMicro) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilStringUnixMicro) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilStringUnixMicro) SetTo(v time.Time) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilStringUnixMicro) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilStringUnixMicro) Get() (v time.Time, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringUnixMicro) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilStringUnixMilli returns new OptNilStringUnixMilli with value set to v.
+func NewOptNilStringUnixMilli(v time.Time) OptNilStringUnixMilli {
+	return OptNilStringUnixMilli{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilStringUnixMilli is optional nullable time.Time.
+type OptNilStringUnixMilli struct {
+	Value time.Time
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilStringUnixMilli was set.
+func (o OptNilStringUnixMilli) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilStringUnixMilli) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilStringUnixMilli) SetTo(v time.Time) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilStringUnixMilli) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilStringUnixMilli) Get() (v time.Time, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringUnixMilli) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilStringUnixNano returns new OptNilStringUnixNano with value set to v.
+func NewOptNilStringUnixNano(v time.Time) OptNilStringUnixNano {
+	return OptNilStringUnixNano{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilStringUnixNano is optional nullable time.Time.
+type OptNilStringUnixNano struct {
+	Value time.Time
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilStringUnixNano was set.
+func (o OptNilStringUnixNano) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilStringUnixNano) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilStringUnixNano) SetTo(v time.Time) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilStringUnixNano) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilStringUnixNano) Get() (v time.Time, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringUnixNano) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilStringUnixSeconds returns new OptNilStringUnixSeconds with value set to v.
+func NewOptNilStringUnixSeconds(v time.Time) OptNilStringUnixSeconds {
+	return OptNilStringUnixSeconds{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilStringUnixSeconds is optional nullable time.Time.
+type OptNilStringUnixSeconds struct {
+	Value time.Time
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilStringUnixSeconds was set.
+func (o OptNilStringUnixSeconds) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilStringUnixSeconds) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilStringUnixSeconds) SetTo(v time.Time) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilStringUnixSeconds) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilStringUnixSeconds) Get() (v time.Time, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringUnixSeconds) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilTime returns new OptNilTime with value set to v.
 func NewOptNilTime(v time.Time) OptNilTime {
 	return OptNilTime{
@@ -2854,6 +3226,190 @@ func (o OptStringInt64) Or(d int64) int64 {
 	return d
 }
 
+// NewOptStringUnixMicro returns new OptStringUnixMicro with value set to v.
+func NewOptStringUnixMicro(v time.Time) OptStringUnixMicro {
+	return OptStringUnixMicro{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringUnixMicro is optional time.Time.
+type OptStringUnixMicro struct {
+	Value time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptStringUnixMicro was set.
+func (o OptStringUnixMicro) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringUnixMicro) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringUnixMicro) SetTo(v time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringUnixMicro) Get() (v time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringUnixMicro) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStringUnixMilli returns new OptStringUnixMilli with value set to v.
+func NewOptStringUnixMilli(v time.Time) OptStringUnixMilli {
+	return OptStringUnixMilli{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringUnixMilli is optional time.Time.
+type OptStringUnixMilli struct {
+	Value time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptStringUnixMilli was set.
+func (o OptStringUnixMilli) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringUnixMilli) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringUnixMilli) SetTo(v time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringUnixMilli) Get() (v time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringUnixMilli) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStringUnixNano returns new OptStringUnixNano with value set to v.
+func NewOptStringUnixNano(v time.Time) OptStringUnixNano {
+	return OptStringUnixNano{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringUnixNano is optional time.Time.
+type OptStringUnixNano struct {
+	Value time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptStringUnixNano was set.
+func (o OptStringUnixNano) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringUnixNano) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringUnixNano) SetTo(v time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringUnixNano) Get() (v time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringUnixNano) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStringUnixSeconds returns new OptStringUnixSeconds with value set to v.
+func NewOptStringUnixSeconds(v time.Time) OptStringUnixSeconds {
+	return OptStringUnixSeconds{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringUnixSeconds is optional time.Time.
+type OptStringUnixSeconds struct {
+	Value time.Time
+	Set   bool
+}
+
+// IsSet returns true if OptStringUnixSeconds was set.
+func (o OptStringUnixSeconds) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringUnixSeconds) Reset() {
+	var v time.Time
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringUnixSeconds) SetTo(v time.Time) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringUnixSeconds) Get() (v time.Time, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringUnixSeconds) Or(d time.Time) time.Time {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTestRequestFormatTestReq returns new OptTestRequestFormatTestReq with value set to v.
 func NewOptTestRequestFormatTestReq(v TestRequestFormatTestReq) OptTestRequestFormatTestReq {
 	return OptTestRequestFormatTestReq{
@@ -3225,608 +3781,698 @@ func (o OptUnixSeconds) Or(d time.Time) time.Time {
 type TestRequestEmptyStructReq struct{}
 
 type TestRequestFormatTestReq struct {
-	RequiredAny                               jx.Raw            "json:\"required_any\""
-	RequiredArrayAny                          []jx.Raw          "json:\"required_array_any\""
-	RequiredArrayBoolean                      []bool            "json:\"required_array_boolean\""
-	RequiredArrayInteger                      []int             "json:\"required_array_integer\""
-	RequiredArrayIntegerInt32                 []int32           "json:\"required_array_integer_int32\""
-	RequiredArrayIntegerInt64                 []int64           "json:\"required_array_integer_int64\""
-	RequiredArrayNull                         []struct{}        "json:\"required_array_null\""
-	RequiredArrayNumber                       []float64         "json:\"required_array_number\""
-	RequiredArrayNumberDouble                 []float64         "json:\"required_array_number_double\""
-	RequiredArrayNumberFloat                  []float32         "json:\"required_array_number_float\""
-	RequiredArrayNumberInt32                  []int32           "json:\"required_array_number_int32\""
-	RequiredArrayNumberInt64                  []int64           "json:\"required_array_number_int64\""
-	RequiredArrayString                       []string          "json:\"required_array_string\""
-	RequiredArrayStringBinary                 []string          "json:\"required_array_string_binary\""
-	RequiredArrayStringByte                   [][]byte          "json:\"required_array_string_byte\""
-	RequiredArrayStringDate                   []time.Time       "json:\"required_array_string_date\""
-	RequiredArrayStringDateMinusTime          []time.Time       "json:\"required_array_string_date-time\""
-	RequiredArrayStringDuration               []time.Duration   "json:\"required_array_string_duration\""
-	RequiredArrayStringEmail                  []string          "json:\"required_array_string_email\""
-	RequiredArrayStringHostname               []string          "json:\"required_array_string_hostname\""
-	RequiredArrayStringInt32                  []int32           "json:\"required_array_string_int32\""
-	RequiredArrayStringInt64                  []int64           "json:\"required_array_string_int64\""
-	RequiredArrayStringIP                     []netip.Addr      "json:\"required_array_string_ip\""
-	RequiredArrayStringIpv4                   []netip.Addr      "json:\"required_array_string_ipv4\""
-	RequiredArrayStringIpv6                   []netip.Addr      "json:\"required_array_string_ipv6\""
-	RequiredArrayStringPassword               []string          "json:\"required_array_string_password\""
-	RequiredArrayStringTime                   []time.Time       "json:\"required_array_string_time\""
-	RequiredArrayStringUnix                   []time.Time       "json:\"required_array_string_unix\""
-	RequiredArrayStringUnixMinusMicro         []time.Time       "json:\"required_array_string_unix-micro\""
-	RequiredArrayStringUnixMinusMilli         []time.Time       "json:\"required_array_string_unix-milli\""
-	RequiredArrayStringUnixMinusNano          []time.Time       "json:\"required_array_string_unix-nano\""
-	RequiredArrayStringUnixMinusSeconds       []time.Time       "json:\"required_array_string_unix-seconds\""
-	RequiredArrayStringURI                    []url.URL         "json:\"required_array_string_uri\""
-	RequiredArrayStringUUID                   []uuid.UUID       "json:\"required_array_string_uuid\""
-	RequiredBoolean                           bool              "json:\"required_boolean\""
-	RequiredDoubleArrayAny                    [][]jx.Raw        "json:\"required_double_array_any\""
-	RequiredDoubleArrayBoolean                [][]bool          "json:\"required_double_array_boolean\""
-	RequiredDoubleArrayInteger                [][]int           "json:\"required_double_array_integer\""
-	RequiredDoubleArrayIntegerInt32           [][]int32         "json:\"required_double_array_integer_int32\""
-	RequiredDoubleArrayIntegerInt64           [][]int64         "json:\"required_double_array_integer_int64\""
-	RequiredDoubleArrayNull                   [][]struct{}      "json:\"required_double_array_null\""
-	RequiredDoubleArrayNumber                 [][]float64       "json:\"required_double_array_number\""
-	RequiredDoubleArrayNumberDouble           [][]float64       "json:\"required_double_array_number_double\""
-	RequiredDoubleArrayNumberFloat            [][]float32       "json:\"required_double_array_number_float\""
-	RequiredDoubleArrayNumberInt32            [][]int32         "json:\"required_double_array_number_int32\""
-	RequiredDoubleArrayNumberInt64            [][]int64         "json:\"required_double_array_number_int64\""
-	RequiredDoubleArrayString                 [][]string        "json:\"required_double_array_string\""
-	RequiredDoubleArrayStringBinary           [][]string        "json:\"required_double_array_string_binary\""
-	RequiredDoubleArrayStringByte             [][][]byte        "json:\"required_double_array_string_byte\""
-	RequiredDoubleArrayStringDate             [][]time.Time     "json:\"required_double_array_string_date\""
-	RequiredDoubleArrayStringDateMinusTime    [][]time.Time     "json:\"required_double_array_string_date-time\""
-	RequiredDoubleArrayStringDuration         [][]time.Duration "json:\"required_double_array_string_duration\""
-	RequiredDoubleArrayStringEmail            [][]string        "json:\"required_double_array_string_email\""
-	RequiredDoubleArrayStringHostname         [][]string        "json:\"required_double_array_string_hostname\""
-	RequiredDoubleArrayStringInt32            [][]int32         "json:\"required_double_array_string_int32\""
-	RequiredDoubleArrayStringInt64            [][]int64         "json:\"required_double_array_string_int64\""
-	RequiredDoubleArrayStringIP               [][]netip.Addr    "json:\"required_double_array_string_ip\""
-	RequiredDoubleArrayStringIpv4             [][]netip.Addr    "json:\"required_double_array_string_ipv4\""
-	RequiredDoubleArrayStringIpv6             [][]netip.Addr    "json:\"required_double_array_string_ipv6\""
-	RequiredDoubleArrayStringPassword         [][]string        "json:\"required_double_array_string_password\""
-	RequiredDoubleArrayStringTime             [][]time.Time     "json:\"required_double_array_string_time\""
-	RequiredDoubleArrayStringUnix             [][]time.Time     "json:\"required_double_array_string_unix\""
-	RequiredDoubleArrayStringUnixMinusMicro   [][]time.Time     "json:\"required_double_array_string_unix-micro\""
-	RequiredDoubleArrayStringUnixMinusMilli   [][]time.Time     "json:\"required_double_array_string_unix-milli\""
-	RequiredDoubleArrayStringUnixMinusNano    [][]time.Time     "json:\"required_double_array_string_unix-nano\""
-	RequiredDoubleArrayStringUnixMinusSeconds [][]time.Time     "json:\"required_double_array_string_unix-seconds\""
-	RequiredDoubleArrayStringURI              [][]url.URL       "json:\"required_double_array_string_uri\""
-	RequiredDoubleArrayStringUUID             [][]uuid.UUID     "json:\"required_double_array_string_uuid\""
-	RequiredInteger                           int               "json:\"required_integer\""
-	RequiredIntegerInt32                      int32             "json:\"required_integer_int32\""
-	RequiredIntegerInt64                      int64             "json:\"required_integer_int64\""
-	RequiredNull                              struct{}          "json:\"required_null\""
-	RequiredNumber                            float64           "json:\"required_number\""
-	RequiredNumberDouble                      float64           "json:\"required_number_double\""
-	RequiredNumberFloat                       float32           "json:\"required_number_float\""
-	RequiredNumberInt32                       int32             "json:\"required_number_int32\""
-	RequiredNumberInt64                       int64             "json:\"required_number_int64\""
-	RequiredString                            string            "json:\"required_string\""
-	RequiredStringBinary                      string            "json:\"required_string_binary\""
-	RequiredStringByte                        []byte            "json:\"required_string_byte\""
-	RequiredStringDate                        time.Time         "json:\"required_string_date\""
-	RequiredStringDateMinusTime               time.Time         "json:\"required_string_date-time\""
-	RequiredStringDuration                    time.Duration     "json:\"required_string_duration\""
-	RequiredStringEmail                       string            "json:\"required_string_email\""
-	RequiredStringHostname                    string            "json:\"required_string_hostname\""
-	RequiredStringInt32                       int32             "json:\"required_string_int32\""
-	RequiredStringInt64                       int64             "json:\"required_string_int64\""
-	RequiredStringIP                          netip.Addr        "json:\"required_string_ip\""
-	RequiredStringIpv4                        netip.Addr        "json:\"required_string_ipv4\""
-	RequiredStringIpv6                        netip.Addr        "json:\"required_string_ipv6\""
-	RequiredStringPassword                    string            "json:\"required_string_password\""
-	RequiredStringTime                        time.Time         "json:\"required_string_time\""
-	RequiredStringUnix                        time.Time         "json:\"required_string_unix\""
-	RequiredStringUnixMinusMicro              time.Time         "json:\"required_string_unix-micro\""
-	RequiredStringUnixMinusMilli              time.Time         "json:\"required_string_unix-milli\""
-	RequiredStringUnixMinusNano               time.Time         "json:\"required_string_unix-nano\""
-	RequiredStringUnixMinusSeconds            time.Time         "json:\"required_string_unix-seconds\""
-	RequiredStringURI                         url.URL           "json:\"required_string_uri\""
-	RequiredStringUUID                        uuid.UUID         "json:\"required_string_uuid\""
-	OptionalAny                               jx.Raw            "json:\"optional_any\""
-	OptionalArrayAny                          []jx.Raw          "json:\"optional_array_any\""
-	OptionalArrayBoolean                      []bool            "json:\"optional_array_boolean\""
-	OptionalArrayInteger                      []int             "json:\"optional_array_integer\""
-	OptionalArrayIntegerInt32                 []int32           "json:\"optional_array_integer_int32\""
-	OptionalArrayIntegerInt64                 []int64           "json:\"optional_array_integer_int64\""
-	OptionalArrayNull                         []struct{}        "json:\"optional_array_null\""
-	OptionalArrayNumber                       []float64         "json:\"optional_array_number\""
-	OptionalArrayNumberDouble                 []float64         "json:\"optional_array_number_double\""
-	OptionalArrayNumberFloat                  []float32         "json:\"optional_array_number_float\""
-	OptionalArrayNumberInt32                  []int32           "json:\"optional_array_number_int32\""
-	OptionalArrayNumberInt64                  []int64           "json:\"optional_array_number_int64\""
-	OptionalArrayString                       []string          "json:\"optional_array_string\""
-	OptionalArrayStringBinary                 []string          "json:\"optional_array_string_binary\""
-	OptionalArrayStringByte                   [][]byte          "json:\"optional_array_string_byte\""
-	OptionalArrayStringDate                   []time.Time       "json:\"optional_array_string_date\""
-	OptionalArrayStringDateMinusTime          []time.Time       "json:\"optional_array_string_date-time\""
-	OptionalArrayStringDuration               []time.Duration   "json:\"optional_array_string_duration\""
-	OptionalArrayStringEmail                  []string          "json:\"optional_array_string_email\""
-	OptionalArrayStringHostname               []string          "json:\"optional_array_string_hostname\""
-	OptionalArrayStringInt32                  []int32           "json:\"optional_array_string_int32\""
-	OptionalArrayStringInt64                  []int64           "json:\"optional_array_string_int64\""
-	OptionalArrayStringIP                     []netip.Addr      "json:\"optional_array_string_ip\""
-	OptionalArrayStringIpv4                   []netip.Addr      "json:\"optional_array_string_ipv4\""
-	OptionalArrayStringIpv6                   []netip.Addr      "json:\"optional_array_string_ipv6\""
-	OptionalArrayStringPassword               []string          "json:\"optional_array_string_password\""
-	OptionalArrayStringTime                   []time.Time       "json:\"optional_array_string_time\""
-	OptionalArrayStringUnix                   []time.Time       "json:\"optional_array_string_unix\""
-	OptionalArrayStringUnixMinusMicro         []time.Time       "json:\"optional_array_string_unix-micro\""
-	OptionalArrayStringUnixMinusMilli         []time.Time       "json:\"optional_array_string_unix-milli\""
-	OptionalArrayStringUnixMinusNano          []time.Time       "json:\"optional_array_string_unix-nano\""
-	OptionalArrayStringUnixMinusSeconds       []time.Time       "json:\"optional_array_string_unix-seconds\""
-	OptionalArrayStringURI                    []url.URL         "json:\"optional_array_string_uri\""
-	OptionalArrayStringUUID                   []uuid.UUID       "json:\"optional_array_string_uuid\""
-	OptionalBoolean                           OptBool           "json:\"optional_boolean\""
-	OptionalDoubleArrayAny                    [][]jx.Raw        "json:\"optional_double_array_any\""
-	OptionalDoubleArrayBoolean                [][]bool          "json:\"optional_double_array_boolean\""
-	OptionalDoubleArrayInteger                [][]int           "json:\"optional_double_array_integer\""
-	OptionalDoubleArrayIntegerInt32           [][]int32         "json:\"optional_double_array_integer_int32\""
-	OptionalDoubleArrayIntegerInt64           [][]int64         "json:\"optional_double_array_integer_int64\""
-	OptionalDoubleArrayNull                   [][]struct{}      "json:\"optional_double_array_null\""
-	OptionalDoubleArrayNumber                 [][]float64       "json:\"optional_double_array_number\""
-	OptionalDoubleArrayNumberDouble           [][]float64       "json:\"optional_double_array_number_double\""
-	OptionalDoubleArrayNumberFloat            [][]float32       "json:\"optional_double_array_number_float\""
-	OptionalDoubleArrayNumberInt32            [][]int32         "json:\"optional_double_array_number_int32\""
-	OptionalDoubleArrayNumberInt64            [][]int64         "json:\"optional_double_array_number_int64\""
-	OptionalDoubleArrayString                 [][]string        "json:\"optional_double_array_string\""
-	OptionalDoubleArrayStringBinary           [][]string        "json:\"optional_double_array_string_binary\""
-	OptionalDoubleArrayStringByte             [][][]byte        "json:\"optional_double_array_string_byte\""
-	OptionalDoubleArrayStringDate             [][]time.Time     "json:\"optional_double_array_string_date\""
-	OptionalDoubleArrayStringDateMinusTime    [][]time.Time     "json:\"optional_double_array_string_date-time\""
-	OptionalDoubleArrayStringDuration         [][]time.Duration "json:\"optional_double_array_string_duration\""
-	OptionalDoubleArrayStringEmail            [][]string        "json:\"optional_double_array_string_email\""
-	OptionalDoubleArrayStringHostname         [][]string        "json:\"optional_double_array_string_hostname\""
-	OptionalDoubleArrayStringInt32            [][]int32         "json:\"optional_double_array_string_int32\""
-	OptionalDoubleArrayStringInt64            [][]int64         "json:\"optional_double_array_string_int64\""
-	OptionalDoubleArrayStringIP               [][]netip.Addr    "json:\"optional_double_array_string_ip\""
-	OptionalDoubleArrayStringIpv4             [][]netip.Addr    "json:\"optional_double_array_string_ipv4\""
-	OptionalDoubleArrayStringIpv6             [][]netip.Addr    "json:\"optional_double_array_string_ipv6\""
-	OptionalDoubleArrayStringPassword         [][]string        "json:\"optional_double_array_string_password\""
-	OptionalDoubleArrayStringTime             [][]time.Time     "json:\"optional_double_array_string_time\""
-	OptionalDoubleArrayStringUnix             [][]time.Time     "json:\"optional_double_array_string_unix\""
-	OptionalDoubleArrayStringUnixMinusMicro   [][]time.Time     "json:\"optional_double_array_string_unix-micro\""
-	OptionalDoubleArrayStringUnixMinusMilli   [][]time.Time     "json:\"optional_double_array_string_unix-milli\""
-	OptionalDoubleArrayStringUnixMinusNano    [][]time.Time     "json:\"optional_double_array_string_unix-nano\""
-	OptionalDoubleArrayStringUnixMinusSeconds [][]time.Time     "json:\"optional_double_array_string_unix-seconds\""
-	OptionalDoubleArrayStringURI              [][]url.URL       "json:\"optional_double_array_string_uri\""
-	OptionalDoubleArrayStringUUID             [][]uuid.UUID     "json:\"optional_double_array_string_uuid\""
-	OptionalInteger                           OptInt            "json:\"optional_integer\""
-	OptionalIntegerInt32                      OptInt32          "json:\"optional_integer_int32\""
-	OptionalIntegerInt64                      OptInt64          "json:\"optional_integer_int64\""
-	OptionalNull                              OptNull           "json:\"optional_null\""
-	OptionalNumber                            OptFloat64        "json:\"optional_number\""
-	OptionalNumberDouble                      OptFloat64        "json:\"optional_number_double\""
-	OptionalNumberFloat                       OptFloat32        "json:\"optional_number_float\""
-	OptionalNumberInt32                       OptInt32          "json:\"optional_number_int32\""
-	OptionalNumberInt64                       OptInt64          "json:\"optional_number_int64\""
-	OptionalString                            OptString         "json:\"optional_string\""
-	OptionalStringBinary                      OptString         "json:\"optional_string_binary\""
-	OptionalStringByte                        []byte            "json:\"optional_string_byte\""
-	OptionalStringDate                        OptDate           "json:\"optional_string_date\""
-	OptionalStringDateMinusTime               OptDateTime       "json:\"optional_string_date-time\""
-	OptionalStringDuration                    OptDuration       "json:\"optional_string_duration\""
-	OptionalStringEmail                       OptString         "json:\"optional_string_email\""
-	OptionalStringHostname                    OptString         "json:\"optional_string_hostname\""
-	OptionalStringInt32                       OptStringInt32    "json:\"optional_string_int32\""
-	OptionalStringInt64                       OptStringInt64    "json:\"optional_string_int64\""
-	OptionalStringIP                          OptIP             "json:\"optional_string_ip\""
-	OptionalStringIpv4                        OptIPv4           "json:\"optional_string_ipv4\""
-	OptionalStringIpv6                        OptIPv6           "json:\"optional_string_ipv6\""
-	OptionalStringPassword                    OptString         "json:\"optional_string_password\""
-	OptionalStringTime                        OptTime           "json:\"optional_string_time\""
-	OptionalStringUnix                        OptUnixSeconds    "json:\"optional_string_unix\""
-	OptionalStringUnixMinusMicro              OptUnixMicro      "json:\"optional_string_unix-micro\""
-	OptionalStringUnixMinusMilli              OptUnixMilli      "json:\"optional_string_unix-milli\""
-	OptionalStringUnixMinusNano               OptUnixNano       "json:\"optional_string_unix-nano\""
-	OptionalStringUnixMinusSeconds            OptUnixSeconds    "json:\"optional_string_unix-seconds\""
-	OptionalStringURI                         OptURI            "json:\"optional_string_uri\""
-	OptionalStringUUID                        OptUUID           "json:\"optional_string_uuid\""
+	RequiredAny                                jx.Raw               "json:\"required_any\""
+	RequiredArrayAny                           []jx.Raw             "json:\"required_array_any\""
+	RequiredArrayBoolean                       []bool               "json:\"required_array_boolean\""
+	RequiredArrayInteger                       []int                "json:\"required_array_integer\""
+	RequiredArrayIntegerInt32                  []int32              "json:\"required_array_integer_int32\""
+	RequiredArrayIntegerInt64                  []int64              "json:\"required_array_integer_int64\""
+	RequiredArrayIntegerUnix                   []time.Time          "json:\"required_array_integer_unix\""
+	RequiredArrayIntegerUnixMinusMicro         []time.Time          "json:\"required_array_integer_unix-micro\""
+	RequiredArrayIntegerUnixMinusMilli         []time.Time          "json:\"required_array_integer_unix-milli\""
+	RequiredArrayIntegerUnixMinusNano          []time.Time          "json:\"required_array_integer_unix-nano\""
+	RequiredArrayIntegerUnixMinusSeconds       []time.Time          "json:\"required_array_integer_unix-seconds\""
+	RequiredArrayNull                          []struct{}           "json:\"required_array_null\""
+	RequiredArrayNumber                        []float64            "json:\"required_array_number\""
+	RequiredArrayNumberDouble                  []float64            "json:\"required_array_number_double\""
+	RequiredArrayNumberFloat                   []float32            "json:\"required_array_number_float\""
+	RequiredArrayNumberInt32                   []int32              "json:\"required_array_number_int32\""
+	RequiredArrayNumberInt64                   []int64              "json:\"required_array_number_int64\""
+	RequiredArrayString                        []string             "json:\"required_array_string\""
+	RequiredArrayStringBinary                  []string             "json:\"required_array_string_binary\""
+	RequiredArrayStringByte                    [][]byte             "json:\"required_array_string_byte\""
+	RequiredArrayStringDate                    []time.Time          "json:\"required_array_string_date\""
+	RequiredArrayStringDateMinusTime           []time.Time          "json:\"required_array_string_date-time\""
+	RequiredArrayStringDuration                []time.Duration      "json:\"required_array_string_duration\""
+	RequiredArrayStringEmail                   []string             "json:\"required_array_string_email\""
+	RequiredArrayStringHostname                []string             "json:\"required_array_string_hostname\""
+	RequiredArrayStringInt32                   []int32              "json:\"required_array_string_int32\""
+	RequiredArrayStringInt64                   []int64              "json:\"required_array_string_int64\""
+	RequiredArrayStringIP                      []netip.Addr         "json:\"required_array_string_ip\""
+	RequiredArrayStringIpv4                    []netip.Addr         "json:\"required_array_string_ipv4\""
+	RequiredArrayStringIpv6                    []netip.Addr         "json:\"required_array_string_ipv6\""
+	RequiredArrayStringPassword                []string             "json:\"required_array_string_password\""
+	RequiredArrayStringTime                    []time.Time          "json:\"required_array_string_time\""
+	RequiredArrayStringUnix                    []time.Time          "json:\"required_array_string_unix\""
+	RequiredArrayStringUnixMinusMicro          []time.Time          "json:\"required_array_string_unix-micro\""
+	RequiredArrayStringUnixMinusMilli          []time.Time          "json:\"required_array_string_unix-milli\""
+	RequiredArrayStringUnixMinusNano           []time.Time          "json:\"required_array_string_unix-nano\""
+	RequiredArrayStringUnixMinusSeconds        []time.Time          "json:\"required_array_string_unix-seconds\""
+	RequiredArrayStringURI                     []url.URL            "json:\"required_array_string_uri\""
+	RequiredArrayStringUUID                    []uuid.UUID          "json:\"required_array_string_uuid\""
+	RequiredBoolean                            bool                 "json:\"required_boolean\""
+	RequiredDoubleArrayAny                     [][]jx.Raw           "json:\"required_double_array_any\""
+	RequiredDoubleArrayBoolean                 [][]bool             "json:\"required_double_array_boolean\""
+	RequiredDoubleArrayInteger                 [][]int              "json:\"required_double_array_integer\""
+	RequiredDoubleArrayIntegerInt32            [][]int32            "json:\"required_double_array_integer_int32\""
+	RequiredDoubleArrayIntegerInt64            [][]int64            "json:\"required_double_array_integer_int64\""
+	RequiredDoubleArrayIntegerUnix             [][]time.Time        "json:\"required_double_array_integer_unix\""
+	RequiredDoubleArrayIntegerUnixMinusMicro   [][]time.Time        "json:\"required_double_array_integer_unix-micro\""
+	RequiredDoubleArrayIntegerUnixMinusMilli   [][]time.Time        "json:\"required_double_array_integer_unix-milli\""
+	RequiredDoubleArrayIntegerUnixMinusNano    [][]time.Time        "json:\"required_double_array_integer_unix-nano\""
+	RequiredDoubleArrayIntegerUnixMinusSeconds [][]time.Time        "json:\"required_double_array_integer_unix-seconds\""
+	RequiredDoubleArrayNull                    [][]struct{}         "json:\"required_double_array_null\""
+	RequiredDoubleArrayNumber                  [][]float64          "json:\"required_double_array_number\""
+	RequiredDoubleArrayNumberDouble            [][]float64          "json:\"required_double_array_number_double\""
+	RequiredDoubleArrayNumberFloat             [][]float32          "json:\"required_double_array_number_float\""
+	RequiredDoubleArrayNumberInt32             [][]int32            "json:\"required_double_array_number_int32\""
+	RequiredDoubleArrayNumberInt64             [][]int64            "json:\"required_double_array_number_int64\""
+	RequiredDoubleArrayString                  [][]string           "json:\"required_double_array_string\""
+	RequiredDoubleArrayStringBinary            [][]string           "json:\"required_double_array_string_binary\""
+	RequiredDoubleArrayStringByte              [][][]byte           "json:\"required_double_array_string_byte\""
+	RequiredDoubleArrayStringDate              [][]time.Time        "json:\"required_double_array_string_date\""
+	RequiredDoubleArrayStringDateMinusTime     [][]time.Time        "json:\"required_double_array_string_date-time\""
+	RequiredDoubleArrayStringDuration          [][]time.Duration    "json:\"required_double_array_string_duration\""
+	RequiredDoubleArrayStringEmail             [][]string           "json:\"required_double_array_string_email\""
+	RequiredDoubleArrayStringHostname          [][]string           "json:\"required_double_array_string_hostname\""
+	RequiredDoubleArrayStringInt32             [][]int32            "json:\"required_double_array_string_int32\""
+	RequiredDoubleArrayStringInt64             [][]int64            "json:\"required_double_array_string_int64\""
+	RequiredDoubleArrayStringIP                [][]netip.Addr       "json:\"required_double_array_string_ip\""
+	RequiredDoubleArrayStringIpv4              [][]netip.Addr       "json:\"required_double_array_string_ipv4\""
+	RequiredDoubleArrayStringIpv6              [][]netip.Addr       "json:\"required_double_array_string_ipv6\""
+	RequiredDoubleArrayStringPassword          [][]string           "json:\"required_double_array_string_password\""
+	RequiredDoubleArrayStringTime              [][]time.Time        "json:\"required_double_array_string_time\""
+	RequiredDoubleArrayStringUnix              [][]time.Time        "json:\"required_double_array_string_unix\""
+	RequiredDoubleArrayStringUnixMinusMicro    [][]time.Time        "json:\"required_double_array_string_unix-micro\""
+	RequiredDoubleArrayStringUnixMinusMilli    [][]time.Time        "json:\"required_double_array_string_unix-milli\""
+	RequiredDoubleArrayStringUnixMinusNano     [][]time.Time        "json:\"required_double_array_string_unix-nano\""
+	RequiredDoubleArrayStringUnixMinusSeconds  [][]time.Time        "json:\"required_double_array_string_unix-seconds\""
+	RequiredDoubleArrayStringURI               [][]url.URL          "json:\"required_double_array_string_uri\""
+	RequiredDoubleArrayStringUUID              [][]uuid.UUID        "json:\"required_double_array_string_uuid\""
+	RequiredInteger                            int                  "json:\"required_integer\""
+	RequiredIntegerInt32                       int32                "json:\"required_integer_int32\""
+	RequiredIntegerInt64                       int64                "json:\"required_integer_int64\""
+	RequiredIntegerUnix                        time.Time            "json:\"required_integer_unix\""
+	RequiredIntegerUnixMinusMicro              time.Time            "json:\"required_integer_unix-micro\""
+	RequiredIntegerUnixMinusMilli              time.Time            "json:\"required_integer_unix-milli\""
+	RequiredIntegerUnixMinusNano               time.Time            "json:\"required_integer_unix-nano\""
+	RequiredIntegerUnixMinusSeconds            time.Time            "json:\"required_integer_unix-seconds\""
+	RequiredNull                               struct{}             "json:\"required_null\""
+	RequiredNumber                             float64              "json:\"required_number\""
+	RequiredNumberDouble                       float64              "json:\"required_number_double\""
+	RequiredNumberFloat                        float32              "json:\"required_number_float\""
+	RequiredNumberInt32                        int32                "json:\"required_number_int32\""
+	RequiredNumberInt64                        int64                "json:\"required_number_int64\""
+	RequiredString                             string               "json:\"required_string\""
+	RequiredStringBinary                       string               "json:\"required_string_binary\""
+	RequiredStringByte                         []byte               "json:\"required_string_byte\""
+	RequiredStringDate                         time.Time            "json:\"required_string_date\""
+	RequiredStringDateMinusTime                time.Time            "json:\"required_string_date-time\""
+	RequiredStringDuration                     time.Duration        "json:\"required_string_duration\""
+	RequiredStringEmail                        string               "json:\"required_string_email\""
+	RequiredStringHostname                     string               "json:\"required_string_hostname\""
+	RequiredStringInt32                        int32                "json:\"required_string_int32\""
+	RequiredStringInt64                        int64                "json:\"required_string_int64\""
+	RequiredStringIP                           netip.Addr           "json:\"required_string_ip\""
+	RequiredStringIpv4                         netip.Addr           "json:\"required_string_ipv4\""
+	RequiredStringIpv6                         netip.Addr           "json:\"required_string_ipv6\""
+	RequiredStringPassword                     string               "json:\"required_string_password\""
+	RequiredStringTime                         time.Time            "json:\"required_string_time\""
+	RequiredStringUnix                         time.Time            "json:\"required_string_unix\""
+	RequiredStringUnixMinusMicro               time.Time            "json:\"required_string_unix-micro\""
+	RequiredStringUnixMinusMilli               time.Time            "json:\"required_string_unix-milli\""
+	RequiredStringUnixMinusNano                time.Time            "json:\"required_string_unix-nano\""
+	RequiredStringUnixMinusSeconds             time.Time            "json:\"required_string_unix-seconds\""
+	RequiredStringURI                          url.URL              "json:\"required_string_uri\""
+	RequiredStringUUID                         uuid.UUID            "json:\"required_string_uuid\""
+	OptionalAny                                jx.Raw               "json:\"optional_any\""
+	OptionalArrayAny                           []jx.Raw             "json:\"optional_array_any\""
+	OptionalArrayBoolean                       []bool               "json:\"optional_array_boolean\""
+	OptionalArrayInteger                       []int                "json:\"optional_array_integer\""
+	OptionalArrayIntegerInt32                  []int32              "json:\"optional_array_integer_int32\""
+	OptionalArrayIntegerInt64                  []int64              "json:\"optional_array_integer_int64\""
+	OptionalArrayIntegerUnix                   []time.Time          "json:\"optional_array_integer_unix\""
+	OptionalArrayIntegerUnixMinusMicro         []time.Time          "json:\"optional_array_integer_unix-micro\""
+	OptionalArrayIntegerUnixMinusMilli         []time.Time          "json:\"optional_array_integer_unix-milli\""
+	OptionalArrayIntegerUnixMinusNano          []time.Time          "json:\"optional_array_integer_unix-nano\""
+	OptionalArrayIntegerUnixMinusSeconds       []time.Time          "json:\"optional_array_integer_unix-seconds\""
+	OptionalArrayNull                          []struct{}           "json:\"optional_array_null\""
+	OptionalArrayNumber                        []float64            "json:\"optional_array_number\""
+	OptionalArrayNumberDouble                  []float64            "json:\"optional_array_number_double\""
+	OptionalArrayNumberFloat                   []float32            "json:\"optional_array_number_float\""
+	OptionalArrayNumberInt32                   []int32              "json:\"optional_array_number_int32\""
+	OptionalArrayNumberInt64                   []int64              "json:\"optional_array_number_int64\""
+	OptionalArrayString                        []string             "json:\"optional_array_string\""
+	OptionalArrayStringBinary                  []string             "json:\"optional_array_string_binary\""
+	OptionalArrayStringByte                    [][]byte             "json:\"optional_array_string_byte\""
+	OptionalArrayStringDate                    []time.Time          "json:\"optional_array_string_date\""
+	OptionalArrayStringDateMinusTime           []time.Time          "json:\"optional_array_string_date-time\""
+	OptionalArrayStringDuration                []time.Duration      "json:\"optional_array_string_duration\""
+	OptionalArrayStringEmail                   []string             "json:\"optional_array_string_email\""
+	OptionalArrayStringHostname                []string             "json:\"optional_array_string_hostname\""
+	OptionalArrayStringInt32                   []int32              "json:\"optional_array_string_int32\""
+	OptionalArrayStringInt64                   []int64              "json:\"optional_array_string_int64\""
+	OptionalArrayStringIP                      []netip.Addr         "json:\"optional_array_string_ip\""
+	OptionalArrayStringIpv4                    []netip.Addr         "json:\"optional_array_string_ipv4\""
+	OptionalArrayStringIpv6                    []netip.Addr         "json:\"optional_array_string_ipv6\""
+	OptionalArrayStringPassword                []string             "json:\"optional_array_string_password\""
+	OptionalArrayStringTime                    []time.Time          "json:\"optional_array_string_time\""
+	OptionalArrayStringUnix                    []time.Time          "json:\"optional_array_string_unix\""
+	OptionalArrayStringUnixMinusMicro          []time.Time          "json:\"optional_array_string_unix-micro\""
+	OptionalArrayStringUnixMinusMilli          []time.Time          "json:\"optional_array_string_unix-milli\""
+	OptionalArrayStringUnixMinusNano           []time.Time          "json:\"optional_array_string_unix-nano\""
+	OptionalArrayStringUnixMinusSeconds        []time.Time          "json:\"optional_array_string_unix-seconds\""
+	OptionalArrayStringURI                     []url.URL            "json:\"optional_array_string_uri\""
+	OptionalArrayStringUUID                    []uuid.UUID          "json:\"optional_array_string_uuid\""
+	OptionalBoolean                            OptBool              "json:\"optional_boolean\""
+	OptionalDoubleArrayAny                     [][]jx.Raw           "json:\"optional_double_array_any\""
+	OptionalDoubleArrayBoolean                 [][]bool             "json:\"optional_double_array_boolean\""
+	OptionalDoubleArrayInteger                 [][]int              "json:\"optional_double_array_integer\""
+	OptionalDoubleArrayIntegerInt32            [][]int32            "json:\"optional_double_array_integer_int32\""
+	OptionalDoubleArrayIntegerInt64            [][]int64            "json:\"optional_double_array_integer_int64\""
+	OptionalDoubleArrayIntegerUnix             [][]time.Time        "json:\"optional_double_array_integer_unix\""
+	OptionalDoubleArrayIntegerUnixMinusMicro   [][]time.Time        "json:\"optional_double_array_integer_unix-micro\""
+	OptionalDoubleArrayIntegerUnixMinusMilli   [][]time.Time        "json:\"optional_double_array_integer_unix-milli\""
+	OptionalDoubleArrayIntegerUnixMinusNano    [][]time.Time        "json:\"optional_double_array_integer_unix-nano\""
+	OptionalDoubleArrayIntegerUnixMinusSeconds [][]time.Time        "json:\"optional_double_array_integer_unix-seconds\""
+	OptionalDoubleArrayNull                    [][]struct{}         "json:\"optional_double_array_null\""
+	OptionalDoubleArrayNumber                  [][]float64          "json:\"optional_double_array_number\""
+	OptionalDoubleArrayNumberDouble            [][]float64          "json:\"optional_double_array_number_double\""
+	OptionalDoubleArrayNumberFloat             [][]float32          "json:\"optional_double_array_number_float\""
+	OptionalDoubleArrayNumberInt32             [][]int32            "json:\"optional_double_array_number_int32\""
+	OptionalDoubleArrayNumberInt64             [][]int64            "json:\"optional_double_array_number_int64\""
+	OptionalDoubleArrayString                  [][]string           "json:\"optional_double_array_string\""
+	OptionalDoubleArrayStringBinary            [][]string           "json:\"optional_double_array_string_binary\""
+	OptionalDoubleArrayStringByte              [][][]byte           "json:\"optional_double_array_string_byte\""
+	OptionalDoubleArrayStringDate              [][]time.Time        "json:\"optional_double_array_string_date\""
+	OptionalDoubleArrayStringDateMinusTime     [][]time.Time        "json:\"optional_double_array_string_date-time\""
+	OptionalDoubleArrayStringDuration          [][]time.Duration    "json:\"optional_double_array_string_duration\""
+	OptionalDoubleArrayStringEmail             [][]string           "json:\"optional_double_array_string_email\""
+	OptionalDoubleArrayStringHostname          [][]string           "json:\"optional_double_array_string_hostname\""
+	OptionalDoubleArrayStringInt32             [][]int32            "json:\"optional_double_array_string_int32\""
+	OptionalDoubleArrayStringInt64             [][]int64            "json:\"optional_double_array_string_int64\""
+	OptionalDoubleArrayStringIP                [][]netip.Addr       "json:\"optional_double_array_string_ip\""
+	OptionalDoubleArrayStringIpv4              [][]netip.Addr       "json:\"optional_double_array_string_ipv4\""
+	OptionalDoubleArrayStringIpv6              [][]netip.Addr       "json:\"optional_double_array_string_ipv6\""
+	OptionalDoubleArrayStringPassword          [][]string           "json:\"optional_double_array_string_password\""
+	OptionalDoubleArrayStringTime              [][]time.Time        "json:\"optional_double_array_string_time\""
+	OptionalDoubleArrayStringUnix              [][]time.Time        "json:\"optional_double_array_string_unix\""
+	OptionalDoubleArrayStringUnixMinusMicro    [][]time.Time        "json:\"optional_double_array_string_unix-micro\""
+	OptionalDoubleArrayStringUnixMinusMilli    [][]time.Time        "json:\"optional_double_array_string_unix-milli\""
+	OptionalDoubleArrayStringUnixMinusNano     [][]time.Time        "json:\"optional_double_array_string_unix-nano\""
+	OptionalDoubleArrayStringUnixMinusSeconds  [][]time.Time        "json:\"optional_double_array_string_unix-seconds\""
+	OptionalDoubleArrayStringURI               [][]url.URL          "json:\"optional_double_array_string_uri\""
+	OptionalDoubleArrayStringUUID              [][]uuid.UUID        "json:\"optional_double_array_string_uuid\""
+	OptionalInteger                            OptInt               "json:\"optional_integer\""
+	OptionalIntegerInt32                       OptInt32             "json:\"optional_integer_int32\""
+	OptionalIntegerInt64                       OptInt64             "json:\"optional_integer_int64\""
+	OptionalIntegerUnix                        OptUnixSeconds       "json:\"optional_integer_unix\""
+	OptionalIntegerUnixMinusMicro              OptUnixMicro         "json:\"optional_integer_unix-micro\""
+	OptionalIntegerUnixMinusMilli              OptUnixMilli         "json:\"optional_integer_unix-milli\""
+	OptionalIntegerUnixMinusNano               OptUnixNano          "json:\"optional_integer_unix-nano\""
+	OptionalIntegerUnixMinusSeconds            OptUnixSeconds       "json:\"optional_integer_unix-seconds\""
+	OptionalNull                               OptNull              "json:\"optional_null\""
+	OptionalNumber                             OptFloat64           "json:\"optional_number\""
+	OptionalNumberDouble                       OptFloat64           "json:\"optional_number_double\""
+	OptionalNumberFloat                        OptFloat32           "json:\"optional_number_float\""
+	OptionalNumberInt32                        OptInt32             "json:\"optional_number_int32\""
+	OptionalNumberInt64                        OptInt64             "json:\"optional_number_int64\""
+	OptionalString                             OptString            "json:\"optional_string\""
+	OptionalStringBinary                       OptString            "json:\"optional_string_binary\""
+	OptionalStringByte                         []byte               "json:\"optional_string_byte\""
+	OptionalStringDate                         OptDate              "json:\"optional_string_date\""
+	OptionalStringDateMinusTime                OptDateTime          "json:\"optional_string_date-time\""
+	OptionalStringDuration                     OptDuration          "json:\"optional_string_duration\""
+	OptionalStringEmail                        OptString            "json:\"optional_string_email\""
+	OptionalStringHostname                     OptString            "json:\"optional_string_hostname\""
+	OptionalStringInt32                        OptStringInt32       "json:\"optional_string_int32\""
+	OptionalStringInt64                        OptStringInt64       "json:\"optional_string_int64\""
+	OptionalStringIP                           OptIP                "json:\"optional_string_ip\""
+	OptionalStringIpv4                         OptIPv4              "json:\"optional_string_ipv4\""
+	OptionalStringIpv6                         OptIPv6              "json:\"optional_string_ipv6\""
+	OptionalStringPassword                     OptString            "json:\"optional_string_password\""
+	OptionalStringTime                         OptTime              "json:\"optional_string_time\""
+	OptionalStringUnix                         OptStringUnixSeconds "json:\"optional_string_unix\""
+	OptionalStringUnixMinusMicro               OptStringUnixMicro   "json:\"optional_string_unix-micro\""
+	OptionalStringUnixMinusMilli               OptStringUnixMilli   "json:\"optional_string_unix-milli\""
+	OptionalStringUnixMinusNano                OptStringUnixNano    "json:\"optional_string_unix-nano\""
+	OptionalStringUnixMinusSeconds             OptStringUnixSeconds "json:\"optional_string_unix-seconds\""
+	OptionalStringURI                          OptURI               "json:\"optional_string_uri\""
+	OptionalStringUUID                         OptUUID              "json:\"optional_string_uuid\""
 }
 
 type TestRequestRequiredEmptyStructReq struct{}
 
 type TestRequestRequiredFormatTestReq struct {
-	RequiredAny                               jx.Raw            "json:\"required_any\""
-	RequiredArrayAny                          []jx.Raw          "json:\"required_array_any\""
-	RequiredArrayBoolean                      []bool            "json:\"required_array_boolean\""
-	RequiredArrayInteger                      []int             "json:\"required_array_integer\""
-	RequiredArrayIntegerInt32                 []int32           "json:\"required_array_integer_int32\""
-	RequiredArrayIntegerInt64                 []int64           "json:\"required_array_integer_int64\""
-	RequiredArrayNull                         []struct{}        "json:\"required_array_null\""
-	RequiredArrayNumber                       []float64         "json:\"required_array_number\""
-	RequiredArrayNumberDouble                 []float64         "json:\"required_array_number_double\""
-	RequiredArrayNumberFloat                  []float32         "json:\"required_array_number_float\""
-	RequiredArrayNumberInt32                  []int32           "json:\"required_array_number_int32\""
-	RequiredArrayNumberInt64                  []int64           "json:\"required_array_number_int64\""
-	RequiredArrayString                       []string          "json:\"required_array_string\""
-	RequiredArrayStringBinary                 []string          "json:\"required_array_string_binary\""
-	RequiredArrayStringByte                   [][]byte          "json:\"required_array_string_byte\""
-	RequiredArrayStringDate                   []time.Time       "json:\"required_array_string_date\""
-	RequiredArrayStringDateMinusTime          []time.Time       "json:\"required_array_string_date-time\""
-	RequiredArrayStringDuration               []time.Duration   "json:\"required_array_string_duration\""
-	RequiredArrayStringEmail                  []string          "json:\"required_array_string_email\""
-	RequiredArrayStringHostname               []string          "json:\"required_array_string_hostname\""
-	RequiredArrayStringInt32                  []int32           "json:\"required_array_string_int32\""
-	RequiredArrayStringInt64                  []int64           "json:\"required_array_string_int64\""
-	RequiredArrayStringIP                     []netip.Addr      "json:\"required_array_string_ip\""
-	RequiredArrayStringIpv4                   []netip.Addr      "json:\"required_array_string_ipv4\""
-	RequiredArrayStringIpv6                   []netip.Addr      "json:\"required_array_string_ipv6\""
-	RequiredArrayStringPassword               []string          "json:\"required_array_string_password\""
-	RequiredArrayStringTime                   []time.Time       "json:\"required_array_string_time\""
-	RequiredArrayStringUnix                   []time.Time       "json:\"required_array_string_unix\""
-	RequiredArrayStringUnixMinusMicro         []time.Time       "json:\"required_array_string_unix-micro\""
-	RequiredArrayStringUnixMinusMilli         []time.Time       "json:\"required_array_string_unix-milli\""
-	RequiredArrayStringUnixMinusNano          []time.Time       "json:\"required_array_string_unix-nano\""
-	RequiredArrayStringUnixMinusSeconds       []time.Time       "json:\"required_array_string_unix-seconds\""
-	RequiredArrayStringURI                    []url.URL         "json:\"required_array_string_uri\""
-	RequiredArrayStringUUID                   []uuid.UUID       "json:\"required_array_string_uuid\""
-	RequiredBoolean                           bool              "json:\"required_boolean\""
-	RequiredDoubleArrayAny                    [][]jx.Raw        "json:\"required_double_array_any\""
-	RequiredDoubleArrayBoolean                [][]bool          "json:\"required_double_array_boolean\""
-	RequiredDoubleArrayInteger                [][]int           "json:\"required_double_array_integer\""
-	RequiredDoubleArrayIntegerInt32           [][]int32         "json:\"required_double_array_integer_int32\""
-	RequiredDoubleArrayIntegerInt64           [][]int64         "json:\"required_double_array_integer_int64\""
-	RequiredDoubleArrayNull                   [][]struct{}      "json:\"required_double_array_null\""
-	RequiredDoubleArrayNumber                 [][]float64       "json:\"required_double_array_number\""
-	RequiredDoubleArrayNumberDouble           [][]float64       "json:\"required_double_array_number_double\""
-	RequiredDoubleArrayNumberFloat            [][]float32       "json:\"required_double_array_number_float\""
-	RequiredDoubleArrayNumberInt32            [][]int32         "json:\"required_double_array_number_int32\""
-	RequiredDoubleArrayNumberInt64            [][]int64         "json:\"required_double_array_number_int64\""
-	RequiredDoubleArrayString                 [][]string        "json:\"required_double_array_string\""
-	RequiredDoubleArrayStringBinary           [][]string        "json:\"required_double_array_string_binary\""
-	RequiredDoubleArrayStringByte             [][][]byte        "json:\"required_double_array_string_byte\""
-	RequiredDoubleArrayStringDate             [][]time.Time     "json:\"required_double_array_string_date\""
-	RequiredDoubleArrayStringDateMinusTime    [][]time.Time     "json:\"required_double_array_string_date-time\""
-	RequiredDoubleArrayStringDuration         [][]time.Duration "json:\"required_double_array_string_duration\""
-	RequiredDoubleArrayStringEmail            [][]string        "json:\"required_double_array_string_email\""
-	RequiredDoubleArrayStringHostname         [][]string        "json:\"required_double_array_string_hostname\""
-	RequiredDoubleArrayStringInt32            [][]int32         "json:\"required_double_array_string_int32\""
-	RequiredDoubleArrayStringInt64            [][]int64         "json:\"required_double_array_string_int64\""
-	RequiredDoubleArrayStringIP               [][]netip.Addr    "json:\"required_double_array_string_ip\""
-	RequiredDoubleArrayStringIpv4             [][]netip.Addr    "json:\"required_double_array_string_ipv4\""
-	RequiredDoubleArrayStringIpv6             [][]netip.Addr    "json:\"required_double_array_string_ipv6\""
-	RequiredDoubleArrayStringPassword         [][]string        "json:\"required_double_array_string_password\""
-	RequiredDoubleArrayStringTime             [][]time.Time     "json:\"required_double_array_string_time\""
-	RequiredDoubleArrayStringUnix             [][]time.Time     "json:\"required_double_array_string_unix\""
-	RequiredDoubleArrayStringUnixMinusMicro   [][]time.Time     "json:\"required_double_array_string_unix-micro\""
-	RequiredDoubleArrayStringUnixMinusMilli   [][]time.Time     "json:\"required_double_array_string_unix-milli\""
-	RequiredDoubleArrayStringUnixMinusNano    [][]time.Time     "json:\"required_double_array_string_unix-nano\""
-	RequiredDoubleArrayStringUnixMinusSeconds [][]time.Time     "json:\"required_double_array_string_unix-seconds\""
-	RequiredDoubleArrayStringURI              [][]url.URL       "json:\"required_double_array_string_uri\""
-	RequiredDoubleArrayStringUUID             [][]uuid.UUID     "json:\"required_double_array_string_uuid\""
-	RequiredInteger                           int               "json:\"required_integer\""
-	RequiredIntegerInt32                      int32             "json:\"required_integer_int32\""
-	RequiredIntegerInt64                      int64             "json:\"required_integer_int64\""
-	RequiredNull                              struct{}          "json:\"required_null\""
-	RequiredNumber                            float64           "json:\"required_number\""
-	RequiredNumberDouble                      float64           "json:\"required_number_double\""
-	RequiredNumberFloat                       float32           "json:\"required_number_float\""
-	RequiredNumberInt32                       int32             "json:\"required_number_int32\""
-	RequiredNumberInt64                       int64             "json:\"required_number_int64\""
-	RequiredString                            string            "json:\"required_string\""
-	RequiredStringBinary                      string            "json:\"required_string_binary\""
-	RequiredStringByte                        []byte            "json:\"required_string_byte\""
-	RequiredStringDate                        time.Time         "json:\"required_string_date\""
-	RequiredStringDateMinusTime               time.Time         "json:\"required_string_date-time\""
-	RequiredStringDuration                    time.Duration     "json:\"required_string_duration\""
-	RequiredStringEmail                       string            "json:\"required_string_email\""
-	RequiredStringHostname                    string            "json:\"required_string_hostname\""
-	RequiredStringInt32                       int32             "json:\"required_string_int32\""
-	RequiredStringInt64                       int64             "json:\"required_string_int64\""
-	RequiredStringIP                          netip.Addr        "json:\"required_string_ip\""
-	RequiredStringIpv4                        netip.Addr        "json:\"required_string_ipv4\""
-	RequiredStringIpv6                        netip.Addr        "json:\"required_string_ipv6\""
-	RequiredStringPassword                    string            "json:\"required_string_password\""
-	RequiredStringTime                        time.Time         "json:\"required_string_time\""
-	RequiredStringUnix                        time.Time         "json:\"required_string_unix\""
-	RequiredStringUnixMinusMicro              time.Time         "json:\"required_string_unix-micro\""
-	RequiredStringUnixMinusMilli              time.Time         "json:\"required_string_unix-milli\""
-	RequiredStringUnixMinusNano               time.Time         "json:\"required_string_unix-nano\""
-	RequiredStringUnixMinusSeconds            time.Time         "json:\"required_string_unix-seconds\""
-	RequiredStringURI                         url.URL           "json:\"required_string_uri\""
-	RequiredStringUUID                        uuid.UUID         "json:\"required_string_uuid\""
-	OptionalAny                               jx.Raw            "json:\"optional_any\""
-	OptionalArrayAny                          []jx.Raw          "json:\"optional_array_any\""
-	OptionalArrayBoolean                      []bool            "json:\"optional_array_boolean\""
-	OptionalArrayInteger                      []int             "json:\"optional_array_integer\""
-	OptionalArrayIntegerInt32                 []int32           "json:\"optional_array_integer_int32\""
-	OptionalArrayIntegerInt64                 []int64           "json:\"optional_array_integer_int64\""
-	OptionalArrayNull                         []struct{}        "json:\"optional_array_null\""
-	OptionalArrayNumber                       []float64         "json:\"optional_array_number\""
-	OptionalArrayNumberDouble                 []float64         "json:\"optional_array_number_double\""
-	OptionalArrayNumberFloat                  []float32         "json:\"optional_array_number_float\""
-	OptionalArrayNumberInt32                  []int32           "json:\"optional_array_number_int32\""
-	OptionalArrayNumberInt64                  []int64           "json:\"optional_array_number_int64\""
-	OptionalArrayString                       []string          "json:\"optional_array_string\""
-	OptionalArrayStringBinary                 []string          "json:\"optional_array_string_binary\""
-	OptionalArrayStringByte                   [][]byte          "json:\"optional_array_string_byte\""
-	OptionalArrayStringDate                   []time.Time       "json:\"optional_array_string_date\""
-	OptionalArrayStringDateMinusTime          []time.Time       "json:\"optional_array_string_date-time\""
-	OptionalArrayStringDuration               []time.Duration   "json:\"optional_array_string_duration\""
-	OptionalArrayStringEmail                  []string          "json:\"optional_array_string_email\""
-	OptionalArrayStringHostname               []string          "json:\"optional_array_string_hostname\""
-	OptionalArrayStringInt32                  []int32           "json:\"optional_array_string_int32\""
-	OptionalArrayStringInt64                  []int64           "json:\"optional_array_string_int64\""
-	OptionalArrayStringIP                     []netip.Addr      "json:\"optional_array_string_ip\""
-	OptionalArrayStringIpv4                   []netip.Addr      "json:\"optional_array_string_ipv4\""
-	OptionalArrayStringIpv6                   []netip.Addr      "json:\"optional_array_string_ipv6\""
-	OptionalArrayStringPassword               []string          "json:\"optional_array_string_password\""
-	OptionalArrayStringTime                   []time.Time       "json:\"optional_array_string_time\""
-	OptionalArrayStringUnix                   []time.Time       "json:\"optional_array_string_unix\""
-	OptionalArrayStringUnixMinusMicro         []time.Time       "json:\"optional_array_string_unix-micro\""
-	OptionalArrayStringUnixMinusMilli         []time.Time       "json:\"optional_array_string_unix-milli\""
-	OptionalArrayStringUnixMinusNano          []time.Time       "json:\"optional_array_string_unix-nano\""
-	OptionalArrayStringUnixMinusSeconds       []time.Time       "json:\"optional_array_string_unix-seconds\""
-	OptionalArrayStringURI                    []url.URL         "json:\"optional_array_string_uri\""
-	OptionalArrayStringUUID                   []uuid.UUID       "json:\"optional_array_string_uuid\""
-	OptionalBoolean                           OptBool           "json:\"optional_boolean\""
-	OptionalDoubleArrayAny                    [][]jx.Raw        "json:\"optional_double_array_any\""
-	OptionalDoubleArrayBoolean                [][]bool          "json:\"optional_double_array_boolean\""
-	OptionalDoubleArrayInteger                [][]int           "json:\"optional_double_array_integer\""
-	OptionalDoubleArrayIntegerInt32           [][]int32         "json:\"optional_double_array_integer_int32\""
-	OptionalDoubleArrayIntegerInt64           [][]int64         "json:\"optional_double_array_integer_int64\""
-	OptionalDoubleArrayNull                   [][]struct{}      "json:\"optional_double_array_null\""
-	OptionalDoubleArrayNumber                 [][]float64       "json:\"optional_double_array_number\""
-	OptionalDoubleArrayNumberDouble           [][]float64       "json:\"optional_double_array_number_double\""
-	OptionalDoubleArrayNumberFloat            [][]float32       "json:\"optional_double_array_number_float\""
-	OptionalDoubleArrayNumberInt32            [][]int32         "json:\"optional_double_array_number_int32\""
-	OptionalDoubleArrayNumberInt64            [][]int64         "json:\"optional_double_array_number_int64\""
-	OptionalDoubleArrayString                 [][]string        "json:\"optional_double_array_string\""
-	OptionalDoubleArrayStringBinary           [][]string        "json:\"optional_double_array_string_binary\""
-	OptionalDoubleArrayStringByte             [][][]byte        "json:\"optional_double_array_string_byte\""
-	OptionalDoubleArrayStringDate             [][]time.Time     "json:\"optional_double_array_string_date\""
-	OptionalDoubleArrayStringDateMinusTime    [][]time.Time     "json:\"optional_double_array_string_date-time\""
-	OptionalDoubleArrayStringDuration         [][]time.Duration "json:\"optional_double_array_string_duration\""
-	OptionalDoubleArrayStringEmail            [][]string        "json:\"optional_double_array_string_email\""
-	OptionalDoubleArrayStringHostname         [][]string        "json:\"optional_double_array_string_hostname\""
-	OptionalDoubleArrayStringInt32            [][]int32         "json:\"optional_double_array_string_int32\""
-	OptionalDoubleArrayStringInt64            [][]int64         "json:\"optional_double_array_string_int64\""
-	OptionalDoubleArrayStringIP               [][]netip.Addr    "json:\"optional_double_array_string_ip\""
-	OptionalDoubleArrayStringIpv4             [][]netip.Addr    "json:\"optional_double_array_string_ipv4\""
-	OptionalDoubleArrayStringIpv6             [][]netip.Addr    "json:\"optional_double_array_string_ipv6\""
-	OptionalDoubleArrayStringPassword         [][]string        "json:\"optional_double_array_string_password\""
-	OptionalDoubleArrayStringTime             [][]time.Time     "json:\"optional_double_array_string_time\""
-	OptionalDoubleArrayStringUnix             [][]time.Time     "json:\"optional_double_array_string_unix\""
-	OptionalDoubleArrayStringUnixMinusMicro   [][]time.Time     "json:\"optional_double_array_string_unix-micro\""
-	OptionalDoubleArrayStringUnixMinusMilli   [][]time.Time     "json:\"optional_double_array_string_unix-milli\""
-	OptionalDoubleArrayStringUnixMinusNano    [][]time.Time     "json:\"optional_double_array_string_unix-nano\""
-	OptionalDoubleArrayStringUnixMinusSeconds [][]time.Time     "json:\"optional_double_array_string_unix-seconds\""
-	OptionalDoubleArrayStringURI              [][]url.URL       "json:\"optional_double_array_string_uri\""
-	OptionalDoubleArrayStringUUID             [][]uuid.UUID     "json:\"optional_double_array_string_uuid\""
-	OptionalInteger                           OptInt            "json:\"optional_integer\""
-	OptionalIntegerInt32                      OptInt32          "json:\"optional_integer_int32\""
-	OptionalIntegerInt64                      OptInt64          "json:\"optional_integer_int64\""
-	OptionalNull                              OptNull           "json:\"optional_null\""
-	OptionalNumber                            OptFloat64        "json:\"optional_number\""
-	OptionalNumberDouble                      OptFloat64        "json:\"optional_number_double\""
-	OptionalNumberFloat                       OptFloat32        "json:\"optional_number_float\""
-	OptionalNumberInt32                       OptInt32          "json:\"optional_number_int32\""
-	OptionalNumberInt64                       OptInt64          "json:\"optional_number_int64\""
-	OptionalString                            OptString         "json:\"optional_string\""
-	OptionalStringBinary                      OptString         "json:\"optional_string_binary\""
-	OptionalStringByte                        []byte            "json:\"optional_string_byte\""
-	OptionalStringDate                        OptDate           "json:\"optional_string_date\""
-	OptionalStringDateMinusTime               OptDateTime       "json:\"optional_string_date-time\""
-	OptionalStringDuration                    OptDuration       "json:\"optional_string_duration\""
-	OptionalStringEmail                       OptString         "json:\"optional_string_email\""
-	OptionalStringHostname                    OptString         "json:\"optional_string_hostname\""
-	OptionalStringInt32                       OptStringInt32    "json:\"optional_string_int32\""
-	OptionalStringInt64                       OptStringInt64    "json:\"optional_string_int64\""
-	OptionalStringIP                          OptIP             "json:\"optional_string_ip\""
-	OptionalStringIpv4                        OptIPv4           "json:\"optional_string_ipv4\""
-	OptionalStringIpv6                        OptIPv6           "json:\"optional_string_ipv6\""
-	OptionalStringPassword                    OptString         "json:\"optional_string_password\""
-	OptionalStringTime                        OptTime           "json:\"optional_string_time\""
-	OptionalStringUnix                        OptUnixSeconds    "json:\"optional_string_unix\""
-	OptionalStringUnixMinusMicro              OptUnixMicro      "json:\"optional_string_unix-micro\""
-	OptionalStringUnixMinusMilli              OptUnixMilli      "json:\"optional_string_unix-milli\""
-	OptionalStringUnixMinusNano               OptUnixNano       "json:\"optional_string_unix-nano\""
-	OptionalStringUnixMinusSeconds            OptUnixSeconds    "json:\"optional_string_unix-seconds\""
-	OptionalStringURI                         OptURI            "json:\"optional_string_uri\""
-	OptionalStringUUID                        OptUUID           "json:\"optional_string_uuid\""
+	RequiredAny                                jx.Raw               "json:\"required_any\""
+	RequiredArrayAny                           []jx.Raw             "json:\"required_array_any\""
+	RequiredArrayBoolean                       []bool               "json:\"required_array_boolean\""
+	RequiredArrayInteger                       []int                "json:\"required_array_integer\""
+	RequiredArrayIntegerInt32                  []int32              "json:\"required_array_integer_int32\""
+	RequiredArrayIntegerInt64                  []int64              "json:\"required_array_integer_int64\""
+	RequiredArrayIntegerUnix                   []time.Time          "json:\"required_array_integer_unix\""
+	RequiredArrayIntegerUnixMinusMicro         []time.Time          "json:\"required_array_integer_unix-micro\""
+	RequiredArrayIntegerUnixMinusMilli         []time.Time          "json:\"required_array_integer_unix-milli\""
+	RequiredArrayIntegerUnixMinusNano          []time.Time          "json:\"required_array_integer_unix-nano\""
+	RequiredArrayIntegerUnixMinusSeconds       []time.Time          "json:\"required_array_integer_unix-seconds\""
+	RequiredArrayNull                          []struct{}           "json:\"required_array_null\""
+	RequiredArrayNumber                        []float64            "json:\"required_array_number\""
+	RequiredArrayNumberDouble                  []float64            "json:\"required_array_number_double\""
+	RequiredArrayNumberFloat                   []float32            "json:\"required_array_number_float\""
+	RequiredArrayNumberInt32                   []int32              "json:\"required_array_number_int32\""
+	RequiredArrayNumberInt64                   []int64              "json:\"required_array_number_int64\""
+	RequiredArrayString                        []string             "json:\"required_array_string\""
+	RequiredArrayStringBinary                  []string             "json:\"required_array_string_binary\""
+	RequiredArrayStringByte                    [][]byte             "json:\"required_array_string_byte\""
+	RequiredArrayStringDate                    []time.Time          "json:\"required_array_string_date\""
+	RequiredArrayStringDateMinusTime           []time.Time          "json:\"required_array_string_date-time\""
+	RequiredArrayStringDuration                []time.Duration      "json:\"required_array_string_duration\""
+	RequiredArrayStringEmail                   []string             "json:\"required_array_string_email\""
+	RequiredArrayStringHostname                []string             "json:\"required_array_string_hostname\""
+	RequiredArrayStringInt32                   []int32              "json:\"required_array_string_int32\""
+	RequiredArrayStringInt64                   []int64              "json:\"required_array_string_int64\""
+	RequiredArrayStringIP                      []netip.Addr         "json:\"required_array_string_ip\""
+	RequiredArrayStringIpv4                    []netip.Addr         "json:\"required_array_string_ipv4\""
+	RequiredArrayStringIpv6                    []netip.Addr         "json:\"required_array_string_ipv6\""
+	RequiredArrayStringPassword                []string             "json:\"required_array_string_password\""
+	RequiredArrayStringTime                    []time.Time          "json:\"required_array_string_time\""
+	RequiredArrayStringUnix                    []time.Time          "json:\"required_array_string_unix\""
+	RequiredArrayStringUnixMinusMicro          []time.Time          "json:\"required_array_string_unix-micro\""
+	RequiredArrayStringUnixMinusMilli          []time.Time          "json:\"required_array_string_unix-milli\""
+	RequiredArrayStringUnixMinusNano           []time.Time          "json:\"required_array_string_unix-nano\""
+	RequiredArrayStringUnixMinusSeconds        []time.Time          "json:\"required_array_string_unix-seconds\""
+	RequiredArrayStringURI                     []url.URL            "json:\"required_array_string_uri\""
+	RequiredArrayStringUUID                    []uuid.UUID          "json:\"required_array_string_uuid\""
+	RequiredBoolean                            bool                 "json:\"required_boolean\""
+	RequiredDoubleArrayAny                     [][]jx.Raw           "json:\"required_double_array_any\""
+	RequiredDoubleArrayBoolean                 [][]bool             "json:\"required_double_array_boolean\""
+	RequiredDoubleArrayInteger                 [][]int              "json:\"required_double_array_integer\""
+	RequiredDoubleArrayIntegerInt32            [][]int32            "json:\"required_double_array_integer_int32\""
+	RequiredDoubleArrayIntegerInt64            [][]int64            "json:\"required_double_array_integer_int64\""
+	RequiredDoubleArrayIntegerUnix             [][]time.Time        "json:\"required_double_array_integer_unix\""
+	RequiredDoubleArrayIntegerUnixMinusMicro   [][]time.Time        "json:\"required_double_array_integer_unix-micro\""
+	RequiredDoubleArrayIntegerUnixMinusMilli   [][]time.Time        "json:\"required_double_array_integer_unix-milli\""
+	RequiredDoubleArrayIntegerUnixMinusNano    [][]time.Time        "json:\"required_double_array_integer_unix-nano\""
+	RequiredDoubleArrayIntegerUnixMinusSeconds [][]time.Time        "json:\"required_double_array_integer_unix-seconds\""
+	RequiredDoubleArrayNull                    [][]struct{}         "json:\"required_double_array_null\""
+	RequiredDoubleArrayNumber                  [][]float64          "json:\"required_double_array_number\""
+	RequiredDoubleArrayNumberDouble            [][]float64          "json:\"required_double_array_number_double\""
+	RequiredDoubleArrayNumberFloat             [][]float32          "json:\"required_double_array_number_float\""
+	RequiredDoubleArrayNumberInt32             [][]int32            "json:\"required_double_array_number_int32\""
+	RequiredDoubleArrayNumberInt64             [][]int64            "json:\"required_double_array_number_int64\""
+	RequiredDoubleArrayString                  [][]string           "json:\"required_double_array_string\""
+	RequiredDoubleArrayStringBinary            [][]string           "json:\"required_double_array_string_binary\""
+	RequiredDoubleArrayStringByte              [][][]byte           "json:\"required_double_array_string_byte\""
+	RequiredDoubleArrayStringDate              [][]time.Time        "json:\"required_double_array_string_date\""
+	RequiredDoubleArrayStringDateMinusTime     [][]time.Time        "json:\"required_double_array_string_date-time\""
+	RequiredDoubleArrayStringDuration          [][]time.Duration    "json:\"required_double_array_string_duration\""
+	RequiredDoubleArrayStringEmail             [][]string           "json:\"required_double_array_string_email\""
+	RequiredDoubleArrayStringHostname          [][]string           "json:\"required_double_array_string_hostname\""
+	RequiredDoubleArrayStringInt32             [][]int32            "json:\"required_double_array_string_int32\""
+	RequiredDoubleArrayStringInt64             [][]int64            "json:\"required_double_array_string_int64\""
+	RequiredDoubleArrayStringIP                [][]netip.Addr       "json:\"required_double_array_string_ip\""
+	RequiredDoubleArrayStringIpv4              [][]netip.Addr       "json:\"required_double_array_string_ipv4\""
+	RequiredDoubleArrayStringIpv6              [][]netip.Addr       "json:\"required_double_array_string_ipv6\""
+	RequiredDoubleArrayStringPassword          [][]string           "json:\"required_double_array_string_password\""
+	RequiredDoubleArrayStringTime              [][]time.Time        "json:\"required_double_array_string_time\""
+	RequiredDoubleArrayStringUnix              [][]time.Time        "json:\"required_double_array_string_unix\""
+	RequiredDoubleArrayStringUnixMinusMicro    [][]time.Time        "json:\"required_double_array_string_unix-micro\""
+	RequiredDoubleArrayStringUnixMinusMilli    [][]time.Time        "json:\"required_double_array_string_unix-milli\""
+	RequiredDoubleArrayStringUnixMinusNano     [][]time.Time        "json:\"required_double_array_string_unix-nano\""
+	RequiredDoubleArrayStringUnixMinusSeconds  [][]time.Time        "json:\"required_double_array_string_unix-seconds\""
+	RequiredDoubleArrayStringURI               [][]url.URL          "json:\"required_double_array_string_uri\""
+	RequiredDoubleArrayStringUUID              [][]uuid.UUID        "json:\"required_double_array_string_uuid\""
+	RequiredInteger                            int                  "json:\"required_integer\""
+	RequiredIntegerInt32                       int32                "json:\"required_integer_int32\""
+	RequiredIntegerInt64                       int64                "json:\"required_integer_int64\""
+	RequiredIntegerUnix                        time.Time            "json:\"required_integer_unix\""
+	RequiredIntegerUnixMinusMicro              time.Time            "json:\"required_integer_unix-micro\""
+	RequiredIntegerUnixMinusMilli              time.Time            "json:\"required_integer_unix-milli\""
+	RequiredIntegerUnixMinusNano               time.Time            "json:\"required_integer_unix-nano\""
+	RequiredIntegerUnixMinusSeconds            time.Time            "json:\"required_integer_unix-seconds\""
+	RequiredNull                               struct{}             "json:\"required_null\""
+	RequiredNumber                             float64              "json:\"required_number\""
+	RequiredNumberDouble                       float64              "json:\"required_number_double\""
+	RequiredNumberFloat                        float32              "json:\"required_number_float\""
+	RequiredNumberInt32                        int32                "json:\"required_number_int32\""
+	RequiredNumberInt64                        int64                "json:\"required_number_int64\""
+	RequiredString                             string               "json:\"required_string\""
+	RequiredStringBinary                       string               "json:\"required_string_binary\""
+	RequiredStringByte                         []byte               "json:\"required_string_byte\""
+	RequiredStringDate                         time.Time            "json:\"required_string_date\""
+	RequiredStringDateMinusTime                time.Time            "json:\"required_string_date-time\""
+	RequiredStringDuration                     time.Duration        "json:\"required_string_duration\""
+	RequiredStringEmail                        string               "json:\"required_string_email\""
+	RequiredStringHostname                     string               "json:\"required_string_hostname\""
+	RequiredStringInt32                        int32                "json:\"required_string_int32\""
+	RequiredStringInt64                        int64                "json:\"required_string_int64\""
+	RequiredStringIP                           netip.Addr           "json:\"required_string_ip\""
+	RequiredStringIpv4                         netip.Addr           "json:\"required_string_ipv4\""
+	RequiredStringIpv6                         netip.Addr           "json:\"required_string_ipv6\""
+	RequiredStringPassword                     string               "json:\"required_string_password\""
+	RequiredStringTime                         time.Time            "json:\"required_string_time\""
+	RequiredStringUnix                         time.Time            "json:\"required_string_unix\""
+	RequiredStringUnixMinusMicro               time.Time            "json:\"required_string_unix-micro\""
+	RequiredStringUnixMinusMilli               time.Time            "json:\"required_string_unix-milli\""
+	RequiredStringUnixMinusNano                time.Time            "json:\"required_string_unix-nano\""
+	RequiredStringUnixMinusSeconds             time.Time            "json:\"required_string_unix-seconds\""
+	RequiredStringURI                          url.URL              "json:\"required_string_uri\""
+	RequiredStringUUID                         uuid.UUID            "json:\"required_string_uuid\""
+	OptionalAny                                jx.Raw               "json:\"optional_any\""
+	OptionalArrayAny                           []jx.Raw             "json:\"optional_array_any\""
+	OptionalArrayBoolean                       []bool               "json:\"optional_array_boolean\""
+	OptionalArrayInteger                       []int                "json:\"optional_array_integer\""
+	OptionalArrayIntegerInt32                  []int32              "json:\"optional_array_integer_int32\""
+	OptionalArrayIntegerInt64                  []int64              "json:\"optional_array_integer_int64\""
+	OptionalArrayIntegerUnix                   []time.Time          "json:\"optional_array_integer_unix\""
+	OptionalArrayIntegerUnixMinusMicro         []time.Time          "json:\"optional_array_integer_unix-micro\""
+	OptionalArrayIntegerUnixMinusMilli         []time.Time          "json:\"optional_array_integer_unix-milli\""
+	OptionalArrayIntegerUnixMinusNano          []time.Time          "json:\"optional_array_integer_unix-nano\""
+	OptionalArrayIntegerUnixMinusSeconds       []time.Time          "json:\"optional_array_integer_unix-seconds\""
+	OptionalArrayNull                          []struct{}           "json:\"optional_array_null\""
+	OptionalArrayNumber                        []float64            "json:\"optional_array_number\""
+	OptionalArrayNumberDouble                  []float64            "json:\"optional_array_number_double\""
+	OptionalArrayNumberFloat                   []float32            "json:\"optional_array_number_float\""
+	OptionalArrayNumberInt32                   []int32              "json:\"optional_array_number_int32\""
+	OptionalArrayNumberInt64                   []int64              "json:\"optional_array_number_int64\""
+	OptionalArrayString                        []string             "json:\"optional_array_string\""
+	OptionalArrayStringBinary                  []string             "json:\"optional_array_string_binary\""
+	OptionalArrayStringByte                    [][]byte             "json:\"optional_array_string_byte\""
+	OptionalArrayStringDate                    []time.Time          "json:\"optional_array_string_date\""
+	OptionalArrayStringDateMinusTime           []time.Time          "json:\"optional_array_string_date-time\""
+	OptionalArrayStringDuration                []time.Duration      "json:\"optional_array_string_duration\""
+	OptionalArrayStringEmail                   []string             "json:\"optional_array_string_email\""
+	OptionalArrayStringHostname                []string             "json:\"optional_array_string_hostname\""
+	OptionalArrayStringInt32                   []int32              "json:\"optional_array_string_int32\""
+	OptionalArrayStringInt64                   []int64              "json:\"optional_array_string_int64\""
+	OptionalArrayStringIP                      []netip.Addr         "json:\"optional_array_string_ip\""
+	OptionalArrayStringIpv4                    []netip.Addr         "json:\"optional_array_string_ipv4\""
+	OptionalArrayStringIpv6                    []netip.Addr         "json:\"optional_array_string_ipv6\""
+	OptionalArrayStringPassword                []string             "json:\"optional_array_string_password\""
+	OptionalArrayStringTime                    []time.Time          "json:\"optional_array_string_time\""
+	OptionalArrayStringUnix                    []time.Time          "json:\"optional_array_string_unix\""
+	OptionalArrayStringUnixMinusMicro          []time.Time          "json:\"optional_array_string_unix-micro\""
+	OptionalArrayStringUnixMinusMilli          []time.Time          "json:\"optional_array_string_unix-milli\""
+	OptionalArrayStringUnixMinusNano           []time.Time          "json:\"optional_array_string_unix-nano\""
+	OptionalArrayStringUnixMinusSeconds        []time.Time          "json:\"optional_array_string_unix-seconds\""
+	OptionalArrayStringURI                     []url.URL            "json:\"optional_array_string_uri\""
+	OptionalArrayStringUUID                    []uuid.UUID          "json:\"optional_array_string_uuid\""
+	OptionalBoolean                            OptBool              "json:\"optional_boolean\""
+	OptionalDoubleArrayAny                     [][]jx.Raw           "json:\"optional_double_array_any\""
+	OptionalDoubleArrayBoolean                 [][]bool             "json:\"optional_double_array_boolean\""
+	OptionalDoubleArrayInteger                 [][]int              "json:\"optional_double_array_integer\""
+	OptionalDoubleArrayIntegerInt32            [][]int32            "json:\"optional_double_array_integer_int32\""
+	OptionalDoubleArrayIntegerInt64            [][]int64            "json:\"optional_double_array_integer_int64\""
+	OptionalDoubleArrayIntegerUnix             [][]time.Time        "json:\"optional_double_array_integer_unix\""
+	OptionalDoubleArrayIntegerUnixMinusMicro   [][]time.Time        "json:\"optional_double_array_integer_unix-micro\""
+	OptionalDoubleArrayIntegerUnixMinusMilli   [][]time.Time        "json:\"optional_double_array_integer_unix-milli\""
+	OptionalDoubleArrayIntegerUnixMinusNano    [][]time.Time        "json:\"optional_double_array_integer_unix-nano\""
+	OptionalDoubleArrayIntegerUnixMinusSeconds [][]time.Time        "json:\"optional_double_array_integer_unix-seconds\""
+	OptionalDoubleArrayNull                    [][]struct{}         "json:\"optional_double_array_null\""
+	OptionalDoubleArrayNumber                  [][]float64          "json:\"optional_double_array_number\""
+	OptionalDoubleArrayNumberDouble            [][]float64          "json:\"optional_double_array_number_double\""
+	OptionalDoubleArrayNumberFloat             [][]float32          "json:\"optional_double_array_number_float\""
+	OptionalDoubleArrayNumberInt32             [][]int32            "json:\"optional_double_array_number_int32\""
+	OptionalDoubleArrayNumberInt64             [][]int64            "json:\"optional_double_array_number_int64\""
+	OptionalDoubleArrayString                  [][]string           "json:\"optional_double_array_string\""
+	OptionalDoubleArrayStringBinary            [][]string           "json:\"optional_double_array_string_binary\""
+	OptionalDoubleArrayStringByte              [][][]byte           "json:\"optional_double_array_string_byte\""
+	OptionalDoubleArrayStringDate              [][]time.Time        "json:\"optional_double_array_string_date\""
+	OptionalDoubleArrayStringDateMinusTime     [][]time.Time        "json:\"optional_double_array_string_date-time\""
+	OptionalDoubleArrayStringDuration          [][]time.Duration    "json:\"optional_double_array_string_duration\""
+	OptionalDoubleArrayStringEmail             [][]string           "json:\"optional_double_array_string_email\""
+	OptionalDoubleArrayStringHostname          [][]string           "json:\"optional_double_array_string_hostname\""
+	OptionalDoubleArrayStringInt32             [][]int32            "json:\"optional_double_array_string_int32\""
+	OptionalDoubleArrayStringInt64             [][]int64            "json:\"optional_double_array_string_int64\""
+	OptionalDoubleArrayStringIP                [][]netip.Addr       "json:\"optional_double_array_string_ip\""
+	OptionalDoubleArrayStringIpv4              [][]netip.Addr       "json:\"optional_double_array_string_ipv4\""
+	OptionalDoubleArrayStringIpv6              [][]netip.Addr       "json:\"optional_double_array_string_ipv6\""
+	OptionalDoubleArrayStringPassword          [][]string           "json:\"optional_double_array_string_password\""
+	OptionalDoubleArrayStringTime              [][]time.Time        "json:\"optional_double_array_string_time\""
+	OptionalDoubleArrayStringUnix              [][]time.Time        "json:\"optional_double_array_string_unix\""
+	OptionalDoubleArrayStringUnixMinusMicro    [][]time.Time        "json:\"optional_double_array_string_unix-micro\""
+	OptionalDoubleArrayStringUnixMinusMilli    [][]time.Time        "json:\"optional_double_array_string_unix-milli\""
+	OptionalDoubleArrayStringUnixMinusNano     [][]time.Time        "json:\"optional_double_array_string_unix-nano\""
+	OptionalDoubleArrayStringUnixMinusSeconds  [][]time.Time        "json:\"optional_double_array_string_unix-seconds\""
+	OptionalDoubleArrayStringURI               [][]url.URL          "json:\"optional_double_array_string_uri\""
+	OptionalDoubleArrayStringUUID              [][]uuid.UUID        "json:\"optional_double_array_string_uuid\""
+	OptionalInteger                            OptInt               "json:\"optional_integer\""
+	OptionalIntegerInt32                       OptInt32             "json:\"optional_integer_int32\""
+	OptionalIntegerInt64                       OptInt64             "json:\"optional_integer_int64\""
+	OptionalIntegerUnix                        OptUnixSeconds       "json:\"optional_integer_unix\""
+	OptionalIntegerUnixMinusMicro              OptUnixMicro         "json:\"optional_integer_unix-micro\""
+	OptionalIntegerUnixMinusMilli              OptUnixMilli         "json:\"optional_integer_unix-milli\""
+	OptionalIntegerUnixMinusNano               OptUnixNano          "json:\"optional_integer_unix-nano\""
+	OptionalIntegerUnixMinusSeconds            OptUnixSeconds       "json:\"optional_integer_unix-seconds\""
+	OptionalNull                               OptNull              "json:\"optional_null\""
+	OptionalNumber                             OptFloat64           "json:\"optional_number\""
+	OptionalNumberDouble                       OptFloat64           "json:\"optional_number_double\""
+	OptionalNumberFloat                        OptFloat32           "json:\"optional_number_float\""
+	OptionalNumberInt32                        OptInt32             "json:\"optional_number_int32\""
+	OptionalNumberInt64                        OptInt64             "json:\"optional_number_int64\""
+	OptionalString                             OptString            "json:\"optional_string\""
+	OptionalStringBinary                       OptString            "json:\"optional_string_binary\""
+	OptionalStringByte                         []byte               "json:\"optional_string_byte\""
+	OptionalStringDate                         OptDate              "json:\"optional_string_date\""
+	OptionalStringDateMinusTime                OptDateTime          "json:\"optional_string_date-time\""
+	OptionalStringDuration                     OptDuration          "json:\"optional_string_duration\""
+	OptionalStringEmail                        OptString            "json:\"optional_string_email\""
+	OptionalStringHostname                     OptString            "json:\"optional_string_hostname\""
+	OptionalStringInt32                        OptStringInt32       "json:\"optional_string_int32\""
+	OptionalStringInt64                        OptStringInt64       "json:\"optional_string_int64\""
+	OptionalStringIP                           OptIP                "json:\"optional_string_ip\""
+	OptionalStringIpv4                         OptIPv4              "json:\"optional_string_ipv4\""
+	OptionalStringIpv6                         OptIPv6              "json:\"optional_string_ipv6\""
+	OptionalStringPassword                     OptString            "json:\"optional_string_password\""
+	OptionalStringTime                         OptTime              "json:\"optional_string_time\""
+	OptionalStringUnix                         OptStringUnixSeconds "json:\"optional_string_unix\""
+	OptionalStringUnixMinusMicro               OptStringUnixMicro   "json:\"optional_string_unix-micro\""
+	OptionalStringUnixMinusMilli               OptStringUnixMilli   "json:\"optional_string_unix-milli\""
+	OptionalStringUnixMinusNano                OptStringUnixNano    "json:\"optional_string_unix-nano\""
+	OptionalStringUnixMinusSeconds             OptStringUnixSeconds "json:\"optional_string_unix-seconds\""
+	OptionalStringURI                          OptURI               "json:\"optional_string_uri\""
+	OptionalStringUUID                         OptUUID              "json:\"optional_string_uuid\""
 }
 
 type TestResponseEmptyStructOK struct{}
 
 type TestResponseFormatTestOK struct {
-	RequiredAny                               jx.Raw            "json:\"required_any\""
-	RequiredArrayAny                          []jx.Raw          "json:\"required_array_any\""
-	RequiredArrayBoolean                      []bool            "json:\"required_array_boolean\""
-	RequiredArrayInteger                      []int             "json:\"required_array_integer\""
-	RequiredArrayIntegerInt32                 []int32           "json:\"required_array_integer_int32\""
-	RequiredArrayIntegerInt64                 []int64           "json:\"required_array_integer_int64\""
-	RequiredArrayNull                         []struct{}        "json:\"required_array_null\""
-	RequiredArrayNumber                       []float64         "json:\"required_array_number\""
-	RequiredArrayNumberDouble                 []float64         "json:\"required_array_number_double\""
-	RequiredArrayNumberFloat                  []float32         "json:\"required_array_number_float\""
-	RequiredArrayNumberInt32                  []int32           "json:\"required_array_number_int32\""
-	RequiredArrayNumberInt64                  []int64           "json:\"required_array_number_int64\""
-	RequiredArrayString                       []string          "json:\"required_array_string\""
-	RequiredArrayStringBinary                 []string          "json:\"required_array_string_binary\""
-	RequiredArrayStringByte                   [][]byte          "json:\"required_array_string_byte\""
-	RequiredArrayStringDate                   []time.Time       "json:\"required_array_string_date\""
-	RequiredArrayStringDateMinusTime          []time.Time       "json:\"required_array_string_date-time\""
-	RequiredArrayStringDuration               []time.Duration   "json:\"required_array_string_duration\""
-	RequiredArrayStringEmail                  []string          "json:\"required_array_string_email\""
-	RequiredArrayStringHostname               []string          "json:\"required_array_string_hostname\""
-	RequiredArrayStringInt32                  []int32           "json:\"required_array_string_int32\""
-	RequiredArrayStringInt64                  []int64           "json:\"required_array_string_int64\""
-	RequiredArrayStringIP                     []netip.Addr      "json:\"required_array_string_ip\""
-	RequiredArrayStringIpv4                   []netip.Addr      "json:\"required_array_string_ipv4\""
-	RequiredArrayStringIpv6                   []netip.Addr      "json:\"required_array_string_ipv6\""
-	RequiredArrayStringPassword               []string          "json:\"required_array_string_password\""
-	RequiredArrayStringTime                   []time.Time       "json:\"required_array_string_time\""
-	RequiredArrayStringUnix                   []time.Time       "json:\"required_array_string_unix\""
-	RequiredArrayStringUnixMinusMicro         []time.Time       "json:\"required_array_string_unix-micro\""
-	RequiredArrayStringUnixMinusMilli         []time.Time       "json:\"required_array_string_unix-milli\""
-	RequiredArrayStringUnixMinusNano          []time.Time       "json:\"required_array_string_unix-nano\""
-	RequiredArrayStringUnixMinusSeconds       []time.Time       "json:\"required_array_string_unix-seconds\""
-	RequiredArrayStringURI                    []url.URL         "json:\"required_array_string_uri\""
-	RequiredArrayStringUUID                   []uuid.UUID       "json:\"required_array_string_uuid\""
-	RequiredBoolean                           bool              "json:\"required_boolean\""
-	RequiredDoubleArrayAny                    [][]jx.Raw        "json:\"required_double_array_any\""
-	RequiredDoubleArrayBoolean                [][]bool          "json:\"required_double_array_boolean\""
-	RequiredDoubleArrayInteger                [][]int           "json:\"required_double_array_integer\""
-	RequiredDoubleArrayIntegerInt32           [][]int32         "json:\"required_double_array_integer_int32\""
-	RequiredDoubleArrayIntegerInt64           [][]int64         "json:\"required_double_array_integer_int64\""
-	RequiredDoubleArrayNull                   [][]struct{}      "json:\"required_double_array_null\""
-	RequiredDoubleArrayNumber                 [][]float64       "json:\"required_double_array_number\""
-	RequiredDoubleArrayNumberDouble           [][]float64       "json:\"required_double_array_number_double\""
-	RequiredDoubleArrayNumberFloat            [][]float32       "json:\"required_double_array_number_float\""
-	RequiredDoubleArrayNumberInt32            [][]int32         "json:\"required_double_array_number_int32\""
-	RequiredDoubleArrayNumberInt64            [][]int64         "json:\"required_double_array_number_int64\""
-	RequiredDoubleArrayString                 [][]string        "json:\"required_double_array_string\""
-	RequiredDoubleArrayStringBinary           [][]string        "json:\"required_double_array_string_binary\""
-	RequiredDoubleArrayStringByte             [][][]byte        "json:\"required_double_array_string_byte\""
-	RequiredDoubleArrayStringDate             [][]time.Time     "json:\"required_double_array_string_date\""
-	RequiredDoubleArrayStringDateMinusTime    [][]time.Time     "json:\"required_double_array_string_date-time\""
-	RequiredDoubleArrayStringDuration         [][]time.Duration "json:\"required_double_array_string_duration\""
-	RequiredDoubleArrayStringEmail            [][]string        "json:\"required_double_array_string_email\""
-	RequiredDoubleArrayStringHostname         [][]string        "json:\"required_double_array_string_hostname\""
-	RequiredDoubleArrayStringInt32            [][]int32         "json:\"required_double_array_string_int32\""
-	RequiredDoubleArrayStringInt64            [][]int64         "json:\"required_double_array_string_int64\""
-	RequiredDoubleArrayStringIP               [][]netip.Addr    "json:\"required_double_array_string_ip\""
-	RequiredDoubleArrayStringIpv4             [][]netip.Addr    "json:\"required_double_array_string_ipv4\""
-	RequiredDoubleArrayStringIpv6             [][]netip.Addr    "json:\"required_double_array_string_ipv6\""
-	RequiredDoubleArrayStringPassword         [][]string        "json:\"required_double_array_string_password\""
-	RequiredDoubleArrayStringTime             [][]time.Time     "json:\"required_double_array_string_time\""
-	RequiredDoubleArrayStringUnix             [][]time.Time     "json:\"required_double_array_string_unix\""
-	RequiredDoubleArrayStringUnixMinusMicro   [][]time.Time     "json:\"required_double_array_string_unix-micro\""
-	RequiredDoubleArrayStringUnixMinusMilli   [][]time.Time     "json:\"required_double_array_string_unix-milli\""
-	RequiredDoubleArrayStringUnixMinusNano    [][]time.Time     "json:\"required_double_array_string_unix-nano\""
-	RequiredDoubleArrayStringUnixMinusSeconds [][]time.Time     "json:\"required_double_array_string_unix-seconds\""
-	RequiredDoubleArrayStringURI              [][]url.URL       "json:\"required_double_array_string_uri\""
-	RequiredDoubleArrayStringUUID             [][]uuid.UUID     "json:\"required_double_array_string_uuid\""
-	RequiredInteger                           int               "json:\"required_integer\""
-	RequiredIntegerInt32                      int32             "json:\"required_integer_int32\""
-	RequiredIntegerInt64                      int64             "json:\"required_integer_int64\""
-	RequiredNull                              struct{}          "json:\"required_null\""
-	RequiredNumber                            float64           "json:\"required_number\""
-	RequiredNumberDouble                      float64           "json:\"required_number_double\""
-	RequiredNumberFloat                       float32           "json:\"required_number_float\""
-	RequiredNumberInt32                       int32             "json:\"required_number_int32\""
-	RequiredNumberInt64                       int64             "json:\"required_number_int64\""
-	RequiredString                            string            "json:\"required_string\""
-	RequiredStringBinary                      string            "json:\"required_string_binary\""
-	RequiredStringByte                        []byte            "json:\"required_string_byte\""
-	RequiredStringDate                        time.Time         "json:\"required_string_date\""
-	RequiredStringDateMinusTime               time.Time         "json:\"required_string_date-time\""
-	RequiredStringDuration                    time.Duration     "json:\"required_string_duration\""
-	RequiredStringEmail                       string            "json:\"required_string_email\""
-	RequiredStringHostname                    string            "json:\"required_string_hostname\""
-	RequiredStringInt32                       int32             "json:\"required_string_int32\""
-	RequiredStringInt64                       int64             "json:\"required_string_int64\""
-	RequiredStringIP                          netip.Addr        "json:\"required_string_ip\""
-	RequiredStringIpv4                        netip.Addr        "json:\"required_string_ipv4\""
-	RequiredStringIpv6                        netip.Addr        "json:\"required_string_ipv6\""
-	RequiredStringPassword                    string            "json:\"required_string_password\""
-	RequiredStringTime                        time.Time         "json:\"required_string_time\""
-	RequiredStringUnix                        time.Time         "json:\"required_string_unix\""
-	RequiredStringUnixMinusMicro              time.Time         "json:\"required_string_unix-micro\""
-	RequiredStringUnixMinusMilli              time.Time         "json:\"required_string_unix-milli\""
-	RequiredStringUnixMinusNano               time.Time         "json:\"required_string_unix-nano\""
-	RequiredStringUnixMinusSeconds            time.Time         "json:\"required_string_unix-seconds\""
-	RequiredStringURI                         url.URL           "json:\"required_string_uri\""
-	RequiredStringUUID                        uuid.UUID         "json:\"required_string_uuid\""
-	OptionalAny                               jx.Raw            "json:\"optional_any\""
-	OptionalArrayAny                          []jx.Raw          "json:\"optional_array_any\""
-	OptionalArrayBoolean                      []bool            "json:\"optional_array_boolean\""
-	OptionalArrayInteger                      []int             "json:\"optional_array_integer\""
-	OptionalArrayIntegerInt32                 []int32           "json:\"optional_array_integer_int32\""
-	OptionalArrayIntegerInt64                 []int64           "json:\"optional_array_integer_int64\""
-	OptionalArrayNull                         []struct{}        "json:\"optional_array_null\""
-	OptionalArrayNumber                       []float64         "json:\"optional_array_number\""
-	OptionalArrayNumberDouble                 []float64         "json:\"optional_array_number_double\""
-	OptionalArrayNumberFloat                  []float32         "json:\"optional_array_number_float\""
-	OptionalArrayNumberInt32                  []int32           "json:\"optional_array_number_int32\""
-	OptionalArrayNumberInt64                  []int64           "json:\"optional_array_number_int64\""
-	OptionalArrayString                       []string          "json:\"optional_array_string\""
-	OptionalArrayStringBinary                 []string          "json:\"optional_array_string_binary\""
-	OptionalArrayStringByte                   [][]byte          "json:\"optional_array_string_byte\""
-	OptionalArrayStringDate                   []time.Time       "json:\"optional_array_string_date\""
-	OptionalArrayStringDateMinusTime          []time.Time       "json:\"optional_array_string_date-time\""
-	OptionalArrayStringDuration               []time.Duration   "json:\"optional_array_string_duration\""
-	OptionalArrayStringEmail                  []string          "json:\"optional_array_string_email\""
-	OptionalArrayStringHostname               []string          "json:\"optional_array_string_hostname\""
-	OptionalArrayStringInt32                  []int32           "json:\"optional_array_string_int32\""
-	OptionalArrayStringInt64                  []int64           "json:\"optional_array_string_int64\""
-	OptionalArrayStringIP                     []netip.Addr      "json:\"optional_array_string_ip\""
-	OptionalArrayStringIpv4                   []netip.Addr      "json:\"optional_array_string_ipv4\""
-	OptionalArrayStringIpv6                   []netip.Addr      "json:\"optional_array_string_ipv6\""
-	OptionalArrayStringPassword               []string          "json:\"optional_array_string_password\""
-	OptionalArrayStringTime                   []time.Time       "json:\"optional_array_string_time\""
-	OptionalArrayStringUnix                   []time.Time       "json:\"optional_array_string_unix\""
-	OptionalArrayStringUnixMinusMicro         []time.Time       "json:\"optional_array_string_unix-micro\""
-	OptionalArrayStringUnixMinusMilli         []time.Time       "json:\"optional_array_string_unix-milli\""
-	OptionalArrayStringUnixMinusNano          []time.Time       "json:\"optional_array_string_unix-nano\""
-	OptionalArrayStringUnixMinusSeconds       []time.Time       "json:\"optional_array_string_unix-seconds\""
-	OptionalArrayStringURI                    []url.URL         "json:\"optional_array_string_uri\""
-	OptionalArrayStringUUID                   []uuid.UUID       "json:\"optional_array_string_uuid\""
-	OptionalBoolean                           OptBool           "json:\"optional_boolean\""
-	OptionalDoubleArrayAny                    [][]jx.Raw        "json:\"optional_double_array_any\""
-	OptionalDoubleArrayBoolean                [][]bool          "json:\"optional_double_array_boolean\""
-	OptionalDoubleArrayInteger                [][]int           "json:\"optional_double_array_integer\""
-	OptionalDoubleArrayIntegerInt32           [][]int32         "json:\"optional_double_array_integer_int32\""
-	OptionalDoubleArrayIntegerInt64           [][]int64         "json:\"optional_double_array_integer_int64\""
-	OptionalDoubleArrayNull                   [][]struct{}      "json:\"optional_double_array_null\""
-	OptionalDoubleArrayNumber                 [][]float64       "json:\"optional_double_array_number\""
-	OptionalDoubleArrayNumberDouble           [][]float64       "json:\"optional_double_array_number_double\""
-	OptionalDoubleArrayNumberFloat            [][]float32       "json:\"optional_double_array_number_float\""
-	OptionalDoubleArrayNumberInt32            [][]int32         "json:\"optional_double_array_number_int32\""
-	OptionalDoubleArrayNumberInt64            [][]int64         "json:\"optional_double_array_number_int64\""
-	OptionalDoubleArrayString                 [][]string        "json:\"optional_double_array_string\""
-	OptionalDoubleArrayStringBinary           [][]string        "json:\"optional_double_array_string_binary\""
-	OptionalDoubleArrayStringByte             [][][]byte        "json:\"optional_double_array_string_byte\""
-	OptionalDoubleArrayStringDate             [][]time.Time     "json:\"optional_double_array_string_date\""
-	OptionalDoubleArrayStringDateMinusTime    [][]time.Time     "json:\"optional_double_array_string_date-time\""
-	OptionalDoubleArrayStringDuration         [][]time.Duration "json:\"optional_double_array_string_duration\""
-	OptionalDoubleArrayStringEmail            [][]string        "json:\"optional_double_array_string_email\""
-	OptionalDoubleArrayStringHostname         [][]string        "json:\"optional_double_array_string_hostname\""
-	OptionalDoubleArrayStringInt32            [][]int32         "json:\"optional_double_array_string_int32\""
-	OptionalDoubleArrayStringInt64            [][]int64         "json:\"optional_double_array_string_int64\""
-	OptionalDoubleArrayStringIP               [][]netip.Addr    "json:\"optional_double_array_string_ip\""
-	OptionalDoubleArrayStringIpv4             [][]netip.Addr    "json:\"optional_double_array_string_ipv4\""
-	OptionalDoubleArrayStringIpv6             [][]netip.Addr    "json:\"optional_double_array_string_ipv6\""
-	OptionalDoubleArrayStringPassword         [][]string        "json:\"optional_double_array_string_password\""
-	OptionalDoubleArrayStringTime             [][]time.Time     "json:\"optional_double_array_string_time\""
-	OptionalDoubleArrayStringUnix             [][]time.Time     "json:\"optional_double_array_string_unix\""
-	OptionalDoubleArrayStringUnixMinusMicro   [][]time.Time     "json:\"optional_double_array_string_unix-micro\""
-	OptionalDoubleArrayStringUnixMinusMilli   [][]time.Time     "json:\"optional_double_array_string_unix-milli\""
-	OptionalDoubleArrayStringUnixMinusNano    [][]time.Time     "json:\"optional_double_array_string_unix-nano\""
-	OptionalDoubleArrayStringUnixMinusSeconds [][]time.Time     "json:\"optional_double_array_string_unix-seconds\""
-	OptionalDoubleArrayStringURI              [][]url.URL       "json:\"optional_double_array_string_uri\""
-	OptionalDoubleArrayStringUUID             [][]uuid.UUID     "json:\"optional_double_array_string_uuid\""
-	OptionalInteger                           OptInt            "json:\"optional_integer\""
-	OptionalIntegerInt32                      OptInt32          "json:\"optional_integer_int32\""
-	OptionalIntegerInt64                      OptInt64          "json:\"optional_integer_int64\""
-	OptionalNull                              OptNull           "json:\"optional_null\""
-	OptionalNumber                            OptFloat64        "json:\"optional_number\""
-	OptionalNumberDouble                      OptFloat64        "json:\"optional_number_double\""
-	OptionalNumberFloat                       OptFloat32        "json:\"optional_number_float\""
-	OptionalNumberInt32                       OptInt32          "json:\"optional_number_int32\""
-	OptionalNumberInt64                       OptInt64          "json:\"optional_number_int64\""
-	OptionalString                            OptString         "json:\"optional_string\""
-	OptionalStringBinary                      OptString         "json:\"optional_string_binary\""
-	OptionalStringByte                        []byte            "json:\"optional_string_byte\""
-	OptionalStringDate                        OptDate           "json:\"optional_string_date\""
-	OptionalStringDateMinusTime               OptDateTime       "json:\"optional_string_date-time\""
-	OptionalStringDuration                    OptDuration       "json:\"optional_string_duration\""
-	OptionalStringEmail                       OptString         "json:\"optional_string_email\""
-	OptionalStringHostname                    OptString         "json:\"optional_string_hostname\""
-	OptionalStringInt32                       OptStringInt32    "json:\"optional_string_int32\""
-	OptionalStringInt64                       OptStringInt64    "json:\"optional_string_int64\""
-	OptionalStringIP                          OptIP             "json:\"optional_string_ip\""
-	OptionalStringIpv4                        OptIPv4           "json:\"optional_string_ipv4\""
-	OptionalStringIpv6                        OptIPv6           "json:\"optional_string_ipv6\""
-	OptionalStringPassword                    OptString         "json:\"optional_string_password\""
-	OptionalStringTime                        OptTime           "json:\"optional_string_time\""
-	OptionalStringUnix                        OptUnixSeconds    "json:\"optional_string_unix\""
-	OptionalStringUnixMinusMicro              OptUnixMicro      "json:\"optional_string_unix-micro\""
-	OptionalStringUnixMinusMilli              OptUnixMilli      "json:\"optional_string_unix-milli\""
-	OptionalStringUnixMinusNano               OptUnixNano       "json:\"optional_string_unix-nano\""
-	OptionalStringUnixMinusSeconds            OptUnixSeconds    "json:\"optional_string_unix-seconds\""
-	OptionalStringURI                         OptURI            "json:\"optional_string_uri\""
-	OptionalStringUUID                        OptUUID           "json:\"optional_string_uuid\""
+	RequiredAny                                jx.Raw               "json:\"required_any\""
+	RequiredArrayAny                           []jx.Raw             "json:\"required_array_any\""
+	RequiredArrayBoolean                       []bool               "json:\"required_array_boolean\""
+	RequiredArrayInteger                       []int                "json:\"required_array_integer\""
+	RequiredArrayIntegerInt32                  []int32              "json:\"required_array_integer_int32\""
+	RequiredArrayIntegerInt64                  []int64              "json:\"required_array_integer_int64\""
+	RequiredArrayIntegerUnix                   []time.Time          "json:\"required_array_integer_unix\""
+	RequiredArrayIntegerUnixMinusMicro         []time.Time          "json:\"required_array_integer_unix-micro\""
+	RequiredArrayIntegerUnixMinusMilli         []time.Time          "json:\"required_array_integer_unix-milli\""
+	RequiredArrayIntegerUnixMinusNano          []time.Time          "json:\"required_array_integer_unix-nano\""
+	RequiredArrayIntegerUnixMinusSeconds       []time.Time          "json:\"required_array_integer_unix-seconds\""
+	RequiredArrayNull                          []struct{}           "json:\"required_array_null\""
+	RequiredArrayNumber                        []float64            "json:\"required_array_number\""
+	RequiredArrayNumberDouble                  []float64            "json:\"required_array_number_double\""
+	RequiredArrayNumberFloat                   []float32            "json:\"required_array_number_float\""
+	RequiredArrayNumberInt32                   []int32              "json:\"required_array_number_int32\""
+	RequiredArrayNumberInt64                   []int64              "json:\"required_array_number_int64\""
+	RequiredArrayString                        []string             "json:\"required_array_string\""
+	RequiredArrayStringBinary                  []string             "json:\"required_array_string_binary\""
+	RequiredArrayStringByte                    [][]byte             "json:\"required_array_string_byte\""
+	RequiredArrayStringDate                    []time.Time          "json:\"required_array_string_date\""
+	RequiredArrayStringDateMinusTime           []time.Time          "json:\"required_array_string_date-time\""
+	RequiredArrayStringDuration                []time.Duration      "json:\"required_array_string_duration\""
+	RequiredArrayStringEmail                   []string             "json:\"required_array_string_email\""
+	RequiredArrayStringHostname                []string             "json:\"required_array_string_hostname\""
+	RequiredArrayStringInt32                   []int32              "json:\"required_array_string_int32\""
+	RequiredArrayStringInt64                   []int64              "json:\"required_array_string_int64\""
+	RequiredArrayStringIP                      []netip.Addr         "json:\"required_array_string_ip\""
+	RequiredArrayStringIpv4                    []netip.Addr         "json:\"required_array_string_ipv4\""
+	RequiredArrayStringIpv6                    []netip.Addr         "json:\"required_array_string_ipv6\""
+	RequiredArrayStringPassword                []string             "json:\"required_array_string_password\""
+	RequiredArrayStringTime                    []time.Time          "json:\"required_array_string_time\""
+	RequiredArrayStringUnix                    []time.Time          "json:\"required_array_string_unix\""
+	RequiredArrayStringUnixMinusMicro          []time.Time          "json:\"required_array_string_unix-micro\""
+	RequiredArrayStringUnixMinusMilli          []time.Time          "json:\"required_array_string_unix-milli\""
+	RequiredArrayStringUnixMinusNano           []time.Time          "json:\"required_array_string_unix-nano\""
+	RequiredArrayStringUnixMinusSeconds        []time.Time          "json:\"required_array_string_unix-seconds\""
+	RequiredArrayStringURI                     []url.URL            "json:\"required_array_string_uri\""
+	RequiredArrayStringUUID                    []uuid.UUID          "json:\"required_array_string_uuid\""
+	RequiredBoolean                            bool                 "json:\"required_boolean\""
+	RequiredDoubleArrayAny                     [][]jx.Raw           "json:\"required_double_array_any\""
+	RequiredDoubleArrayBoolean                 [][]bool             "json:\"required_double_array_boolean\""
+	RequiredDoubleArrayInteger                 [][]int              "json:\"required_double_array_integer\""
+	RequiredDoubleArrayIntegerInt32            [][]int32            "json:\"required_double_array_integer_int32\""
+	RequiredDoubleArrayIntegerInt64            [][]int64            "json:\"required_double_array_integer_int64\""
+	RequiredDoubleArrayIntegerUnix             [][]time.Time        "json:\"required_double_array_integer_unix\""
+	RequiredDoubleArrayIntegerUnixMinusMicro   [][]time.Time        "json:\"required_double_array_integer_unix-micro\""
+	RequiredDoubleArrayIntegerUnixMinusMilli   [][]time.Time        "json:\"required_double_array_integer_unix-milli\""
+	RequiredDoubleArrayIntegerUnixMinusNano    [][]time.Time        "json:\"required_double_array_integer_unix-nano\""
+	RequiredDoubleArrayIntegerUnixMinusSeconds [][]time.Time        "json:\"required_double_array_integer_unix-seconds\""
+	RequiredDoubleArrayNull                    [][]struct{}         "json:\"required_double_array_null\""
+	RequiredDoubleArrayNumber                  [][]float64          "json:\"required_double_array_number\""
+	RequiredDoubleArrayNumberDouble            [][]float64          "json:\"required_double_array_number_double\""
+	RequiredDoubleArrayNumberFloat             [][]float32          "json:\"required_double_array_number_float\""
+	RequiredDoubleArrayNumberInt32             [][]int32            "json:\"required_double_array_number_int32\""
+	RequiredDoubleArrayNumberInt64             [][]int64            "json:\"required_double_array_number_int64\""
+	RequiredDoubleArrayString                  [][]string           "json:\"required_double_array_string\""
+	RequiredDoubleArrayStringBinary            [][]string           "json:\"required_double_array_string_binary\""
+	RequiredDoubleArrayStringByte              [][][]byte           "json:\"required_double_array_string_byte\""
+	RequiredDoubleArrayStringDate              [][]time.Time        "json:\"required_double_array_string_date\""
+	RequiredDoubleArrayStringDateMinusTime     [][]time.Time        "json:\"required_double_array_string_date-time\""
+	RequiredDoubleArrayStringDuration          [][]time.Duration    "json:\"required_double_array_string_duration\""
+	RequiredDoubleArrayStringEmail             [][]string           "json:\"required_double_array_string_email\""
+	RequiredDoubleArrayStringHostname          [][]string           "json:\"required_double_array_string_hostname\""
+	RequiredDoubleArrayStringInt32             [][]int32            "json:\"required_double_array_string_int32\""
+	RequiredDoubleArrayStringInt64             [][]int64            "json:\"required_double_array_string_int64\""
+	RequiredDoubleArrayStringIP                [][]netip.Addr       "json:\"required_double_array_string_ip\""
+	RequiredDoubleArrayStringIpv4              [][]netip.Addr       "json:\"required_double_array_string_ipv4\""
+	RequiredDoubleArrayStringIpv6              [][]netip.Addr       "json:\"required_double_array_string_ipv6\""
+	RequiredDoubleArrayStringPassword          [][]string           "json:\"required_double_array_string_password\""
+	RequiredDoubleArrayStringTime              [][]time.Time        "json:\"required_double_array_string_time\""
+	RequiredDoubleArrayStringUnix              [][]time.Time        "json:\"required_double_array_string_unix\""
+	RequiredDoubleArrayStringUnixMinusMicro    [][]time.Time        "json:\"required_double_array_string_unix-micro\""
+	RequiredDoubleArrayStringUnixMinusMilli    [][]time.Time        "json:\"required_double_array_string_unix-milli\""
+	RequiredDoubleArrayStringUnixMinusNano     [][]time.Time        "json:\"required_double_array_string_unix-nano\""
+	RequiredDoubleArrayStringUnixMinusSeconds  [][]time.Time        "json:\"required_double_array_string_unix-seconds\""
+	RequiredDoubleArrayStringURI               [][]url.URL          "json:\"required_double_array_string_uri\""
+	RequiredDoubleArrayStringUUID              [][]uuid.UUID        "json:\"required_double_array_string_uuid\""
+	RequiredInteger                            int                  "json:\"required_integer\""
+	RequiredIntegerInt32                       int32                "json:\"required_integer_int32\""
+	RequiredIntegerInt64                       int64                "json:\"required_integer_int64\""
+	RequiredIntegerUnix                        time.Time            "json:\"required_integer_unix\""
+	RequiredIntegerUnixMinusMicro              time.Time            "json:\"required_integer_unix-micro\""
+	RequiredIntegerUnixMinusMilli              time.Time            "json:\"required_integer_unix-milli\""
+	RequiredIntegerUnixMinusNano               time.Time            "json:\"required_integer_unix-nano\""
+	RequiredIntegerUnixMinusSeconds            time.Time            "json:\"required_integer_unix-seconds\""
+	RequiredNull                               struct{}             "json:\"required_null\""
+	RequiredNumber                             float64              "json:\"required_number\""
+	RequiredNumberDouble                       float64              "json:\"required_number_double\""
+	RequiredNumberFloat                        float32              "json:\"required_number_float\""
+	RequiredNumberInt32                        int32                "json:\"required_number_int32\""
+	RequiredNumberInt64                        int64                "json:\"required_number_int64\""
+	RequiredString                             string               "json:\"required_string\""
+	RequiredStringBinary                       string               "json:\"required_string_binary\""
+	RequiredStringByte                         []byte               "json:\"required_string_byte\""
+	RequiredStringDate                         time.Time            "json:\"required_string_date\""
+	RequiredStringDateMinusTime                time.Time            "json:\"required_string_date-time\""
+	RequiredStringDuration                     time.Duration        "json:\"required_string_duration\""
+	RequiredStringEmail                        string               "json:\"required_string_email\""
+	RequiredStringHostname                     string               "json:\"required_string_hostname\""
+	RequiredStringInt32                        int32                "json:\"required_string_int32\""
+	RequiredStringInt64                        int64                "json:\"required_string_int64\""
+	RequiredStringIP                           netip.Addr           "json:\"required_string_ip\""
+	RequiredStringIpv4                         netip.Addr           "json:\"required_string_ipv4\""
+	RequiredStringIpv6                         netip.Addr           "json:\"required_string_ipv6\""
+	RequiredStringPassword                     string               "json:\"required_string_password\""
+	RequiredStringTime                         time.Time            "json:\"required_string_time\""
+	RequiredStringUnix                         time.Time            "json:\"required_string_unix\""
+	RequiredStringUnixMinusMicro               time.Time            "json:\"required_string_unix-micro\""
+	RequiredStringUnixMinusMilli               time.Time            "json:\"required_string_unix-milli\""
+	RequiredStringUnixMinusNano                time.Time            "json:\"required_string_unix-nano\""
+	RequiredStringUnixMinusSeconds             time.Time            "json:\"required_string_unix-seconds\""
+	RequiredStringURI                          url.URL              "json:\"required_string_uri\""
+	RequiredStringUUID                         uuid.UUID            "json:\"required_string_uuid\""
+	OptionalAny                                jx.Raw               "json:\"optional_any\""
+	OptionalArrayAny                           []jx.Raw             "json:\"optional_array_any\""
+	OptionalArrayBoolean                       []bool               "json:\"optional_array_boolean\""
+	OptionalArrayInteger                       []int                "json:\"optional_array_integer\""
+	OptionalArrayIntegerInt32                  []int32              "json:\"optional_array_integer_int32\""
+	OptionalArrayIntegerInt64                  []int64              "json:\"optional_array_integer_int64\""
+	OptionalArrayIntegerUnix                   []time.Time          "json:\"optional_array_integer_unix\""
+	OptionalArrayIntegerUnixMinusMicro         []time.Time          "json:\"optional_array_integer_unix-micro\""
+	OptionalArrayIntegerUnixMinusMilli         []time.Time          "json:\"optional_array_integer_unix-milli\""
+	OptionalArrayIntegerUnixMinusNano          []time.Time          "json:\"optional_array_integer_unix-nano\""
+	OptionalArrayIntegerUnixMinusSeconds       []time.Time          "json:\"optional_array_integer_unix-seconds\""
+	OptionalArrayNull                          []struct{}           "json:\"optional_array_null\""
+	OptionalArrayNumber                        []float64            "json:\"optional_array_number\""
+	OptionalArrayNumberDouble                  []float64            "json:\"optional_array_number_double\""
+	OptionalArrayNumberFloat                   []float32            "json:\"optional_array_number_float\""
+	OptionalArrayNumberInt32                   []int32              "json:\"optional_array_number_int32\""
+	OptionalArrayNumberInt64                   []int64              "json:\"optional_array_number_int64\""
+	OptionalArrayString                        []string             "json:\"optional_array_string\""
+	OptionalArrayStringBinary                  []string             "json:\"optional_array_string_binary\""
+	OptionalArrayStringByte                    [][]byte             "json:\"optional_array_string_byte\""
+	OptionalArrayStringDate                    []time.Time          "json:\"optional_array_string_date\""
+	OptionalArrayStringDateMinusTime           []time.Time          "json:\"optional_array_string_date-time\""
+	OptionalArrayStringDuration                []time.Duration      "json:\"optional_array_string_duration\""
+	OptionalArrayStringEmail                   []string             "json:\"optional_array_string_email\""
+	OptionalArrayStringHostname                []string             "json:\"optional_array_string_hostname\""
+	OptionalArrayStringInt32                   []int32              "json:\"optional_array_string_int32\""
+	OptionalArrayStringInt64                   []int64              "json:\"optional_array_string_int64\""
+	OptionalArrayStringIP                      []netip.Addr         "json:\"optional_array_string_ip\""
+	OptionalArrayStringIpv4                    []netip.Addr         "json:\"optional_array_string_ipv4\""
+	OptionalArrayStringIpv6                    []netip.Addr         "json:\"optional_array_string_ipv6\""
+	OptionalArrayStringPassword                []string             "json:\"optional_array_string_password\""
+	OptionalArrayStringTime                    []time.Time          "json:\"optional_array_string_time\""
+	OptionalArrayStringUnix                    []time.Time          "json:\"optional_array_string_unix\""
+	OptionalArrayStringUnixMinusMicro          []time.Time          "json:\"optional_array_string_unix-micro\""
+	OptionalArrayStringUnixMinusMilli          []time.Time          "json:\"optional_array_string_unix-milli\""
+	OptionalArrayStringUnixMinusNano           []time.Time          "json:\"optional_array_string_unix-nano\""
+	OptionalArrayStringUnixMinusSeconds        []time.Time          "json:\"optional_array_string_unix-seconds\""
+	OptionalArrayStringURI                     []url.URL            "json:\"optional_array_string_uri\""
+	OptionalArrayStringUUID                    []uuid.UUID          "json:\"optional_array_string_uuid\""
+	OptionalBoolean                            OptBool              "json:\"optional_boolean\""
+	OptionalDoubleArrayAny                     [][]jx.Raw           "json:\"optional_double_array_any\""
+	OptionalDoubleArrayBoolean                 [][]bool             "json:\"optional_double_array_boolean\""
+	OptionalDoubleArrayInteger                 [][]int              "json:\"optional_double_array_integer\""
+	OptionalDoubleArrayIntegerInt32            [][]int32            "json:\"optional_double_array_integer_int32\""
+	OptionalDoubleArrayIntegerInt64            [][]int64            "json:\"optional_double_array_integer_int64\""
+	OptionalDoubleArrayIntegerUnix             [][]time.Time        "json:\"optional_double_array_integer_unix\""
+	OptionalDoubleArrayIntegerUnixMinusMicro   [][]time.Time        "json:\"optional_double_array_integer_unix-micro\""
+	OptionalDoubleArrayIntegerUnixMinusMilli   [][]time.Time        "json:\"optional_double_array_integer_unix-milli\""
+	OptionalDoubleArrayIntegerUnixMinusNano    [][]time.Time        "json:\"optional_double_array_integer_unix-nano\""
+	OptionalDoubleArrayIntegerUnixMinusSeconds [][]time.Time        "json:\"optional_double_array_integer_unix-seconds\""
+	OptionalDoubleArrayNull                    [][]struct{}         "json:\"optional_double_array_null\""
+	OptionalDoubleArrayNumber                  [][]float64          "json:\"optional_double_array_number\""
+	OptionalDoubleArrayNumberDouble            [][]float64          "json:\"optional_double_array_number_double\""
+	OptionalDoubleArrayNumberFloat             [][]float32          "json:\"optional_double_array_number_float\""
+	OptionalDoubleArrayNumberInt32             [][]int32            "json:\"optional_double_array_number_int32\""
+	OptionalDoubleArrayNumberInt64             [][]int64            "json:\"optional_double_array_number_int64\""
+	OptionalDoubleArrayString                  [][]string           "json:\"optional_double_array_string\""
+	OptionalDoubleArrayStringBinary            [][]string           "json:\"optional_double_array_string_binary\""
+	OptionalDoubleArrayStringByte              [][][]byte           "json:\"optional_double_array_string_byte\""
+	OptionalDoubleArrayStringDate              [][]time.Time        "json:\"optional_double_array_string_date\""
+	OptionalDoubleArrayStringDateMinusTime     [][]time.Time        "json:\"optional_double_array_string_date-time\""
+	OptionalDoubleArrayStringDuration          [][]time.Duration    "json:\"optional_double_array_string_duration\""
+	OptionalDoubleArrayStringEmail             [][]string           "json:\"optional_double_array_string_email\""
+	OptionalDoubleArrayStringHostname          [][]string           "json:\"optional_double_array_string_hostname\""
+	OptionalDoubleArrayStringInt32             [][]int32            "json:\"optional_double_array_string_int32\""
+	OptionalDoubleArrayStringInt64             [][]int64            "json:\"optional_double_array_string_int64\""
+	OptionalDoubleArrayStringIP                [][]netip.Addr       "json:\"optional_double_array_string_ip\""
+	OptionalDoubleArrayStringIpv4              [][]netip.Addr       "json:\"optional_double_array_string_ipv4\""
+	OptionalDoubleArrayStringIpv6              [][]netip.Addr       "json:\"optional_double_array_string_ipv6\""
+	OptionalDoubleArrayStringPassword          [][]string           "json:\"optional_double_array_string_password\""
+	OptionalDoubleArrayStringTime              [][]time.Time        "json:\"optional_double_array_string_time\""
+	OptionalDoubleArrayStringUnix              [][]time.Time        "json:\"optional_double_array_string_unix\""
+	OptionalDoubleArrayStringUnixMinusMicro    [][]time.Time        "json:\"optional_double_array_string_unix-micro\""
+	OptionalDoubleArrayStringUnixMinusMilli    [][]time.Time        "json:\"optional_double_array_string_unix-milli\""
+	OptionalDoubleArrayStringUnixMinusNano     [][]time.Time        "json:\"optional_double_array_string_unix-nano\""
+	OptionalDoubleArrayStringUnixMinusSeconds  [][]time.Time        "json:\"optional_double_array_string_unix-seconds\""
+	OptionalDoubleArrayStringURI               [][]url.URL          "json:\"optional_double_array_string_uri\""
+	OptionalDoubleArrayStringUUID              [][]uuid.UUID        "json:\"optional_double_array_string_uuid\""
+	OptionalInteger                            OptInt               "json:\"optional_integer\""
+	OptionalIntegerInt32                       OptInt32             "json:\"optional_integer_int32\""
+	OptionalIntegerInt64                       OptInt64             "json:\"optional_integer_int64\""
+	OptionalIntegerUnix                        OptUnixSeconds       "json:\"optional_integer_unix\""
+	OptionalIntegerUnixMinusMicro              OptUnixMicro         "json:\"optional_integer_unix-micro\""
+	OptionalIntegerUnixMinusMilli              OptUnixMilli         "json:\"optional_integer_unix-milli\""
+	OptionalIntegerUnixMinusNano               OptUnixNano          "json:\"optional_integer_unix-nano\""
+	OptionalIntegerUnixMinusSeconds            OptUnixSeconds       "json:\"optional_integer_unix-seconds\""
+	OptionalNull                               OptNull              "json:\"optional_null\""
+	OptionalNumber                             OptFloat64           "json:\"optional_number\""
+	OptionalNumberDouble                       OptFloat64           "json:\"optional_number_double\""
+	OptionalNumberFloat                        OptFloat32           "json:\"optional_number_float\""
+	OptionalNumberInt32                        OptInt32             "json:\"optional_number_int32\""
+	OptionalNumberInt64                        OptInt64             "json:\"optional_number_int64\""
+	OptionalString                             OptString            "json:\"optional_string\""
+	OptionalStringBinary                       OptString            "json:\"optional_string_binary\""
+	OptionalStringByte                         []byte               "json:\"optional_string_byte\""
+	OptionalStringDate                         OptDate              "json:\"optional_string_date\""
+	OptionalStringDateMinusTime                OptDateTime          "json:\"optional_string_date-time\""
+	OptionalStringDuration                     OptDuration          "json:\"optional_string_duration\""
+	OptionalStringEmail                        OptString            "json:\"optional_string_email\""
+	OptionalStringHostname                     OptString            "json:\"optional_string_hostname\""
+	OptionalStringInt32                        OptStringInt32       "json:\"optional_string_int32\""
+	OptionalStringInt64                        OptStringInt64       "json:\"optional_string_int64\""
+	OptionalStringIP                           OptIP                "json:\"optional_string_ip\""
+	OptionalStringIpv4                         OptIPv4              "json:\"optional_string_ipv4\""
+	OptionalStringIpv6                         OptIPv6              "json:\"optional_string_ipv6\""
+	OptionalStringPassword                     OptString            "json:\"optional_string_password\""
+	OptionalStringTime                         OptTime              "json:\"optional_string_time\""
+	OptionalStringUnix                         OptStringUnixSeconds "json:\"optional_string_unix\""
+	OptionalStringUnixMinusMicro               OptStringUnixMicro   "json:\"optional_string_unix-micro\""
+	OptionalStringUnixMinusMilli               OptStringUnixMilli   "json:\"optional_string_unix-milli\""
+	OptionalStringUnixMinusNano                OptStringUnixNano    "json:\"optional_string_unix-nano\""
+	OptionalStringUnixMinusSeconds             OptStringUnixSeconds "json:\"optional_string_unix-seconds\""
+	OptionalStringURI                          OptURI               "json:\"optional_string_uri\""
+	OptionalStringUUID                         OptUUID              "json:\"optional_string_uuid\""
 }
