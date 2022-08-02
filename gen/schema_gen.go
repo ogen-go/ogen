@@ -17,6 +17,7 @@ type schemaGen struct {
 	localRefs map[string]*ir.Type
 	lookupRef func(ref string) (*ir.Type, bool)
 	nameRef   func(ref string) (string, error)
+	fail      func(err error) error
 
 	filename string
 	log      *zap.Logger
@@ -33,6 +34,9 @@ func newSchemaGen(filename string, lookupRef func(ref string) (*ir.Type, bool)) 
 				return "", err
 			}
 			return name, nil
+		},
+		fail: func(err error) error {
+			return err
 		},
 		filename: filename,
 		log:      zap.NewNop(),
@@ -84,8 +88,20 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 			return nil, errors.Wrapf(err, "schema name: %q", ref)
 		}
 	}
-	if schema.DefaultSet && schema.Type == jsonschema.Object {
-		return nil, &ErrNotImplemented{Name: "object defaults"}
+
+	if schema.DefaultSet {
+		var implErr error
+		switch schema.Type {
+		case jsonschema.Object:
+			implErr = &ErrNotImplemented{Name: "object defaults"}
+		case jsonschema.Array:
+			implErr = &ErrNotImplemented{Name: "array defaults"}
+		}
+		// Do not fail schema generation if we cannot handle defaults.
+		if err := g.fail(implErr); err != nil {
+			return nil, err
+		}
+		schema.DefaultSet = implErr == nil
 	}
 
 	if n := schema.XOgenName; n != "" {

@@ -41,6 +41,7 @@ func saveSchemaTypes(ctx *genctx, gen *schemaGen) error {
 func (g *Generator) generateSchema(ctx *genctx, name string, schema *jsonschema.Schema, optional bool) (*ir.Type, error) {
 	gen := newSchemaGen(g.opt.Filename, ctx.lookupRef)
 	gen.log = g.log.Named("schemagen")
+	gen.fail = g.fail
 
 	t, err := gen.generate(name, schema, optional)
 	if err != nil {

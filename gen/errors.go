@@ -57,6 +57,10 @@ func (e *ErrUnsupportedContentTypes) Error() string {
 }
 
 func (g *Generator) fail(err error) error {
+	if err == nil {
+		return nil
+	}
+
 	hook := g.opt.NotImplementedHook
 	if hook == nil {
 		hook = func(string, error) {}

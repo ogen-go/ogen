@@ -1,10 +1,12 @@
 package ir
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // PrintGoValue prints given value as Go value.
-func PrintGoValue(val interface{}) string {
-	switch v := val.(type) {
+func PrintGoValue(v interface{}) string {
+	switch v := v.(type) {
 	case nil:
 		return ""
 	case string:
