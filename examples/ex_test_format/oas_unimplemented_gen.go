@@ -215,6 +215,216 @@ func (UnimplementedHandler) TestRequestIntegerNullableArrayArray(ctx context.Con
 	return r, ht.ErrNotImplemented
 }
 
+// TestRequestIntegerUnix implements test_request_integer_unix operation.
+//
+// POST /test_request_integer_unix
+func (UnimplementedHandler) TestRequestIntegerUnix(ctx context.Context, req OptUnixSeconds) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixArray implements test_request_integer_unix_array operation.
+//
+// POST /test_request_integer_unix_array
+func (UnimplementedHandler) TestRequestIntegerUnixArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixArrayArray implements test_request_integer_unix_array_array operation.
+//
+// POST /test_request_integer_unix_array_array
+func (UnimplementedHandler) TestRequestIntegerUnixArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixMicro implements test_request_integer_unix-micro operation.
+//
+// POST /test_request_integer_unix-micro
+func (UnimplementedHandler) TestRequestIntegerUnixMicro(ctx context.Context, req OptUnixMicro) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixMicroArray implements test_request_integer_unix-micro_array operation.
+//
+// POST /test_request_integer_unix-micro_array
+func (UnimplementedHandler) TestRequestIntegerUnixMicroArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixMicroArrayArray implements test_request_integer_unix-micro_array_array operation.
+//
+// POST /test_request_integer_unix-micro_array_array
+func (UnimplementedHandler) TestRequestIntegerUnixMicroArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixMicroNullable implements test_request_integer_unix-micro_nullable operation.
+//
+// POST /test_request_integer_unix-micro_nullable
+func (UnimplementedHandler) TestRequestIntegerUnixMicroNullable(ctx context.Context, req OptNilUnixMicro) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixMicroNullableArray implements test_request_integer_unix-micro_nullable_array operation.
+//
+// POST /test_request_integer_unix-micro_nullable_array
+func (UnimplementedHandler) TestRequestIntegerUnixMicroNullableArray(ctx context.Context, req []NilUnixMicro) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixMicroNullableArrayArray implements test_request_integer_unix-micro_nullable_array_array operation.
+//
+// POST /test_request_integer_unix-micro_nullable_array_array
+func (UnimplementedHandler) TestRequestIntegerUnixMicroNullableArrayArray(ctx context.Context, req [][]NilUnixMicro) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixMilli implements test_request_integer_unix-milli operation.
+//
+// POST /test_request_integer_unix-milli
+func (UnimplementedHandler) TestRequestIntegerUnixMilli(ctx context.Context, req OptUnixMilli) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixMilliArray implements test_request_integer_unix-milli_array operation.
+//
+// POST /test_request_integer_unix-milli_array
+func (UnimplementedHandler) TestRequestIntegerUnixMilliArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixMilliArrayArray implements test_request_integer_unix-milli_array_array operation.
+//
+// POST /test_request_integer_unix-milli_array_array
+func (UnimplementedHandler) TestRequestIntegerUnixMilliArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixMilliNullable implements test_request_integer_unix-milli_nullable operation.
+//
+// POST /test_request_integer_unix-milli_nullable
+func (UnimplementedHandler) TestRequestIntegerUnixMilliNullable(ctx context.Context, req OptNilUnixMilli) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixMilliNullableArray implements test_request_integer_unix-milli_nullable_array operation.
+//
+// POST /test_request_integer_unix-milli_nullable_array
+func (UnimplementedHandler) TestRequestIntegerUnixMilliNullableArray(ctx context.Context, req []NilUnixMilli) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixMilliNullableArrayArray implements test_request_integer_unix-milli_nullable_array_array operation.
+//
+// POST /test_request_integer_unix-milli_nullable_array_array
+func (UnimplementedHandler) TestRequestIntegerUnixMilliNullableArrayArray(ctx context.Context, req [][]NilUnixMilli) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixNano implements test_request_integer_unix-nano operation.
+//
+// POST /test_request_integer_unix-nano
+func (UnimplementedHandler) TestRequestIntegerUnixNano(ctx context.Context, req OptUnixNano) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixNanoArray implements test_request_integer_unix-nano_array operation.
+//
+// POST /test_request_integer_unix-nano_array
+func (UnimplementedHandler) TestRequestIntegerUnixNanoArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixNanoArrayArray implements test_request_integer_unix-nano_array_array operation.
+//
+// POST /test_request_integer_unix-nano_array_array
+func (UnimplementedHandler) TestRequestIntegerUnixNanoArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixNanoNullable implements test_request_integer_unix-nano_nullable operation.
+//
+// POST /test_request_integer_unix-nano_nullable
+func (UnimplementedHandler) TestRequestIntegerUnixNanoNullable(ctx context.Context, req OptNilUnixNano) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixNanoNullableArray implements test_request_integer_unix-nano_nullable_array operation.
+//
+// POST /test_request_integer_unix-nano_nullable_array
+func (UnimplementedHandler) TestRequestIntegerUnixNanoNullableArray(ctx context.Context, req []NilUnixNano) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixNanoNullableArrayArray implements test_request_integer_unix-nano_nullable_array_array operation.
+//
+// POST /test_request_integer_unix-nano_nullable_array_array
+func (UnimplementedHandler) TestRequestIntegerUnixNanoNullableArrayArray(ctx context.Context, req [][]NilUnixNano) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixNullable implements test_request_integer_unix_nullable operation.
+//
+// POST /test_request_integer_unix_nullable
+func (UnimplementedHandler) TestRequestIntegerUnixNullable(ctx context.Context, req OptNilUnixSeconds) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixNullableArray implements test_request_integer_unix_nullable_array operation.
+//
+// POST /test_request_integer_unix_nullable_array
+func (UnimplementedHandler) TestRequestIntegerUnixNullableArray(ctx context.Context, req []NilUnixSeconds) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixNullableArrayArray implements test_request_integer_unix_nullable_array_array operation.
+//
+// POST /test_request_integer_unix_nullable_array_array
+func (UnimplementedHandler) TestRequestIntegerUnixNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixSeconds implements test_request_integer_unix-seconds operation.
+//
+// POST /test_request_integer_unix-seconds
+func (UnimplementedHandler) TestRequestIntegerUnixSeconds(ctx context.Context, req OptUnixSeconds) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixSecondsArray implements test_request_integer_unix-seconds_array operation.
+//
+// POST /test_request_integer_unix-seconds_array
+func (UnimplementedHandler) TestRequestIntegerUnixSecondsArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixSecondsArrayArray implements test_request_integer_unix-seconds_array_array operation.
+//
+// POST /test_request_integer_unix-seconds_array_array
+func (UnimplementedHandler) TestRequestIntegerUnixSecondsArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixSecondsNullable implements test_request_integer_unix-seconds_nullable operation.
+//
+// POST /test_request_integer_unix-seconds_nullable
+func (UnimplementedHandler) TestRequestIntegerUnixSecondsNullable(ctx context.Context, req OptNilUnixSeconds) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixSecondsNullableArray implements test_request_integer_unix-seconds_nullable_array operation.
+//
+// POST /test_request_integer_unix-seconds_nullable_array
+func (UnimplementedHandler) TestRequestIntegerUnixSecondsNullableArray(ctx context.Context, req []NilUnixSeconds) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestIntegerUnixSecondsNullableArrayArray implements test_request_integer_unix-seconds_nullable_array_array operation.
+//
+// POST /test_request_integer_unix-seconds_nullable_array_array
+func (UnimplementedHandler) TestRequestIntegerUnixSecondsNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // TestRequestNull implements test_request_null operation.
 //
 // POST /test_request_null
@@ -653,6 +863,216 @@ func (UnimplementedHandler) TestRequestRequiredIntegerNullableArray(ctx context.
 //
 // POST /test_request_required_integer_nullable_array_array
 func (UnimplementedHandler) TestRequestRequiredIntegerNullableArrayArray(ctx context.Context, req [][]NilInt) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnix implements test_request_required_integer_unix operation.
+//
+// POST /test_request_required_integer_unix
+func (UnimplementedHandler) TestRequestRequiredIntegerUnix(ctx context.Context, req time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixArray implements test_request_required_integer_unix_array operation.
+//
+// POST /test_request_required_integer_unix_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixArrayArray implements test_request_required_integer_unix_array_array operation.
+//
+// POST /test_request_required_integer_unix_array_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixMicro implements test_request_required_integer_unix-micro operation.
+//
+// POST /test_request_required_integer_unix-micro
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixMicro(ctx context.Context, req time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixMicroArray implements test_request_required_integer_unix-micro_array operation.
+//
+// POST /test_request_required_integer_unix-micro_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixMicroArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixMicroArrayArray implements test_request_required_integer_unix-micro_array_array operation.
+//
+// POST /test_request_required_integer_unix-micro_array_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixMicroArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixMicroNullable implements test_request_required_integer_unix-micro_nullable operation.
+//
+// POST /test_request_required_integer_unix-micro_nullable
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixMicroNullable(ctx context.Context, req NilUnixMicro) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixMicroNullableArray implements test_request_required_integer_unix-micro_nullable_array operation.
+//
+// POST /test_request_required_integer_unix-micro_nullable_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixMicroNullableArray(ctx context.Context, req []NilUnixMicro) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixMicroNullableArrayArray implements test_request_required_integer_unix-micro_nullable_array_array operation.
+//
+// POST /test_request_required_integer_unix-micro_nullable_array_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixMicroNullableArrayArray(ctx context.Context, req [][]NilUnixMicro) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixMilli implements test_request_required_integer_unix-milli operation.
+//
+// POST /test_request_required_integer_unix-milli
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixMilli(ctx context.Context, req time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixMilliArray implements test_request_required_integer_unix-milli_array operation.
+//
+// POST /test_request_required_integer_unix-milli_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixMilliArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixMilliArrayArray implements test_request_required_integer_unix-milli_array_array operation.
+//
+// POST /test_request_required_integer_unix-milli_array_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixMilliArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixMilliNullable implements test_request_required_integer_unix-milli_nullable operation.
+//
+// POST /test_request_required_integer_unix-milli_nullable
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixMilliNullable(ctx context.Context, req NilUnixMilli) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixMilliNullableArray implements test_request_required_integer_unix-milli_nullable_array operation.
+//
+// POST /test_request_required_integer_unix-milli_nullable_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixMilliNullableArray(ctx context.Context, req []NilUnixMilli) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixMilliNullableArrayArray implements test_request_required_integer_unix-milli_nullable_array_array operation.
+//
+// POST /test_request_required_integer_unix-milli_nullable_array_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixMilliNullableArrayArray(ctx context.Context, req [][]NilUnixMilli) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixNano implements test_request_required_integer_unix-nano operation.
+//
+// POST /test_request_required_integer_unix-nano
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixNano(ctx context.Context, req time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixNanoArray implements test_request_required_integer_unix-nano_array operation.
+//
+// POST /test_request_required_integer_unix-nano_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixNanoArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixNanoArrayArray implements test_request_required_integer_unix-nano_array_array operation.
+//
+// POST /test_request_required_integer_unix-nano_array_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixNanoArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixNanoNullable implements test_request_required_integer_unix-nano_nullable operation.
+//
+// POST /test_request_required_integer_unix-nano_nullable
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixNanoNullable(ctx context.Context, req NilUnixNano) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixNanoNullableArray implements test_request_required_integer_unix-nano_nullable_array operation.
+//
+// POST /test_request_required_integer_unix-nano_nullable_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixNanoNullableArray(ctx context.Context, req []NilUnixNano) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixNanoNullableArrayArray implements test_request_required_integer_unix-nano_nullable_array_array operation.
+//
+// POST /test_request_required_integer_unix-nano_nullable_array_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixNanoNullableArrayArray(ctx context.Context, req [][]NilUnixNano) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixNullable implements test_request_required_integer_unix_nullable operation.
+//
+// POST /test_request_required_integer_unix_nullable
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixNullable(ctx context.Context, req NilUnixSeconds) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixNullableArray implements test_request_required_integer_unix_nullable_array operation.
+//
+// POST /test_request_required_integer_unix_nullable_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixNullableArray(ctx context.Context, req []NilUnixSeconds) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixNullableArrayArray implements test_request_required_integer_unix_nullable_array_array operation.
+//
+// POST /test_request_required_integer_unix_nullable_array_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixSeconds implements test_request_required_integer_unix-seconds operation.
+//
+// POST /test_request_required_integer_unix-seconds
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixSeconds(ctx context.Context, req time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixSecondsArray implements test_request_required_integer_unix-seconds_array operation.
+//
+// POST /test_request_required_integer_unix-seconds_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixSecondsArray(ctx context.Context, req []time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixSecondsArrayArray implements test_request_required_integer_unix-seconds_array_array operation.
+//
+// POST /test_request_required_integer_unix-seconds_array_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixSecondsArrayArray(ctx context.Context, req [][]time.Time) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixSecondsNullable implements test_request_required_integer_unix-seconds_nullable operation.
+//
+// POST /test_request_required_integer_unix-seconds_nullable
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixSecondsNullable(ctx context.Context, req NilUnixSeconds) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixSecondsNullableArray implements test_request_required_integer_unix-seconds_nullable_array operation.
+//
+// POST /test_request_required_integer_unix-seconds_nullable_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixSecondsNullableArray(ctx context.Context, req []NilUnixSeconds) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredIntegerUnixSecondsNullableArrayArray implements test_request_required_integer_unix-seconds_nullable_array_array operation.
+//
+// POST /test_request_required_integer_unix-seconds_nullable_array_array
+func (UnimplementedHandler) TestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1667,21 +2087,21 @@ func (UnimplementedHandler) TestRequestRequiredStringUnixMicroArrayArray(ctx con
 // TestRequestRequiredStringUnixMicroNullable implements test_request_required_string_unix-micro_nullable operation.
 //
 // POST /test_request_required_string_unix-micro_nullable
-func (UnimplementedHandler) TestRequestRequiredStringUnixMicroNullable(ctx context.Context, req NilUnixMicro) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixMicroNullable(ctx context.Context, req NilStringUnixMicro) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringUnixMicroNullableArray implements test_request_required_string_unix-micro_nullable_array operation.
 //
 // POST /test_request_required_string_unix-micro_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Context, req []NilUnixMicro) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Context, req []NilStringUnixMicro) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringUnixMicroNullableArrayArray implements test_request_required_string_unix-micro_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-micro_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx context.Context, req [][]NilUnixMicro) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx context.Context, req [][]NilStringUnixMicro) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1709,21 +2129,21 @@ func (UnimplementedHandler) TestRequestRequiredStringUnixMilliArrayArray(ctx con
 // TestRequestRequiredStringUnixMilliNullable implements test_request_required_string_unix-milli_nullable operation.
 //
 // POST /test_request_required_string_unix-milli_nullable
-func (UnimplementedHandler) TestRequestRequiredStringUnixMilliNullable(ctx context.Context, req NilUnixMilli) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixMilliNullable(ctx context.Context, req NilStringUnixMilli) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringUnixMilliNullableArray implements test_request_required_string_unix-milli_nullable_array operation.
 //
 // POST /test_request_required_string_unix-milli_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Context, req []NilUnixMilli) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Context, req []NilStringUnixMilli) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringUnixMilliNullableArrayArray implements test_request_required_string_unix-milli_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-milli_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx context.Context, req [][]NilUnixMilli) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx context.Context, req [][]NilStringUnixMilli) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1751,42 +2171,42 @@ func (UnimplementedHandler) TestRequestRequiredStringUnixNanoArrayArray(ctx cont
 // TestRequestRequiredStringUnixNanoNullable implements test_request_required_string_unix-nano_nullable operation.
 //
 // POST /test_request_required_string_unix-nano_nullable
-func (UnimplementedHandler) TestRequestRequiredStringUnixNanoNullable(ctx context.Context, req NilUnixNano) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixNanoNullable(ctx context.Context, req NilStringUnixNano) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringUnixNanoNullableArray implements test_request_required_string_unix-nano_nullable_array operation.
 //
 // POST /test_request_required_string_unix-nano_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Context, req []NilUnixNano) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Context, req []NilStringUnixNano) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringUnixNanoNullableArrayArray implements test_request_required_string_unix-nano_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-nano_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context.Context, req [][]NilUnixNano) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context.Context, req [][]NilStringUnixNano) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringUnixNullable implements test_request_required_string_unix_nullable operation.
 //
 // POST /test_request_required_string_unix_nullable
-func (UnimplementedHandler) TestRequestRequiredStringUnixNullable(ctx context.Context, req NilUnixSeconds) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixNullable(ctx context.Context, req NilStringUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringUnixNullableArray implements test_request_required_string_unix_nullable_array operation.
 //
 // POST /test_request_required_string_unix_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixNullableArray(ctx context.Context, req []NilUnixSeconds) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixNullableArray(ctx context.Context, req []NilStringUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringUnixNullableArrayArray implements test_request_required_string_unix_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Context, req [][]NilStringUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1814,21 +2234,21 @@ func (UnimplementedHandler) TestRequestRequiredStringUnixSecondsArrayArray(ctx c
 // TestRequestRequiredStringUnixSecondsNullable implements test_request_required_string_unix-seconds_nullable operation.
 //
 // POST /test_request_required_string_unix-seconds_nullable
-func (UnimplementedHandler) TestRequestRequiredStringUnixSecondsNullable(ctx context.Context, req NilUnixSeconds) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixSecondsNullable(ctx context.Context, req NilStringUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringUnixSecondsNullableArray implements test_request_required_string_unix-seconds_nullable_array operation.
 //
 // POST /test_request_required_string_unix-seconds_nullable_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.Context, req []NilUnixSeconds) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.Context, req []NilStringUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestRequiredStringUnixSecondsNullableArrayArray implements test_request_required_string_unix-seconds_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-seconds_nullable_array_array
-func (UnimplementedHandler) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx context.Context, req [][]NilStringUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2549,7 +2969,7 @@ func (UnimplementedHandler) TestRequestStringUUIDNullableArrayArray(ctx context.
 // TestRequestStringUnix implements test_request_string_unix operation.
 //
 // POST /test_request_string_unix
-func (UnimplementedHandler) TestRequestStringUnix(ctx context.Context, req OptUnixSeconds) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnix(ctx context.Context, req OptStringUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2570,7 +2990,7 @@ func (UnimplementedHandler) TestRequestStringUnixArrayArray(ctx context.Context,
 // TestRequestStringUnixMicro implements test_request_string_unix-micro operation.
 //
 // POST /test_request_string_unix-micro
-func (UnimplementedHandler) TestRequestStringUnixMicro(ctx context.Context, req OptUnixMicro) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixMicro(ctx context.Context, req OptStringUnixMicro) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2591,28 +3011,28 @@ func (UnimplementedHandler) TestRequestStringUnixMicroArrayArray(ctx context.Con
 // TestRequestStringUnixMicroNullable implements test_request_string_unix-micro_nullable operation.
 //
 // POST /test_request_string_unix-micro_nullable
-func (UnimplementedHandler) TestRequestStringUnixMicroNullable(ctx context.Context, req OptNilUnixMicro) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixMicroNullable(ctx context.Context, req OptNilStringUnixMicro) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixMicroNullableArray implements test_request_string_unix-micro_nullable_array operation.
 //
 // POST /test_request_string_unix-micro_nullable_array
-func (UnimplementedHandler) TestRequestStringUnixMicroNullableArray(ctx context.Context, req []NilUnixMicro) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixMicroNullableArray(ctx context.Context, req []NilStringUnixMicro) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixMicroNullableArrayArray implements test_request_string_unix-micro_nullable_array_array operation.
 //
 // POST /test_request_string_unix-micro_nullable_array_array
-func (UnimplementedHandler) TestRequestStringUnixMicroNullableArrayArray(ctx context.Context, req [][]NilUnixMicro) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixMicroNullableArrayArray(ctx context.Context, req [][]NilStringUnixMicro) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixMilli implements test_request_string_unix-milli operation.
 //
 // POST /test_request_string_unix-milli
-func (UnimplementedHandler) TestRequestStringUnixMilli(ctx context.Context, req OptUnixMilli) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixMilli(ctx context.Context, req OptStringUnixMilli) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2633,28 +3053,28 @@ func (UnimplementedHandler) TestRequestStringUnixMilliArrayArray(ctx context.Con
 // TestRequestStringUnixMilliNullable implements test_request_string_unix-milli_nullable operation.
 //
 // POST /test_request_string_unix-milli_nullable
-func (UnimplementedHandler) TestRequestStringUnixMilliNullable(ctx context.Context, req OptNilUnixMilli) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixMilliNullable(ctx context.Context, req OptNilStringUnixMilli) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixMilliNullableArray implements test_request_string_unix-milli_nullable_array operation.
 //
 // POST /test_request_string_unix-milli_nullable_array
-func (UnimplementedHandler) TestRequestStringUnixMilliNullableArray(ctx context.Context, req []NilUnixMilli) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixMilliNullableArray(ctx context.Context, req []NilStringUnixMilli) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixMilliNullableArrayArray implements test_request_string_unix-milli_nullable_array_array operation.
 //
 // POST /test_request_string_unix-milli_nullable_array_array
-func (UnimplementedHandler) TestRequestStringUnixMilliNullableArrayArray(ctx context.Context, req [][]NilUnixMilli) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixMilliNullableArrayArray(ctx context.Context, req [][]NilStringUnixMilli) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixNano implements test_request_string_unix-nano operation.
 //
 // POST /test_request_string_unix-nano
-func (UnimplementedHandler) TestRequestStringUnixNano(ctx context.Context, req OptUnixNano) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixNano(ctx context.Context, req OptStringUnixNano) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2675,49 +3095,49 @@ func (UnimplementedHandler) TestRequestStringUnixNanoArrayArray(ctx context.Cont
 // TestRequestStringUnixNanoNullable implements test_request_string_unix-nano_nullable operation.
 //
 // POST /test_request_string_unix-nano_nullable
-func (UnimplementedHandler) TestRequestStringUnixNanoNullable(ctx context.Context, req OptNilUnixNano) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixNanoNullable(ctx context.Context, req OptNilStringUnixNano) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixNanoNullableArray implements test_request_string_unix-nano_nullable_array operation.
 //
 // POST /test_request_string_unix-nano_nullable_array
-func (UnimplementedHandler) TestRequestStringUnixNanoNullableArray(ctx context.Context, req []NilUnixNano) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixNanoNullableArray(ctx context.Context, req []NilStringUnixNano) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixNanoNullableArrayArray implements test_request_string_unix-nano_nullable_array_array operation.
 //
 // POST /test_request_string_unix-nano_nullable_array_array
-func (UnimplementedHandler) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context, req [][]NilUnixNano) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context, req [][]NilStringUnixNano) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixNullable implements test_request_string_unix_nullable operation.
 //
 // POST /test_request_string_unix_nullable
-func (UnimplementedHandler) TestRequestStringUnixNullable(ctx context.Context, req OptNilUnixSeconds) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixNullable(ctx context.Context, req OptNilStringUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixNullableArray implements test_request_string_unix_nullable_array operation.
 //
 // POST /test_request_string_unix_nullable_array
-func (UnimplementedHandler) TestRequestStringUnixNullableArray(ctx context.Context, req []NilUnixSeconds) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixNullableArray(ctx context.Context, req []NilStringUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixNullableArrayArray implements test_request_string_unix_nullable_array_array operation.
 //
 // POST /test_request_string_unix_nullable_array_array
-func (UnimplementedHandler) TestRequestStringUnixNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixNullableArrayArray(ctx context.Context, req [][]NilStringUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixSeconds implements test_request_string_unix-seconds operation.
 //
 // POST /test_request_string_unix-seconds
-func (UnimplementedHandler) TestRequestStringUnixSeconds(ctx context.Context, req OptUnixSeconds) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixSeconds(ctx context.Context, req OptStringUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2738,21 +3158,21 @@ func (UnimplementedHandler) TestRequestStringUnixSecondsArrayArray(ctx context.C
 // TestRequestStringUnixSecondsNullable implements test_request_string_unix-seconds_nullable operation.
 //
 // POST /test_request_string_unix-seconds_nullable
-func (UnimplementedHandler) TestRequestStringUnixSecondsNullable(ctx context.Context, req OptNilUnixSeconds) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixSecondsNullable(ctx context.Context, req OptNilStringUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixSecondsNullableArray implements test_request_string_unix-seconds_nullable_array operation.
 //
 // POST /test_request_string_unix-seconds_nullable_array
-func (UnimplementedHandler) TestRequestStringUnixSecondsNullableArray(ctx context.Context, req []NilUnixSeconds) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixSecondsNullableArray(ctx context.Context, req []NilStringUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestRequestStringUnixSecondsNullableArrayArray implements test_request_string_unix-seconds_nullable_array_array operation.
 //
 // POST /test_request_string_unix-seconds_nullable_array_array
-func (UnimplementedHandler) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Context, req [][]NilStringUnixSeconds) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2942,6 +3362,216 @@ func (UnimplementedHandler) TestResponseIntegerNullableArray(ctx context.Context
 //
 // POST /test_response_integer_nullable_array_array
 func (UnimplementedHandler) TestResponseIntegerNullableArrayArray(ctx context.Context, req string) (r [][]NilInt, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnix implements test_response_integer_unix operation.
+//
+// POST /test_response_integer_unix
+func (UnimplementedHandler) TestResponseIntegerUnix(ctx context.Context, req string) (r time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixArray implements test_response_integer_unix_array operation.
+//
+// POST /test_response_integer_unix_array
+func (UnimplementedHandler) TestResponseIntegerUnixArray(ctx context.Context, req string) (r []time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixArrayArray implements test_response_integer_unix_array_array operation.
+//
+// POST /test_response_integer_unix_array_array
+func (UnimplementedHandler) TestResponseIntegerUnixArrayArray(ctx context.Context, req string) (r [][]time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixMicro implements test_response_integer_unix-micro operation.
+//
+// POST /test_response_integer_unix-micro
+func (UnimplementedHandler) TestResponseIntegerUnixMicro(ctx context.Context, req string) (r time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixMicroArray implements test_response_integer_unix-micro_array operation.
+//
+// POST /test_response_integer_unix-micro_array
+func (UnimplementedHandler) TestResponseIntegerUnixMicroArray(ctx context.Context, req string) (r []time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixMicroArrayArray implements test_response_integer_unix-micro_array_array operation.
+//
+// POST /test_response_integer_unix-micro_array_array
+func (UnimplementedHandler) TestResponseIntegerUnixMicroArrayArray(ctx context.Context, req string) (r [][]time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixMicroNullable implements test_response_integer_unix-micro_nullable operation.
+//
+// POST /test_response_integer_unix-micro_nullable
+func (UnimplementedHandler) TestResponseIntegerUnixMicroNullable(ctx context.Context, req string) (r NilUnixMicro, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixMicroNullableArray implements test_response_integer_unix-micro_nullable_array operation.
+//
+// POST /test_response_integer_unix-micro_nullable_array
+func (UnimplementedHandler) TestResponseIntegerUnixMicroNullableArray(ctx context.Context, req string) (r []NilUnixMicro, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixMicroNullableArrayArray implements test_response_integer_unix-micro_nullable_array_array operation.
+//
+// POST /test_response_integer_unix-micro_nullable_array_array
+func (UnimplementedHandler) TestResponseIntegerUnixMicroNullableArrayArray(ctx context.Context, req string) (r [][]NilUnixMicro, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixMilli implements test_response_integer_unix-milli operation.
+//
+// POST /test_response_integer_unix-milli
+func (UnimplementedHandler) TestResponseIntegerUnixMilli(ctx context.Context, req string) (r time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixMilliArray implements test_response_integer_unix-milli_array operation.
+//
+// POST /test_response_integer_unix-milli_array
+func (UnimplementedHandler) TestResponseIntegerUnixMilliArray(ctx context.Context, req string) (r []time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixMilliArrayArray implements test_response_integer_unix-milli_array_array operation.
+//
+// POST /test_response_integer_unix-milli_array_array
+func (UnimplementedHandler) TestResponseIntegerUnixMilliArrayArray(ctx context.Context, req string) (r [][]time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixMilliNullable implements test_response_integer_unix-milli_nullable operation.
+//
+// POST /test_response_integer_unix-milli_nullable
+func (UnimplementedHandler) TestResponseIntegerUnixMilliNullable(ctx context.Context, req string) (r NilUnixMilli, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixMilliNullableArray implements test_response_integer_unix-milli_nullable_array operation.
+//
+// POST /test_response_integer_unix-milli_nullable_array
+func (UnimplementedHandler) TestResponseIntegerUnixMilliNullableArray(ctx context.Context, req string) (r []NilUnixMilli, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixMilliNullableArrayArray implements test_response_integer_unix-milli_nullable_array_array operation.
+//
+// POST /test_response_integer_unix-milli_nullable_array_array
+func (UnimplementedHandler) TestResponseIntegerUnixMilliNullableArrayArray(ctx context.Context, req string) (r [][]NilUnixMilli, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixNano implements test_response_integer_unix-nano operation.
+//
+// POST /test_response_integer_unix-nano
+func (UnimplementedHandler) TestResponseIntegerUnixNano(ctx context.Context, req string) (r time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixNanoArray implements test_response_integer_unix-nano_array operation.
+//
+// POST /test_response_integer_unix-nano_array
+func (UnimplementedHandler) TestResponseIntegerUnixNanoArray(ctx context.Context, req string) (r []time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixNanoArrayArray implements test_response_integer_unix-nano_array_array operation.
+//
+// POST /test_response_integer_unix-nano_array_array
+func (UnimplementedHandler) TestResponseIntegerUnixNanoArrayArray(ctx context.Context, req string) (r [][]time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixNanoNullable implements test_response_integer_unix-nano_nullable operation.
+//
+// POST /test_response_integer_unix-nano_nullable
+func (UnimplementedHandler) TestResponseIntegerUnixNanoNullable(ctx context.Context, req string) (r NilUnixNano, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixNanoNullableArray implements test_response_integer_unix-nano_nullable_array operation.
+//
+// POST /test_response_integer_unix-nano_nullable_array
+func (UnimplementedHandler) TestResponseIntegerUnixNanoNullableArray(ctx context.Context, req string) (r []NilUnixNano, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixNanoNullableArrayArray implements test_response_integer_unix-nano_nullable_array_array operation.
+//
+// POST /test_response_integer_unix-nano_nullable_array_array
+func (UnimplementedHandler) TestResponseIntegerUnixNanoNullableArrayArray(ctx context.Context, req string) (r [][]NilUnixNano, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixNullable implements test_response_integer_unix_nullable operation.
+//
+// POST /test_response_integer_unix_nullable
+func (UnimplementedHandler) TestResponseIntegerUnixNullable(ctx context.Context, req string) (r NilUnixSeconds, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixNullableArray implements test_response_integer_unix_nullable_array operation.
+//
+// POST /test_response_integer_unix_nullable_array
+func (UnimplementedHandler) TestResponseIntegerUnixNullableArray(ctx context.Context, req string) (r []NilUnixSeconds, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixNullableArrayArray implements test_response_integer_unix_nullable_array_array operation.
+//
+// POST /test_response_integer_unix_nullable_array_array
+func (UnimplementedHandler) TestResponseIntegerUnixNullableArrayArray(ctx context.Context, req string) (r [][]NilUnixSeconds, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixSeconds implements test_response_integer_unix-seconds operation.
+//
+// POST /test_response_integer_unix-seconds
+func (UnimplementedHandler) TestResponseIntegerUnixSeconds(ctx context.Context, req string) (r time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixSecondsArray implements test_response_integer_unix-seconds_array operation.
+//
+// POST /test_response_integer_unix-seconds_array
+func (UnimplementedHandler) TestResponseIntegerUnixSecondsArray(ctx context.Context, req string) (r []time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixSecondsArrayArray implements test_response_integer_unix-seconds_array_array operation.
+//
+// POST /test_response_integer_unix-seconds_array_array
+func (UnimplementedHandler) TestResponseIntegerUnixSecondsArrayArray(ctx context.Context, req string) (r [][]time.Time, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixSecondsNullable implements test_response_integer_unix-seconds_nullable operation.
+//
+// POST /test_response_integer_unix-seconds_nullable
+func (UnimplementedHandler) TestResponseIntegerUnixSecondsNullable(ctx context.Context, req string) (r NilUnixSeconds, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixSecondsNullableArray implements test_response_integer_unix-seconds_nullable_array operation.
+//
+// POST /test_response_integer_unix-seconds_nullable_array
+func (UnimplementedHandler) TestResponseIntegerUnixSecondsNullableArray(ctx context.Context, req string) (r []NilUnixSeconds, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseIntegerUnixSecondsNullableArrayArray implements test_response_integer_unix-seconds_nullable_array_array operation.
+//
+// POST /test_response_integer_unix-seconds_nullable_array_array
+func (UnimplementedHandler) TestResponseIntegerUnixSecondsNullableArrayArray(ctx context.Context, req string) (r [][]NilUnixSeconds, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3956,21 +4586,21 @@ func (UnimplementedHandler) TestResponseStringUnixMicroArrayArray(ctx context.Co
 // TestResponseStringUnixMicroNullable implements test_response_string_unix-micro_nullable operation.
 //
 // POST /test_response_string_unix-micro_nullable
-func (UnimplementedHandler) TestResponseStringUnixMicroNullable(ctx context.Context, req string) (r NilUnixMicro, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixMicroNullable(ctx context.Context, req string) (r NilStringUnixMicro, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringUnixMicroNullableArray implements test_response_string_unix-micro_nullable_array operation.
 //
 // POST /test_response_string_unix-micro_nullable_array
-func (UnimplementedHandler) TestResponseStringUnixMicroNullableArray(ctx context.Context, req string) (r []NilUnixMicro, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixMicroNullableArray(ctx context.Context, req string) (r []NilStringUnixMicro, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringUnixMicroNullableArrayArray implements test_response_string_unix-micro_nullable_array_array operation.
 //
 // POST /test_response_string_unix-micro_nullable_array_array
-func (UnimplementedHandler) TestResponseStringUnixMicroNullableArrayArray(ctx context.Context, req string) (r [][]NilUnixMicro, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixMicroNullableArrayArray(ctx context.Context, req string) (r [][]NilStringUnixMicro, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3998,21 +4628,21 @@ func (UnimplementedHandler) TestResponseStringUnixMilliArrayArray(ctx context.Co
 // TestResponseStringUnixMilliNullable implements test_response_string_unix-milli_nullable operation.
 //
 // POST /test_response_string_unix-milli_nullable
-func (UnimplementedHandler) TestResponseStringUnixMilliNullable(ctx context.Context, req string) (r NilUnixMilli, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixMilliNullable(ctx context.Context, req string) (r NilStringUnixMilli, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringUnixMilliNullableArray implements test_response_string_unix-milli_nullable_array operation.
 //
 // POST /test_response_string_unix-milli_nullable_array
-func (UnimplementedHandler) TestResponseStringUnixMilliNullableArray(ctx context.Context, req string) (r []NilUnixMilli, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixMilliNullableArray(ctx context.Context, req string) (r []NilStringUnixMilli, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringUnixMilliNullableArrayArray implements test_response_string_unix-milli_nullable_array_array operation.
 //
 // POST /test_response_string_unix-milli_nullable_array_array
-func (UnimplementedHandler) TestResponseStringUnixMilliNullableArrayArray(ctx context.Context, req string) (r [][]NilUnixMilli, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixMilliNullableArrayArray(ctx context.Context, req string) (r [][]NilStringUnixMilli, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4040,42 +4670,42 @@ func (UnimplementedHandler) TestResponseStringUnixNanoArrayArray(ctx context.Con
 // TestResponseStringUnixNanoNullable implements test_response_string_unix-nano_nullable operation.
 //
 // POST /test_response_string_unix-nano_nullable
-func (UnimplementedHandler) TestResponseStringUnixNanoNullable(ctx context.Context, req string) (r NilUnixNano, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixNanoNullable(ctx context.Context, req string) (r NilStringUnixNano, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringUnixNanoNullableArray implements test_response_string_unix-nano_nullable_array operation.
 //
 // POST /test_response_string_unix-nano_nullable_array
-func (UnimplementedHandler) TestResponseStringUnixNanoNullableArray(ctx context.Context, req string) (r []NilUnixNano, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixNanoNullableArray(ctx context.Context, req string) (r []NilStringUnixNano, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringUnixNanoNullableArrayArray implements test_response_string_unix-nano_nullable_array_array operation.
 //
 // POST /test_response_string_unix-nano_nullable_array_array
-func (UnimplementedHandler) TestResponseStringUnixNanoNullableArrayArray(ctx context.Context, req string) (r [][]NilUnixNano, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixNanoNullableArrayArray(ctx context.Context, req string) (r [][]NilStringUnixNano, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringUnixNullable implements test_response_string_unix_nullable operation.
 //
 // POST /test_response_string_unix_nullable
-func (UnimplementedHandler) TestResponseStringUnixNullable(ctx context.Context, req string) (r NilUnixSeconds, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixNullable(ctx context.Context, req string) (r NilStringUnixSeconds, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringUnixNullableArray implements test_response_string_unix_nullable_array operation.
 //
 // POST /test_response_string_unix_nullable_array
-func (UnimplementedHandler) TestResponseStringUnixNullableArray(ctx context.Context, req string) (r []NilUnixSeconds, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixNullableArray(ctx context.Context, req string) (r []NilStringUnixSeconds, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringUnixNullableArrayArray implements test_response_string_unix_nullable_array_array operation.
 //
 // POST /test_response_string_unix_nullable_array_array
-func (UnimplementedHandler) TestResponseStringUnixNullableArrayArray(ctx context.Context, req string) (r [][]NilUnixSeconds, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixNullableArrayArray(ctx context.Context, req string) (r [][]NilStringUnixSeconds, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4103,20 +4733,20 @@ func (UnimplementedHandler) TestResponseStringUnixSecondsArrayArray(ctx context.
 // TestResponseStringUnixSecondsNullable implements test_response_string_unix-seconds_nullable operation.
 //
 // POST /test_response_string_unix-seconds_nullable
-func (UnimplementedHandler) TestResponseStringUnixSecondsNullable(ctx context.Context, req string) (r NilUnixSeconds, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixSecondsNullable(ctx context.Context, req string) (r NilStringUnixSeconds, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringUnixSecondsNullableArray implements test_response_string_unix-seconds_nullable_array operation.
 //
 // POST /test_response_string_unix-seconds_nullable_array
-func (UnimplementedHandler) TestResponseStringUnixSecondsNullableArray(ctx context.Context, req string) (r []NilUnixSeconds, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixSecondsNullableArray(ctx context.Context, req string) (r []NilStringUnixSeconds, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // TestResponseStringUnixSecondsNullableArrayArray implements test_response_string_unix-seconds_nullable_array_array operation.
 //
 // POST /test_response_string_unix-seconds_nullable_array_array
-func (UnimplementedHandler) TestResponseStringUnixSecondsNullableArrayArray(ctx context.Context, req string) (r [][]NilUnixSeconds, _ error) {
+func (UnimplementedHandler) TestResponseStringUnixSecondsNullableArrayArray(ctx context.Context, req string) (r [][]NilStringUnixSeconds, _ error) {
 	return r, ht.ErrNotImplemented
 }

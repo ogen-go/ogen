@@ -2029,6 +2029,2206 @@ func (s *Server) decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Reque
 	}
 }
 
+func (s *Server) decodeTestRequestIntegerUnixRequest(r *http.Request, span trace.Span) (
+	req OptUnixSeconds,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request OptUnixSeconds
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request.Reset()
+			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixArrayRequest(r *http.Request, span trace.Span) (
+	req []time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request []time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeUnixSeconds(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request [][]time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeUnixSeconds(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixMicroRequest(r *http.Request, span trace.Span) (
+	req OptUnixMicro,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request OptUnixMicro
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request.Reset()
+			if err := request.Decode(d, json.DecodeUnixMicro); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixMicroArrayRequest(r *http.Request, span trace.Span) (
+	req []time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request []time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeUnixMicro(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixMicroArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request [][]time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeUnixMicro(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixMicroNullableRequest(r *http.Request, span trace.Span) (
+	req OptNilUnixMicro,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request OptNilUnixMicro
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request.Reset()
+			if err := request.Decode(d, json.DecodeUnixMicro); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (
+	req []NilUnixMicro,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request []NilUnixMicro
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]NilUnixMicro, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem NilUnixMicro
+				if err := elem.Decode(d, json.DecodeUnixMicro); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]NilUnixMicro,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request [][]NilUnixMicro
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]NilUnixMicro, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []NilUnixMicro
+				elem = make([]NilUnixMicro, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem NilUnixMicro
+					if err := elemElem.Decode(d, json.DecodeUnixMicro); err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixMilliRequest(r *http.Request, span trace.Span) (
+	req OptUnixMilli,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request OptUnixMilli
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request.Reset()
+			if err := request.Decode(d, json.DecodeUnixMilli); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixMilliArrayRequest(r *http.Request, span trace.Span) (
+	req []time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request []time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeUnixMilli(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixMilliArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request [][]time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeUnixMilli(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixMilliNullableRequest(r *http.Request, span trace.Span) (
+	req OptNilUnixMilli,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request OptNilUnixMilli
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request.Reset()
+			if err := request.Decode(d, json.DecodeUnixMilli); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (
+	req []NilUnixMilli,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request []NilUnixMilli
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]NilUnixMilli, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem NilUnixMilli
+				if err := elem.Decode(d, json.DecodeUnixMilli); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]NilUnixMilli,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request [][]NilUnixMilli
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]NilUnixMilli, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []NilUnixMilli
+				elem = make([]NilUnixMilli, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem NilUnixMilli
+					if err := elemElem.Decode(d, json.DecodeUnixMilli); err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixNanoRequest(r *http.Request, span trace.Span) (
+	req OptUnixNano,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request OptUnixNano
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request.Reset()
+			if err := request.Decode(d, json.DecodeUnixNano); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixNanoArrayRequest(r *http.Request, span trace.Span) (
+	req []time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request []time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeUnixNano(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixNanoArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request [][]time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeUnixNano(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixNanoNullableRequest(r *http.Request, span trace.Span) (
+	req OptNilUnixNano,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request OptNilUnixNano
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request.Reset()
+			if err := request.Decode(d, json.DecodeUnixNano); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (
+	req []NilUnixNano,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request []NilUnixNano
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]NilUnixNano, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem NilUnixNano
+				if err := elem.Decode(d, json.DecodeUnixNano); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]NilUnixNano,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request [][]NilUnixNano
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]NilUnixNano, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []NilUnixNano
+				elem = make([]NilUnixNano, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem NilUnixNano
+					if err := elemElem.Decode(d, json.DecodeUnixNano); err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixNullableRequest(r *http.Request, span trace.Span) (
+	req OptNilUnixSeconds,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request OptNilUnixSeconds
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request.Reset()
+			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixNullableArrayRequest(r *http.Request, span trace.Span) (
+	req []NilUnixSeconds,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request []NilUnixSeconds
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]NilUnixSeconds, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem NilUnixSeconds
+				if err := elem.Decode(d, json.DecodeUnixSeconds); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]NilUnixSeconds,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request [][]NilUnixSeconds
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]NilUnixSeconds, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []NilUnixSeconds
+				elem = make([]NilUnixSeconds, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem NilUnixSeconds
+					if err := elemElem.Decode(d, json.DecodeUnixSeconds); err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixSecondsRequest(r *http.Request, span trace.Span) (
+	req OptUnixSeconds,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request OptUnixSeconds
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request.Reset()
+			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixSecondsArrayRequest(r *http.Request, span trace.Span) (
+	req []time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request []time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeUnixSeconds(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixSecondsArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request [][]time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeUnixSeconds(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixSecondsNullableRequest(r *http.Request, span trace.Span) (
+	req OptNilUnixSeconds,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request OptNilUnixSeconds
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request.Reset()
+			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (
+	req []NilUnixSeconds,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request []NilUnixSeconds
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]NilUnixSeconds, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem NilUnixSeconds
+				if err := elem.Decode(d, json.DecodeUnixSeconds); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]NilUnixSeconds,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, nil
+		}
+
+		var request [][]NilUnixSeconds
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, nil
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]NilUnixSeconds, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []NilUnixSeconds
+				elem = make([]NilUnixSeconds, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem NilUnixSeconds
+					if err := elemElem.Decode(d, json.DecodeUnixSeconds); err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
 func (s *Server) decodeTestRequestNullRequest(r *http.Request, span trace.Span) (
 	req OptNull,
 	close func() error,
@@ -6890,6 +9090,2226 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *ht
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elemElem NilInt
 					if err := elemElem.Decode(d); err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixRequest(r *http.Request, span trace.Span) (
+	req time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := json.DecodeUnixSeconds(d)
+			request = v
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixArrayRequest(r *http.Request, span trace.Span) (
+	req []time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request []time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeUnixSeconds(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request [][]time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeUnixSeconds(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixMicroRequest(r *http.Request, span trace.Span) (
+	req time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := json.DecodeUnixMicro(d)
+			request = v
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayRequest(r *http.Request, span trace.Span) (
+	req []time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request []time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeUnixMicro(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request [][]time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeUnixMicro(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableRequest(r *http.Request, span trace.Span) (
+	req NilUnixMicro,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request NilUnixMicro
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			if err := request.Decode(d, json.DecodeUnixMicro); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (
+	req []NilUnixMicro,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request []NilUnixMicro
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]NilUnixMicro, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem NilUnixMicro
+				if err := elem.Decode(d, json.DecodeUnixMicro); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]NilUnixMicro,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request [][]NilUnixMicro
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]NilUnixMicro, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []NilUnixMicro
+				elem = make([]NilUnixMicro, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem NilUnixMicro
+					if err := elemElem.Decode(d, json.DecodeUnixMicro); err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixMilliRequest(r *http.Request, span trace.Span) (
+	req time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := json.DecodeUnixMilli(d)
+			request = v
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayRequest(r *http.Request, span trace.Span) (
+	req []time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request []time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeUnixMilli(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request [][]time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeUnixMilli(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableRequest(r *http.Request, span trace.Span) (
+	req NilUnixMilli,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request NilUnixMilli
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			if err := request.Decode(d, json.DecodeUnixMilli); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (
+	req []NilUnixMilli,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request []NilUnixMilli
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]NilUnixMilli, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem NilUnixMilli
+				if err := elem.Decode(d, json.DecodeUnixMilli); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]NilUnixMilli,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request [][]NilUnixMilli
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]NilUnixMilli, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []NilUnixMilli
+				elem = make([]NilUnixMilli, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem NilUnixMilli
+					if err := elemElem.Decode(d, json.DecodeUnixMilli); err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixNanoRequest(r *http.Request, span trace.Span) (
+	req time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := json.DecodeUnixNano(d)
+			request = v
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayRequest(r *http.Request, span trace.Span) (
+	req []time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request []time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeUnixNano(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request [][]time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeUnixNano(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableRequest(r *http.Request, span trace.Span) (
+	req NilUnixNano,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request NilUnixNano
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			if err := request.Decode(d, json.DecodeUnixNano); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (
+	req []NilUnixNano,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request []NilUnixNano
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]NilUnixNano, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem NilUnixNano
+				if err := elem.Decode(d, json.DecodeUnixNano); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]NilUnixNano,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request [][]NilUnixNano
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]NilUnixNano, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []NilUnixNano
+				elem = make([]NilUnixNano, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem NilUnixNano
+					if err := elemElem.Decode(d, json.DecodeUnixNano); err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixNullableRequest(r *http.Request, span trace.Span) (
+	req NilUnixSeconds,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request NilUnixSeconds
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayRequest(r *http.Request, span trace.Span) (
+	req []NilUnixSeconds,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request []NilUnixSeconds
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]NilUnixSeconds, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem NilUnixSeconds
+				if err := elem.Decode(d, json.DecodeUnixSeconds); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]NilUnixSeconds,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request [][]NilUnixSeconds
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]NilUnixSeconds, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []NilUnixSeconds
+				elem = make([]NilUnixSeconds, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem NilUnixSeconds
+					if err := elemElem.Decode(d, json.DecodeUnixSeconds); err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsRequest(r *http.Request, span trace.Span) (
+	req time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := json.DecodeUnixSeconds(d)
+			request = v
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayRequest(r *http.Request, span trace.Span) (
+	req []time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request []time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem time.Time
+				v, err := json.DecodeUnixSeconds(d)
+				elem = v
+				if err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]time.Time,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request [][]time.Time
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]time.Time, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []time.Time
+				elem = make([]time.Time, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem time.Time
+					v, err := json.DecodeUnixSeconds(d)
+					elemElem = v
+					if err != nil {
+						return err
+					}
+					elem = append(elem, elemElem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			var failures []validate.FieldError
+			for i, elem := range request {
+				if err := func() error {
+					if elem == nil {
+						return errors.New("nil is invalid value")
+					}
+					return nil
+				}(); err != nil {
+					failures = append(failures, validate.FieldError{
+						Name:  fmt.Sprintf("[%d]", i),
+						Error: err,
+					})
+				}
+			}
+			if len(failures) > 0 {
+				return &validate.Error{Fields: failures}
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableRequest(r *http.Request, span trace.Span) (
+	req NilUnixSeconds,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request NilUnixSeconds
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (
+	req []NilUnixSeconds,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request []NilUnixSeconds
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([]NilUnixSeconds, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem NilUnixSeconds
+				if err := elem.Decode(d, json.DecodeUnixSeconds); err != nil {
+					return err
+				}
+				request = append(request, elem)
+				return nil
+			}); err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := func() error {
+			if request == nil {
+				return errors.New("nil is invalid value")
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "validate")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+	req [][]NilUnixSeconds,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request [][]NilUnixSeconds
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			request = make([][]NilUnixSeconds, 0)
+			if err := d.Arr(func(d *jx.Decoder) error {
+				var elem []NilUnixSeconds
+				elem = make([]NilUnixSeconds, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elemElem NilUnixSeconds
+					if err := elemElem.Decode(d, json.DecodeUnixSeconds); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -17706,7 +22126,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixRequest(r *http.Request, spa
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			v, err := json.DecodeUnixSeconds(d)
+			v, err := json.DecodeStringUnixSeconds(d)
 			request = v
 			if err != nil {
 				return err
@@ -17765,7 +22185,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixArrayRequest(r *http.Request
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem time.Time
-				v, err := json.DecodeUnixSeconds(d)
+				v, err := json.DecodeStringUnixSeconds(d)
 				elem = v
 				if err != nil {
 					return err
@@ -17840,7 +22260,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixArrayArrayRequest(r *http.Re
 				elem = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elemElem time.Time
-					v, err := json.DecodeUnixSeconds(d)
+					v, err := json.DecodeStringUnixSeconds(d)
 					elemElem = v
 					if err != nil {
 						return err
@@ -17931,7 +22351,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroRequest(r *http.Request
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			v, err := json.DecodeUnixMicro(d)
+			v, err := json.DecodeStringUnixMicro(d)
 			request = v
 			if err != nil {
 				return err
@@ -17990,7 +22410,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayRequest(r *http.Re
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem time.Time
-				v, err := json.DecodeUnixMicro(d)
+				v, err := json.DecodeStringUnixMicro(d)
 				elem = v
 				if err != nil {
 					return err
@@ -18065,7 +22485,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *ht
 				elem = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elemElem time.Time
-					v, err := json.DecodeUnixMicro(d)
+					v, err := json.DecodeStringUnixMicro(d)
 					elemElem = v
 					if err != nil {
 						return err
@@ -18116,7 +22536,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *ht
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http.Request, span trace.Span) (
-	req NilUnixMicro,
+	req NilStringUnixMicro,
 	close func() error,
 	rerr error,
 ) {
@@ -18144,7 +22564,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request NilUnixMicro
+		var request NilStringUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -18156,7 +22576,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			if err := request.Decode(d, json.DecodeUnixMicro); err != nil {
+			if err := request.Decode(d, json.DecodeStringUnixMicro); err != nil {
 				return err
 			}
 			return nil
@@ -18170,7 +22590,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []NilUnixMicro,
+	req []NilStringUnixMicro,
 	close func() error,
 	rerr error,
 ) {
@@ -18198,7 +22618,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []NilUnixMicro
+		var request []NilStringUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -18210,10 +22630,10 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r 
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([]NilUnixMicro, 0)
+			request = make([]NilStringUnixMicro, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUnixMicro
-				if err := elem.Decode(d, json.DecodeUnixMicro); err != nil {
+				var elem NilStringUnixMicro
+				if err := elem.Decode(d, json.DecodeStringUnixMicro); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -18240,7 +22660,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r 
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]NilUnixMicro,
+	req [][]NilStringUnixMicro,
 	close func() error,
 	rerr error,
 ) {
@@ -18268,7 +22688,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]NilUnixMicro
+		var request [][]NilStringUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -18280,13 +22700,13 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([][]NilUnixMicro, 0)
+			request = make([][]NilStringUnixMicro, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUnixMicro
-				elem = make([]NilUnixMicro, 0)
+				var elem []NilStringUnixMicro
+				elem = make([]NilStringUnixMicro, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUnixMicro
-					if err := elemElem.Decode(d, json.DecodeUnixMicro); err != nil {
+					var elemElem NilStringUnixMicro
+					if err := elemElem.Decode(d, json.DecodeStringUnixMicro); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -18375,7 +22795,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliRequest(r *http.Request
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			v, err := json.DecodeUnixMilli(d)
+			v, err := json.DecodeStringUnixMilli(d)
 			request = v
 			if err != nil {
 				return err
@@ -18434,7 +22854,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayRequest(r *http.Re
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem time.Time
-				v, err := json.DecodeUnixMilli(d)
+				v, err := json.DecodeStringUnixMilli(d)
 				elem = v
 				if err != nil {
 					return err
@@ -18509,7 +22929,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *ht
 				elem = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elemElem time.Time
-					v, err := json.DecodeUnixMilli(d)
+					v, err := json.DecodeStringUnixMilli(d)
 					elemElem = v
 					if err != nil {
 						return err
@@ -18560,7 +22980,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *ht
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http.Request, span trace.Span) (
-	req NilUnixMilli,
+	req NilStringUnixMilli,
 	close func() error,
 	rerr error,
 ) {
@@ -18588,7 +23008,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request NilUnixMilli
+		var request NilStringUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -18600,7 +23020,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			if err := request.Decode(d, json.DecodeUnixMilli); err != nil {
+			if err := request.Decode(d, json.DecodeStringUnixMilli); err != nil {
 				return err
 			}
 			return nil
@@ -18614,7 +23034,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []NilUnixMilli,
+	req []NilStringUnixMilli,
 	close func() error,
 	rerr error,
 ) {
@@ -18642,7 +23062,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []NilUnixMilli
+		var request []NilStringUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -18654,10 +23074,10 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r 
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([]NilUnixMilli, 0)
+			request = make([]NilStringUnixMilli, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUnixMilli
-				if err := elem.Decode(d, json.DecodeUnixMilli); err != nil {
+				var elem NilStringUnixMilli
+				if err := elem.Decode(d, json.DecodeStringUnixMilli); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -18684,7 +23104,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r 
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]NilUnixMilli,
+	req [][]NilStringUnixMilli,
 	close func() error,
 	rerr error,
 ) {
@@ -18712,7 +23132,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]NilUnixMilli
+		var request [][]NilStringUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -18724,13 +23144,13 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([][]NilUnixMilli, 0)
+			request = make([][]NilStringUnixMilli, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUnixMilli
-				elem = make([]NilUnixMilli, 0)
+				var elem []NilStringUnixMilli
+				elem = make([]NilStringUnixMilli, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUnixMilli
-					if err := elemElem.Decode(d, json.DecodeUnixMilli); err != nil {
+					var elemElem NilStringUnixMilli
+					if err := elemElem.Decode(d, json.DecodeStringUnixMilli); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -18819,7 +23239,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoRequest(r *http.Request,
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			v, err := json.DecodeUnixNano(d)
+			v, err := json.DecodeStringUnixNano(d)
 			request = v
 			if err != nil {
 				return err
@@ -18878,7 +23298,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayRequest(r *http.Req
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem time.Time
-				v, err := json.DecodeUnixNano(d)
+				v, err := json.DecodeStringUnixNano(d)
 				elem = v
 				if err != nil {
 					return err
@@ -18953,7 +23373,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *htt
 				elem = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elemElem time.Time
-					v, err := json.DecodeUnixNano(d)
+					v, err := json.DecodeStringUnixNano(d)
 					elemElem = v
 					if err != nil {
 						return err
@@ -19004,7 +23424,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *htt
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.Request, span trace.Span) (
-	req NilUnixNano,
+	req NilStringUnixNano,
 	close func() error,
 	rerr error,
 ) {
@@ -19032,7 +23452,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request NilUnixNano
+		var request NilStringUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19044,7 +23464,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			if err := request.Decode(d, json.DecodeUnixNano); err != nil {
+			if err := request.Decode(d, json.DecodeStringUnixNano); err != nil {
 				return err
 			}
 			return nil
@@ -19058,7 +23478,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []NilUnixNano,
+	req []NilStringUnixNano,
 	close func() error,
 	rerr error,
 ) {
@@ -19086,7 +23506,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []NilUnixNano
+		var request []NilStringUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19098,10 +23518,10 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([]NilUnixNano, 0)
+			request = make([]NilStringUnixNano, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUnixNano
-				if err := elem.Decode(d, json.DecodeUnixNano); err != nil {
+				var elem NilStringUnixNano
+				if err := elem.Decode(d, json.DecodeStringUnixNano); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -19128,7 +23548,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]NilUnixNano,
+	req [][]NilStringUnixNano,
 	close func() error,
 	rerr error,
 ) {
@@ -19156,7 +23576,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]NilUnixNano
+		var request [][]NilStringUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19168,13 +23588,13 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([][]NilUnixNano, 0)
+			request = make([][]NilStringUnixNano, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUnixNano
-				elem = make([]NilUnixNano, 0)
+				var elem []NilStringUnixNano
+				elem = make([]NilStringUnixNano, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUnixNano
-					if err := elemElem.Decode(d, json.DecodeUnixNano); err != nil {
+					var elemElem NilStringUnixNano
+					if err := elemElem.Decode(d, json.DecodeStringUnixNano); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -19223,7 +23643,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixNullableRequest(r *http.Request, span trace.Span) (
-	req NilUnixSeconds,
+	req NilStringUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -19251,7 +23671,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableRequest(r *http.Requ
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request NilUnixSeconds
+		var request NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19263,7 +23683,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableRequest(r *http.Requ
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
+			if err := request.Decode(d, json.DecodeStringUnixSeconds); err != nil {
 				return err
 			}
 			return nil
@@ -19277,7 +23697,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableRequest(r *http.Requ
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []NilUnixSeconds,
+	req []NilStringUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -19305,7 +23725,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []NilUnixSeconds
+		var request []NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19317,10 +23737,10 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([]NilUnixSeconds, 0)
+			request = make([]NilStringUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUnixSeconds
-				if err := elem.Decode(d, json.DecodeUnixSeconds); err != nil {
+				var elem NilStringUnixSeconds
+				if err := elem.Decode(d, json.DecodeStringUnixSeconds); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -19347,7 +23767,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]NilUnixSeconds,
+	req [][]NilStringUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -19375,7 +23795,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r 
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]NilUnixSeconds
+		var request [][]NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19387,13 +23807,13 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r 
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([][]NilUnixSeconds, 0)
+			request = make([][]NilStringUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUnixSeconds
-				elem = make([]NilUnixSeconds, 0)
+				var elem []NilStringUnixSeconds
+				elem = make([]NilStringUnixSeconds, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUnixSeconds
-					if err := elemElem.Decode(d, json.DecodeUnixSeconds); err != nil {
+					var elemElem NilStringUnixSeconds
+					if err := elemElem.Decode(d, json.DecodeStringUnixSeconds); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -19482,7 +23902,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsRequest(r *http.Reque
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			v, err := json.DecodeUnixSeconds(d)
+			v, err := json.DecodeStringUnixSeconds(d)
 			request = v
 			if err != nil {
 				return err
@@ -19541,7 +23961,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayRequest(r *http.
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem time.Time
-				v, err := json.DecodeUnixSeconds(d)
+				v, err := json.DecodeStringUnixSeconds(d)
 				elem = v
 				if err != nil {
 					return err
@@ -19616,7 +24036,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *
 				elem = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elemElem time.Time
-					v, err := json.DecodeUnixSeconds(d)
+					v, err := json.DecodeStringUnixSeconds(d)
 					elemElem = v
 					if err != nil {
 						return err
@@ -19667,7 +24087,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *http.Request, span trace.Span) (
-	req NilUnixSeconds,
+	req NilStringUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -19695,7 +24115,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *ht
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request NilUnixSeconds
+		var request NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19707,7 +24127,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *ht
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
+			if err := request.Decode(d, json.DecodeStringUnixSeconds); err != nil {
 				return err
 			}
 			return nil
@@ -19721,7 +24141,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *ht
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []NilUnixSeconds,
+	req []NilStringUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -19749,7 +24169,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request []NilUnixSeconds
+		var request []NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19761,10 +24181,10 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([]NilUnixSeconds, 0)
+			request = make([]NilStringUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUnixSeconds
-				if err := elem.Decode(d, json.DecodeUnixSeconds); err != nil {
+				var elem NilStringUnixSeconds
+				if err := elem.Decode(d, json.DecodeStringUnixSeconds); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -19791,7 +24211,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 }
 
 func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]NilUnixSeconds,
+	req [][]NilStringUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -19819,7 +24239,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request [][]NilUnixSeconds
+		var request [][]NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -19831,13 +24251,13 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([][]NilUnixSeconds, 0)
+			request = make([][]NilStringUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUnixSeconds
-				elem = make([]NilUnixSeconds, 0)
+				var elem []NilStringUnixSeconds
+				elem = make([]NilStringUnixSeconds, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUnixSeconds
-					if err := elemElem.Decode(d, json.DecodeUnixSeconds); err != nil {
+					var elemElem NilStringUnixSeconds
+					if err := elemElem.Decode(d, json.DecodeStringUnixSeconds); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -27683,7 +32103,7 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestStringUnixRequest(r *http.Request, span trace.Span) (
-	req OptUnixSeconds,
+	req OptStringUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -27714,7 +32134,7 @@ func (s *Server) decodeTestRequestStringUnixRequest(r *http.Request, span trace.
 			return req, close, nil
 		}
 
-		var request OptUnixSeconds
+		var request OptStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -27727,7 +32147,7 @@ func (s *Server) decodeTestRequestStringUnixRequest(r *http.Request, span trace.
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
-			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
+			if err := request.Decode(d, json.DecodeStringUnixSeconds); err != nil {
 				return err
 			}
 			return nil
@@ -27787,7 +32207,7 @@ func (s *Server) decodeTestRequestStringUnixArrayRequest(r *http.Request, span t
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem time.Time
-				v, err := json.DecodeUnixSeconds(d)
+				v, err := json.DecodeStringUnixSeconds(d)
 				elem = v
 				if err != nil {
 					return err
@@ -27857,7 +32277,7 @@ func (s *Server) decodeTestRequestStringUnixArrayArrayRequest(r *http.Request, s
 				elem = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elemElem time.Time
-					v, err := json.DecodeUnixSeconds(d)
+					v, err := json.DecodeStringUnixSeconds(d)
 					elemElem = v
 					if err != nil {
 						return err
@@ -27905,7 +32325,7 @@ func (s *Server) decodeTestRequestStringUnixArrayArrayRequest(r *http.Request, s
 }
 
 func (s *Server) decodeTestRequestStringUnixMicroRequest(r *http.Request, span trace.Span) (
-	req OptUnixMicro,
+	req OptStringUnixMicro,
 	close func() error,
 	rerr error,
 ) {
@@ -27936,7 +32356,7 @@ func (s *Server) decodeTestRequestStringUnixMicroRequest(r *http.Request, span t
 			return req, close, nil
 		}
 
-		var request OptUnixMicro
+		var request OptStringUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -27949,7 +32369,7 @@ func (s *Server) decodeTestRequestStringUnixMicroRequest(r *http.Request, span t
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
-			if err := request.Decode(d, json.DecodeUnixMicro); err != nil {
+			if err := request.Decode(d, json.DecodeStringUnixMicro); err != nil {
 				return err
 			}
 			return nil
@@ -28009,7 +32429,7 @@ func (s *Server) decodeTestRequestStringUnixMicroArrayRequest(r *http.Request, s
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem time.Time
-				v, err := json.DecodeUnixMicro(d)
+				v, err := json.DecodeStringUnixMicro(d)
 				elem = v
 				if err != nil {
 					return err
@@ -28079,7 +32499,7 @@ func (s *Server) decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Reque
 				elem = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elemElem time.Time
-					v, err := json.DecodeUnixMicro(d)
+					v, err := json.DecodeStringUnixMicro(d)
 					elemElem = v
 					if err != nil {
 						return err
@@ -28127,7 +32547,7 @@ func (s *Server) decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Reque
 }
 
 func (s *Server) decodeTestRequestStringUnixMicroNullableRequest(r *http.Request, span trace.Span) (
-	req OptNilUnixMicro,
+	req OptNilStringUnixMicro,
 	close func() error,
 	rerr error,
 ) {
@@ -28158,7 +32578,7 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableRequest(r *http.Request
 			return req, close, nil
 		}
 
-		var request OptNilUnixMicro
+		var request OptNilStringUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28171,7 +32591,7 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableRequest(r *http.Request
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
-			if err := request.Decode(d, json.DecodeUnixMicro); err != nil {
+			if err := request.Decode(d, json.DecodeStringUnixMicro); err != nil {
 				return err
 			}
 			return nil
@@ -28185,7 +32605,7 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableRequest(r *http.Request
 }
 
 func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []NilUnixMicro,
+	req []NilStringUnixMicro,
 	close func() error,
 	rerr error,
 ) {
@@ -28216,7 +32636,7 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Re
 			return req, close, nil
 		}
 
-		var request []NilUnixMicro
+		var request []NilStringUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28228,10 +32648,10 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Re
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([]NilUnixMicro, 0)
+			request = make([]NilStringUnixMicro, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUnixMicro
-				if err := elem.Decode(d, json.DecodeUnixMicro); err != nil {
+				var elem NilStringUnixMicro
+				if err := elem.Decode(d, json.DecodeStringUnixMicro); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -28250,7 +32670,7 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]NilUnixMicro,
+	req [][]NilStringUnixMicro,
 	close func() error,
 	rerr error,
 ) {
@@ -28281,7 +32701,7 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *ht
 			return req, close, nil
 		}
 
-		var request [][]NilUnixMicro
+		var request [][]NilStringUnixMicro
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28293,13 +32713,13 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *ht
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([][]NilUnixMicro, 0)
+			request = make([][]NilStringUnixMicro, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUnixMicro
-				elem = make([]NilUnixMicro, 0)
+				var elem []NilStringUnixMicro
+				elem = make([]NilStringUnixMicro, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUnixMicro
-					if err := elemElem.Decode(d, json.DecodeUnixMicro); err != nil {
+					var elemElem NilStringUnixMicro
+					if err := elemElem.Decode(d, json.DecodeStringUnixMicro); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -28345,7 +32765,7 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *ht
 }
 
 func (s *Server) decodeTestRequestStringUnixMilliRequest(r *http.Request, span trace.Span) (
-	req OptUnixMilli,
+	req OptStringUnixMilli,
 	close func() error,
 	rerr error,
 ) {
@@ -28376,7 +32796,7 @@ func (s *Server) decodeTestRequestStringUnixMilliRequest(r *http.Request, span t
 			return req, close, nil
 		}
 
-		var request OptUnixMilli
+		var request OptStringUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28389,7 +32809,7 @@ func (s *Server) decodeTestRequestStringUnixMilliRequest(r *http.Request, span t
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
-			if err := request.Decode(d, json.DecodeUnixMilli); err != nil {
+			if err := request.Decode(d, json.DecodeStringUnixMilli); err != nil {
 				return err
 			}
 			return nil
@@ -28449,7 +32869,7 @@ func (s *Server) decodeTestRequestStringUnixMilliArrayRequest(r *http.Request, s
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem time.Time
-				v, err := json.DecodeUnixMilli(d)
+				v, err := json.DecodeStringUnixMilli(d)
 				elem = v
 				if err != nil {
 					return err
@@ -28519,7 +32939,7 @@ func (s *Server) decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Reque
 				elem = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elemElem time.Time
-					v, err := json.DecodeUnixMilli(d)
+					v, err := json.DecodeStringUnixMilli(d)
 					elemElem = v
 					if err != nil {
 						return err
@@ -28567,7 +32987,7 @@ func (s *Server) decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Reque
 }
 
 func (s *Server) decodeTestRequestStringUnixMilliNullableRequest(r *http.Request, span trace.Span) (
-	req OptNilUnixMilli,
+	req OptNilStringUnixMilli,
 	close func() error,
 	rerr error,
 ) {
@@ -28598,7 +33018,7 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableRequest(r *http.Request
 			return req, close, nil
 		}
 
-		var request OptNilUnixMilli
+		var request OptNilStringUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28611,7 +33031,7 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableRequest(r *http.Request
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
-			if err := request.Decode(d, json.DecodeUnixMilli); err != nil {
+			if err := request.Decode(d, json.DecodeStringUnixMilli); err != nil {
 				return err
 			}
 			return nil
@@ -28625,7 +33045,7 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableRequest(r *http.Request
 }
 
 func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []NilUnixMilli,
+	req []NilStringUnixMilli,
 	close func() error,
 	rerr error,
 ) {
@@ -28656,7 +33076,7 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Re
 			return req, close, nil
 		}
 
-		var request []NilUnixMilli
+		var request []NilStringUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28668,10 +33088,10 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Re
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([]NilUnixMilli, 0)
+			request = make([]NilStringUnixMilli, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUnixMilli
-				if err := elem.Decode(d, json.DecodeUnixMilli); err != nil {
+				var elem NilStringUnixMilli
+				if err := elem.Decode(d, json.DecodeStringUnixMilli); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -28690,7 +33110,7 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]NilUnixMilli,
+	req [][]NilStringUnixMilli,
 	close func() error,
 	rerr error,
 ) {
@@ -28721,7 +33141,7 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *ht
 			return req, close, nil
 		}
 
-		var request [][]NilUnixMilli
+		var request [][]NilStringUnixMilli
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28733,13 +33153,13 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *ht
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([][]NilUnixMilli, 0)
+			request = make([][]NilStringUnixMilli, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUnixMilli
-				elem = make([]NilUnixMilli, 0)
+				var elem []NilStringUnixMilli
+				elem = make([]NilStringUnixMilli, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUnixMilli
-					if err := elemElem.Decode(d, json.DecodeUnixMilli); err != nil {
+					var elemElem NilStringUnixMilli
+					if err := elemElem.Decode(d, json.DecodeStringUnixMilli); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -28785,7 +33205,7 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *ht
 }
 
 func (s *Server) decodeTestRequestStringUnixNanoRequest(r *http.Request, span trace.Span) (
-	req OptUnixNano,
+	req OptStringUnixNano,
 	close func() error,
 	rerr error,
 ) {
@@ -28816,7 +33236,7 @@ func (s *Server) decodeTestRequestStringUnixNanoRequest(r *http.Request, span tr
 			return req, close, nil
 		}
 
-		var request OptUnixNano
+		var request OptStringUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -28829,7 +33249,7 @@ func (s *Server) decodeTestRequestStringUnixNanoRequest(r *http.Request, span tr
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
-			if err := request.Decode(d, json.DecodeUnixNano); err != nil {
+			if err := request.Decode(d, json.DecodeStringUnixNano); err != nil {
 				return err
 			}
 			return nil
@@ -28889,7 +33309,7 @@ func (s *Server) decodeTestRequestStringUnixNanoArrayRequest(r *http.Request, sp
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem time.Time
-				v, err := json.DecodeUnixNano(d)
+				v, err := json.DecodeStringUnixNano(d)
 				elem = v
 				if err != nil {
 					return err
@@ -28959,7 +33379,7 @@ func (s *Server) decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Reques
 				elem = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elemElem time.Time
-					v, err := json.DecodeUnixNano(d)
+					v, err := json.DecodeStringUnixNano(d)
 					elemElem = v
 					if err != nil {
 						return err
@@ -29007,7 +33427,7 @@ func (s *Server) decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Reques
 }
 
 func (s *Server) decodeTestRequestStringUnixNanoNullableRequest(r *http.Request, span trace.Span) (
-	req OptNilUnixNano,
+	req OptNilStringUnixNano,
 	close func() error,
 	rerr error,
 ) {
@@ -29038,7 +33458,7 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableRequest(r *http.Request,
 			return req, close, nil
 		}
 
-		var request OptNilUnixNano
+		var request OptNilStringUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29051,7 +33471,7 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableRequest(r *http.Request,
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
-			if err := request.Decode(d, json.DecodeUnixNano); err != nil {
+			if err := request.Decode(d, json.DecodeStringUnixNano); err != nil {
 				return err
 			}
 			return nil
@@ -29065,7 +33485,7 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableRequest(r *http.Request,
 }
 
 func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []NilUnixNano,
+	req []NilStringUnixNano,
 	close func() error,
 	rerr error,
 ) {
@@ -29096,7 +33516,7 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Req
 			return req, close, nil
 		}
 
-		var request []NilUnixNano
+		var request []NilStringUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29108,10 +33528,10 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Req
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([]NilUnixNano, 0)
+			request = make([]NilStringUnixNano, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUnixNano
-				if err := elem.Decode(d, json.DecodeUnixNano); err != nil {
+				var elem NilStringUnixNano
+				if err := elem.Decode(d, json.DecodeStringUnixNano); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -29130,7 +33550,7 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]NilUnixNano,
+	req [][]NilStringUnixNano,
 	close func() error,
 	rerr error,
 ) {
@@ -29161,7 +33581,7 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *htt
 			return req, close, nil
 		}
 
-		var request [][]NilUnixNano
+		var request [][]NilStringUnixNano
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29173,13 +33593,13 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *htt
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([][]NilUnixNano, 0)
+			request = make([][]NilStringUnixNano, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUnixNano
-				elem = make([]NilUnixNano, 0)
+				var elem []NilStringUnixNano
+				elem = make([]NilStringUnixNano, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUnixNano
-					if err := elemElem.Decode(d, json.DecodeUnixNano); err != nil {
+					var elemElem NilStringUnixNano
+					if err := elemElem.Decode(d, json.DecodeStringUnixNano); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -29225,7 +33645,7 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *htt
 }
 
 func (s *Server) decodeTestRequestStringUnixNullableRequest(r *http.Request, span trace.Span) (
-	req OptNilUnixSeconds,
+	req OptNilStringUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -29256,7 +33676,7 @@ func (s *Server) decodeTestRequestStringUnixNullableRequest(r *http.Request, spa
 			return req, close, nil
 		}
 
-		var request OptNilUnixSeconds
+		var request OptNilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29269,7 +33689,7 @@ func (s *Server) decodeTestRequestStringUnixNullableRequest(r *http.Request, spa
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
-			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
+			if err := request.Decode(d, json.DecodeStringUnixSeconds); err != nil {
 				return err
 			}
 			return nil
@@ -29283,7 +33703,7 @@ func (s *Server) decodeTestRequestStringUnixNullableRequest(r *http.Request, spa
 }
 
 func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []NilUnixSeconds,
+	req []NilStringUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -29314,7 +33734,7 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request
 			return req, close, nil
 		}
 
-		var request []NilUnixSeconds
+		var request []NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29326,10 +33746,10 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([]NilUnixSeconds, 0)
+			request = make([]NilStringUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUnixSeconds
-				if err := elem.Decode(d, json.DecodeUnixSeconds); err != nil {
+				var elem NilStringUnixSeconds
+				if err := elem.Decode(d, json.DecodeStringUnixSeconds); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -29348,7 +33768,7 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request
 }
 
 func (s *Server) decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]NilUnixSeconds,
+	req [][]NilStringUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -29379,7 +33799,7 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Re
 			return req, close, nil
 		}
 
-		var request [][]NilUnixSeconds
+		var request [][]NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29391,13 +33811,13 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Re
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([][]NilUnixSeconds, 0)
+			request = make([][]NilStringUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUnixSeconds
-				elem = make([]NilUnixSeconds, 0)
+				var elem []NilStringUnixSeconds
+				elem = make([]NilStringUnixSeconds, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUnixSeconds
-					if err := elemElem.Decode(d, json.DecodeUnixSeconds); err != nil {
+					var elemElem NilStringUnixSeconds
+					if err := elemElem.Decode(d, json.DecodeStringUnixSeconds); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -29443,7 +33863,7 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Re
 }
 
 func (s *Server) decodeTestRequestStringUnixSecondsRequest(r *http.Request, span trace.Span) (
-	req OptUnixSeconds,
+	req OptStringUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -29474,7 +33894,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsRequest(r *http.Request, span
 			return req, close, nil
 		}
 
-		var request OptUnixSeconds
+		var request OptStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29487,7 +33907,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsRequest(r *http.Request, span
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
-			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
+			if err := request.Decode(d, json.DecodeStringUnixSeconds); err != nil {
 				return err
 			}
 			return nil
@@ -29547,7 +33967,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsArrayRequest(r *http.Request,
 			request = make([]time.Time, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
 				var elem time.Time
-				v, err := json.DecodeUnixSeconds(d)
+				v, err := json.DecodeStringUnixSeconds(d)
 				elem = v
 				if err != nil {
 					return err
@@ -29617,7 +34037,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Req
 				elem = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
 					var elemElem time.Time
-					v, err := json.DecodeUnixSeconds(d)
+					v, err := json.DecodeStringUnixSeconds(d)
 					elemElem = v
 					if err != nil {
 						return err
@@ -29665,7 +34085,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Req
 }
 
 func (s *Server) decodeTestRequestStringUnixSecondsNullableRequest(r *http.Request, span trace.Span) (
-	req OptNilUnixSeconds,
+	req OptNilStringUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -29696,7 +34116,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableRequest(r *http.Reque
 			return req, close, nil
 		}
 
-		var request OptNilUnixSeconds
+		var request OptNilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29709,7 +34129,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableRequest(r *http.Reque
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
 			request.Reset()
-			if err := request.Decode(d, json.DecodeUnixSeconds); err != nil {
+			if err := request.Decode(d, json.DecodeStringUnixSeconds); err != nil {
 				return err
 			}
 			return nil
@@ -29723,7 +34143,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableRequest(r *http.Reque
 }
 
 func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (
-	req []NilUnixSeconds,
+	req []NilStringUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -29754,7 +34174,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.
 			return req, close, nil
 		}
 
-		var request []NilUnixSeconds
+		var request []NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29766,10 +34186,10 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([]NilUnixSeconds, 0)
+			request = make([]NilStringUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem NilUnixSeconds
-				if err := elem.Decode(d, json.DecodeUnixSeconds); err != nil {
+				var elem NilStringUnixSeconds
+				if err := elem.Decode(d, json.DecodeStringUnixSeconds); err != nil {
 					return err
 				}
 				request = append(request, elem)
@@ -29788,7 +34208,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.
 }
 
 func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (
-	req [][]NilUnixSeconds,
+	req [][]NilStringUnixSeconds,
 	close func() error,
 	rerr error,
 ) {
@@ -29819,7 +34239,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *
 			return req, close, nil
 		}
 
-		var request [][]NilUnixSeconds
+		var request [][]NilStringUnixSeconds
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -29831,13 +34251,13 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			request = make([][]NilUnixSeconds, 0)
+			request = make([][]NilStringUnixSeconds, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []NilUnixSeconds
-				elem = make([]NilUnixSeconds, 0)
+				var elem []NilStringUnixSeconds
+				elem = make([]NilStringUnixSeconds, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem NilUnixSeconds
-					if err := elemElem.Decode(d, json.DecodeUnixSeconds); err != nil {
+					var elemElem NilStringUnixSeconds
+					if err := elemElem.Decode(d, json.DecodeStringUnixSeconds); err != nil {
 						return err
 					}
 					elem = append(elem, elemElem)
@@ -31339,6 +35759,1686 @@ func (s *Server) decodeTestResponseIntegerNullableArrayRequest(r *http.Request, 
 }
 
 func (s *Server) decodeTestResponseIntegerNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixArrayArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixMicroRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixMicroArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixMicroArrayArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixMicroNullableRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixMilliRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixMilliArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixMilliArrayArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixMilliNullableRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixNanoRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixNanoArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixNanoArrayArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixNanoNullableRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixNullableRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixNullableArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixSecondsRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixSecondsArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixSecondsArrayArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixSecondsNullableRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (
+	req string,
+	close func() error,
+	rerr error,
+) {
+	var closers []io.Closer
+	close = func() error {
+		var merr error
+		for _, c := range closers {
+			merr = multierr.Append(merr, c.Close())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "application/json":
+		if r.ContentLength == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		var request string
+		buf, err := io.ReadAll(r.Body)
+		if err != nil {
+			return req, close, err
+		}
+
+		if len(buf) == 0 {
+			return req, close, validate.ErrBodyRequired
+		}
+
+		d := jx.DecodeBytes(buf)
+		if err := func() error {
+			v, err := d.Str()
+			request = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		return request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (
 	req string,
 	close func() error,
 	rerr error,

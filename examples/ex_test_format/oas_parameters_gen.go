@@ -18,68 +18,78 @@ import (
 )
 
 type TestQueryParameterParams struct {
-	Boolean                bool
-	BooleanArray           []bool
-	Integer                int
-	IntegerArray           []int
-	IntegerInt32           int32
-	IntegerInt32Array      []int32
-	IntegerInt64           int64
-	IntegerInt64Array      []int64
-	Number                 float64
-	NumberArray            []float64
-	NumberDouble           float64
-	NumberDoubleArray      []float64
-	NumberFloat            float32
-	NumberFloatArray       []float32
-	NumberInt32            int32
-	NumberInt32Array       []int32
-	NumberInt64            int64
-	NumberInt64Array       []int64
-	String                 string
-	StringArray            []string
-	StringBinary           string
-	StringBinaryArray      []string
-	StringByte             []byte
-	StringByteArray        [][]byte
-	StringDate             time.Time
-	StringDateTime         time.Time
-	StringDateTimeArray    []time.Time
-	StringDateArray        []time.Time
-	StringDuration         time.Duration
-	StringDurationArray    []time.Duration
-	StringEmail            string
-	StringEmailArray       []string
-	StringHostname         string
-	StringHostnameArray    []string
-	StringInt32            int32
-	StringInt32Array       []int32
-	StringInt64            int64
-	StringInt64Array       []int64
-	StringIP               netip.Addr
-	StringIPArray          []netip.Addr
-	StringIpv4             netip.Addr
-	StringIpv4Array        []netip.Addr
-	StringIpv6             netip.Addr
-	StringIpv6Array        []netip.Addr
-	StringPassword         string
-	StringPasswordArray    []string
-	StringTime             time.Time
-	StringTimeArray        []time.Time
-	StringUnix             time.Time
-	StringUnixMicro        time.Time
-	StringUnixMicroArray   []time.Time
-	StringUnixMilli        time.Time
-	StringUnixMilliArray   []time.Time
-	StringUnixNano         time.Time
-	StringUnixNanoArray    []time.Time
-	StringUnixSeconds      time.Time
-	StringUnixSecondsArray []time.Time
-	StringUnixArray        []time.Time
-	StringURI              url.URL
-	StringURIArray         []url.URL
-	StringUUID             uuid.UUID
-	StringUUIDArray        []uuid.UUID
+	Boolean                 bool
+	BooleanArray            []bool
+	Integer                 int
+	IntegerArray            []int
+	IntegerInt32            int32
+	IntegerInt32Array       []int32
+	IntegerInt64            int64
+	IntegerInt64Array       []int64
+	IntegerUnix             time.Time
+	IntegerUnixMicro        time.Time
+	IntegerUnixMicroArray   []time.Time
+	IntegerUnixMilli        time.Time
+	IntegerUnixMilliArray   []time.Time
+	IntegerUnixNano         time.Time
+	IntegerUnixNanoArray    []time.Time
+	IntegerUnixSeconds      time.Time
+	IntegerUnixSecondsArray []time.Time
+	IntegerUnixArray        []time.Time
+	Number                  float64
+	NumberArray             []float64
+	NumberDouble            float64
+	NumberDoubleArray       []float64
+	NumberFloat             float32
+	NumberFloatArray        []float32
+	NumberInt32             int32
+	NumberInt32Array        []int32
+	NumberInt64             int64
+	NumberInt64Array        []int64
+	String                  string
+	StringArray             []string
+	StringBinary            string
+	StringBinaryArray       []string
+	StringByte              []byte
+	StringByteArray         [][]byte
+	StringDate              time.Time
+	StringDateTime          time.Time
+	StringDateTimeArray     []time.Time
+	StringDateArray         []time.Time
+	StringDuration          time.Duration
+	StringDurationArray     []time.Duration
+	StringEmail             string
+	StringEmailArray        []string
+	StringHostname          string
+	StringHostnameArray     []string
+	StringInt32             int32
+	StringInt32Array        []int32
+	StringInt64             int64
+	StringInt64Array        []int64
+	StringIP                netip.Addr
+	StringIPArray           []netip.Addr
+	StringIpv4              netip.Addr
+	StringIpv4Array         []netip.Addr
+	StringIpv6              netip.Addr
+	StringIpv6Array         []netip.Addr
+	StringPassword          string
+	StringPasswordArray     []string
+	StringTime              time.Time
+	StringTimeArray         []time.Time
+	StringUnix              time.Time
+	StringUnixMicro         time.Time
+	StringUnixMicroArray    []time.Time
+	StringUnixMilli         time.Time
+	StringUnixMilliArray    []time.Time
+	StringUnixNano          time.Time
+	StringUnixNanoArray     []time.Time
+	StringUnixSeconds       time.Time
+	StringUnixSecondsArray  []time.Time
+	StringUnixArray         []time.Time
+	StringURI               url.URL
+	StringURIArray          []url.URL
+	StringUUID              uuid.UUID
+	StringUUIDArray         []uuid.UUID
 }
 
 func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params TestQueryParameterParams, _ error) {
@@ -379,6 +389,381 @@ func decodeTestQueryParameterParams(args [0]string, r *http.Request) (params Tes
 				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: integer_int64_array: invalid")
+			}
+		} else {
+			return params, errors.Wrap(err, "query")
+		}
+	}
+	// Decode query: integer_unix.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_unix",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToUnixSeconds(val)
+				if err != nil {
+					return err
+				}
+
+				params.IntegerUnix = c
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: integer_unix: parse")
+			}
+		} else {
+			return params, errors.Wrap(err, "query")
+		}
+	}
+	// Decode query: integer_unix-micro.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_unix-micro",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToUnixMicro(val)
+				if err != nil {
+					return err
+				}
+
+				params.IntegerUnixMicro = c
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: integer_unix-micro: parse")
+			}
+		} else {
+			return params, errors.Wrap(err, "query")
+		}
+	}
+	// Decode query: integer_unix-micro_array.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_unix-micro_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotIntegerUnixMicroArrayVal time.Time
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToUnixMicro(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotIntegerUnixMicroArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.IntegerUnixMicroArray = append(params.IntegerUnixMicroArray, paramsDotIntegerUnixMicroArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return params, errors.Wrap(err, "query: integer_unix-micro_array: parse")
+			}
+			if err := func() error {
+				if params.IntegerUnixMicroArray == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "query: integer_unix-micro_array: invalid")
+			}
+		} else {
+			return params, errors.Wrap(err, "query")
+		}
+	}
+	// Decode query: integer_unix-milli.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_unix-milli",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToUnixMilli(val)
+				if err != nil {
+					return err
+				}
+
+				params.IntegerUnixMilli = c
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: integer_unix-milli: parse")
+			}
+		} else {
+			return params, errors.Wrap(err, "query")
+		}
+	}
+	// Decode query: integer_unix-milli_array.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_unix-milli_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotIntegerUnixMilliArrayVal time.Time
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToUnixMilli(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotIntegerUnixMilliArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.IntegerUnixMilliArray = append(params.IntegerUnixMilliArray, paramsDotIntegerUnixMilliArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return params, errors.Wrap(err, "query: integer_unix-milli_array: parse")
+			}
+			if err := func() error {
+				if params.IntegerUnixMilliArray == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "query: integer_unix-milli_array: invalid")
+			}
+		} else {
+			return params, errors.Wrap(err, "query")
+		}
+	}
+	// Decode query: integer_unix-nano.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_unix-nano",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToUnixNano(val)
+				if err != nil {
+					return err
+				}
+
+				params.IntegerUnixNano = c
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: integer_unix-nano: parse")
+			}
+		} else {
+			return params, errors.Wrap(err, "query")
+		}
+	}
+	// Decode query: integer_unix-nano_array.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_unix-nano_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotIntegerUnixNanoArrayVal time.Time
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToUnixNano(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotIntegerUnixNanoArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.IntegerUnixNanoArray = append(params.IntegerUnixNanoArray, paramsDotIntegerUnixNanoArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return params, errors.Wrap(err, "query: integer_unix-nano_array: parse")
+			}
+			if err := func() error {
+				if params.IntegerUnixNanoArray == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "query: integer_unix-nano_array: invalid")
+			}
+		} else {
+			return params, errors.Wrap(err, "query")
+		}
+	}
+	// Decode query: integer_unix-seconds.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_unix-seconds",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToUnixSeconds(val)
+				if err != nil {
+					return err
+				}
+
+				params.IntegerUnixSeconds = c
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: integer_unix-seconds: parse")
+			}
+		} else {
+			return params, errors.Wrap(err, "query")
+		}
+	}
+	// Decode query: integer_unix-seconds_array.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_unix-seconds_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotIntegerUnixSecondsArrayVal time.Time
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToUnixSeconds(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotIntegerUnixSecondsArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.IntegerUnixSecondsArray = append(params.IntegerUnixSecondsArray, paramsDotIntegerUnixSecondsArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return params, errors.Wrap(err, "query: integer_unix-seconds_array: parse")
+			}
+			if err := func() error {
+				if params.IntegerUnixSecondsArray == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "query: integer_unix-seconds_array: invalid")
+			}
+		} else {
+			return params, errors.Wrap(err, "query")
+		}
+	}
+	// Decode query: integer_unix_array.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "integer_unix_array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return d.DecodeArray(func(d uri.Decoder) error {
+					var paramsDotIntegerUnixArrayVal time.Time
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToUnixSeconds(val)
+						if err != nil {
+							return err
+						}
+
+						paramsDotIntegerUnixArrayVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					params.IntegerUnixArray = append(params.IntegerUnixArray, paramsDotIntegerUnixArrayVal)
+					return nil
+				})
+			}); err != nil {
+				return params, errors.Wrap(err, "query: integer_unix_array: parse")
+			}
+			if err := func() error {
+				if params.IntegerUnixArray == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "query: integer_unix_array: invalid")
 			}
 		} else {
 			return params, errors.Wrap(err, "query")

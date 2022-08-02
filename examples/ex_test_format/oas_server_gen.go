@@ -129,6 +129,126 @@ type Handler interface {
 	//
 	// POST /test_request_integer_nullable_array_array
 	TestRequestIntegerNullableArrayArray(ctx context.Context, req [][]NilInt) (Error, error)
+	// TestRequestIntegerUnix implements test_request_integer_unix operation.
+	//
+	// POST /test_request_integer_unix
+	TestRequestIntegerUnix(ctx context.Context, req OptUnixSeconds) (Error, error)
+	// TestRequestIntegerUnixArray implements test_request_integer_unix_array operation.
+	//
+	// POST /test_request_integer_unix_array
+	TestRequestIntegerUnixArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestIntegerUnixArrayArray implements test_request_integer_unix_array_array operation.
+	//
+	// POST /test_request_integer_unix_array_array
+	TestRequestIntegerUnixArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestIntegerUnixMicro implements test_request_integer_unix-micro operation.
+	//
+	// POST /test_request_integer_unix-micro
+	TestRequestIntegerUnixMicro(ctx context.Context, req OptUnixMicro) (Error, error)
+	// TestRequestIntegerUnixMicroArray implements test_request_integer_unix-micro_array operation.
+	//
+	// POST /test_request_integer_unix-micro_array
+	TestRequestIntegerUnixMicroArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestIntegerUnixMicroArrayArray implements test_request_integer_unix-micro_array_array operation.
+	//
+	// POST /test_request_integer_unix-micro_array_array
+	TestRequestIntegerUnixMicroArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestIntegerUnixMicroNullable implements test_request_integer_unix-micro_nullable operation.
+	//
+	// POST /test_request_integer_unix-micro_nullable
+	TestRequestIntegerUnixMicroNullable(ctx context.Context, req OptNilUnixMicro) (Error, error)
+	// TestRequestIntegerUnixMicroNullableArray implements test_request_integer_unix-micro_nullable_array operation.
+	//
+	// POST /test_request_integer_unix-micro_nullable_array
+	TestRequestIntegerUnixMicroNullableArray(ctx context.Context, req []NilUnixMicro) (Error, error)
+	// TestRequestIntegerUnixMicroNullableArrayArray implements test_request_integer_unix-micro_nullable_array_array operation.
+	//
+	// POST /test_request_integer_unix-micro_nullable_array_array
+	TestRequestIntegerUnixMicroNullableArrayArray(ctx context.Context, req [][]NilUnixMicro) (Error, error)
+	// TestRequestIntegerUnixMilli implements test_request_integer_unix-milli operation.
+	//
+	// POST /test_request_integer_unix-milli
+	TestRequestIntegerUnixMilli(ctx context.Context, req OptUnixMilli) (Error, error)
+	// TestRequestIntegerUnixMilliArray implements test_request_integer_unix-milli_array operation.
+	//
+	// POST /test_request_integer_unix-milli_array
+	TestRequestIntegerUnixMilliArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestIntegerUnixMilliArrayArray implements test_request_integer_unix-milli_array_array operation.
+	//
+	// POST /test_request_integer_unix-milli_array_array
+	TestRequestIntegerUnixMilliArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestIntegerUnixMilliNullable implements test_request_integer_unix-milli_nullable operation.
+	//
+	// POST /test_request_integer_unix-milli_nullable
+	TestRequestIntegerUnixMilliNullable(ctx context.Context, req OptNilUnixMilli) (Error, error)
+	// TestRequestIntegerUnixMilliNullableArray implements test_request_integer_unix-milli_nullable_array operation.
+	//
+	// POST /test_request_integer_unix-milli_nullable_array
+	TestRequestIntegerUnixMilliNullableArray(ctx context.Context, req []NilUnixMilli) (Error, error)
+	// TestRequestIntegerUnixMilliNullableArrayArray implements test_request_integer_unix-milli_nullable_array_array operation.
+	//
+	// POST /test_request_integer_unix-milli_nullable_array_array
+	TestRequestIntegerUnixMilliNullableArrayArray(ctx context.Context, req [][]NilUnixMilli) (Error, error)
+	// TestRequestIntegerUnixNano implements test_request_integer_unix-nano operation.
+	//
+	// POST /test_request_integer_unix-nano
+	TestRequestIntegerUnixNano(ctx context.Context, req OptUnixNano) (Error, error)
+	// TestRequestIntegerUnixNanoArray implements test_request_integer_unix-nano_array operation.
+	//
+	// POST /test_request_integer_unix-nano_array
+	TestRequestIntegerUnixNanoArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestIntegerUnixNanoArrayArray implements test_request_integer_unix-nano_array_array operation.
+	//
+	// POST /test_request_integer_unix-nano_array_array
+	TestRequestIntegerUnixNanoArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestIntegerUnixNanoNullable implements test_request_integer_unix-nano_nullable operation.
+	//
+	// POST /test_request_integer_unix-nano_nullable
+	TestRequestIntegerUnixNanoNullable(ctx context.Context, req OptNilUnixNano) (Error, error)
+	// TestRequestIntegerUnixNanoNullableArray implements test_request_integer_unix-nano_nullable_array operation.
+	//
+	// POST /test_request_integer_unix-nano_nullable_array
+	TestRequestIntegerUnixNanoNullableArray(ctx context.Context, req []NilUnixNano) (Error, error)
+	// TestRequestIntegerUnixNanoNullableArrayArray implements test_request_integer_unix-nano_nullable_array_array operation.
+	//
+	// POST /test_request_integer_unix-nano_nullable_array_array
+	TestRequestIntegerUnixNanoNullableArrayArray(ctx context.Context, req [][]NilUnixNano) (Error, error)
+	// TestRequestIntegerUnixNullable implements test_request_integer_unix_nullable operation.
+	//
+	// POST /test_request_integer_unix_nullable
+	TestRequestIntegerUnixNullable(ctx context.Context, req OptNilUnixSeconds) (Error, error)
+	// TestRequestIntegerUnixNullableArray implements test_request_integer_unix_nullable_array operation.
+	//
+	// POST /test_request_integer_unix_nullable_array
+	TestRequestIntegerUnixNullableArray(ctx context.Context, req []NilUnixSeconds) (Error, error)
+	// TestRequestIntegerUnixNullableArrayArray implements test_request_integer_unix_nullable_array_array operation.
+	//
+	// POST /test_request_integer_unix_nullable_array_array
+	TestRequestIntegerUnixNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (Error, error)
+	// TestRequestIntegerUnixSeconds implements test_request_integer_unix-seconds operation.
+	//
+	// POST /test_request_integer_unix-seconds
+	TestRequestIntegerUnixSeconds(ctx context.Context, req OptUnixSeconds) (Error, error)
+	// TestRequestIntegerUnixSecondsArray implements test_request_integer_unix-seconds_array operation.
+	//
+	// POST /test_request_integer_unix-seconds_array
+	TestRequestIntegerUnixSecondsArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestIntegerUnixSecondsArrayArray implements test_request_integer_unix-seconds_array_array operation.
+	//
+	// POST /test_request_integer_unix-seconds_array_array
+	TestRequestIntegerUnixSecondsArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestIntegerUnixSecondsNullable implements test_request_integer_unix-seconds_nullable operation.
+	//
+	// POST /test_request_integer_unix-seconds_nullable
+	TestRequestIntegerUnixSecondsNullable(ctx context.Context, req OptNilUnixSeconds) (Error, error)
+	// TestRequestIntegerUnixSecondsNullableArray implements test_request_integer_unix-seconds_nullable_array operation.
+	//
+	// POST /test_request_integer_unix-seconds_nullable_array
+	TestRequestIntegerUnixSecondsNullableArray(ctx context.Context, req []NilUnixSeconds) (Error, error)
+	// TestRequestIntegerUnixSecondsNullableArrayArray implements test_request_integer_unix-seconds_nullable_array_array operation.
+	//
+	// POST /test_request_integer_unix-seconds_nullable_array_array
+	TestRequestIntegerUnixSecondsNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (Error, error)
 	// TestRequestNull implements test_request_null operation.
 	//
 	// POST /test_request_null
@@ -381,6 +501,126 @@ type Handler interface {
 	//
 	// POST /test_request_required_integer_nullable_array_array
 	TestRequestRequiredIntegerNullableArrayArray(ctx context.Context, req [][]NilInt) (Error, error)
+	// TestRequestRequiredIntegerUnix implements test_request_required_integer_unix operation.
+	//
+	// POST /test_request_required_integer_unix
+	TestRequestRequiredIntegerUnix(ctx context.Context, req time.Time) (Error, error)
+	// TestRequestRequiredIntegerUnixArray implements test_request_required_integer_unix_array operation.
+	//
+	// POST /test_request_required_integer_unix_array
+	TestRequestRequiredIntegerUnixArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredIntegerUnixArrayArray implements test_request_required_integer_unix_array_array operation.
+	//
+	// POST /test_request_required_integer_unix_array_array
+	TestRequestRequiredIntegerUnixArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredIntegerUnixMicro implements test_request_required_integer_unix-micro operation.
+	//
+	// POST /test_request_required_integer_unix-micro
+	TestRequestRequiredIntegerUnixMicro(ctx context.Context, req time.Time) (Error, error)
+	// TestRequestRequiredIntegerUnixMicroArray implements test_request_required_integer_unix-micro_array operation.
+	//
+	// POST /test_request_required_integer_unix-micro_array
+	TestRequestRequiredIntegerUnixMicroArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredIntegerUnixMicroArrayArray implements test_request_required_integer_unix-micro_array_array operation.
+	//
+	// POST /test_request_required_integer_unix-micro_array_array
+	TestRequestRequiredIntegerUnixMicroArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredIntegerUnixMicroNullable implements test_request_required_integer_unix-micro_nullable operation.
+	//
+	// POST /test_request_required_integer_unix-micro_nullable
+	TestRequestRequiredIntegerUnixMicroNullable(ctx context.Context, req NilUnixMicro) (Error, error)
+	// TestRequestRequiredIntegerUnixMicroNullableArray implements test_request_required_integer_unix-micro_nullable_array operation.
+	//
+	// POST /test_request_required_integer_unix-micro_nullable_array
+	TestRequestRequiredIntegerUnixMicroNullableArray(ctx context.Context, req []NilUnixMicro) (Error, error)
+	// TestRequestRequiredIntegerUnixMicroNullableArrayArray implements test_request_required_integer_unix-micro_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_unix-micro_nullable_array_array
+	TestRequestRequiredIntegerUnixMicroNullableArrayArray(ctx context.Context, req [][]NilUnixMicro) (Error, error)
+	// TestRequestRequiredIntegerUnixMilli implements test_request_required_integer_unix-milli operation.
+	//
+	// POST /test_request_required_integer_unix-milli
+	TestRequestRequiredIntegerUnixMilli(ctx context.Context, req time.Time) (Error, error)
+	// TestRequestRequiredIntegerUnixMilliArray implements test_request_required_integer_unix-milli_array operation.
+	//
+	// POST /test_request_required_integer_unix-milli_array
+	TestRequestRequiredIntegerUnixMilliArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredIntegerUnixMilliArrayArray implements test_request_required_integer_unix-milli_array_array operation.
+	//
+	// POST /test_request_required_integer_unix-milli_array_array
+	TestRequestRequiredIntegerUnixMilliArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredIntegerUnixMilliNullable implements test_request_required_integer_unix-milli_nullable operation.
+	//
+	// POST /test_request_required_integer_unix-milli_nullable
+	TestRequestRequiredIntegerUnixMilliNullable(ctx context.Context, req NilUnixMilli) (Error, error)
+	// TestRequestRequiredIntegerUnixMilliNullableArray implements test_request_required_integer_unix-milli_nullable_array operation.
+	//
+	// POST /test_request_required_integer_unix-milli_nullable_array
+	TestRequestRequiredIntegerUnixMilliNullableArray(ctx context.Context, req []NilUnixMilli) (Error, error)
+	// TestRequestRequiredIntegerUnixMilliNullableArrayArray implements test_request_required_integer_unix-milli_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_unix-milli_nullable_array_array
+	TestRequestRequiredIntegerUnixMilliNullableArrayArray(ctx context.Context, req [][]NilUnixMilli) (Error, error)
+	// TestRequestRequiredIntegerUnixNano implements test_request_required_integer_unix-nano operation.
+	//
+	// POST /test_request_required_integer_unix-nano
+	TestRequestRequiredIntegerUnixNano(ctx context.Context, req time.Time) (Error, error)
+	// TestRequestRequiredIntegerUnixNanoArray implements test_request_required_integer_unix-nano_array operation.
+	//
+	// POST /test_request_required_integer_unix-nano_array
+	TestRequestRequiredIntegerUnixNanoArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredIntegerUnixNanoArrayArray implements test_request_required_integer_unix-nano_array_array operation.
+	//
+	// POST /test_request_required_integer_unix-nano_array_array
+	TestRequestRequiredIntegerUnixNanoArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredIntegerUnixNanoNullable implements test_request_required_integer_unix-nano_nullable operation.
+	//
+	// POST /test_request_required_integer_unix-nano_nullable
+	TestRequestRequiredIntegerUnixNanoNullable(ctx context.Context, req NilUnixNano) (Error, error)
+	// TestRequestRequiredIntegerUnixNanoNullableArray implements test_request_required_integer_unix-nano_nullable_array operation.
+	//
+	// POST /test_request_required_integer_unix-nano_nullable_array
+	TestRequestRequiredIntegerUnixNanoNullableArray(ctx context.Context, req []NilUnixNano) (Error, error)
+	// TestRequestRequiredIntegerUnixNanoNullableArrayArray implements test_request_required_integer_unix-nano_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_unix-nano_nullable_array_array
+	TestRequestRequiredIntegerUnixNanoNullableArrayArray(ctx context.Context, req [][]NilUnixNano) (Error, error)
+	// TestRequestRequiredIntegerUnixNullable implements test_request_required_integer_unix_nullable operation.
+	//
+	// POST /test_request_required_integer_unix_nullable
+	TestRequestRequiredIntegerUnixNullable(ctx context.Context, req NilUnixSeconds) (Error, error)
+	// TestRequestRequiredIntegerUnixNullableArray implements test_request_required_integer_unix_nullable_array operation.
+	//
+	// POST /test_request_required_integer_unix_nullable_array
+	TestRequestRequiredIntegerUnixNullableArray(ctx context.Context, req []NilUnixSeconds) (Error, error)
+	// TestRequestRequiredIntegerUnixNullableArrayArray implements test_request_required_integer_unix_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_unix_nullable_array_array
+	TestRequestRequiredIntegerUnixNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (Error, error)
+	// TestRequestRequiredIntegerUnixSeconds implements test_request_required_integer_unix-seconds operation.
+	//
+	// POST /test_request_required_integer_unix-seconds
+	TestRequestRequiredIntegerUnixSeconds(ctx context.Context, req time.Time) (Error, error)
+	// TestRequestRequiredIntegerUnixSecondsArray implements test_request_required_integer_unix-seconds_array operation.
+	//
+	// POST /test_request_required_integer_unix-seconds_array
+	TestRequestRequiredIntegerUnixSecondsArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredIntegerUnixSecondsArrayArray implements test_request_required_integer_unix-seconds_array_array operation.
+	//
+	// POST /test_request_required_integer_unix-seconds_array_array
+	TestRequestRequiredIntegerUnixSecondsArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredIntegerUnixSecondsNullable implements test_request_required_integer_unix-seconds_nullable operation.
+	//
+	// POST /test_request_required_integer_unix-seconds_nullable
+	TestRequestRequiredIntegerUnixSecondsNullable(ctx context.Context, req NilUnixSeconds) (Error, error)
+	// TestRequestRequiredIntegerUnixSecondsNullableArray implements test_request_required_integer_unix-seconds_nullable_array operation.
+	//
+	// POST /test_request_required_integer_unix-seconds_nullable_array
+	TestRequestRequiredIntegerUnixSecondsNullableArray(ctx context.Context, req []NilUnixSeconds) (Error, error)
+	// TestRequestRequiredIntegerUnixSecondsNullableArrayArray implements test_request_required_integer_unix-seconds_nullable_array_array operation.
+	//
+	// POST /test_request_required_integer_unix-seconds_nullable_array_array
+	TestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (Error, error)
 	// TestRequestRequiredNull implements test_request_required_null operation.
 	//
 	// POST /test_request_required_null
@@ -960,15 +1200,15 @@ type Handler interface {
 	// TestRequestRequiredStringUnixMicroNullable implements test_request_required_string_unix-micro_nullable operation.
 	//
 	// POST /test_request_required_string_unix-micro_nullable
-	TestRequestRequiredStringUnixMicroNullable(ctx context.Context, req NilUnixMicro) (Error, error)
+	TestRequestRequiredStringUnixMicroNullable(ctx context.Context, req NilStringUnixMicro) (Error, error)
 	// TestRequestRequiredStringUnixMicroNullableArray implements test_request_required_string_unix-micro_nullable_array operation.
 	//
 	// POST /test_request_required_string_unix-micro_nullable_array
-	TestRequestRequiredStringUnixMicroNullableArray(ctx context.Context, req []NilUnixMicro) (Error, error)
+	TestRequestRequiredStringUnixMicroNullableArray(ctx context.Context, req []NilStringUnixMicro) (Error, error)
 	// TestRequestRequiredStringUnixMicroNullableArrayArray implements test_request_required_string_unix-micro_nullable_array_array operation.
 	//
 	// POST /test_request_required_string_unix-micro_nullable_array_array
-	TestRequestRequiredStringUnixMicroNullableArrayArray(ctx context.Context, req [][]NilUnixMicro) (Error, error)
+	TestRequestRequiredStringUnixMicroNullableArrayArray(ctx context.Context, req [][]NilStringUnixMicro) (Error, error)
 	// TestRequestRequiredStringUnixMilli implements test_request_required_string_unix-milli operation.
 	//
 	// POST /test_request_required_string_unix-milli
@@ -984,15 +1224,15 @@ type Handler interface {
 	// TestRequestRequiredStringUnixMilliNullable implements test_request_required_string_unix-milli_nullable operation.
 	//
 	// POST /test_request_required_string_unix-milli_nullable
-	TestRequestRequiredStringUnixMilliNullable(ctx context.Context, req NilUnixMilli) (Error, error)
+	TestRequestRequiredStringUnixMilliNullable(ctx context.Context, req NilStringUnixMilli) (Error, error)
 	// TestRequestRequiredStringUnixMilliNullableArray implements test_request_required_string_unix-milli_nullable_array operation.
 	//
 	// POST /test_request_required_string_unix-milli_nullable_array
-	TestRequestRequiredStringUnixMilliNullableArray(ctx context.Context, req []NilUnixMilli) (Error, error)
+	TestRequestRequiredStringUnixMilliNullableArray(ctx context.Context, req []NilStringUnixMilli) (Error, error)
 	// TestRequestRequiredStringUnixMilliNullableArrayArray implements test_request_required_string_unix-milli_nullable_array_array operation.
 	//
 	// POST /test_request_required_string_unix-milli_nullable_array_array
-	TestRequestRequiredStringUnixMilliNullableArrayArray(ctx context.Context, req [][]NilUnixMilli) (Error, error)
+	TestRequestRequiredStringUnixMilliNullableArrayArray(ctx context.Context, req [][]NilStringUnixMilli) (Error, error)
 	// TestRequestRequiredStringUnixNano implements test_request_required_string_unix-nano operation.
 	//
 	// POST /test_request_required_string_unix-nano
@@ -1008,27 +1248,27 @@ type Handler interface {
 	// TestRequestRequiredStringUnixNanoNullable implements test_request_required_string_unix-nano_nullable operation.
 	//
 	// POST /test_request_required_string_unix-nano_nullable
-	TestRequestRequiredStringUnixNanoNullable(ctx context.Context, req NilUnixNano) (Error, error)
+	TestRequestRequiredStringUnixNanoNullable(ctx context.Context, req NilStringUnixNano) (Error, error)
 	// TestRequestRequiredStringUnixNanoNullableArray implements test_request_required_string_unix-nano_nullable_array operation.
 	//
 	// POST /test_request_required_string_unix-nano_nullable_array
-	TestRequestRequiredStringUnixNanoNullableArray(ctx context.Context, req []NilUnixNano) (Error, error)
+	TestRequestRequiredStringUnixNanoNullableArray(ctx context.Context, req []NilStringUnixNano) (Error, error)
 	// TestRequestRequiredStringUnixNanoNullableArrayArray implements test_request_required_string_unix-nano_nullable_array_array operation.
 	//
 	// POST /test_request_required_string_unix-nano_nullable_array_array
-	TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context.Context, req [][]NilUnixNano) (Error, error)
+	TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context.Context, req [][]NilStringUnixNano) (Error, error)
 	// TestRequestRequiredStringUnixNullable implements test_request_required_string_unix_nullable operation.
 	//
 	// POST /test_request_required_string_unix_nullable
-	TestRequestRequiredStringUnixNullable(ctx context.Context, req NilUnixSeconds) (Error, error)
+	TestRequestRequiredStringUnixNullable(ctx context.Context, req NilStringUnixSeconds) (Error, error)
 	// TestRequestRequiredStringUnixNullableArray implements test_request_required_string_unix_nullable_array operation.
 	//
 	// POST /test_request_required_string_unix_nullable_array
-	TestRequestRequiredStringUnixNullableArray(ctx context.Context, req []NilUnixSeconds) (Error, error)
+	TestRequestRequiredStringUnixNullableArray(ctx context.Context, req []NilStringUnixSeconds) (Error, error)
 	// TestRequestRequiredStringUnixNullableArrayArray implements test_request_required_string_unix_nullable_array_array operation.
 	//
 	// POST /test_request_required_string_unix_nullable_array_array
-	TestRequestRequiredStringUnixNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (Error, error)
+	TestRequestRequiredStringUnixNullableArrayArray(ctx context.Context, req [][]NilStringUnixSeconds) (Error, error)
 	// TestRequestRequiredStringUnixSeconds implements test_request_required_string_unix-seconds operation.
 	//
 	// POST /test_request_required_string_unix-seconds
@@ -1044,15 +1284,15 @@ type Handler interface {
 	// TestRequestRequiredStringUnixSecondsNullable implements test_request_required_string_unix-seconds_nullable operation.
 	//
 	// POST /test_request_required_string_unix-seconds_nullable
-	TestRequestRequiredStringUnixSecondsNullable(ctx context.Context, req NilUnixSeconds) (Error, error)
+	TestRequestRequiredStringUnixSecondsNullable(ctx context.Context, req NilStringUnixSeconds) (Error, error)
 	// TestRequestRequiredStringUnixSecondsNullableArray implements test_request_required_string_unix-seconds_nullable_array operation.
 	//
 	// POST /test_request_required_string_unix-seconds_nullable_array
-	TestRequestRequiredStringUnixSecondsNullableArray(ctx context.Context, req []NilUnixSeconds) (Error, error)
+	TestRequestRequiredStringUnixSecondsNullableArray(ctx context.Context, req []NilStringUnixSeconds) (Error, error)
 	// TestRequestRequiredStringUnixSecondsNullableArrayArray implements test_request_required_string_unix-seconds_nullable_array_array operation.
 	//
 	// POST /test_request_required_string_unix-seconds_nullable_array_array
-	TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (Error, error)
+	TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx context.Context, req [][]NilStringUnixSeconds) (Error, error)
 	// TestRequestString implements test_request_string operation.
 	//
 	// POST /test_request_string
@@ -1464,7 +1704,7 @@ type Handler interface {
 	// TestRequestStringUnix implements test_request_string_unix operation.
 	//
 	// POST /test_request_string_unix
-	TestRequestStringUnix(ctx context.Context, req OptUnixSeconds) (Error, error)
+	TestRequestStringUnix(ctx context.Context, req OptStringUnixSeconds) (Error, error)
 	// TestRequestStringUnixArray implements test_request_string_unix_array operation.
 	//
 	// POST /test_request_string_unix_array
@@ -1476,7 +1716,7 @@ type Handler interface {
 	// TestRequestStringUnixMicro implements test_request_string_unix-micro operation.
 	//
 	// POST /test_request_string_unix-micro
-	TestRequestStringUnixMicro(ctx context.Context, req OptUnixMicro) (Error, error)
+	TestRequestStringUnixMicro(ctx context.Context, req OptStringUnixMicro) (Error, error)
 	// TestRequestStringUnixMicroArray implements test_request_string_unix-micro_array operation.
 	//
 	// POST /test_request_string_unix-micro_array
@@ -1488,19 +1728,19 @@ type Handler interface {
 	// TestRequestStringUnixMicroNullable implements test_request_string_unix-micro_nullable operation.
 	//
 	// POST /test_request_string_unix-micro_nullable
-	TestRequestStringUnixMicroNullable(ctx context.Context, req OptNilUnixMicro) (Error, error)
+	TestRequestStringUnixMicroNullable(ctx context.Context, req OptNilStringUnixMicro) (Error, error)
 	// TestRequestStringUnixMicroNullableArray implements test_request_string_unix-micro_nullable_array operation.
 	//
 	// POST /test_request_string_unix-micro_nullable_array
-	TestRequestStringUnixMicroNullableArray(ctx context.Context, req []NilUnixMicro) (Error, error)
+	TestRequestStringUnixMicroNullableArray(ctx context.Context, req []NilStringUnixMicro) (Error, error)
 	// TestRequestStringUnixMicroNullableArrayArray implements test_request_string_unix-micro_nullable_array_array operation.
 	//
 	// POST /test_request_string_unix-micro_nullable_array_array
-	TestRequestStringUnixMicroNullableArrayArray(ctx context.Context, req [][]NilUnixMicro) (Error, error)
+	TestRequestStringUnixMicroNullableArrayArray(ctx context.Context, req [][]NilStringUnixMicro) (Error, error)
 	// TestRequestStringUnixMilli implements test_request_string_unix-milli operation.
 	//
 	// POST /test_request_string_unix-milli
-	TestRequestStringUnixMilli(ctx context.Context, req OptUnixMilli) (Error, error)
+	TestRequestStringUnixMilli(ctx context.Context, req OptStringUnixMilli) (Error, error)
 	// TestRequestStringUnixMilliArray implements test_request_string_unix-milli_array operation.
 	//
 	// POST /test_request_string_unix-milli_array
@@ -1512,19 +1752,19 @@ type Handler interface {
 	// TestRequestStringUnixMilliNullable implements test_request_string_unix-milli_nullable operation.
 	//
 	// POST /test_request_string_unix-milli_nullable
-	TestRequestStringUnixMilliNullable(ctx context.Context, req OptNilUnixMilli) (Error, error)
+	TestRequestStringUnixMilliNullable(ctx context.Context, req OptNilStringUnixMilli) (Error, error)
 	// TestRequestStringUnixMilliNullableArray implements test_request_string_unix-milli_nullable_array operation.
 	//
 	// POST /test_request_string_unix-milli_nullable_array
-	TestRequestStringUnixMilliNullableArray(ctx context.Context, req []NilUnixMilli) (Error, error)
+	TestRequestStringUnixMilliNullableArray(ctx context.Context, req []NilStringUnixMilli) (Error, error)
 	// TestRequestStringUnixMilliNullableArrayArray implements test_request_string_unix-milli_nullable_array_array operation.
 	//
 	// POST /test_request_string_unix-milli_nullable_array_array
-	TestRequestStringUnixMilliNullableArrayArray(ctx context.Context, req [][]NilUnixMilli) (Error, error)
+	TestRequestStringUnixMilliNullableArrayArray(ctx context.Context, req [][]NilStringUnixMilli) (Error, error)
 	// TestRequestStringUnixNano implements test_request_string_unix-nano operation.
 	//
 	// POST /test_request_string_unix-nano
-	TestRequestStringUnixNano(ctx context.Context, req OptUnixNano) (Error, error)
+	TestRequestStringUnixNano(ctx context.Context, req OptStringUnixNano) (Error, error)
 	// TestRequestStringUnixNanoArray implements test_request_string_unix-nano_array operation.
 	//
 	// POST /test_request_string_unix-nano_array
@@ -1536,31 +1776,31 @@ type Handler interface {
 	// TestRequestStringUnixNanoNullable implements test_request_string_unix-nano_nullable operation.
 	//
 	// POST /test_request_string_unix-nano_nullable
-	TestRequestStringUnixNanoNullable(ctx context.Context, req OptNilUnixNano) (Error, error)
+	TestRequestStringUnixNanoNullable(ctx context.Context, req OptNilStringUnixNano) (Error, error)
 	// TestRequestStringUnixNanoNullableArray implements test_request_string_unix-nano_nullable_array operation.
 	//
 	// POST /test_request_string_unix-nano_nullable_array
-	TestRequestStringUnixNanoNullableArray(ctx context.Context, req []NilUnixNano) (Error, error)
+	TestRequestStringUnixNanoNullableArray(ctx context.Context, req []NilStringUnixNano) (Error, error)
 	// TestRequestStringUnixNanoNullableArrayArray implements test_request_string_unix-nano_nullable_array_array operation.
 	//
 	// POST /test_request_string_unix-nano_nullable_array_array
-	TestRequestStringUnixNanoNullableArrayArray(ctx context.Context, req [][]NilUnixNano) (Error, error)
+	TestRequestStringUnixNanoNullableArrayArray(ctx context.Context, req [][]NilStringUnixNano) (Error, error)
 	// TestRequestStringUnixNullable implements test_request_string_unix_nullable operation.
 	//
 	// POST /test_request_string_unix_nullable
-	TestRequestStringUnixNullable(ctx context.Context, req OptNilUnixSeconds) (Error, error)
+	TestRequestStringUnixNullable(ctx context.Context, req OptNilStringUnixSeconds) (Error, error)
 	// TestRequestStringUnixNullableArray implements test_request_string_unix_nullable_array operation.
 	//
 	// POST /test_request_string_unix_nullable_array
-	TestRequestStringUnixNullableArray(ctx context.Context, req []NilUnixSeconds) (Error, error)
+	TestRequestStringUnixNullableArray(ctx context.Context, req []NilStringUnixSeconds) (Error, error)
 	// TestRequestStringUnixNullableArrayArray implements test_request_string_unix_nullable_array_array operation.
 	//
 	// POST /test_request_string_unix_nullable_array_array
-	TestRequestStringUnixNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (Error, error)
+	TestRequestStringUnixNullableArrayArray(ctx context.Context, req [][]NilStringUnixSeconds) (Error, error)
 	// TestRequestStringUnixSeconds implements test_request_string_unix-seconds operation.
 	//
 	// POST /test_request_string_unix-seconds
-	TestRequestStringUnixSeconds(ctx context.Context, req OptUnixSeconds) (Error, error)
+	TestRequestStringUnixSeconds(ctx context.Context, req OptStringUnixSeconds) (Error, error)
 	// TestRequestStringUnixSecondsArray implements test_request_string_unix-seconds_array operation.
 	//
 	// POST /test_request_string_unix-seconds_array
@@ -1572,15 +1812,15 @@ type Handler interface {
 	// TestRequestStringUnixSecondsNullable implements test_request_string_unix-seconds_nullable operation.
 	//
 	// POST /test_request_string_unix-seconds_nullable
-	TestRequestStringUnixSecondsNullable(ctx context.Context, req OptNilUnixSeconds) (Error, error)
+	TestRequestStringUnixSecondsNullable(ctx context.Context, req OptNilStringUnixSeconds) (Error, error)
 	// TestRequestStringUnixSecondsNullableArray implements test_request_string_unix-seconds_nullable_array operation.
 	//
 	// POST /test_request_string_unix-seconds_nullable_array
-	TestRequestStringUnixSecondsNullableArray(ctx context.Context, req []NilUnixSeconds) (Error, error)
+	TestRequestStringUnixSecondsNullableArray(ctx context.Context, req []NilStringUnixSeconds) (Error, error)
 	// TestRequestStringUnixSecondsNullableArrayArray implements test_request_string_unix-seconds_nullable_array_array operation.
 	//
 	// POST /test_request_string_unix-seconds_nullable_array_array
-	TestRequestStringUnixSecondsNullableArrayArray(ctx context.Context, req [][]NilUnixSeconds) (Error, error)
+	TestRequestStringUnixSecondsNullableArrayArray(ctx context.Context, req [][]NilStringUnixSeconds) (Error, error)
 	// TestResponseAny implements test_response_Any operation.
 	//
 	// POST /test_response_Any
@@ -1689,6 +1929,126 @@ type Handler interface {
 	//
 	// POST /test_response_integer_nullable_array_array
 	TestResponseIntegerNullableArrayArray(ctx context.Context, req string) ([][]NilInt, error)
+	// TestResponseIntegerUnix implements test_response_integer_unix operation.
+	//
+	// POST /test_response_integer_unix
+	TestResponseIntegerUnix(ctx context.Context, req string) (time.Time, error)
+	// TestResponseIntegerUnixArray implements test_response_integer_unix_array operation.
+	//
+	// POST /test_response_integer_unix_array
+	TestResponseIntegerUnixArray(ctx context.Context, req string) ([]time.Time, error)
+	// TestResponseIntegerUnixArrayArray implements test_response_integer_unix_array_array operation.
+	//
+	// POST /test_response_integer_unix_array_array
+	TestResponseIntegerUnixArrayArray(ctx context.Context, req string) ([][]time.Time, error)
+	// TestResponseIntegerUnixMicro implements test_response_integer_unix-micro operation.
+	//
+	// POST /test_response_integer_unix-micro
+	TestResponseIntegerUnixMicro(ctx context.Context, req string) (time.Time, error)
+	// TestResponseIntegerUnixMicroArray implements test_response_integer_unix-micro_array operation.
+	//
+	// POST /test_response_integer_unix-micro_array
+	TestResponseIntegerUnixMicroArray(ctx context.Context, req string) ([]time.Time, error)
+	// TestResponseIntegerUnixMicroArrayArray implements test_response_integer_unix-micro_array_array operation.
+	//
+	// POST /test_response_integer_unix-micro_array_array
+	TestResponseIntegerUnixMicroArrayArray(ctx context.Context, req string) ([][]time.Time, error)
+	// TestResponseIntegerUnixMicroNullable implements test_response_integer_unix-micro_nullable operation.
+	//
+	// POST /test_response_integer_unix-micro_nullable
+	TestResponseIntegerUnixMicroNullable(ctx context.Context, req string) (NilUnixMicro, error)
+	// TestResponseIntegerUnixMicroNullableArray implements test_response_integer_unix-micro_nullable_array operation.
+	//
+	// POST /test_response_integer_unix-micro_nullable_array
+	TestResponseIntegerUnixMicroNullableArray(ctx context.Context, req string) ([]NilUnixMicro, error)
+	// TestResponseIntegerUnixMicroNullableArrayArray implements test_response_integer_unix-micro_nullable_array_array operation.
+	//
+	// POST /test_response_integer_unix-micro_nullable_array_array
+	TestResponseIntegerUnixMicroNullableArrayArray(ctx context.Context, req string) ([][]NilUnixMicro, error)
+	// TestResponseIntegerUnixMilli implements test_response_integer_unix-milli operation.
+	//
+	// POST /test_response_integer_unix-milli
+	TestResponseIntegerUnixMilli(ctx context.Context, req string) (time.Time, error)
+	// TestResponseIntegerUnixMilliArray implements test_response_integer_unix-milli_array operation.
+	//
+	// POST /test_response_integer_unix-milli_array
+	TestResponseIntegerUnixMilliArray(ctx context.Context, req string) ([]time.Time, error)
+	// TestResponseIntegerUnixMilliArrayArray implements test_response_integer_unix-milli_array_array operation.
+	//
+	// POST /test_response_integer_unix-milli_array_array
+	TestResponseIntegerUnixMilliArrayArray(ctx context.Context, req string) ([][]time.Time, error)
+	// TestResponseIntegerUnixMilliNullable implements test_response_integer_unix-milli_nullable operation.
+	//
+	// POST /test_response_integer_unix-milli_nullable
+	TestResponseIntegerUnixMilliNullable(ctx context.Context, req string) (NilUnixMilli, error)
+	// TestResponseIntegerUnixMilliNullableArray implements test_response_integer_unix-milli_nullable_array operation.
+	//
+	// POST /test_response_integer_unix-milli_nullable_array
+	TestResponseIntegerUnixMilliNullableArray(ctx context.Context, req string) ([]NilUnixMilli, error)
+	// TestResponseIntegerUnixMilliNullableArrayArray implements test_response_integer_unix-milli_nullable_array_array operation.
+	//
+	// POST /test_response_integer_unix-milli_nullable_array_array
+	TestResponseIntegerUnixMilliNullableArrayArray(ctx context.Context, req string) ([][]NilUnixMilli, error)
+	// TestResponseIntegerUnixNano implements test_response_integer_unix-nano operation.
+	//
+	// POST /test_response_integer_unix-nano
+	TestResponseIntegerUnixNano(ctx context.Context, req string) (time.Time, error)
+	// TestResponseIntegerUnixNanoArray implements test_response_integer_unix-nano_array operation.
+	//
+	// POST /test_response_integer_unix-nano_array
+	TestResponseIntegerUnixNanoArray(ctx context.Context, req string) ([]time.Time, error)
+	// TestResponseIntegerUnixNanoArrayArray implements test_response_integer_unix-nano_array_array operation.
+	//
+	// POST /test_response_integer_unix-nano_array_array
+	TestResponseIntegerUnixNanoArrayArray(ctx context.Context, req string) ([][]time.Time, error)
+	// TestResponseIntegerUnixNanoNullable implements test_response_integer_unix-nano_nullable operation.
+	//
+	// POST /test_response_integer_unix-nano_nullable
+	TestResponseIntegerUnixNanoNullable(ctx context.Context, req string) (NilUnixNano, error)
+	// TestResponseIntegerUnixNanoNullableArray implements test_response_integer_unix-nano_nullable_array operation.
+	//
+	// POST /test_response_integer_unix-nano_nullable_array
+	TestResponseIntegerUnixNanoNullableArray(ctx context.Context, req string) ([]NilUnixNano, error)
+	// TestResponseIntegerUnixNanoNullableArrayArray implements test_response_integer_unix-nano_nullable_array_array operation.
+	//
+	// POST /test_response_integer_unix-nano_nullable_array_array
+	TestResponseIntegerUnixNanoNullableArrayArray(ctx context.Context, req string) ([][]NilUnixNano, error)
+	// TestResponseIntegerUnixNullable implements test_response_integer_unix_nullable operation.
+	//
+	// POST /test_response_integer_unix_nullable
+	TestResponseIntegerUnixNullable(ctx context.Context, req string) (NilUnixSeconds, error)
+	// TestResponseIntegerUnixNullableArray implements test_response_integer_unix_nullable_array operation.
+	//
+	// POST /test_response_integer_unix_nullable_array
+	TestResponseIntegerUnixNullableArray(ctx context.Context, req string) ([]NilUnixSeconds, error)
+	// TestResponseIntegerUnixNullableArrayArray implements test_response_integer_unix_nullable_array_array operation.
+	//
+	// POST /test_response_integer_unix_nullable_array_array
+	TestResponseIntegerUnixNullableArrayArray(ctx context.Context, req string) ([][]NilUnixSeconds, error)
+	// TestResponseIntegerUnixSeconds implements test_response_integer_unix-seconds operation.
+	//
+	// POST /test_response_integer_unix-seconds
+	TestResponseIntegerUnixSeconds(ctx context.Context, req string) (time.Time, error)
+	// TestResponseIntegerUnixSecondsArray implements test_response_integer_unix-seconds_array operation.
+	//
+	// POST /test_response_integer_unix-seconds_array
+	TestResponseIntegerUnixSecondsArray(ctx context.Context, req string) ([]time.Time, error)
+	// TestResponseIntegerUnixSecondsArrayArray implements test_response_integer_unix-seconds_array_array operation.
+	//
+	// POST /test_response_integer_unix-seconds_array_array
+	TestResponseIntegerUnixSecondsArrayArray(ctx context.Context, req string) ([][]time.Time, error)
+	// TestResponseIntegerUnixSecondsNullable implements test_response_integer_unix-seconds_nullable operation.
+	//
+	// POST /test_response_integer_unix-seconds_nullable
+	TestResponseIntegerUnixSecondsNullable(ctx context.Context, req string) (NilUnixSeconds, error)
+	// TestResponseIntegerUnixSecondsNullableArray implements test_response_integer_unix-seconds_nullable_array operation.
+	//
+	// POST /test_response_integer_unix-seconds_nullable_array
+	TestResponseIntegerUnixSecondsNullableArray(ctx context.Context, req string) ([]NilUnixSeconds, error)
+	// TestResponseIntegerUnixSecondsNullableArrayArray implements test_response_integer_unix-seconds_nullable_array_array operation.
+	//
+	// POST /test_response_integer_unix-seconds_nullable_array_array
+	TestResponseIntegerUnixSecondsNullableArrayArray(ctx context.Context, req string) ([][]NilUnixSeconds, error)
 	// TestResponseNull implements test_response_null operation.
 	//
 	// POST /test_response_null
@@ -2268,15 +2628,15 @@ type Handler interface {
 	// TestResponseStringUnixMicroNullable implements test_response_string_unix-micro_nullable operation.
 	//
 	// POST /test_response_string_unix-micro_nullable
-	TestResponseStringUnixMicroNullable(ctx context.Context, req string) (NilUnixMicro, error)
+	TestResponseStringUnixMicroNullable(ctx context.Context, req string) (NilStringUnixMicro, error)
 	// TestResponseStringUnixMicroNullableArray implements test_response_string_unix-micro_nullable_array operation.
 	//
 	// POST /test_response_string_unix-micro_nullable_array
-	TestResponseStringUnixMicroNullableArray(ctx context.Context, req string) ([]NilUnixMicro, error)
+	TestResponseStringUnixMicroNullableArray(ctx context.Context, req string) ([]NilStringUnixMicro, error)
 	// TestResponseStringUnixMicroNullableArrayArray implements test_response_string_unix-micro_nullable_array_array operation.
 	//
 	// POST /test_response_string_unix-micro_nullable_array_array
-	TestResponseStringUnixMicroNullableArrayArray(ctx context.Context, req string) ([][]NilUnixMicro, error)
+	TestResponseStringUnixMicroNullableArrayArray(ctx context.Context, req string) ([][]NilStringUnixMicro, error)
 	// TestResponseStringUnixMilli implements test_response_string_unix-milli operation.
 	//
 	// POST /test_response_string_unix-milli
@@ -2292,15 +2652,15 @@ type Handler interface {
 	// TestResponseStringUnixMilliNullable implements test_response_string_unix-milli_nullable operation.
 	//
 	// POST /test_response_string_unix-milli_nullable
-	TestResponseStringUnixMilliNullable(ctx context.Context, req string) (NilUnixMilli, error)
+	TestResponseStringUnixMilliNullable(ctx context.Context, req string) (NilStringUnixMilli, error)
 	// TestResponseStringUnixMilliNullableArray implements test_response_string_unix-milli_nullable_array operation.
 	//
 	// POST /test_response_string_unix-milli_nullable_array
-	TestResponseStringUnixMilliNullableArray(ctx context.Context, req string) ([]NilUnixMilli, error)
+	TestResponseStringUnixMilliNullableArray(ctx context.Context, req string) ([]NilStringUnixMilli, error)
 	// TestResponseStringUnixMilliNullableArrayArray implements test_response_string_unix-milli_nullable_array_array operation.
 	//
 	// POST /test_response_string_unix-milli_nullable_array_array
-	TestResponseStringUnixMilliNullableArrayArray(ctx context.Context, req string) ([][]NilUnixMilli, error)
+	TestResponseStringUnixMilliNullableArrayArray(ctx context.Context, req string) ([][]NilStringUnixMilli, error)
 	// TestResponseStringUnixNano implements test_response_string_unix-nano operation.
 	//
 	// POST /test_response_string_unix-nano
@@ -2316,27 +2676,27 @@ type Handler interface {
 	// TestResponseStringUnixNanoNullable implements test_response_string_unix-nano_nullable operation.
 	//
 	// POST /test_response_string_unix-nano_nullable
-	TestResponseStringUnixNanoNullable(ctx context.Context, req string) (NilUnixNano, error)
+	TestResponseStringUnixNanoNullable(ctx context.Context, req string) (NilStringUnixNano, error)
 	// TestResponseStringUnixNanoNullableArray implements test_response_string_unix-nano_nullable_array operation.
 	//
 	// POST /test_response_string_unix-nano_nullable_array
-	TestResponseStringUnixNanoNullableArray(ctx context.Context, req string) ([]NilUnixNano, error)
+	TestResponseStringUnixNanoNullableArray(ctx context.Context, req string) ([]NilStringUnixNano, error)
 	// TestResponseStringUnixNanoNullableArrayArray implements test_response_string_unix-nano_nullable_array_array operation.
 	//
 	// POST /test_response_string_unix-nano_nullable_array_array
-	TestResponseStringUnixNanoNullableArrayArray(ctx context.Context, req string) ([][]NilUnixNano, error)
+	TestResponseStringUnixNanoNullableArrayArray(ctx context.Context, req string) ([][]NilStringUnixNano, error)
 	// TestResponseStringUnixNullable implements test_response_string_unix_nullable operation.
 	//
 	// POST /test_response_string_unix_nullable
-	TestResponseStringUnixNullable(ctx context.Context, req string) (NilUnixSeconds, error)
+	TestResponseStringUnixNullable(ctx context.Context, req string) (NilStringUnixSeconds, error)
 	// TestResponseStringUnixNullableArray implements test_response_string_unix_nullable_array operation.
 	//
 	// POST /test_response_string_unix_nullable_array
-	TestResponseStringUnixNullableArray(ctx context.Context, req string) ([]NilUnixSeconds, error)
+	TestResponseStringUnixNullableArray(ctx context.Context, req string) ([]NilStringUnixSeconds, error)
 	// TestResponseStringUnixNullableArrayArray implements test_response_string_unix_nullable_array_array operation.
 	//
 	// POST /test_response_string_unix_nullable_array_array
-	TestResponseStringUnixNullableArrayArray(ctx context.Context, req string) ([][]NilUnixSeconds, error)
+	TestResponseStringUnixNullableArrayArray(ctx context.Context, req string) ([][]NilStringUnixSeconds, error)
 	// TestResponseStringUnixSeconds implements test_response_string_unix-seconds operation.
 	//
 	// POST /test_response_string_unix-seconds
@@ -2352,15 +2712,15 @@ type Handler interface {
 	// TestResponseStringUnixSecondsNullable implements test_response_string_unix-seconds_nullable operation.
 	//
 	// POST /test_response_string_unix-seconds_nullable
-	TestResponseStringUnixSecondsNullable(ctx context.Context, req string) (NilUnixSeconds, error)
+	TestResponseStringUnixSecondsNullable(ctx context.Context, req string) (NilStringUnixSeconds, error)
 	// TestResponseStringUnixSecondsNullableArray implements test_response_string_unix-seconds_nullable_array operation.
 	//
 	// POST /test_response_string_unix-seconds_nullable_array
-	TestResponseStringUnixSecondsNullableArray(ctx context.Context, req string) ([]NilUnixSeconds, error)
+	TestResponseStringUnixSecondsNullableArray(ctx context.Context, req string) ([]NilStringUnixSeconds, error)
 	// TestResponseStringUnixSecondsNullableArrayArray implements test_response_string_unix-seconds_nullable_array_array operation.
 	//
 	// POST /test_response_string_unix-seconds_nullable_array_array
-	TestResponseStringUnixSecondsNullableArrayArray(ctx context.Context, req string) ([][]NilUnixSeconds, error)
+	TestResponseStringUnixSecondsNullableArrayArray(ctx context.Context, req string) ([][]NilStringUnixSeconds, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and
