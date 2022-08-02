@@ -207,13 +207,6 @@ func (s *OrgsCreateInvitationReq) setDefaults() {
 // setDefaults set default value of fields.
 func (s *OrgsCreateWebhookReq) setDefaults() {
 	{
-		s.Events = make([]string, 1)
-		{
-			val := string("push")
-			s.Events[0] = val
-		}
-	}
-	{
 		val := bool(true)
 		s.Active.SetTo(val)
 	}
@@ -229,13 +222,6 @@ func (s *OrgsSetMembershipForUserReq) setDefaults() {
 
 // setDefaults set default value of fields.
 func (s *OrgsUpdateWebhookReq) setDefaults() {
-	{
-		s.Events = make([]string, 1)
-		{
-			val := string("push")
-			s.Events[0] = val
-		}
-	}
 	{
 		val := bool(true)
 		s.Active.SetTo(val)
@@ -465,13 +451,6 @@ func (s *ReposCreateUsingTemplateReq) setDefaults() {
 // setDefaults set default value of fields.
 func (s *ReposCreateWebhookReq) setDefaults() {
 	{
-		s.Events = make([]string, 1)
-		{
-			val := string("push")
-			s.Events[0] = val
-		}
-	}
-	{
 		val := bool(true)
 		s.Active.SetTo(val)
 	}
@@ -531,13 +510,6 @@ func (s *ReposUpdateReq) setDefaults() {
 
 // setDefaults set default value of fields.
 func (s *ReposUpdateWebhookReq) setDefaults() {
-	{
-		s.Events = make([]string, 1)
-		{
-			val := string("push")
-			s.Events[0] = val
-		}
-	}
 	{
 		val := bool(true)
 		s.Active.SetTo(val)
