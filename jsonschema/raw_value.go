@@ -41,9 +41,15 @@ func (n *RawValue) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-func convertJSONToRawYAML(raw json.RawMessage) (node yaml.Node, err error) {
-	err = yaml.Unmarshal(raw, &node)
-	return node, err
+func convertJSONToRawYAML(raw json.RawMessage) (*yaml.Node, error) {
+	var node yaml.Node
+	if err := yaml.Unmarshal(raw, &node); err != nil {
+		return nil, err
+	}
+	if node.Kind == yaml.DocumentNode {
+		return node.Content[0], nil
+	}
+	return &node, nil
 }
 
 func convertYAMLtoRawJSON(node *yaml.Node) (json.RawMessage, error) {

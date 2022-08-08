@@ -2,6 +2,7 @@ package jsonschema
 
 import (
 	"encoding/json"
+	"reflect"
 
 	"github.com/go-faster/errors"
 	yaml "github.com/go-faster/yamlx"
@@ -18,15 +19,23 @@ func (n Enum) MarshalYAML() (interface{}, error) {
 		if err != nil {
 			return nil, err
 		}
-		vals = append(vals, &node)
+		vals = append(vals, node)
 	}
-	return vals, nil
+	return &yaml.Node{
+		Kind:    yaml.SequenceNode,
+		Tag:     "!!seq",
+		Content: vals,
+	}, nil
 }
 
 // UnmarshalYAML implements yaml.Unmarshaler.
 func (n *Enum) UnmarshalYAML(node *yaml.Node) error {
-	if node.Tag != "!!seq" {
-		return errors.Errorf("unexpected tag %s", node.Tag)
+	if node.Kind != yaml.SequenceNode {
+		return &yaml.UnmarshalError{
+			Node: node,
+			Type: reflect.TypeOf(n),
+			Err:  errors.Errorf("cannot unmarshal %s into %T", node.ShortTag(), n),
+		}
 	}
 	*n = (*n)[:0]
 	for _, val := range node.Content {

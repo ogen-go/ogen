@@ -1,27 +1,33 @@
 package jsonschema
 
 import (
+	"encoding/json"
 	"fmt"
 	"testing"
 )
 
-func TestNum(t *testing.T) {
+func TestEnum(t *testing.T) {
 	create := func() interface{} {
-		return &Num{}
+		return &Enum{}
+	}
+	enum := func(s ...string) (r Enum) {
+		for _, v := range s {
+			r = append(r, json.RawMessage(v))
+		}
+		return r
 	}
 
 	tests := []struct {
 		data    string
-		value   Num
+		value   Enum
 		wantErr bool
 	}{
-		{`0`, Num(`0`), false},
-		{`-1`, Num(`-1`), false},
-		{`1.1`, Num(`1.1`), false},
-		{`0.01e1`, Num(`0.1`), false},
+		{`[0, 1]`, enum(`0`, `1`), false},
+		{`[0, "string"]`, enum(`0`, `"string"`), false},
+		{`[{}, []]`, enum(`{}`, `[]`), false},
 		// Invalid YAML.
 		{`"`, nil, true},
-		{`0ee1`, nil, true},
+		{`[`, nil, true},
 		// Invalid type.
 		{`{}`, nil, true},
 		{`"100"`, nil, true},
