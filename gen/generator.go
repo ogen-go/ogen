@@ -92,15 +92,9 @@ func (g *Generator) makeIR(ops []*openapi.Operation) error {
 				routePath,
 				strings.ToLower(spec.HTTPMethod),
 			)
-			if err := g.fail(err); err != nil {
+			if err := g.trySkip(err, "Skipping operation", spec); err != nil {
 				return err
 			}
-
-			msg := err.Error()
-			if uErr := unimplementedError(nil); errors.As(err, &uErr) {
-				msg = uErr.Error()
-			}
-			log.Info("Skipping operation", zap.String("reason_error", msg))
 			continue
 		}
 

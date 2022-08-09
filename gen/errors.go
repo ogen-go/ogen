@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+	"go.uber.org/zap"
 )
 
 type unimplementedError interface {
@@ -54,6 +55,25 @@ func (e *ErrUnsupportedContentTypes) unimplemented() {}
 // Error implements error.
 func (e *ErrUnsupportedContentTypes) Error() string {
 	return fmt.Sprintf("unsupported content types: [%s]", strings.Join(e.ContentTypes, ", "))
+}
+
+func (g *Generator) trySkip(err error, msg string, l locatable) error {
+	if err == nil {
+		return nil
+	}
+	if err := g.fail(err); err != nil {
+		return err
+	}
+
+	reason := err.Error()
+	if uErr := unimplementedError(nil); errors.As(err, &uErr) {
+		reason = uErr.Error()
+	}
+	g.log.Info(msg,
+		g.zapLocation(l),
+		zap.String("reason_error", reason),
+	)
+	return nil
 }
 
 func (g *Generator) fail(err error) error {

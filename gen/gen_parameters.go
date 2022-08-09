@@ -16,15 +16,13 @@ func (g *Generator) generateParameters(ctx *genctx, opName string, params []*ope
 		ctx := ctx.appendPath(strconv.Itoa(i))
 		param, err := g.generateParameter(ctx, opName, p)
 		if err != nil {
-			if err := g.fail(err); err != nil {
-				return nil, errors.Wrap(err, "fail")
+			if err := g.trySkip(err, "Skipping parameter", p); err != nil {
+				return nil, err
 			}
-
 			// Path parameters are required.
 			if p.In == openapi.LocationPath {
 				return nil, err
 			}
-
 			continue
 		}
 

@@ -3,8 +3,6 @@ package gen
 import (
 	"net/http"
 
-	"github.com/go-faster/errors"
-
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/openapi"
 )
@@ -31,8 +29,8 @@ func (g *Generator) generateHeaders(
 
 		result[hname], err = g.generateParameter(ctx, name, header)
 		if err != nil {
-			if err := g.fail(err); err != nil {
-				return nil, errors.Wrap(err, hname)
+			if err := g.trySkip(err, "Skipping response header", header); err != nil {
+				return nil, err
 			}
 
 			delete(result, hname)
