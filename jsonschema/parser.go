@@ -9,6 +9,7 @@ import (
 	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/internal/location"
+	ogenjson "github.com/ogen-go/ogen/json"
 )
 
 // Parser parses JSON schemas.
@@ -66,11 +67,26 @@ func (p *Parser) parse1(schema *RawSchema, ctx *resolveCtx, hook func(*Schema) *
 	}
 
 	if schema != nil && s != nil {
-		if len(schema.Enum) > 0 {
-			values, err := parseEnumValues(s, schema.Enum)
+		if enum := schema.Enum; len(enum) > 0 {
+			loc := schema.Locator.Field("enum")
+			for i := range enum {
+				for j := range enum {
+					if i == j {
+						continue
+					}
+					a, b := enum[i], enum[j]
+					if ok, _ := ogenjson.Equal(a, b); ok {
+						loc := loc.Index(i)
+						err := errors.Errorf("duplicate enum value: %q", a)
+						return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
+					}
+				}
+			}
+
+			values, err := parseEnumValues(s, enum)
 			if err != nil {
 				err := errors.Wrap(err, "parse enum values")
-				return nil, p.wrapField("enum", ctx.lastLoc(), schema.Locator, err)
+				return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
 			}
 			s.Enum = values
 			handleNullableEnum(s)
@@ -112,6 +128,22 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 	}
 	wrapField := func(field string, err error) error {
 		return p.wrapField(field, ctx.lastLoc(), schema.Locator, err)
+	}
+
+	validateMinMax := func(prop string, min, max *uint64) (rerr error) {
+		if min == nil || max == nil {
+			return nil
+		}
+		defer func() {
+			if rerr != nil {
+				rerr = wrapField("min"+prop, rerr)
+			}
+		}()
+
+		if *min > *max {
+			return errors.Errorf("min%s (%d) is greater than max%s (%d)", prop, *min, prop, *max)
+		}
+		return nil
 	}
 
 	if ref := schema.Ref; ref != "" {
@@ -226,6 +258,14 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 			err := errors.New("object cannot contain 'items' field")
 			return nil, wrapField("items", err)
 		}
+		if err := validateMinMax(
+			"Properties",
+			schema.MinProperties,
+			schema.MaxProperties,
+		); err != nil {
+			return nil, err
+		}
+
 		required := func(name string) bool {
 			for _, p := range schema.Required {
 				if p == name {
@@ -304,6 +344,14 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 		return s, nil
 
 	case "array":
+		if err := validateMinMax(
+			"Items",
+			schema.MinItems,
+			schema.MaxItems,
+		); err != nil {
+			return nil, err
+		}
+
 		array := hook(&Schema{
 			Type:        Array,
 			MinItems:    schema.MinItems,
@@ -329,7 +377,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 		return array, nil
 
 	case "number", "integer":
-		if mul := schema.MultipleOf; mul != nil {
+		if mul := schema.MultipleOf; len(mul) > 0 {
 			if err := func() error {
 				rat := new(big.Rat)
 				if err := rat.UnmarshalText(mul); err != nil {
@@ -362,6 +410,14 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 		}), nil
 
 	case "string":
+		if err := validateMinMax(
+			"Length",
+			schema.MinLength,
+			schema.MaxLength,
+		); err != nil {
+			return nil, err
+		}
+
 		return hook(&Schema{
 			Type:      String,
 			Format:    schema.Format,
