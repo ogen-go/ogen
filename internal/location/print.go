@@ -76,6 +76,9 @@ func (o *PrintListingOptions) setDefaults() {
 	}
 }
 
+// BugLine is a fallback line when the line is not available.
+const BugLine = `Cannot render line properly, please fill a bug report`
+
 // PrintListing prints given message with line number and file listing to the writer.
 //
 // The context parameter defines the number of lines to print before and after.
@@ -112,7 +115,7 @@ func (l Lines) PrintListing(w io.Writer, msg string, loc Location, opts PrintLis
 	line := func(n int) []byte {
 		start, end := l.Line(n)
 		if start < 0 || end < 0 {
-			return []byte(`Cannot render line properly, please fill a bug report`)
+			return []byte(BugLine)
 		}
 		return bytes.Trim(l.data[start:end], "\r\n")
 	}

@@ -41,6 +41,9 @@ func TestNegative(t *testing.T) {
 		//
 		// There should be a good reason to remove this line.
 		a.True(ok)
-		t.Log(buf.String())
+		pretty := buf.String()
+		a.NotEmpty(pretty)
+		a.NotContains(pretty, location.BugLine)
+		t.Log(pretty)
 	})
 }
