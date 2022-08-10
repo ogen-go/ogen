@@ -5,8 +5,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-
-	ogenjson "github.com/ogen-go/ogen/json"
 )
 
 func inferJSONType(v json.RawMessage) (string, error) {
@@ -26,18 +24,6 @@ func inferJSONType(v json.RawMessage) (string, error) {
 }
 
 func parseEnumValues(s *Schema, rawValues []json.RawMessage) ([]interface{}, error) {
-	for i := range rawValues {
-		for j := range rawValues {
-			if i == j {
-				continue
-			}
-			a, b := rawValues[i], rawValues[j]
-			if ok, _ := ogenjson.Equal(a, b); ok {
-				return nil, errors.Errorf("duplicate enum values: %q, at index %d and %d", a, i, j)
-			}
-		}
-	}
-
 	var values []interface{}
 	for _, raw := range rawValues {
 		val, err := parseJSONValue(s, raw)

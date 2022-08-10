@@ -9,6 +9,7 @@ import (
 	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/internal/location"
+	ogenjson "github.com/ogen-go/ogen/json"
 )
 
 // Parser parses JSON schemas.
@@ -66,11 +67,26 @@ func (p *Parser) parse1(schema *RawSchema, ctx *resolveCtx, hook func(*Schema) *
 	}
 
 	if schema != nil && s != nil {
-		if len(schema.Enum) > 0 {
-			values, err := parseEnumValues(s, schema.Enum)
+		if enum := schema.Enum; len(enum) > 0 {
+			loc := schema.Locator.Field("enum")
+			for i := range enum {
+				for j := range enum {
+					if i == j {
+						continue
+					}
+					a, b := enum[i], enum[j]
+					if ok, _ := ogenjson.Equal(a, b); ok {
+						loc := loc.Index(i)
+						err := errors.Errorf("duplicate enum value: %q", a)
+						return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
+					}
+				}
+			}
+
+			values, err := parseEnumValues(s, enum)
 			if err != nil {
 				err := errors.Wrap(err, "parse enum values")
-				return nil, p.wrapField("enum", ctx.lastLoc(), schema.Locator, err)
+				return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
 			}
 			s.Enum = values
 			handleNullableEnum(s)
