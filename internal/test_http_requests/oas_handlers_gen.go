@@ -61,7 +61,11 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWr
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AllRequestBodies(ctx, request)
 	if err != nil {
@@ -124,7 +128,11 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.Re
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AllRequestBodiesOptional(ctx, request)
 	if err != nil {

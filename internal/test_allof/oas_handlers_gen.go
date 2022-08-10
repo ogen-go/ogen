@@ -61,7 +61,11 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.NullableStrings(ctx, request)
 	if err != nil {
@@ -124,7 +128,11 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ObjectsWithConflictingArrayProperty(ctx, request)
 	if err != nil {
@@ -187,7 +195,11 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ObjectsWithConflictingProperties(ctx, request)
 	if err != nil {
@@ -250,7 +262,11 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReferencedAllof(ctx, request)
 	if err != nil {
@@ -313,7 +329,11 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReferencedAllofOptional(ctx, request)
 	if err != nil {
@@ -376,7 +396,11 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SimpleInteger(ctx, request)
 	if err != nil {
@@ -439,7 +463,11 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SimpleObjects(ctx, request)
 	if err != nil {

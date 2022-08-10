@@ -63,7 +63,11 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.DataCreate(ctx, request)
 	if err != nil {

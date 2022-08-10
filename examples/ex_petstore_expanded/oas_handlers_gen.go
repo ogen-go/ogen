@@ -61,7 +61,11 @@ func (s *Server) handleAddPetRequest(args [0]string, w http.ResponseWriter, r *h
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AddPet(ctx, request)
 	if err != nil {

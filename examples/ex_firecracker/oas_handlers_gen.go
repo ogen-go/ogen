@@ -61,7 +61,11 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.CreateSnapshot(ctx, request)
 	if err != nil {
@@ -124,7 +128,11 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.CreateSyncAction(ctx, request)
 	if err != nil {
@@ -427,7 +435,11 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.LoadSnapshot(ctx, request)
 	if err != nil {
@@ -488,7 +500,11 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.MmdsConfigPut(ctx, request)
 	if err != nil {
@@ -595,7 +611,11 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.MmdsPatch(ctx, request)
 	if err != nil {
@@ -656,7 +676,11 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.MmdsPut(ctx, request)
 	if err != nil {
@@ -719,7 +743,11 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PatchBalloon(ctx, request)
 	if err != nil {
@@ -782,7 +810,11 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PatchBalloonStatsInterval(ctx, request)
 	if err != nil {
@@ -855,7 +887,11 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PatchGuestDriveByID(ctx, request, params)
 	if err != nil {
@@ -928,7 +964,11 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PatchGuestNetworkInterfaceByID(ctx, request, params)
 	if err != nil {
@@ -991,7 +1031,11 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PatchMachineConfiguration(ctx, request)
 	if err != nil {
@@ -1054,7 +1098,11 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PatchVm(ctx, request)
 	if err != nil {
@@ -1117,7 +1165,11 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PutBalloon(ctx, request)
 	if err != nil {
@@ -1180,7 +1232,11 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PutGuestBootSource(ctx, request)
 	if err != nil {
@@ -1253,7 +1309,11 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PutGuestDriveByID(ctx, request, params)
 	if err != nil {
@@ -1326,7 +1386,11 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PutGuestNetworkInterfaceByID(ctx, request, params)
 	if err != nil {
@@ -1389,7 +1453,11 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PutGuestVsock(ctx, request)
 	if err != nil {
@@ -1452,7 +1520,11 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PutLogger(ctx, request)
 	if err != nil {
@@ -1515,7 +1587,11 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PutMachineConfiguration(ctx, request)
 	if err != nil {
@@ -1578,7 +1654,11 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PutMetrics(ctx, request)
 	if err != nil {

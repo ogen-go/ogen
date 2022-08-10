@@ -63,7 +63,11 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AddStickerToSet(ctx, request)
 	if err != nil {
@@ -135,7 +139,11 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AnswerCallbackQuery(ctx, request)
 	if err != nil {
@@ -207,7 +215,11 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AnswerInlineQuery(ctx, request)
 	if err != nil {
@@ -279,7 +291,11 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AnswerPreCheckoutQuery(ctx, request)
 	if err != nil {
@@ -351,7 +367,11 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AnswerShippingQuery(ctx, request)
 	if err != nil {
@@ -423,7 +443,11 @@ func (s *Server) handleAnswerWebAppQueryRequest(args [0]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AnswerWebAppQuery(ctx, request)
 	if err != nil {
@@ -495,7 +519,11 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ApproveChatJoinRequest(ctx, request)
 	if err != nil {
@@ -567,7 +595,11 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.BanChatMember(ctx, request)
 	if err != nil {
@@ -639,7 +671,11 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.BanChatSenderChat(ctx, request)
 	if err != nil {
@@ -768,7 +804,11 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.CopyMessage(ctx, request)
 	if err != nil {
@@ -840,7 +880,11 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.CreateChatInviteLink(ctx, request)
 	if err != nil {
@@ -912,7 +956,11 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.CreateNewStickerSet(ctx, request)
 	if err != nil {
@@ -984,7 +1032,11 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.DeclineChatJoinRequest(ctx, request)
 	if err != nil {
@@ -1056,7 +1108,11 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.DeleteChatPhoto(ctx, request)
 	if err != nil {
@@ -1128,7 +1184,11 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.DeleteChatStickerSet(ctx, request)
 	if err != nil {
@@ -1200,7 +1260,11 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.DeleteMessage(ctx, request)
 	if err != nil {
@@ -1272,7 +1336,11 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.DeleteMyCommands(ctx, request)
 	if err != nil {
@@ -1344,7 +1412,11 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.DeleteStickerFromSet(ctx, request)
 	if err != nil {
@@ -1416,7 +1488,11 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.DeleteWebhook(ctx, request)
 	if err != nil {
@@ -1488,7 +1564,11 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EditChatInviteLink(ctx, request)
 	if err != nil {
@@ -1560,7 +1640,11 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EditMessageCaption(ctx, request)
 	if err != nil {
@@ -1632,7 +1716,11 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EditMessageLiveLocation(ctx, request)
 	if err != nil {
@@ -1704,7 +1792,11 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EditMessageMedia(ctx, request)
 	if err != nil {
@@ -1776,7 +1868,11 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EditMessageReplyMarkup(ctx, request)
 	if err != nil {
@@ -1848,7 +1944,11 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EditMessageText(ctx, request)
 	if err != nil {
@@ -1920,7 +2020,11 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ExportChatInviteLink(ctx, request)
 	if err != nil {
@@ -1992,7 +2096,11 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ForwardMessage(ctx, request)
 	if err != nil {
@@ -2064,7 +2172,11 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GetChat(ctx, request)
 	if err != nil {
@@ -2136,7 +2248,11 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GetChatAdministrators(ctx, request)
 	if err != nil {
@@ -2208,7 +2324,11 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GetChatMember(ctx, request)
 	if err != nil {
@@ -2280,7 +2400,11 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GetChatMemberCount(ctx, request)
 	if err != nil {
@@ -2352,7 +2476,11 @@ func (s *Server) handleGetChatMenuButtonRequest(args [0]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GetChatMenuButton(ctx, request)
 	if err != nil {
@@ -2424,7 +2552,11 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GetFile(ctx, request)
 	if err != nil {
@@ -2496,7 +2628,11 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GetGameHighScores(ctx, request)
 	if err != nil {
@@ -2625,7 +2761,11 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GetMyCommands(ctx, request)
 	if err != nil {
@@ -2697,7 +2837,11 @@ func (s *Server) handleGetMyDefaultAdministratorRightsRequest(args [0]string, w 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GetMyDefaultAdministratorRights(ctx, request)
 	if err != nil {
@@ -2769,7 +2913,11 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GetStickerSet(ctx, request)
 	if err != nil {
@@ -2841,7 +2989,11 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GetUpdates(ctx, request)
 	if err != nil {
@@ -2913,7 +3065,11 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GetUserProfilePhotos(ctx, request)
 	if err != nil {
@@ -3042,7 +3198,11 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.LeaveChat(ctx, request)
 	if err != nil {
@@ -3171,7 +3331,11 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PinChatMessage(ctx, request)
 	if err != nil {
@@ -3243,7 +3407,11 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PromoteChatMember(ctx, request)
 	if err != nil {
@@ -3315,7 +3483,11 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.RestrictChatMember(ctx, request)
 	if err != nil {
@@ -3387,7 +3559,11 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.RevokeChatInviteLink(ctx, request)
 	if err != nil {
@@ -3459,7 +3635,11 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendAnimation(ctx, request)
 	if err != nil {
@@ -3531,7 +3711,11 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendAudio(ctx, request)
 	if err != nil {
@@ -3603,7 +3787,11 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendChatAction(ctx, request)
 	if err != nil {
@@ -3675,7 +3863,11 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendContact(ctx, request)
 	if err != nil {
@@ -3747,7 +3939,11 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendDice(ctx, request)
 	if err != nil {
@@ -3819,7 +4015,11 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendDocument(ctx, request)
 	if err != nil {
@@ -3891,7 +4091,11 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendGame(ctx, request)
 	if err != nil {
@@ -3963,7 +4167,11 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendInvoice(ctx, request)
 	if err != nil {
@@ -4035,7 +4243,11 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendLocation(ctx, request)
 	if err != nil {
@@ -4107,7 +4319,11 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendMediaGroup(ctx, request)
 	if err != nil {
@@ -4179,7 +4395,11 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendMessage(ctx, request)
 	if err != nil {
@@ -4251,7 +4471,11 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendPhoto(ctx, request)
 	if err != nil {
@@ -4323,7 +4547,11 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendPoll(ctx, request)
 	if err != nil {
@@ -4395,7 +4623,11 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendSticker(ctx, request)
 	if err != nil {
@@ -4467,7 +4699,11 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendVenue(ctx, request)
 	if err != nil {
@@ -4539,7 +4775,11 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendVideo(ctx, request)
 	if err != nil {
@@ -4611,7 +4851,11 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendVideoNote(ctx, request)
 	if err != nil {
@@ -4683,7 +4927,11 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SendVoice(ctx, request)
 	if err != nil {
@@ -4755,7 +5003,11 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SetChatAdministratorCustomTitle(ctx, request)
 	if err != nil {
@@ -4827,7 +5079,11 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SetChatDescription(ctx, request)
 	if err != nil {
@@ -4899,7 +5155,11 @@ func (s *Server) handleSetChatMenuButtonRequest(args [0]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SetChatMenuButton(ctx, request)
 	if err != nil {
@@ -4971,7 +5231,11 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SetChatPermissions(ctx, request)
 	if err != nil {
@@ -5043,7 +5307,11 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SetChatPhoto(ctx, request)
 	if err != nil {
@@ -5115,7 +5383,11 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SetChatStickerSet(ctx, request)
 	if err != nil {
@@ -5187,7 +5459,11 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SetChatTitle(ctx, request)
 	if err != nil {
@@ -5259,7 +5535,11 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SetGameScore(ctx, request)
 	if err != nil {
@@ -5331,7 +5611,11 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SetMyCommands(ctx, request)
 	if err != nil {
@@ -5403,7 +5687,11 @@ func (s *Server) handleSetMyDefaultAdministratorRightsRequest(args [0]string, w 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SetMyDefaultAdministratorRights(ctx, request)
 	if err != nil {
@@ -5475,7 +5763,11 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SetPassportDataErrors(ctx, request)
 	if err != nil {
@@ -5547,7 +5839,11 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SetStickerPositionInSet(ctx, request)
 	if err != nil {
@@ -5619,7 +5915,11 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SetStickerSetThumb(ctx, request)
 	if err != nil {
@@ -5691,7 +5991,11 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SetWebhook(ctx, request)
 	if err != nil {
@@ -5763,7 +6067,11 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.StopMessageLiveLocation(ctx, request)
 	if err != nil {
@@ -5835,7 +6143,11 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.StopPoll(ctx, request)
 	if err != nil {
@@ -5907,7 +6219,11 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.UnbanChatMember(ctx, request)
 	if err != nil {
@@ -5979,7 +6295,11 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.UnbanChatSenderChat(ctx, request)
 	if err != nil {
@@ -6051,7 +6371,11 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.UnpinAllChatMessages(ctx, request)
 	if err != nil {
@@ -6123,7 +6447,11 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.UnpinChatMessage(ctx, request)
 	if err != nil {
@@ -6195,7 +6523,11 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.UploadStickerFile(ctx, request)
 	if err != nil {

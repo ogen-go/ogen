@@ -16,9 +16,11 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"go.opentelemetry.io/otel/sdk/metric/metrictest"
 
 	ht "github.com/ogen-go/ogen/http"
 	api "github.com/ogen-go/ogen/internal/test_form"
+	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/validate"
 )
 
@@ -199,6 +201,8 @@ func TestMultipartEncodingE2E(t *testing.T) {
 }
 
 func TestMultipartUploadE2E(t *testing.T) {
+	mp, exp := metrictest.NewTestMeterProvider()
+
 	a := assert.New(t)
 	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Minute)
 	defer cancel()
@@ -206,7 +210,11 @@ func TestMultipartUploadE2E(t *testing.T) {
 	handler := &testFormServer{
 		a: a,
 	}
-	apiServer, err := api.NewServer(handler)
+	// Set low limit for BigFile test.
+	apiServer, err := api.NewServer(handler,
+		api.WithMaxMultipartMemory(1024),
+		api.WithMeterProvider(mp),
+	)
 	require.NoError(t, err)
 
 	s := httptest.NewServer(apiServer)
@@ -223,7 +231,10 @@ func TestMultipartUploadE2E(t *testing.T) {
 		wantErr  bool
 	}{
 		{name: "OnlyFile", file: "data"},
+		// Ensure correct handling of file which is bigger than max memory limit.
+		{name: "BigFile", file: strings.Repeat("a", 16384)},
 		{name: "All", file: "file", optional: api.NewOptString("optional"), array: []string{"1", "2"}},
+
 		{name: "TooBigArray", file: "file", array: []string{"1", "2", "3", "4", "5", "6"}, wantErr: true},
 	}
 	for _, tt := range tests {
@@ -265,6 +276,14 @@ func TestMultipartUploadE2E(t *testing.T) {
 			a.Equal(tt.file, r.File)
 			a.Equal(tt.optional, r.OptionalFile)
 			a.Equal(tt.array, r.Files)
+
+			// Collect server metrics.
+			a.NoError(exp.Collect(ctx))
+			// Ensure that no errors were recorded.
+			//
+			// Ignore the possible `not found` error, returned value will be zero anyway.
+			er, _ := exp.GetByName(otelogen.ServerErrorsCount)
+			a.Zero(er.Count)
 		})
 	}
 }

@@ -61,7 +61,11 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TestFormURLEncoded(ctx, request)
 	if err != nil {
@@ -124,7 +128,11 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TestMultipart(ctx, request)
 	if err != nil {
@@ -187,7 +195,11 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TestMultipartUpload(ctx, request)
 	if err != nil {
@@ -250,7 +262,11 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TestShareFormSchema(ctx, request)
 	if err != nil {
