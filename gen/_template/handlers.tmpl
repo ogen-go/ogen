@@ -85,7 +85,11 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 	{{- end }}
 
 	response, err := s.h.{{$op.Name}}(ctx{{ if $op.Request }}, request{{ end }}{{if $op.Params}}, params {{ end }})
