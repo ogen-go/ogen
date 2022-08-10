@@ -114,6 +114,22 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 		return p.wrapField(field, ctx.lastLoc(), schema.Locator, err)
 	}
 
+	validateMinMax := func(prop string, min, max *uint64) (rerr error) {
+		if min == nil || max == nil {
+			return nil
+		}
+		defer func() {
+			if rerr != nil {
+				rerr = wrapField("min"+prop, rerr)
+			}
+		}()
+
+		if *min > *max {
+			return errors.Errorf("min%s (%d) is greater than max%s (%d)", prop, *min, prop, *max)
+		}
+		return nil
+	}
+
 	if ref := schema.Ref; ref != "" {
 		s, err := p.resolve(ref, ctx)
 		if err != nil {
@@ -226,6 +242,14 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 			err := errors.New("object cannot contain 'items' field")
 			return nil, wrapField("items", err)
 		}
+		if err := validateMinMax(
+			"Properties",
+			schema.MinProperties,
+			schema.MaxProperties,
+		); err != nil {
+			return nil, err
+		}
+
 		required := func(name string) bool {
 			for _, p := range schema.Required {
 				if p == name {
@@ -304,6 +328,14 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 		return s, nil
 
 	case "array":
+		if err := validateMinMax(
+			"Items",
+			schema.MinItems,
+			schema.MaxItems,
+		); err != nil {
+			return nil, err
+		}
+
 		array := hook(&Schema{
 			Type:        Array,
 			MinItems:    schema.MinItems,
@@ -329,7 +361,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 		return array, nil
 
 	case "number", "integer":
-		if mul := schema.MultipleOf; mul != nil {
+		if mul := schema.MultipleOf; len(mul) > 0 {
 			if err := func() error {
 				rat := new(big.Rat)
 				if err := rat.UnmarshalText(mul); err != nil {
@@ -362,6 +394,14 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 		}), nil
 
 	case "string":
+		if err := validateMinMax(
+			"Length",
+			schema.MinLength,
+			schema.MaxLength,
+		); err != nil {
+			return nil, err
+		}
+
 		return hook(&Schema{
 			Type:      String,
 			Format:    schema.Format,
