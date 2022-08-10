@@ -381,7 +381,11 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActionsCreateOrUpdateEnvironmentSecret(ctx, request, params)
 	if err != nil {
@@ -454,7 +458,11 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActionsCreateOrUpdateOrgSecret(ctx, request, params)
 	if err != nil {
@@ -527,7 +535,11 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActionsCreateOrUpdateRepoSecret(ctx, request, params)
 	if err != nil {
@@ -848,7 +860,11 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActionsCreateSelfHostedRunnerGroupForOrg(ctx, request, params)
 	if err != nil {
@@ -4269,7 +4285,11 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActionsReviewPendingDeploymentsForRun(ctx, request, params)
 	if err != nil {
@@ -4342,7 +4362,11 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActionsSetAllowedActionsOrganization(ctx, request, params)
 	if err != nil {
@@ -4415,7 +4439,11 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActionsSetAllowedActionsRepository(ctx, request, params)
 	if err != nil {
@@ -4488,7 +4516,11 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActionsSetGithubActionsPermissionsOrganization(ctx, request, params)
 	if err != nil {
@@ -4561,7 +4593,11 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActionsSetGithubActionsPermissionsRepository(ctx, request, params)
 	if err != nil {
@@ -4634,7 +4670,11 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx, request, params)
 	if err != nil {
@@ -4707,7 +4747,11 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActionsSetSelectedReposForOrgSecret(ctx, request, params)
 	if err != nil {
@@ -4780,7 +4824,11 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx, request, params)
 	if err != nil {
@@ -4853,7 +4901,11 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActionsSetSelfHostedRunnersInGroupForOrg(ctx, request, params)
 	if err != nil {
@@ -4926,7 +4978,11 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActionsUpdateSelfHostedRunnerGroupForOrg(ctx, request, params)
 	if err != nil {
@@ -6339,7 +6395,11 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActivityMarkNotificationsAsRead(ctx, request)
 	if err != nil {
@@ -6412,7 +6472,11 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActivityMarkRepoNotificationsAsRead(ctx, request, params)
 	if err != nil {
@@ -6547,7 +6611,11 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActivitySetRepoSubscription(ctx, request, params)
 	if err != nil {
@@ -6620,7 +6688,11 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ActivitySetThreadSubscription(ctx, request, params)
 	if err != nil {
@@ -6879,7 +6951,11 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AppsCheckToken(ctx, request, params)
 	if err != nil {
@@ -6952,7 +7028,11 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AppsCreateContentAttachment(ctx, request, params)
 	if err != nil {
@@ -7025,7 +7105,11 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.Resp
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AppsCreateFromManifest(ctx, request, params)
 	if err != nil {
@@ -7098,7 +7182,11 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AppsCreateInstallationAccessToken(ctx, request, params)
 	if err != nil {
@@ -7171,7 +7259,11 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AppsDeleteAuthorization(ctx, request, params)
 	if err != nil {
@@ -7306,7 +7398,11 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AppsDeleteToken(ctx, request, params)
 	if err != nil {
@@ -8405,7 +8501,11 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AppsResetToken(ctx, request, params)
 	if err != nil {
@@ -8526,7 +8626,11 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AppsScopeToken(ctx, request, params)
 	if err != nil {
@@ -8713,7 +8817,11 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.AppsUpdateWebhookConfigForApp(ctx, request)
 	if err != nil {
@@ -9344,7 +9452,11 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ChecksCreateSuite(ctx, request, params)
 	if err != nil {
@@ -9851,7 +9963,11 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ChecksSetSuitesPreferences(ctx, request, params)
 	if err != nil {
@@ -10358,7 +10474,11 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.CodeScanningUpdateAlert(ctx, request, params)
 	if err != nil {
@@ -10431,7 +10551,11 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.CodeScanningUploadSarif(ctx, request, params)
 	if err != nil {
@@ -10910,7 +11034,11 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
 	if err != nil {
@@ -12285,7 +12413,11 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx, request, params)
 	if err != nil {
@@ -12358,7 +12490,11 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx, request, params)
 	if err != nil {
@@ -12555,7 +12691,11 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EnterpriseAdminSetAllowedActionsEnterprise(ctx, request, params)
 	if err != nil {
@@ -12628,7 +12768,11 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx, request, params)
 	if err != nil {
@@ -12701,7 +12845,11 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx, request, params)
 	if err != nil {
@@ -12774,7 +12922,11 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx, request, params)
 	if err != nil {
@@ -12847,7 +12999,11 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, request, params)
 	if err != nil {
@@ -12920,7 +13076,11 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, request, params)
 	if err != nil {
@@ -12993,7 +13153,11 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx, request, params)
 	if err != nil {
@@ -13066,7 +13230,11 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx, request, params)
 	if err != nil {
@@ -13139,7 +13307,11 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx, request, params)
 	if err != nil {
@@ -13212,7 +13384,11 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
 	if err != nil {
@@ -13337,7 +13513,11 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GistsCreate(ctx, request)
 	if err != nil {
@@ -13410,7 +13590,11 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GistsCreateComment(ctx, request, params)
 	if err != nil {
@@ -14413,7 +14597,11 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GistsUpdateComment(ctx, request, params)
 	if err != nil {
@@ -14486,7 +14674,11 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GitCreateBlob(ctx, request, params)
 	if err != nil {
@@ -14559,7 +14751,11 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GitCreateCommit(ctx, request, params)
 	if err != nil {
@@ -14632,7 +14828,11 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GitCreateRef(ctx, request, params)
 	if err != nil {
@@ -14705,7 +14905,11 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GitCreateTag(ctx, request, params)
 	if err != nil {
@@ -14778,7 +14982,11 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GitCreateTree(ctx, request, params)
 	if err != nil {
@@ -15285,7 +15493,11 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.GitUpdateRef(ctx, request, params)
 	if err != nil {
@@ -15630,7 +15842,11 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.InteractionsSetRestrictionsForAuthenticatedUser(ctx, request)
 	if err != nil {
@@ -15703,7 +15919,11 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.InteractionsSetRestrictionsForOrg(ctx, request, params)
 	if err != nil {
@@ -15776,7 +15996,11 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.InteractionsSetRestrictionsForRepo(ctx, request, params)
 	if err != nil {
@@ -15849,7 +16073,11 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.IssuesAddAssignees(ctx, request, params)
 	if err != nil {
@@ -15984,7 +16212,11 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.IssuesCreate(ctx, request, params)
 	if err != nil {
@@ -16057,7 +16289,11 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.IssuesCreateComment(ctx, request, params)
 	if err != nil {
@@ -16130,7 +16366,11 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.IssuesCreateLabel(ctx, request, params)
 	if err != nil {
@@ -16203,7 +16443,11 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.IssuesCreateMilestone(ctx, request, params)
 	if err != nil {
@@ -17516,7 +17760,11 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.IssuesLock(ctx, request, params)
 	if err != nil {
@@ -17651,7 +17899,11 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.IssuesRemoveAssignees(ctx, request, params)
 	if err != nil {
@@ -17848,7 +18100,11 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.IssuesUpdate(ctx, request, params)
 	if err != nil {
@@ -17921,7 +18177,11 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.IssuesUpdateComment(ctx, request, params)
 	if err != nil {
@@ -17994,7 +18254,11 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.IssuesUpdateLabel(ctx, request, params)
 	if err != nil {
@@ -18067,7 +18331,11 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.IssuesUpdateMilestone(ctx, request, params)
 	if err != nil {
@@ -19338,7 +19606,11 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.MigrationsMapCommitAuthor(ctx, request, params)
 	if err != nil {
@@ -19411,7 +19683,11 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.MigrationsSetLfsPreference(ctx, request, params)
 	if err != nil {
@@ -19474,7 +19750,11 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.MigrationsStartForAuthenticatedUser(ctx, request)
 	if err != nil {
@@ -19547,7 +19827,11 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.MigrationsStartForOrg(ctx, request, params)
 	if err != nil {
@@ -19620,7 +19904,11 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.MigrationsStartImport(ctx, request, params)
 	if err != nil {
@@ -19817,7 +20105,11 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.MigrationsUpdateImport(ctx, request, params)
 	if err != nil {
@@ -19880,7 +20172,11 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.OAuthAuthorizationsCreateAuthorization(ctx, request)
 	if err != nil {
@@ -20201,7 +20497,11 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx, request, params)
 	if err != nil {
@@ -20274,7 +20574,11 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx, request, params)
 	if err != nil {
@@ -20471,7 +20775,11 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.OAuthAuthorizationsUpdateAuthorization(ctx, request, params)
 	if err != nil {
@@ -20916,7 +21224,11 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.OrgsCreateInvitation(ctx, request, params)
 	if err != nil {
@@ -20989,7 +21301,11 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.OrgsCreateWebhook(ctx, request, params)
 	if err != nil {
@@ -22860,7 +23176,11 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.OrgsSetMembershipForUser(ctx, request, params)
 	if err != nil {
@@ -23057,7 +23377,11 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.OrgsUpdateMembershipForAuthenticatedUser(ctx, request, params)
 	if err != nil {
@@ -23130,7 +23454,11 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.OrgsUpdateWebhook(ctx, request, params)
 	if err != nil {
@@ -23203,7 +23531,11 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.OrgsUpdateWebhookConfigForOrg(ctx, request, params)
 	if err != nil {
@@ -24764,7 +25096,11 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ProjectsAddCollaborator(ctx, request, params)
 	if err != nil {
@@ -24837,7 +25173,11 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ProjectsCreateColumn(ctx, request, params)
 	if err != nil {
@@ -24900,7 +25240,11 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ProjectsCreateForAuthenticatedUser(ctx, request)
 	if err != nil {
@@ -24973,7 +25317,11 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ProjectsCreateForOrg(ctx, request, params)
 	if err != nil {
@@ -25046,7 +25394,11 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ProjectsCreateForRepo(ctx, request, params)
 	if err != nil {
@@ -25925,7 +26277,11 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ProjectsMoveCard(ctx, request, params)
 	if err != nil {
@@ -25998,7 +26354,11 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ProjectsMoveColumn(ctx, request, params)
 	if err != nil {
@@ -26133,7 +26493,11 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ProjectsUpdate(ctx, request, params)
 	if err != nil {
@@ -26206,7 +26570,11 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ProjectsUpdateCard(ctx, request, params)
 	if err != nil {
@@ -26279,7 +26647,11 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ProjectsUpdateColumn(ctx, request, params)
 	if err != nil {
@@ -26414,7 +26786,11 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PullsCreate(ctx, request, params)
 	if err != nil {
@@ -26487,7 +26863,11 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PullsCreateReplyForReviewComment(ctx, request, params)
 	if err != nil {
@@ -26560,7 +26940,11 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PullsCreateReview(ctx, request, params)
 	if err != nil {
@@ -26633,7 +27017,11 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PullsCreateReviewComment(ctx, request, params)
 	if err != nil {
@@ -26830,7 +27218,11 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PullsDismissReview(ctx, request, params)
 	if err != nil {
@@ -27585,7 +27977,11 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PullsMerge(ctx, request, params)
 	if err != nil {
@@ -27658,7 +28054,11 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PullsRemoveRequestedReviewers(ctx, request, params)
 	if err != nil {
@@ -27731,7 +28131,11 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PullsSubmitReview(ctx, request, params)
 	if err != nil {
@@ -27804,7 +28208,11 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PullsUpdate(ctx, request, params)
 	if err != nil {
@@ -27877,7 +28285,11 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PullsUpdateBranch(ctx, request, params)
 	if err != nil {
@@ -27950,7 +28362,11 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PullsUpdateReview(ctx, request, params)
 	if err != nil {
@@ -28023,7 +28439,11 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PullsUpdateReviewComment(ctx, request, params)
 	if err != nil {
@@ -28144,7 +28564,11 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReactionsCreateForCommitComment(ctx, request, params)
 	if err != nil {
@@ -28217,7 +28641,11 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReactionsCreateForIssue(ctx, request, params)
 	if err != nil {
@@ -28290,7 +28718,11 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReactionsCreateForIssueComment(ctx, request, params)
 	if err != nil {
@@ -28363,7 +28795,11 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReactionsCreateForPullRequestReviewComment(ctx, request, params)
 	if err != nil {
@@ -28436,7 +28872,11 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReactionsCreateForRelease(ctx, request, params)
 	if err != nil {
@@ -28509,7 +28949,11 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReactionsCreateForTeamDiscussionCommentInOrg(ctx, request, params)
 	if err != nil {
@@ -28582,7 +29026,11 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReactionsCreateForTeamDiscussionCommentLegacy(ctx, request, params)
 	if err != nil {
@@ -28655,7 +29103,11 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReactionsCreateForTeamDiscussionInOrg(ctx, request, params)
 	if err != nil {
@@ -28728,7 +29180,11 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReactionsCreateForTeamDiscussionLegacy(ctx, request, params)
 	if err != nil {
@@ -29793,7 +30249,11 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposAddAppAccessRestrictions(ctx, request, params)
 	if err != nil {
@@ -29866,7 +30326,11 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposAddCollaborator(ctx, request, params)
 	if err != nil {
@@ -29939,7 +30403,11 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposAddStatusCheckContexts(ctx, request, params)
 	if err != nil {
@@ -30012,7 +30480,11 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposAddTeamAccessRestrictions(ctx, request, params)
 	if err != nil {
@@ -30085,7 +30557,11 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposAddUserAccessRestrictions(ctx, request, params)
 	if err != nil {
@@ -30344,7 +30820,11 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposCreateAutolink(ctx, request, params)
 	if err != nil {
@@ -30417,7 +30897,11 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposCreateCommitComment(ctx, request, params)
 	if err != nil {
@@ -30552,7 +31036,11 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposCreateCommitStatus(ctx, request, params)
 	if err != nil {
@@ -30625,7 +31113,11 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposCreateDeployKey(ctx, request, params)
 	if err != nil {
@@ -30698,7 +31190,11 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposCreateDeployment(ctx, request, params)
 	if err != nil {
@@ -30771,7 +31267,11 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposCreateDeploymentStatus(ctx, request, params)
 	if err != nil {
@@ -30844,7 +31344,11 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposCreateDispatchEvent(ctx, request, params)
 	if err != nil {
@@ -30907,7 +31411,11 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposCreateForAuthenticatedUser(ctx, request)
 	if err != nil {
@@ -30980,7 +31488,11 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposCreateFork(ctx, request, params)
 	if err != nil {
@@ -31053,7 +31565,11 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposCreateInOrg(ctx, request, params)
 	if err != nil {
@@ -31126,7 +31642,11 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposCreateOrUpdateFileContents(ctx, request, params)
 	if err != nil {
@@ -31199,7 +31719,11 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposCreatePagesSite(ctx, request, params)
 	if err != nil {
@@ -31272,7 +31796,11 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposCreateRelease(ctx, request, params)
 	if err != nil {
@@ -31345,7 +31873,11 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposCreateUsingTemplate(ctx, request, params)
 	if err != nil {
@@ -31418,7 +31950,11 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposCreateWebhook(ctx, request, params)
 	if err != nil {
@@ -32173,7 +32709,11 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposDeleteFile(ctx, request, params)
 	if err != nil {
@@ -37578,7 +38118,11 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposMerge(ctx, request, params)
 	if err != nil {
@@ -37651,7 +38195,11 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposMergeUpstream(ctx, request, params)
 	if err != nil {
@@ -37848,7 +38396,11 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposRemoveAppAccessRestrictions(ctx, request, params)
 	if err != nil {
@@ -37983,7 +38535,11 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposRemoveStatusCheckContexts(ctx, request, params)
 	if err != nil {
@@ -38118,7 +38674,11 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposRemoveTeamAccessRestrictions(ctx, request, params)
 	if err != nil {
@@ -38191,7 +38751,11 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposRemoveUserAccessRestrictions(ctx, request, params)
 	if err != nil {
@@ -38264,7 +38828,11 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposRenameBranch(ctx, request, params)
 	if err != nil {
@@ -38337,7 +38905,11 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposReplaceAllTopics(ctx, request, params)
 	if err != nil {
@@ -38534,7 +39106,11 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposSetAppAccessRestrictions(ctx, request, params)
 	if err != nil {
@@ -38607,7 +39183,11 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposSetStatusCheckContexts(ctx, request, params)
 	if err != nil {
@@ -38680,7 +39260,11 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposSetTeamAccessRestrictions(ctx, request, params)
 	if err != nil {
@@ -38753,7 +39337,11 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposSetUserAccessRestrictions(ctx, request, params)
 	if err != nil {
@@ -38888,7 +39476,11 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposTransfer(ctx, request, params)
 	if err != nil {
@@ -38961,7 +39553,11 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposUpdate(ctx, request, params)
 	if err != nil {
@@ -39034,7 +39630,11 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposUpdateBranchProtection(ctx, request, params)
 	if err != nil {
@@ -39107,7 +39707,11 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposUpdateCommitComment(ctx, request, params)
 	if err != nil {
@@ -39180,7 +39784,11 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposUpdateInvitation(ctx, request, params)
 	if err != nil {
@@ -39253,7 +39861,11 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposUpdatePullRequestReviewProtection(ctx, request, params)
 	if err != nil {
@@ -39326,7 +39938,11 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposUpdateRelease(ctx, request, params)
 	if err != nil {
@@ -39399,7 +40015,11 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposUpdateReleaseAsset(ctx, request, params)
 	if err != nil {
@@ -39472,7 +40092,11 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposUpdateStatusCheckProtection(ctx, request, params)
 	if err != nil {
@@ -39545,7 +40169,11 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposUpdateWebhook(ctx, request, params)
 	if err != nil {
@@ -39618,7 +40246,11 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.ReposUpdateWebhookConfigForRepo(ctx, request, params)
 	if err != nil {
@@ -40373,7 +41005,11 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SecretScanningUpdateAlert(ctx, request, params)
 	if err != nil {
@@ -40508,7 +41144,11 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsAddOrUpdateMembershipForUserInOrg(ctx, request, params)
 	if err != nil {
@@ -40581,7 +41221,11 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsAddOrUpdateMembershipForUserLegacy(ctx, request, params)
 	if err != nil {
@@ -40654,7 +41298,11 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsAddOrUpdateProjectPermissionsInOrg(ctx, request, params)
 	if err != nil {
@@ -40727,7 +41375,11 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsAddOrUpdateProjectPermissionsLegacy(ctx, request, params)
 	if err != nil {
@@ -40800,7 +41452,11 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsAddOrUpdateRepoPermissionsInOrg(ctx, request, params)
 	if err != nil {
@@ -40873,7 +41529,11 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsAddOrUpdateRepoPermissionsLegacy(ctx, request, params)
 	if err != nil {
@@ -41194,7 +41854,11 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsCreate(ctx, request, params)
 	if err != nil {
@@ -41267,7 +41931,11 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsCreateDiscussionCommentInOrg(ctx, request, params)
 	if err != nil {
@@ -41340,7 +42008,11 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsCreateDiscussionCommentLegacy(ctx, request, params)
 	if err != nil {
@@ -41413,7 +42085,11 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsCreateDiscussionInOrg(ctx, request, params)
 	if err != nil {
@@ -41486,7 +42162,11 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsCreateDiscussionLegacy(ctx, request, params)
 	if err != nil {
@@ -41559,7 +42239,11 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx, request, params)
 	if err != nil {
@@ -41632,7 +42316,11 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx, request, params)
 	if err != nil {
@@ -44247,7 +44935,11 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsUpdateDiscussionCommentInOrg(ctx, request, params)
 	if err != nil {
@@ -44320,7 +45012,11 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsUpdateDiscussionCommentLegacy(ctx, request, params)
 	if err != nil {
@@ -44393,7 +45089,11 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsUpdateDiscussionInOrg(ctx, request, params)
 	if err != nil {
@@ -44466,7 +45166,11 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsUpdateDiscussionLegacy(ctx, request, params)
 	if err != nil {
@@ -44539,7 +45243,11 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsUpdateInOrg(ctx, request, params)
 	if err != nil {
@@ -44612,7 +45320,11 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TeamsUpdateLegacy(ctx, request, params)
 	if err != nil {
@@ -44675,7 +45387,11 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w ht
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.UsersAddEmailForAuthenticated(ctx, request)
 	if err != nil {
@@ -44986,7 +45702,11 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.UsersCreateGpgKeyForAuthenticated(ctx, request)
 	if err != nil {
@@ -45049,7 +45769,11 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.UsersCreatePublicSSHKeyForAuthenticated(ctx, request)
 	if err != nil {
@@ -45112,7 +45836,11 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.UsersDeleteEmailForAuthenticated(ctx, request)
 	if err != nil {
@@ -46387,7 +47115,11 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.UsersSetPrimaryEmailVisibilityForAuthenticated(ctx, request)
 	if err != nil {
@@ -46574,7 +47306,11 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.Re
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.UsersUpdateAuthenticated(ctx, request)
 	if err != nil {

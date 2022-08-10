@@ -23,11 +23,13 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request, span trace.Span)
 	close func() error,
 	rerr error,
 ) {
-	var closers []io.Closer
+	var closers []func() error
 	close = func() error {
 		var merr error
-		for _, c := range closers {
-			merr = multierr.Append(merr, c.Close())
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
 		}
 		return merr
 	}
@@ -152,6 +154,11 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request, span trace.Span)
 		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
 			return req, close, errors.Wrap(err, "parse multipart form")
 		}
+		// Remove all temporary files created by ParseMultipartForm when the request is done.
+		//
+		// Notice that the closers are called in reverse order, to match defer behavior, so
+		// any opened file will be closed before RemoveAll call.
+		closers = append(closers, r.MultipartForm.RemoveAll)
 		form := url.Values(r.MultipartForm.Value)
 
 		var request AllRequestBodiesMultipartFormData
@@ -233,11 +240,13 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request, span tra
 	close func() error,
 	rerr error,
 ) {
-	var closers []io.Closer
+	var closers []func() error
 	close = func() error {
 		var merr error
-		for _, c := range closers {
-			merr = multierr.Append(merr, c.Close())
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
 		}
 		return merr
 	}
@@ -372,6 +381,11 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request, span tra
 		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
 			return req, close, errors.Wrap(err, "parse multipart form")
 		}
+		// Remove all temporary files created by ParseMultipartForm when the request is done.
+		//
+		// Notice that the closers are called in reverse order, to match defer behavior, so
+		// any opened file will be closed before RemoveAll call.
+		closers = append(closers, r.MultipartForm.RemoveAll)
 		form := url.Values(r.MultipartForm.Value)
 
 		var request AllRequestBodiesOptionalMultipartFormData

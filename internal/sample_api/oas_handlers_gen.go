@@ -133,7 +133,11 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.DefaultTest(ctx, request, params)
 	if err != nil {
@@ -306,7 +310,11 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.FoobarPost(ctx, request)
 	if err != nil {
@@ -573,7 +581,11 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.OneofBug(ctx, request)
 	if err != nil {
@@ -682,7 +694,11 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PetCreate(ctx, request)
 	if err != nil {
@@ -1115,7 +1131,11 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PetUpdateNameAliasPost(ctx, request)
 	if err != nil {
@@ -1176,7 +1196,11 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PetUpdateNamePost(ctx, request)
 	if err != nil {
@@ -1249,7 +1273,11 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.PetUploadAvatarByID(ctx, request, params)
 	if err != nil {
@@ -1575,7 +1603,11 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.TestFloatValidation(ctx, request)
 	if err != nil {

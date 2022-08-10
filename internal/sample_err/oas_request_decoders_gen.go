@@ -20,11 +20,13 @@ func (s *Server) decodeDataCreateRequest(r *http.Request, span trace.Span) (
 	close func() error,
 	rerr error,
 ) {
-	var closers []io.Closer
+	var closers []func() error
 	close = func() error {
 		var merr error
-		for _, c := range closers {
-			merr = multierr.Append(merr, c.Close())
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
 		}
 		return merr
 	}

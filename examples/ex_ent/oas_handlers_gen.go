@@ -61,7 +61,11 @@ func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.CreatePet(ctx, request)
 	if err != nil {
@@ -134,7 +138,11 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.CreatePetCategories(ctx, request, params)
 	if err != nil {
@@ -207,7 +215,11 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.CreatePetFriends(ctx, request, params)
 	if err != nil {
@@ -280,7 +292,11 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.CreatePetOwner(ctx, request, params)
 	if err != nil {
@@ -787,7 +803,11 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.UpdatePet(ctx, request, params)
 	if err != nil {

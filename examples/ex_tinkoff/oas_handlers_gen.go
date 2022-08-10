@@ -820,7 +820,11 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.OrdersLimitOrderPost(ctx, request, params)
 	if err != nil {
@@ -902,7 +906,11 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.OrdersMarketOrderPost(ctx, request, params)
 	if err != nil {
@@ -1197,7 +1205,11 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SandboxCurrenciesBalancePost(ctx, request, params)
 	if err != nil {
@@ -1279,7 +1291,11 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SandboxPositionsBalancePost(ctx, request, params)
 	if err != nil {
@@ -1351,7 +1367,11 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.SandboxRegisterPost(ctx, request)
 	if err != nil {

@@ -20,11 +20,13 @@ func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.S
 	close func() error,
 	rerr error,
 ) {
-	var closers []io.Closer
+	var closers []func() error
 	close = func() error {
 		var merr error
-		for _, c := range closers {
-			merr = multierr.Append(merr, c.Close())
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
 		}
 		return merr
 	}
@@ -82,11 +84,13 @@ func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.
 	close func() error,
 	rerr error,
 ) {
-	var closers []io.Closer
+	var closers []func() error
 	close = func() error {
 		var merr error
-		for _, c := range closers {
-			merr = multierr.Append(merr, c.Close())
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
 		}
 		return merr
 	}
@@ -144,11 +148,13 @@ func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span
 	close func() error,
 	rerr error,
 ) {
-	var closers []io.Closer
+	var closers []func() error
 	close = func() error {
 		var merr error
-		for _, c := range closers {
-			merr = multierr.Append(merr, c.Close())
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
 		}
 		return merr
 	}
@@ -206,11 +212,13 @@ func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request, span 
 	close func() error,
 	rerr error,
 ) {
-	var closers []io.Closer
+	var closers []func() error
 	close = func() error {
 		var merr error
-		for _, c := range closers {
-			merr = multierr.Append(merr, c.Close())
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
 		}
 		return merr
 	}
@@ -268,11 +276,13 @@ func (s *Server) decodeSandboxRegisterPostRequest(r *http.Request, span trace.Sp
 	close func() error,
 	rerr error,
 ) {
-	var closers []io.Closer
+	var closers []func() error
 	close = func() error {
 		var merr error
-		for _, c := range closers {
-			merr = multierr.Append(merr, c.Close())
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
 		}
 		return merr
 	}

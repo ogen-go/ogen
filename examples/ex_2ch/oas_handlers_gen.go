@@ -806,7 +806,11 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.UserPassloginPost(ctx, request, params)
 	if err != nil {
@@ -867,7 +871,11 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, w http.ResponseWri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.UserPostingPost(ctx, request)
 	if err != nil {
@@ -928,7 +936,11 @@ func (s *Server) handleUserReportPostRequest(args [0]string, w http.ResponseWrit
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	defer close()
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
 
 	response, err := s.h.UserReportPost(ctx, request)
 	if err != nil {

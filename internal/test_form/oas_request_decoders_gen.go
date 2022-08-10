@@ -25,11 +25,13 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 	close func() error,
 	rerr error,
 ) {
-	var closers []io.Closer
+	var closers []func() error
 	close = func() error {
 		var merr error
-		for _, c := range closers {
-			merr = multierr.Append(merr, c.Close())
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
 		}
 		return merr
 	}
@@ -235,11 +237,13 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 	close func() error,
 	rerr error,
 ) {
-	var closers []io.Closer
+	var closers []func() error
 	close = func() error {
 		var merr error
-		for _, c := range closers {
-			merr = multierr.Append(merr, c.Close())
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
 		}
 		return merr
 	}
@@ -261,6 +265,11 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
 			return req, close, errors.Wrap(err, "parse multipart form")
 		}
+		// Remove all temporary files created by ParseMultipartForm when the request is done.
+		//
+		// Notice that the closers are called in reverse order, to match defer behavior, so
+		// any opened file will be closed before RemoveAll call.
+		closers = append(closers, r.MultipartForm.RemoveAll)
 		form := url.Values(r.MultipartForm.Value)
 
 		var request TestForm
@@ -445,11 +454,13 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 	close func() error,
 	rerr error,
 ) {
-	var closers []io.Closer
+	var closers []func() error
 	close = func() error {
 		var merr error
-		for _, c := range closers {
-			merr = multierr.Append(merr, c.Close())
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
 		}
 		return merr
 	}
@@ -471,6 +482,11 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
 			return req, close, errors.Wrap(err, "parse multipart form")
 		}
+		// Remove all temporary files created by ParseMultipartForm when the request is done.
+		//
+		// Notice that the closers are called in reverse order, to match defer behavior, so
+		// any opened file will be closed before RemoveAll call.
+		closers = append(closers, r.MultipartForm.RemoveAll)
 		form := url.Values(r.MultipartForm.Value)
 
 		var request TestMultipartUploadReqForm
@@ -551,7 +567,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 				if err != nil {
 					return errors.Wrap(err, "open")
 				}
-				closers = append(closers, f)
+				closers = append(closers, f.Close)
 				request.File = ht.MultipartFile{
 					Name:   fh.Filename,
 					File:   f,
@@ -574,7 +590,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 				if err != nil {
 					return errors.Wrap(err, "open")
 				}
-				closers = append(closers, f)
+				closers = append(closers, f.Close)
 				request.OptionalFile.SetTo(ht.MultipartFile{
 					Name:   fh.Filename,
 					File:   f,
@@ -595,7 +611,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 					if err != nil {
 						return errors.Wrap(err, "open")
 					}
-					closers = append(closers, f)
+					closers = append(closers, f.Close)
 
 					request.Files = append(request.Files, ht.MultipartFile{
 						Name:   fh.Filename,
@@ -632,11 +648,13 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request, span trace.Sp
 	close func() error,
 	rerr error,
 ) {
-	var closers []io.Closer
+	var closers []func() error
 	close = func() error {
 		var merr error
-		for _, c := range closers {
-			merr = multierr.Append(merr, c.Close())
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
 		}
 		return merr
 	}
@@ -683,6 +701,11 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request, span trace.Sp
 		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
 			return req, close, errors.Wrap(err, "parse multipart form")
 		}
+		// Remove all temporary files created by ParseMultipartForm when the request is done.
+		//
+		// Notice that the closers are called in reverse order, to match defer behavior, so
+		// any opened file will be closed before RemoveAll call.
+		closers = append(closers, r.MultipartForm.RemoveAll)
 		form := url.Values(r.MultipartForm.Value)
 
 		var request SharedRequestForm
@@ -731,7 +754,7 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request, span trace.Sp
 				if err != nil {
 					return errors.Wrap(err, "open")
 				}
-				closers = append(closers, f)
+				closers = append(closers, f.Close)
 				request.File.SetTo(ht.MultipartFile{
 					Name:   fh.Filename,
 					File:   f,
