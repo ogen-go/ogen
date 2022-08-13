@@ -22,7 +22,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		s.notFound(w, r)
 		return
 	}
-	args := [1]string{}
 
 	// Static code generated router with unwrapped path search.
 	switch {
@@ -39,43 +38,15 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
+				// Leaf node.
 				switch r.Method {
 				case "GET":
 					s.handleListPetsRequest([0]string{}, w, r)
-				case "POST":
-					s.handleCreatePetsRequest([0]string{}, w, r)
 				default:
-					s.notAllowed(w, r, "GET,POST")
+					s.notAllowed(w, r, "GET")
 				}
 
 				return
-			}
-			switch elem[0] {
-			case '/': // Prefix: "/"
-				if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				// Param: "petId"
-				// Leaf parameter
-				args[0] = elem
-				elem = ""
-
-				if len(elem) == 0 {
-					// Leaf node.
-					switch r.Method {
-					case "GET":
-						s.handleShowPetByIdRequest([1]string{
-							args[0],
-						}, w, r)
-					default:
-						s.notAllowed(w, r, "GET")
-					}
-
-					return
-				}
 			}
 		}
 	}
@@ -87,7 +58,7 @@ type Route struct {
 	name        string
 	operationID string
 	count       int
-	args        [1]string
+	args        [0]string
 }
 
 // Name returns ogen operation name.
@@ -110,7 +81,7 @@ func (r Route) Args() []string {
 // FindRoute finds Route for given method and path.
 func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 	var (
-		args = [1]string{}
+		args = [0]string{}
 		elem = path
 	)
 	r.args = args
@@ -135,46 +106,14 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			if len(elem) == 0 {
 				switch method {
 				case "GET":
+					// Leaf: ListPets
 					r.name = "ListPets"
 					r.operationID = "listPets"
 					r.args = args
 					r.count = 0
 					return r, true
-				case "POST":
-					r.name = "CreatePets"
-					r.operationID = "createPets"
-					r.args = args
-					r.count = 0
-					return r, true
 				default:
 					return
-				}
-			}
-			switch elem[0] {
-			case '/': // Prefix: "/"
-				if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
-					elem = elem[l:]
-				} else {
-					break
-				}
-
-				// Param: "petId"
-				// Leaf parameter
-				args[0] = elem
-				elem = ""
-
-				if len(elem) == 0 {
-					switch method {
-					case "GET":
-						// Leaf: ShowPetById
-						r.name = "ShowPetById"
-						r.operationID = "showPetById"
-						r.args = args
-						r.count = 1
-						return r, true
-					default:
-						return
-					}
 				}
 			}
 		}

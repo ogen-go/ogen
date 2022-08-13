@@ -2,11 +2,6 @@
 
 package api
 
-// CreatePetsCreated is response for CreatePets operation.
-type CreatePetsCreated struct{}
-
-func (*CreatePetsCreated) createPetsRes() {}
-
 // Ref: #/components/schemas/Error
 type Error struct {
 	Code    int32  "json:\"code\""
@@ -19,9 +14,7 @@ type ErrorStatusCode struct {
 	Response   Error
 }
 
-func (*ErrorStatusCode) createPetsRes()  {}
-func (*ErrorStatusCode) listPetsRes()    {}
-func (*ErrorStatusCode) showPetByIdRes() {}
+func (*ErrorStatusCode) listPetsRes() {}
 
 // NewOptInt32 returns new OptInt32 with value set to v.
 func NewOptInt32(v int32) OptInt32 {
@@ -121,8 +114,6 @@ type Pet struct {
 	Name string    "json:\"name\""
 	Tag  OptString "json:\"tag\""
 }
-
-func (*Pet) showPetByIdRes() {}
 
 type Pets []Pet
 
