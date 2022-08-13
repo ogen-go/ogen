@@ -124,7 +124,8 @@ Also, you can use --ct-alias to map content types to supported ones.
 func run() error {
 	set := flag.NewFlagSet(os.Args[0], flag.ExitOnError)
 	set.Usage = func() {
-		_, _ = fmt.Fprintf(set.Output(), "Usage: %s [options] <spec>\n", os.Args[0])
+		_, toolName := filepath.Split(os.Args[0])
+		_, _ = fmt.Fprintf(set.Output(), "Usage: %s [options] <spec>\n", toolName)
 		set.PrintDefaults()
 	}
 	var (
