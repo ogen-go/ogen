@@ -224,7 +224,7 @@ func run() error {
 	}
 
 	if err := generate(data, *packageName, *targetDir, *clean, opts); err != nil {
-		if handleGenerateError(os.Stderr, specPath, data, err) {
+		if handleGenerateError(os.Stderr, fileName, data, err) {
 			return errors.New("generation failed")
 		}
 		return errors.Wrap(err, "generate")
