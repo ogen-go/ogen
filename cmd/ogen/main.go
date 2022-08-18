@@ -64,26 +64,31 @@ func generate(data []byte, packageName string, fs gen.FileSystem, opts gen.Optio
 }
 
 func run() error {
+	set := flag.NewFlagSet(os.Args[0], flag.ExitOnError)
+	set.Usage = func() {
+		_, _ = fmt.Fprintf(set.Output(), "Usage: %s [options] <spec>\n", os.Args[0])
+		set.PrintDefaults()
+	}
 	var (
-		targetDir         = flag.String("target", "api", "Path to target dir")
-		packageName       = flag.String("package", "api", "Target package name")
-		inferTypes        = flag.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
-		performFormat     = flag.Bool("format", true, "Perform code formatting")
-		clean             = flag.Bool("clean", false, "Clean generated files before generation")
-		generateTests     = flag.Bool("generate-tests", false, "Generate tests encode-decode/based on schema examples")
-		allowRemote       = flag.Bool("allow-remote", false, "Enables remote references resolving")
-		skipTestsRegex    = flag.String("skip-tests", "", "Skip tests matched by regex")
-		skipUnimplemented = flag.Bool("skip-unimplemented", false, "Disables generation of UnimplementedHandler")
-		noClient          = flag.Bool("no-client", false, "Disables client generation")
-		noServer          = flag.Bool("no-server", false, "Disables server generation")
+		targetDir         = set.String("target", "api", "Path to target dir")
+		packageName       = set.String("package", "api", "Target package name")
+		inferTypes        = set.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
+		performFormat     = set.Bool("format", true, "Perform code formatting")
+		clean             = set.Bool("clean", false, "Clean generated files before generation")
+		generateTests     = set.Bool("generate-tests", false, "Generate tests encode-decode/based on schema examples")
+		allowRemote       = set.Bool("allow-remote", false, "Enables remote references resolving")
+		skipTestsRegex    = set.String("skip-tests", "", "Skip tests matched by regex")
+		skipUnimplemented = set.Bool("skip-unimplemented", false, "Disables generation of UnimplementedHandler")
+		noClient          = set.Bool("no-client", false, "Disables client generation")
+		noServer          = set.Bool("no-server", false, "Disables server generation")
 
-		debugIgnoreNotImplemented = flag.String("debug.ignoreNotImplemented", "",
+		debugIgnoreNotImplemented = set.String("debug.ignoreNotImplemented", "",
 			"Ignore methods having functionality which is not implemented ")
-		debugNoerr = flag.Bool("debug.noerr", false, "Ignore errors")
+		debugNoerr = set.Bool("debug.noerr", false, "Ignore errors")
 
 		logOptions ogenzap.Options
 	)
-	logOptions.RegisterFlags(flag.CommandLine)
+	logOptions.RegisterFlags(set)
 
 	var (
 		ctAliases gen.ContentTypeAliases
@@ -91,12 +96,12 @@ func run() error {
 		filterPath    *regexp.Regexp
 		filterMethods []string
 	)
-	flag.Var(&ctAliases, "ct-alias", "Content type alias, e.g. text/x-markdown=text/plain")
-	flag.Func("filter-path", "Filter operations by path regex", func(s string) (err error) {
+	set.Var(&ctAliases, "ct-alias", "Content type alias, e.g. text/x-markdown=text/plain")
+	set.Func("filter-path", "Filter operations by path regex", func(s string) (err error) {
 		filterPath, err = regexp.Compile(s)
 		return err
 	})
-	flag.Func("filter-methods", "Filter operations by HTTP methods (comma-separated)", func(s string) error {
+	set.Func("filter-methods", "Filter operations by HTTP methods (comma-separated)", func(s string) error {
 		for _, m := range strings.Split(s, ",") {
 			m = strings.TrimSpace(m)
 			if m == "" {
@@ -107,10 +112,13 @@ func run() error {
 		return nil
 	})
 
-	flag.Parse()
+	if err := set.Parse(os.Args[1:]); err != nil {
+		return err
+	}
 
-	specPath := flag.Arg(0)
-	if flag.NArg() == 0 || specPath == "" {
+	specPath := set.Arg(0)
+	if set.NArg() == 0 || specPath == "" {
+		set.Usage()
 		return errors.New("no spec provided")
 	}
 	specPath = filepath.Clean(specPath)
