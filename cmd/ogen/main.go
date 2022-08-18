@@ -4,6 +4,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -83,6 +84,41 @@ func generate(data []byte, packageName, targetDir string, clean bool, opts gen.O
 	log.Debug("Write", zap.Duration("took", time.Since(start)))
 
 	return nil
+}
+
+func handleGenerateError(w io.Writer, specPath string, data []byte, err error) (r bool) {
+	defer func() {
+		// Add trailing newline to the error message if error is handled.
+		if r {
+			_, _ = fmt.Fprintln(w)
+		}
+	}()
+
+	if location.PrintPrettyError(w, specPath, data, err) {
+		return true
+	}
+
+	if notImplErr, ok := errors.Into[*gen.ErrNotImplemented](err); ok {
+		_, _ = fmt.Fprintf(w, `
+Feature %[1]q is not implemented yet.
+Try to run ogen with --debug.ignoreNotImplemented %[1]q or with --debug.noerr to skip unsupported operations.
+`, notImplErr.Name)
+		return true
+	}
+
+	if ctErr, ok := errors.Into[*gen.ErrUnsupportedContentTypes](err); ok {
+		_, _ = fmt.Fprintf(w, `
+Content types [%s] are unsupported.
+Try to run ogen with --debug.ignoreNotImplemented %q or with --debug.noerr to skip unsupported operations.
+Also, you can use --ct-alias to map content types to supported ones.
+`,
+			strings.Join(ctErr.ContentTypes, ", "),
+			"unsupported content type",
+		)
+		return true
+	}
+
+	return false
 }
 
 func run() error {
@@ -187,7 +223,7 @@ func run() error {
 	}
 
 	if err := generate(data, *packageName, *targetDir, *clean, opts); err != nil {
-		if location.PrintPrettyError(os.Stderr, specPath, data, err) {
+		if handleGenerateError(os.Stderr, specPath, data, err) {
 			return errors.New("generation failed")
 		}
 		return errors.Wrap(err, "generate")
