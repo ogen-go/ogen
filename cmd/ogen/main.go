@@ -4,6 +4,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -39,7 +40,7 @@ func cleanDir(targetDir string, files []os.DirEntry) error {
 	return nil
 }
 
-func generate(data []byte, packageName string, fs gen.FileSystem, opts gen.Options) error {
+func generate(data []byte, packageName, targetDir string, clean bool, opts gen.Options) error {
 	log := opts.Logger
 
 	spec, err := ogen.Parse(data)
@@ -54,6 +55,28 @@ func generate(data []byte, packageName string, fs gen.FileSystem, opts gen.Optio
 	}
 	log.Debug("Build IR", zap.Duration("took", time.Since(start)))
 
+	// Clean target dir only after flag parsing, spec parsing and IR building.
+	switch files, err := os.ReadDir(targetDir); {
+	case os.IsNotExist(err):
+		if err := os.MkdirAll(targetDir, 0o750); err != nil {
+			return err
+		}
+	case err != nil:
+		return err
+	default:
+		if clean {
+			if err := cleanDir(targetDir, files); err != nil {
+				return errors.Wrap(err, "clean")
+			}
+		}
+	}
+
+	fs := genfs.FormattedSource{
+		// FIXME(tdakkota): write source uses imports.Process which also uses go/format.
+		// 	So, there is no reason to format source twice or provide a flag to disable formatting.
+		Format: false,
+		Root:   targetDir,
+	}
 	start = time.Now()
 	if err := g.WriteSource(fs, packageName); err != nil {
 		return errors.Wrap(err, "write")
@@ -63,27 +86,67 @@ func generate(data []byte, packageName string, fs gen.FileSystem, opts gen.Optio
 	return nil
 }
 
-func run() error {
-	var (
-		targetDir         = flag.String("target", "api", "Path to target dir")
-		packageName       = flag.String("package", "api", "Target package name")
-		inferTypes        = flag.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
-		performFormat     = flag.Bool("format", true, "Perform code formatting")
-		clean             = flag.Bool("clean", false, "Clean generated files before generation")
-		generateTests     = flag.Bool("generate-tests", false, "Generate tests encode-decode/based on schema examples")
-		allowRemote       = flag.Bool("allow-remote", false, "Enables remote references resolving")
-		skipTestsRegex    = flag.String("skip-tests", "", "Skip tests matched by regex")
-		skipUnimplemented = flag.Bool("skip-unimplemented", false, "Disables generation of UnimplementedHandler")
-		noClient          = flag.Bool("no-client", false, "Disables client generation")
-		noServer          = flag.Bool("no-server", false, "Disables server generation")
+func handleGenerateError(w io.Writer, specPath string, data []byte, err error) (r bool) {
+	defer func() {
+		// Add trailing newline to the error message if error is handled.
+		if r {
+			_, _ = fmt.Fprintln(w)
+		}
+	}()
 
-		debugIgnoreNotImplemented = flag.String("debug.ignoreNotImplemented", "",
+	if location.PrintPrettyError(w, specPath, data, err) {
+		return true
+	}
+
+	if notImplErr, ok := errors.Into[*gen.ErrNotImplemented](err); ok {
+		_, _ = fmt.Fprintf(w, `
+Feature %[1]q is not implemented yet.
+Try to run ogen with --debug.ignoreNotImplemented %[1]q or with --debug.noerr to skip unsupported operations.
+`, notImplErr.Name)
+		return true
+	}
+
+	if ctErr, ok := errors.Into[*gen.ErrUnsupportedContentTypes](err); ok {
+		_, _ = fmt.Fprintf(w, `
+Content types [%s] are unsupported.
+Try to run ogen with --debug.ignoreNotImplemented %q or with --debug.noerr to skip unsupported operations.
+Also, you can use --ct-alias to map content types to supported ones.
+`,
+			strings.Join(ctErr.ContentTypes, ", "),
+			"unsupported content type",
+		)
+		return true
+	}
+
+	return false
+}
+
+func run() error {
+	set := flag.NewFlagSet(os.Args[0], flag.ExitOnError)
+	set.Usage = func() {
+		_, toolName := filepath.Split(os.Args[0])
+		_, _ = fmt.Fprintf(set.Output(), "Usage: %s [options] <spec>\n", toolName)
+		set.PrintDefaults()
+	}
+	var (
+		targetDir         = set.String("target", "api", "Path to target dir")
+		packageName       = set.String("package", "api", "Target package name")
+		inferTypes        = set.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
+		clean             = set.Bool("clean", false, "Clean generated files before generation")
+		generateTests     = set.Bool("generate-tests", false, "Generate tests encode-decode/based on schema examples")
+		allowRemote       = set.Bool("allow-remote", false, "Enables remote references resolving")
+		skipTestsRegex    = set.String("skip-tests", "", "Skip tests matched by regex")
+		skipUnimplemented = set.Bool("skip-unimplemented", false, "Disables generation of UnimplementedHandler")
+		noClient          = set.Bool("no-client", false, "Disables client generation")
+		noServer          = set.Bool("no-server", false, "Disables server generation")
+
+		debugIgnoreNotImplemented = set.String("debug.ignoreNotImplemented", "",
 			"Ignore methods having functionality which is not implemented ")
-		debugNoerr = flag.Bool("debug.noerr", false, "Ignore errors")
+		debugNoerr = set.Bool("debug.noerr", false, "Ignore errors")
 
 		logOptions ogenzap.Options
 	)
-	logOptions.RegisterFlags(flag.CommandLine)
+	logOptions.RegisterFlags(set)
 
 	var (
 		ctAliases gen.ContentTypeAliases
@@ -91,12 +154,12 @@ func run() error {
 		filterPath    *regexp.Regexp
 		filterMethods []string
 	)
-	flag.Var(&ctAliases, "ct-alias", "Content type alias, e.g. text/x-markdown=text/plain")
-	flag.Func("filter-path", "Filter operations by path regex", func(s string) (err error) {
+	set.Var(&ctAliases, "ct-alias", "Content type alias, e.g. text/x-markdown=text/plain")
+	set.Func("filter-path", "Filter operations by path regex", func(s string) (err error) {
 		filterPath, err = regexp.Compile(s)
 		return err
 	})
-	flag.Func("filter-methods", "Filter operations by HTTP methods (comma-separated)", func(s string) error {
+	set.Func("filter-methods", "Filter operations by HTTP methods (comma-separated)", func(s string) error {
 		for _, m := range strings.Split(s, ",") {
 			m = strings.TrimSpace(m)
 			if m == "" {
@@ -107,28 +170,16 @@ func run() error {
 		return nil
 	})
 
-	flag.Parse()
+	if err := set.Parse(os.Args[1:]); err != nil {
+		return err
+	}
 
-	specPath := flag.Arg(0)
-	if flag.NArg() == 0 || specPath == "" {
+	specPath := set.Arg(0)
+	if set.NArg() == 0 || specPath == "" {
+		set.Usage()
 		return errors.New("no spec provided")
 	}
 	specPath = filepath.Clean(specPath)
-
-	switch files, err := os.ReadDir(*targetDir); {
-	case os.IsNotExist(err):
-		if err := os.MkdirAll(*targetDir, 0o750); err != nil {
-			return err
-		}
-	case err != nil:
-		return err
-	default:
-		if *clean {
-			if err := cleanDir(*targetDir, files); err != nil {
-				return errors.Wrap(err, "clean")
-			}
-		}
-	}
 
 	logger, err := ogenzap.Create(logOptions)
 	if err != nil {
@@ -172,12 +223,8 @@ func run() error {
 		return err
 	}
 
-	fs := genfs.FormattedSource{
-		Root:   *targetDir,
-		Format: *performFormat,
-	}
-	if err := generate(data, *packageName, fs, opts); err != nil {
-		if location.PrintPrettyError(os.Stderr, specPath, data, err) {
+	if err := generate(data, *packageName, *targetDir, *clean, opts); err != nil {
+		if handleGenerateError(os.Stderr, fileName, data, err) {
 			return errors.New("generation failed")
 		}
 		return errors.Wrap(err, "generate")
