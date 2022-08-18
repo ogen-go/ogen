@@ -39,7 +39,7 @@ func cleanDir(targetDir string, files []os.DirEntry) error {
 	return nil
 }
 
-func generate(data []byte, packageName string, fs gen.FileSystem, opts gen.Options) error {
+func generate(data []byte, packageName, targetDir string, clean bool, opts gen.Options) error {
 	log := opts.Logger
 
 	spec, err := ogen.Parse(data)
@@ -54,6 +54,28 @@ func generate(data []byte, packageName string, fs gen.FileSystem, opts gen.Optio
 	}
 	log.Debug("Build IR", zap.Duration("took", time.Since(start)))
 
+	// Clean target dir only after flag parsing, spec parsing and IR building.
+	switch files, err := os.ReadDir(targetDir); {
+	case os.IsNotExist(err):
+		if err := os.MkdirAll(targetDir, 0o750); err != nil {
+			return err
+		}
+	case err != nil:
+		return err
+	default:
+		if clean {
+			if err := cleanDir(targetDir, files); err != nil {
+				return errors.Wrap(err, "clean")
+			}
+		}
+	}
+
+	fs := genfs.FormattedSource{
+		// FIXME(tdakkota): write source uses imports.Process which also uses go/format.
+		// 	So, there is no reason to format source twice or provide a flag to disable formatting.
+		Format: false,
+		Root:   targetDir,
+	}
 	start = time.Now()
 	if err := g.WriteSource(fs, packageName); err != nil {
 		return errors.Wrap(err, "write")
@@ -73,7 +95,6 @@ func run() error {
 		targetDir         = set.String("target", "api", "Path to target dir")
 		packageName       = set.String("package", "api", "Target package name")
 		inferTypes        = set.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
-		performFormat     = set.Bool("format", true, "Perform code formatting")
 		clean             = set.Bool("clean", false, "Clean generated files before generation")
 		generateTests     = set.Bool("generate-tests", false, "Generate tests encode-decode/based on schema examples")
 		allowRemote       = set.Bool("allow-remote", false, "Enables remote references resolving")
@@ -123,21 +144,6 @@ func run() error {
 	}
 	specPath = filepath.Clean(specPath)
 
-	switch files, err := os.ReadDir(*targetDir); {
-	case os.IsNotExist(err):
-		if err := os.MkdirAll(*targetDir, 0o750); err != nil {
-			return err
-		}
-	case err != nil:
-		return err
-	default:
-		if *clean {
-			if err := cleanDir(*targetDir, files); err != nil {
-				return errors.Wrap(err, "clean")
-			}
-		}
-	}
-
 	logger, err := ogenzap.Create(logOptions)
 	if err != nil {
 		return err
@@ -180,11 +186,7 @@ func run() error {
 		return err
 	}
 
-	fs := genfs.FormattedSource{
-		Root:   *targetDir,
-		Format: *performFormat,
-	}
-	if err := generate(data, *packageName, fs, opts); err != nil {
+	if err := generate(data, *packageName, *targetDir, *clean, opts); err != nil {
 		if location.PrintPrettyError(os.Stderr, specPath, data, err) {
 			return errors.New("generation failed")
 		}
