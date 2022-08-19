@@ -58,6 +58,12 @@ func SetValue(req *http.Request, k, v interface{}) {
 	Set(req, ctx)
 }
 
+// Check that sizes are the same during compile time.
+var _ = map[bool]struct{}{
+	unsafe.Sizeof(httpRequest{}) == unsafe.Sizeof(http.Request{}): {},
+	false: {},
+}
+
 func init() {
 	// Explicitly check that structures have at least equal size.
 	stdSize := unsafe.Sizeof(http.Request{})
