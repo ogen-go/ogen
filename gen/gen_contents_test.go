@@ -5,6 +5,9 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
+	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
+	"go.uber.org/zap/zaptest/observer"
 
 	"github.com/ogen-go/ogen/openapi"
 )
@@ -38,16 +41,27 @@ func Test_filterMostSpecific(t *testing.T) {
 	for i, tt := range tests {
 		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			a := require.New(t)
+			core, logs := observer.New(zapcore.DebugLevel)
+
+			// Make a copy of the testdata to avoid modifying it.
 			contents := map[string]*openapi.MediaType{}
 			for k, v := range tt.contents {
 				contents[k] = v
 			}
-			err := filterMostSpecific(contents)
+
+			err := filterMostSpecific(contents, zap.New(core))
 			if tt.wantErr {
-				require.Error(t, err)
+				a.Error(err)
 			} else {
-				require.NoError(t, err)
-				require.Equal(t, tt.expected, contents)
+				a.NoError(err)
+				a.Equal(tt.expected, contents)
+				// Ensure that there is a log message for every filtered media type.
+				if before, after := len(tt.contents), len(tt.expected); after < before {
+					entries := logs.FilterMessage("Filter common content type").All()
+					a.NotEmpty(entries)
+					a.Len(entries, before-after)
+				}
 			}
 		})
 	}
