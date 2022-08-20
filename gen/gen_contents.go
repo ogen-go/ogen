@@ -12,30 +12,40 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func filterMostSpecific(contents map[string]*openapi.MediaType) error {
-	initialLength := len(contents)
-	keep := func(current, mask string) bool {
+func filterMostSpecific(contents map[string]*openapi.MediaType, log *zap.Logger) error {
+	keep := func(current, mask string) (string, bool) {
 		// Special case for "*", "**", etc.
-		var nonStar bool
+		var notOnlyStar bool
 		for _, c := range mask {
 			if c != '*' {
-				nonStar = true
+				notOnlyStar = true
 				break
 			}
 		}
-		if !nonStar {
-			return initialLength < 2
+		if !notOnlyStar {
+			for k := range contents {
+				if k == current {
+					continue
+				}
+				// There is at least one another media type, so delete "*".
+				return k, false
+			}
+			// There is no other media type, so keep "*".
+			return "", true
 		}
 
 		for contentType := range contents {
+			// Do not try to match mask against itself.
 			if contentType == current {
 				continue
 			}
+			// Found more specific media type that matches the mask, so delete the mask.
 			if matched, _ := path.Match(mask, contentType); matched {
-				return false
+				return contentType, false
 			}
 		}
-		return true
+		// Found no more specific media type, so keep the mask.
+		return "", true
 	}
 
 	for k := range contents {
@@ -44,7 +54,11 @@ func filterMostSpecific(contents map[string]*openapi.MediaType) error {
 			return errors.Wrapf(err, "parse content type %q", k)
 		}
 
-		if !keep(k, contentType) {
+		if replacement, keep := keep(k, contentType); !keep {
+			log.Info("Filter common content type",
+				zap.String("mask", k),
+				zap.String("replacement", replacement),
+			)
 			delete(contents, k)
 		}
 	}
@@ -139,7 +153,7 @@ func (g *Generator) generateContents(
 	optional bool,
 	contents map[string]*openapi.MediaType,
 ) (_ map[ir.ContentType]ir.Media, err error) {
-	if err := filterMostSpecific(contents); err != nil {
+	if err := filterMostSpecific(contents, g.log); err != nil {
 		return nil, errors.Wrap(err, "filter most specific")
 	}
 
