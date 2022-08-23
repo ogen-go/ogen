@@ -66,7 +66,7 @@ func (g *Generator) trySkip(err error, msg string, l locatable) error {
 	}
 
 	reason := err.Error()
-	if uErr := unimplementedError(nil); errors.As(err, &uErr) {
+	if uErr, ok := errors.Into[unimplementedError](err); ok {
 		reason = uErr.Error()
 	}
 	g.log.Info(msg,
@@ -86,22 +86,17 @@ func (g *Generator) fail(err error) error {
 		hook = func(string, error) {}
 	}
 
-	var notImplementedErr *ErrNotImplemented
-	if errors.As(err, &notImplementedErr) {
+	if notImplementedErr, ok := errors.Into[*ErrNotImplemented](err); ok {
 		hook(notImplementedErr.Name, err)
 		for _, s := range g.opt.IgnoreNotImplemented {
 			s = strings.TrimSpace(s)
-			if s == "all" {
-				return nil
-			}
-			if s == notImplementedErr.Name {
+			if s == "all" || s == notImplementedErr.Name {
 				return nil
 			}
 		}
 	}
 
-	var ctypesErr *ErrUnsupportedContentTypes
-	if errors.As(err, &ctypesErr) {
+	if _, ok := errors.Into[*ErrUnsupportedContentTypes](err); ok {
 		hook("unsupported content types", err)
 		for _, s := range g.opt.IgnoreNotImplemented {
 			s = strings.TrimSpace(s)

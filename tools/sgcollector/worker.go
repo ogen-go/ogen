@@ -151,17 +151,17 @@ func generate(data []byte, isYAML bool) *GenerateError {
 
 	sort.Strings(notImpl)
 	if err != nil {
-		if as := new(gen.ErrParseSpec); errors.As(err, &as) {
+		if _, ok := errors.Into[*gen.ErrParseSpec](err); ok {
 			return &GenerateError{stage: Parse, notImpl: notImpl, err: err}
 		}
-		if as := new(gen.ErrBuildRouter); errors.As(err, &as) {
+		if _, ok := errors.Into[*gen.ErrBuildRouter](err); ok {
 			return &GenerateError{stage: BuildRouter, notImpl: notImpl, err: err}
 		}
 		return &GenerateError{stage: BuildIR, notImpl: notImpl, err: err}
 	}
 
 	if err := g.WriteSource(nopFs{}, "api"); err != nil {
-		if as := new(gen.ErrGoFormat); errors.As(err, &as) {
+		if _, ok := errors.Into[*gen.ErrGoFormat](err); ok {
 			return &GenerateError{stage: Format, notImpl: notImpl, err: err}
 		}
 		return &GenerateError{stage: Template, notImpl: notImpl, err: err}
