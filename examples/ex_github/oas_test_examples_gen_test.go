@@ -41,8 +41,7 @@ func TestAPIOverview_Examples(t *testing.T) {
 			var typ APIOverview
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -131,8 +130,7 @@ func TestActionsBillingUsage_Examples(t *testing.T) {
 			var typ ActionsBillingUsage
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -197,8 +195,7 @@ func TestActionsCreateOrUpdateEnvironmentSecretReq_Examples(t *testing.T) {
 			var typ ActionsCreateOrUpdateEnvironmentSecretReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -239,8 +236,7 @@ func TestActionsCreateOrUpdateOrgSecretReq_Examples(t *testing.T) {
 			var typ ActionsCreateOrUpdateOrgSecretReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -305,8 +301,7 @@ func TestActionsCreateOrUpdateRepoSecretReq_Examples(t *testing.T) {
 			var typ ActionsCreateOrUpdateRepoSecretReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -347,8 +342,7 @@ func TestActionsCreateSelfHostedRunnerGroupForOrgReq_Examples(t *testing.T) {
 			var typ ActionsCreateSelfHostedRunnerGroupForOrgReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -413,8 +407,7 @@ func TestActionsEnterprisePermissions_Examples(t *testing.T) {
 			var typ ActionsEnterprisePermissions
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -455,8 +448,7 @@ func TestActionsListArtifactsForRepoOK_Examples(t *testing.T) {
 			var typ ActionsListArtifactsForRepoOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -497,8 +489,7 @@ func TestActionsListEnvironmentSecretsOK_Examples(t *testing.T) {
 			var typ ActionsListEnvironmentSecretsOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -539,8 +530,7 @@ func TestActionsListJobsForWorkflowRunOK_Examples(t *testing.T) {
 			var typ ActionsListJobsForWorkflowRunOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -581,8 +571,7 @@ func TestActionsListOrgSecretsOK_Examples(t *testing.T) {
 			var typ ActionsListOrgSecretsOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -623,8 +612,7 @@ func TestActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK_Examples(t *testing
 			var typ ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -665,8 +653,7 @@ func TestActionsListRepoSecretsOK_Examples(t *testing.T) {
 			var typ ActionsListRepoSecretsOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -707,8 +694,7 @@ func TestActionsListRepoWorkflowsOK_Examples(t *testing.T) {
 			var typ ActionsListRepoWorkflowsOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -749,8 +735,7 @@ func TestActionsListSelectedReposForOrgSecretOK_Examples(t *testing.T) {
 			var typ ActionsListSelectedReposForOrgSecretOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -791,8 +776,7 @@ func TestActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK_Examp
 			var typ ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -833,8 +817,7 @@ func TestActionsListSelfHostedRunnerGroupsForOrgOK_Examples(t *testing.T) {
 			var typ ActionsListSelfHostedRunnerGroupsForOrgOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -875,8 +858,7 @@ func TestActionsListSelfHostedRunnersForOrgOK_Examples(t *testing.T) {
 			var typ ActionsListSelfHostedRunnersForOrgOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -917,8 +899,7 @@ func TestActionsListSelfHostedRunnersForRepoOK_Examples(t *testing.T) {
 			var typ ActionsListSelfHostedRunnersForRepoOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -959,8 +940,7 @@ func TestActionsListSelfHostedRunnersInGroupForOrgOK_Examples(t *testing.T) {
 			var typ ActionsListSelfHostedRunnersInGroupForOrgOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -1001,8 +981,7 @@ func TestActionsListWorkflowRunArtifactsOK_Examples(t *testing.T) {
 			var typ ActionsListWorkflowRunArtifactsOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -1043,8 +1022,7 @@ func TestActionsListWorkflowRunsForRepoOK_Examples(t *testing.T) {
 			var typ ActionsListWorkflowRunsForRepoOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -1085,8 +1063,7 @@ func TestActionsOrganizationPermissions_Examples(t *testing.T) {
 			var typ ActionsOrganizationPermissions
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -1127,8 +1104,7 @@ func TestActionsPublicKey_Examples(t *testing.T) {
 			var typ ActionsPublicKey
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -1181,8 +1157,7 @@ func TestActionsRepositoryPermissions_Examples(t *testing.T) {
 			var typ ActionsRepositoryPermissions
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -1247,8 +1222,7 @@ func TestActionsReviewPendingDeploymentsForRunReqState_Examples(t *testing.T) {
 			var typ ActionsReviewPendingDeploymentsForRunReqState
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -1289,8 +1263,7 @@ func TestActionsSecret_Examples(t *testing.T) {
 			var typ ActionsSecret
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -1331,8 +1304,7 @@ func TestActionsSetGithubActionsPermissionsOrganizationReq_Examples(t *testing.T
 			var typ ActionsSetGithubActionsPermissionsOrganizationReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -1373,8 +1345,7 @@ func TestActionsSetGithubActionsPermissionsRepositoryReq_Examples(t *testing.T) 
 			var typ ActionsSetGithubActionsPermissionsRepositoryReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -1415,8 +1386,7 @@ func TestActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq_Examples(t *testing
 			var typ ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -1457,8 +1427,7 @@ func TestActionsSetSelectedReposForOrgSecretReq_Examples(t *testing.T) {
 			var typ ActionsSetSelectedReposForOrgSecretReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -1499,8 +1468,7 @@ func TestActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq_Examp
 			var typ ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -1541,8 +1509,7 @@ func TestActionsSetSelfHostedRunnersInGroupForOrgReq_Examples(t *testing.T) {
 			var typ ActionsSetSelfHostedRunnersInGroupForOrgReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -1583,8 +1550,7 @@ func TestActionsUpdateSelfHostedRunnerGroupForOrgReq_Examples(t *testing.T) {
 			var typ ActionsUpdateSelfHostedRunnerGroupForOrgReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -2153,8 +2119,7 @@ func TestAppPermissions_Examples(t *testing.T) {
 			var typ AppPermissions
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -2567,8 +2532,7 @@ func TestApplicationGrant_Examples(t *testing.T) {
 			var typ ApplicationGrant
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -2731,8 +2695,7 @@ func TestAppsCreateFromManifestCreatedPermissions_Examples(t *testing.T) {
 			var typ AppsCreateFromManifestCreatedPermissions
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -2847,8 +2810,7 @@ func TestAppsDeleteAuthorizationReq_Examples(t *testing.T) {
 			var typ AppsDeleteAuthorizationReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -2889,8 +2851,7 @@ func TestAppsDeleteTokenReq_Examples(t *testing.T) {
 			var typ AppsDeleteTokenReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -3027,8 +2988,7 @@ func TestAppsListInstallationReposForAuthenticatedUserOK_Examples(t *testing.T) 
 			var typ AppsListInstallationReposForAuthenticatedUserOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -3117,8 +3077,7 @@ func TestAppsListReposAccessibleToInstallationOK_Examples(t *testing.T) {
 			var typ AppsListReposAccessibleToInstallationOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -3279,8 +3238,7 @@ func TestAppsUpdateWebhookConfigForAppReq_Examples(t *testing.T) {
 			var typ AppsUpdateWebhookConfigForAppReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -3321,8 +3279,7 @@ func TestArtifact_Examples(t *testing.T) {
 			var typ Artifact
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -3402,8 +3359,7 @@ func TestAuthenticationToken_Examples(t *testing.T) {
 			var typ AuthenticationToken
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -3444,8 +3400,7 @@ func TestAuthenticationTokenPermissions_Examples(t *testing.T) {
 			var typ AuthenticationTokenPermissions
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -3498,8 +3453,7 @@ func TestAuthorAssociation_Examples(t *testing.T) {
 			var typ AuthorAssociation
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -3544,8 +3498,7 @@ func TestAuthorization_Examples(t *testing.T) {
 			var typ Authorization
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -3622,8 +3575,7 @@ func TestAutolink_Examples(t *testing.T) {
 			var typ Autolink
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -3664,8 +3616,7 @@ func TestBaseGist_Examples(t *testing.T) {
 			var typ BaseGist
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -3744,8 +3695,7 @@ func TestBlob_Examples(t *testing.T) {
 			var typ Blob
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -3786,8 +3736,7 @@ func TestBranchProtection_Examples(t *testing.T) {
 			var typ BranchProtection
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -3900,8 +3849,7 @@ func TestBranchRestrictionPolicy_Examples(t *testing.T) {
 			var typ BranchRestrictionPolicy
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -4026,8 +3974,7 @@ func TestBranchWithProtection_Examples(t *testing.T) {
 			var typ BranchWithProtection
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -4092,8 +4039,7 @@ func TestCheckRun_Examples(t *testing.T) {
 			var typ CheckRun
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -4146,8 +4092,7 @@ func TestCheckRunConclusion_Examples(t *testing.T) {
 			var typ CheckRunConclusion
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -4200,8 +4145,7 @@ func TestCheckRunStatus_Examples(t *testing.T) {
 			var typ CheckRunStatus
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -4242,8 +4186,7 @@ func TestCheckSuite_Examples(t *testing.T) {
 			var typ CheckSuite
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -4284,8 +4227,7 @@ func TestCheckSuiteConclusion_Examples(t *testing.T) {
 			var typ CheckSuiteConclusion
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -4326,8 +4268,7 @@ func TestCheckSuitePreference_Examples(t *testing.T) {
 			var typ CheckSuitePreference
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -4392,8 +4333,7 @@ func TestCheckSuiteStatus_Examples(t *testing.T) {
 			var typ CheckSuiteStatus
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -4458,8 +4398,7 @@ func TestChecksCreateSuiteReq_Examples(t *testing.T) {
 			var typ ChecksCreateSuiteReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -4500,8 +4439,7 @@ func TestChecksListForRefOK_Examples(t *testing.T) {
 			var typ ChecksListForRefOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -4542,8 +4480,7 @@ func TestChecksListForSuiteOK_Examples(t *testing.T) {
 			var typ ChecksListForSuiteOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -4584,8 +4521,7 @@ func TestChecksListSuitesForRefOK_Examples(t *testing.T) {
 			var typ ChecksListSuitesForRefOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -4638,8 +4574,7 @@ func TestChecksSetSuitesPreferencesReq_Examples(t *testing.T) {
 			var typ ChecksSetSuitesPreferencesReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -4692,8 +4627,7 @@ func TestCloneTraffic_Examples(t *testing.T) {
 			var typ CloneTraffic
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -4746,8 +4680,7 @@ func TestCodeOfConduct_Examples(t *testing.T) {
 			var typ CodeOfConduct
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -4801,8 +4734,7 @@ func TestCodeScanningAlert_Examples(t *testing.T) {
 			var typ CodeScanningAlert
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -5023,8 +4955,7 @@ func TestCodeScanningAnalysis_Examples(t *testing.T) {
 			var typ CodeScanningAnalysis
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -5113,8 +5044,7 @@ func TestCodeScanningAnalysisDeletion_Examples(t *testing.T) {
 			var typ CodeScanningAnalysisDeletion
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -5455,8 +5385,7 @@ func TestCodeScanningSarifsReceipt_Examples(t *testing.T) {
 			var typ CodeScanningSarifsReceipt
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -5497,8 +5426,7 @@ func TestCodeScanningSarifsStatus_Examples(t *testing.T) {
 			var typ CodeScanningSarifsStatus
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -5575,8 +5503,7 @@ func TestCodeScanningUpdateAlertReq_Examples(t *testing.T) {
 			var typ CodeScanningUpdateAlertReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -5701,8 +5628,7 @@ func TestCombinedBillingUsage_Examples(t *testing.T) {
 			var typ CombinedBillingUsage
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -5743,8 +5669,7 @@ func TestCombinedCommitStatus_Examples(t *testing.T) {
 			var typ CombinedCommitStatus
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -5785,8 +5710,7 @@ func TestCommit_Examples(t *testing.T) {
 			var typ Commit
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -5840,8 +5764,7 @@ func TestCommitComment_Examples(t *testing.T) {
 			var typ CommitComment
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -5906,8 +5829,7 @@ func TestCommitComparison_Examples(t *testing.T) {
 			var typ CommitComparison
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -5948,8 +5870,7 @@ func TestCommitComparisonStatus_Examples(t *testing.T) {
 			var typ CommitComparisonStatus
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -6086,8 +6007,7 @@ func TestCommunityProfile_Examples(t *testing.T) {
 			var typ CommunityProfile
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -6140,8 +6060,7 @@ func TestContentFile_Examples(t *testing.T) {
 			var typ ContentFile
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -6194,8 +6113,7 @@ func TestContentReferenceAttachment_Examples(t *testing.T) {
 			var typ ContentReferenceAttachment
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -6296,8 +6214,7 @@ func TestDeployKey_Examples(t *testing.T) {
 			var typ DeployKey
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -6338,8 +6255,7 @@ func TestDeployment_Examples(t *testing.T) {
 			var typ Deployment
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -6418,8 +6334,7 @@ func TestDeploymentStatus_Examples(t *testing.T) {
 			var typ DeploymentStatus
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -6460,8 +6375,7 @@ func TestDeploymentStatusState_Examples(t *testing.T) {
 			var typ DeploymentStatusState
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -6514,8 +6428,7 @@ func TestDiffEntryStatus_Examples(t *testing.T) {
 			var typ DiffEntryStatus
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -6618,8 +6531,7 @@ func TestEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq_Examples(t *
 			var typ EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -6672,8 +6584,7 @@ func TestEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK_Examp
 			var typ EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -6714,8 +6625,7 @@ func TestEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseO
 			var typ EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -6756,8 +6666,7 @@ func TestEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK_Examples(t *te
 			var typ EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -6798,8 +6707,7 @@ func TestEnterpriseAdminListSelfHostedRunnersForEnterpriseOK_Examples(t *testing
 			var typ EnterpriseAdminListSelfHostedRunnersForEnterpriseOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -6840,8 +6748,7 @@ func TestEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK_Examples(t *
 			var typ EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -6882,8 +6789,7 @@ func TestEnterpriseAdminProvisionAndInviteEnterpriseGroupReq_Examples(t *testing
 			var typ EnterpriseAdminProvisionAndInviteEnterpriseGroupReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -6936,8 +6842,7 @@ func TestEnterpriseAdminProvisionAndInviteEnterpriseUserReq_Examples(t *testing.
 			var typ EnterpriseAdminProvisionAndInviteEnterpriseUserReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -7014,8 +6919,7 @@ func TestEnterpriseAdminSetGithubActionsPermissionsEnterpriseReq_Examples(t *tes
 			var typ EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -7056,8 +6960,7 @@ func TestEnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq_Examples(
 			var typ EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -7110,8 +7013,7 @@ func TestEnterpriseAdminSetInformationForProvisionedEnterpriseUserReq_Examples(t
 			var typ EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -7188,8 +7090,7 @@ func TestEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq_Examp
 			var typ EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -7230,8 +7131,7 @@ func TestEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRe
 			var typ EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -7272,8 +7172,7 @@ func TestEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq_Examples(t *
 			var typ EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -7314,8 +7213,7 @@ func TestEnterpriseAdminUpdateAttributeForEnterpriseGroupReq_Examples(t *testing
 			var typ EnterpriseAdminUpdateAttributeForEnterpriseGroupReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -7404,8 +7302,7 @@ func TestEnterpriseAdminUpdateAttributeForEnterpriseUserReq_Examples(t *testing.
 			var typ EnterpriseAdminUpdateAttributeForEnterpriseUserReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -7458,8 +7355,7 @@ func TestEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq_Examples(t *
 			var typ EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -7536,8 +7432,7 @@ func TestEnvironmentApprovalsState_Examples(t *testing.T) {
 			var typ EnvironmentApprovalsState
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -7626,8 +7521,7 @@ func TestFeed_Examples(t *testing.T) {
 			var typ Feed
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -7682,8 +7576,7 @@ func TestFileCommit_Examples(t *testing.T) {
 			var typ FileCommit
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -7845,8 +7738,7 @@ func TestFullRepository_Examples(t *testing.T) {
 			var typ FullRepository
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -7959,8 +7851,7 @@ func TestGistComment_Examples(t *testing.T) {
 			var typ GistComment
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -8049,8 +7940,7 @@ func TestGistSimple_Examples(t *testing.T) {
 			var typ GistSimple
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -8254,8 +8144,7 @@ func TestGistsCreateReqFiles_Examples(t *testing.T) {
 			typ = make(GistsCreateReqFiles)
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -8321,8 +8210,7 @@ func TestGistsCreateReqPublic1_Examples(t *testing.T) {
 			var typ GistsCreateReqPublic1
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -8616,8 +8504,7 @@ func TestGitCommit_Examples(t *testing.T) {
 			var typ GitCommit
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -8754,8 +8641,7 @@ func TestGitCreateBlobReq_Examples(t *testing.T) {
 			var typ GitCreateBlobReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -8796,8 +8682,7 @@ func TestGitCreateCommitReq_Examples(t *testing.T) {
 			var typ GitCreateCommitReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -8862,8 +8747,7 @@ func TestGitCreateRefReq_Examples(t *testing.T) {
 			var typ GitCreateRefReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -8904,8 +8788,7 @@ func TestGitCreateTagReq_Examples(t *testing.T) {
 			var typ GitCreateTagReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -8994,8 +8877,7 @@ func TestGitCreateTreeReq_Examples(t *testing.T) {
 			var typ GitCreateTreeReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -9096,8 +8978,7 @@ func TestGitRef_Examples(t *testing.T) {
 			var typ GitRef
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -9150,8 +9031,7 @@ func TestGitTag_Examples(t *testing.T) {
 			var typ GitTag
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -9218,8 +9098,7 @@ func TestGitTree_Examples(t *testing.T) {
 			var typ GitTree
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -9272,8 +9151,7 @@ func TestGitUpdateRefReq_Examples(t *testing.T) {
 			var typ GitUpdateRefReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -9326,8 +9204,7 @@ func TestGitignoreTemplate_Examples(t *testing.T) {
 			var typ GitignoreTemplate
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -9368,8 +9245,7 @@ func TestGpgKey_Examples(t *testing.T) {
 			var typ GpgKey
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -9435,8 +9311,7 @@ func TestGroupMapping_Examples(t *testing.T) {
 			var typ GroupMapping
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -9489,8 +9364,7 @@ func TestHook_Examples(t *testing.T) {
 			var typ Hook
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -9543,8 +9417,7 @@ func TestHookDelivery_Examples(t *testing.T) {
 			var typ HookDelivery
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -9675,8 +9548,7 @@ func TestHovercard_Examples(t *testing.T) {
 			var typ Hovercard
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -9732,8 +9604,7 @@ func TestImport_Examples(t *testing.T) {
 			var typ Import
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -9798,8 +9669,7 @@ func TestInstallationToken_Examples(t *testing.T) {
 			var typ InstallationToken
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -9852,8 +9722,7 @@ func TestIntegration_Examples(t *testing.T) {
 			var typ Integration
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -9894,8 +9763,7 @@ func TestIntegrationPermissions_Examples(t *testing.T) {
 			var typ IntegrationPermissions
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -9950,8 +9818,7 @@ func TestInteractionExpiry_Examples(t *testing.T) {
 			var typ InteractionExpiry
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -9992,8 +9859,7 @@ func TestInteractionGroup_Examples(t *testing.T) {
 			var typ InteractionGroup
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -10048,8 +9914,7 @@ func TestInteractionLimitResponse_Examples(t *testing.T) {
 			var typ InteractionLimitResponse
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -10090,8 +9955,7 @@ func TestIssue_Examples(t *testing.T) {
 			var typ Issue
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -10132,8 +9996,7 @@ func TestIssueComment_Examples(t *testing.T) {
 			var typ IssueComment
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -10174,8 +10037,7 @@ func TestIssueEvent_Examples(t *testing.T) {
 			var typ IssueEvent
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -10348,8 +10210,7 @@ func TestIssueSimple_Examples(t *testing.T) {
 			var typ IssueSimple
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -10402,8 +10263,7 @@ func TestIssuesAddAssigneesReq_Examples(t *testing.T) {
 			var typ IssuesAddAssigneesReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -10516,8 +10376,7 @@ func TestIssuesCreateCommentReq_Examples(t *testing.T) {
 			var typ IssuesCreateCommentReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -10558,8 +10417,7 @@ func TestIssuesCreateLabelReq_Examples(t *testing.T) {
 			var typ IssuesCreateLabelReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -10600,8 +10458,7 @@ func TestIssuesCreateMilestoneReq_Examples(t *testing.T) {
 			var typ IssuesCreateMilestoneReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -10654,8 +10511,7 @@ func TestIssuesCreateReq_Examples(t *testing.T) {
 			var typ IssuesCreateReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -10924,8 +10780,7 @@ func TestIssuesRemoveAssigneesReq_Examples(t *testing.T) {
 			var typ IssuesRemoveAssigneesReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -11074,8 +10929,7 @@ func TestIssuesUpdateCommentReq_Examples(t *testing.T) {
 			var typ IssuesUpdateCommentReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -11116,8 +10970,7 @@ func TestIssuesUpdateLabelReq_Examples(t *testing.T) {
 			var typ IssuesUpdateLabelReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -11158,8 +11011,7 @@ func TestIssuesUpdateMilestoneReq_Examples(t *testing.T) {
 			var typ IssuesUpdateMilestoneReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -11212,8 +11064,7 @@ func TestIssuesUpdateReq_Examples(t *testing.T) {
 			var typ IssuesUpdateReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -11314,8 +11165,7 @@ func TestJob_Examples(t *testing.T) {
 			var typ Job
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -11356,8 +11206,7 @@ func TestJobStatus_Examples(t *testing.T) {
 			var typ JobStatus
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -11410,8 +11259,7 @@ func TestJobStepsItemStatus_Examples(t *testing.T) {
 			var typ JobStepsItemStatus
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -11452,8 +11300,7 @@ func TestKey_Examples(t *testing.T) {
 			var typ Key
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -11507,8 +11354,7 @@ func TestLabel_Examples(t *testing.T) {
 			var typ Label
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -11564,8 +11410,7 @@ func TestLanguage_Examples(t *testing.T) {
 			typ = make(Language)
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -11607,8 +11452,7 @@ func TestLicense_Examples(t *testing.T) {
 			var typ License
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -11649,8 +11493,7 @@ func TestLicenseContent_Examples(t *testing.T) {
 			var typ LicenseContent
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -11799,8 +11642,7 @@ func TestMarketplacePurchase_Examples(t *testing.T) {
 			var typ MarketplacePurchase
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -11865,8 +11707,7 @@ func TestMergedUpstream_Examples(t *testing.T) {
 			var typ MergedUpstream
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -11934,8 +11775,7 @@ func TestMigration_Examples(t *testing.T) {
 			var typ Migration
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -12108,8 +11948,7 @@ func TestMigrationsMapCommitAuthorReq_Examples(t *testing.T) {
 			var typ MigrationsMapCommitAuthorReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -12150,8 +11989,7 @@ func TestMigrationsSetLfsPreferenceReq_Examples(t *testing.T) {
 			var typ MigrationsSetLfsPreferenceReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -12240,8 +12078,7 @@ func TestMigrationsStartForAuthenticatedUserReqExcludeItem_Examples(t *testing.T
 			var typ MigrationsStartForAuthenticatedUserReqExcludeItem
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -12282,8 +12119,7 @@ func TestMigrationsStartForOrgReq_Examples(t *testing.T) {
 			var typ MigrationsStartForOrgReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -12336,8 +12172,7 @@ func TestMigrationsStartImportReq_Examples(t *testing.T) {
 			var typ MigrationsStartImportReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -12426,8 +12261,7 @@ func TestMigrationsUpdateImportReq_Examples(t *testing.T) {
 			var typ MigrationsUpdateImportReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -12468,8 +12302,7 @@ func TestMilestone_Examples(t *testing.T) {
 			var typ Milestone
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -12510,8 +12343,7 @@ func TestMilestoneState_Examples(t *testing.T) {
 			var typ MilestoneState
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -12552,8 +12384,7 @@ func TestMinimalRepository_Examples(t *testing.T) {
 			var typ MinimalRepository
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -12666,8 +12497,7 @@ func TestNullableIntegrationPermissions_Examples(t *testing.T) {
 			var typ NullableIntegrationPermissions
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -12746,8 +12576,7 @@ func TestNullableMilestoneState_Examples(t *testing.T) {
 			var typ NullableMilestoneState
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -13245,8 +13074,7 @@ func TestOrgHook_Examples(t *testing.T) {
 			var typ OrgHook
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -13300,8 +13128,7 @@ func TestOrgMembership_Examples(t *testing.T) {
 			var typ OrgMembership
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -13354,8 +13181,7 @@ func TestOrgMembershipRole_Examples(t *testing.T) {
 			var typ OrgMembershipRole
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -13396,8 +13222,7 @@ func TestOrgMembershipState_Examples(t *testing.T) {
 			var typ OrgMembershipState
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -13438,8 +13263,7 @@ func TestOrganizationActionsSecret_Examples(t *testing.T) {
 			var typ OrganizationActionsSecret
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -13493,8 +13317,7 @@ func TestOrganizationFull_Examples(t *testing.T) {
 			var typ OrganizationFull
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -13547,8 +13370,7 @@ func TestOrganizationInvitation_Examples(t *testing.T) {
 			var typ OrganizationInvitation
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -13625,8 +13447,7 @@ func TestOrgsCreateInvitationReq_Examples(t *testing.T) {
 			var typ OrgsCreateInvitationReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -13679,8 +13500,7 @@ func TestOrgsCreateWebhookReq_Examples(t *testing.T) {
 			var typ OrgsCreateWebhookReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -13877,8 +13697,7 @@ func TestOrgsRemoveOutsideCollaboratorUnprocessableEntity_Examples(t *testing.T)
 			var typ OrgsRemoveOutsideCollaboratorUnprocessableEntity
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -13967,8 +13786,7 @@ func TestOrgsUpdateMembershipForAuthenticatedUserReq_Examples(t *testing.T) {
 			var typ OrgsUpdateMembershipForAuthenticatedUserReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -14021,8 +13839,7 @@ func TestOrgsUpdateWebhookConfigForOrgReq_Examples(t *testing.T) {
 			var typ OrgsUpdateWebhookConfigForOrgReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -14063,8 +13880,7 @@ func TestOrgsUpdateWebhookReq_Examples(t *testing.T) {
 			var typ OrgsUpdateWebhookReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -14118,8 +13934,7 @@ func TestPackage_Examples(t *testing.T) {
 			var typ Package
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -14160,8 +13975,7 @@ func TestPackagePackageType_Examples(t *testing.T) {
 			var typ PackagePackageType
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -14204,8 +14018,7 @@ func TestPackageVersion_Examples(t *testing.T) {
 			var typ PackageVersion
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -14282,8 +14095,7 @@ func TestPackageVersionMetadataPackageType_Examples(t *testing.T) {
 			var typ PackageVersionMetadataPackageType
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -14324,8 +14136,7 @@ func TestPackageVisibility_Examples(t *testing.T) {
 			var typ PackageVisibility
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -14366,8 +14177,7 @@ func TestPackagesBillingUsage_Examples(t *testing.T) {
 			var typ PackagesBillingUsage
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -15056,8 +14866,7 @@ func TestPage_Examples(t *testing.T) {
 			var typ Page
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -15098,8 +14907,7 @@ func TestPageBuild_Examples(t *testing.T) {
 			var typ PageBuild
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -15152,8 +14960,7 @@ func TestPageBuildStatus_Examples(t *testing.T) {
 			var typ PageBuildStatus
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -15194,8 +15001,7 @@ func TestPageProtectedDomainState_Examples(t *testing.T) {
 			var typ PageProtectedDomainState
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -15236,8 +15042,7 @@ func TestPageStatus_Examples(t *testing.T) {
 			var typ PageStatus
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -15290,8 +15095,7 @@ func TestPagesHTTPSCertificateState_Examples(t *testing.T) {
 			var typ PagesHTTPSCertificateState
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -15332,8 +15136,7 @@ func TestPagesHealthCheck_Examples(t *testing.T) {
 			var typ PagesHealthCheck
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -15410,8 +15213,7 @@ func TestParticipationStats_Examples(t *testing.T) {
 			var typ ParticipationStats
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -15452,8 +15254,7 @@ func TestPorterAuthor_Examples(t *testing.T) {
 			var typ PorterAuthor
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -15518,8 +15319,7 @@ func TestPrivateUser_Examples(t *testing.T) {
 			var typ PrivateUser
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -15574,8 +15374,7 @@ func TestProject_Examples(t *testing.T) {
 			var typ Project
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -15616,8 +15415,7 @@ func TestProjectCard_Examples(t *testing.T) {
 			var typ ProjectCard
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -15658,8 +15456,7 @@ func TestProjectColumn_Examples(t *testing.T) {
 			var typ ProjectColumn
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -15760,8 +15557,7 @@ func TestProjectsAddCollaboratorReqPermission_Examples(t *testing.T) {
 			var typ ProjectsAddCollaboratorReqPermission
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -15922,8 +15718,7 @@ func TestProjectsCreateForOrgReq_Examples(t *testing.T) {
 			var typ ProjectsCreateForOrgReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -16012,8 +15807,7 @@ func TestProjectsCreateForRepoReq_Examples(t *testing.T) {
 			var typ ProjectsCreateForRepoReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -16739,8 +16533,7 @@ func TestProtectedBranchAdminEnforced_Examples(t *testing.T) {
 			var typ ProtectedBranchAdminEnforced
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -16817,8 +16610,7 @@ func TestProtectedBranchPullRequestReview_Examples(t *testing.T) {
 			var typ ProtectedBranchPullRequestReview
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -16955,8 +16747,7 @@ func TestPullRequest_Examples(t *testing.T) {
 			var typ PullRequest
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -17153,8 +16944,7 @@ func TestPullRequestMergeResult_Examples(t *testing.T) {
 			var typ PullRequestMergeResult
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -17258,8 +17048,7 @@ func TestPullRequestReview_Examples(t *testing.T) {
 			var typ PullRequestReview
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -17301,8 +17090,7 @@ func TestPullRequestReviewComment_Examples(t *testing.T) {
 			var typ PullRequestReviewComment
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -17451,8 +17239,7 @@ func TestPullRequestReviewRequest_Examples(t *testing.T) {
 			var typ PullRequestReviewRequest
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -17493,8 +17280,7 @@ func TestPullRequestSimple_Examples(t *testing.T) {
 			var typ PullRequestSimple
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -17583,8 +17369,7 @@ func TestPullRequestState_Examples(t *testing.T) {
 			var typ PullRequestState
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -17625,8 +17410,7 @@ func TestPullsCreateReplyForReviewCommentReq_Examples(t *testing.T) {
 			var typ PullsCreateReplyForReviewCommentReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -17667,8 +17451,7 @@ func TestPullsCreateReq_Examples(t *testing.T) {
 			var typ PullsCreateReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -17710,8 +17493,7 @@ func TestPullsCreateReviewCommentReq_Examples(t *testing.T) {
 			var typ PullsCreateReviewCommentReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -17776,8 +17558,7 @@ func TestPullsCreateReviewReq_Examples(t *testing.T) {
 			var typ PullsCreateReviewReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -17902,8 +17683,7 @@ func TestPullsMergeConflict_Examples(t *testing.T) {
 			var typ PullsMergeConflict
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -17944,8 +17724,7 @@ func TestPullsMergeMethodNotAllowed_Examples(t *testing.T) {
 			var typ PullsMergeMethodNotAllowed
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -18010,8 +17789,7 @@ func TestPullsRemoveRequestedReviewersReq_Examples(t *testing.T) {
 			var typ PullsRemoveRequestedReviewersReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -18100,8 +17878,7 @@ func TestPullsUpdateBranchAccepted_Examples(t *testing.T) {
 			var typ PullsUpdateBranchAccepted
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -18142,8 +17919,7 @@ func TestPullsUpdateBranchReq_Examples(t *testing.T) {
 			var typ PullsUpdateBranchReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -18184,8 +17960,7 @@ func TestPullsUpdateReq_Examples(t *testing.T) {
 			var typ PullsUpdateReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -18238,8 +18013,7 @@ func TestPullsUpdateReviewCommentReq_Examples(t *testing.T) {
 			var typ PullsUpdateReviewCommentReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -18280,8 +18054,7 @@ func TestPullsUpdateReviewReq_Examples(t *testing.T) {
 			var typ PullsUpdateReviewReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -18334,8 +18107,7 @@ func TestRateLimitOverview_Examples(t *testing.T) {
 			var typ RateLimitOverview
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -18388,8 +18160,7 @@ func TestReaction_Examples(t *testing.T) {
 			var typ Reaction
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -18430,8 +18201,7 @@ func TestReactionContent_Examples(t *testing.T) {
 			var typ ReactionContent
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -18508,8 +18278,7 @@ func TestReactionsCreateForCommitCommentReq_Examples(t *testing.T) {
 			var typ ReactionsCreateForCommitCommentReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -18610,8 +18379,7 @@ func TestReactionsCreateForIssueCommentReq_Examples(t *testing.T) {
 			var typ ReactionsCreateForIssueCommentReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -18664,8 +18432,7 @@ func TestReactionsCreateForIssueReq_Examples(t *testing.T) {
 			var typ ReactionsCreateForIssueReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -18742,8 +18509,7 @@ func TestReactionsCreateForPullRequestReviewCommentReq_Examples(t *testing.T) {
 			var typ ReactionsCreateForPullRequestReviewCommentReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -18820,8 +18586,7 @@ func TestReactionsCreateForReleaseReq_Examples(t *testing.T) {
 			var typ ReactionsCreateForReleaseReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -18898,8 +18663,7 @@ func TestReactionsCreateForTeamDiscussionCommentInOrgReq_Examples(t *testing.T) 
 			var typ ReactionsCreateForTeamDiscussionCommentInOrgReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -18952,8 +18716,7 @@ func TestReactionsCreateForTeamDiscussionCommentLegacyReq_Examples(t *testing.T)
 			var typ ReactionsCreateForTeamDiscussionCommentLegacyReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -19030,8 +18793,7 @@ func TestReactionsCreateForTeamDiscussionInOrgReq_Examples(t *testing.T) {
 			var typ ReactionsCreateForTeamDiscussionInOrgReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -19084,8 +18846,7 @@ func TestReactionsCreateForTeamDiscussionLegacyReq_Examples(t *testing.T) {
 			var typ ReactionsCreateForTeamDiscussionLegacyReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -19210,8 +18971,7 @@ func TestRelease_Examples(t *testing.T) {
 			var typ Release
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -19252,8 +19012,7 @@ func TestReleaseAsset_Examples(t *testing.T) {
 			var typ ReleaseAsset
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -19390,8 +19149,7 @@ func TestReposAddAppAccessRestrictionsReq0_Examples(t *testing.T) {
 			var typ ReposAddAppAccessRestrictionsReq0
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -19504,8 +19262,7 @@ func TestReposAddStatusCheckContextsReq0_Examples(t *testing.T) {
 			var typ ReposAddStatusCheckContextsReq0
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -19570,8 +19327,7 @@ func TestReposAddTeamAccessRestrictionsReq0_Examples(t *testing.T) {
 			var typ ReposAddTeamAccessRestrictionsReq0
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -19636,8 +19392,7 @@ func TestReposAddUserAccessRestrictionsReq0_Examples(t *testing.T) {
 			var typ ReposAddUserAccessRestrictionsReq0
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -19702,8 +19457,7 @@ func TestReposCreateAutolinkReq_Examples(t *testing.T) {
 			var typ ReposCreateAutolinkReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -19744,8 +19498,7 @@ func TestReposCreateCommitCommentReq_Examples(t *testing.T) {
 			var typ ReposCreateCommitCommentReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -19786,8 +19539,7 @@ func TestReposCreateCommitStatusReq_Examples(t *testing.T) {
 			var typ ReposCreateCommitStatusReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -19840,8 +19592,7 @@ func TestReposCreateDeployKeyReq_Examples(t *testing.T) {
 			var typ ReposCreateDeployKeyReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -19882,8 +19633,7 @@ func TestReposCreateDeploymentAccepted_Examples(t *testing.T) {
 			var typ ReposCreateDeploymentAccepted
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -19925,8 +19675,7 @@ func TestReposCreateDeploymentReq_Examples(t *testing.T) {
 			var typ ReposCreateDeploymentReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -19993,8 +19742,7 @@ func TestReposCreateDeploymentStatusReq_Examples(t *testing.T) {
 			var typ ReposCreateDeploymentStatusReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -20059,8 +19807,7 @@ func TestReposCreateDispatchEventReq_Examples(t *testing.T) {
 			var typ ReposCreateDispatchEventReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -20223,8 +19970,7 @@ func TestReposCreateInOrgReq_Examples(t *testing.T) {
 			var typ ReposCreateInOrgReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -20326,8 +20072,7 @@ func TestReposCreateOrUpdateFileContentsReq_Examples(t *testing.T) {
 			var typ ReposCreateOrUpdateFileContentsReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -20392,8 +20137,7 @@ func TestReposCreatePagesSiteReq_Examples(t *testing.T) {
 			var typ ReposCreatePagesSiteReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -20458,8 +20202,7 @@ func TestReposCreateReleaseReq_Examples(t *testing.T) {
 			var typ ReposCreateReleaseReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -20500,8 +20243,7 @@ func TestReposCreateUsingTemplateReq_Examples(t *testing.T) {
 			var typ ReposCreateUsingTemplateReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -20566,8 +20308,7 @@ func TestReposCreateWebhookReq_Examples(t *testing.T) {
 			var typ ReposCreateWebhookReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -20704,8 +20445,7 @@ func TestReposDeleteFileReq_Examples(t *testing.T) {
 			var typ ReposDeleteFileReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -20770,8 +20510,7 @@ func TestReposDeleteForbidden_Examples(t *testing.T) {
 			var typ ReposDeleteForbidden
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -21184,8 +20923,7 @@ func TestReposMergeReq_Examples(t *testing.T) {
 			var typ ReposMergeReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -21226,8 +20964,7 @@ func TestReposMergeUpstreamReq_Examples(t *testing.T) {
 			var typ ReposMergeUpstreamReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -21292,8 +21029,7 @@ func TestReposRemoveAppAccessRestrictionsReq0_Examples(t *testing.T) {
 			var typ ReposRemoveAppAccessRestrictionsReq0
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -21358,8 +21094,7 @@ func TestReposRemoveStatusCheckContextsReq0_Examples(t *testing.T) {
 			var typ ReposRemoveStatusCheckContextsReq0
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -21424,8 +21159,7 @@ func TestReposRemoveTeamAccessRestrictionsReq0_Examples(t *testing.T) {
 			var typ ReposRemoveTeamAccessRestrictionsReq0
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -21490,8 +21224,7 @@ func TestReposRemoveUserAccessRestrictionsReq0_Examples(t *testing.T) {
 			var typ ReposRemoveUserAccessRestrictionsReq0
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -21556,8 +21289,7 @@ func TestReposRenameBranchReq_Examples(t *testing.T) {
 			var typ ReposRenameBranchReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -21598,8 +21330,7 @@ func TestReposReplaceAllTopicsReq_Examples(t *testing.T) {
 			var typ ReposReplaceAllTopicsReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -21664,8 +21395,7 @@ func TestReposSetAppAccessRestrictionsReq0_Examples(t *testing.T) {
 			var typ ReposSetAppAccessRestrictionsReq0
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -21730,8 +21460,7 @@ func TestReposSetStatusCheckContextsReq0_Examples(t *testing.T) {
 			var typ ReposSetStatusCheckContextsReq0
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -21796,8 +21525,7 @@ func TestReposSetTeamAccessRestrictionsReq0_Examples(t *testing.T) {
 			var typ ReposSetTeamAccessRestrictionsReq0
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -21862,8 +21590,7 @@ func TestReposSetUserAccessRestrictionsReq0_Examples(t *testing.T) {
 			var typ ReposSetUserAccessRestrictionsReq0
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -21904,8 +21631,7 @@ func TestReposTransferReq_Examples(t *testing.T) {
 			var typ ReposTransferReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -22006,8 +21732,7 @@ func TestReposUpdateBranchProtectionReq_Examples(t *testing.T) {
 			var typ ReposUpdateBranchProtectionReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -22096,8 +21821,7 @@ func TestReposUpdateCommitCommentReq_Examples(t *testing.T) {
 			var typ ReposUpdateCommitCommentReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -22162,8 +21886,7 @@ func TestReposUpdatePullRequestReviewProtectionReq_Examples(t *testing.T) {
 			var typ ReposUpdatePullRequestReviewProtectionReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -22216,8 +21939,7 @@ func TestReposUpdateReleaseAssetReq_Examples(t *testing.T) {
 			var typ ReposUpdateReleaseAssetReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -22258,8 +21980,7 @@ func TestReposUpdateReleaseReq_Examples(t *testing.T) {
 			var typ ReposUpdateReleaseReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -22300,8 +22021,7 @@ func TestReposUpdateReq_Examples(t *testing.T) {
 			var typ ReposUpdateReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -22390,8 +22110,7 @@ func TestReposUpdateStatusCheckProtectionReq_Examples(t *testing.T) {
 			var typ ReposUpdateStatusCheckProtectionReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -22432,8 +22151,7 @@ func TestReposUpdateWebhookConfigForRepoReq_Examples(t *testing.T) {
 			var typ ReposUpdateWebhookConfigForRepoReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -22474,8 +22192,7 @@ func TestReposUpdateWebhookReq_Examples(t *testing.T) {
 			var typ ReposUpdateWebhookReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -22529,8 +22246,7 @@ func TestRepository_Examples(t *testing.T) {
 			var typ Repository
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -22571,8 +22287,7 @@ func TestRepositoryCollaboratorPermission_Examples(t *testing.T) {
 			var typ RepositoryCollaboratorPermission
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -22614,8 +22329,7 @@ func TestRepositoryInvitation_Examples(t *testing.T) {
 			var typ RepositoryInvitation
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -22656,8 +22370,7 @@ func TestRepositoryInvitationPermissions_Examples(t *testing.T) {
 			var typ RepositoryInvitationPermissions
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -22710,8 +22423,7 @@ func TestRepositorySubscription_Examples(t *testing.T) {
 			var typ RepositorySubscription
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -22836,8 +22548,7 @@ func TestRunner_Examples(t *testing.T) {
 			var typ Runner
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -22891,8 +22602,7 @@ func TestRunnerGroupsEnterprise_Examples(t *testing.T) {
 			var typ RunnerGroupsEnterprise
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -22934,8 +22644,7 @@ func TestRunnerGroupsOrg_Examples(t *testing.T) {
 			var typ RunnerGroupsOrg
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -23025,8 +22734,7 @@ func TestScimEnterpriseGroup_Examples(t *testing.T) {
 			var typ ScimEnterpriseGroup
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -23092,8 +22800,7 @@ func TestScimEnterpriseUser_Examples(t *testing.T) {
 			var typ ScimEnterpriseUser
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -23194,8 +22901,7 @@ func TestScimGroupListEnterprise_Examples(t *testing.T) {
 			var typ ScimGroupListEnterprise
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -23272,8 +22978,7 @@ func TestScimUserListEnterprise_Examples(t *testing.T) {
 			var typ ScimUserListEnterprise
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -23374,8 +23079,7 @@ func TestSearchCodeOK_Examples(t *testing.T) {
 			var typ SearchCodeOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -23416,8 +23120,7 @@ func TestSearchCommitsOK_Examples(t *testing.T) {
 			var typ SearchCommitsOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -23458,8 +23161,7 @@ func TestSearchIssuesAndPullRequestsOK_Examples(t *testing.T) {
 			var typ SearchIssuesAndPullRequestsOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -23524,8 +23226,7 @@ func TestSearchLabelsOK_Examples(t *testing.T) {
 			var typ SearchLabelsOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -23566,8 +23267,7 @@ func TestSearchReposOK_Examples(t *testing.T) {
 			var typ SearchReposOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -23644,8 +23344,7 @@ func TestSearchTopicsOK_Examples(t *testing.T) {
 			var typ SearchTopicsOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -23686,8 +23385,7 @@ func TestSearchUsersOK_Examples(t *testing.T) {
 			var typ SearchUsersOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -23729,8 +23427,7 @@ func TestSecretScanningAlert_Examples(t *testing.T) {
 			var typ SecretScanningAlert
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -23807,8 +23504,7 @@ func TestSecretScanningUpdateAlertReq_Examples(t *testing.T) {
 			var typ SecretScanningUpdateAlertReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -23849,8 +23545,7 @@ func TestSelectedActions_Examples(t *testing.T) {
 			var typ SelectedActions
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -23915,8 +23610,7 @@ func TestShortBlob_Examples(t *testing.T) {
 			var typ ShortBlob
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -24041,8 +23735,7 @@ func TestStatus_Examples(t *testing.T) {
 			var typ Status
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -24083,8 +23776,7 @@ func TestStatusCheckPolicy_Examples(t *testing.T) {
 			var typ StatusCheckPolicy
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -24162,8 +23854,7 @@ func TestTeamDiscussion_Examples(t *testing.T) {
 			var typ TeamDiscussion
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -24205,8 +23896,7 @@ func TestTeamDiscussionComment_Examples(t *testing.T) {
 			var typ TeamDiscussionComment
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -24247,8 +23937,7 @@ func TestTeamFull_Examples(t *testing.T) {
 			var typ TeamFull
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -24289,8 +23978,7 @@ func TestTeamFullPrivacy_Examples(t *testing.T) {
 			var typ TeamFullPrivacy
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -24332,8 +24020,7 @@ func TestTeamMembership_Examples(t *testing.T) {
 			var typ TeamMembership
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -24374,8 +24061,7 @@ func TestTeamMembershipRole_Examples(t *testing.T) {
 			var typ TeamMembershipRole
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -24440,8 +24126,7 @@ func TestTeamProject_Examples(t *testing.T) {
 			var typ TeamProject
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -24494,8 +24179,7 @@ func TestTeamRepository_Examples(t *testing.T) {
 			var typ TeamRepository
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -24608,8 +24292,7 @@ func TestTeamsAddOrUpdateProjectPermissionsInOrgForbidden_Examples(t *testing.T)
 			var typ TeamsAddOrUpdateProjectPermissionsInOrgForbidden
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -24674,8 +24357,7 @@ func TestTeamsAddOrUpdateProjectPermissionsLegacyForbidden_Examples(t *testing.T
 			var typ TeamsAddOrUpdateProjectPermissionsLegacyForbidden
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -24788,8 +24470,7 @@ func TestTeamsCreateDiscussionCommentInOrgReq_Examples(t *testing.T) {
 			var typ TeamsCreateDiscussionCommentInOrgReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -24830,8 +24511,7 @@ func TestTeamsCreateDiscussionCommentLegacyReq_Examples(t *testing.T) {
 			var typ TeamsCreateDiscussionCommentLegacyReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -24872,8 +24552,7 @@ func TestTeamsCreateDiscussionInOrgReq_Examples(t *testing.T) {
 			var typ TeamsCreateDiscussionInOrgReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -24914,8 +24593,7 @@ func TestTeamsCreateDiscussionLegacyReq_Examples(t *testing.T) {
 			var typ TeamsCreateDiscussionLegacyReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -24956,8 +24634,7 @@ func TestTeamsCreateOrUpdateIdpGroupConnectionsInOrgReq_Examples(t *testing.T) {
 			var typ TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -25010,8 +24687,7 @@ func TestTeamsCreateOrUpdateIdpGroupConnectionsLegacyReq_Examples(t *testing.T) 
 			var typ TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -25064,8 +24740,7 @@ func TestTeamsCreateReq_Examples(t *testing.T) {
 			var typ TeamsCreateReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -25202,8 +24877,7 @@ func TestTeamsUpdateDiscussionCommentInOrgReq_Examples(t *testing.T) {
 			var typ TeamsUpdateDiscussionCommentInOrgReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -25244,8 +24918,7 @@ func TestTeamsUpdateDiscussionCommentLegacyReq_Examples(t *testing.T) {
 			var typ TeamsUpdateDiscussionCommentLegacyReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -25286,8 +24959,7 @@ func TestTeamsUpdateDiscussionInOrgReq_Examples(t *testing.T) {
 			var typ TeamsUpdateDiscussionInOrgReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -25328,8 +25000,7 @@ func TestTeamsUpdateDiscussionLegacyReq_Examples(t *testing.T) {
 			var typ TeamsUpdateDiscussionLegacyReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -25370,8 +25041,7 @@ func TestTeamsUpdateInOrgReq_Examples(t *testing.T) {
 			var typ TeamsUpdateInOrgReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -25484,8 +25154,7 @@ func TestTeamsUpdateLegacyReq_Examples(t *testing.T) {
 			var typ TeamsUpdateLegacyReq
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -25550,8 +25219,7 @@ func TestThread_Examples(t *testing.T) {
 			var typ Thread
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -25604,8 +25272,7 @@ func TestThreadSubscription_Examples(t *testing.T) {
 			var typ ThreadSubscription
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -25646,8 +25313,7 @@ func TestTopic_Examples(t *testing.T) {
 			var typ Topic
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -25844,8 +25510,7 @@ func TestUsersAddEmailForAuthenticatedReq0_Examples(t *testing.T) {
 			var typ UsersAddEmailForAuthenticatedReq0
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -26138,8 +25803,7 @@ func TestUsersDeleteEmailForAuthenticatedReq0_Examples(t *testing.T) {
 			var typ UsersDeleteEmailForAuthenticatedReq0
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -26313,8 +25977,7 @@ func TestUsersGetAuthenticatedOK_Examples(t *testing.T) {
 			var typ UsersGetAuthenticatedOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -26356,8 +26019,7 @@ func TestUsersGetByUsernameOK_Examples(t *testing.T) {
 			var typ UsersGetByUsernameOK
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -26962,8 +26624,7 @@ func TestViewTraffic_Examples(t *testing.T) {
 			var typ ViewTraffic
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -27004,8 +26665,7 @@ func TestWebhookConfig_Examples(t *testing.T) {
 			var typ WebhookConfig
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -27094,8 +26754,7 @@ func TestWorkflow_Examples(t *testing.T) {
 			var typ Workflow
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -27136,8 +26795,7 @@ func TestWorkflowRun_Examples(t *testing.T) {
 			var typ WorkflowRun
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -27178,8 +26836,7 @@ func TestWorkflowRunUsage_Examples(t *testing.T) {
 			var typ WorkflowRunUsage
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
@@ -27268,8 +26925,7 @@ func TestWorkflowState_Examples(t *testing.T) {
 			var typ WorkflowState
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}

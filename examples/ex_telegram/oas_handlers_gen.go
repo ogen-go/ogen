@@ -72,8 +72,7 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 	response, err := s.h.AddStickerToSet(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -148,8 +147,7 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 	response, err := s.h.AnswerCallbackQuery(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -224,8 +222,7 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 	response, err := s.h.AnswerInlineQuery(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -300,8 +297,7 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 	response, err := s.h.AnswerPreCheckoutQuery(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -376,8 +372,7 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 	response, err := s.h.AnswerShippingQuery(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -452,8 +447,7 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 	response, err := s.h.ApproveChatJoinRequest(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -528,8 +522,7 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.BanChatMember(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -604,8 +597,7 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 	response, err := s.h.BanChatSenderChat(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -661,8 +653,7 @@ func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *ht
 	response, err := s.h.Close(ctx)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -737,8 +728,7 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 	response, err := s.h.CopyMessage(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -813,8 +803,7 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 	response, err := s.h.CreateChatInviteLink(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -889,8 +878,7 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 	response, err := s.h.CreateNewStickerSet(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -965,8 +953,7 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 	response, err := s.h.DeclineChatJoinRequest(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -1041,8 +1028,7 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 	response, err := s.h.DeleteChatPhoto(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -1117,8 +1103,7 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 	response, err := s.h.DeleteChatStickerSet(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -1193,8 +1178,7 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.DeleteMessage(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -1269,8 +1253,7 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 	response, err := s.h.DeleteMyCommands(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -1345,8 +1328,7 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 	response, err := s.h.DeleteStickerFromSet(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -1421,8 +1403,7 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.DeleteWebhook(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -1497,8 +1478,7 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 	response, err := s.h.EditChatInviteLink(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -1573,8 +1553,7 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 	response, err := s.h.EditMessageCaption(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -1649,8 +1628,7 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 	response, err := s.h.EditMessageLiveLocation(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -1725,8 +1703,7 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 	response, err := s.h.EditMessageMedia(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -1801,8 +1778,7 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 	response, err := s.h.EditMessageReplyMarkup(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -1877,8 +1853,7 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 	response, err := s.h.EditMessageText(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -1953,8 +1928,7 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 	response, err := s.h.ExportChatInviteLink(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -2029,8 +2003,7 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 	response, err := s.h.ForwardMessage(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -2105,8 +2078,7 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 	response, err := s.h.GetChat(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -2181,8 +2153,7 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 	response, err := s.h.GetChatAdministrators(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -2257,8 +2228,7 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.GetChatMember(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -2333,8 +2303,7 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 	response, err := s.h.GetChatMemberCount(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -2409,8 +2378,7 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 	response, err := s.h.GetFile(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -2485,8 +2453,7 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 	response, err := s.h.GetGameHighScores(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -2542,8 +2509,7 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 	response, err := s.h.GetMe(ctx)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -2618,8 +2584,7 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.GetMyCommands(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -2694,8 +2659,7 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.GetStickerSet(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -2770,8 +2734,7 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 	response, err := s.h.GetUpdates(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -2846,8 +2809,7 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 	response, err := s.h.GetUserProfilePhotos(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -2903,8 +2865,7 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWrit
 	response, err := s.h.GetWebhookInfo(ctx)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -2979,8 +2940,7 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 	response, err := s.h.LeaveChat(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -3036,8 +2996,7 @@ func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *h
 	response, err := s.h.LogOut(ctx)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -3112,8 +3071,7 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 	response, err := s.h.PinChatMessage(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -3188,8 +3146,7 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 	response, err := s.h.PromoteChatMember(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -3264,8 +3221,7 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 	response, err := s.h.RestrictChatMember(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -3340,8 +3296,7 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 	response, err := s.h.RevokeChatInviteLink(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -3416,8 +3371,7 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.SendAnimation(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -3492,8 +3446,7 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 	response, err := s.h.SendAudio(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -3568,8 +3521,7 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 	response, err := s.h.SendChatAction(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -3644,8 +3596,7 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 	response, err := s.h.SendContact(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -3720,8 +3671,7 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 	response, err := s.h.SendDice(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -3796,8 +3746,7 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 	response, err := s.h.SendDocument(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -3872,8 +3821,7 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 	response, err := s.h.SendGame(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -3948,8 +3896,7 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 	response, err := s.h.SendInvoice(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -4024,8 +3971,7 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 	response, err := s.h.SendLocation(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -4100,8 +4046,7 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 	response, err := s.h.SendMediaGroup(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -4176,8 +4121,7 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 	response, err := s.h.SendMessage(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -4252,8 +4196,7 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 	response, err := s.h.SendPhoto(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -4328,8 +4271,7 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 	response, err := s.h.SendPoll(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -4404,8 +4346,7 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 	response, err := s.h.SendSticker(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -4480,8 +4421,7 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 	response, err := s.h.SendVenue(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -4556,8 +4496,7 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 	response, err := s.h.SendVideo(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -4632,8 +4571,7 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.SendVideoNote(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -4708,8 +4646,7 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 	response, err := s.h.SendVoice(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -4784,8 +4721,7 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 	response, err := s.h.SetChatAdministratorCustomTitle(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -4860,8 +4796,7 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 	response, err := s.h.SetChatDescription(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -4936,8 +4871,7 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 	response, err := s.h.SetChatPermissions(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -5012,8 +4946,7 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 	response, err := s.h.SetChatPhoto(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -5088,8 +5021,7 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 	response, err := s.h.SetChatStickerSet(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -5164,8 +5096,7 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 	response, err := s.h.SetChatTitle(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -5240,8 +5171,7 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 	response, err := s.h.SetGameScore(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -5316,8 +5246,7 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	response, err := s.h.SetMyCommands(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -5392,8 +5321,7 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 	response, err := s.h.SetPassportDataErrors(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -5468,8 +5396,7 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 	response, err := s.h.SetStickerPositionInSet(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -5544,8 +5471,7 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 	response, err := s.h.SetStickerSetThumb(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -5620,8 +5546,7 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 	response, err := s.h.SetWebhook(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -5696,8 +5621,7 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 	response, err := s.h.StopMessageLiveLocation(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -5772,8 +5696,7 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 	response, err := s.h.StopPoll(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -5848,8 +5771,7 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 	response, err := s.h.UnbanChatMember(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -5924,8 +5846,7 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 	response, err := s.h.UnbanChatSenderChat(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -6000,8 +5921,7 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 	response, err := s.h.UnpinAllChatMessages(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -6076,8 +5996,7 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 	response, err := s.h.UnpinChatMessage(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -6152,8 +6071,7 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 	response, err := s.h.UploadStickerFile(ctx, request)
 	if err != nil {
 		recordError("Internal", err)
-		var errRes *ErrorStatusCode
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
