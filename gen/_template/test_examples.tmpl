@@ -51,8 +51,7 @@ func Test{{ $typ.Go }}_Examples(t *testing.T) {
 			{{- end }}{{- end }}
 
 			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
-				var validateErr *validate.Error
-				if errors.As(err, &validateErr) {
+				if validateErr, ok := errors.Into[*validate.Error](err); ok {
 					t.Skipf("Validation error: %v", validateErr)
 					return
 				}
