@@ -23,8 +23,8 @@ func inferJSONType(v json.RawMessage) (string, error) {
 	}
 }
 
-func parseEnumValues(s *Schema, rawValues []json.RawMessage) ([]interface{}, error) {
-	var values []interface{}
+func parseEnumValues(s *Schema, rawValues []json.RawMessage) ([]any, error) {
+	var values []any
 	for _, raw := range rawValues {
 		val, err := parseJSONValue(s, raw)
 		if err != nil {
@@ -35,9 +35,9 @@ func parseEnumValues(s *Schema, rawValues []json.RawMessage) ([]interface{}, err
 	return values, nil
 }
 
-func parseJSONValue(root *Schema, v json.RawMessage) (interface{}, error) {
-	var parse func(s *Schema, d *jx.Decoder) (interface{}, error)
-	parse = func(s *Schema, d *jx.Decoder) (interface{}, error) {
+func parseJSONValue(root *Schema, v json.RawMessage) (any, error) {
+	var parse func(s *Schema, d *jx.Decoder) (any, error)
+	parse = func(s *Schema, d *jx.Decoder) (any, error) {
 		next := d.Next()
 		if next == jx.Null {
 			// We do not check nullability here because enum with null value is completely valid
@@ -83,7 +83,7 @@ func parseJSONValue(root *Schema, v json.RawMessage) (interface{}, error) {
 			if s.Item == nil {
 				return nil, errors.New("can't validate untyped array item")
 			}
-			var arr []interface{}
+			var arr []any
 			if err := d.Arr(func(d *jx.Decoder) error {
 				v, err := parse(s.Item, d)
 				if err != nil {

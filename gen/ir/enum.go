@@ -2,7 +2,7 @@ package ir
 
 type EnumVariant struct {
 	Name  string
-	Value interface{}
+	Value any
 }
 
 func (v *EnumVariant) ValueGo() string {

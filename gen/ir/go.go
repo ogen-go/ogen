@@ -5,7 +5,7 @@ import (
 )
 
 // PrintGoValue prints given value as Go value.
-func PrintGoValue(v interface{}) string {
+func PrintGoValue(v any) string {
 	switch v := v.(type) {
 	case nil:
 		return ""

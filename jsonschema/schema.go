@@ -46,7 +46,7 @@ type Schema struct {
 	Item                 *Schema           // Only for Array and Object with additional properties.
 	AdditionalProperties *bool             // Whether Object has additional properties.
 	PatternProperties    []PatternProperty // Only for Object.
-	Enum                 []interface{}     // Only for Enum.
+	Enum                 []any             // Only for Enum.
 	Properties           []Property        // Only for Object.
 
 	Nullable bool // Whether schema is nullable or not. Any types.
@@ -81,7 +81,7 @@ type Schema struct {
 
 	Examples []Example
 	// Default schema value.
-	Default    interface{}
+	Default    any
 	DefaultSet bool
 
 	location.Locator `json:"-" yaml:"-"`

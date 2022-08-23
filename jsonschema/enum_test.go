@@ -7,7 +7,7 @@ import (
 )
 
 func TestEnum(t *testing.T) {
-	create := func() interface{} {
+	create := func() any {
 		return &Enum{}
 	}
 	enum := func(s ...string) (r Enum) {

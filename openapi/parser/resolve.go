@@ -40,7 +40,7 @@ func (p *parser) getSchema(ctx *resolveCtx) (*yaml.Node, error) {
 	return r, nil
 }
 
-func resolvePointer(root *yaml.Node, ptr string, to interface{}) error {
+func resolvePointer(root *yaml.Node, ptr string, to any) error {
 	n, err := jsonpointer.Resolve(ptr, root)
 	if err != nil {
 		return err
@@ -48,7 +48,7 @@ func resolvePointer(root *yaml.Node, ptr string, to interface{}) error {
 	return n.Decode(to)
 }
 
-func (p *parser) resolve(key refKey, ctx *resolveCtx, to interface{}) error {
+func (p *parser) resolve(key refKey, ctx *resolveCtx, to any) error {
 	schema, err := p.getSchema(ctx)
 	if err != nil {
 		return err

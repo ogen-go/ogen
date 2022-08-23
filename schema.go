@@ -252,7 +252,7 @@ type Property struct {
 type Properties []Property
 
 // MarshalYAML implements yaml.Marshaler.
-func (p Properties) MarshalYAML() (interface{}, error) {
+func (p Properties) MarshalYAML() (any, error) {
 	content := make([]*yaml.Node, 0, len(p)*2)
 	for _, prop := range p {
 		var val yaml.Node
@@ -343,7 +343,7 @@ type AdditionalProperties struct {
 }
 
 // MarshalYAML implements yaml.Marshaler.
-func (p AdditionalProperties) MarshalYAML() (interface{}, error) {
+func (p AdditionalProperties) MarshalYAML() (any, error) {
 	if p.Bool != nil {
 		return *p.Bool, nil
 	}
@@ -408,7 +408,7 @@ type PatternProperty struct {
 type PatternProperties []PatternProperty
 
 // MarshalYAML implements yaml.Marshaler.
-func (p PatternProperties) MarshalYAML() (interface{}, error) {
+func (p PatternProperties) MarshalYAML() (any, error) {
 	content := make([]*yaml.Node, 0, len(p)*2)
 	for _, prop := range p {
 		var val yaml.Node

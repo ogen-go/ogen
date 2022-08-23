@@ -7,12 +7,12 @@ import (
 )
 
 // Marshal value to json.
-func Marshal(val interface{}) ([]byte, error) {
+func Marshal(val any) ([]byte, error) {
 	return std.Marshal(val)
 }
 
 // Unmarshal value from json.
-func Unmarshal(data []byte, val interface{}) error {
+func Unmarshal(data []byte, val any) error {
 	return std.Unmarshal(data, val)
 }
 

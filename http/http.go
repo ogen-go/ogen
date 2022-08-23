@@ -53,7 +53,7 @@ func Set(req *http.Request, ctx context.Context) {
 }
 
 // SetValue wraps context.WithValue call on request context.
-func SetValue(req *http.Request, k, v interface{}) {
+func SetValue(req *http.Request, k, v any) {
 	ctx := context.WithValue(req.Context(), k, v)
 	Set(req, ctx)
 }

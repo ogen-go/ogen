@@ -12,7 +12,7 @@ import (
 type Enum []json.RawMessage
 
 // MarshalYAML implements yaml.Marshaler.
-func (n Enum) MarshalYAML() (interface{}, error) {
+func (n Enum) MarshalYAML() (any, error) {
 	var vals []*yaml.Node
 	for _, val := range n {
 		node, err := convertJSONToRawYAML(val)
