@@ -103,7 +103,10 @@ func (c *Client) AllRequestBodies(ctx context.Context, request AllRequestBodiesR
 	u.Path += "/allRequestBodies"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeAllRequestBodiesRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -178,7 +181,10 @@ func (c *Client) AllRequestBodiesOptional(ctx context.Context, request AllReques
 	u.Path += "/allRequestBodiesOptional"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeAllRequestBodiesOptionalRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}

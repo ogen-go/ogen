@@ -120,7 +120,10 @@ func (c *Client) DataGet(ctx context.Context, params DataGetParams) (res string,
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -179,7 +182,10 @@ func (c *Client) DataGetAny(ctx context.Context) (res string, err error) {
 	u.Path += "/name"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -252,7 +258,10 @@ func (c *Client) DataGetID(ctx context.Context, params DataGetIDParams) (res str
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

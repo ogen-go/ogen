@@ -114,7 +114,10 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -174,7 +177,10 @@ func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 	u.Path += "/db"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -235,7 +241,10 @@ func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 	u.Path += "/json"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -315,7 +324,10 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -394,7 +406,10 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

@@ -105,7 +105,10 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -193,7 +196,10 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -296,7 +302,10 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -399,7 +408,10 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -493,7 +505,10 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -587,7 +602,10 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

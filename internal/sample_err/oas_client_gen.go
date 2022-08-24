@@ -91,7 +91,10 @@ func (c *Client) DataCreate(ctx context.Context, request OptData) (res Data, err
 	u.Path += "/data"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeDataCreateRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -153,7 +156,10 @@ func (c *Client) DataGet(ctx context.Context) (res Data, err error) {
 	u.Path += "/data"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

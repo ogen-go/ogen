@@ -143,7 +143,10 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -250,7 +253,10 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -358,7 +364,10 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -466,7 +475,10 @@ func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsAp
 	u.Path += "/approve"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -572,7 +584,10 @@ func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCan
 	u.Path += "/cancel"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -737,7 +752,10 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActionsCreateOrUpdateEnvironmentSecretRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -890,7 +908,10 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActionsCreateOrUpdateOrgSecretRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1058,7 +1079,10 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActionsCreateOrUpdateRepoSecretRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1142,7 +1166,10 @@ func (c *Client) ActionsCreateRegistrationTokenForOrg(ctx context.Context, param
 	u.Path += "/actions/runners/registration-token"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1239,7 +1266,10 @@ func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, para
 	u.Path += "/actions/runners/registration-token"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1322,7 +1352,10 @@ func (c *Client) ActionsCreateRemoveTokenForOrg(ctx context.Context, params Acti
 	u.Path += "/actions/runners/remove-token"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1419,7 +1452,10 @@ func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params Act
 	u.Path += "/actions/runners/remove-token"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1506,7 +1542,10 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	u.Path += "/actions/runner-groups"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActionsCreateSelfHostedRunnerGroupForOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1614,7 +1653,10 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1719,7 +1761,10 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1809,7 +1854,10 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1914,7 +1962,10 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2004,7 +2055,10 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2110,7 +2164,10 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2202,7 +2259,10 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2309,7 +2369,10 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2415,7 +2478,10 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 	u.Path += "/logs"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2508,7 +2574,10 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2632,7 +2701,10 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2744,7 +2816,10 @@ func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, param
 	u.Path += "/logs"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2854,7 +2929,10 @@ func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params Acti
 	u.Path += "/logs"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2947,7 +3025,10 @@ func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx co
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -3026,7 +3107,10 @@ func (c *Client) ActionsGetAllowedActionsOrganization(ctx context.Context, param
 	u.Path += "/actions/permissions/selected-actions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -3120,7 +3204,10 @@ func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params 
 	u.Path += "/actions/permissions/selected-actions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -3225,7 +3312,10 @@ func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifa
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -3317,7 +3407,10 @@ func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params Acti
 	u.Path += "/secrets/public-key"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -3422,7 +3515,10 @@ func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params Actions
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -3498,7 +3594,10 @@ func (c *Client) ActionsGetGithubActionsPermissionsOrganization(ctx context.Cont
 	u.Path += "/actions/permissions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -3590,7 +3689,10 @@ func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Contex
 	u.Path += "/actions/permissions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -3695,7 +3797,10 @@ func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params Actions
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -3772,7 +3877,10 @@ func (c *Client) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOr
 	u.Path += "/actions/secrets/public-key"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -3862,7 +3970,10 @@ func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSe
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -3954,7 +4065,10 @@ func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetR
 	u.Path += "/actions/secrets/public-key"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -4059,7 +4173,10 @@ func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepo
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -4165,7 +4282,10 @@ func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetR
 	u.Path += "/approvals"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -4254,7 +4374,10 @@ func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params Ac
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -4359,7 +4482,10 @@ func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params A
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -4451,7 +4577,10 @@ func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, para
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -4556,7 +4685,10 @@ func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWor
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -4669,7 +4801,10 @@ func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsG
 	u.Path += "/timing"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -4798,7 +4933,10 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -4927,7 +5065,10 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -5090,7 +5231,10 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -5204,7 +5348,10 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -5335,7 +5482,10 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -5464,7 +5614,10 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -5593,7 +5746,10 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -5668,7 +5824,10 @@ func (c *Client) ActionsListRunnerApplicationsForOrg(ctx context.Context, params
 	u.Path += "/actions/runners/downloads"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -5758,7 +5917,10 @@ func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, param
 	u.Path += "/actions/runners/downloads"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -5888,7 +6050,10 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -6005,7 +6170,10 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -6121,7 +6289,10 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -6234,7 +6405,10 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -6362,7 +6536,10 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -6493,7 +6670,10 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -6637,7 +6817,10 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -6854,7 +7037,10 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -6965,7 +7151,10 @@ func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWo
 	u.Path += "/rerun"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -7075,7 +7264,10 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -7182,7 +7374,10 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -7290,7 +7485,10 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -7396,7 +7594,10 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 	u.Path += "/retry"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -7510,7 +7711,10 @@ func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, requ
 	u.Path += "/pending_deployments"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActionsReviewPendingDeploymentsForRunRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7598,7 +7802,10 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 	u.Path += "/actions/permissions/selected-actions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActionsSetAllowedActionsOrganizationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7700,7 +7907,10 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 	u.Path += "/actions/permissions/selected-actions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActionsSetAllowedActionsRepositoryRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7791,7 +8001,10 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 	u.Path += "/actions/permissions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActionsSetGithubActionsPermissionsOrganizationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7898,7 +8111,10 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 	u.Path += "/actions/permissions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActionsSetGithubActionsPermissionsRepositoryRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8004,7 +8220,10 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	u.Path += "/repositories"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8109,7 +8328,10 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 	u.Path += "/repositories"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActionsSetSelectedReposForOrgSecretRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8200,7 +8422,10 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 	u.Path += "/actions/permissions/repositories"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8305,7 +8530,10 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 	u.Path += "/runners"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActionsSetSelfHostedRunnersInGroupForOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8409,7 +8637,10 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8500,7 +8731,10 @@ func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Conte
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -8591,7 +8825,10 @@ func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params Acti
 	u.Path += "/subscription"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -8669,7 +8906,10 @@ func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params Ac
 	u.Path += "/subscription"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -8742,7 +8982,10 @@ func (c *Client) ActivityGetFeeds(ctx context.Context) (res Feed, err error) {
 	u.Path += "/feeds"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -8831,7 +9074,10 @@ func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params Activit
 	u.Path += "/subscription"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -8904,7 +9150,10 @@ func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThread
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -8981,7 +9230,10 @@ func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.C
 	u.Path += "/subscription"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -9094,7 +9346,10 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -9259,7 +9514,10 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -9385,7 +9643,10 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -9483,7 +9744,10 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -9610,7 +9874,10 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -9722,7 +9989,10 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -9834,7 +10104,10 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -9948,7 +10221,10 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -10060,7 +10336,10 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -10187,7 +10466,10 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -10382,7 +10664,10 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -10515,7 +10800,10 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -10627,7 +10915,10 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -10724,7 +11015,10 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -10851,7 +11145,10 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -10917,7 +11214,10 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Op
 	u.Path += "/notifications"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActivityMarkNotificationsAsReadRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11016,7 +11316,10 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 	u.Path += "/notifications"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActivityMarkRepoNotificationsAsReadRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11092,7 +11395,10 @@ func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMa
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -11185,7 +11491,10 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptAct
 	u.Path += "/subscription"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActivitySetRepoSubscriptionRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11270,7 +11579,10 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptA
 	u.Path += "/subscription"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeActivitySetThreadSubscriptionRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11363,7 +11675,10 @@ func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, param
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -11451,7 +11766,10 @@ func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, par
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -11544,7 +11862,10 @@ func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRe
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -11624,7 +11945,10 @@ func (c *Client) AppsCheckToken(ctx context.Context, request AppsCheckTokenReq, 
 	u.Path += "/token"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeAppsCheckTokenRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11749,7 +12073,10 @@ func (c *Client) AppsCreateContentAttachment(ctx context.Context, request AppsCr
 	u.Path += "/attachments"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeAppsCreateContentAttachmentRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11830,7 +12157,10 @@ func (c *Client) AppsCreateFromManifest(ctx context.Context, request *AppsCreate
 	u.Path += "/conversions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeAppsCreateFromManifestRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11932,7 +12262,10 @@ func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request 
 	u.Path += "/access_tokens"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeAppsCreateInstallationAccessTokenRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -12019,7 +12352,10 @@ func (c *Client) AppsDeleteAuthorization(ctx context.Context, request AppsDelete
 	u.Path += "/grant"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeAppsDeleteAuthorizationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -12100,7 +12436,10 @@ func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteIn
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -12178,7 +12517,10 @@ func (c *Client) AppsDeleteToken(ctx context.Context, request AppsDeleteTokenReq
 	u.Path += "/token"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeAppsDeleteTokenRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -12247,7 +12589,10 @@ func (c *Client) AppsGetAuthenticated(ctx context.Context) (res Integration, err
 	u.Path += "/app"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -12327,7 +12672,10 @@ func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) 
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -12407,7 +12755,10 @@ func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params A
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -12487,7 +12838,10 @@ func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, p
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -12550,7 +12904,10 @@ func (c *Client) AppsGetWebhookConfigForApp(ctx context.Context) (res WebhookCon
 	u.Path += "/app/hook/config"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -12626,7 +12983,10 @@ func (c *Client) AppsGetWebhookDelivery(ctx context.Context, params AppsGetWebho
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -12780,7 +13140,10 @@ func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAcc
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -12934,7 +13297,10 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -13052,7 +13418,10 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -13154,7 +13523,10 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -13256,7 +13628,10 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -13356,7 +13731,10 @@ func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, para
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -13455,7 +13833,10 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -13554,7 +13935,10 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -13654,7 +14038,10 @@ func (c *Client) AppsListWebhookDeliveries(ctx context.Context, params AppsListW
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -13731,7 +14118,10 @@ func (c *Client) AppsRedeliverWebhookDelivery(ctx context.Context, params AppsRe
 	u.Path += "/attempts"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -13824,7 +14214,10 @@ func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params Apps
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -13904,7 +14297,10 @@ func (c *Client) AppsResetToken(ctx context.Context, request AppsResetTokenReq, 
 	u.Path += "/token"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeAppsResetTokenRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -13975,7 +14371,10 @@ func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) (res App
 	u.Path += "/installation/token"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -14063,7 +14462,10 @@ func (c *Client) AppsScopeToken(ctx context.Context, request AppsScopeTokenReq, 
 	u.Path += "/token/scoped"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeAppsScopeTokenRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -14145,7 +14547,10 @@ func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspend
 	u.Path += "/suspended"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -14222,7 +14627,10 @@ func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsus
 	u.Path += "/suspended"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -14301,7 +14709,10 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptA
 	u.Path += "/app/hook/config"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeAppsUpdateWebhookConfigForAppRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -14385,7 +14796,10 @@ func (c *Client) BillingGetGithubActionsBillingGhe(ctx context.Context, params B
 	u.Path += "/settings/billing/actions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -14466,7 +14880,10 @@ func (c *Client) BillingGetGithubActionsBillingOrg(ctx context.Context, params B
 	u.Path += "/settings/billing/actions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -14547,7 +14964,10 @@ func (c *Client) BillingGetGithubActionsBillingUser(ctx context.Context, params 
 	u.Path += "/settings/billing/actions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -14625,7 +15045,10 @@ func (c *Client) BillingGetGithubPackagesBillingGhe(ctx context.Context, params 
 	u.Path += "/settings/billing/packages"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -14703,7 +15126,10 @@ func (c *Client) BillingGetGithubPackagesBillingOrg(ctx context.Context, params 
 	u.Path += "/settings/billing/packages"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -14781,7 +15207,10 @@ func (c *Client) BillingGetGithubPackagesBillingUser(ctx context.Context, params
 	u.Path += "/settings/billing/packages"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -14859,7 +15288,10 @@ func (c *Client) BillingGetSharedStorageBillingGhe(ctx context.Context, params B
 	u.Path += "/settings/billing/shared-storage"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -14937,7 +15369,10 @@ func (c *Client) BillingGetSharedStorageBillingOrg(ctx context.Context, params B
 	u.Path += "/settings/billing/shared-storage"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -15015,7 +15450,10 @@ func (c *Client) BillingGetSharedStorageBillingUser(ctx context.Context, params 
 	u.Path += "/settings/billing/shared-storage"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -15113,7 +15551,10 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 	u.Path += "/check-suites"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeChecksCreateSuiteRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -15224,7 +15665,10 @@ func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (res Che
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -15332,7 +15776,10 @@ func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -15477,7 +15924,10 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -15693,7 +16143,10 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -15891,7 +16344,10 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -16073,7 +16529,10 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -16182,7 +16641,10 @@ func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRereques
 	u.Path += "/rerequest"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -16276,7 +16738,10 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 	u.Path += "/check-suites/preferences"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeChecksSetSuitesPreferencesRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -16461,7 +16926,10 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -16573,7 +17041,10 @@ func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGe
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -16694,7 +17165,10 @@ func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScannin
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -16802,7 +17276,10 @@ func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGe
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -16969,7 +17446,10 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -17180,7 +17660,10 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -17401,7 +17884,10 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -17518,7 +18004,10 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeCodeScanningUpdateAlertRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -17645,7 +18134,10 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 	u.Path += "/code-scanning/sarifs"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeCodeScanningUploadSarifRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -17707,7 +18199,10 @@ func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (res Co
 	u.Path += "/codes_of_conduct"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -17780,7 +18275,10 @@ func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesO
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -17839,7 +18337,10 @@ func (c *Client) EmojisGet(ctx context.Context) (res EmojisGetRes, err error) {
 	u.Path += "/emojis"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -17946,7 +18447,10 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -18051,7 +18555,10 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -18132,7 +18639,10 @@ func (c *Client) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context
 	u.Path += "/actions/runners/registration-token"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -18215,7 +18725,10 @@ func (c *Client) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Conte
 	u.Path += "/actions/runners/remove-token"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -18299,7 +18812,10 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 	u.Path += "/actions/runner-groups"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -18391,7 +18907,10 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -18481,7 +19000,10 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -18570,7 +19092,10 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -18659,7 +19184,10 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -18751,7 +19279,10 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -18843,7 +19374,10 @@ func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpris
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -18921,7 +19455,10 @@ func (c *Client) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context,
 	u.Path += "/actions/permissions/selected-actions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -19119,7 +19656,10 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -19194,7 +19734,10 @@ func (c *Client) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx contex
 	u.Path += "/actions/permissions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -19304,7 +19847,10 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -19393,7 +19939,10 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx 
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -19482,7 +20031,10 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Con
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -19571,7 +20123,10 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx contex
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -19699,7 +20254,10 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -19846,7 +20404,10 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -20001,7 +20562,10 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -20076,7 +20640,10 @@ func (c *Client) EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.
 	u.Path += "/actions/runners/downloads"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -20192,7 +20759,10 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -20305,7 +20875,10 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -20418,7 +20991,10 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -20546,7 +21122,10 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -20633,7 +21212,10 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 	u.Path += "/Groups"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -20725,7 +21307,10 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 	u.Path += "/Users"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -20835,7 +21420,10 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -20940,7 +21528,10 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -21019,7 +21610,10 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 	u.Path += "/actions/permissions/selected-actions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21106,7 +21700,10 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 	u.Path += "/actions/permissions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21212,7 +21809,10 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21321,7 +21921,10 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21424,7 +22027,10 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	u.Path += "/organizations"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21514,7 +22120,10 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 	u.Path += "/actions/permissions/organizations"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21616,7 +22225,10 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 	u.Path += "/runners"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21721,7 +22333,10 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Co
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21843,7 +22458,10 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21951,7 +22569,10 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -22028,7 +22649,10 @@ func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsSta
 	u.Path += "/star"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -22098,7 +22722,10 @@ func (c *Client) GistsCreate(ctx context.Context, request GistsCreateReq) (res G
 	u.Path += "/gists"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGistsCreateRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -22184,7 +22811,10 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 	u.Path += "/comments"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGistsCreateCommentRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -22260,7 +22890,10 @@ func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -22348,7 +22981,10 @@ func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteComme
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -22422,7 +23058,10 @@ func (c *Client) GistsFork(ctx context.Context, params GistsForkParams) (res Gis
 	u.Path += "/forks"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -22495,7 +23134,10 @@ func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (res Gists
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -22583,7 +23225,10 @@ func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentPara
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -22671,7 +23316,10 @@ func (c *Client) GistsGetRevision(ctx context.Context, params GistsGetRevisionPa
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -22786,7 +23434,10 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -22898,7 +23549,10 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -23010,7 +23664,10 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -23139,7 +23796,10 @@ func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserPa
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -23251,7 +23911,10 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -23368,7 +24031,10 @@ func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicPara
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -23482,7 +24148,10 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -23558,7 +24227,10 @@ func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (res Gis
 	u.Path += "/star"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -23632,7 +24304,10 @@ func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res
 	u.Path += "/star"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -23729,7 +24404,10 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGistsUpdateCommentRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -23822,7 +24500,10 @@ func (c *Client) GitCreateBlob(ctx context.Context, request GitCreateBlobReq, pa
 	u.Path += "/git/blobs"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGitCreateBlobRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -23948,7 +24629,10 @@ func (c *Client) GitCreateCommit(ctx context.Context, request GitCreateCommitReq
 	u.Path += "/git/commits"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGitCreateCommitRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24043,7 +24727,10 @@ func (c *Client) GitCreateRef(ctx context.Context, request GitCreateRefReq, para
 	u.Path += "/git/refs"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGitCreateRefRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24180,7 +24867,10 @@ func (c *Client) GitCreateTag(ctx context.Context, request GitCreateTagReq, para
 	u.Path += "/git/tags"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGitCreateTagRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24287,7 +24977,10 @@ func (c *Client) GitCreateTree(ctx context.Context, request GitCreateTreeReq, pa
 	u.Path += "/git/trees"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGitCreateTreeRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24393,7 +25086,10 @@ func (c *Client) GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (r
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -24497,7 +25193,10 @@ func (c *Client) GitGetBlob(ctx context.Context, params GitGetBlobParams) (res G
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -24633,7 +25332,10 @@ func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (r
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -24743,7 +25445,10 @@ func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res Git
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -24877,7 +25582,10 @@ func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res Git
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -25004,7 +25712,10 @@ func (c *Client) GitGetTree(ctx context.Context, params GitGetTreeParams) (res G
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -25159,7 +25870,10 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -25263,7 +25977,10 @@ func (c *Client) GitUpdateRef(ctx context.Context, request GitUpdateRefReq, para
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGitUpdateRefRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25326,7 +26043,10 @@ func (c *Client) GitignoreGetAllTemplates(ctx context.Context) (res GitignoreGet
 	u.Path += "/gitignore/templates"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -25401,7 +26121,10 @@ func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTe
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -25460,7 +26183,10 @@ func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.
 	u.Path += "/user/interaction-limits"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -25535,7 +26261,10 @@ func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, param
 	u.Path += "/interaction-limits"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -25627,7 +26356,10 @@ func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, para
 	u.Path += "/interaction-limits"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -25697,7 +26429,10 @@ func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Con
 	u.Path += "/user/interaction-limits"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeInteractionsSetRestrictionsForAuthenticatedUserRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25786,7 +26521,10 @@ func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request 
 	u.Path += "/interaction-limits"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeInteractionsSetRestrictionsForOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25890,7 +26628,10 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 	u.Path += "/interaction-limits"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeInteractionsSetRestrictionsForRepoRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25998,7 +26739,10 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAss
 	u.Path += "/assignees"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeIssuesAddAssigneesRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26107,7 +26851,10 @@ func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params Issues
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -26206,7 +26953,10 @@ func (c *Client) IssuesCreate(ctx context.Context, request IssuesCreateReq, para
 	u.Path += "/issues"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeIssuesCreateRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26320,7 +27070,10 @@ func (c *Client) IssuesCreateComment(ctx context.Context, request IssuesCreateCo
 	u.Path += "/comments"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeIssuesCreateCommentRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26413,7 +27166,10 @@ func (c *Client) IssuesCreateLabel(ctx context.Context, request IssuesCreateLabe
 	u.Path += "/labels"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeIssuesCreateLabelRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26514,7 +27270,10 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request IssuesCreate
 	u.Path += "/milestones"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeIssuesCreateMilestoneRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26620,7 +27379,10 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -26723,7 +27485,10 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -26826,7 +27591,10 @@ func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteM
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -26947,7 +27715,10 @@ func (c *Client) IssuesGet(ctx context.Context, params IssuesGetParams) (res Iss
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -27050,7 +27821,10 @@ func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentPa
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -27153,7 +27927,10 @@ func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -27256,7 +28033,10 @@ func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -27359,7 +28139,10 @@ func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilesto
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -27638,7 +28421,10 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -27766,7 +28552,10 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -27925,7 +28714,10 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -28103,7 +28895,10 @@ func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesLis
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -28230,7 +29025,10 @@ func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListE
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -28437,7 +29235,10 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -28659,7 +29460,10 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -28947,7 +29751,10 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -29089,7 +29896,10 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -29216,7 +30026,10 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -29358,7 +30171,10 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -29536,7 +30352,10 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -29659,7 +30478,10 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 	u.Path += "/lock"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeIssuesLockRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -29766,7 +30588,10 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 	u.Path += "/labels"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -29871,7 +30696,10 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRem
 	u.Path += "/assignees"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeIssuesRemoveAssigneesRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -29993,7 +30821,10 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -30097,7 +30928,10 @@ func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (r
 	u.Path += "/lock"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -30216,7 +31050,10 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeIssuesUpdateRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30323,7 +31160,10 @@ func (c *Client) IssuesUpdateComment(ctx context.Context, request IssuesUpdateCo
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeIssuesUpdateCommentRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30430,7 +31270,10 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateL
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeIssuesUpdateLabelRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30552,7 +31395,10 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeIssuesUpdateMilestoneRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30628,7 +31474,10 @@ func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -30742,7 +31591,10 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -30835,7 +31687,10 @@ func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRe
 	u.Path += "/license"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -30898,7 +31753,10 @@ func (c *Client) MetaGet(ctx context.Context) (res MetaGetRes, err error) {
 	u.Path += "/meta"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -30957,7 +31815,10 @@ func (c *Client) MetaGetZen(ctx context.Context) (res MetaGetZenOK, err error) {
 	u.Path += "/zen"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -31016,7 +31877,10 @@ func (c *Client) MetaRoot(ctx context.Context) (res MetaRootOK, err error) {
 	u.Path += "/"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -31105,7 +31969,10 @@ func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCa
 	u.Path += "/import"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -31183,7 +32050,10 @@ func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context
 	u.Path += "/archive"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -31273,7 +32143,10 @@ func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params Migra
 	u.Path += "/archive"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -31362,7 +32235,10 @@ func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params Mig
 	u.Path += "/archive"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -31456,7 +32332,10 @@ func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, p
 	u.Path += "/archive"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -31573,7 +32452,10 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -31714,7 +32596,10 @@ func (c *Client) MigrationsGetImportStatus(ctx context.Context, params Migration
 	u.Path += "/import"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -31803,7 +32688,10 @@ func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsG
 	u.Path += "/import/large_files"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -31910,7 +32798,10 @@ func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, pa
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -32030,7 +32921,10 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -32127,7 +33021,10 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -32262,7 +33159,10 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -32389,7 +33289,10 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -32501,7 +33404,10 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -32606,7 +33512,10 @@ func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigra
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeMigrationsMapCommitAuthorRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32710,7 +33619,10 @@ func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request Migrati
 	u.Path += "/import/lfs"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeMigrationsSetLfsPreferenceRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32781,7 +33693,10 @@ func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, reques
 	u.Path += "/user/migrations"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeMigrationsStartForAuthenticatedUserRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32867,7 +33782,10 @@ func (c *Client) MigrationsStartForOrg(ctx context.Context, request MigrationsSt
 	u.Path += "/migrations"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeMigrationsStartForOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32968,7 +33886,10 @@ func (c *Client) MigrationsStartImport(ctx context.Context, request MigrationsSt
 	u.Path += "/import"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeMigrationsStartImportRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33064,7 +33985,10 @@ func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, p
 	u.Path += "/lock"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -33170,7 +34094,10 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 	u.Path += "/lock"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -33262,7 +34189,10 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigra
 	u.Path += "/import"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeMigrationsUpdateImportRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33369,7 +34299,10 @@ func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, req
 	u.Path += "/authorizations"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeOAuthAuthorizationsCreateAuthorizationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33454,7 +34387,10 @@ func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, par
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -33539,7 +34475,10 @@ func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAut
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -33621,7 +34560,10 @@ func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -33703,7 +34645,10 @@ func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAu
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -33813,7 +34758,10 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.C
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33936,7 +34884,10 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34062,7 +35013,10 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -34196,7 +35150,10 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -34298,7 +35255,10 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeOAuthAuthorizationsUpdateAuthorizationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34389,7 +35349,10 @@ func (c *Client) OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) 
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -34480,7 +35443,10 @@ func (c *Client) OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvi
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -34568,7 +35534,10 @@ func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlock
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -34656,7 +35625,10 @@ func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsChec
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -34744,7 +35716,10 @@ func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params Or
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -34836,7 +35811,10 @@ func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, par
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -34934,7 +35912,10 @@ func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreate
 	u.Path += "/invitations"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeOrgsCreateInvitationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35020,7 +36001,10 @@ func (c *Client) OrgsCreateWebhook(ctx context.Context, request OrgsCreateWebhoo
 	u.Path += "/hooks"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeOrgsCreateWebhookRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35111,7 +36095,10 @@ func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhook
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -35192,7 +36179,10 @@ func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (res OrgsGet
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -35394,7 +36384,10 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -35467,7 +36460,10 @@ func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, para
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -35557,7 +36553,10 @@ func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMem
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -35647,7 +36646,10 @@ func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -35740,7 +36742,10 @@ func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetW
 	u.Path += "/config"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -35843,7 +36848,10 @@ func (c *Client) OrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebho
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -35943,7 +36951,10 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsL
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -36017,7 +37028,10 @@ func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlocke
 	u.Path += "/blocks"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -36130,7 +37144,10 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -36232,7 +37249,10 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -36349,7 +37369,10 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -36477,7 +37500,10 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -36624,7 +37650,10 @@ func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersPara
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -36738,7 +37767,10 @@ func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, pa
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -36867,7 +37899,10 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -36982,7 +38017,10 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -37094,7 +38132,10 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -37175,7 +38216,10 @@ func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsL
 	u.Path += "/credential-authorizations"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -37302,7 +38346,10 @@ func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListW
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -37414,7 +38461,10 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -37504,7 +38554,10 @@ func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookPara
 	u.Path += "/pings"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -37608,7 +38661,10 @@ func (c *Client) OrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRe
 	u.Path += "/attempts"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -37697,7 +38753,10 @@ func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberPa
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -37789,7 +38848,10 @@ func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRem
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -37877,7 +38939,10 @@ func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsR
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -37965,7 +39030,10 @@ func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Cont
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -38059,7 +39127,10 @@ func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params Orgs
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -38176,7 +39247,10 @@ func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSe
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeOrgsSetMembershipForUserRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38271,7 +39345,10 @@ func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -38359,7 +39436,10 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -38441,7 +39521,10 @@ func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, r
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeOrgsUpdateMembershipForAuthenticatedUserRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38552,7 +39635,10 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeOrgsUpdateWebhookRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38664,7 +39750,10 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptO
 	u.Path += "/config"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeOrgsUpdateWebhookConfigForOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38760,7 +39849,10 @@ func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, 
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -38870,7 +39962,10 @@ func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params Package
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -38980,7 +40075,10 @@ func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params Packag
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -39088,7 +40186,10 @@ func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Co
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -39213,7 +40314,10 @@ func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params 
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -39338,7 +40442,10 @@ func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -39484,7 +40591,10 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -39645,7 +40755,10 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -39751,7 +40864,10 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.
 	u.Path += "/versions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -39841,7 +40957,10 @@ func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, par
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -39946,7 +41065,10 @@ func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params P
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -40051,7 +41173,10 @@ func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesG
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -40156,7 +41281,10 @@ func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Conte
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -40276,7 +41404,10 @@ func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, p
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -40397,7 +41528,10 @@ func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params Pa
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -40493,7 +41627,10 @@ func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, p
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -40604,7 +41741,10 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -40715,7 +41855,10 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -40834,7 +41977,10 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -40970,7 +42116,10 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -41106,7 +42255,10 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -41219,7 +42371,10 @@ func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.C
 	u.Path += "/restore"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -41349,7 +42504,10 @@ func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params
 	u.Path += "/restore"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -41479,7 +42637,10 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 	u.Path += "/restore"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -41584,7 +42745,10 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeProjectsAddCollaboratorRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41662,7 +42826,10 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 	u.Path += "/columns"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeProjectsCreateColumnRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41725,7 +42892,10 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request
 	u.Path += "/user/projects"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeProjectsCreateForAuthenticatedUserRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41805,7 +42975,10 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 	u.Path += "/projects"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeProjectsCreateForOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41900,7 +43073,10 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 	u.Path += "/projects"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeProjectsCreateForRepoRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41976,7 +43152,10 @@ func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -42049,7 +43228,10 @@ func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCa
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -42122,7 +43304,10 @@ func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDelete
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -42197,7 +43382,10 @@ func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (res
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -42270,7 +43458,10 @@ func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardPara
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -42343,7 +43534,10 @@ func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumn
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -42434,7 +43628,10 @@ func (c *Client) ProjectsGetPermissionForUser(ctx context.Context, params Projec
 	u.Path += "/permission"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -42563,7 +43760,10 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -42696,7 +43896,10 @@ func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsL
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -42808,7 +44011,10 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -42939,7 +44145,10 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -43085,7 +44294,10 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -43214,7 +44426,10 @@ func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListFor
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -43297,7 +44512,10 @@ func (c *Client) ProjectsMoveCard(ctx context.Context, request ProjectsMoveCardR
 	u.Path += "/moves"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeProjectsMoveCardRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43383,7 +44601,10 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 	u.Path += "/moves"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeProjectsMoveColumnRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43475,7 +44696,10 @@ func (c *Client) ProjectsRemoveCollaborator(ctx context.Context, params Projects
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -43566,7 +44790,10 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeProjectsUpdateRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43643,7 +44870,10 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpda
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeProjectsUpdateCardRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43720,7 +44950,10 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeProjectsUpdateColumnRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43827,7 +45060,10 @@ func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMerg
 	u.Path += "/merge"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -43932,7 +45168,10 @@ func (c *Client) PullsCreate(ctx context.Context, request PullsCreateReq, params
 	u.Path += "/pulls"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePullsCreateRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44064,7 +45303,10 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 	u.Path += "/replies"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePullsCreateReplyForReviewCommentRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44205,7 +45447,10 @@ func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateRe
 	u.Path += "/reviews"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePullsCreateReviewRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44340,7 +45585,10 @@ func (c *Client) PullsCreateReviewComment(ctx context.Context, request PullsCrea
 	u.Path += "/comments"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePullsCreateReviewCommentRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44461,7 +45709,10 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -44564,7 +45815,10 @@ func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDelet
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -44686,7 +45940,10 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 	u.Path += "/dismissals"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePullsDismissReviewRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44825,7 +46082,10 @@ func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res Pulls
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -44943,7 +46203,10 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -45046,7 +46309,10 @@ func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetRevie
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -45262,7 +46528,10 @@ func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res Pul
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -45419,7 +46688,10 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -45563,7 +46835,10 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -45706,7 +46981,10 @@ func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -45848,7 +47126,10 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -46042,7 +47323,10 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -46221,7 +47505,10 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -46363,7 +47650,10 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -46489,7 +47779,10 @@ func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, pa
 	u.Path += "/merge"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePullsMergeRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46605,7 +47898,10 @@ func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request Pull
 	u.Path += "/requested_reviewers"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePullsRemoveRequestedReviewersRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46736,7 +48032,10 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 	u.Path += "/events"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePullsSubmitReviewRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46865,7 +48164,10 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePullsUpdateRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46974,7 +48276,10 @@ func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdat
 	u.Path += "/update-branch"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePullsUpdateBranchRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47096,7 +48401,10 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePullsUpdateReviewRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47203,7 +48511,10 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePullsUpdateReviewCommentRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47268,7 +48579,10 @@ func (c *Client) RateLimitGet(ctx context.Context) (res RateLimitGetRes, err err
 	u.Path += "/rate_limit"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -47383,7 +48697,10 @@ func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request Re
 	u.Path += "/reactions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReactionsCreateForCommitCommentRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47500,7 +48817,10 @@ func (c *Client) ReactionsCreateForIssue(ctx context.Context, request ReactionsC
 	u.Path += "/reactions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReactionsCreateForIssueRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47618,7 +48938,10 @@ func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request Rea
 	u.Path += "/reactions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReactionsCreateForIssueCommentRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47736,7 +49059,10 @@ func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context,
 	u.Path += "/reactions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReactionsCreateForPullRequestReviewCommentRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47853,7 +49179,10 @@ func (c *Client) ReactionsCreateForRelease(ctx context.Context, request Reaction
 	u.Path += "/reactions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReactionsCreateForReleaseRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47990,7 +49319,10 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 	u.Path += "/reactions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReactionsCreateForTeamDiscussionCommentInOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -48116,7 +49448,10 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 	u.Path += "/reactions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReactionsCreateForTeamDiscussionCommentLegacyRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -48239,7 +49574,10 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 	u.Path += "/reactions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReactionsCreateForTeamDiscussionInOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -48351,7 +49689,10 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 	u.Path += "/reactions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReactionsCreateForTeamDiscussionLegacyRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -48474,7 +49815,10 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -48594,7 +49938,10 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -48714,7 +50061,10 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -48835,7 +50185,10 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -48960,7 +50313,10 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -49098,7 +50454,10 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -49180,7 +50539,10 @@ func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDele
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -49339,7 +50701,10 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -49498,7 +50863,10 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -49657,7 +51025,10 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -49817,7 +51188,10 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -49995,7 +51369,10 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -50162,7 +51539,10 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -50325,7 +51705,10 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -50477,7 +51860,10 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -50550,7 +51936,10 @@ func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptIn
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -50684,7 +52073,10 @@ func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptR
 	u.Path += "/protection/restrictions/apps"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposAddAppAccessRestrictionsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -50825,7 +52217,10 @@ func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCo
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposAddCollaboratorRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -50952,7 +52347,10 @@ func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptRep
 	u.Path += "/protection/required_status_checks/contexts"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposAddStatusCheckContextsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -51089,7 +52487,10 @@ func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request Opt
 	u.Path += "/protection/restrictions/teams"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposAddTeamAccessRestrictionsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -51225,7 +52626,10 @@ func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request Opt
 	u.Path += "/protection/restrictions/users"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposAddUserAccessRestrictionsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -51335,7 +52739,10 @@ func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCo
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -51427,7 +52834,10 @@ func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params Repos
 	u.Path += "/vulnerability-alerts"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -51622,7 +53032,10 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -51712,7 +53125,10 @@ func (c *Client) ReposCreateAutolink(ctx context.Context, request ReposCreateAut
 	u.Path += "/autolinks"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposCreateAutolinkRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -51827,7 +53243,10 @@ func (c *Client) ReposCreateCommitComment(ctx context.Context, request ReposCrea
 	u.Path += "/comments"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposCreateCommitCommentRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -51940,7 +53359,10 @@ func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, param
 	u.Path += "/protection/required_signatures"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -52054,7 +53476,10 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposCreateCommitStatusRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -52147,7 +53572,10 @@ func (c *Client) ReposCreateDeployKey(ctx context.Context, request ReposCreateDe
 	u.Path += "/keys"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposCreateDeployKeyRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -52295,7 +53723,10 @@ func (c *Client) ReposCreateDeployment(ctx context.Context, request ReposCreateD
 	u.Path += "/deployments"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposCreateDeploymentRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -52413,7 +53844,10 @@ func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request ReposC
 	u.Path += "/statuses"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposCreateDeploymentStatusRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -52533,7 +53967,10 @@ func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request ReposCrea
 	u.Path += "/dispatches"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposCreateDispatchEventRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -52602,7 +54039,10 @@ func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request Re
 	u.Path += "/user/repos"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposCreateForAuthenticatedUserRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -52698,7 +54138,10 @@ func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateF
 	u.Path += "/forks"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposCreateForkRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -52791,7 +54234,10 @@ func (c *Client) ReposCreateInOrg(ctx context.Context, request ReposCreateInOrgR
 	u.Path += "/repos"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposCreateInOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -52898,7 +54344,10 @@ func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request Re
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposCreateOrUpdateFileContentsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -53000,7 +54449,10 @@ func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreat
 	u.Path += "/pages"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposCreatePagesSiteRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -53100,7 +54552,10 @@ func (c *Client) ReposCreateRelease(ctx context.Context, request ReposCreateRele
 	u.Path += "/releases"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposCreateReleaseRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -53204,7 +54659,10 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 	u.Path += "/generate"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposCreateUsingTemplateRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -53314,7 +54772,10 @@ func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCrea
 	u.Path += "/hooks"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposCreateWebhookRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -53390,7 +54851,10 @@ func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDecline
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -53481,7 +54945,10 @@ func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -53590,7 +55057,10 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 	u.Path += "/protection/restrictions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -53700,7 +55170,10 @@ func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params Re
 	u.Path += "/protection/enforce_admins"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -53803,7 +55276,10 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -53907,7 +55383,10 @@ func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAuto
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -54015,7 +55494,10 @@ func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDe
 	u.Path += "/protection"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -54118,7 +55600,10 @@ func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDelet
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -54229,7 +55714,10 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 	u.Path += "/protection/required_signatures"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -54333,7 +55821,10 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -54444,7 +55935,10 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -54555,7 +56049,10 @@ func (c *Client) ReposDeleteFile(ctx context.Context, request ReposDeleteFileReq
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposDeleteFileRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -54661,7 +56158,10 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -54750,7 +56250,10 @@ func (c *Client) ReposDeletePagesSite(ctx context.Context, params ReposDeletePag
 	u.Path += "/pages"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -54858,7 +56361,10 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 	u.Path += "/protection/required_pull_request_reviews"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -54961,7 +56467,10 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -55064,7 +56573,10 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -55167,7 +56679,10 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -55258,7 +56773,10 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 	u.Path += "/automated-security-fixes"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -55347,7 +56865,10 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 	u.Path += "/lfs"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -55439,7 +56960,10 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 	u.Path += "/vulnerability-alerts"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -55547,7 +57071,10 @@ func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDo
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -55655,7 +57182,10 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -55746,7 +57276,10 @@ func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params R
 	u.Path += "/automated-security-fixes"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -55835,7 +57368,10 @@ func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLf
 	u.Path += "/lfs"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -55927,7 +57463,10 @@ func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params Repo
 	u.Path += "/vulnerability-alerts"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -56016,7 +57555,10 @@ func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res Repos
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -56127,7 +57669,10 @@ func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGet
 	u.Path += "/protection/restrictions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -56235,7 +57780,10 @@ func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params Repos
 	u.Path += "/protection/enforce_admins"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -56343,7 +57891,10 @@ func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params Repo
 	u.Path += "/protection/required_status_checks/contexts"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -56470,7 +58021,10 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -56581,7 +58135,10 @@ func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, pa
 	u.Path += "/protection/restrictions/apps"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -56685,7 +58242,10 @@ func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkPa
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -56788,7 +58348,10 @@ func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -56896,7 +58459,10 @@ func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBr
 	u.Path += "/protection"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -57007,7 +58573,10 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -57096,7 +58665,10 @@ func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGet
 	u.Path += "/stats/code_frequency"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -57201,7 +58773,10 @@ func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params
 	u.Path += "/permission"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -57351,7 +58926,10 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -57538,7 +59116,10 @@ func (c *Client) ReposGetCommit(ctx context.Context, params ReposGetCommitParams
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -57628,7 +59209,10 @@ func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGe
 	u.Path += "/stats/commit_activity"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -57731,7 +59315,10 @@ func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommi
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -57844,7 +59431,10 @@ func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params R
 	u.Path += "/protection/required_signatures"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -57942,7 +59532,10 @@ func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params Rep
 	u.Path += "/community/profile"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -58036,7 +59629,10 @@ func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetC
 	u.Path += "/stats/contributors"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -58139,7 +59735,10 @@ func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKey
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -58242,7 +59841,10 @@ func (c *Client) ReposGetDeployment(ctx context.Context, params ReposGetDeployme
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -58360,7 +59962,10 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -58449,7 +60054,10 @@ func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLa
 	u.Path += "/pages/builds/latest"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -58541,7 +60149,10 @@ func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLates
 	u.Path += "/releases/latest"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -58630,7 +60241,10 @@ func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) 
 	u.Path += "/pages"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -58733,7 +60347,10 @@ func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBui
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -58828,7 +60445,10 @@ func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPa
 	u.Path += "/pages/health"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -58920,7 +60540,10 @@ func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGet
 	u.Path += "/stats/participation"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -59028,7 +60651,10 @@ func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params
 	u.Path += "/protection/required_pull_request_reviews"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -59122,7 +60748,10 @@ func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunc
 	u.Path += "/stats/punch_card"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -59234,7 +60863,10 @@ func (c *Client) ReposGetReadme(ctx context.Context, params ReposGetReadmeParams
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -59360,7 +60992,10 @@ func (c *Client) ReposGetReadmeInDirectory(ctx context.Context, params ReposGetR
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -59465,7 +61100,10 @@ func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleasePara
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -59571,7 +61209,10 @@ func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleas
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -59674,7 +61315,10 @@ func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleas
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -59782,7 +61426,10 @@ func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params Repo
 	u.Path += "/protection/required_status_checks"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -59891,7 +61538,10 @@ func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, p
 	u.Path += "/protection/restrictions/teams"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -59980,7 +61630,10 @@ func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsPa
 	u.Path += "/traffic/popular/paths"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -60069,7 +61722,10 @@ func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopRef
 	u.Path += "/traffic/popular/referrers"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -60178,7 +61834,10 @@ func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, p
 	u.Path += "/protection/restrictions/users"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -60289,7 +61948,10 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -60394,7 +62056,10 @@ func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookPara
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -60502,7 +62167,10 @@ func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposG
 	u.Path += "/config"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -60620,7 +62288,10 @@ func (c *Client) ReposGetWebhookDelivery(ctx context.Context, params ReposGetWeb
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -60731,7 +62402,10 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -60875,7 +62549,10 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -60984,7 +62661,10 @@ func (c *Client) ReposListBranchesForHeadCommit(ctx context.Context, params Repo
 	u.Path += "/branches-where-head"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -61132,7 +62812,10 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -61274,7 +62957,10 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -61404,7 +63090,10 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -61549,7 +63238,10 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -61792,7 +63484,10 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -61942,7 +63637,10 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -62069,7 +63767,10 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -62211,7 +63912,10 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -62406,7 +64110,10 @@ func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeplo
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -62625,7 +64332,10 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -62788,7 +64498,10 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -62952,7 +64665,10 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -63096,7 +64812,10 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -63224,7 +64943,10 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -63322,7 +65044,10 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -63412,7 +65137,10 @@ func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguag
 	u.Path += "/languages"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -63539,7 +65267,10 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -63625,7 +65356,10 @@ func (c *Client) ReposListPublic(ctx context.Context, params ReposListPublicPara
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -63772,7 +65506,10 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -63914,7 +65651,10 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -64045,7 +65785,10 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -64172,7 +65915,10 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -64299,7 +66045,10 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -64441,7 +66190,10 @@ func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposLis
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -64568,7 +66320,10 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -64658,7 +66413,10 @@ func (c *Client) ReposMerge(ctx context.Context, request ReposMergeReq, params R
 	u.Path += "/merges"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposMergeRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -64752,7 +66510,10 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 	u.Path += "/merge-upstream"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposMergeUpstreamRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -64860,7 +66621,10 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 	u.Path += "/pings"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -64979,7 +66743,10 @@ func (c *Client) ReposRedeliverWebhookDelivery(ctx context.Context, params Repos
 	u.Path += "/attempts"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -65113,7 +66880,10 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 	u.Path += "/protection/restrictions/apps"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposRemoveAppAccessRestrictionsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -65219,7 +66989,10 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -65343,7 +67116,10 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 	u.Path += "/protection/required_status_checks/contexts"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposRemoveStatusCheckContextsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -65454,7 +67230,10 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 	u.Path += "/protection/required_status_checks"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -65588,7 +67367,10 @@ func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request 
 	u.Path += "/protection/restrictions/teams"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposRemoveTeamAccessRestrictionsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -65724,7 +67506,10 @@ func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request 
 	u.Path += "/protection/restrictions/users"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposRemoveUserAccessRestrictionsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -65844,7 +67629,10 @@ func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBr
 	u.Path += "/rename"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposRenameBranchRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -65945,7 +67733,10 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 	u.Path += "/topics"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposReplaceAllTopicsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -66042,7 +67833,10 @@ func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequest
 	u.Path += "/pages/builds"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -66152,7 +67946,10 @@ func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params Repos
 	u.Path += "/protection/enforce_admins"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -66288,7 +68085,10 @@ func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptR
 	u.Path += "/protection/restrictions/apps"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposSetAppAccessRestrictionsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -66415,7 +68215,10 @@ func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptRep
 	u.Path += "/protection/required_status_checks/contexts"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposSetStatusCheckContextsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -66553,7 +68356,10 @@ func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request Opt
 	u.Path += "/protection/restrictions/teams"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposSetTeamAccessRestrictionsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -66690,7 +68496,10 @@ func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request Opt
 	u.Path += "/protection/restrictions/users"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposSetUserAccessRestrictionsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -66800,7 +68609,10 @@ func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushW
 	u.Path += "/tests"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -66894,7 +68706,10 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 	u.Path += "/transfer"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposTransferRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -67002,7 +68817,10 @@ func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, par
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposUpdateRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -67125,7 +68943,10 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 	u.Path += "/protection"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposUpdateBranchProtectionRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -67232,7 +69053,10 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposUpdateCommitCommentRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -67354,7 +69178,10 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposUpdateInvitationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -67469,7 +69296,10 @@ func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, req
 	u.Path += "/protection/required_pull_request_reviews"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposUpdatePullRequestReviewProtectionRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -67576,7 +69406,10 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateR
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposUpdateReleaseRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -67683,7 +69516,10 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUp
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposUpdateReleaseAssetRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -67797,7 +69633,10 @@ func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request O
 	u.Path += "/protection/required_status_checks"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposUpdateStatusCheckProtectionRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -67922,7 +69761,10 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposUpdateWebhookRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -68049,7 +69891,10 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 	u.Path += "/config"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReposUpdateWebhookConfigForRepoRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -68140,7 +69985,10 @@ func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUse
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -68304,7 +70152,10 @@ func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (res S
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -68459,7 +70310,10 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -68626,7 +70480,10 @@ func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchI
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -68794,7 +70651,10 @@ func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (r
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -68954,7 +70814,10 @@ func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (res
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -69078,7 +70941,10 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -69234,7 +71100,10 @@ func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (res
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -69343,7 +71212,10 @@ func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanni
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -69493,7 +71365,10 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -69657,7 +71532,10 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -69775,7 +71653,10 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSecretScanningUpdateAlertRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -69887,7 +71768,10 @@ func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMember
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -70027,7 +71911,10 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsAddOrUpdateMembershipForUserInOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -70160,7 +72047,10 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsAddOrUpdateMembershipForUserLegacyRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -70286,7 +72176,10 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -70401,7 +72294,10 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, r
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -70549,7 +72445,10 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -70684,7 +72583,10 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, requ
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -70793,7 +72695,10 @@ func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, param
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -70888,7 +72793,10 @@ func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, para
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -71014,7 +72922,10 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -71126,7 +73037,10 @@ func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params 
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -71216,7 +73130,10 @@ func (c *Client) TeamsCreate(ctx context.Context, request TeamsCreateReq, params
 	u.Path += "/teams"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsCreateRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -71334,7 +73251,10 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 	u.Path += "/comments"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsCreateDiscussionCommentInOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -71440,7 +73360,10 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 	u.Path += "/comments"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsCreateDiscussionCommentLegacyRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -71543,7 +73466,10 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 	u.Path += "/discussions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsCreateDiscussionInOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -71634,7 +73560,10 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 	u.Path += "/discussions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsCreateDiscussionLegacyRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -71734,7 +73663,10 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 	u.Path += "/team-sync/group-mappings"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -71831,7 +73763,10 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Contex
 	u.Path += "/team-sync/group-mappings"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -71955,7 +73890,10 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -72064,7 +74002,10 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -72170,7 +74111,10 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -72264,7 +74208,10 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -72356,7 +74303,10 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -72436,7 +74386,10 @@ func (c *Client) TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacy
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -72526,7 +74479,10 @@ func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -72647,7 +74603,10 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -72756,7 +74715,10 @@ func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params Tea
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -72862,7 +74824,10 @@ func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDis
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -72956,7 +74921,10 @@ func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDi
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -73033,7 +75001,10 @@ func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -73127,7 +75098,10 @@ func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMember
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -73237,7 +75211,10 @@ func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params Team
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -73335,7 +75312,10 @@ func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params Tea
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -73447,7 +75427,10 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -73576,7 +75559,10 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -73692,7 +75678,10 @@ func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChild
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -73854,7 +75843,10 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -74004,7 +75996,10 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -74168,7 +76163,10 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -74303,7 +76301,10 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -74403,7 +76404,10 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -74485,7 +76489,10 @@ func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsLi
 	u.Path += "/team-sync/group-mappings"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -74603,7 +76610,10 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -74697,7 +76707,10 @@ func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListId
 	u.Path += "/team-sync/group-mappings"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -74842,7 +76855,10 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -74976,7 +76992,10 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -75108,7 +77127,10 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -75228,7 +77250,10 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -75357,7 +77382,10 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -75474,7 +77502,10 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -75603,7 +77634,10 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -75719,7 +77753,10 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -75827,7 +77864,10 @@ func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemove
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -75944,7 +77984,10 @@ func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params T
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -76049,7 +78092,10 @@ func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params 
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -76157,7 +78203,10 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -76253,7 +78302,10 @@ func (c *Client) TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemov
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -76376,7 +78428,10 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -76487,7 +78542,10 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -76609,7 +78667,10 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsUpdateDiscussionCommentInOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -76722,7 +78783,10 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsUpdateDiscussionCommentLegacyRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -76833,7 +78897,10 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeam
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsUpdateDiscussionInOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -76932,7 +78999,10 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTea
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsUpdateDiscussionLegacyRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -77041,7 +79111,10 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsUpdateInOrgRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -77132,7 +79205,10 @@ func (c *Client) TeamsUpdateLegacy(ctx context.Context, request TeamsUpdateLegac
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTeamsUpdateLegacyRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -77210,7 +79286,10 @@ func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptU
 	u.Path += "/user/emails"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeUsersAddEmailForAuthenticatedRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -77286,7 +79365,10 @@ func (c *Client) UsersBlock(ctx context.Context, params UsersBlockParams) (res U
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -77359,7 +79441,10 @@ func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlocked
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -77447,7 +79532,10 @@ func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersChe
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -77520,7 +79608,10 @@ func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, 
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -77582,7 +79673,10 @@ func (c *Client) UsersCreateGpgKeyForAuthenticated(ctx context.Context, request 
 	u.Path += "/user/gpg_keys"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeUsersCreateGpgKeyForAuthenticatedRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -77655,7 +79749,10 @@ func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, re
 	u.Path += "/user/keys"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeUsersCreatePublicSSHKeyForAuthenticatedRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -77733,7 +79830,10 @@ func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request O
 	u.Path += "/user/emails"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeUsersDeleteEmailForAuthenticatedRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -77811,7 +79911,10 @@ func (c *Client) UsersDeleteGpgKeyForAuthenticated(ctx context.Context, params U
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -77886,7 +79989,10 @@ func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, pa
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -77963,7 +80069,10 @@ func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -78025,7 +80134,10 @@ func (c *Client) UsersGetAuthenticated(ctx context.Context) (res UsersGetAuthent
 	u.Path += "/user"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -78112,7 +80224,10 @@ func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUserna
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -78233,7 +80348,10 @@ func (c *Client) UsersGetContextForUser(ctx context.Context, params UsersGetCont
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -78308,7 +80426,10 @@ func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params User
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -78383,7 +80504,10 @@ func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, param
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -78484,7 +80608,10 @@ func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res Use
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -78543,7 +80670,10 @@ func (c *Client) UsersListBlockedByAuthenticated(ctx context.Context) (res Users
 	u.Path += "/user/blocks"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -78641,7 +80771,10 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -78738,7 +80871,10 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -78835,7 +80971,10 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -78947,7 +81086,10 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -79059,7 +81201,10 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -79158,7 +81303,10 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -79270,7 +81418,10 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -79370,7 +81521,10 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -79482,7 +81636,10 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -79581,7 +81738,10 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -79649,7 +81809,10 @@ func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Cont
 	u.Path += "/user/email/visibility"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -79725,7 +81888,10 @@ func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (r
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -79799,7 +81965,10 @@ func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) 
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -79861,7 +82030,10 @@ func (c *Client) UsersUpdateAuthenticated(ctx context.Context, request OptUsersU
 	u.Path += "/user"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeUsersUpdateAuthenticatedRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}

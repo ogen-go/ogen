@@ -90,7 +90,10 @@ func (c *Client) ProbeLiveness(ctx context.Context) (res string, err error) {
 	u.Path += "/healthz"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

@@ -92,7 +92,10 @@ func (c *Client) AddPet(ctx context.Context, request NewPet) (res AddPetRes, err
 	u.Path += "/pets"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeAddPetRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -168,7 +171,10 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -241,7 +247,10 @@ func (c *Client) FindPetByID(ctx context.Context, params FindPetByIDParams) (res
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -362,7 +371,10 @@ func (c *Client) FindPets(ctx context.Context, params FindPetsParams) (res FindP
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

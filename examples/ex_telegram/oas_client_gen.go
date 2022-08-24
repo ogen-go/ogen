@@ -97,7 +97,10 @@ func (c *Client) AddStickerToSet(ctx context.Context, request AddStickerToSet) (
 	u.Path += "/addStickerToSet"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeAddStickerToSetRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -166,7 +169,10 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallback
 	u.Path += "/answerCallbackQuery"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeAnswerCallbackQueryRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -235,7 +241,10 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, request AnswerInlineQuer
 	u.Path += "/answerInlineQuery"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeAnswerInlineQueryRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -296,7 +305,10 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request AnswerPreCh
 	u.Path += "/answerPreCheckoutQuery"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeAnswerPreCheckoutQueryRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -365,7 +377,10 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, request AnswerShipping
 	u.Path += "/answerShippingQuery"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeAnswerShippingQueryRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -426,7 +441,10 @@ func (c *Client) ApproveChatJoinRequest(ctx context.Context, request ApproveChat
 	u.Path += "/approveChatJoinRequest"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeApproveChatJoinRequestRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -487,7 +505,10 @@ func (c *Client) BanChatMember(ctx context.Context, request BanChatMember) (res 
 	u.Path += "/banChatMember"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeBanChatMemberRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -548,7 +569,10 @@ func (c *Client) BanChatSenderChat(ctx context.Context, request BanChatSenderCha
 	u.Path += "/banChatSenderChat"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeBanChatSenderChatRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -608,7 +632,10 @@ func (c *Client) Close(ctx context.Context) (res Result, err error) {
 	u.Path += "/close"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -674,7 +701,10 @@ func (c *Client) CopyMessage(ctx context.Context, request CopyMessage) (res Resu
 	u.Path += "/copyMessage"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeCopyMessageRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -743,7 +773,10 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, request CreateChatInv
 	u.Path += "/createChatInviteLink"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeCreateChatInviteLinkRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -812,7 +845,10 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, request CreateNewStick
 	u.Path += "/createNewStickerSet"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeCreateNewStickerSetRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -873,7 +909,10 @@ func (c *Client) DeclineChatJoinRequest(ctx context.Context, request DeclineChat
 	u.Path += "/declineChatJoinRequest"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeDeclineChatJoinRequestRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -934,7 +973,10 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, request DeleteChatPhoto) (
 	u.Path += "/deleteChatPhoto"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeDeleteChatPhotoRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -995,7 +1037,10 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, request DeleteChatSti
 	u.Path += "/deleteChatStickerSet"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeDeleteChatStickerSetRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1056,7 +1101,10 @@ func (c *Client) DeleteMessage(ctx context.Context, request DeleteMessage) (res 
 	u.Path += "/deleteMessage"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeDeleteMessageRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1117,7 +1165,10 @@ func (c *Client) DeleteMyCommands(ctx context.Context, request OptDeleteMyComman
 	u.Path += "/deleteMyCommands"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeDeleteMyCommandsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1178,7 +1229,10 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, request DeleteSticker
 	u.Path += "/deleteStickerFromSet"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeDeleteStickerFromSetRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1239,7 +1293,10 @@ func (c *Client) DeleteWebhook(ctx context.Context, request OptDeleteWebhook) (r
 	u.Path += "/deleteWebhook"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeDeleteWebhookRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1308,7 +1365,10 @@ func (c *Client) EditChatInviteLink(ctx context.Context, request EditChatInviteL
 	u.Path += "/editChatInviteLink"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEditChatInviteLinkRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1377,7 +1437,10 @@ func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCapt
 	u.Path += "/editMessageCaption"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEditMessageCaptionRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1446,7 +1509,10 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessag
 	u.Path += "/editMessageLiveLocation"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEditMessageLiveLocationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1515,7 +1581,10 @@ func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia)
 	u.Path += "/editMessageMedia"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEditMessageMediaRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1584,7 +1653,10 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessage
 	u.Path += "/editMessageReplyMarkup"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEditMessageReplyMarkupRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1653,7 +1725,10 @@ func (c *Client) EditMessageText(ctx context.Context, request EditMessageText) (
 	u.Path += "/editMessageText"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeEditMessageTextRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1714,7 +1789,10 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, request ExportChatInv
 	u.Path += "/exportChatInviteLink"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeExportChatInviteLinkRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1775,7 +1853,10 @@ func (c *Client) ForwardMessage(ctx context.Context, request ForwardMessage) (re
 	u.Path += "/forwardMessage"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeForwardMessageRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1836,7 +1917,10 @@ func (c *Client) GetChat(ctx context.Context, request GetChat) (res ResultChat, 
 	u.Path += "/getChat"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGetChatRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1897,7 +1981,10 @@ func (c *Client) GetChatAdministrators(ctx context.Context, request GetChatAdmin
 	u.Path += "/getChatAdministrators"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGetChatAdministratorsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1958,7 +2045,10 @@ func (c *Client) GetChatMember(ctx context.Context, request GetChatMember) (res 
 	u.Path += "/getChatMember"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGetChatMemberRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2019,7 +2109,10 @@ func (c *Client) GetChatMemberCount(ctx context.Context, request GetChatMemberCo
 	u.Path += "/getChatMemberCount"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGetChatMemberCountRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2080,7 +2173,10 @@ func (c *Client) GetFile(ctx context.Context, request GetFile) (res Result, err 
 	u.Path += "/getFile"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGetFileRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2141,7 +2237,10 @@ func (c *Client) GetGameHighScores(ctx context.Context, request GetGameHighScore
 	u.Path += "/getGameHighScores"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGetGameHighScoresRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2201,7 +2300,10 @@ func (c *Client) GetMe(ctx context.Context) (res ResultUser, err error) {
 	u.Path += "/getMe"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2259,7 +2361,10 @@ func (c *Client) GetMyCommands(ctx context.Context, request OptGetMyCommands) (r
 	u.Path += "/getMyCommands"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGetMyCommandsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2320,7 +2425,10 @@ func (c *Client) GetStickerSet(ctx context.Context, request GetStickerSet) (res 
 	u.Path += "/getStickerSet"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGetStickerSetRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2396,7 +2504,10 @@ func (c *Client) GetUpdates(ctx context.Context, request OptGetUpdates) (res Res
 	u.Path += "/getUpdates"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGetUpdatesRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2465,7 +2576,10 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, request GetUserProfil
 	u.Path += "/getUserProfilePhotos"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeGetUserProfilePhotosRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2525,7 +2639,10 @@ func (c *Client) GetWebhookInfo(ctx context.Context) (res ResultWebhookInfo, err
 	u.Path += "/getWebhookInfo"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2583,7 +2700,10 @@ func (c *Client) LeaveChat(ctx context.Context, request LeaveChat) (res Result, 
 	u.Path += "/leaveChat"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeLeaveChatRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2643,7 +2763,10 @@ func (c *Client) LogOut(ctx context.Context) (res Result, err error) {
 	u.Path += "/logOut"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2701,7 +2824,10 @@ func (c *Client) PinChatMessage(ctx context.Context, request PinChatMessage) (re
 	u.Path += "/pinChatMessage"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePinChatMessageRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2762,7 +2888,10 @@ func (c *Client) PromoteChatMember(ctx context.Context, request PromoteChatMembe
 	u.Path += "/promoteChatMember"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePromoteChatMemberRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2823,7 +2952,10 @@ func (c *Client) RestrictChatMember(ctx context.Context, request RestrictChatMem
 	u.Path += "/restrictChatMember"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeRestrictChatMemberRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2884,7 +3016,10 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, request RevokeChatInv
 	u.Path += "/revokeChatInviteLink"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeRevokeChatInviteLinkRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2953,7 +3088,10 @@ func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res 
 	u.Path += "/sendAnimation"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendAnimationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3022,7 +3160,10 @@ func (c *Client) SendAudio(ctx context.Context, request SendAudio) (res ResultMe
 	u.Path += "/sendAudio"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendAudioRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3083,7 +3224,10 @@ func (c *Client) SendChatAction(ctx context.Context, request SendChatAction) (re
 	u.Path += "/sendChatAction"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendChatActionRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3152,7 +3296,10 @@ func (c *Client) SendContact(ctx context.Context, request SendContact) (res Resu
 	u.Path += "/sendContact"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendContactRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3221,7 +3368,10 @@ func (c *Client) SendDice(ctx context.Context, request SendDice) (res ResultMess
 	u.Path += "/sendDice"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendDiceRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3290,7 +3440,10 @@ func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res Re
 	u.Path += "/sendDocument"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendDocumentRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3359,7 +3512,10 @@ func (c *Client) SendGame(ctx context.Context, request SendGame) (res ResultMess
 	u.Path += "/sendGame"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendGameRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3428,7 +3584,10 @@ func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res Resu
 	u.Path += "/sendInvoice"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendInvoiceRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3497,7 +3656,10 @@ func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res Re
 	u.Path += "/sendLocation"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendLocationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3566,7 +3728,10 @@ func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (re
 	u.Path += "/sendMediaGroup"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendMediaGroupRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3635,7 +3800,10 @@ func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res Resu
 	u.Path += "/sendMessage"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendMessageRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3704,7 +3872,10 @@ func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res ResultMe
 	u.Path += "/sendPhoto"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendPhotoRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3773,7 +3944,10 @@ func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res ResultMess
 	u.Path += "/sendPoll"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendPollRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3842,7 +4016,10 @@ func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res Resu
 	u.Path += "/sendSticker"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendStickerRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3911,7 +4088,10 @@ func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res ResultMe
 	u.Path += "/sendVenue"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendVenueRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3980,7 +4160,10 @@ func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res ResultMe
 	u.Path += "/sendVideo"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendVideoRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4049,7 +4232,10 @@ func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res 
 	u.Path += "/sendVideoNote"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendVideoNoteRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4118,7 +4304,10 @@ func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res ResultMe
 	u.Path += "/sendVoice"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSendVoiceRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4187,7 +4376,10 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request Se
 	u.Path += "/setChatAdministratorCustomTitle"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSetChatAdministratorCustomTitleRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4256,7 +4448,10 @@ func (c *Client) SetChatDescription(ctx context.Context, request SetChatDescript
 	u.Path += "/setChatDescription"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSetChatDescriptionRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4317,7 +4512,10 @@ func (c *Client) SetChatPermissions(ctx context.Context, request SetChatPermissi
 	u.Path += "/setChatPermissions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSetChatPermissionsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4378,7 +4576,10 @@ func (c *Client) SetChatPhoto(ctx context.Context, request SetChatPhoto) (res Re
 	u.Path += "/setChatPhoto"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSetChatPhotoRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4439,7 +4640,10 @@ func (c *Client) SetChatStickerSet(ctx context.Context, request SetChatStickerSe
 	u.Path += "/setChatStickerSet"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSetChatStickerSetRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4508,7 +4712,10 @@ func (c *Client) SetChatTitle(ctx context.Context, request SetChatTitle) (res Re
 	u.Path += "/setChatTitle"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSetChatTitleRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4569,7 +4776,10 @@ func (c *Client) SetGameScore(ctx context.Context, request SetGameScore) (res Re
 	u.Path += "/setGameScore"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSetGameScoreRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4638,7 +4848,10 @@ func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res 
 	u.Path += "/setMyCommands"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSetMyCommandsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4707,7 +4920,10 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, request SetPassportD
 	u.Path += "/setPassportDataErrors"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSetPassportDataErrorsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4768,7 +4984,10 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, request SetSticker
 	u.Path += "/setStickerPositionInSet"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSetStickerPositionInSetRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4829,7 +5048,10 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, request SetStickerSetTh
 	u.Path += "/setStickerSetThumb"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSetStickerSetThumbRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4890,7 +5112,10 @@ func (c *Client) SetWebhook(ctx context.Context, request SetWebhook) (res Result
 	u.Path += "/setWebhook"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSetWebhookRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4959,7 +5184,10 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessag
 	u.Path += "/stopMessageLiveLocation"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeStopMessageLiveLocationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5028,7 +5256,10 @@ func (c *Client) StopPoll(ctx context.Context, request StopPoll) (res ResultPoll
 	u.Path += "/stopPoll"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeStopPollRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5089,7 +5320,10 @@ func (c *Client) UnbanChatMember(ctx context.Context, request UnbanChatMember) (
 	u.Path += "/unbanChatMember"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeUnbanChatMemberRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5150,7 +5384,10 @@ func (c *Client) UnbanChatSenderChat(ctx context.Context, request UnbanChatSende
 	u.Path += "/unbanChatSenderChat"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeUnbanChatSenderChatRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5211,7 +5448,10 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, request UnpinAllChatM
 	u.Path += "/unpinAllChatMessages"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeUnpinAllChatMessagesRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5272,7 +5512,10 @@ func (c *Client) UnpinChatMessage(ctx context.Context, request UnpinChatMessage)
 	u.Path += "/unpinChatMessage"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeUnpinChatMessageRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5333,7 +5576,10 @@ func (c *Client) UploadStickerFile(ctx context.Context, request UploadStickerFil
 	u.Path += "/uploadStickerFile"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeUploadStickerFileRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}

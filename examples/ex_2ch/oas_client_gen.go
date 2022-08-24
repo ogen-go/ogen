@@ -127,7 +127,10 @@ func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptch
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -202,7 +205,10 @@ func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICapt
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -315,7 +321,10 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -410,7 +419,10 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -467,7 +479,10 @@ func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res
 	u.Path += "/api/captcha/invisible_recaptcha/mobile"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -562,7 +577,10 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -619,7 +637,10 @@ func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (res APICaptc
 	u.Path += "/api/captcha/recaptcha/mobile"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -708,7 +729,10 @@ func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) 
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -797,7 +821,10 @@ func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res L
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -900,7 +927,10 @@ func (c *Client) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params A
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -957,7 +987,10 @@ func (c *Client) APIMobileV2BoardsGet(ctx context.Context) (res Boards, err erro
 	u.Path += "/api/mobile/v2/boards"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1043,7 +1076,10 @@ func (c *Client) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMo
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1129,7 +1165,10 @@ func (c *Client) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobil
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1205,7 +1244,10 @@ func (c *Client) UserPassloginPost(ctx context.Context, request OptUserPasslogin
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeUserPassloginPostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1281,7 +1323,10 @@ func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPost
 	u.Path += "/user/posting"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeUserPostingPostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1342,7 +1387,10 @@ func (c *Client) UserReportPost(ctx context.Context, request OptUserReportPostRe
 	u.Path += "/user/report"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeUserReportPostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
