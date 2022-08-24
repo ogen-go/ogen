@@ -21,6 +21,8 @@ func escapeQuotes(s string) string {
 	return quoteEscaper.Replace(s)
 }
 
+// headers generates headers for multipart form file, similar to CreateFormFile, but this function does not
+// overwrite Content-Type if it is already set.
 func (m MultipartFile) headers(fieldName string) (h textproto.MIMEHeader) {
 	h = make(textproto.MIMEHeader, len(m.Header)+2)
 	for k, v := range m.Header {
