@@ -118,7 +118,10 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{- end }}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, {{ $op.Spec.HTTPMethod | upper | quote }}, u, nil)
+	r, err := ht.NewRequest(ctx, {{ $op.Spec.HTTPMethod | upper | quote }}, u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	{{- if $op.Request }}
 	if err := encode{{ $op.Name }}Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
