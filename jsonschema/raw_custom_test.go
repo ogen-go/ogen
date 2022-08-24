@@ -10,13 +10,13 @@ import (
 )
 
 type encoding struct {
-	marshal   func(interface{}) ([]byte, error)
-	unmarshal func([]byte, interface{}) error
-	compare   func(a *require.Assertions, got, want string, msgArgs ...interface{})
+	marshal   func(any) ([]byte, error)
+	unmarshal func([]byte, any) error
+	compare   func(a *require.Assertions, got, want string, msgArgs ...any)
 }
 
 func testCustomEncoding(
-	createVal func() interface{},
+	createVal func() any,
 	input string,
 	wantErr bool,
 	e encoding,
@@ -41,7 +41,7 @@ func testCustomEncoding(
 }
 
 func testCustomEncodings(
-	createVal func() interface{},
+	createVal func() any,
 	input string,
 	wantErr bool,
 ) func(t *testing.T) {
@@ -73,7 +73,7 @@ func testCustomEncodings(
 }
 
 func TestRawProperties(t *testing.T) {
-	create := func() interface{} {
+	create := func() any {
 		return &RawProperties{}
 	}
 
@@ -100,7 +100,7 @@ func TestRawProperties(t *testing.T) {
 }
 
 func TestAdditionalProperties(t *testing.T) {
-	create := func() interface{} {
+	create := func() any {
 		return &AdditionalProperties{}
 	}
 
@@ -126,7 +126,7 @@ func TestAdditionalProperties(t *testing.T) {
 }
 
 func TestPatternProperties(t *testing.T) {
-	create := func() interface{} {
+	create := func() any {
 		return &RawPatternProperties{}
 	}
 

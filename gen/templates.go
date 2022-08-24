@@ -64,7 +64,7 @@ type ResponseElem struct {
 // templateFunctions returns functions which used in templates.
 func templateFunctions() template.FuncMap {
 	return template.FuncMap{
-		"errorf": func(format string, args ...interface{}) (interface{}, error) {
+		"errorf": func(format string, args ...any) (any, error) {
 			return nil, errors.Errorf(format, args...)
 		},
 		"pascalSpecial": pascalSpecial,
@@ -147,7 +147,7 @@ func templateFunctions() template.FuncMap {
 				Default: value,
 			}
 		},
-		"sub_default_elem": func(t *ir.Type, v string, val interface{}) DefaultElem {
+		"sub_default_elem": func(t *ir.Type, v string, val any) DefaultElem {
 			return DefaultElem{
 				Type: t,
 				Var:  v,
@@ -160,7 +160,7 @@ func templateFunctions() template.FuncMap {
 		"print_go": ir.PrintGoValue,
 		// We use interface{} to prevent template type matching errors
 		// for type aliases (e.g. for quoting ir.ContentType).
-		"quote": func(v interface{}) string {
+		"quote": func(v any) string {
 			// Fast path for string.
 			if s, ok := v.(string); ok {
 				return strconv.Quote(s)

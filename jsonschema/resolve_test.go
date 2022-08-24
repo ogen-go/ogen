@@ -175,7 +175,7 @@ func TestLimitDepth(t *testing.T) {
 
 	tests := []struct {
 		limit   int
-		checker func(t require.TestingT, err error, args ...interface{})
+		checker func(t require.TestingT, err error, args ...any)
 	}{
 		{1, require.Error},
 		{2, require.Error},

@@ -16,7 +16,7 @@ type (
 )
 
 // MarshalYAML implements yaml.Marshaler.
-func (n RawValue) MarshalYAML() (interface{}, error) {
+func (n RawValue) MarshalYAML() (any, error) {
 	return convertJSONToRawYAML(json.RawMessage(n))
 }
 
@@ -53,7 +53,7 @@ func convertJSONToRawYAML(raw json.RawMessage) (*yaml.Node, error) {
 }
 
 func convertYAMLtoRawJSON(node *yaml.Node) (json.RawMessage, error) {
-	var tmp interface{}
+	var tmp any
 	if err := node.Decode(&tmp); err != nil {
 		return nil, err
 	}

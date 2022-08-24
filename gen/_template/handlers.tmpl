@@ -97,8 +97,7 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 		{{- /* It is not secure to expose internal error to client, but better than nothing. */ -}}
 		recordError("Internal", err)
 		{{- if $.Error }}
-		var errRes *{{ $.ErrorType.Go }}
-		if errors.As(err, &errRes) {
+		if errRes, ok := errors.Into[*{{ $.ErrorType.Go }}](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}

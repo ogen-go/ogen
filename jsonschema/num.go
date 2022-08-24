@@ -13,7 +13,7 @@ import (
 type Num json.RawMessage
 
 // MarshalYAML implements yaml.Marshaler.
-func (n Num) MarshalYAML() (interface{}, error) {
+func (n Num) MarshalYAML() (any, error) {
 	tag := "!!float"
 	if jx.Num(n).IsInt() {
 		tag = "!!int"

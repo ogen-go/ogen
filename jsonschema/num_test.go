@@ -6,7 +6,7 @@ import (
 )
 
 func TestNum(t *testing.T) {
-	create := func() interface{} {
+	create := func() any {
 		return &Num{}
 	}
 

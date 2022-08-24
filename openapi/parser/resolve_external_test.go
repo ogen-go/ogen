@@ -13,7 +13,7 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-type external map[string]interface{}
+type external map[string]any
 
 func (e external) Get(_ context.Context, loc string) ([]byte, error) {
 	r, ok := e[loc]

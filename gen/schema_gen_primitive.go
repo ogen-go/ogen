@@ -36,7 +36,7 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 		_lastStrategy
 	)
 	vstrCache := make(map[int]string, len(schema.Enum))
-	nameEnum := func(s namingStrategy, idx int, v interface{}) (string, error) {
+	nameEnum := func(s namingStrategy, idx int, v any) (string, error) {
 		vstr, ok := vstrCache[idx]
 		if !ok {
 			vstr = fmt.Sprintf("%v", v)

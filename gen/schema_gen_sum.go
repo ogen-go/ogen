@@ -685,7 +685,7 @@ func mergeProperties(p1, p2 []jsonschema.Property) ([]jsonschema.Property, error
 	return result, nil
 }
 
-func mergeEnums(s1, s2 *jsonschema.Schema) ([]interface{}, error) {
+func mergeEnums(s1, s2 *jsonschema.Schema) ([]any, error) {
 	switch {
 	case len(s1.Enum) == 0 && len(s2.Enum) == 0:
 		return nil, nil

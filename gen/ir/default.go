@@ -2,7 +2,7 @@ package ir
 
 // Default represents default value.
 type Default struct {
-	Value interface{}
+	Value any
 	Set   bool
 }
 

@@ -14,9 +14,9 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func compareJSON(t require.TestingT, expected, got interface{}) {
+func compareJSON(t require.TestingT, expected, got any) {
 	// Compare as JSON because we can't skip locators.
-	encode := func(s interface{}) string {
+	encode := func(s any) string {
 		b, err := json.MarshalIndent(s, "", "  ")
 		require.NoError(t, err)
 		return string(b)
