@@ -1431,7 +1431,10 @@ func (c *Client) TestQueryParameter(ctx context.Context, request string, params 
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestQueryParameterRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1492,7 +1495,10 @@ func (c *Client) TestRequestAny(ctx context.Context, request jx.Raw) (res Error,
 	u.Path += "/test_request_Any"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestAnyRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1553,7 +1559,10 @@ func (c *Client) TestRequestBoolean(ctx context.Context, request OptBool) (res E
 	u.Path += "/test_request_boolean"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestBooleanRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1614,7 +1623,10 @@ func (c *Client) TestRequestBooleanArray(ctx context.Context, request []bool) (r
 	u.Path += "/test_request_boolean_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestBooleanArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1697,7 +1709,10 @@ func (c *Client) TestRequestBooleanArrayArray(ctx context.Context, request [][]b
 	u.Path += "/test_request_boolean_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestBooleanArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1758,7 +1773,10 @@ func (c *Client) TestRequestBooleanNullable(ctx context.Context, request OptNilB
 	u.Path += "/test_request_boolean_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestBooleanNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1819,7 +1837,10 @@ func (c *Client) TestRequestBooleanNullableArray(ctx context.Context, request []
 	u.Path += "/test_request_boolean_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestBooleanNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1902,7 +1923,10 @@ func (c *Client) TestRequestBooleanNullableArrayArray(ctx context.Context, reque
 	u.Path += "/test_request_boolean_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestBooleanNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1963,7 +1987,10 @@ func (c *Client) TestRequestEmptyStruct(ctx context.Context, request *TestReques
 	u.Path += "/test_request_EmptyStruct"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestEmptyStructRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2039,7 +2066,10 @@ func (c *Client) TestRequestFormatTest(ctx context.Context, request OptTestReque
 	u.Path += "/test_request_FormatTest"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestFormatTestRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2100,7 +2130,10 @@ func (c *Client) TestRequestInteger(ctx context.Context, request OptInt) (res Er
 	u.Path += "/test_request_integer"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2161,7 +2194,10 @@ func (c *Client) TestRequestIntegerArray(ctx context.Context, request []int) (re
 	u.Path += "/test_request_integer_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2244,7 +2280,10 @@ func (c *Client) TestRequestIntegerArrayArray(ctx context.Context, request [][]i
 	u.Path += "/test_request_integer_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2305,7 +2344,10 @@ func (c *Client) TestRequestIntegerInt32(ctx context.Context, request OptInt32) 
 	u.Path += "/test_request_integer_int32"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerInt32Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2366,7 +2408,10 @@ func (c *Client) TestRequestIntegerInt32Array(ctx context.Context, request []int
 	u.Path += "/test_request_integer_int32_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerInt32ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2449,7 +2494,10 @@ func (c *Client) TestRequestIntegerInt32ArrayArray(ctx context.Context, request 
 	u.Path += "/test_request_integer_int32_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerInt32ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2510,7 +2558,10 @@ func (c *Client) TestRequestIntegerInt32Nullable(ctx context.Context, request Op
 	u.Path += "/test_request_integer_int32_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerInt32NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2571,7 +2622,10 @@ func (c *Client) TestRequestIntegerInt32NullableArray(ctx context.Context, reque
 	u.Path += "/test_request_integer_int32_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerInt32NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2654,7 +2708,10 @@ func (c *Client) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, 
 	u.Path += "/test_request_integer_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerInt32NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2715,7 +2772,10 @@ func (c *Client) TestRequestIntegerInt64(ctx context.Context, request OptInt64) 
 	u.Path += "/test_request_integer_int64"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerInt64Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2776,7 +2836,10 @@ func (c *Client) TestRequestIntegerInt64Array(ctx context.Context, request []int
 	u.Path += "/test_request_integer_int64_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerInt64ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2859,7 +2922,10 @@ func (c *Client) TestRequestIntegerInt64ArrayArray(ctx context.Context, request 
 	u.Path += "/test_request_integer_int64_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerInt64ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2920,7 +2986,10 @@ func (c *Client) TestRequestIntegerInt64Nullable(ctx context.Context, request Op
 	u.Path += "/test_request_integer_int64_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerInt64NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2981,7 +3050,10 @@ func (c *Client) TestRequestIntegerInt64NullableArray(ctx context.Context, reque
 	u.Path += "/test_request_integer_int64_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerInt64NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3064,7 +3136,10 @@ func (c *Client) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, 
 	u.Path += "/test_request_integer_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerInt64NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3125,7 +3200,10 @@ func (c *Client) TestRequestIntegerNullable(ctx context.Context, request OptNilI
 	u.Path += "/test_request_integer_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3186,7 +3264,10 @@ func (c *Client) TestRequestIntegerNullableArray(ctx context.Context, request []
 	u.Path += "/test_request_integer_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3269,7 +3350,10 @@ func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, reque
 	u.Path += "/test_request_integer_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3330,7 +3414,10 @@ func (c *Client) TestRequestIntegerUnix(ctx context.Context, request OptUnixSeco
 	u.Path += "/test_request_integer_unix"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3391,7 +3478,10 @@ func (c *Client) TestRequestIntegerUnixArray(ctx context.Context, request []time
 	u.Path += "/test_request_integer_unix_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3474,7 +3564,10 @@ func (c *Client) TestRequestIntegerUnixArrayArray(ctx context.Context, request [
 	u.Path += "/test_request_integer_unix_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3535,7 +3628,10 @@ func (c *Client) TestRequestIntegerUnixMicro(ctx context.Context, request OptUni
 	u.Path += "/test_request_integer_unix-micro"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixMicroRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3596,7 +3692,10 @@ func (c *Client) TestRequestIntegerUnixMicroArray(ctx context.Context, request [
 	u.Path += "/test_request_integer_unix-micro_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixMicroArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3679,7 +3778,10 @@ func (c *Client) TestRequestIntegerUnixMicroArrayArray(ctx context.Context, requ
 	u.Path += "/test_request_integer_unix-micro_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixMicroArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3740,7 +3842,10 @@ func (c *Client) TestRequestIntegerUnixMicroNullable(ctx context.Context, reques
 	u.Path += "/test_request_integer_unix-micro_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixMicroNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3801,7 +3906,10 @@ func (c *Client) TestRequestIntegerUnixMicroNullableArray(ctx context.Context, r
 	u.Path += "/test_request_integer_unix-micro_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixMicroNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3884,7 +3992,10 @@ func (c *Client) TestRequestIntegerUnixMicroNullableArrayArray(ctx context.Conte
 	u.Path += "/test_request_integer_unix-micro_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixMicroNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -3945,7 +4056,10 @@ func (c *Client) TestRequestIntegerUnixMilli(ctx context.Context, request OptUni
 	u.Path += "/test_request_integer_unix-milli"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixMilliRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4006,7 +4120,10 @@ func (c *Client) TestRequestIntegerUnixMilliArray(ctx context.Context, request [
 	u.Path += "/test_request_integer_unix-milli_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixMilliArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4089,7 +4206,10 @@ func (c *Client) TestRequestIntegerUnixMilliArrayArray(ctx context.Context, requ
 	u.Path += "/test_request_integer_unix-milli_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixMilliArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4150,7 +4270,10 @@ func (c *Client) TestRequestIntegerUnixMilliNullable(ctx context.Context, reques
 	u.Path += "/test_request_integer_unix-milli_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixMilliNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4211,7 +4334,10 @@ func (c *Client) TestRequestIntegerUnixMilliNullableArray(ctx context.Context, r
 	u.Path += "/test_request_integer_unix-milli_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixMilliNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4294,7 +4420,10 @@ func (c *Client) TestRequestIntegerUnixMilliNullableArrayArray(ctx context.Conte
 	u.Path += "/test_request_integer_unix-milli_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixMilliNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4355,7 +4484,10 @@ func (c *Client) TestRequestIntegerUnixNano(ctx context.Context, request OptUnix
 	u.Path += "/test_request_integer_unix-nano"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixNanoRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4416,7 +4548,10 @@ func (c *Client) TestRequestIntegerUnixNanoArray(ctx context.Context, request []
 	u.Path += "/test_request_integer_unix-nano_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixNanoArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4499,7 +4634,10 @@ func (c *Client) TestRequestIntegerUnixNanoArrayArray(ctx context.Context, reque
 	u.Path += "/test_request_integer_unix-nano_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixNanoArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4560,7 +4698,10 @@ func (c *Client) TestRequestIntegerUnixNanoNullable(ctx context.Context, request
 	u.Path += "/test_request_integer_unix-nano_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixNanoNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4621,7 +4762,10 @@ func (c *Client) TestRequestIntegerUnixNanoNullableArray(ctx context.Context, re
 	u.Path += "/test_request_integer_unix-nano_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixNanoNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4704,7 +4848,10 @@ func (c *Client) TestRequestIntegerUnixNanoNullableArrayArray(ctx context.Contex
 	u.Path += "/test_request_integer_unix-nano_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixNanoNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4765,7 +4912,10 @@ func (c *Client) TestRequestIntegerUnixNullable(ctx context.Context, request Opt
 	u.Path += "/test_request_integer_unix_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4826,7 +4976,10 @@ func (c *Client) TestRequestIntegerUnixNullableArray(ctx context.Context, reques
 	u.Path += "/test_request_integer_unix_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4909,7 +5062,10 @@ func (c *Client) TestRequestIntegerUnixNullableArrayArray(ctx context.Context, r
 	u.Path += "/test_request_integer_unix_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -4970,7 +5126,10 @@ func (c *Client) TestRequestIntegerUnixSeconds(ctx context.Context, request OptU
 	u.Path += "/test_request_integer_unix-seconds"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixSecondsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5031,7 +5190,10 @@ func (c *Client) TestRequestIntegerUnixSecondsArray(ctx context.Context, request
 	u.Path += "/test_request_integer_unix-seconds_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixSecondsArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5114,7 +5276,10 @@ func (c *Client) TestRequestIntegerUnixSecondsArrayArray(ctx context.Context, re
 	u.Path += "/test_request_integer_unix-seconds_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixSecondsArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5175,7 +5340,10 @@ func (c *Client) TestRequestIntegerUnixSecondsNullable(ctx context.Context, requ
 	u.Path += "/test_request_integer_unix-seconds_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixSecondsNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5236,7 +5404,10 @@ func (c *Client) TestRequestIntegerUnixSecondsNullableArray(ctx context.Context,
 	u.Path += "/test_request_integer_unix-seconds_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixSecondsNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5319,7 +5490,10 @@ func (c *Client) TestRequestIntegerUnixSecondsNullableArrayArray(ctx context.Con
 	u.Path += "/test_request_integer_unix-seconds_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestIntegerUnixSecondsNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5380,7 +5554,10 @@ func (c *Client) TestRequestNull(ctx context.Context, request OptNull) (res Erro
 	u.Path += "/test_request_null"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNullRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5441,7 +5618,10 @@ func (c *Client) TestRequestNullArray(ctx context.Context, request []struct{}) (
 	u.Path += "/test_request_null_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNullArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5524,7 +5704,10 @@ func (c *Client) TestRequestNullArrayArray(ctx context.Context, request [][]stru
 	u.Path += "/test_request_null_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNullArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5585,7 +5768,10 @@ func (c *Client) TestRequestNullNullable(ctx context.Context, request OptNull) (
 	u.Path += "/test_request_null_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNullNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5646,7 +5832,10 @@ func (c *Client) TestRequestNullNullableArray(ctx context.Context, request []str
 	u.Path += "/test_request_null_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNullNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5729,7 +5918,10 @@ func (c *Client) TestRequestNullNullableArrayArray(ctx context.Context, request 
 	u.Path += "/test_request_null_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNullNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5805,7 +5997,10 @@ func (c *Client) TestRequestNumber(ctx context.Context, request OptFloat64) (res
 	u.Path += "/test_request_number"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5888,7 +6083,10 @@ func (c *Client) TestRequestNumberArray(ctx context.Context, request []float64) 
 	u.Path += "/test_request_number_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -5988,7 +6186,10 @@ func (c *Client) TestRequestNumberArrayArray(ctx context.Context, request [][]fl
 	u.Path += "/test_request_number_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -6064,7 +6265,10 @@ func (c *Client) TestRequestNumberDouble(ctx context.Context, request OptFloat64
 	u.Path += "/test_request_number_double"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberDoubleRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -6147,7 +6351,10 @@ func (c *Client) TestRequestNumberDoubleArray(ctx context.Context, request []flo
 	u.Path += "/test_request_number_double_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberDoubleArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -6247,7 +6454,10 @@ func (c *Client) TestRequestNumberDoubleArrayArray(ctx context.Context, request 
 	u.Path += "/test_request_number_double_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberDoubleArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -6323,7 +6533,10 @@ func (c *Client) TestRequestNumberDoubleNullable(ctx context.Context, request Op
 	u.Path += "/test_request_number_double_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberDoubleNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -6406,7 +6619,10 @@ func (c *Client) TestRequestNumberDoubleNullableArray(ctx context.Context, reque
 	u.Path += "/test_request_number_double_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberDoubleNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -6506,7 +6722,10 @@ func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, 
 	u.Path += "/test_request_number_double_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberDoubleNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -6582,7 +6801,10 @@ func (c *Client) TestRequestNumberFloat(ctx context.Context, request OptFloat32)
 	u.Path += "/test_request_number_float"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberFloatRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -6665,7 +6887,10 @@ func (c *Client) TestRequestNumberFloatArray(ctx context.Context, request []floa
 	u.Path += "/test_request_number_float_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberFloatArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -6765,7 +6990,10 @@ func (c *Client) TestRequestNumberFloatArrayArray(ctx context.Context, request [
 	u.Path += "/test_request_number_float_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberFloatArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -6841,7 +7069,10 @@ func (c *Client) TestRequestNumberFloatNullable(ctx context.Context, request Opt
 	u.Path += "/test_request_number_float_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberFloatNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -6924,7 +7155,10 @@ func (c *Client) TestRequestNumberFloatNullableArray(ctx context.Context, reques
 	u.Path += "/test_request_number_float_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberFloatNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7024,7 +7258,10 @@ func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, r
 	u.Path += "/test_request_number_float_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberFloatNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7085,7 +7322,10 @@ func (c *Client) TestRequestNumberInt32(ctx context.Context, request OptInt32) (
 	u.Path += "/test_request_number_int32"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberInt32Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7146,7 +7386,10 @@ func (c *Client) TestRequestNumberInt32Array(ctx context.Context, request []int3
 	u.Path += "/test_request_number_int32_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberInt32ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7229,7 +7472,10 @@ func (c *Client) TestRequestNumberInt32ArrayArray(ctx context.Context, request [
 	u.Path += "/test_request_number_int32_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberInt32ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7290,7 +7536,10 @@ func (c *Client) TestRequestNumberInt32Nullable(ctx context.Context, request Opt
 	u.Path += "/test_request_number_int32_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberInt32NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7351,7 +7600,10 @@ func (c *Client) TestRequestNumberInt32NullableArray(ctx context.Context, reques
 	u.Path += "/test_request_number_int32_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberInt32NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7434,7 +7686,10 @@ func (c *Client) TestRequestNumberInt32NullableArrayArray(ctx context.Context, r
 	u.Path += "/test_request_number_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberInt32NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7495,7 +7750,10 @@ func (c *Client) TestRequestNumberInt64(ctx context.Context, request OptInt64) (
 	u.Path += "/test_request_number_int64"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberInt64Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7556,7 +7814,10 @@ func (c *Client) TestRequestNumberInt64Array(ctx context.Context, request []int6
 	u.Path += "/test_request_number_int64_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberInt64ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7639,7 +7900,10 @@ func (c *Client) TestRequestNumberInt64ArrayArray(ctx context.Context, request [
 	u.Path += "/test_request_number_int64_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberInt64ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7700,7 +7964,10 @@ func (c *Client) TestRequestNumberInt64Nullable(ctx context.Context, request Opt
 	u.Path += "/test_request_number_int64_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberInt64NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7761,7 +8028,10 @@ func (c *Client) TestRequestNumberInt64NullableArray(ctx context.Context, reques
 	u.Path += "/test_request_number_int64_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberInt64NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7844,7 +8114,10 @@ func (c *Client) TestRequestNumberInt64NullableArrayArray(ctx context.Context, r
 	u.Path += "/test_request_number_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberInt64NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -7920,7 +8193,10 @@ func (c *Client) TestRequestNumberNullable(ctx context.Context, request OptNilFl
 	u.Path += "/test_request_number_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8003,7 +8279,10 @@ func (c *Client) TestRequestNumberNullableArray(ctx context.Context, request []N
 	u.Path += "/test_request_number_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8103,7 +8382,10 @@ func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_number_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestNumberNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8164,7 +8446,10 @@ func (c *Client) TestRequestRequiredAny(ctx context.Context, request jx.Raw) (re
 	u.Path += "/test_request_required_Any"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredAnyRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8225,7 +8510,10 @@ func (c *Client) TestRequestRequiredBoolean(ctx context.Context, request bool) (
 	u.Path += "/test_request_required_boolean"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredBooleanRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8294,7 +8582,10 @@ func (c *Client) TestRequestRequiredBooleanArray(ctx context.Context, request []
 	u.Path += "/test_request_required_boolean_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredBooleanArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8380,7 +8671,10 @@ func (c *Client) TestRequestRequiredBooleanArrayArray(ctx context.Context, reque
 	u.Path += "/test_request_required_boolean_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredBooleanArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8441,7 +8735,10 @@ func (c *Client) TestRequestRequiredBooleanNullable(ctx context.Context, request
 	u.Path += "/test_request_required_boolean_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredBooleanNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8510,7 +8807,10 @@ func (c *Client) TestRequestRequiredBooleanNullableArray(ctx context.Context, re
 	u.Path += "/test_request_required_boolean_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredBooleanNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8596,7 +8896,10 @@ func (c *Client) TestRequestRequiredBooleanNullableArrayArray(ctx context.Contex
 	u.Path += "/test_request_required_boolean_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredBooleanNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8657,7 +8960,10 @@ func (c *Client) TestRequestRequiredEmptyStruct(ctx context.Context, request Tes
 	u.Path += "/test_request_required_EmptyStruct"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredEmptyStructRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8726,7 +9032,10 @@ func (c *Client) TestRequestRequiredFormatTest(ctx context.Context, request Test
 	u.Path += "/test_request_required_FormatTest"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredFormatTestRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8787,7 +9096,10 @@ func (c *Client) TestRequestRequiredInteger(ctx context.Context, request int) (r
 	u.Path += "/test_request_required_integer"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8856,7 +9168,10 @@ func (c *Client) TestRequestRequiredIntegerArray(ctx context.Context, request []
 	u.Path += "/test_request_required_integer_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -8942,7 +9257,10 @@ func (c *Client) TestRequestRequiredIntegerArrayArray(ctx context.Context, reque
 	u.Path += "/test_request_required_integer_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -9003,7 +9321,10 @@ func (c *Client) TestRequestRequiredIntegerInt32(ctx context.Context, request in
 	u.Path += "/test_request_required_integer_int32"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerInt32Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -9072,7 +9393,10 @@ func (c *Client) TestRequestRequiredIntegerInt32Array(ctx context.Context, reque
 	u.Path += "/test_request_required_integer_int32_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerInt32ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -9158,7 +9482,10 @@ func (c *Client) TestRequestRequiredIntegerInt32ArrayArray(ctx context.Context, 
 	u.Path += "/test_request_required_integer_int32_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerInt32ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -9219,7 +9546,10 @@ func (c *Client) TestRequestRequiredIntegerInt32Nullable(ctx context.Context, re
 	u.Path += "/test_request_required_integer_int32_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerInt32NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -9288,7 +9618,10 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArray(ctx context.Contex
 	u.Path += "/test_request_required_integer_int32_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerInt32NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -9374,7 +9707,10 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.C
 	u.Path += "/test_request_required_integer_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -9435,7 +9771,10 @@ func (c *Client) TestRequestRequiredIntegerInt64(ctx context.Context, request in
 	u.Path += "/test_request_required_integer_int64"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerInt64Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -9504,7 +9843,10 @@ func (c *Client) TestRequestRequiredIntegerInt64Array(ctx context.Context, reque
 	u.Path += "/test_request_required_integer_int64_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerInt64ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -9590,7 +9932,10 @@ func (c *Client) TestRequestRequiredIntegerInt64ArrayArray(ctx context.Context, 
 	u.Path += "/test_request_required_integer_int64_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerInt64ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -9651,7 +9996,10 @@ func (c *Client) TestRequestRequiredIntegerInt64Nullable(ctx context.Context, re
 	u.Path += "/test_request_required_integer_int64_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerInt64NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -9720,7 +10068,10 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArray(ctx context.Contex
 	u.Path += "/test_request_required_integer_int64_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerInt64NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -9806,7 +10157,10 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.C
 	u.Path += "/test_request_required_integer_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -9867,7 +10221,10 @@ func (c *Client) TestRequestRequiredIntegerNullable(ctx context.Context, request
 	u.Path += "/test_request_required_integer_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -9936,7 +10293,10 @@ func (c *Client) TestRequestRequiredIntegerNullableArray(ctx context.Context, re
 	u.Path += "/test_request_required_integer_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -10022,7 +10382,10 @@ func (c *Client) TestRequestRequiredIntegerNullableArrayArray(ctx context.Contex
 	u.Path += "/test_request_required_integer_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -10083,7 +10446,10 @@ func (c *Client) TestRequestRequiredIntegerUnix(ctx context.Context, request tim
 	u.Path += "/test_request_required_integer_unix"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -10152,7 +10518,10 @@ func (c *Client) TestRequestRequiredIntegerUnixArray(ctx context.Context, reques
 	u.Path += "/test_request_required_integer_unix_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -10238,7 +10607,10 @@ func (c *Client) TestRequestRequiredIntegerUnixArrayArray(ctx context.Context, r
 	u.Path += "/test_request_required_integer_unix_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -10299,7 +10671,10 @@ func (c *Client) TestRequestRequiredIntegerUnixMicro(ctx context.Context, reques
 	u.Path += "/test_request_required_integer_unix-micro"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixMicroRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -10368,7 +10743,10 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroArray(ctx context.Context, r
 	u.Path += "/test_request_required_integer_unix-micro_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixMicroArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -10454,7 +10832,10 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroArrayArray(ctx context.Conte
 	u.Path += "/test_request_required_integer_unix-micro_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixMicroArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -10515,7 +10896,10 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroNullable(ctx context.Context
 	u.Path += "/test_request_required_integer_unix-micro_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixMicroNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -10584,7 +10968,10 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroNullableArray(ctx context.Co
 	u.Path += "/test_request_required_integer_unix-micro_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixMicroNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -10670,7 +11057,10 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroNullableArrayArray(ctx conte
 	u.Path += "/test_request_required_integer_unix-micro_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -10731,7 +11121,10 @@ func (c *Client) TestRequestRequiredIntegerUnixMilli(ctx context.Context, reques
 	u.Path += "/test_request_required_integer_unix-milli"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixMilliRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -10800,7 +11193,10 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliArray(ctx context.Context, r
 	u.Path += "/test_request_required_integer_unix-milli_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixMilliArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -10886,7 +11282,10 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliArrayArray(ctx context.Conte
 	u.Path += "/test_request_required_integer_unix-milli_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixMilliArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -10947,7 +11346,10 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliNullable(ctx context.Context
 	u.Path += "/test_request_required_integer_unix-milli_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixMilliNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11016,7 +11418,10 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliNullableArray(ctx context.Co
 	u.Path += "/test_request_required_integer_unix-milli_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixMilliNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11102,7 +11507,10 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliNullableArrayArray(ctx conte
 	u.Path += "/test_request_required_integer_unix-milli_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11163,7 +11571,10 @@ func (c *Client) TestRequestRequiredIntegerUnixNano(ctx context.Context, request
 	u.Path += "/test_request_required_integer_unix-nano"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixNanoRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11232,7 +11643,10 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoArray(ctx context.Context, re
 	u.Path += "/test_request_required_integer_unix-nano_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixNanoArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11318,7 +11732,10 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoArrayArray(ctx context.Contex
 	u.Path += "/test_request_required_integer_unix-nano_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixNanoArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11379,7 +11796,10 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoNullable(ctx context.Context,
 	u.Path += "/test_request_required_integer_unix-nano_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixNanoNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11448,7 +11868,10 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoNullableArray(ctx context.Con
 	u.Path += "/test_request_required_integer_unix-nano_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixNanoNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11534,7 +11957,10 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoNullableArrayArray(ctx contex
 	u.Path += "/test_request_required_integer_unix-nano_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11595,7 +12021,10 @@ func (c *Client) TestRequestRequiredIntegerUnixNullable(ctx context.Context, req
 	u.Path += "/test_request_required_integer_unix_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11664,7 +12093,10 @@ func (c *Client) TestRequestRequiredIntegerUnixNullableArray(ctx context.Context
 	u.Path += "/test_request_required_integer_unix_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11750,7 +12182,10 @@ func (c *Client) TestRequestRequiredIntegerUnixNullableArrayArray(ctx context.Co
 	u.Path += "/test_request_required_integer_unix_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11811,7 +12246,10 @@ func (c *Client) TestRequestRequiredIntegerUnixSeconds(ctx context.Context, requ
 	u.Path += "/test_request_required_integer_unix-seconds"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixSecondsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11880,7 +12318,10 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsArray(ctx context.Context,
 	u.Path += "/test_request_required_integer_unix-seconds_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixSecondsArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -11966,7 +12407,10 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsArrayArray(ctx context.Con
 	u.Path += "/test_request_required_integer_unix-seconds_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -12027,7 +12471,10 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsNullable(ctx context.Conte
 	u.Path += "/test_request_required_integer_unix-seconds_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixSecondsNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -12096,7 +12543,10 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsNullableArray(ctx context.
 	u.Path += "/test_request_required_integer_unix-seconds_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixSecondsNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -12182,7 +12632,10 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx con
 	u.Path += "/test_request_required_integer_unix-seconds_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -12243,7 +12696,10 @@ func (c *Client) TestRequestRequiredNull(ctx context.Context, request struct{}) 
 	u.Path += "/test_request_required_null"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNullRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -12312,7 +12768,10 @@ func (c *Client) TestRequestRequiredNullArray(ctx context.Context, request []str
 	u.Path += "/test_request_required_null_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNullArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -12398,7 +12857,10 @@ func (c *Client) TestRequestRequiredNullArrayArray(ctx context.Context, request 
 	u.Path += "/test_request_required_null_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNullArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -12459,7 +12921,10 @@ func (c *Client) TestRequestRequiredNullNullable(ctx context.Context, request st
 	u.Path += "/test_request_required_null_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNullNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -12528,7 +12993,10 @@ func (c *Client) TestRequestRequiredNullNullableArray(ctx context.Context, reque
 	u.Path += "/test_request_required_null_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNullNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -12614,7 +13082,10 @@ func (c *Client) TestRequestRequiredNullNullableArrayArray(ctx context.Context, 
 	u.Path += "/test_request_required_null_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNullNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -12683,7 +13154,10 @@ func (c *Client) TestRequestRequiredNumber(ctx context.Context, request float64)
 	u.Path += "/test_request_required_number"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -12769,7 +13243,10 @@ func (c *Client) TestRequestRequiredNumberArray(ctx context.Context, request []f
 	u.Path += "/test_request_required_number_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -12872,7 +13349,10 @@ func (c *Client) TestRequestRequiredNumberArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_required_number_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -12941,7 +13421,10 @@ func (c *Client) TestRequestRequiredNumberDouble(ctx context.Context, request fl
 	u.Path += "/test_request_required_number_double"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberDoubleRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -13027,7 +13510,10 @@ func (c *Client) TestRequestRequiredNumberDoubleArray(ctx context.Context, reque
 	u.Path += "/test_request_required_number_double_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberDoubleArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -13130,7 +13616,10 @@ func (c *Client) TestRequestRequiredNumberDoubleArrayArray(ctx context.Context, 
 	u.Path += "/test_request_required_number_double_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberDoubleArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -13199,7 +13688,10 @@ func (c *Client) TestRequestRequiredNumberDoubleNullable(ctx context.Context, re
 	u.Path += "/test_request_required_number_double_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberDoubleNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -13285,7 +13777,10 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArray(ctx context.Contex
 	u.Path += "/test_request_required_number_double_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberDoubleNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -13388,7 +13883,10 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.C
 	u.Path += "/test_request_required_number_double_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -13457,7 +13955,10 @@ func (c *Client) TestRequestRequiredNumberFloat(ctx context.Context, request flo
 	u.Path += "/test_request_required_number_float"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberFloatRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -13543,7 +14044,10 @@ func (c *Client) TestRequestRequiredNumberFloatArray(ctx context.Context, reques
 	u.Path += "/test_request_required_number_float_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberFloatArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -13646,7 +14150,10 @@ func (c *Client) TestRequestRequiredNumberFloatArrayArray(ctx context.Context, r
 	u.Path += "/test_request_required_number_float_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberFloatArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -13715,7 +14222,10 @@ func (c *Client) TestRequestRequiredNumberFloatNullable(ctx context.Context, req
 	u.Path += "/test_request_required_number_float_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberFloatNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -13801,7 +14311,10 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArray(ctx context.Context
 	u.Path += "/test_request_required_number_float_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberFloatNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -13904,7 +14417,10 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Co
 	u.Path += "/test_request_required_number_float_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -13965,7 +14481,10 @@ func (c *Client) TestRequestRequiredNumberInt32(ctx context.Context, request int
 	u.Path += "/test_request_required_number_int32"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberInt32Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -14034,7 +14553,10 @@ func (c *Client) TestRequestRequiredNumberInt32Array(ctx context.Context, reques
 	u.Path += "/test_request_required_number_int32_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberInt32ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -14120,7 +14642,10 @@ func (c *Client) TestRequestRequiredNumberInt32ArrayArray(ctx context.Context, r
 	u.Path += "/test_request_required_number_int32_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberInt32ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -14181,7 +14706,10 @@ func (c *Client) TestRequestRequiredNumberInt32Nullable(ctx context.Context, req
 	u.Path += "/test_request_required_number_int32_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberInt32NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -14250,7 +14778,10 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArray(ctx context.Context
 	u.Path += "/test_request_required_number_int32_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberInt32NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -14336,7 +14867,10 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Co
 	u.Path += "/test_request_required_number_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -14397,7 +14931,10 @@ func (c *Client) TestRequestRequiredNumberInt64(ctx context.Context, request int
 	u.Path += "/test_request_required_number_int64"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberInt64Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -14466,7 +15003,10 @@ func (c *Client) TestRequestRequiredNumberInt64Array(ctx context.Context, reques
 	u.Path += "/test_request_required_number_int64_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberInt64ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -14552,7 +15092,10 @@ func (c *Client) TestRequestRequiredNumberInt64ArrayArray(ctx context.Context, r
 	u.Path += "/test_request_required_number_int64_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberInt64ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -14613,7 +15156,10 @@ func (c *Client) TestRequestRequiredNumberInt64Nullable(ctx context.Context, req
 	u.Path += "/test_request_required_number_int64_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberInt64NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -14682,7 +15228,10 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArray(ctx context.Context
 	u.Path += "/test_request_required_number_int64_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberInt64NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -14768,7 +15317,10 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Co
 	u.Path += "/test_request_required_number_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -14837,7 +15389,10 @@ func (c *Client) TestRequestRequiredNumberNullable(ctx context.Context, request 
 	u.Path += "/test_request_required_number_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -14923,7 +15478,10 @@ func (c *Client) TestRequestRequiredNumberNullableArray(ctx context.Context, req
 	u.Path += "/test_request_required_number_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -15026,7 +15584,10 @@ func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context
 	u.Path += "/test_request_required_number_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredNumberNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -15087,7 +15648,10 @@ func (c *Client) TestRequestRequiredString(ctx context.Context, request string) 
 	u.Path += "/test_request_required_string"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -15156,7 +15720,10 @@ func (c *Client) TestRequestRequiredStringArray(ctx context.Context, request []s
 	u.Path += "/test_request_required_string_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -15242,7 +15809,10 @@ func (c *Client) TestRequestRequiredStringArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_required_string_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -15303,7 +15873,10 @@ func (c *Client) TestRequestRequiredStringBinary(ctx context.Context, request st
 	u.Path += "/test_request_required_string_binary"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringBinaryRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -15372,7 +15945,10 @@ func (c *Client) TestRequestRequiredStringBinaryArray(ctx context.Context, reque
 	u.Path += "/test_request_required_string_binary_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringBinaryArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -15458,7 +16034,10 @@ func (c *Client) TestRequestRequiredStringBinaryArrayArray(ctx context.Context, 
 	u.Path += "/test_request_required_string_binary_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringBinaryArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -15519,7 +16098,10 @@ func (c *Client) TestRequestRequiredStringBinaryNullable(ctx context.Context, re
 	u.Path += "/test_request_required_string_binary_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringBinaryNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -15588,7 +16170,10 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArray(ctx context.Contex
 	u.Path += "/test_request_required_string_binary_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringBinaryNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -15674,7 +16259,10 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArrayArray(ctx context.C
 	u.Path += "/test_request_required_string_binary_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -15735,7 +16323,10 @@ func (c *Client) TestRequestRequiredStringByte(ctx context.Context, request []by
 	u.Path += "/test_request_required_string_byte"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringByteRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -15804,7 +16395,10 @@ func (c *Client) TestRequestRequiredStringByteArray(ctx context.Context, request
 	u.Path += "/test_request_required_string_byte_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringByteArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -15890,7 +16484,10 @@ func (c *Client) TestRequestRequiredStringByteArrayArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_byte_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringByteArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -15951,7 +16548,10 @@ func (c *Client) TestRequestRequiredStringByteNullable(ctx context.Context, requ
 	u.Path += "/test_request_required_string_byte_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringByteNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -16020,7 +16620,10 @@ func (c *Client) TestRequestRequiredStringByteNullableArray(ctx context.Context,
 	u.Path += "/test_request_required_string_byte_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringByteNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -16106,7 +16709,10 @@ func (c *Client) TestRequestRequiredStringByteNullableArrayArray(ctx context.Con
 	u.Path += "/test_request_required_string_byte_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringByteNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -16167,7 +16773,10 @@ func (c *Client) TestRequestRequiredStringDate(ctx context.Context, request time
 	u.Path += "/test_request_required_string_date"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDateRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -16236,7 +16845,10 @@ func (c *Client) TestRequestRequiredStringDateArray(ctx context.Context, request
 	u.Path += "/test_request_required_string_date_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDateArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -16322,7 +16934,10 @@ func (c *Client) TestRequestRequiredStringDateArrayArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_date_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDateArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -16383,7 +16998,10 @@ func (c *Client) TestRequestRequiredStringDateNullable(ctx context.Context, requ
 	u.Path += "/test_request_required_string_date_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDateNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -16452,7 +17070,10 @@ func (c *Client) TestRequestRequiredStringDateNullableArray(ctx context.Context,
 	u.Path += "/test_request_required_string_date_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDateNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -16538,7 +17159,10 @@ func (c *Client) TestRequestRequiredStringDateNullableArrayArray(ctx context.Con
 	u.Path += "/test_request_required_string_date_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDateNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -16599,7 +17223,10 @@ func (c *Client) TestRequestRequiredStringDateTime(ctx context.Context, request 
 	u.Path += "/test_request_required_string_date-time"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDateTimeRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -16668,7 +17295,10 @@ func (c *Client) TestRequestRequiredStringDateTimeArray(ctx context.Context, req
 	u.Path += "/test_request_required_string_date-time_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDateTimeArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -16754,7 +17384,10 @@ func (c *Client) TestRequestRequiredStringDateTimeArrayArray(ctx context.Context
 	u.Path += "/test_request_required_string_date-time_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDateTimeArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -16815,7 +17448,10 @@ func (c *Client) TestRequestRequiredStringDateTimeNullable(ctx context.Context, 
 	u.Path += "/test_request_required_string_date-time_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDateTimeNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -16884,7 +17520,10 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArray(ctx context.Cont
 	u.Path += "/test_request_required_string_date-time_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDateTimeNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -16970,7 +17609,10 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArrayArray(ctx context
 	u.Path += "/test_request_required_string_date-time_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -17031,7 +17673,10 @@ func (c *Client) TestRequestRequiredStringDuration(ctx context.Context, request 
 	u.Path += "/test_request_required_string_duration"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDurationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -17100,7 +17745,10 @@ func (c *Client) TestRequestRequiredStringDurationArray(ctx context.Context, req
 	u.Path += "/test_request_required_string_duration_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDurationArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -17186,7 +17834,10 @@ func (c *Client) TestRequestRequiredStringDurationArrayArray(ctx context.Context
 	u.Path += "/test_request_required_string_duration_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDurationArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -17247,7 +17898,10 @@ func (c *Client) TestRequestRequiredStringDurationNullable(ctx context.Context, 
 	u.Path += "/test_request_required_string_duration_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDurationNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -17316,7 +17970,10 @@ func (c *Client) TestRequestRequiredStringDurationNullableArray(ctx context.Cont
 	u.Path += "/test_request_required_string_duration_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDurationNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -17402,7 +18059,10 @@ func (c *Client) TestRequestRequiredStringDurationNullableArrayArray(ctx context
 	u.Path += "/test_request_required_string_duration_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringDurationNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -17479,7 +18139,10 @@ func (c *Client) TestRequestRequiredStringEmail(ctx context.Context, request str
 	u.Path += "/test_request_required_string_email"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringEmailRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -17573,7 +18236,10 @@ func (c *Client) TestRequestRequiredStringEmailArray(ctx context.Context, reques
 	u.Path += "/test_request_required_string_email_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringEmailArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -17684,7 +18350,10 @@ func (c *Client) TestRequestRequiredStringEmailArrayArray(ctx context.Context, r
 	u.Path += "/test_request_required_string_email_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringEmailArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -17761,7 +18430,10 @@ func (c *Client) TestRequestRequiredStringEmailNullable(ctx context.Context, req
 	u.Path += "/test_request_required_string_email_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringEmailNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -17855,7 +18527,10 @@ func (c *Client) TestRequestRequiredStringEmailNullableArray(ctx context.Context
 	u.Path += "/test_request_required_string_email_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringEmailNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -17966,7 +18641,10 @@ func (c *Client) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Co
 	u.Path += "/test_request_required_string_email_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringEmailNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -18043,7 +18721,10 @@ func (c *Client) TestRequestRequiredStringHostname(ctx context.Context, request 
 	u.Path += "/test_request_required_string_hostname"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringHostnameRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -18137,7 +18818,10 @@ func (c *Client) TestRequestRequiredStringHostnameArray(ctx context.Context, req
 	u.Path += "/test_request_required_string_hostname_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringHostnameArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -18248,7 +18932,10 @@ func (c *Client) TestRequestRequiredStringHostnameArrayArray(ctx context.Context
 	u.Path += "/test_request_required_string_hostname_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringHostnameArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -18325,7 +19012,10 @@ func (c *Client) TestRequestRequiredStringHostnameNullable(ctx context.Context, 
 	u.Path += "/test_request_required_string_hostname_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringHostnameNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -18419,7 +19109,10 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArray(ctx context.Cont
 	u.Path += "/test_request_required_string_hostname_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringHostnameNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -18530,7 +19223,10 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context
 	u.Path += "/test_request_required_string_hostname_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -18591,7 +19287,10 @@ func (c *Client) TestRequestRequiredStringIP(ctx context.Context, request netip.
 	u.Path += "/test_request_required_string_ip"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIPRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -18660,7 +19359,10 @@ func (c *Client) TestRequestRequiredStringIPArray(ctx context.Context, request [
 	u.Path += "/test_request_required_string_ip_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIPArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -18746,7 +19448,10 @@ func (c *Client) TestRequestRequiredStringIPArrayArray(ctx context.Context, requ
 	u.Path += "/test_request_required_string_ip_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIPArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -18807,7 +19512,10 @@ func (c *Client) TestRequestRequiredStringIPNullable(ctx context.Context, reques
 	u.Path += "/test_request_required_string_ip_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIPNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -18876,7 +19584,10 @@ func (c *Client) TestRequestRequiredStringIPNullableArray(ctx context.Context, r
 	u.Path += "/test_request_required_string_ip_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIPNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -18962,7 +19673,10 @@ func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Conte
 	u.Path += "/test_request_required_string_ip_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIPNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -19023,7 +19737,10 @@ func (c *Client) TestRequestRequiredStringInt32(ctx context.Context, request int
 	u.Path += "/test_request_required_string_int32"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringInt32Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -19092,7 +19809,10 @@ func (c *Client) TestRequestRequiredStringInt32Array(ctx context.Context, reques
 	u.Path += "/test_request_required_string_int32_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringInt32ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -19178,7 +19898,10 @@ func (c *Client) TestRequestRequiredStringInt32ArrayArray(ctx context.Context, r
 	u.Path += "/test_request_required_string_int32_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringInt32ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -19239,7 +19962,10 @@ func (c *Client) TestRequestRequiredStringInt32Nullable(ctx context.Context, req
 	u.Path += "/test_request_required_string_int32_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringInt32NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -19308,7 +20034,10 @@ func (c *Client) TestRequestRequiredStringInt32NullableArray(ctx context.Context
 	u.Path += "/test_request_required_string_int32_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringInt32NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -19394,7 +20123,10 @@ func (c *Client) TestRequestRequiredStringInt32NullableArrayArray(ctx context.Co
 	u.Path += "/test_request_required_string_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringInt32NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -19455,7 +20187,10 @@ func (c *Client) TestRequestRequiredStringInt64(ctx context.Context, request int
 	u.Path += "/test_request_required_string_int64"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringInt64Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -19524,7 +20259,10 @@ func (c *Client) TestRequestRequiredStringInt64Array(ctx context.Context, reques
 	u.Path += "/test_request_required_string_int64_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringInt64ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -19610,7 +20348,10 @@ func (c *Client) TestRequestRequiredStringInt64ArrayArray(ctx context.Context, r
 	u.Path += "/test_request_required_string_int64_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringInt64ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -19671,7 +20412,10 @@ func (c *Client) TestRequestRequiredStringInt64Nullable(ctx context.Context, req
 	u.Path += "/test_request_required_string_int64_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringInt64NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -19740,7 +20484,10 @@ func (c *Client) TestRequestRequiredStringInt64NullableArray(ctx context.Context
 	u.Path += "/test_request_required_string_int64_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringInt64NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -19826,7 +20573,10 @@ func (c *Client) TestRequestRequiredStringInt64NullableArrayArray(ctx context.Co
 	u.Path += "/test_request_required_string_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringInt64NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -19887,7 +20637,10 @@ func (c *Client) TestRequestRequiredStringIpv4(ctx context.Context, request neti
 	u.Path += "/test_request_required_string_ipv4"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIpv4Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -19956,7 +20709,10 @@ func (c *Client) TestRequestRequiredStringIpv4Array(ctx context.Context, request
 	u.Path += "/test_request_required_string_ipv4_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIpv4ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -20042,7 +20798,10 @@ func (c *Client) TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_ipv4_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIpv4ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -20103,7 +20862,10 @@ func (c *Client) TestRequestRequiredStringIpv4Nullable(ctx context.Context, requ
 	u.Path += "/test_request_required_string_ipv4_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIpv4NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -20172,7 +20934,10 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArray(ctx context.Context,
 	u.Path += "/test_request_required_string_ipv4_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIpv4NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -20258,7 +21023,10 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Con
 	u.Path += "/test_request_required_string_ipv4_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -20319,7 +21087,10 @@ func (c *Client) TestRequestRequiredStringIpv6(ctx context.Context, request neti
 	u.Path += "/test_request_required_string_ipv6"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIpv6Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -20388,7 +21159,10 @@ func (c *Client) TestRequestRequiredStringIpv6Array(ctx context.Context, request
 	u.Path += "/test_request_required_string_ipv6_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIpv6ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -20474,7 +21248,10 @@ func (c *Client) TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_ipv6_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIpv6ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -20535,7 +21312,10 @@ func (c *Client) TestRequestRequiredStringIpv6Nullable(ctx context.Context, requ
 	u.Path += "/test_request_required_string_ipv6_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIpv6NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -20604,7 +21384,10 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArray(ctx context.Context,
 	u.Path += "/test_request_required_string_ipv6_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIpv6NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -20690,7 +21473,10 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Con
 	u.Path += "/test_request_required_string_ipv6_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -20751,7 +21537,10 @@ func (c *Client) TestRequestRequiredStringNullable(ctx context.Context, request 
 	u.Path += "/test_request_required_string_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -20820,7 +21609,10 @@ func (c *Client) TestRequestRequiredStringNullableArray(ctx context.Context, req
 	u.Path += "/test_request_required_string_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -20906,7 +21698,10 @@ func (c *Client) TestRequestRequiredStringNullableArrayArray(ctx context.Context
 	u.Path += "/test_request_required_string_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -20967,7 +21762,10 @@ func (c *Client) TestRequestRequiredStringPassword(ctx context.Context, request 
 	u.Path += "/test_request_required_string_password"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringPasswordRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21036,7 +21834,10 @@ func (c *Client) TestRequestRequiredStringPasswordArray(ctx context.Context, req
 	u.Path += "/test_request_required_string_password_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringPasswordArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21122,7 +21923,10 @@ func (c *Client) TestRequestRequiredStringPasswordArrayArray(ctx context.Context
 	u.Path += "/test_request_required_string_password_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringPasswordArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21183,7 +21987,10 @@ func (c *Client) TestRequestRequiredStringPasswordNullable(ctx context.Context, 
 	u.Path += "/test_request_required_string_password_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringPasswordNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21252,7 +22059,10 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArray(ctx context.Cont
 	u.Path += "/test_request_required_string_password_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringPasswordNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21338,7 +22148,10 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArrayArray(ctx context
 	u.Path += "/test_request_required_string_password_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21399,7 +22212,10 @@ func (c *Client) TestRequestRequiredStringTime(ctx context.Context, request time
 	u.Path += "/test_request_required_string_time"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringTimeRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21468,7 +22284,10 @@ func (c *Client) TestRequestRequiredStringTimeArray(ctx context.Context, request
 	u.Path += "/test_request_required_string_time_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringTimeArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21554,7 +22373,10 @@ func (c *Client) TestRequestRequiredStringTimeArrayArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_time_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringTimeArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21615,7 +22437,10 @@ func (c *Client) TestRequestRequiredStringTimeNullable(ctx context.Context, requ
 	u.Path += "/test_request_required_string_time_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringTimeNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21684,7 +22509,10 @@ func (c *Client) TestRequestRequiredStringTimeNullableArray(ctx context.Context,
 	u.Path += "/test_request_required_string_time_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringTimeNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21770,7 +22598,10 @@ func (c *Client) TestRequestRequiredStringTimeNullableArrayArray(ctx context.Con
 	u.Path += "/test_request_required_string_time_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringTimeNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21831,7 +22662,10 @@ func (c *Client) TestRequestRequiredStringURI(ctx context.Context, request url.U
 	u.Path += "/test_request_required_string_uri"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringURIRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21900,7 +22734,10 @@ func (c *Client) TestRequestRequiredStringURIArray(ctx context.Context, request 
 	u.Path += "/test_request_required_string_uri_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringURIArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -21986,7 +22823,10 @@ func (c *Client) TestRequestRequiredStringURIArrayArray(ctx context.Context, req
 	u.Path += "/test_request_required_string_uri_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringURIArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -22047,7 +22887,10 @@ func (c *Client) TestRequestRequiredStringURINullable(ctx context.Context, reque
 	u.Path += "/test_request_required_string_uri_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringURINullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -22116,7 +22959,10 @@ func (c *Client) TestRequestRequiredStringURINullableArray(ctx context.Context, 
 	u.Path += "/test_request_required_string_uri_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringURINullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -22202,7 +23048,10 @@ func (c *Client) TestRequestRequiredStringURINullableArrayArray(ctx context.Cont
 	u.Path += "/test_request_required_string_uri_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringURINullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -22263,7 +23112,10 @@ func (c *Client) TestRequestRequiredStringUUID(ctx context.Context, request uuid
 	u.Path += "/test_request_required_string_uuid"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUUIDRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -22332,7 +23184,10 @@ func (c *Client) TestRequestRequiredStringUUIDArray(ctx context.Context, request
 	u.Path += "/test_request_required_string_uuid_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUUIDArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -22418,7 +23273,10 @@ func (c *Client) TestRequestRequiredStringUUIDArrayArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_uuid_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUUIDArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -22479,7 +23337,10 @@ func (c *Client) TestRequestRequiredStringUUIDNullable(ctx context.Context, requ
 	u.Path += "/test_request_required_string_uuid_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUUIDNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -22548,7 +23409,10 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArray(ctx context.Context,
 	u.Path += "/test_request_required_string_uuid_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUUIDNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -22634,7 +23498,10 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Con
 	u.Path += "/test_request_required_string_uuid_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -22695,7 +23562,10 @@ func (c *Client) TestRequestRequiredStringUnix(ctx context.Context, request time
 	u.Path += "/test_request_required_string_unix"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -22764,7 +23634,10 @@ func (c *Client) TestRequestRequiredStringUnixArray(ctx context.Context, request
 	u.Path += "/test_request_required_string_unix_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -22850,7 +23723,10 @@ func (c *Client) TestRequestRequiredStringUnixArrayArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_unix_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -22911,7 +23787,10 @@ func (c *Client) TestRequestRequiredStringUnixMicro(ctx context.Context, request
 	u.Path += "/test_request_required_string_unix-micro"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixMicroRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -22980,7 +23859,10 @@ func (c *Client) TestRequestRequiredStringUnixMicroArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_unix-micro_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixMicroArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -23066,7 +23948,10 @@ func (c *Client) TestRequestRequiredStringUnixMicroArrayArray(ctx context.Contex
 	u.Path += "/test_request_required_string_unix-micro_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixMicroArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -23127,7 +24012,10 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullable(ctx context.Context,
 	u.Path += "/test_request_required_string_unix-micro_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixMicroNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -23196,7 +24084,10 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Con
 	u.Path += "/test_request_required_string_unix-micro_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixMicroNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -23282,7 +24173,10 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx contex
 	u.Path += "/test_request_required_string_unix-micro_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -23343,7 +24237,10 @@ func (c *Client) TestRequestRequiredStringUnixMilli(ctx context.Context, request
 	u.Path += "/test_request_required_string_unix-milli"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixMilliRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -23412,7 +24309,10 @@ func (c *Client) TestRequestRequiredStringUnixMilliArray(ctx context.Context, re
 	u.Path += "/test_request_required_string_unix-milli_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixMilliArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -23498,7 +24398,10 @@ func (c *Client) TestRequestRequiredStringUnixMilliArrayArray(ctx context.Contex
 	u.Path += "/test_request_required_string_unix-milli_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixMilliArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -23559,7 +24462,10 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullable(ctx context.Context,
 	u.Path += "/test_request_required_string_unix-milli_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixMilliNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -23628,7 +24534,10 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Con
 	u.Path += "/test_request_required_string_unix-milli_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixMilliNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -23714,7 +24623,10 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx contex
 	u.Path += "/test_request_required_string_unix-milli_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -23775,7 +24687,10 @@ func (c *Client) TestRequestRequiredStringUnixNano(ctx context.Context, request 
 	u.Path += "/test_request_required_string_unix-nano"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixNanoRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -23844,7 +24759,10 @@ func (c *Client) TestRequestRequiredStringUnixNanoArray(ctx context.Context, req
 	u.Path += "/test_request_required_string_unix-nano_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixNanoArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -23930,7 +24848,10 @@ func (c *Client) TestRequestRequiredStringUnixNanoArrayArray(ctx context.Context
 	u.Path += "/test_request_required_string_unix-nano_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixNanoArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -23991,7 +24912,10 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullable(ctx context.Context, 
 	u.Path += "/test_request_required_string_unix-nano_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixNanoNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24060,7 +24984,10 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Cont
 	u.Path += "/test_request_required_string_unix-nano_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixNanoNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24146,7 +25073,10 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context
 	u.Path += "/test_request_required_string_unix-nano_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24207,7 +25137,10 @@ func (c *Client) TestRequestRequiredStringUnixNullable(ctx context.Context, requ
 	u.Path += "/test_request_required_string_unix_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24276,7 +25209,10 @@ func (c *Client) TestRequestRequiredStringUnixNullableArray(ctx context.Context,
 	u.Path += "/test_request_required_string_unix_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24362,7 +25298,10 @@ func (c *Client) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Con
 	u.Path += "/test_request_required_string_unix_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24423,7 +25362,10 @@ func (c *Client) TestRequestRequiredStringUnixSeconds(ctx context.Context, reque
 	u.Path += "/test_request_required_string_unix-seconds"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixSecondsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24492,7 +25434,10 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArray(ctx context.Context, 
 	u.Path += "/test_request_required_string_unix-seconds_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixSecondsArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24578,7 +25523,10 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArrayArray(ctx context.Cont
 	u.Path += "/test_request_required_string_unix-seconds_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24639,7 +25587,10 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullable(ctx context.Contex
 	u.Path += "/test_request_required_string_unix-seconds_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixSecondsNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24708,7 +25659,10 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.C
 	u.Path += "/test_request_required_string_unix-seconds_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24794,7 +25748,10 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx cont
 	u.Path += "/test_request_required_string_unix-seconds_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24855,7 +25812,10 @@ func (c *Client) TestRequestString(ctx context.Context, request OptString) (res 
 	u.Path += "/test_request_string"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24916,7 +25876,10 @@ func (c *Client) TestRequestStringArray(ctx context.Context, request []string) (
 	u.Path += "/test_request_string_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -24999,7 +25962,10 @@ func (c *Client) TestRequestStringArrayArray(ctx context.Context, request [][]st
 	u.Path += "/test_request_string_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25060,7 +26026,10 @@ func (c *Client) TestRequestStringBinary(ctx context.Context, request OptString)
 	u.Path += "/test_request_string_binary"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringBinaryRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25121,7 +26090,10 @@ func (c *Client) TestRequestStringBinaryArray(ctx context.Context, request []str
 	u.Path += "/test_request_string_binary_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringBinaryArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25204,7 +26176,10 @@ func (c *Client) TestRequestStringBinaryArrayArray(ctx context.Context, request 
 	u.Path += "/test_request_string_binary_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringBinaryArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25265,7 +26240,10 @@ func (c *Client) TestRequestStringBinaryNullable(ctx context.Context, request Op
 	u.Path += "/test_request_string_binary_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringBinaryNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25326,7 +26304,10 @@ func (c *Client) TestRequestStringBinaryNullableArray(ctx context.Context, reque
 	u.Path += "/test_request_string_binary_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringBinaryNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25409,7 +26390,10 @@ func (c *Client) TestRequestStringBinaryNullableArrayArray(ctx context.Context, 
 	u.Path += "/test_request_string_binary_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringBinaryNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25470,7 +26454,10 @@ func (c *Client) TestRequestStringByte(ctx context.Context, request []byte) (res
 	u.Path += "/test_request_string_byte"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringByteRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25531,7 +26518,10 @@ func (c *Client) TestRequestStringByteArray(ctx context.Context, request [][]byt
 	u.Path += "/test_request_string_byte_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringByteArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25614,7 +26604,10 @@ func (c *Client) TestRequestStringByteArrayArray(ctx context.Context, request []
 	u.Path += "/test_request_string_byte_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringByteArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25675,7 +26668,10 @@ func (c *Client) TestRequestStringByteNullable(ctx context.Context, request OptN
 	u.Path += "/test_request_string_byte_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringByteNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25736,7 +26732,10 @@ func (c *Client) TestRequestStringByteNullableArray(ctx context.Context, request
 	u.Path += "/test_request_string_byte_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringByteNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25819,7 +26818,10 @@ func (c *Client) TestRequestStringByteNullableArrayArray(ctx context.Context, re
 	u.Path += "/test_request_string_byte_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringByteNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25880,7 +26882,10 @@ func (c *Client) TestRequestStringDate(ctx context.Context, request OptDate) (re
 	u.Path += "/test_request_string_date"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDateRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -25941,7 +26946,10 @@ func (c *Client) TestRequestStringDateArray(ctx context.Context, request []time.
 	u.Path += "/test_request_string_date_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDateArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26024,7 +27032,10 @@ func (c *Client) TestRequestStringDateArrayArray(ctx context.Context, request []
 	u.Path += "/test_request_string_date_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDateArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26085,7 +27096,10 @@ func (c *Client) TestRequestStringDateNullable(ctx context.Context, request OptN
 	u.Path += "/test_request_string_date_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDateNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26146,7 +27160,10 @@ func (c *Client) TestRequestStringDateNullableArray(ctx context.Context, request
 	u.Path += "/test_request_string_date_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDateNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26229,7 +27246,10 @@ func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, re
 	u.Path += "/test_request_string_date_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDateNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26290,7 +27310,10 @@ func (c *Client) TestRequestStringDateTime(ctx context.Context, request OptDateT
 	u.Path += "/test_request_string_date-time"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDateTimeRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26351,7 +27374,10 @@ func (c *Client) TestRequestStringDateTimeArray(ctx context.Context, request []t
 	u.Path += "/test_request_string_date-time_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDateTimeArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26434,7 +27460,10 @@ func (c *Client) TestRequestStringDateTimeArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_string_date-time_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDateTimeArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26495,7 +27524,10 @@ func (c *Client) TestRequestStringDateTimeNullable(ctx context.Context, request 
 	u.Path += "/test_request_string_date-time_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDateTimeNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26556,7 +27588,10 @@ func (c *Client) TestRequestStringDateTimeNullableArray(ctx context.Context, req
 	u.Path += "/test_request_string_date-time_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDateTimeNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26639,7 +27674,10 @@ func (c *Client) TestRequestStringDateTimeNullableArrayArray(ctx context.Context
 	u.Path += "/test_request_string_date-time_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDateTimeNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26700,7 +27738,10 @@ func (c *Client) TestRequestStringDuration(ctx context.Context, request OptDurat
 	u.Path += "/test_request_string_duration"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDurationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26761,7 +27802,10 @@ func (c *Client) TestRequestStringDurationArray(ctx context.Context, request []t
 	u.Path += "/test_request_string_duration_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDurationArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26844,7 +27888,10 @@ func (c *Client) TestRequestStringDurationArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_string_duration_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDurationArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26905,7 +27952,10 @@ func (c *Client) TestRequestStringDurationNullable(ctx context.Context, request 
 	u.Path += "/test_request_string_duration_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDurationNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -26966,7 +28016,10 @@ func (c *Client) TestRequestStringDurationNullableArray(ctx context.Context, req
 	u.Path += "/test_request_string_duration_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDurationNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -27049,7 +28102,10 @@ func (c *Client) TestRequestStringDurationNullableArrayArray(ctx context.Context
 	u.Path += "/test_request_string_duration_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringDurationNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -27133,7 +28189,10 @@ func (c *Client) TestRequestStringEmail(ctx context.Context, request OptString) 
 	u.Path += "/test_request_string_email"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringEmailRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -27224,7 +28283,10 @@ func (c *Client) TestRequestStringEmailArray(ctx context.Context, request []stri
 	u.Path += "/test_request_string_email_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringEmailArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -27332,7 +28394,10 @@ func (c *Client) TestRequestStringEmailArrayArray(ctx context.Context, request [
 	u.Path += "/test_request_string_email_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringEmailArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -27416,7 +28481,10 @@ func (c *Client) TestRequestStringEmailNullable(ctx context.Context, request Opt
 	u.Path += "/test_request_string_email_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringEmailNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -27507,7 +28575,10 @@ func (c *Client) TestRequestStringEmailNullableArray(ctx context.Context, reques
 	u.Path += "/test_request_string_email_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringEmailNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -27615,7 +28686,10 @@ func (c *Client) TestRequestStringEmailNullableArrayArray(ctx context.Context, r
 	u.Path += "/test_request_string_email_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringEmailNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -27699,7 +28773,10 @@ func (c *Client) TestRequestStringHostname(ctx context.Context, request OptStrin
 	u.Path += "/test_request_string_hostname"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringHostnameRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -27790,7 +28867,10 @@ func (c *Client) TestRequestStringHostnameArray(ctx context.Context, request []s
 	u.Path += "/test_request_string_hostname_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringHostnameArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -27898,7 +28978,10 @@ func (c *Client) TestRequestStringHostnameArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_string_hostname_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringHostnameArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -27982,7 +29065,10 @@ func (c *Client) TestRequestStringHostnameNullable(ctx context.Context, request 
 	u.Path += "/test_request_string_hostname_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringHostnameNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -28073,7 +29159,10 @@ func (c *Client) TestRequestStringHostnameNullableArray(ctx context.Context, req
 	u.Path += "/test_request_string_hostname_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringHostnameNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -28181,7 +29270,10 @@ func (c *Client) TestRequestStringHostnameNullableArrayArray(ctx context.Context
 	u.Path += "/test_request_string_hostname_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringHostnameNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -28242,7 +29334,10 @@ func (c *Client) TestRequestStringIP(ctx context.Context, request OptIP) (res Er
 	u.Path += "/test_request_string_ip"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIPRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -28303,7 +29398,10 @@ func (c *Client) TestRequestStringIPArray(ctx context.Context, request []netip.A
 	u.Path += "/test_request_string_ip_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIPArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -28386,7 +29484,10 @@ func (c *Client) TestRequestStringIPArrayArray(ctx context.Context, request [][]
 	u.Path += "/test_request_string_ip_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIPArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -28447,7 +29548,10 @@ func (c *Client) TestRequestStringIPNullable(ctx context.Context, request OptNil
 	u.Path += "/test_request_string_ip_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIPNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -28508,7 +29612,10 @@ func (c *Client) TestRequestStringIPNullableArray(ctx context.Context, request [
 	u.Path += "/test_request_string_ip_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIPNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -28591,7 +29698,10 @@ func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, requ
 	u.Path += "/test_request_string_ip_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIPNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -28652,7 +29762,10 @@ func (c *Client) TestRequestStringInt32(ctx context.Context, request OptStringIn
 	u.Path += "/test_request_string_int32"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringInt32Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -28713,7 +29826,10 @@ func (c *Client) TestRequestStringInt32Array(ctx context.Context, request []int3
 	u.Path += "/test_request_string_int32_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringInt32ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -28796,7 +29912,10 @@ func (c *Client) TestRequestStringInt32ArrayArray(ctx context.Context, request [
 	u.Path += "/test_request_string_int32_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringInt32ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -28857,7 +29976,10 @@ func (c *Client) TestRequestStringInt32Nullable(ctx context.Context, request Opt
 	u.Path += "/test_request_string_int32_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringInt32NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -28918,7 +30040,10 @@ func (c *Client) TestRequestStringInt32NullableArray(ctx context.Context, reques
 	u.Path += "/test_request_string_int32_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringInt32NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -29001,7 +30126,10 @@ func (c *Client) TestRequestStringInt32NullableArrayArray(ctx context.Context, r
 	u.Path += "/test_request_string_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringInt32NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -29062,7 +30190,10 @@ func (c *Client) TestRequestStringInt64(ctx context.Context, request OptStringIn
 	u.Path += "/test_request_string_int64"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringInt64Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -29123,7 +30254,10 @@ func (c *Client) TestRequestStringInt64Array(ctx context.Context, request []int6
 	u.Path += "/test_request_string_int64_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringInt64ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -29206,7 +30340,10 @@ func (c *Client) TestRequestStringInt64ArrayArray(ctx context.Context, request [
 	u.Path += "/test_request_string_int64_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringInt64ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -29267,7 +30404,10 @@ func (c *Client) TestRequestStringInt64Nullable(ctx context.Context, request Opt
 	u.Path += "/test_request_string_int64_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringInt64NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -29328,7 +30468,10 @@ func (c *Client) TestRequestStringInt64NullableArray(ctx context.Context, reques
 	u.Path += "/test_request_string_int64_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringInt64NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -29411,7 +30554,10 @@ func (c *Client) TestRequestStringInt64NullableArrayArray(ctx context.Context, r
 	u.Path += "/test_request_string_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringInt64NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -29472,7 +30618,10 @@ func (c *Client) TestRequestStringIpv4(ctx context.Context, request OptIPv4) (re
 	u.Path += "/test_request_string_ipv4"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIpv4Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -29533,7 +30682,10 @@ func (c *Client) TestRequestStringIpv4Array(ctx context.Context, request []netip
 	u.Path += "/test_request_string_ipv4_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIpv4ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -29616,7 +30768,10 @@ func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request []
 	u.Path += "/test_request_string_ipv4_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIpv4ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -29677,7 +30832,10 @@ func (c *Client) TestRequestStringIpv4Nullable(ctx context.Context, request OptN
 	u.Path += "/test_request_string_ipv4_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIpv4NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -29738,7 +30896,10 @@ func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request
 	u.Path += "/test_request_string_ipv4_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIpv4NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -29821,7 +30982,10 @@ func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, re
 	u.Path += "/test_request_string_ipv4_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIpv4NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -29882,7 +31046,10 @@ func (c *Client) TestRequestStringIpv6(ctx context.Context, request OptIPv6) (re
 	u.Path += "/test_request_string_ipv6"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIpv6Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -29943,7 +31110,10 @@ func (c *Client) TestRequestStringIpv6Array(ctx context.Context, request []netip
 	u.Path += "/test_request_string_ipv6_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIpv6ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30026,7 +31196,10 @@ func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request []
 	u.Path += "/test_request_string_ipv6_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIpv6ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30087,7 +31260,10 @@ func (c *Client) TestRequestStringIpv6Nullable(ctx context.Context, request OptN
 	u.Path += "/test_request_string_ipv6_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIpv6NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30148,7 +31324,10 @@ func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request
 	u.Path += "/test_request_string_ipv6_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIpv6NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30231,7 +31410,10 @@ func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, re
 	u.Path += "/test_request_string_ipv6_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringIpv6NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30292,7 +31474,10 @@ func (c *Client) TestRequestStringNullable(ctx context.Context, request OptNilSt
 	u.Path += "/test_request_string_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30353,7 +31538,10 @@ func (c *Client) TestRequestStringNullableArray(ctx context.Context, request []N
 	u.Path += "/test_request_string_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30436,7 +31624,10 @@ func (c *Client) TestRequestStringNullableArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_string_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30497,7 +31688,10 @@ func (c *Client) TestRequestStringPassword(ctx context.Context, request OptStrin
 	u.Path += "/test_request_string_password"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringPasswordRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30558,7 +31752,10 @@ func (c *Client) TestRequestStringPasswordArray(ctx context.Context, request []s
 	u.Path += "/test_request_string_password_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringPasswordArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30641,7 +31838,10 @@ func (c *Client) TestRequestStringPasswordArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_string_password_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringPasswordArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30702,7 +31902,10 @@ func (c *Client) TestRequestStringPasswordNullable(ctx context.Context, request 
 	u.Path += "/test_request_string_password_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringPasswordNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30763,7 +31966,10 @@ func (c *Client) TestRequestStringPasswordNullableArray(ctx context.Context, req
 	u.Path += "/test_request_string_password_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringPasswordNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30846,7 +32052,10 @@ func (c *Client) TestRequestStringPasswordNullableArrayArray(ctx context.Context
 	u.Path += "/test_request_string_password_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringPasswordNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30907,7 +32116,10 @@ func (c *Client) TestRequestStringTime(ctx context.Context, request OptTime) (re
 	u.Path += "/test_request_string_time"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringTimeRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -30968,7 +32180,10 @@ func (c *Client) TestRequestStringTimeArray(ctx context.Context, request []time.
 	u.Path += "/test_request_string_time_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringTimeArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -31051,7 +32266,10 @@ func (c *Client) TestRequestStringTimeArrayArray(ctx context.Context, request []
 	u.Path += "/test_request_string_time_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringTimeArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -31112,7 +32330,10 @@ func (c *Client) TestRequestStringTimeNullable(ctx context.Context, request OptN
 	u.Path += "/test_request_string_time_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringTimeNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -31173,7 +32394,10 @@ func (c *Client) TestRequestStringTimeNullableArray(ctx context.Context, request
 	u.Path += "/test_request_string_time_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringTimeNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -31256,7 +32480,10 @@ func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, re
 	u.Path += "/test_request_string_time_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringTimeNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -31317,7 +32544,10 @@ func (c *Client) TestRequestStringURI(ctx context.Context, request OptURI) (res 
 	u.Path += "/test_request_string_uri"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringURIRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -31378,7 +32608,10 @@ func (c *Client) TestRequestStringURIArray(ctx context.Context, request []url.UR
 	u.Path += "/test_request_string_uri_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringURIArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -31461,7 +32694,10 @@ func (c *Client) TestRequestStringURIArrayArray(ctx context.Context, request [][
 	u.Path += "/test_request_string_uri_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringURIArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -31522,7 +32758,10 @@ func (c *Client) TestRequestStringURINullable(ctx context.Context, request OptNi
 	u.Path += "/test_request_string_uri_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringURINullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -31583,7 +32822,10 @@ func (c *Client) TestRequestStringURINullableArray(ctx context.Context, request 
 	u.Path += "/test_request_string_uri_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringURINullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -31666,7 +32908,10 @@ func (c *Client) TestRequestStringURINullableArrayArray(ctx context.Context, req
 	u.Path += "/test_request_string_uri_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringURINullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -31727,7 +32972,10 @@ func (c *Client) TestRequestStringUUID(ctx context.Context, request OptUUID) (re
 	u.Path += "/test_request_string_uuid"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUUIDRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -31788,7 +33036,10 @@ func (c *Client) TestRequestStringUUIDArray(ctx context.Context, request []uuid.
 	u.Path += "/test_request_string_uuid_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUUIDArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -31871,7 +33122,10 @@ func (c *Client) TestRequestStringUUIDArrayArray(ctx context.Context, request []
 	u.Path += "/test_request_string_uuid_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUUIDArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -31932,7 +33186,10 @@ func (c *Client) TestRequestStringUUIDNullable(ctx context.Context, request OptN
 	u.Path += "/test_request_string_uuid_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUUIDNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -31993,7 +33250,10 @@ func (c *Client) TestRequestStringUUIDNullableArray(ctx context.Context, request
 	u.Path += "/test_request_string_uuid_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUUIDNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32076,7 +33336,10 @@ func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, re
 	u.Path += "/test_request_string_uuid_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUUIDNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32137,7 +33400,10 @@ func (c *Client) TestRequestStringUnix(ctx context.Context, request OptStringUni
 	u.Path += "/test_request_string_unix"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32198,7 +33464,10 @@ func (c *Client) TestRequestStringUnixArray(ctx context.Context, request []time.
 	u.Path += "/test_request_string_unix_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32281,7 +33550,10 @@ func (c *Client) TestRequestStringUnixArrayArray(ctx context.Context, request []
 	u.Path += "/test_request_string_unix_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32342,7 +33614,10 @@ func (c *Client) TestRequestStringUnixMicro(ctx context.Context, request OptStri
 	u.Path += "/test_request_string_unix-micro"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixMicroRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32403,7 +33678,10 @@ func (c *Client) TestRequestStringUnixMicroArray(ctx context.Context, request []
 	u.Path += "/test_request_string_unix-micro_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixMicroArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32486,7 +33764,10 @@ func (c *Client) TestRequestStringUnixMicroArrayArray(ctx context.Context, reque
 	u.Path += "/test_request_string_unix-micro_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixMicroArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32547,7 +33828,10 @@ func (c *Client) TestRequestStringUnixMicroNullable(ctx context.Context, request
 	u.Path += "/test_request_string_unix-micro_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixMicroNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32608,7 +33892,10 @@ func (c *Client) TestRequestStringUnixMicroNullableArray(ctx context.Context, re
 	u.Path += "/test_request_string_unix-micro_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixMicroNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32691,7 +33978,10 @@ func (c *Client) TestRequestStringUnixMicroNullableArrayArray(ctx context.Contex
 	u.Path += "/test_request_string_unix-micro_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixMicroNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32752,7 +34042,10 @@ func (c *Client) TestRequestStringUnixMilli(ctx context.Context, request OptStri
 	u.Path += "/test_request_string_unix-milli"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixMilliRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32813,7 +34106,10 @@ func (c *Client) TestRequestStringUnixMilliArray(ctx context.Context, request []
 	u.Path += "/test_request_string_unix-milli_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixMilliArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32896,7 +34192,10 @@ func (c *Client) TestRequestStringUnixMilliArrayArray(ctx context.Context, reque
 	u.Path += "/test_request_string_unix-milli_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixMilliArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -32957,7 +34256,10 @@ func (c *Client) TestRequestStringUnixMilliNullable(ctx context.Context, request
 	u.Path += "/test_request_string_unix-milli_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixMilliNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33018,7 +34320,10 @@ func (c *Client) TestRequestStringUnixMilliNullableArray(ctx context.Context, re
 	u.Path += "/test_request_string_unix-milli_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixMilliNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33101,7 +34406,10 @@ func (c *Client) TestRequestStringUnixMilliNullableArrayArray(ctx context.Contex
 	u.Path += "/test_request_string_unix-milli_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixMilliNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33162,7 +34470,10 @@ func (c *Client) TestRequestStringUnixNano(ctx context.Context, request OptStrin
 	u.Path += "/test_request_string_unix-nano"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixNanoRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33223,7 +34534,10 @@ func (c *Client) TestRequestStringUnixNanoArray(ctx context.Context, request []t
 	u.Path += "/test_request_string_unix-nano_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixNanoArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33306,7 +34620,10 @@ func (c *Client) TestRequestStringUnixNanoArrayArray(ctx context.Context, reques
 	u.Path += "/test_request_string_unix-nano_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixNanoArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33367,7 +34684,10 @@ func (c *Client) TestRequestStringUnixNanoNullable(ctx context.Context, request 
 	u.Path += "/test_request_string_unix-nano_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixNanoNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33428,7 +34748,10 @@ func (c *Client) TestRequestStringUnixNanoNullableArray(ctx context.Context, req
 	u.Path += "/test_request_string_unix-nano_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixNanoNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33511,7 +34834,10 @@ func (c *Client) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context
 	u.Path += "/test_request_string_unix-nano_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixNanoNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33572,7 +34898,10 @@ func (c *Client) TestRequestStringUnixNullable(ctx context.Context, request OptN
 	u.Path += "/test_request_string_unix_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33633,7 +34962,10 @@ func (c *Client) TestRequestStringUnixNullableArray(ctx context.Context, request
 	u.Path += "/test_request_string_unix_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33716,7 +35048,10 @@ func (c *Client) TestRequestStringUnixNullableArrayArray(ctx context.Context, re
 	u.Path += "/test_request_string_unix_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33777,7 +35112,10 @@ func (c *Client) TestRequestStringUnixSeconds(ctx context.Context, request OptSt
 	u.Path += "/test_request_string_unix-seconds"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixSecondsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33838,7 +35176,10 @@ func (c *Client) TestRequestStringUnixSecondsArray(ctx context.Context, request 
 	u.Path += "/test_request_string_unix-seconds_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixSecondsArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33921,7 +35262,10 @@ func (c *Client) TestRequestStringUnixSecondsArrayArray(ctx context.Context, req
 	u.Path += "/test_request_string_unix-seconds_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixSecondsArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -33982,7 +35326,10 @@ func (c *Client) TestRequestStringUnixSecondsNullable(ctx context.Context, reque
 	u.Path += "/test_request_string_unix-seconds_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixSecondsNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34043,7 +35390,10 @@ func (c *Client) TestRequestStringUnixSecondsNullableArray(ctx context.Context, 
 	u.Path += "/test_request_string_unix-seconds_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixSecondsNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34126,7 +35476,10 @@ func (c *Client) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Cont
 	u.Path += "/test_request_string_unix-seconds_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestRequestStringUnixSecondsNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34187,7 +35540,10 @@ func (c *Client) TestResponseAny(ctx context.Context, request string) (res jx.Ra
 	u.Path += "/test_response_Any"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseAnyRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34248,7 +35604,10 @@ func (c *Client) TestResponseBoolean(ctx context.Context, request string) (res b
 	u.Path += "/test_response_boolean"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseBooleanRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34309,7 +35668,10 @@ func (c *Client) TestResponseBooleanArray(ctx context.Context, request string) (
 	u.Path += "/test_response_boolean_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseBooleanArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34370,7 +35732,10 @@ func (c *Client) TestResponseBooleanArrayArray(ctx context.Context, request stri
 	u.Path += "/test_response_boolean_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseBooleanArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34431,7 +35796,10 @@ func (c *Client) TestResponseBooleanNullable(ctx context.Context, request string
 	u.Path += "/test_response_boolean_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseBooleanNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34492,7 +35860,10 @@ func (c *Client) TestResponseBooleanNullableArray(ctx context.Context, request s
 	u.Path += "/test_response_boolean_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseBooleanNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34553,7 +35924,10 @@ func (c *Client) TestResponseBooleanNullableArrayArray(ctx context.Context, requ
 	u.Path += "/test_response_boolean_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseBooleanNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34614,7 +35988,10 @@ func (c *Client) TestResponseEmptyStruct(ctx context.Context, request string) (r
 	u.Path += "/test_response_EmptyStruct"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseEmptyStructRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34675,7 +36052,10 @@ func (c *Client) TestResponseFormatTest(ctx context.Context, request string) (re
 	u.Path += "/test_response_FormatTest"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseFormatTestRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34736,7 +36116,10 @@ func (c *Client) TestResponseInteger(ctx context.Context, request string) (res i
 	u.Path += "/test_response_integer"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34797,7 +36180,10 @@ func (c *Client) TestResponseIntegerArray(ctx context.Context, request string) (
 	u.Path += "/test_response_integer_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34858,7 +36244,10 @@ func (c *Client) TestResponseIntegerArrayArray(ctx context.Context, request stri
 	u.Path += "/test_response_integer_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34919,7 +36308,10 @@ func (c *Client) TestResponseIntegerInt32(ctx context.Context, request string) (
 	u.Path += "/test_response_integer_int32"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerInt32Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -34980,7 +36372,10 @@ func (c *Client) TestResponseIntegerInt32Array(ctx context.Context, request stri
 	u.Path += "/test_response_integer_int32_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerInt32ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35041,7 +36436,10 @@ func (c *Client) TestResponseIntegerInt32ArrayArray(ctx context.Context, request
 	u.Path += "/test_response_integer_int32_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerInt32ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35102,7 +36500,10 @@ func (c *Client) TestResponseIntegerInt32Nullable(ctx context.Context, request s
 	u.Path += "/test_response_integer_int32_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerInt32NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35163,7 +36564,10 @@ func (c *Client) TestResponseIntegerInt32NullableArray(ctx context.Context, requ
 	u.Path += "/test_response_integer_int32_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerInt32NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35224,7 +36628,10 @@ func (c *Client) TestResponseIntegerInt32NullableArrayArray(ctx context.Context,
 	u.Path += "/test_response_integer_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerInt32NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35285,7 +36692,10 @@ func (c *Client) TestResponseIntegerInt64(ctx context.Context, request string) (
 	u.Path += "/test_response_integer_int64"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerInt64Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35346,7 +36756,10 @@ func (c *Client) TestResponseIntegerInt64Array(ctx context.Context, request stri
 	u.Path += "/test_response_integer_int64_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerInt64ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35407,7 +36820,10 @@ func (c *Client) TestResponseIntegerInt64ArrayArray(ctx context.Context, request
 	u.Path += "/test_response_integer_int64_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerInt64ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35468,7 +36884,10 @@ func (c *Client) TestResponseIntegerInt64Nullable(ctx context.Context, request s
 	u.Path += "/test_response_integer_int64_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerInt64NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35529,7 +36948,10 @@ func (c *Client) TestResponseIntegerInt64NullableArray(ctx context.Context, requ
 	u.Path += "/test_response_integer_int64_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerInt64NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35590,7 +37012,10 @@ func (c *Client) TestResponseIntegerInt64NullableArrayArray(ctx context.Context,
 	u.Path += "/test_response_integer_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerInt64NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35651,7 +37076,10 @@ func (c *Client) TestResponseIntegerNullable(ctx context.Context, request string
 	u.Path += "/test_response_integer_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35712,7 +37140,10 @@ func (c *Client) TestResponseIntegerNullableArray(ctx context.Context, request s
 	u.Path += "/test_response_integer_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35773,7 +37204,10 @@ func (c *Client) TestResponseIntegerNullableArrayArray(ctx context.Context, requ
 	u.Path += "/test_response_integer_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35834,7 +37268,10 @@ func (c *Client) TestResponseIntegerUnix(ctx context.Context, request string) (r
 	u.Path += "/test_response_integer_unix"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35895,7 +37332,10 @@ func (c *Client) TestResponseIntegerUnixArray(ctx context.Context, request strin
 	u.Path += "/test_response_integer_unix_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -35956,7 +37396,10 @@ func (c *Client) TestResponseIntegerUnixArrayArray(ctx context.Context, request 
 	u.Path += "/test_response_integer_unix_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -36017,7 +37460,10 @@ func (c *Client) TestResponseIntegerUnixMicro(ctx context.Context, request strin
 	u.Path += "/test_response_integer_unix-micro"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixMicroRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -36078,7 +37524,10 @@ func (c *Client) TestResponseIntegerUnixMicroArray(ctx context.Context, request 
 	u.Path += "/test_response_integer_unix-micro_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixMicroArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -36139,7 +37588,10 @@ func (c *Client) TestResponseIntegerUnixMicroArrayArray(ctx context.Context, req
 	u.Path += "/test_response_integer_unix-micro_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixMicroArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -36200,7 +37652,10 @@ func (c *Client) TestResponseIntegerUnixMicroNullable(ctx context.Context, reque
 	u.Path += "/test_response_integer_unix-micro_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixMicroNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -36261,7 +37716,10 @@ func (c *Client) TestResponseIntegerUnixMicroNullableArray(ctx context.Context, 
 	u.Path += "/test_response_integer_unix-micro_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixMicroNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -36322,7 +37780,10 @@ func (c *Client) TestResponseIntegerUnixMicroNullableArrayArray(ctx context.Cont
 	u.Path += "/test_response_integer_unix-micro_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixMicroNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -36383,7 +37844,10 @@ func (c *Client) TestResponseIntegerUnixMilli(ctx context.Context, request strin
 	u.Path += "/test_response_integer_unix-milli"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixMilliRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -36444,7 +37908,10 @@ func (c *Client) TestResponseIntegerUnixMilliArray(ctx context.Context, request 
 	u.Path += "/test_response_integer_unix-milli_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixMilliArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -36505,7 +37972,10 @@ func (c *Client) TestResponseIntegerUnixMilliArrayArray(ctx context.Context, req
 	u.Path += "/test_response_integer_unix-milli_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixMilliArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -36566,7 +38036,10 @@ func (c *Client) TestResponseIntegerUnixMilliNullable(ctx context.Context, reque
 	u.Path += "/test_response_integer_unix-milli_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixMilliNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -36627,7 +38100,10 @@ func (c *Client) TestResponseIntegerUnixMilliNullableArray(ctx context.Context, 
 	u.Path += "/test_response_integer_unix-milli_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixMilliNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -36688,7 +38164,10 @@ func (c *Client) TestResponseIntegerUnixMilliNullableArrayArray(ctx context.Cont
 	u.Path += "/test_response_integer_unix-milli_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixMilliNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -36749,7 +38228,10 @@ func (c *Client) TestResponseIntegerUnixNano(ctx context.Context, request string
 	u.Path += "/test_response_integer_unix-nano"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixNanoRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -36810,7 +38292,10 @@ func (c *Client) TestResponseIntegerUnixNanoArray(ctx context.Context, request s
 	u.Path += "/test_response_integer_unix-nano_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixNanoArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -36871,7 +38356,10 @@ func (c *Client) TestResponseIntegerUnixNanoArrayArray(ctx context.Context, requ
 	u.Path += "/test_response_integer_unix-nano_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixNanoArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -36932,7 +38420,10 @@ func (c *Client) TestResponseIntegerUnixNanoNullable(ctx context.Context, reques
 	u.Path += "/test_response_integer_unix-nano_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixNanoNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -36993,7 +38484,10 @@ func (c *Client) TestResponseIntegerUnixNanoNullableArray(ctx context.Context, r
 	u.Path += "/test_response_integer_unix-nano_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixNanoNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -37054,7 +38548,10 @@ func (c *Client) TestResponseIntegerUnixNanoNullableArrayArray(ctx context.Conte
 	u.Path += "/test_response_integer_unix-nano_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixNanoNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -37115,7 +38612,10 @@ func (c *Client) TestResponseIntegerUnixNullable(ctx context.Context, request st
 	u.Path += "/test_response_integer_unix_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -37176,7 +38676,10 @@ func (c *Client) TestResponseIntegerUnixNullableArray(ctx context.Context, reque
 	u.Path += "/test_response_integer_unix_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -37237,7 +38740,10 @@ func (c *Client) TestResponseIntegerUnixNullableArrayArray(ctx context.Context, 
 	u.Path += "/test_response_integer_unix_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -37298,7 +38804,10 @@ func (c *Client) TestResponseIntegerUnixSeconds(ctx context.Context, request str
 	u.Path += "/test_response_integer_unix-seconds"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixSecondsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -37359,7 +38868,10 @@ func (c *Client) TestResponseIntegerUnixSecondsArray(ctx context.Context, reques
 	u.Path += "/test_response_integer_unix-seconds_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixSecondsArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -37420,7 +38932,10 @@ func (c *Client) TestResponseIntegerUnixSecondsArrayArray(ctx context.Context, r
 	u.Path += "/test_response_integer_unix-seconds_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixSecondsArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -37481,7 +38996,10 @@ func (c *Client) TestResponseIntegerUnixSecondsNullable(ctx context.Context, req
 	u.Path += "/test_response_integer_unix-seconds_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixSecondsNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -37542,7 +39060,10 @@ func (c *Client) TestResponseIntegerUnixSecondsNullableArray(ctx context.Context
 	u.Path += "/test_response_integer_unix-seconds_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixSecondsNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -37603,7 +39124,10 @@ func (c *Client) TestResponseIntegerUnixSecondsNullableArrayArray(ctx context.Co
 	u.Path += "/test_response_integer_unix-seconds_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseIntegerUnixSecondsNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -37664,7 +39188,10 @@ func (c *Client) TestResponseNull(ctx context.Context, request string) (res stru
 	u.Path += "/test_response_null"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNullRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -37725,7 +39252,10 @@ func (c *Client) TestResponseNullArray(ctx context.Context, request string) (res
 	u.Path += "/test_response_null_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNullArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -37786,7 +39316,10 @@ func (c *Client) TestResponseNullArrayArray(ctx context.Context, request string)
 	u.Path += "/test_response_null_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNullArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -37847,7 +39380,10 @@ func (c *Client) TestResponseNullNullable(ctx context.Context, request string) (
 	u.Path += "/test_response_null_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNullNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -37908,7 +39444,10 @@ func (c *Client) TestResponseNullNullableArray(ctx context.Context, request stri
 	u.Path += "/test_response_null_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNullNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -37969,7 +39508,10 @@ func (c *Client) TestResponseNullNullableArrayArray(ctx context.Context, request
 	u.Path += "/test_response_null_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNullNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38030,7 +39572,10 @@ func (c *Client) TestResponseNumber(ctx context.Context, request string) (res fl
 	u.Path += "/test_response_number"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38091,7 +39636,10 @@ func (c *Client) TestResponseNumberArray(ctx context.Context, request string) (r
 	u.Path += "/test_response_number_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38152,7 +39700,10 @@ func (c *Client) TestResponseNumberArrayArray(ctx context.Context, request strin
 	u.Path += "/test_response_number_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38213,7 +39764,10 @@ func (c *Client) TestResponseNumberDouble(ctx context.Context, request string) (
 	u.Path += "/test_response_number_double"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberDoubleRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38274,7 +39828,10 @@ func (c *Client) TestResponseNumberDoubleArray(ctx context.Context, request stri
 	u.Path += "/test_response_number_double_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberDoubleArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38335,7 +39892,10 @@ func (c *Client) TestResponseNumberDoubleArrayArray(ctx context.Context, request
 	u.Path += "/test_response_number_double_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberDoubleArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38396,7 +39956,10 @@ func (c *Client) TestResponseNumberDoubleNullable(ctx context.Context, request s
 	u.Path += "/test_response_number_double_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberDoubleNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38457,7 +40020,10 @@ func (c *Client) TestResponseNumberDoubleNullableArray(ctx context.Context, requ
 	u.Path += "/test_response_number_double_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberDoubleNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38518,7 +40084,10 @@ func (c *Client) TestResponseNumberDoubleNullableArrayArray(ctx context.Context,
 	u.Path += "/test_response_number_double_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberDoubleNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38579,7 +40148,10 @@ func (c *Client) TestResponseNumberFloat(ctx context.Context, request string) (r
 	u.Path += "/test_response_number_float"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberFloatRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38640,7 +40212,10 @@ func (c *Client) TestResponseNumberFloatArray(ctx context.Context, request strin
 	u.Path += "/test_response_number_float_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberFloatArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38701,7 +40276,10 @@ func (c *Client) TestResponseNumberFloatArrayArray(ctx context.Context, request 
 	u.Path += "/test_response_number_float_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberFloatArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38762,7 +40340,10 @@ func (c *Client) TestResponseNumberFloatNullable(ctx context.Context, request st
 	u.Path += "/test_response_number_float_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberFloatNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38823,7 +40404,10 @@ func (c *Client) TestResponseNumberFloatNullableArray(ctx context.Context, reque
 	u.Path += "/test_response_number_float_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberFloatNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38884,7 +40468,10 @@ func (c *Client) TestResponseNumberFloatNullableArrayArray(ctx context.Context, 
 	u.Path += "/test_response_number_float_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberFloatNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -38945,7 +40532,10 @@ func (c *Client) TestResponseNumberInt32(ctx context.Context, request string) (r
 	u.Path += "/test_response_number_int32"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberInt32Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -39006,7 +40596,10 @@ func (c *Client) TestResponseNumberInt32Array(ctx context.Context, request strin
 	u.Path += "/test_response_number_int32_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberInt32ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -39067,7 +40660,10 @@ func (c *Client) TestResponseNumberInt32ArrayArray(ctx context.Context, request 
 	u.Path += "/test_response_number_int32_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberInt32ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -39128,7 +40724,10 @@ func (c *Client) TestResponseNumberInt32Nullable(ctx context.Context, request st
 	u.Path += "/test_response_number_int32_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberInt32NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -39189,7 +40788,10 @@ func (c *Client) TestResponseNumberInt32NullableArray(ctx context.Context, reque
 	u.Path += "/test_response_number_int32_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberInt32NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -39250,7 +40852,10 @@ func (c *Client) TestResponseNumberInt32NullableArrayArray(ctx context.Context, 
 	u.Path += "/test_response_number_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberInt32NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -39311,7 +40916,10 @@ func (c *Client) TestResponseNumberInt64(ctx context.Context, request string) (r
 	u.Path += "/test_response_number_int64"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberInt64Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -39372,7 +40980,10 @@ func (c *Client) TestResponseNumberInt64Array(ctx context.Context, request strin
 	u.Path += "/test_response_number_int64_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberInt64ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -39433,7 +41044,10 @@ func (c *Client) TestResponseNumberInt64ArrayArray(ctx context.Context, request 
 	u.Path += "/test_response_number_int64_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberInt64ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -39494,7 +41108,10 @@ func (c *Client) TestResponseNumberInt64Nullable(ctx context.Context, request st
 	u.Path += "/test_response_number_int64_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberInt64NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -39555,7 +41172,10 @@ func (c *Client) TestResponseNumberInt64NullableArray(ctx context.Context, reque
 	u.Path += "/test_response_number_int64_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberInt64NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -39616,7 +41236,10 @@ func (c *Client) TestResponseNumberInt64NullableArrayArray(ctx context.Context, 
 	u.Path += "/test_response_number_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberInt64NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -39677,7 +41300,10 @@ func (c *Client) TestResponseNumberNullable(ctx context.Context, request string)
 	u.Path += "/test_response_number_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -39738,7 +41364,10 @@ func (c *Client) TestResponseNumberNullableArray(ctx context.Context, request st
 	u.Path += "/test_response_number_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -39799,7 +41428,10 @@ func (c *Client) TestResponseNumberNullableArrayArray(ctx context.Context, reque
 	u.Path += "/test_response_number_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseNumberNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -39860,7 +41492,10 @@ func (c *Client) TestResponseString(ctx context.Context, request string) (res st
 	u.Path += "/test_response_string"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -39921,7 +41556,10 @@ func (c *Client) TestResponseStringArray(ctx context.Context, request string) (r
 	u.Path += "/test_response_string_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -39982,7 +41620,10 @@ func (c *Client) TestResponseStringArrayArray(ctx context.Context, request strin
 	u.Path += "/test_response_string_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -40043,7 +41684,10 @@ func (c *Client) TestResponseStringBinary(ctx context.Context, request string) (
 	u.Path += "/test_response_string_binary"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringBinaryRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -40104,7 +41748,10 @@ func (c *Client) TestResponseStringBinaryArray(ctx context.Context, request stri
 	u.Path += "/test_response_string_binary_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringBinaryArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -40165,7 +41812,10 @@ func (c *Client) TestResponseStringBinaryArrayArray(ctx context.Context, request
 	u.Path += "/test_response_string_binary_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringBinaryArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -40226,7 +41876,10 @@ func (c *Client) TestResponseStringBinaryNullable(ctx context.Context, request s
 	u.Path += "/test_response_string_binary_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringBinaryNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -40287,7 +41940,10 @@ func (c *Client) TestResponseStringBinaryNullableArray(ctx context.Context, requ
 	u.Path += "/test_response_string_binary_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringBinaryNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -40348,7 +42004,10 @@ func (c *Client) TestResponseStringBinaryNullableArrayArray(ctx context.Context,
 	u.Path += "/test_response_string_binary_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringBinaryNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -40409,7 +42068,10 @@ func (c *Client) TestResponseStringByte(ctx context.Context, request string) (re
 	u.Path += "/test_response_string_byte"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringByteRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -40470,7 +42132,10 @@ func (c *Client) TestResponseStringByteArray(ctx context.Context, request string
 	u.Path += "/test_response_string_byte_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringByteArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -40531,7 +42196,10 @@ func (c *Client) TestResponseStringByteArrayArray(ctx context.Context, request s
 	u.Path += "/test_response_string_byte_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringByteArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -40592,7 +42260,10 @@ func (c *Client) TestResponseStringByteNullable(ctx context.Context, request str
 	u.Path += "/test_response_string_byte_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringByteNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -40653,7 +42324,10 @@ func (c *Client) TestResponseStringByteNullableArray(ctx context.Context, reques
 	u.Path += "/test_response_string_byte_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringByteNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -40714,7 +42388,10 @@ func (c *Client) TestResponseStringByteNullableArrayArray(ctx context.Context, r
 	u.Path += "/test_response_string_byte_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringByteNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -40775,7 +42452,10 @@ func (c *Client) TestResponseStringDate(ctx context.Context, request string) (re
 	u.Path += "/test_response_string_date"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDateRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -40836,7 +42516,10 @@ func (c *Client) TestResponseStringDateArray(ctx context.Context, request string
 	u.Path += "/test_response_string_date_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDateArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -40897,7 +42580,10 @@ func (c *Client) TestResponseStringDateArrayArray(ctx context.Context, request s
 	u.Path += "/test_response_string_date_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDateArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -40958,7 +42644,10 @@ func (c *Client) TestResponseStringDateNullable(ctx context.Context, request str
 	u.Path += "/test_response_string_date_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDateNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41019,7 +42708,10 @@ func (c *Client) TestResponseStringDateNullableArray(ctx context.Context, reques
 	u.Path += "/test_response_string_date_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDateNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41080,7 +42772,10 @@ func (c *Client) TestResponseStringDateNullableArrayArray(ctx context.Context, r
 	u.Path += "/test_response_string_date_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDateNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41141,7 +42836,10 @@ func (c *Client) TestResponseStringDateTime(ctx context.Context, request string)
 	u.Path += "/test_response_string_date-time"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDateTimeRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41202,7 +42900,10 @@ func (c *Client) TestResponseStringDateTimeArray(ctx context.Context, request st
 	u.Path += "/test_response_string_date-time_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDateTimeArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41263,7 +42964,10 @@ func (c *Client) TestResponseStringDateTimeArrayArray(ctx context.Context, reque
 	u.Path += "/test_response_string_date-time_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDateTimeArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41324,7 +43028,10 @@ func (c *Client) TestResponseStringDateTimeNullable(ctx context.Context, request
 	u.Path += "/test_response_string_date-time_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDateTimeNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41385,7 +43092,10 @@ func (c *Client) TestResponseStringDateTimeNullableArray(ctx context.Context, re
 	u.Path += "/test_response_string_date-time_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDateTimeNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41446,7 +43156,10 @@ func (c *Client) TestResponseStringDateTimeNullableArrayArray(ctx context.Contex
 	u.Path += "/test_response_string_date-time_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDateTimeNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41507,7 +43220,10 @@ func (c *Client) TestResponseStringDuration(ctx context.Context, request string)
 	u.Path += "/test_response_string_duration"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDurationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41568,7 +43284,10 @@ func (c *Client) TestResponseStringDurationArray(ctx context.Context, request st
 	u.Path += "/test_response_string_duration_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDurationArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41629,7 +43348,10 @@ func (c *Client) TestResponseStringDurationArrayArray(ctx context.Context, reque
 	u.Path += "/test_response_string_duration_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDurationArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41690,7 +43412,10 @@ func (c *Client) TestResponseStringDurationNullable(ctx context.Context, request
 	u.Path += "/test_response_string_duration_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDurationNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41751,7 +43476,10 @@ func (c *Client) TestResponseStringDurationNullableArray(ctx context.Context, re
 	u.Path += "/test_response_string_duration_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDurationNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41812,7 +43540,10 @@ func (c *Client) TestResponseStringDurationNullableArrayArray(ctx context.Contex
 	u.Path += "/test_response_string_duration_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringDurationNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41873,7 +43604,10 @@ func (c *Client) TestResponseStringEmail(ctx context.Context, request string) (r
 	u.Path += "/test_response_string_email"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringEmailRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41934,7 +43668,10 @@ func (c *Client) TestResponseStringEmailArray(ctx context.Context, request strin
 	u.Path += "/test_response_string_email_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringEmailArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -41995,7 +43732,10 @@ func (c *Client) TestResponseStringEmailArrayArray(ctx context.Context, request 
 	u.Path += "/test_response_string_email_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringEmailArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -42056,7 +43796,10 @@ func (c *Client) TestResponseStringEmailNullable(ctx context.Context, request st
 	u.Path += "/test_response_string_email_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringEmailNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -42117,7 +43860,10 @@ func (c *Client) TestResponseStringEmailNullableArray(ctx context.Context, reque
 	u.Path += "/test_response_string_email_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringEmailNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -42178,7 +43924,10 @@ func (c *Client) TestResponseStringEmailNullableArrayArray(ctx context.Context, 
 	u.Path += "/test_response_string_email_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringEmailNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -42239,7 +43988,10 @@ func (c *Client) TestResponseStringHostname(ctx context.Context, request string)
 	u.Path += "/test_response_string_hostname"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringHostnameRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -42300,7 +44052,10 @@ func (c *Client) TestResponseStringHostnameArray(ctx context.Context, request st
 	u.Path += "/test_response_string_hostname_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringHostnameArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -42361,7 +44116,10 @@ func (c *Client) TestResponseStringHostnameArrayArray(ctx context.Context, reque
 	u.Path += "/test_response_string_hostname_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringHostnameArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -42422,7 +44180,10 @@ func (c *Client) TestResponseStringHostnameNullable(ctx context.Context, request
 	u.Path += "/test_response_string_hostname_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringHostnameNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -42483,7 +44244,10 @@ func (c *Client) TestResponseStringHostnameNullableArray(ctx context.Context, re
 	u.Path += "/test_response_string_hostname_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringHostnameNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -42544,7 +44308,10 @@ func (c *Client) TestResponseStringHostnameNullableArrayArray(ctx context.Contex
 	u.Path += "/test_response_string_hostname_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringHostnameNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -42605,7 +44372,10 @@ func (c *Client) TestResponseStringIP(ctx context.Context, request string) (res 
 	u.Path += "/test_response_string_ip"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIPRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -42666,7 +44436,10 @@ func (c *Client) TestResponseStringIPArray(ctx context.Context, request string) 
 	u.Path += "/test_response_string_ip_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIPArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -42727,7 +44500,10 @@ func (c *Client) TestResponseStringIPArrayArray(ctx context.Context, request str
 	u.Path += "/test_response_string_ip_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIPArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -42788,7 +44564,10 @@ func (c *Client) TestResponseStringIPNullable(ctx context.Context, request strin
 	u.Path += "/test_response_string_ip_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIPNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -42849,7 +44628,10 @@ func (c *Client) TestResponseStringIPNullableArray(ctx context.Context, request 
 	u.Path += "/test_response_string_ip_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIPNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -42910,7 +44692,10 @@ func (c *Client) TestResponseStringIPNullableArrayArray(ctx context.Context, req
 	u.Path += "/test_response_string_ip_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIPNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -42971,7 +44756,10 @@ func (c *Client) TestResponseStringInt32(ctx context.Context, request string) (r
 	u.Path += "/test_response_string_int32"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringInt32Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43032,7 +44820,10 @@ func (c *Client) TestResponseStringInt32Array(ctx context.Context, request strin
 	u.Path += "/test_response_string_int32_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringInt32ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43093,7 +44884,10 @@ func (c *Client) TestResponseStringInt32ArrayArray(ctx context.Context, request 
 	u.Path += "/test_response_string_int32_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringInt32ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43154,7 +44948,10 @@ func (c *Client) TestResponseStringInt32Nullable(ctx context.Context, request st
 	u.Path += "/test_response_string_int32_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringInt32NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43215,7 +45012,10 @@ func (c *Client) TestResponseStringInt32NullableArray(ctx context.Context, reque
 	u.Path += "/test_response_string_int32_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringInt32NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43276,7 +45076,10 @@ func (c *Client) TestResponseStringInt32NullableArrayArray(ctx context.Context, 
 	u.Path += "/test_response_string_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringInt32NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43337,7 +45140,10 @@ func (c *Client) TestResponseStringInt64(ctx context.Context, request string) (r
 	u.Path += "/test_response_string_int64"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringInt64Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43398,7 +45204,10 @@ func (c *Client) TestResponseStringInt64Array(ctx context.Context, request strin
 	u.Path += "/test_response_string_int64_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringInt64ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43459,7 +45268,10 @@ func (c *Client) TestResponseStringInt64ArrayArray(ctx context.Context, request 
 	u.Path += "/test_response_string_int64_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringInt64ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43520,7 +45332,10 @@ func (c *Client) TestResponseStringInt64Nullable(ctx context.Context, request st
 	u.Path += "/test_response_string_int64_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringInt64NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43581,7 +45396,10 @@ func (c *Client) TestResponseStringInt64NullableArray(ctx context.Context, reque
 	u.Path += "/test_response_string_int64_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringInt64NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43642,7 +45460,10 @@ func (c *Client) TestResponseStringInt64NullableArrayArray(ctx context.Context, 
 	u.Path += "/test_response_string_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringInt64NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43703,7 +45524,10 @@ func (c *Client) TestResponseStringIpv4(ctx context.Context, request string) (re
 	u.Path += "/test_response_string_ipv4"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIpv4Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43764,7 +45588,10 @@ func (c *Client) TestResponseStringIpv4Array(ctx context.Context, request string
 	u.Path += "/test_response_string_ipv4_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIpv4ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43825,7 +45652,10 @@ func (c *Client) TestResponseStringIpv4ArrayArray(ctx context.Context, request s
 	u.Path += "/test_response_string_ipv4_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIpv4ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43886,7 +45716,10 @@ func (c *Client) TestResponseStringIpv4Nullable(ctx context.Context, request str
 	u.Path += "/test_response_string_ipv4_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIpv4NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -43947,7 +45780,10 @@ func (c *Client) TestResponseStringIpv4NullableArray(ctx context.Context, reques
 	u.Path += "/test_response_string_ipv4_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIpv4NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44008,7 +45844,10 @@ func (c *Client) TestResponseStringIpv4NullableArrayArray(ctx context.Context, r
 	u.Path += "/test_response_string_ipv4_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIpv4NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44069,7 +45908,10 @@ func (c *Client) TestResponseStringIpv6(ctx context.Context, request string) (re
 	u.Path += "/test_response_string_ipv6"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIpv6Request(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44130,7 +45972,10 @@ func (c *Client) TestResponseStringIpv6Array(ctx context.Context, request string
 	u.Path += "/test_response_string_ipv6_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIpv6ArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44191,7 +46036,10 @@ func (c *Client) TestResponseStringIpv6ArrayArray(ctx context.Context, request s
 	u.Path += "/test_response_string_ipv6_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIpv6ArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44252,7 +46100,10 @@ func (c *Client) TestResponseStringIpv6Nullable(ctx context.Context, request str
 	u.Path += "/test_response_string_ipv6_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIpv6NullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44313,7 +46164,10 @@ func (c *Client) TestResponseStringIpv6NullableArray(ctx context.Context, reques
 	u.Path += "/test_response_string_ipv6_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIpv6NullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44374,7 +46228,10 @@ func (c *Client) TestResponseStringIpv6NullableArrayArray(ctx context.Context, r
 	u.Path += "/test_response_string_ipv6_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringIpv6NullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44435,7 +46292,10 @@ func (c *Client) TestResponseStringNullable(ctx context.Context, request string)
 	u.Path += "/test_response_string_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44496,7 +46356,10 @@ func (c *Client) TestResponseStringNullableArray(ctx context.Context, request st
 	u.Path += "/test_response_string_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44557,7 +46420,10 @@ func (c *Client) TestResponseStringNullableArrayArray(ctx context.Context, reque
 	u.Path += "/test_response_string_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44618,7 +46484,10 @@ func (c *Client) TestResponseStringPassword(ctx context.Context, request string)
 	u.Path += "/test_response_string_password"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringPasswordRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44679,7 +46548,10 @@ func (c *Client) TestResponseStringPasswordArray(ctx context.Context, request st
 	u.Path += "/test_response_string_password_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringPasswordArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44740,7 +46612,10 @@ func (c *Client) TestResponseStringPasswordArrayArray(ctx context.Context, reque
 	u.Path += "/test_response_string_password_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringPasswordArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44801,7 +46676,10 @@ func (c *Client) TestResponseStringPasswordNullable(ctx context.Context, request
 	u.Path += "/test_response_string_password_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringPasswordNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44862,7 +46740,10 @@ func (c *Client) TestResponseStringPasswordNullableArray(ctx context.Context, re
 	u.Path += "/test_response_string_password_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringPasswordNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44923,7 +46804,10 @@ func (c *Client) TestResponseStringPasswordNullableArrayArray(ctx context.Contex
 	u.Path += "/test_response_string_password_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringPasswordNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -44984,7 +46868,10 @@ func (c *Client) TestResponseStringTime(ctx context.Context, request string) (re
 	u.Path += "/test_response_string_time"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringTimeRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -45045,7 +46932,10 @@ func (c *Client) TestResponseStringTimeArray(ctx context.Context, request string
 	u.Path += "/test_response_string_time_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringTimeArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -45106,7 +46996,10 @@ func (c *Client) TestResponseStringTimeArrayArray(ctx context.Context, request s
 	u.Path += "/test_response_string_time_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringTimeArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -45167,7 +47060,10 @@ func (c *Client) TestResponseStringTimeNullable(ctx context.Context, request str
 	u.Path += "/test_response_string_time_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringTimeNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -45228,7 +47124,10 @@ func (c *Client) TestResponseStringTimeNullableArray(ctx context.Context, reques
 	u.Path += "/test_response_string_time_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringTimeNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -45289,7 +47188,10 @@ func (c *Client) TestResponseStringTimeNullableArrayArray(ctx context.Context, r
 	u.Path += "/test_response_string_time_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringTimeNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -45350,7 +47252,10 @@ func (c *Client) TestResponseStringURI(ctx context.Context, request string) (res
 	u.Path += "/test_response_string_uri"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringURIRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -45411,7 +47316,10 @@ func (c *Client) TestResponseStringURIArray(ctx context.Context, request string)
 	u.Path += "/test_response_string_uri_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringURIArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -45472,7 +47380,10 @@ func (c *Client) TestResponseStringURIArrayArray(ctx context.Context, request st
 	u.Path += "/test_response_string_uri_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringURIArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -45533,7 +47444,10 @@ func (c *Client) TestResponseStringURINullable(ctx context.Context, request stri
 	u.Path += "/test_response_string_uri_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringURINullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -45594,7 +47508,10 @@ func (c *Client) TestResponseStringURINullableArray(ctx context.Context, request
 	u.Path += "/test_response_string_uri_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringURINullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -45655,7 +47572,10 @@ func (c *Client) TestResponseStringURINullableArrayArray(ctx context.Context, re
 	u.Path += "/test_response_string_uri_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringURINullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -45716,7 +47636,10 @@ func (c *Client) TestResponseStringUUID(ctx context.Context, request string) (re
 	u.Path += "/test_response_string_uuid"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUUIDRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -45777,7 +47700,10 @@ func (c *Client) TestResponseStringUUIDArray(ctx context.Context, request string
 	u.Path += "/test_response_string_uuid_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUUIDArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -45838,7 +47764,10 @@ func (c *Client) TestResponseStringUUIDArrayArray(ctx context.Context, request s
 	u.Path += "/test_response_string_uuid_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUUIDArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -45899,7 +47828,10 @@ func (c *Client) TestResponseStringUUIDNullable(ctx context.Context, request str
 	u.Path += "/test_response_string_uuid_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUUIDNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -45960,7 +47892,10 @@ func (c *Client) TestResponseStringUUIDNullableArray(ctx context.Context, reques
 	u.Path += "/test_response_string_uuid_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUUIDNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46021,7 +47956,10 @@ func (c *Client) TestResponseStringUUIDNullableArrayArray(ctx context.Context, r
 	u.Path += "/test_response_string_uuid_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUUIDNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46082,7 +48020,10 @@ func (c *Client) TestResponseStringUnix(ctx context.Context, request string) (re
 	u.Path += "/test_response_string_unix"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46143,7 +48084,10 @@ func (c *Client) TestResponseStringUnixArray(ctx context.Context, request string
 	u.Path += "/test_response_string_unix_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46204,7 +48148,10 @@ func (c *Client) TestResponseStringUnixArrayArray(ctx context.Context, request s
 	u.Path += "/test_response_string_unix_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46265,7 +48212,10 @@ func (c *Client) TestResponseStringUnixMicro(ctx context.Context, request string
 	u.Path += "/test_response_string_unix-micro"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixMicroRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46326,7 +48276,10 @@ func (c *Client) TestResponseStringUnixMicroArray(ctx context.Context, request s
 	u.Path += "/test_response_string_unix-micro_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixMicroArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46387,7 +48340,10 @@ func (c *Client) TestResponseStringUnixMicroArrayArray(ctx context.Context, requ
 	u.Path += "/test_response_string_unix-micro_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixMicroArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46448,7 +48404,10 @@ func (c *Client) TestResponseStringUnixMicroNullable(ctx context.Context, reques
 	u.Path += "/test_response_string_unix-micro_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixMicroNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46509,7 +48468,10 @@ func (c *Client) TestResponseStringUnixMicroNullableArray(ctx context.Context, r
 	u.Path += "/test_response_string_unix-micro_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixMicroNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46570,7 +48532,10 @@ func (c *Client) TestResponseStringUnixMicroNullableArrayArray(ctx context.Conte
 	u.Path += "/test_response_string_unix-micro_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixMicroNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46631,7 +48596,10 @@ func (c *Client) TestResponseStringUnixMilli(ctx context.Context, request string
 	u.Path += "/test_response_string_unix-milli"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixMilliRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46692,7 +48660,10 @@ func (c *Client) TestResponseStringUnixMilliArray(ctx context.Context, request s
 	u.Path += "/test_response_string_unix-milli_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixMilliArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46753,7 +48724,10 @@ func (c *Client) TestResponseStringUnixMilliArrayArray(ctx context.Context, requ
 	u.Path += "/test_response_string_unix-milli_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixMilliArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46814,7 +48788,10 @@ func (c *Client) TestResponseStringUnixMilliNullable(ctx context.Context, reques
 	u.Path += "/test_response_string_unix-milli_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixMilliNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46875,7 +48852,10 @@ func (c *Client) TestResponseStringUnixMilliNullableArray(ctx context.Context, r
 	u.Path += "/test_response_string_unix-milli_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixMilliNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46936,7 +48916,10 @@ func (c *Client) TestResponseStringUnixMilliNullableArrayArray(ctx context.Conte
 	u.Path += "/test_response_string_unix-milli_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixMilliNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -46997,7 +48980,10 @@ func (c *Client) TestResponseStringUnixNano(ctx context.Context, request string)
 	u.Path += "/test_response_string_unix-nano"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixNanoRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47058,7 +49044,10 @@ func (c *Client) TestResponseStringUnixNanoArray(ctx context.Context, request st
 	u.Path += "/test_response_string_unix-nano_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixNanoArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47119,7 +49108,10 @@ func (c *Client) TestResponseStringUnixNanoArrayArray(ctx context.Context, reque
 	u.Path += "/test_response_string_unix-nano_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixNanoArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47180,7 +49172,10 @@ func (c *Client) TestResponseStringUnixNanoNullable(ctx context.Context, request
 	u.Path += "/test_response_string_unix-nano_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixNanoNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47241,7 +49236,10 @@ func (c *Client) TestResponseStringUnixNanoNullableArray(ctx context.Context, re
 	u.Path += "/test_response_string_unix-nano_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixNanoNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47302,7 +49300,10 @@ func (c *Client) TestResponseStringUnixNanoNullableArrayArray(ctx context.Contex
 	u.Path += "/test_response_string_unix-nano_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixNanoNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47363,7 +49364,10 @@ func (c *Client) TestResponseStringUnixNullable(ctx context.Context, request str
 	u.Path += "/test_response_string_unix_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47424,7 +49428,10 @@ func (c *Client) TestResponseStringUnixNullableArray(ctx context.Context, reques
 	u.Path += "/test_response_string_unix_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47485,7 +49492,10 @@ func (c *Client) TestResponseStringUnixNullableArrayArray(ctx context.Context, r
 	u.Path += "/test_response_string_unix_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47546,7 +49556,10 @@ func (c *Client) TestResponseStringUnixSeconds(ctx context.Context, request stri
 	u.Path += "/test_response_string_unix-seconds"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixSecondsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47607,7 +49620,10 @@ func (c *Client) TestResponseStringUnixSecondsArray(ctx context.Context, request
 	u.Path += "/test_response_string_unix-seconds_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixSecondsArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47668,7 +49684,10 @@ func (c *Client) TestResponseStringUnixSecondsArrayArray(ctx context.Context, re
 	u.Path += "/test_response_string_unix-seconds_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixSecondsArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47729,7 +49748,10 @@ func (c *Client) TestResponseStringUnixSecondsNullable(ctx context.Context, requ
 	u.Path += "/test_response_string_unix-seconds_nullable"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixSecondsNullableRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47790,7 +49812,10 @@ func (c *Client) TestResponseStringUnixSecondsNullableArray(ctx context.Context,
 	u.Path += "/test_response_string_unix-seconds_nullable_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixSecondsNullableArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -47851,7 +49876,10 @@ func (c *Client) TestResponseStringUnixSecondsNullableArrayArray(ctx context.Con
 	u.Path += "/test_response_string_unix-seconds_nullable_array_array"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestResponseStringUnixSecondsNullableArrayArrayRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}

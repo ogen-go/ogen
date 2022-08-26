@@ -169,7 +169,10 @@ func (c *Client) DataGetFormat(ctx context.Context, params DataGetFormatParams) 
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -256,7 +259,10 @@ func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params De
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeDefaultTestRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -318,7 +324,10 @@ func (c *Client) ErrorGet(ctx context.Context) (res ErrorStatusCode, err error) 
 	u.Path += "/error"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -409,7 +418,10 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -484,7 +496,10 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 	u.Path += "/foobar"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeFoobarPostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -542,7 +557,10 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDef, err error) {
 	u.Path += "/foobar"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -601,7 +619,10 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Has
 	u.Path += "/test/header"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "EncodeHeaderParams"
 	h := uri.NewHeaderEncoder(r.Header)
@@ -672,7 +693,10 @@ func (c *Client) NoAdditionalPropertiesTest(ctx context.Context) (res NoAddition
 	u.Path += "/noAdditionalPropertiesTest"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -729,7 +753,10 @@ func (c *Client) NullableDefaultResponse(ctx context.Context) (res NilIntStatusC
 	u.Path += "/nullableDefaultResponse"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -795,7 +822,10 @@ func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugO
 	u.Path += "/oneofBug"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeOneofBugRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -853,7 +883,10 @@ func (c *Client) PatternRecursiveMapGet(ctx context.Context) (res PatternRecursi
 	u.Path += "/patternRecursiveMap"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -928,7 +961,10 @@ func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err er
 	u.Path += "/pet"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePetCreateRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1004,7 +1040,10 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1095,7 +1134,10 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "EncodeHeaderParams"
 	h := uri.NewHeaderEncoder(r.Header)
@@ -1215,7 +1257,10 @@ func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDPa
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1289,7 +1334,10 @@ func (c *Client) PetGetAvatarByName(ctx context.Context, params PetGetAvatarByNa
 	u.Path += "/avatar"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1362,7 +1410,10 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1435,7 +1486,10 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1506,7 +1560,10 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 	u.Path += "/pet/updateNameAlias"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePetUpdateNameAliasPostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1588,7 +1645,10 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res 
 	u.Path += "/pet/updateName"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePetUpdateNamePostRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1669,7 +1729,10 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvata
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePetUploadAvatarByIDRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1727,7 +1790,10 @@ func (c *Client) RecursiveArrayGet(ctx context.Context) (res RecursiveArray, err
 	u.Path += "/recursiveArray"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1782,7 +1848,10 @@ func (c *Client) RecursiveMapGet(ctx context.Context) (res RecursiveMap, err err
 	u.Path += "/recursiveMap"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1839,7 +1908,10 @@ func (c *Client) SecurityTest(ctx context.Context) (res string, err error) {
 	u.Path += "/securityTest"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "Security:APIKey"
 	if err := c.securityAPIKey(ctx, "SecurityTest", r); err != nil {
@@ -1899,7 +1971,10 @@ func (c *Client) StringIntMapGet(ctx context.Context) (res StringIntMap, err err
 	u.Path += "/stringIntMap"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1980,7 +2055,10 @@ func (c *Client) TestContentParameter(ctx context.Context, params TestContentPar
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2046,7 +2124,10 @@ func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValid
 	u.Path += "/testFloatValidation"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestFloatValidationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -2106,7 +2187,10 @@ func (c *Client) TestNullableOneofs(ctx context.Context) (res TestNullableOneofs
 	u.Path += "/testNullableOneofs"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -2201,7 +2285,10 @@ func (c *Client) TestObjectQueryParameter(ctx context.Context, params TestObject
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)

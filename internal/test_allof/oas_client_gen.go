@@ -108,7 +108,10 @@ func (c *Client) NullableStrings(ctx context.Context, request string) (res Nulla
 	u.Path += "/nullableStrings"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeNullableStringsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -179,7 +182,10 @@ func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, reques
 	u.Path += "/objectsWithConflictingArrayProperty"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeObjectsWithConflictingArrayPropertyRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -250,7 +256,10 @@ func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request O
 	u.Path += "/objectsWithConflictingProperties"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeObjectsWithConflictingPropertiesRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -335,7 +344,10 @@ func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq
 	u.Path += "/referencedAllof"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReferencedAllofRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -420,7 +432,10 @@ func (c *Client) ReferencedAllofOptional(ctx context.Context, request Referenced
 	u.Path += "/referencedAllofOptional"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeReferencedAllofOptionalRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -500,7 +515,10 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) (res SimpleInte
 	u.Path += "/simpleInteger"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSimpleIntegerRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -563,7 +581,10 @@ func (c *Client) SimpleObjects(ctx context.Context, request SimpleObjectsReq) (r
 	u.Path += "/simpleObjects"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeSimpleObjectsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}

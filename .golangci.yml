@@ -113,21 +113,10 @@ issues:
     - path: (cmd|tools)(\/|\\).+(\/|\\).+\.go
       text: G(304|306|307)
 
-    # Checked unsafe.
-    - path: http
-      linters: [ gosec ]
-      text: G103
-
     # We are using quoting algorithm from mime/multipart package. False-positive.
     - path: http(\/|\\)file\.go
       linters: [ gocritic ]
       text: sprintfQuotedString
-
-    # Intended design.
-    - path: http
-      source: Set
-      linters: [ revive ]
-      text: context-as-argument
 
     # Not supposed to be constant.
     - linters: [ goconst ]

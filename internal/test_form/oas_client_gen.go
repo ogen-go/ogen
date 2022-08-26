@@ -89,7 +89,10 @@ func (c *Client) TestFormURLEncoded(ctx context.Context, request TestForm) (res 
 	u.Path += "/testFormURLEncoded"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestFormURLEncodedRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -150,7 +153,10 @@ func (c *Client) TestMultipart(ctx context.Context, request TestForm) (res TestM
 	u.Path += "/testMultipart"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestMultipartRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -219,7 +225,10 @@ func (c *Client) TestMultipartUpload(ctx context.Context, request TestMultipartU
 	u.Path += "/testMultipartUpload"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestMultipartUploadRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -288,7 +297,10 @@ func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormS
 	u.Path += "/testShareFormSchema"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeTestShareFormSchemaRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}

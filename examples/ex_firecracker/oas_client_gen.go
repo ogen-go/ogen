@@ -100,7 +100,10 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 	u.Path += "/snapshot/create"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeCreateSnapshotRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -171,7 +174,10 @@ func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInf
 	u.Path += "/actions"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeCreateSyncActionRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -233,7 +239,10 @@ func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloon
 	u.Path += "/balloon"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -292,7 +301,10 @@ func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonS
 	u.Path += "/balloon/statistics"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -351,7 +363,10 @@ func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes,
 	u.Path += "/"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -410,7 +425,10 @@ func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRe
 	u.Path += "/vm/config"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -471,7 +489,10 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 	u.Path += "/machine-config"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -532,7 +553,10 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 	u.Path += "/snapshot/load"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeLoadSnapshotRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -593,7 +617,10 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res Mmd
 	u.Path += "/mmds/config"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeMmdsConfigPutRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -653,7 +680,10 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 	u.Path += "/mmds"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -711,7 +741,10 @@ func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res Mmds
 	u.Path += "/mmds"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeMmdsPatchRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -772,7 +805,10 @@ func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutR
 	u.Path += "/mmds"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeMmdsPutRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -836,7 +872,10 @@ func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res P
 	u.Path += "/balloon"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePatchBalloonRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -900,7 +939,10 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 	u.Path += "/balloon/statistics"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePatchBalloonStatsIntervalRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -986,7 +1028,10 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePatchGuestDriveByIDRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1071,7 +1116,10 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePatchGuestNetworkInterfaceByIDRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1150,7 +1198,10 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachi
 	u.Path += "/machine-config"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePatchMachineConfigurationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1221,7 +1272,10 @@ func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err e
 	u.Path += "/vm"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePatchVmRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1285,7 +1339,10 @@ func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloo
 	u.Path += "/balloon"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePutBalloonRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1349,7 +1406,10 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 	u.Path += "/boot-source"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePutGuestBootSourceRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1435,7 +1495,10 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePutGuestDriveByIDRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1520,7 +1583,10 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePutGuestNetworkInterfaceByIDRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1592,7 +1658,10 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 	u.Path += "/vsock"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePutGuestVsockRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1663,7 +1732,10 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 	u.Path += "/logger"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePutLoggerRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1744,7 +1816,10 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachine
 	u.Path += "/machine-config"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePutMachineConfigurationRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -1807,7 +1882,10 @@ func (c *Client) PutMetrics(ctx context.Context, request Metrics) (res PutMetric
 	u.Path += "/metrics"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PUT", u, nil)
+	r, err := ht.NewRequest(ctx, "PUT", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodePutMetricsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}

@@ -92,7 +92,10 @@ func (c *Client) CreatePet(ctx context.Context, request CreatePetReq) (res Creat
 	u.Path += "/pets"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeCreatePetRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -170,7 +173,10 @@ func (c *Client) CreatePetCategories(ctx context.Context, request CreatePetCateg
 	u.Path += "/categories"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeCreatePetCategoriesRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -248,7 +254,10 @@ func (c *Client) CreatePetFriends(ctx context.Context, request CreatePetFriendsR
 	u.Path += "/friends"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeCreatePetFriendsRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -326,7 +335,10 @@ func (c *Client) CreatePetOwner(ctx context.Context, request CreatePetOwnerReq, 
 	u.Path += "/owner"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "POST", u, nil)
+	r, err := ht.NewRequest(ctx, "POST", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeCreatePetOwnerRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
@@ -402,7 +414,10 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -476,7 +491,10 @@ func (c *Client) DeletePetOwner(ctx context.Context, params DeletePetOwnerParams
 	u.Path += "/owner"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "DELETE", u, nil)
+	r, err := ht.NewRequest(ctx, "DELETE", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -573,7 +591,10 @@ func (c *Client) ListPet(ctx context.Context, params ListPetParams) (res ListPet
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -685,7 +706,10 @@ func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategories
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -797,7 +821,10 @@ func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams
 	u.RawQuery = q.Values().Encode()
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -870,7 +897,10 @@ func (c *Client) ReadPet(ctx context.Context, params ReadPetParams) (res ReadPet
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -944,7 +974,10 @@ func (c *Client) ReadPetOwner(ctx context.Context, params ReadPetOwnerParams) (r
 	u.Path += "/owner"
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "GET", u, nil)
+	r, err := ht.NewRequest(ctx, "GET", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 
 	stage = "SendRequest"
 	resp, err := c.cfg.Client.Do(r)
@@ -1018,7 +1051,10 @@ func (c *Client) UpdatePet(ctx context.Context, request UpdatePetReq, params Upd
 	}
 
 	stage = "EncodeRequest"
-	r := ht.NewRequest(ctx, "PATCH", u, nil)
+	r, err := ht.NewRequest(ctx, "PATCH", u, nil)
+	if err != nil {
+		return res, errors.Wrap(err, "create request")
+	}
 	if err := encodeUpdatePetRequest(request, r); err != nil {
 		return res, errors.Wrap(err, "encode request")
 	}
