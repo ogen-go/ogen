@@ -1,3 +1,4 @@
+// Package parser contains the parser for OpenAPI Spec.
 package parser
 
 import (

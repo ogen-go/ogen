@@ -98,20 +98,26 @@ issues:
       linters: [ goconst, funlen, gocognit, gocyclo ]
 
     # TODO(tdakkota): add comments?
-    - path: (conv|uri|gen)
+    - path: (conv|uri|gen|otelogen)
       linters: [ revive, golint ]
-      text: "should have comment.+or be unexported"
+      text: "(should have comment.+or be unexported|comment on exported)"
 
+    # We don't need package comments for internal packages.
     # We don't need comments for command packages.
-    - path: (cmd|tools)(\/|\\).+(\/|\\).+\.go
+    - path: .*(cmd|tools|internal)(\/|\\).*
       linters: [ revive, golint ]
-      text: "should have comment.+or be unexported"
+      text: "should have (comment.+or be unexported|a package comment)"
 
     # Intended in commands:
     # G307: Deferring unsafe method "Close" on type "*os.File"
     # G304: Potential file inclusion via variable
-    - path: (cmd|tools)(\/|\\).+(\/|\\).+\.go
+    - path: .*(cmd|tools)(\/|\\).+(\/|\\).+\.go
       text: G(304|306|307)
+
+    # Nobody cares.
+    # G114: Use of net/http serve function that has no support for setting timeouts
+    - path: techempower(\/|\\)main.go
+      text: G114
 
     # We are using quoting algorithm from mime/multipart package. False-positive.
     - path: http(\/|\\)file\.go

@@ -86,7 +86,7 @@ func decodeShowPetByIdParams(args [1]string, r *http.Request) (params ShowPetByI
 				params.PetId = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: petId: parse")
 			}
 		} else {
 			return params, errors.New("path: petId: not specified")

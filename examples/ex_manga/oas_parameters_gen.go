@@ -9,6 +9,7 @@ import (
 
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 type GetBookParams struct {
@@ -42,7 +43,24 @@ func decodeGetBookParams(args [1]string, r *http.Request) (params GetBookParams,
 				params.BookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: book_id: parse")
+			}
+			if err := func() error {
+				if err := (validate.Int{
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
+				}).Validate(int64(params.BookID)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: book_id: invalid")
 			}
 		} else {
 			return params, errors.New("path: book_id: not specified")
@@ -84,7 +102,24 @@ func decodeGetPageCoverImageParams(args [2]string, r *http.Request) (params GetP
 				params.MediaID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: media_id: parse")
+			}
+			if err := func() error {
+				if err := (validate.Int{
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
+				}).Validate(int64(params.MediaID)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: media_id: invalid")
 			}
 		} else {
 			return params, errors.New("path: media_id: not specified")
@@ -120,7 +155,7 @@ func decodeGetPageCoverImageParams(args [2]string, r *http.Request) (params GetP
 				params.Format = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: format: parse")
 			}
 		} else {
 			return params, errors.New("path: format: not specified")
@@ -164,7 +199,24 @@ func decodeGetPageImageParams(args [3]string, r *http.Request) (params GetPageIm
 				params.MediaID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: media_id: parse")
+			}
+			if err := func() error {
+				if err := (validate.Int{
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
+				}).Validate(int64(params.MediaID)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: media_id: invalid")
 			}
 		} else {
 			return params, errors.New("path: media_id: not specified")
@@ -195,7 +247,24 @@ func decodeGetPageImageParams(args [3]string, r *http.Request) (params GetPageIm
 				params.Page = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: page: parse")
+			}
+			if err := func() error {
+				if err := (validate.Int{
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
+				}).Validate(int64(params.Page)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: page: invalid")
 			}
 		} else {
 			return params, errors.New("path: page: not specified")
@@ -231,7 +300,7 @@ func decodeGetPageImageParams(args [3]string, r *http.Request) (params GetPageIm
 				params.Format = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: format: parse")
 			}
 		} else {
 			return params, errors.New("path: format: not specified")
@@ -275,7 +344,24 @@ func decodeGetPageThumbnailImageParams(args [3]string, r *http.Request) (params 
 				params.MediaID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: media_id: parse")
+			}
+			if err := func() error {
+				if err := (validate.Int{
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
+				}).Validate(int64(params.MediaID)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: media_id: invalid")
 			}
 		} else {
 			return params, errors.New("path: media_id: not specified")
@@ -306,7 +392,24 @@ func decodeGetPageThumbnailImageParams(args [3]string, r *http.Request) (params 
 				params.Page = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: page: parse")
+			}
+			if err := func() error {
+				if err := (validate.Int{
+					MinSet:        true,
+					Min:           0,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
+				}).Validate(int64(params.Page)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: page: invalid")
 			}
 		} else {
 			return params, errors.New("path: page: not specified")
@@ -342,7 +445,7 @@ func decodeGetPageThumbnailImageParams(args [3]string, r *http.Request) (params 
 				params.Format = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: format: parse")
 			}
 		} else {
 			return params, errors.New("path: format: not specified")

@@ -3233,7 +3233,7 @@ func decodeListAppsV1NamespacedControllerRevisionParams(args [1]string, r *http.
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -3670,7 +3670,7 @@ func decodeListAppsV1NamespacedDaemonSetParams(args [1]string, r *http.Request) 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -4107,7 +4107,7 @@ func decodeListAppsV1NamespacedDeploymentParams(args [1]string, r *http.Request)
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -4544,7 +4544,7 @@ func decodeListAppsV1NamespacedReplicaSetParams(args [1]string, r *http.Request)
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -4981,7 +4981,7 @@ func decodeListAppsV1NamespacedStatefulSetParams(args [1]string, r *http.Request
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -6630,7 +6630,7 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args [1]stri
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -7471,7 +7471,7 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args [1
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -8312,7 +8312,7 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args [1
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -9557,7 +9557,7 @@ func decodeListBatchV1NamespacedCronJobParams(args [1]string, r *http.Request) (
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -9994,7 +9994,7 @@ func decodeListBatchV1NamespacedJobParams(args [1]string, r *http.Request) (para
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -10835,7 +10835,7 @@ func decodeListBatchV1beta1NamespacedCronJobParams(args [1]string, r *http.Reque
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -12080,7 +12080,7 @@ func decodeListCoordinationV1NamespacedLeaseParams(args [1]string, r *http.Reque
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -14941,7 +14941,7 @@ func decodeListCoreV1NamespacedConfigMapParams(args [1]string, r *http.Request) 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -15378,7 +15378,7 @@ func decodeListCoreV1NamespacedEndpointsParams(args [1]string, r *http.Request) 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -15815,7 +15815,7 @@ func decodeListCoreV1NamespacedEventParams(args [1]string, r *http.Request) (par
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -16252,7 +16252,7 @@ func decodeListCoreV1NamespacedLimitRangeParams(args [1]string, r *http.Request)
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -16689,7 +16689,7 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args [1]string, r *ht
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -17126,7 +17126,7 @@ func decodeListCoreV1NamespacedPodParams(args [1]string, r *http.Request) (param
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -17563,7 +17563,7 @@ func decodeListCoreV1NamespacedPodTemplateParams(args [1]string, r *http.Request
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -18000,7 +18000,7 @@ func decodeListCoreV1NamespacedReplicationControllerParams(args [1]string, r *ht
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -18437,7 +18437,7 @@ func decodeListCoreV1NamespacedResourceQuotaParams(args [1]string, r *http.Reque
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -18874,7 +18874,7 @@ func decodeListCoreV1NamespacedSecretParams(args [1]string, r *http.Request) (pa
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -19311,7 +19311,7 @@ func decodeListCoreV1NamespacedServiceParams(args [1]string, r *http.Request) (p
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -19748,7 +19748,7 @@ func decodeListCoreV1NamespacedServiceAccountParams(args [1]string, r *http.Requ
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -24629,7 +24629,7 @@ func decodeListDiscoveryV1NamespacedEndpointSliceParams(args [1]string, r *http.
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -25470,7 +25470,7 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args [1]string, r *
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -26311,7 +26311,7 @@ func decodeListEventsV1NamespacedEventParams(args [1]string, r *http.Request) (p
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -27152,7 +27152,7 @@ func decodeListEventsV1beta1NamespacedEventParams(args [1]string, r *http.Reques
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -30417,7 +30417,7 @@ func decodeListNetworkingV1NamespacedIngressParams(args [1]string, r *http.Reque
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -30854,7 +30854,7 @@ func decodeListNetworkingV1NamespacedNetworkPolicyParams(args [1]string, r *http
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -32907,7 +32907,7 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args [1]string, r *ht
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -33748,7 +33748,7 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args [1]string, 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -35801,7 +35801,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleParams(args [1]string, r *http.R
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -36238,7 +36238,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args [1]string, r 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -39907,7 +39907,7 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args [1]string,
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -40748,7 +40748,7 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args [1]string, 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -40822,7 +40822,7 @@ func decodeLogFileHandlerParams(args [1]string, r *http.Request) (params LogFile
 				params.Logpath = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: logpath: parse")
 			}
 		} else {
 			return params, errors.New("path: logpath: not specified")
@@ -40865,7 +40865,7 @@ func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationParams(args [1
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -40942,7 +40942,7 @@ func decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(args 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -41019,7 +41019,7 @@ func decodeReadApiextensionsV1CustomResourceDefinitionParams(args [1]string, r *
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -41096,7 +41096,7 @@ func decodeReadApiextensionsV1CustomResourceDefinitionStatusParams(args [1]strin
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -41173,7 +41173,7 @@ func decodeReadApiregistrationV1APIServiceParams(args [1]string, r *http.Request
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -41250,7 +41250,7 @@ func decodeReadApiregistrationV1APIServiceStatusParams(args [1]string, r *http.R
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -41329,7 +41329,7 @@ func decodeReadAppsV1NamespacedControllerRevisionParams(args [2]string, r *http.
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -41360,7 +41360,7 @@ func decodeReadAppsV1NamespacedControllerRevisionParams(args [2]string, r *http.
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -41439,7 +41439,7 @@ func decodeReadAppsV1NamespacedDaemonSetParams(args [2]string, r *http.Request) 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -41470,7 +41470,7 @@ func decodeReadAppsV1NamespacedDaemonSetParams(args [2]string, r *http.Request) 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -41549,7 +41549,7 @@ func decodeReadAppsV1NamespacedDaemonSetStatusParams(args [2]string, r *http.Req
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -41580,7 +41580,7 @@ func decodeReadAppsV1NamespacedDaemonSetStatusParams(args [2]string, r *http.Req
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -41659,7 +41659,7 @@ func decodeReadAppsV1NamespacedDeploymentParams(args [2]string, r *http.Request)
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -41690,7 +41690,7 @@ func decodeReadAppsV1NamespacedDeploymentParams(args [2]string, r *http.Request)
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -41769,7 +41769,7 @@ func decodeReadAppsV1NamespacedDeploymentScaleParams(args [2]string, r *http.Req
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -41800,7 +41800,7 @@ func decodeReadAppsV1NamespacedDeploymentScaleParams(args [2]string, r *http.Req
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -41879,7 +41879,7 @@ func decodeReadAppsV1NamespacedDeploymentStatusParams(args [2]string, r *http.Re
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -41910,7 +41910,7 @@ func decodeReadAppsV1NamespacedDeploymentStatusParams(args [2]string, r *http.Re
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -41989,7 +41989,7 @@ func decodeReadAppsV1NamespacedReplicaSetParams(args [2]string, r *http.Request)
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -42020,7 +42020,7 @@ func decodeReadAppsV1NamespacedReplicaSetParams(args [2]string, r *http.Request)
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -42099,7 +42099,7 @@ func decodeReadAppsV1NamespacedReplicaSetScaleParams(args [2]string, r *http.Req
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -42130,7 +42130,7 @@ func decodeReadAppsV1NamespacedReplicaSetScaleParams(args [2]string, r *http.Req
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -42209,7 +42209,7 @@ func decodeReadAppsV1NamespacedReplicaSetStatusParams(args [2]string, r *http.Re
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -42240,7 +42240,7 @@ func decodeReadAppsV1NamespacedReplicaSetStatusParams(args [2]string, r *http.Re
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -42319,7 +42319,7 @@ func decodeReadAppsV1NamespacedStatefulSetParams(args [2]string, r *http.Request
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -42350,7 +42350,7 @@ func decodeReadAppsV1NamespacedStatefulSetParams(args [2]string, r *http.Request
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -42429,7 +42429,7 @@ func decodeReadAppsV1NamespacedStatefulSetScaleParams(args [2]string, r *http.Re
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -42460,7 +42460,7 @@ func decodeReadAppsV1NamespacedStatefulSetScaleParams(args [2]string, r *http.Re
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -42539,7 +42539,7 @@ func decodeReadAppsV1NamespacedStatefulSetStatusParams(args [2]string, r *http.R
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -42570,7 +42570,7 @@ func decodeReadAppsV1NamespacedStatefulSetStatusParams(args [2]string, r *http.R
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -42649,7 +42649,7 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args [2]stri
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -42680,7 +42680,7 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args [2]stri
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -42759,7 +42759,7 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(args [
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -42790,7 +42790,7 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(args [
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -42869,7 +42869,7 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args [2
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -42900,7 +42900,7 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args [2
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -42979,7 +42979,7 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(a
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -43010,7 +43010,7 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(a
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -43089,7 +43089,7 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args [2
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -43120,7 +43120,7 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args [2
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -43199,7 +43199,7 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(a
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -43230,7 +43230,7 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(a
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -43309,7 +43309,7 @@ func decodeReadBatchV1NamespacedCronJobParams(args [2]string, r *http.Request) (
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -43340,7 +43340,7 @@ func decodeReadBatchV1NamespacedCronJobParams(args [2]string, r *http.Request) (
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -43419,7 +43419,7 @@ func decodeReadBatchV1NamespacedCronJobStatusParams(args [2]string, r *http.Requ
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -43450,7 +43450,7 @@ func decodeReadBatchV1NamespacedCronJobStatusParams(args [2]string, r *http.Requ
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -43529,7 +43529,7 @@ func decodeReadBatchV1NamespacedJobParams(args [2]string, r *http.Request) (para
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -43560,7 +43560,7 @@ func decodeReadBatchV1NamespacedJobParams(args [2]string, r *http.Request) (para
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -43639,7 +43639,7 @@ func decodeReadBatchV1NamespacedJobStatusParams(args [2]string, r *http.Request)
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -43670,7 +43670,7 @@ func decodeReadBatchV1NamespacedJobStatusParams(args [2]string, r *http.Request)
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -43749,7 +43749,7 @@ func decodeReadBatchV1beta1NamespacedCronJobParams(args [2]string, r *http.Reque
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -43780,7 +43780,7 @@ func decodeReadBatchV1beta1NamespacedCronJobParams(args [2]string, r *http.Reque
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -43859,7 +43859,7 @@ func decodeReadBatchV1beta1NamespacedCronJobStatusParams(args [2]string, r *http
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -43890,7 +43890,7 @@ func decodeReadBatchV1beta1NamespacedCronJobStatusParams(args [2]string, r *http
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -43967,7 +43967,7 @@ func decodeReadCertificatesV1CertificateSigningRequestParams(args [1]string, r *
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -44044,7 +44044,7 @@ func decodeReadCertificatesV1CertificateSigningRequestApprovalParams(args [1]str
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -44121,7 +44121,7 @@ func decodeReadCertificatesV1CertificateSigningRequestStatusParams(args [1]strin
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -44200,7 +44200,7 @@ func decodeReadCoordinationV1NamespacedLeaseParams(args [2]string, r *http.Reque
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -44231,7 +44231,7 @@ func decodeReadCoordinationV1NamespacedLeaseParams(args [2]string, r *http.Reque
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -44308,7 +44308,7 @@ func decodeReadCoreV1ComponentStatusParams(args [1]string, r *http.Request) (par
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -44385,7 +44385,7 @@ func decodeReadCoreV1NamespaceParams(args [1]string, r *http.Request) (params Re
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -44462,7 +44462,7 @@ func decodeReadCoreV1NamespaceStatusParams(args [1]string, r *http.Request) (par
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -44541,7 +44541,7 @@ func decodeReadCoreV1NamespacedConfigMapParams(args [2]string, r *http.Request) 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -44572,7 +44572,7 @@ func decodeReadCoreV1NamespacedConfigMapParams(args [2]string, r *http.Request) 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -44651,7 +44651,7 @@ func decodeReadCoreV1NamespacedEndpointsParams(args [2]string, r *http.Request) 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -44682,7 +44682,7 @@ func decodeReadCoreV1NamespacedEndpointsParams(args [2]string, r *http.Request) 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -44761,7 +44761,7 @@ func decodeReadCoreV1NamespacedEventParams(args [2]string, r *http.Request) (par
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -44792,7 +44792,7 @@ func decodeReadCoreV1NamespacedEventParams(args [2]string, r *http.Request) (par
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -44871,7 +44871,7 @@ func decodeReadCoreV1NamespacedLimitRangeParams(args [2]string, r *http.Request)
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -44902,7 +44902,7 @@ func decodeReadCoreV1NamespacedLimitRangeParams(args [2]string, r *http.Request)
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -44981,7 +44981,7 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimParams(args [2]string, r *ht
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -45012,7 +45012,7 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimParams(args [2]string, r *ht
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -45091,7 +45091,7 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusParams(args [2]string,
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -45122,7 +45122,7 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusParams(args [2]string,
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -45201,7 +45201,7 @@ func decodeReadCoreV1NamespacedPodParams(args [2]string, r *http.Request) (param
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -45232,7 +45232,7 @@ func decodeReadCoreV1NamespacedPodParams(args [2]string, r *http.Request) (param
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -45311,7 +45311,7 @@ func decodeReadCoreV1NamespacedPodEphemeralcontainersParams(args [2]string, r *h
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -45342,7 +45342,7 @@ func decodeReadCoreV1NamespacedPodEphemeralcontainersParams(args [2]string, r *h
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -45586,7 +45586,7 @@ func decodeReadCoreV1NamespacedPodLogParams(args [2]string, r *http.Request) (pa
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -45617,7 +45617,7 @@ func decodeReadCoreV1NamespacedPodLogParams(args [2]string, r *http.Request) (pa
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -45832,7 +45832,7 @@ func decodeReadCoreV1NamespacedPodStatusParams(args [2]string, r *http.Request) 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -45863,7 +45863,7 @@ func decodeReadCoreV1NamespacedPodStatusParams(args [2]string, r *http.Request) 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -45942,7 +45942,7 @@ func decodeReadCoreV1NamespacedPodTemplateParams(args [2]string, r *http.Request
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -45973,7 +45973,7 @@ func decodeReadCoreV1NamespacedPodTemplateParams(args [2]string, r *http.Request
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -46052,7 +46052,7 @@ func decodeReadCoreV1NamespacedReplicationControllerParams(args [2]string, r *ht
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -46083,7 +46083,7 @@ func decodeReadCoreV1NamespacedReplicationControllerParams(args [2]string, r *ht
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -46162,7 +46162,7 @@ func decodeReadCoreV1NamespacedReplicationControllerScaleParams(args [2]string, 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -46193,7 +46193,7 @@ func decodeReadCoreV1NamespacedReplicationControllerScaleParams(args [2]string, 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -46272,7 +46272,7 @@ func decodeReadCoreV1NamespacedReplicationControllerStatusParams(args [2]string,
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -46303,7 +46303,7 @@ func decodeReadCoreV1NamespacedReplicationControllerStatusParams(args [2]string,
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -46382,7 +46382,7 @@ func decodeReadCoreV1NamespacedResourceQuotaParams(args [2]string, r *http.Reque
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -46413,7 +46413,7 @@ func decodeReadCoreV1NamespacedResourceQuotaParams(args [2]string, r *http.Reque
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -46492,7 +46492,7 @@ func decodeReadCoreV1NamespacedResourceQuotaStatusParams(args [2]string, r *http
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -46523,7 +46523,7 @@ func decodeReadCoreV1NamespacedResourceQuotaStatusParams(args [2]string, r *http
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -46602,7 +46602,7 @@ func decodeReadCoreV1NamespacedSecretParams(args [2]string, r *http.Request) (pa
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -46633,7 +46633,7 @@ func decodeReadCoreV1NamespacedSecretParams(args [2]string, r *http.Request) (pa
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -46712,7 +46712,7 @@ func decodeReadCoreV1NamespacedServiceParams(args [2]string, r *http.Request) (p
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -46743,7 +46743,7 @@ func decodeReadCoreV1NamespacedServiceParams(args [2]string, r *http.Request) (p
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -46822,7 +46822,7 @@ func decodeReadCoreV1NamespacedServiceAccountParams(args [2]string, r *http.Requ
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -46853,7 +46853,7 @@ func decodeReadCoreV1NamespacedServiceAccountParams(args [2]string, r *http.Requ
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -46932,7 +46932,7 @@ func decodeReadCoreV1NamespacedServiceStatusParams(args [2]string, r *http.Reque
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -46963,7 +46963,7 @@ func decodeReadCoreV1NamespacedServiceStatusParams(args [2]string, r *http.Reque
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -47040,7 +47040,7 @@ func decodeReadCoreV1NodeParams(args [1]string, r *http.Request) (params ReadCor
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -47117,7 +47117,7 @@ func decodeReadCoreV1NodeStatusParams(args [1]string, r *http.Request) (params R
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -47194,7 +47194,7 @@ func decodeReadCoreV1PersistentVolumeParams(args [1]string, r *http.Request) (pa
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -47271,7 +47271,7 @@ func decodeReadCoreV1PersistentVolumeStatusParams(args [1]string, r *http.Reques
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -47350,7 +47350,7 @@ func decodeReadDiscoveryV1NamespacedEndpointSliceParams(args [2]string, r *http.
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -47381,7 +47381,7 @@ func decodeReadDiscoveryV1NamespacedEndpointSliceParams(args [2]string, r *http.
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -47460,7 +47460,7 @@ func decodeReadDiscoveryV1beta1NamespacedEndpointSliceParams(args [2]string, r *
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -47491,7 +47491,7 @@ func decodeReadDiscoveryV1beta1NamespacedEndpointSliceParams(args [2]string, r *
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -47570,7 +47570,7 @@ func decodeReadEventsV1NamespacedEventParams(args [2]string, r *http.Request) (p
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -47601,7 +47601,7 @@ func decodeReadEventsV1NamespacedEventParams(args [2]string, r *http.Request) (p
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -47680,7 +47680,7 @@ func decodeReadEventsV1beta1NamespacedEventParams(args [2]string, r *http.Reques
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -47711,7 +47711,7 @@ func decodeReadEventsV1beta1NamespacedEventParams(args [2]string, r *http.Reques
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -47788,7 +47788,7 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaParams(args [1]string, r *ht
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -47865,7 +47865,7 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(args [1]string,
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -47942,7 +47942,7 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -48019,7 +48019,7 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -48096,7 +48096,7 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaParams(args [1]string, r *ht
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -48173,7 +48173,7 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(args [1]string,
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -48250,7 +48250,7 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -48327,7 +48327,7 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -48404,7 +48404,7 @@ func decodeReadInternalApiserverV1alpha1StorageVersionParams(args [1]string, r *
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -48481,7 +48481,7 @@ func decodeReadInternalApiserverV1alpha1StorageVersionStatusParams(args [1]strin
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -48558,7 +48558,7 @@ func decodeReadNetworkingV1IngressClassParams(args [1]string, r *http.Request) (
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -48637,7 +48637,7 @@ func decodeReadNetworkingV1NamespacedIngressParams(args [2]string, r *http.Reque
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -48668,7 +48668,7 @@ func decodeReadNetworkingV1NamespacedIngressParams(args [2]string, r *http.Reque
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -48747,7 +48747,7 @@ func decodeReadNetworkingV1NamespacedIngressStatusParams(args [2]string, r *http
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -48778,7 +48778,7 @@ func decodeReadNetworkingV1NamespacedIngressStatusParams(args [2]string, r *http
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -48857,7 +48857,7 @@ func decodeReadNetworkingV1NamespacedNetworkPolicyParams(args [2]string, r *http
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -48888,7 +48888,7 @@ func decodeReadNetworkingV1NamespacedNetworkPolicyParams(args [2]string, r *http
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -48965,7 +48965,7 @@ func decodeReadNodeV1RuntimeClassParams(args [1]string, r *http.Request) (params
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -49042,7 +49042,7 @@ func decodeReadNodeV1alpha1RuntimeClassParams(args [1]string, r *http.Request) (
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -49119,7 +49119,7 @@ func decodeReadNodeV1beta1RuntimeClassParams(args [1]string, r *http.Request) (p
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -49198,7 +49198,7 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetParams(args [2]string, r *ht
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -49229,7 +49229,7 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetParams(args [2]string, r *ht
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -49308,7 +49308,7 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(args [2]string,
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -49339,7 +49339,7 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(args [2]string,
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -49418,7 +49418,7 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(args [2]string, 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -49449,7 +49449,7 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(args [2]string, 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -49528,7 +49528,7 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(args [2]st
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -49559,7 +49559,7 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(args [2]st
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -49636,7 +49636,7 @@ func decodeReadPolicyV1beta1PodSecurityPolicyParams(args [1]string, r *http.Requ
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -49713,7 +49713,7 @@ func decodeReadRbacAuthorizationV1ClusterRoleParams(args [1]string, r *http.Requ
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -49790,7 +49790,7 @@ func decodeReadRbacAuthorizationV1ClusterRoleBindingParams(args [1]string, r *ht
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -49869,7 +49869,7 @@ func decodeReadRbacAuthorizationV1NamespacedRoleParams(args [2]string, r *http.R
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -49900,7 +49900,7 @@ func decodeReadRbacAuthorizationV1NamespacedRoleParams(args [2]string, r *http.R
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -49979,7 +49979,7 @@ func decodeReadRbacAuthorizationV1NamespacedRoleBindingParams(args [2]string, r 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -50010,7 +50010,7 @@ func decodeReadRbacAuthorizationV1NamespacedRoleBindingParams(args [2]string, r 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -50087,7 +50087,7 @@ func decodeReadSchedulingV1PriorityClassParams(args [1]string, r *http.Request) 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -50164,7 +50164,7 @@ func decodeReadStorageV1CSIDriverParams(args [1]string, r *http.Request) (params
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -50241,7 +50241,7 @@ func decodeReadStorageV1CSINodeParams(args [1]string, r *http.Request) (params R
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -50318,7 +50318,7 @@ func decodeReadStorageV1StorageClassParams(args [1]string, r *http.Request) (par
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -50395,7 +50395,7 @@ func decodeReadStorageV1VolumeAttachmentParams(args [1]string, r *http.Request) 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -50472,7 +50472,7 @@ func decodeReadStorageV1VolumeAttachmentStatusParams(args [1]string, r *http.Req
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -50551,7 +50551,7 @@ func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityParams(args [2]string,
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -50582,7 +50582,7 @@ func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityParams(args [2]string,
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -50661,7 +50661,7 @@ func decodeReadStorageV1beta1NamespacedCSIStorageCapacityParams(args [2]string, 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -50692,7 +50692,7 @@ func decodeReadStorageV1beta1NamespacedCSIStorageCapacityParams(args [2]string, 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -50993,7 +50993,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args [
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -51834,7 +51834,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -52675,7 +52675,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args [1]string, r 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -53516,7 +53516,7 @@ func decodeWatchApiregistrationV1APIServiceParams(args [1]string, r *http.Reques
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -55571,7 +55571,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionParams(args [2]string, r *http
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -55602,7 +55602,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionParams(args [2]string, r *http
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -56039,7 +56039,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionListParams(args [1]string, r *
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -56478,7 +56478,7 @@ func decodeWatchAppsV1NamespacedDaemonSetParams(args [2]string, r *http.Request)
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -56509,7 +56509,7 @@ func decodeWatchAppsV1NamespacedDaemonSetParams(args [2]string, r *http.Request)
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -56946,7 +56946,7 @@ func decodeWatchAppsV1NamespacedDaemonSetListParams(args [1]string, r *http.Requ
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -57385,7 +57385,7 @@ func decodeWatchAppsV1NamespacedDeploymentParams(args [2]string, r *http.Request
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -57416,7 +57416,7 @@ func decodeWatchAppsV1NamespacedDeploymentParams(args [2]string, r *http.Request
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -57853,7 +57853,7 @@ func decodeWatchAppsV1NamespacedDeploymentListParams(args [1]string, r *http.Req
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -58292,7 +58292,7 @@ func decodeWatchAppsV1NamespacedReplicaSetParams(args [2]string, r *http.Request
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -58323,7 +58323,7 @@ func decodeWatchAppsV1NamespacedReplicaSetParams(args [2]string, r *http.Request
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -58760,7 +58760,7 @@ func decodeWatchAppsV1NamespacedReplicaSetListParams(args [1]string, r *http.Req
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -59199,7 +59199,7 @@ func decodeWatchAppsV1NamespacedStatefulSetParams(args [2]string, r *http.Reques
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -59230,7 +59230,7 @@ func decodeWatchAppsV1NamespacedStatefulSetParams(args [2]string, r *http.Reques
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -59667,7 +59667,7 @@ func decodeWatchAppsV1NamespacedStatefulSetListParams(args [1]string, r *http.Re
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -61318,7 +61318,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args [2]str
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -61349,7 +61349,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args [2]str
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -61786,7 +61786,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args [1
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -62629,7 +62629,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args [
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -62660,7 +62660,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args [
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -63097,7 +63097,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(ar
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -63940,7 +63940,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args [
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -63971,7 +63971,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args [
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -64408,7 +64408,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(ar
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -65655,7 +65655,7 @@ func decodeWatchBatchV1NamespacedCronJobParams(args [2]string, r *http.Request) 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -65686,7 +65686,7 @@ func decodeWatchBatchV1NamespacedCronJobParams(args [2]string, r *http.Request) 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -66123,7 +66123,7 @@ func decodeWatchBatchV1NamespacedCronJobListParams(args [1]string, r *http.Reque
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -66562,7 +66562,7 @@ func decodeWatchBatchV1NamespacedJobParams(args [2]string, r *http.Request) (par
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -66593,7 +66593,7 @@ func decodeWatchBatchV1NamespacedJobParams(args [2]string, r *http.Request) (par
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -67030,7 +67030,7 @@ func decodeWatchBatchV1NamespacedJobListParams(args [1]string, r *http.Request) 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -67873,7 +67873,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobParams(args [2]string, r *http.Requ
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -67904,7 +67904,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobParams(args [2]string, r *http.Requ
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -68341,7 +68341,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobListParams(args [1]string, r *http.
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -68778,7 +68778,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestParams(args [1]string, r 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -70025,7 +70025,7 @@ func decodeWatchCoordinationV1NamespacedLeaseParams(args [2]string, r *http.Requ
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -70056,7 +70056,7 @@ func decodeWatchCoordinationV1NamespacedLeaseParams(args [2]string, r *http.Requ
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -70493,7 +70493,7 @@ func decodeWatchCoordinationV1NamespacedLeaseListParams(args [1]string, r *http.
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -72546,7 +72546,7 @@ func decodeWatchCoreV1NamespaceParams(args [1]string, r *http.Request) (params W
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -73389,7 +73389,7 @@ func decodeWatchCoreV1NamespacedConfigMapParams(args [2]string, r *http.Request)
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -73420,7 +73420,7 @@ func decodeWatchCoreV1NamespacedConfigMapParams(args [2]string, r *http.Request)
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -73857,7 +73857,7 @@ func decodeWatchCoreV1NamespacedConfigMapListParams(args [1]string, r *http.Requ
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -74296,7 +74296,7 @@ func decodeWatchCoreV1NamespacedEndpointsParams(args [2]string, r *http.Request)
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -74327,7 +74327,7 @@ func decodeWatchCoreV1NamespacedEndpointsParams(args [2]string, r *http.Request)
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -74764,7 +74764,7 @@ func decodeWatchCoreV1NamespacedEndpointsListParams(args [1]string, r *http.Requ
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -75203,7 +75203,7 @@ func decodeWatchCoreV1NamespacedEventParams(args [2]string, r *http.Request) (pa
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -75234,7 +75234,7 @@ func decodeWatchCoreV1NamespacedEventParams(args [2]string, r *http.Request) (pa
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -75671,7 +75671,7 @@ func decodeWatchCoreV1NamespacedEventListParams(args [1]string, r *http.Request)
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -76110,7 +76110,7 @@ func decodeWatchCoreV1NamespacedLimitRangeParams(args [2]string, r *http.Request
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -76141,7 +76141,7 @@ func decodeWatchCoreV1NamespacedLimitRangeParams(args [2]string, r *http.Request
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -76578,7 +76578,7 @@ func decodeWatchCoreV1NamespacedLimitRangeListParams(args [1]string, r *http.Req
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -77017,7 +77017,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args [2]string, r *h
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -77048,7 +77048,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args [2]string, r *h
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -77485,7 +77485,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args [1]string, 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -77924,7 +77924,7 @@ func decodeWatchCoreV1NamespacedPodParams(args [2]string, r *http.Request) (para
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -77955,7 +77955,7 @@ func decodeWatchCoreV1NamespacedPodParams(args [2]string, r *http.Request) (para
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -78392,7 +78392,7 @@ func decodeWatchCoreV1NamespacedPodListParams(args [1]string, r *http.Request) (
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -78831,7 +78831,7 @@ func decodeWatchCoreV1NamespacedPodTemplateParams(args [2]string, r *http.Reques
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -78862,7 +78862,7 @@ func decodeWatchCoreV1NamespacedPodTemplateParams(args [2]string, r *http.Reques
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -79299,7 +79299,7 @@ func decodeWatchCoreV1NamespacedPodTemplateListParams(args [1]string, r *http.Re
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -79738,7 +79738,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerParams(args [2]string, r *h
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -79769,7 +79769,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerParams(args [2]string, r *h
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -80206,7 +80206,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerListParams(args [1]string, 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -80645,7 +80645,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaParams(args [2]string, r *http.Requ
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -80676,7 +80676,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaParams(args [2]string, r *http.Requ
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -81113,7 +81113,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaListParams(args [1]string, r *http.
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -81552,7 +81552,7 @@ func decodeWatchCoreV1NamespacedSecretParams(args [2]string, r *http.Request) (p
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -81583,7 +81583,7 @@ func decodeWatchCoreV1NamespacedSecretParams(args [2]string, r *http.Request) (p
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -82020,7 +82020,7 @@ func decodeWatchCoreV1NamespacedSecretListParams(args [1]string, r *http.Request
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -82459,7 +82459,7 @@ func decodeWatchCoreV1NamespacedServiceParams(args [2]string, r *http.Request) (
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -82490,7 +82490,7 @@ func decodeWatchCoreV1NamespacedServiceParams(args [2]string, r *http.Request) (
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -82929,7 +82929,7 @@ func decodeWatchCoreV1NamespacedServiceAccountParams(args [2]string, r *http.Req
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -82960,7 +82960,7 @@ func decodeWatchCoreV1NamespacedServiceAccountParams(args [2]string, r *http.Req
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -83397,7 +83397,7 @@ func decodeWatchCoreV1NamespacedServiceAccountListParams(args [1]string, r *http
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -83834,7 +83834,7 @@ func decodeWatchCoreV1NamespacedServiceListParams(args [1]string, r *http.Reques
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -84271,7 +84271,7 @@ func decodeWatchCoreV1NodeParams(args [1]string, r *http.Request) (params WatchC
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -85112,7 +85112,7 @@ func decodeWatchCoreV1PersistentVolumeParams(args [1]string, r *http.Request) (p
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -89591,7 +89591,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args [2]string, r *http
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -89622,7 +89622,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args [2]string, r *http
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -90059,7 +90059,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args [1]string, r *
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -90902,7 +90902,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args [2]string, r 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -90933,7 +90933,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args [2]string, r 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -91370,7 +91370,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args [1]string
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -92213,7 +92213,7 @@ func decodeWatchEventsV1NamespacedEventParams(args [2]string, r *http.Request) (
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -92244,7 +92244,7 @@ func decodeWatchEventsV1NamespacedEventParams(args [2]string, r *http.Request) (
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -92681,7 +92681,7 @@ func decodeWatchEventsV1NamespacedEventListParams(args [1]string, r *http.Reques
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -93524,7 +93524,7 @@ func decodeWatchEventsV1beta1NamespacedEventParams(args [2]string, r *http.Reque
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -93555,7 +93555,7 @@ func decodeWatchEventsV1beta1NamespacedEventParams(args [2]string, r *http.Reque
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -93992,7 +93992,7 @@ func decodeWatchEventsV1beta1NamespacedEventListParams(args [1]string, r *http.R
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -94429,7 +94429,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args [1]string, r *h
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -95270,7 +95270,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -96111,7 +96111,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args [1]string, r *h
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -96952,7 +96952,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -97793,7 +97793,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args [1]string, r 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -98634,7 +98634,7 @@ func decodeWatchNetworkingV1IngressClassParams(args [1]string, r *http.Request) 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -99881,7 +99881,7 @@ func decodeWatchNetworkingV1NamespacedIngressParams(args [2]string, r *http.Requ
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -99912,7 +99912,7 @@ func decodeWatchNetworkingV1NamespacedIngressParams(args [2]string, r *http.Requ
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -100349,7 +100349,7 @@ func decodeWatchNetworkingV1NamespacedIngressListParams(args [1]string, r *http.
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -100788,7 +100788,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args [2]string, r *htt
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -100819,7 +100819,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args [2]string, r *htt
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -101256,7 +101256,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args [1]string, r 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -102097,7 +102097,7 @@ func decodeWatchNodeV1RuntimeClassParams(args [1]string, r *http.Request) (param
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -102938,7 +102938,7 @@ func decodeWatchNodeV1alpha1RuntimeClassParams(args [1]string, r *http.Request) 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -103779,7 +103779,7 @@ func decodeWatchNodeV1beta1RuntimeClassParams(args [1]string, r *http.Request) (
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -104622,7 +104622,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args [2]string, r *h
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -104653,7 +104653,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args [2]string, r *h
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -105090,7 +105090,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args [1]string, 
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -105933,7 +105933,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args [2]string,
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -105964,7 +105964,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args [2]string,
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -106401,7 +106401,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args [1]str
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -107242,7 +107242,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args [1]string, r *http.Req
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -108083,7 +108083,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleParams(args [1]string, r *http.Req
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -108520,7 +108520,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args [1]string, r *h
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -109767,7 +109767,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args [2]string, r *http.
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -109798,7 +109798,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args [2]string, r *http.
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -110237,7 +110237,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args [2]string, r
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -110268,7 +110268,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args [2]string, r
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -110705,7 +110705,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args [1]strin
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -111142,7 +111142,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args [1]string, r *h
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -112387,7 +112387,7 @@ func decodeWatchSchedulingV1PriorityClassParams(args [1]string, r *http.Request)
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -113228,7 +113228,7 @@ func decodeWatchStorageV1CSIDriverParams(args [1]string, r *http.Request) (param
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -114069,7 +114069,7 @@ func decodeWatchStorageV1CSINodeParams(args [1]string, r *http.Request) (params 
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -114910,7 +114910,7 @@ func decodeWatchStorageV1StorageClassParams(args [1]string, r *http.Request) (pa
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -115751,7 +115751,7 @@ func decodeWatchStorageV1VolumeAttachmentParams(args [1]string, r *http.Request)
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -116998,7 +116998,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args [2]string
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -117029,7 +117029,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args [2]string
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -117466,7 +117466,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args [1]st
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -118309,7 +118309,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args [2]string,
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -118340,7 +118340,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args [2]string,
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")
@@ -118777,7 +118777,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args [1]str
 				params.Namespace = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: namespace: parse")
 			}
 		} else {
 			return params, errors.New("path: namespace: not specified")

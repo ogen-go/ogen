@@ -1,3 +1,4 @@
+// Package location is a helper package for working with locations.
 package location
 
 import (
