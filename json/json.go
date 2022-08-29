@@ -1,3 +1,4 @@
+// Package json contains helper functions for encoding and decoding JSON.
 package json
 
 import (

@@ -1,3 +1,4 @@
+// Package jsonschema contains parser for JSON Schema.
 package jsonschema
 
 import (
