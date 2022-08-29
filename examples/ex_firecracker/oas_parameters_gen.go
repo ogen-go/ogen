@@ -42,7 +42,7 @@ func decodePatchGuestDriveByIDParams(args [1]string, r *http.Request) (params Pa
 				params.DriveID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: drive_id: parse")
 			}
 		} else {
 			return params, errors.New("path: drive_id: not specified")
@@ -82,7 +82,7 @@ func decodePatchGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request)
 				params.IfaceID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: iface_id: parse")
 			}
 		} else {
 			return params, errors.New("path: iface_id: not specified")
@@ -122,7 +122,7 @@ func decodePutGuestDriveByIDParams(args [1]string, r *http.Request) (params PutG
 				params.DriveID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: drive_id: parse")
 			}
 		} else {
 			return params, errors.New("path: drive_id: not specified")
@@ -162,7 +162,7 @@ func decodePutGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request) (
 				params.IfaceID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: iface_id: parse")
 			}
 		} else {
 			return params, errors.New("path: iface_id: not specified")

@@ -9,6 +9,7 @@ import (
 
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 type DataGetParams struct {
@@ -42,7 +43,24 @@ func decodeDataGetParams(args [2]string, r *http.Request) (params DataGetParams,
 				params.ID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: id: parse")
+			}
+			if err := func() error {
+				if err := (validate.Int{
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
+				}).Validate(int64(params.ID)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: id: invalid")
 			}
 		} else {
 			return params, errors.New("path: id: not specified")
@@ -73,7 +91,7 @@ func decodeDataGetParams(args [2]string, r *http.Request) (params DataGetParams,
 				params.Key = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: key: parse")
 			}
 		} else {
 			return params, errors.New("path: key: not specified")
@@ -112,7 +130,24 @@ func decodeDataGetIDParams(args [1]string, r *http.Request) (params DataGetIDPar
 				params.ID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: id: parse")
+			}
+			if err := func() error {
+				if err := (validate.Int{
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
+				}).Validate(int64(params.ID)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: id: invalid")
 			}
 		} else {
 			return params, errors.New("path: id: not specified")

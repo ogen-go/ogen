@@ -193,7 +193,7 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (p
 				params.PublicKey = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: public_key: parse")
 			}
 		} else {
 			return params, errors.New("path: public_key: not specified")
@@ -711,7 +711,7 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Reque
 				params.Board = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: board: parse")
 			}
 		} else {
 			return params, errors.New("path: board: not specified")
@@ -742,7 +742,24 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Reque
 				params.Thread = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: thread: parse")
+			}
+			if err := func() error {
+				if err := (validate.Int{
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
+				}).Validate(int64(params.Thread)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: thread: invalid")
 			}
 		} else {
 			return params, errors.New("path: thread: not specified")
@@ -773,7 +790,24 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Reque
 				params.Num = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: num: parse")
+			}
+			if err := func() error {
+				if err := (validate.Int{
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
+				}).Validate(int64(params.Num)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: num: invalid")
 			}
 		} else {
 			return params, errors.New("path: num: not specified")
@@ -815,7 +849,7 @@ func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) 
 				params.Board = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: board: parse")
 			}
 		} else {
 			return params, errors.New("path: board: not specified")
@@ -846,7 +880,24 @@ func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) 
 				params.Thread = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: thread: parse")
+			}
+			if err := func() error {
+				if err := (validate.Int{
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
+				}).Validate(int64(params.Thread)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: thread: invalid")
 			}
 		} else {
 			return params, errors.New("path: thread: not specified")
@@ -888,7 +939,7 @@ func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, r *http.Request) (pa
 				params.Board = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: board: parse")
 			}
 		} else {
 			return params, errors.New("path: board: not specified")
@@ -919,7 +970,24 @@ func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, r *http.Request) (pa
 				params.Num = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: num: parse")
+			}
+			if err := func() error {
+				if err := (validate.Int{
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
+				}).Validate(int64(params.Num)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: num: invalid")
 			}
 		} else {
 			return params, errors.New("path: num: not specified")

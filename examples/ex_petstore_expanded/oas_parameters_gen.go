@@ -42,7 +42,7 @@ func decodeDeletePetParams(args [1]string, r *http.Request) (params DeletePetPar
 				params.ID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: id: parse")
 			}
 		} else {
 			return params, errors.New("path: id: not specified")
@@ -82,7 +82,7 @@ func decodeFindPetByIDParams(args [1]string, r *http.Request) (params FindPetByI
 				params.ID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: id: parse")
 			}
 		} else {
 			return params, errors.New("path: id: not specified")

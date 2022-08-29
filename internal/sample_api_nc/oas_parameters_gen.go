@@ -48,7 +48,24 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 				params.ID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: id: parse")
+			}
+			if err := func() error {
+				if err := (validate.Int{
+					MinSet:        true,
+					Min:           1,
+					MaxSet:        false,
+					Max:           0,
+					MinExclusive:  false,
+					MaxExclusive:  false,
+					MultipleOfSet: false,
+					MultipleOf:    0,
+				}).Validate(int64(params.ID)); err != nil {
+					return errors.Wrap(err, "int")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: id: invalid")
 			}
 		} else {
 			return params, errors.New("path: id: not specified")
@@ -79,7 +96,7 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 				params.Foo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: foo: parse")
 			}
 		} else {
 			return params, errors.New("path: foo: not specified")
@@ -110,7 +127,7 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 				params.Bar = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: bar: parse")
 			}
 		} else {
 			return params, errors.New("path: bar: not specified")
@@ -141,7 +158,7 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 				params.Baz = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: baz: parse")
 			}
 		} else {
 			return params, errors.New("path: baz: not specified")
@@ -172,7 +189,7 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 				params.Kek = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: kek: parse")
 			}
 		} else {
 			return params, errors.New("path: kek: not specified")
@@ -366,7 +383,7 @@ func decodePetFriendsNamesByIDParams(args [1]string, r *http.Request) (params Pe
 				params.ID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: id: parse")
 			}
 		} else {
 			return params, errors.New("path: id: not specified")
@@ -467,6 +484,14 @@ func decodePetGetParams(args [0]string, r *http.Request) (params PetGetParams, _
 			}); err != nil {
 				return params, errors.Wrap(err, "header: x-tags: parse")
 			}
+			if err := func() error {
+				if params.XTags == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "header: x-tags: invalid")
+			}
 		} else {
 			return params, errors.New("header: x-tags: not specified")
 		}
@@ -502,6 +527,14 @@ func decodePetGetParams(args [0]string, r *http.Request) (params PetGetParams, _
 				})
 			}); err != nil {
 				return params, errors.Wrap(err, "header: x-scope: parse")
+			}
+			if err := func() error {
+				if params.XScope == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "header: x-scope: invalid")
 			}
 		} else {
 			return params, errors.New("header: x-scope: not specified")
@@ -609,7 +642,7 @@ func decodePetGetAvatarByNameParams(args [1]string, r *http.Request) (params Pet
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -649,7 +682,7 @@ func decodePetGetByNameParams(args [1]string, r *http.Request) (params PetGetByN
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -689,7 +722,7 @@ func decodePetNameByIDParams(args [1]string, r *http.Request) (params PetNameByI
 				params.ID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: id: parse")
 			}
 		} else {
 			return params, errors.New("path: id: not specified")

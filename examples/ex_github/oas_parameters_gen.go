@@ -47,7 +47,7 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -78,7 +78,7 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -109,7 +109,7 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string
 				params.RepositoryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repository_id: parse")
 			}
 		} else {
 			return params, errors.New("path: repository_id: not specified")
@@ -151,7 +151,7 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(args [3]string, r *http.Reque
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -182,7 +182,7 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(args [3]string, r *http.Reque
 				params.SecretName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: secret_name: parse")
 			}
 		} else {
 			return params, errors.New("path: secret_name: not specified")
@@ -213,7 +213,7 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(args [3]string, r *http.Reque
 				params.RepositoryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repository_id: parse")
 			}
 		} else {
 			return params, errors.New("path: repository_id: not specified")
@@ -256,7 +256,7 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args [3]string, r *http
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -287,7 +287,7 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args [3]string, r *http
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -318,7 +318,7 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args [3]string, r *http
 				params.RunnerID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_id: not specified")
@@ -360,7 +360,7 @@ func decodeActionsApproveWorkflowRunParams(args [3]string, r *http.Request) (par
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -391,7 +391,7 @@ func decodeActionsApproveWorkflowRunParams(args [3]string, r *http.Request) (par
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -422,7 +422,7 @@ func decodeActionsApproveWorkflowRunParams(args [3]string, r *http.Request) (par
 				params.RunID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: run_id: parse")
 			}
 		} else {
 			return params, errors.New("path: run_id: not specified")
@@ -464,7 +464,7 @@ func decodeActionsCancelWorkflowRunParams(args [3]string, r *http.Request) (para
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -495,7 +495,7 @@ func decodeActionsCancelWorkflowRunParams(args [3]string, r *http.Request) (para
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -526,7 +526,7 @@ func decodeActionsCancelWorkflowRunParams(args [3]string, r *http.Request) (para
 				params.RunID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: run_id: parse")
 			}
 		} else {
 			return params, errors.New("path: run_id: not specified")
@@ -569,7 +569,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(args [3]string, r *http.
 				params.RepositoryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repository_id: parse")
 			}
 		} else {
 			return params, errors.New("path: repository_id: not specified")
@@ -600,7 +600,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(args [3]string, r *http.
 				params.EnvironmentName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: environment_name: parse")
 			}
 		} else {
 			return params, errors.New("path: environment_name: not specified")
@@ -631,7 +631,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(args [3]string, r *http.
 				params.SecretName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: secret_name: parse")
 			}
 		} else {
 			return params, errors.New("path: secret_name: not specified")
@@ -672,7 +672,7 @@ func decodeActionsCreateOrUpdateOrgSecretParams(args [2]string, r *http.Request)
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -703,7 +703,7 @@ func decodeActionsCreateOrUpdateOrgSecretParams(args [2]string, r *http.Request)
 				params.SecretName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: secret_name: parse")
 			}
 		} else {
 			return params, errors.New("path: secret_name: not specified")
@@ -745,7 +745,7 @@ func decodeActionsCreateOrUpdateRepoSecretParams(args [3]string, r *http.Request
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -776,7 +776,7 @@ func decodeActionsCreateOrUpdateRepoSecretParams(args [3]string, r *http.Request
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -807,7 +807,7 @@ func decodeActionsCreateOrUpdateRepoSecretParams(args [3]string, r *http.Request
 				params.SecretName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: secret_name: parse")
 			}
 		} else {
 			return params, errors.New("path: secret_name: not specified")
@@ -846,7 +846,7 @@ func decodeActionsCreateRegistrationTokenForOrgParams(args [1]string, r *http.Re
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -886,7 +886,7 @@ func decodeActionsCreateRegistrationTokenForRepoParams(args [2]string, r *http.R
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -917,7 +917,7 @@ func decodeActionsCreateRegistrationTokenForRepoParams(args [2]string, r *http.R
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -956,7 +956,7 @@ func decodeActionsCreateRemoveTokenForOrgParams(args [1]string, r *http.Request)
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -996,7 +996,7 @@ func decodeActionsCreateRemoveTokenForRepoParams(args [2]string, r *http.Request
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -1027,7 +1027,7 @@ func decodeActionsCreateRemoveTokenForRepoParams(args [2]string, r *http.Request
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -1066,7 +1066,7 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args [1]string, r *htt
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -1108,7 +1108,7 @@ func decodeActionsDeleteArtifactParams(args [3]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -1139,7 +1139,7 @@ func decodeActionsDeleteArtifactParams(args [3]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -1170,7 +1170,7 @@ func decodeActionsDeleteArtifactParams(args [3]string, r *http.Request) (params 
 				params.ArtifactID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: artifact_id: parse")
 			}
 		} else {
 			return params, errors.New("path: artifact_id: not specified")
@@ -1213,7 +1213,7 @@ func decodeActionsDeleteEnvironmentSecretParams(args [3]string, r *http.Request)
 				params.RepositoryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repository_id: parse")
 			}
 		} else {
 			return params, errors.New("path: repository_id: not specified")
@@ -1244,7 +1244,7 @@ func decodeActionsDeleteEnvironmentSecretParams(args [3]string, r *http.Request)
 				params.EnvironmentName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: environment_name: parse")
 			}
 		} else {
 			return params, errors.New("path: environment_name: not specified")
@@ -1275,7 +1275,7 @@ func decodeActionsDeleteEnvironmentSecretParams(args [3]string, r *http.Request)
 				params.SecretName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: secret_name: parse")
 			}
 		} else {
 			return params, errors.New("path: secret_name: not specified")
@@ -1316,7 +1316,7 @@ func decodeActionsDeleteOrgSecretParams(args [2]string, r *http.Request) (params
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -1347,7 +1347,7 @@ func decodeActionsDeleteOrgSecretParams(args [2]string, r *http.Request) (params
 				params.SecretName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: secret_name: parse")
 			}
 		} else {
 			return params, errors.New("path: secret_name: not specified")
@@ -1389,7 +1389,7 @@ func decodeActionsDeleteRepoSecretParams(args [3]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -1420,7 +1420,7 @@ func decodeActionsDeleteRepoSecretParams(args [3]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -1451,7 +1451,7 @@ func decodeActionsDeleteRepoSecretParams(args [3]string, r *http.Request) (param
 				params.SecretName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: secret_name: parse")
 			}
 		} else {
 			return params, errors.New("path: secret_name: not specified")
@@ -1492,7 +1492,7 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgParams(args [2]string, r *http.Re
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -1523,7 +1523,7 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgParams(args [2]string, r *http.Re
 				params.RunnerID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_id: not specified")
@@ -1565,7 +1565,7 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(args [3]string, r *http.R
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -1596,7 +1596,7 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(args [3]string, r *http.R
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -1627,7 +1627,7 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(args [3]string, r *http.R
 				params.RunnerID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_id: not specified")
@@ -1668,7 +1668,7 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args [2]string, r *ht
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -1699,7 +1699,7 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args [2]string, r *ht
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -1741,7 +1741,7 @@ func decodeActionsDeleteWorkflowRunParams(args [3]string, r *http.Request) (para
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -1772,7 +1772,7 @@ func decodeActionsDeleteWorkflowRunParams(args [3]string, r *http.Request) (para
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -1803,7 +1803,7 @@ func decodeActionsDeleteWorkflowRunParams(args [3]string, r *http.Request) (para
 				params.RunID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: run_id: parse")
 			}
 		} else {
 			return params, errors.New("path: run_id: not specified")
@@ -1845,7 +1845,7 @@ func decodeActionsDeleteWorkflowRunLogsParams(args [3]string, r *http.Request) (
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -1876,7 +1876,7 @@ func decodeActionsDeleteWorkflowRunLogsParams(args [3]string, r *http.Request) (
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -1907,7 +1907,7 @@ func decodeActionsDeleteWorkflowRunLogsParams(args [3]string, r *http.Request) (
 				params.RunID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: run_id: parse")
 			}
 		} else {
 			return params, errors.New("path: run_id: not specified")
@@ -1947,7 +1947,7 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args 
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -1978,7 +1978,7 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args 
 				params.RepositoryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repository_id: parse")
 			}
 		} else {
 			return params, errors.New("path: repository_id: not specified")
@@ -2021,7 +2021,7 @@ func decodeActionsDownloadArtifactParams(args [4]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -2052,7 +2052,7 @@ func decodeActionsDownloadArtifactParams(args [4]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -2083,7 +2083,7 @@ func decodeActionsDownloadArtifactParams(args [4]string, r *http.Request) (param
 				params.ArtifactID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: artifact_id: parse")
 			}
 		} else {
 			return params, errors.New("path: artifact_id: not specified")
@@ -2114,7 +2114,7 @@ func decodeActionsDownloadArtifactParams(args [4]string, r *http.Request) (param
 				params.ArchiveFormat = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: archive_format: parse")
 			}
 		} else {
 			return params, errors.New("path: archive_format: not specified")
@@ -2156,7 +2156,7 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(args [3]string, r *http.Re
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -2187,7 +2187,7 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(args [3]string, r *http.Re
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -2218,7 +2218,7 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(args [3]string, r *http.Re
 				params.JobID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: job_id: parse")
 			}
 		} else {
 			return params, errors.New("path: job_id: not specified")
@@ -2260,7 +2260,7 @@ func decodeActionsDownloadWorkflowRunLogsParams(args [3]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -2291,7 +2291,7 @@ func decodeActionsDownloadWorkflowRunLogsParams(args [3]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -2322,7 +2322,7 @@ func decodeActionsDownloadWorkflowRunLogsParams(args [3]string, r *http.Request)
 				params.RunID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: run_id: parse")
 			}
 		} else {
 			return params, errors.New("path: run_id: not specified")
@@ -2362,7 +2362,7 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args [
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -2393,7 +2393,7 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args [
 				params.RepositoryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repository_id: parse")
 			}
 		} else {
 			return params, errors.New("path: repository_id: not specified")
@@ -2432,7 +2432,7 @@ func decodeActionsGetAllowedActionsOrganizationParams(args [1]string, r *http.Re
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -2472,7 +2472,7 @@ func decodeActionsGetAllowedActionsRepositoryParams(args [2]string, r *http.Requ
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -2503,7 +2503,7 @@ func decodeActionsGetAllowedActionsRepositoryParams(args [2]string, r *http.Requ
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -2545,7 +2545,7 @@ func decodeActionsGetArtifactParams(args [3]string, r *http.Request) (params Act
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -2576,7 +2576,7 @@ func decodeActionsGetArtifactParams(args [3]string, r *http.Request) (params Act
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -2607,7 +2607,7 @@ func decodeActionsGetArtifactParams(args [3]string, r *http.Request) (params Act
 				params.ArtifactID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: artifact_id: parse")
 			}
 		} else {
 			return params, errors.New("path: artifact_id: not specified")
@@ -2648,7 +2648,7 @@ func decodeActionsGetEnvironmentPublicKeyParams(args [2]string, r *http.Request)
 				params.RepositoryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repository_id: parse")
 			}
 		} else {
 			return params, errors.New("path: repository_id: not specified")
@@ -2679,7 +2679,7 @@ func decodeActionsGetEnvironmentPublicKeyParams(args [2]string, r *http.Request)
 				params.EnvironmentName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: environment_name: parse")
 			}
 		} else {
 			return params, errors.New("path: environment_name: not specified")
@@ -2722,7 +2722,7 @@ func decodeActionsGetEnvironmentSecretParams(args [3]string, r *http.Request) (p
 				params.RepositoryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repository_id: parse")
 			}
 		} else {
 			return params, errors.New("path: repository_id: not specified")
@@ -2753,7 +2753,7 @@ func decodeActionsGetEnvironmentSecretParams(args [3]string, r *http.Request) (p
 				params.EnvironmentName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: environment_name: parse")
 			}
 		} else {
 			return params, errors.New("path: environment_name: not specified")
@@ -2784,7 +2784,7 @@ func decodeActionsGetEnvironmentSecretParams(args [3]string, r *http.Request) (p
 				params.SecretName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: secret_name: parse")
 			}
 		} else {
 			return params, errors.New("path: secret_name: not specified")
@@ -2823,7 +2823,7 @@ func decodeActionsGetGithubActionsPermissionsOrganizationParams(args [1]string, 
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -2863,7 +2863,7 @@ func decodeActionsGetGithubActionsPermissionsRepositoryParams(args [2]string, r 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -2894,7 +2894,7 @@ func decodeActionsGetGithubActionsPermissionsRepositoryParams(args [2]string, r 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -2936,7 +2936,7 @@ func decodeActionsGetJobForWorkflowRunParams(args [3]string, r *http.Request) (p
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -2967,7 +2967,7 @@ func decodeActionsGetJobForWorkflowRunParams(args [3]string, r *http.Request) (p
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -2998,7 +2998,7 @@ func decodeActionsGetJobForWorkflowRunParams(args [3]string, r *http.Request) (p
 				params.JobID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: job_id: parse")
 			}
 		} else {
 			return params, errors.New("path: job_id: not specified")
@@ -3037,7 +3037,7 @@ func decodeActionsGetOrgPublicKeyParams(args [1]string, r *http.Request) (params
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -3078,7 +3078,7 @@ func decodeActionsGetOrgSecretParams(args [2]string, r *http.Request) (params Ac
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -3109,7 +3109,7 @@ func decodeActionsGetOrgSecretParams(args [2]string, r *http.Request) (params Ac
 				params.SecretName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: secret_name: parse")
 			}
 		} else {
 			return params, errors.New("path: secret_name: not specified")
@@ -3149,7 +3149,7 @@ func decodeActionsGetRepoPublicKeyParams(args [2]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -3180,7 +3180,7 @@ func decodeActionsGetRepoPublicKeyParams(args [2]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -3222,7 +3222,7 @@ func decodeActionsGetRepoSecretParams(args [3]string, r *http.Request) (params A
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -3253,7 +3253,7 @@ func decodeActionsGetRepoSecretParams(args [3]string, r *http.Request) (params A
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -3284,7 +3284,7 @@ func decodeActionsGetRepoSecretParams(args [3]string, r *http.Request) (params A
 				params.SecretName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: secret_name: parse")
 			}
 		} else {
 			return params, errors.New("path: secret_name: not specified")
@@ -3326,7 +3326,7 @@ func decodeActionsGetReviewsForRunParams(args [3]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -3357,7 +3357,7 @@ func decodeActionsGetReviewsForRunParams(args [3]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -3388,7 +3388,7 @@ func decodeActionsGetReviewsForRunParams(args [3]string, r *http.Request) (param
 				params.RunID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: run_id: parse")
 			}
 		} else {
 			return params, errors.New("path: run_id: not specified")
@@ -3429,7 +3429,7 @@ func decodeActionsGetSelfHostedRunnerForOrgParams(args [2]string, r *http.Reques
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -3460,7 +3460,7 @@ func decodeActionsGetSelfHostedRunnerForOrgParams(args [2]string, r *http.Reques
 				params.RunnerID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_id: not specified")
@@ -3502,7 +3502,7 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(args [3]string, r *http.Reque
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -3533,7 +3533,7 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(args [3]string, r *http.Reque
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -3564,7 +3564,7 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(args [3]string, r *http.Reque
 				params.RunnerID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_id: not specified")
@@ -3605,7 +3605,7 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgParams(args [2]string, r *http.R
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -3636,7 +3636,7 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgParams(args [2]string, r *http.R
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -3678,7 +3678,7 @@ func decodeActionsGetWorkflowRunParams(args [3]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -3709,7 +3709,7 @@ func decodeActionsGetWorkflowRunParams(args [3]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -3740,7 +3740,7 @@ func decodeActionsGetWorkflowRunParams(args [3]string, r *http.Request) (params 
 				params.RunID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: run_id: parse")
 			}
 		} else {
 			return params, errors.New("path: run_id: not specified")
@@ -3782,7 +3782,7 @@ func decodeActionsGetWorkflowRunUsageParams(args [3]string, r *http.Request) (pa
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -3813,7 +3813,7 @@ func decodeActionsGetWorkflowRunUsageParams(args [3]string, r *http.Request) (pa
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -3844,7 +3844,7 @@ func decodeActionsGetWorkflowRunUsageParams(args [3]string, r *http.Request) (pa
 				params.RunID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: run_id: parse")
 			}
 		} else {
 			return params, errors.New("path: run_id: not specified")
@@ -3889,7 +3889,7 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (p
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -3920,7 +3920,7 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (p
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -4044,7 +4044,7 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 				params.RepositoryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repository_id: parse")
 			}
 		} else {
 			return params, errors.New("path: repository_id: not specified")
@@ -4075,7 +4075,7 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 				params.EnvironmentName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: environment_name: parse")
 			}
 		} else {
 			return params, errors.New("path: environment_name: not specified")
@@ -4204,7 +4204,7 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -4235,7 +4235,7 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -4266,7 +4266,7 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 				params.RunID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: run_id: parse")
 			}
 		} else {
 			return params, errors.New("path: run_id: not specified")
@@ -4442,7 +4442,7 @@ func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (params 
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -4566,7 +4566,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -4597,7 +4597,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -4720,7 +4720,7 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (params
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -4751,7 +4751,7 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (params
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -4874,7 +4874,7 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (para
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -4905,7 +4905,7 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (para
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -5022,7 +5022,7 @@ func decodeActionsListRunnerApplicationsForOrgParams(args [1]string, r *http.Req
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -5062,7 +5062,7 @@ func decodeActionsListRunnerApplicationsForRepoParams(args [2]string, r *http.Re
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -5093,7 +5093,7 @@ func decodeActionsListRunnerApplicationsForRepoParams(args [2]string, r *http.Re
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -5139,7 +5139,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -5170,7 +5170,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 				params.SecretName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: secret_name: parse")
 			}
 		} else {
 			return params, errors.New("path: secret_name: not specified")
@@ -5292,7 +5292,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -5414,7 +5414,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -5536,7 +5536,7 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Requ
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -5659,7 +5659,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -5690,7 +5690,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -5814,7 +5814,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -5845,7 +5845,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -5970,7 +5970,7 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -6001,7 +6001,7 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -6032,7 +6032,7 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 				params.RunID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: run_id: parse")
 			}
 		} else {
 			return params, errors.New("path: run_id: not specified")
@@ -6170,7 +6170,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -6201,7 +6201,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -6506,7 +6506,7 @@ func decodeActionsReRunWorkflowParams(args [3]string, r *http.Request) (params A
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -6537,7 +6537,7 @@ func decodeActionsReRunWorkflowParams(args [3]string, r *http.Request) (params A
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -6568,7 +6568,7 @@ func decodeActionsReRunWorkflowParams(args [3]string, r *http.Request) (params A
 				params.RunID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: run_id: parse")
 			}
 		} else {
 			return params, errors.New("path: run_id: not specified")
@@ -6610,7 +6610,7 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]str
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -6641,7 +6641,7 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]str
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -6672,7 +6672,7 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]str
 				params.RepositoryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repository_id: parse")
 			}
 		} else {
 			return params, errors.New("path: repository_id: not specified")
@@ -6714,7 +6714,7 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(args [3]string, r *http.
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -6745,7 +6745,7 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(args [3]string, r *http.
 				params.SecretName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: secret_name: parse")
 			}
 		} else {
 			return params, errors.New("path: secret_name: not specified")
@@ -6776,7 +6776,7 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(args [3]string, r *http.
 				params.RepositoryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repository_id: parse")
 			}
 		} else {
 			return params, errors.New("path: repository_id: not specified")
@@ -6819,7 +6819,7 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args [3]string, r 
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -6850,7 +6850,7 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args [3]string, r 
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -6881,7 +6881,7 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args [3]string, r 
 				params.RunnerID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_id: not specified")
@@ -6923,7 +6923,7 @@ func decodeActionsRetryWorkflowParams(args [3]string, r *http.Request) (params A
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -6954,7 +6954,7 @@ func decodeActionsRetryWorkflowParams(args [3]string, r *http.Request) (params A
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -6985,7 +6985,7 @@ func decodeActionsRetryWorkflowParams(args [3]string, r *http.Request) (params A
 				params.RunID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: run_id: parse")
 			}
 		} else {
 			return params, errors.New("path: run_id: not specified")
@@ -7027,7 +7027,7 @@ func decodeActionsReviewPendingDeploymentsForRunParams(args [3]string, r *http.R
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -7058,7 +7058,7 @@ func decodeActionsReviewPendingDeploymentsForRunParams(args [3]string, r *http.R
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -7089,7 +7089,7 @@ func decodeActionsReviewPendingDeploymentsForRunParams(args [3]string, r *http.R
 				params.RunID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: run_id: parse")
 			}
 		} else {
 			return params, errors.New("path: run_id: not specified")
@@ -7128,7 +7128,7 @@ func decodeActionsSetAllowedActionsOrganizationParams(args [1]string, r *http.Re
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -7168,7 +7168,7 @@ func decodeActionsSetAllowedActionsRepositoryParams(args [2]string, r *http.Requ
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -7199,7 +7199,7 @@ func decodeActionsSetAllowedActionsRepositoryParams(args [2]string, r *http.Requ
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -7238,7 +7238,7 @@ func decodeActionsSetGithubActionsPermissionsOrganizationParams(args [1]string, 
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -7278,7 +7278,7 @@ func decodeActionsSetGithubActionsPermissionsRepositoryParams(args [2]string, r 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -7309,7 +7309,7 @@ func decodeActionsSetGithubActionsPermissionsRepositoryParams(args [2]string, r 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -7350,7 +7350,7 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]string
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -7381,7 +7381,7 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]string
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -7422,7 +7422,7 @@ func decodeActionsSetSelectedReposForOrgSecretParams(args [2]string, r *http.Req
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -7453,7 +7453,7 @@ func decodeActionsSetSelectedReposForOrgSecretParams(args [2]string, r *http.Req
 				params.SecretName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: secret_name: parse")
 			}
 		} else {
 			return params, errors.New("path: secret_name: not specified")
@@ -7492,7 +7492,7 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -7533,7 +7533,7 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args [2]string, r *htt
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -7564,7 +7564,7 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args [2]string, r *htt
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -7605,7 +7605,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args [2]string, r *htt
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -7636,7 +7636,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args [2]string, r *htt
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -7676,7 +7676,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args [2]string, r
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -7707,7 +7707,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args [2]string, r
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -7747,7 +7747,7 @@ func decodeActivityDeleteRepoSubscriptionParams(args [2]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -7778,7 +7778,7 @@ func decodeActivityDeleteRepoSubscriptionParams(args [2]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -7818,7 +7818,7 @@ func decodeActivityDeleteThreadSubscriptionParams(args [1]string, r *http.Reques
 				params.ThreadID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: thread_id: parse")
 			}
 		} else {
 			return params, errors.New("path: thread_id: not specified")
@@ -7858,7 +7858,7 @@ func decodeActivityGetRepoSubscriptionParams(args [2]string, r *http.Request) (p
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -7889,7 +7889,7 @@ func decodeActivityGetRepoSubscriptionParams(args [2]string, r *http.Request) (p
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -7929,7 +7929,7 @@ func decodeActivityGetThreadParams(args [1]string, r *http.Request) (params Acti
 				params.ThreadID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: thread_id: parse")
 			}
 		} else {
 			return params, errors.New("path: thread_id: not specified")
@@ -7969,7 +7969,7 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args [1]strin
 				params.ThreadID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: thread_id: parse")
 			}
 		} else {
 			return params, errors.New("path: thread_id: not specified")
@@ -8013,7 +8013,7 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -8382,7 +8382,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -8413,7 +8413,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -8626,7 +8626,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -8657,7 +8657,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -8779,7 +8779,7 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -8901,7 +8901,7 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (p
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -9023,7 +9023,7 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Reque
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -9145,7 +9145,7 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -9268,7 +9268,7 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (params
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -9299,7 +9299,7 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (params
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -9432,7 +9432,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -9463,7 +9463,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -9933,7 +9933,7 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request)
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -10146,7 +10146,7 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (p
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -10177,7 +10177,7 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (p
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -10295,7 +10295,7 @@ func decodeActivityMarkRepoNotificationsAsReadParams(args [2]string, r *http.Req
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -10326,7 +10326,7 @@ func decodeActivityMarkRepoNotificationsAsReadParams(args [2]string, r *http.Req
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -10366,7 +10366,7 @@ func decodeActivityMarkThreadAsReadParams(args [1]string, r *http.Request) (para
 				params.ThreadID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: thread_id: parse")
 			}
 		} else {
 			return params, errors.New("path: thread_id: not specified")
@@ -10406,7 +10406,7 @@ func decodeActivitySetRepoSubscriptionParams(args [2]string, r *http.Request) (p
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -10437,7 +10437,7 @@ func decodeActivitySetRepoSubscriptionParams(args [2]string, r *http.Request) (p
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -10477,7 +10477,7 @@ func decodeActivitySetThreadSubscriptionParams(args [1]string, r *http.Request) 
 				params.ThreadID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: thread_id: parse")
 			}
 		} else {
 			return params, errors.New("path: thread_id: not specified")
@@ -10517,7 +10517,7 @@ func decodeActivityStarRepoForAuthenticatedUserParams(args [2]string, r *http.Re
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -10548,7 +10548,7 @@ func decodeActivityStarRepoForAuthenticatedUserParams(args [2]string, r *http.Re
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -10588,7 +10588,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserParams(args [2]string, r *http.
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -10619,7 +10619,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserParams(args [2]string, r *http.
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -10660,7 +10660,7 @@ func decodeAppsAddRepoToInstallationParams(args [2]string, r *http.Request) (par
 				params.InstallationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: installation_id: parse")
 			}
 		} else {
 			return params, errors.New("path: installation_id: not specified")
@@ -10691,7 +10691,7 @@ func decodeAppsAddRepoToInstallationParams(args [2]string, r *http.Request) (par
 				params.RepositoryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repository_id: parse")
 			}
 		} else {
 			return params, errors.New("path: repository_id: not specified")
@@ -10731,7 +10731,7 @@ func decodeAppsCheckTokenParams(args [1]string, r *http.Request) (params AppsChe
 				params.ClientID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: client_id: parse")
 			}
 		} else {
 			return params, errors.New("path: client_id: not specified")
@@ -10777,7 +10777,7 @@ func decodeAppsCreateContentAttachmentParams(args [3]string, r *http.Request) (p
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -10808,7 +10808,7 @@ func decodeAppsCreateContentAttachmentParams(args [3]string, r *http.Request) (p
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -10839,7 +10839,7 @@ func decodeAppsCreateContentAttachmentParams(args [3]string, r *http.Request) (p
 				params.ContentReferenceID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: content_reference_id: parse")
 			}
 		} else {
 			return params, errors.New("path: content_reference_id: not specified")
@@ -10878,7 +10878,7 @@ func decodeAppsCreateFromManifestParams(args [1]string, r *http.Request) (params
 				params.Code = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: code: parse")
 			}
 		} else {
 			return params, errors.New("path: code: not specified")
@@ -10918,7 +10918,7 @@ func decodeAppsCreateInstallationAccessTokenParams(args [1]string, r *http.Reque
 				params.InstallationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: installation_id: parse")
 			}
 		} else {
 			return params, errors.New("path: installation_id: not specified")
@@ -10958,7 +10958,7 @@ func decodeAppsDeleteAuthorizationParams(args [1]string, r *http.Request) (param
 				params.ClientID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: client_id: parse")
 			}
 		} else {
 			return params, errors.New("path: client_id: not specified")
@@ -10998,7 +10998,7 @@ func decodeAppsDeleteInstallationParams(args [1]string, r *http.Request) (params
 				params.InstallationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: installation_id: parse")
 			}
 		} else {
 			return params, errors.New("path: installation_id: not specified")
@@ -11038,7 +11038,7 @@ func decodeAppsDeleteTokenParams(args [1]string, r *http.Request) (params AppsDe
 				params.ClientID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: client_id: parse")
 			}
 		} else {
 			return params, errors.New("path: client_id: not specified")
@@ -11077,7 +11077,7 @@ func decodeAppsGetBySlugParams(args [1]string, r *http.Request) (params AppsGetB
 				params.AppSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: app_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: app_slug: not specified")
@@ -11117,7 +11117,7 @@ func decodeAppsGetSubscriptionPlanForAccountParams(args [1]string, r *http.Reque
 				params.AccountID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: account_id: parse")
 			}
 		} else {
 			return params, errors.New("path: account_id: not specified")
@@ -11157,7 +11157,7 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedParams(args [1]string, r *htt
 				params.AccountID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: account_id: parse")
 			}
 		} else {
 			return params, errors.New("path: account_id: not specified")
@@ -11196,7 +11196,7 @@ func decodeAppsGetWebhookDeliveryParams(args [1]string, r *http.Request) (params
 				params.DeliveryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: delivery_id: parse")
 			}
 		} else {
 			return params, errors.New("path: delivery_id: not specified")
@@ -11246,7 +11246,7 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (param
 				params.PlanID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: plan_id: parse")
 			}
 		} else {
 			return params, errors.New("path: plan_id: not specified")
@@ -11477,7 +11477,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 				params.PlanID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: plan_id: parse")
 			}
 		} else {
 			return params, errors.New("path: plan_id: not specified")
@@ -11703,7 +11703,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r
 				params.InstallationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: installation_id: parse")
 			}
 		} else {
 			return params, errors.New("path: installation_id: not specified")
@@ -12356,7 +12356,7 @@ func decodeAppsRedeliverWebhookDeliveryParams(args [1]string, r *http.Request) (
 				params.DeliveryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: delivery_id: parse")
 			}
 		} else {
 			return params, errors.New("path: delivery_id: not specified")
@@ -12397,7 +12397,7 @@ func decodeAppsRemoveRepoFromInstallationParams(args [2]string, r *http.Request)
 				params.InstallationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: installation_id: parse")
 			}
 		} else {
 			return params, errors.New("path: installation_id: not specified")
@@ -12428,7 +12428,7 @@ func decodeAppsRemoveRepoFromInstallationParams(args [2]string, r *http.Request)
 				params.RepositoryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repository_id: parse")
 			}
 		} else {
 			return params, errors.New("path: repository_id: not specified")
@@ -12468,7 +12468,7 @@ func decodeAppsResetTokenParams(args [1]string, r *http.Request) (params AppsRes
 				params.ClientID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: client_id: parse")
 			}
 		} else {
 			return params, errors.New("path: client_id: not specified")
@@ -12508,7 +12508,7 @@ func decodeAppsScopeTokenParams(args [1]string, r *http.Request) (params AppsSco
 				params.ClientID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: client_id: parse")
 			}
 		} else {
 			return params, errors.New("path: client_id: not specified")
@@ -12548,7 +12548,7 @@ func decodeAppsSuspendInstallationParams(args [1]string, r *http.Request) (param
 				params.InstallationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: installation_id: parse")
 			}
 		} else {
 			return params, errors.New("path: installation_id: not specified")
@@ -12588,7 +12588,7 @@ func decodeAppsUnsuspendInstallationParams(args [1]string, r *http.Request) (par
 				params.InstallationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: installation_id: parse")
 			}
 		} else {
 			return params, errors.New("path: installation_id: not specified")
@@ -12628,7 +12628,7 @@ func decodeBillingGetGithubActionsBillingGheParams(args [1]string, r *http.Reque
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -12667,7 +12667,7 @@ func decodeBillingGetGithubActionsBillingOrgParams(args [1]string, r *http.Reque
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -12706,7 +12706,7 @@ func decodeBillingGetGithubActionsBillingUserParams(args [1]string, r *http.Requ
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -12746,7 +12746,7 @@ func decodeBillingGetGithubPackagesBillingGheParams(args [1]string, r *http.Requ
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -12785,7 +12785,7 @@ func decodeBillingGetGithubPackagesBillingOrgParams(args [1]string, r *http.Requ
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -12824,7 +12824,7 @@ func decodeBillingGetGithubPackagesBillingUserParams(args [1]string, r *http.Req
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -12864,7 +12864,7 @@ func decodeBillingGetSharedStorageBillingGheParams(args [1]string, r *http.Reque
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -12903,7 +12903,7 @@ func decodeBillingGetSharedStorageBillingOrgParams(args [1]string, r *http.Reque
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -12942,7 +12942,7 @@ func decodeBillingGetSharedStorageBillingUserParams(args [1]string, r *http.Requ
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -12982,7 +12982,7 @@ func decodeChecksCreateSuiteParams(args [2]string, r *http.Request) (params Chec
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -13013,7 +13013,7 @@ func decodeChecksCreateSuiteParams(args [2]string, r *http.Request) (params Chec
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -13055,7 +13055,7 @@ func decodeChecksGetParams(args [3]string, r *http.Request) (params ChecksGetPar
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -13086,7 +13086,7 @@ func decodeChecksGetParams(args [3]string, r *http.Request) (params ChecksGetPar
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -13117,7 +13117,7 @@ func decodeChecksGetParams(args [3]string, r *http.Request) (params ChecksGetPar
 				params.CheckRunID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: check_run_id: parse")
 			}
 		} else {
 			return params, errors.New("path: check_run_id: not specified")
@@ -13159,7 +13159,7 @@ func decodeChecksGetSuiteParams(args [3]string, r *http.Request) (params ChecksG
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -13190,7 +13190,7 @@ func decodeChecksGetSuiteParams(args [3]string, r *http.Request) (params ChecksG
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -13221,7 +13221,7 @@ func decodeChecksGetSuiteParams(args [3]string, r *http.Request) (params ChecksG
 				params.CheckSuiteID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: check_suite_id: parse")
 			}
 		} else {
 			return params, errors.New("path: check_suite_id: not specified")
@@ -13268,7 +13268,7 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -13299,7 +13299,7 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -13330,7 +13330,7 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (params 
 				params.CheckRunID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: check_run_id: parse")
 			}
 		} else {
 			return params, errors.New("path: check_run_id: not specified")
@@ -13464,7 +13464,7 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (params Check
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -13495,7 +13495,7 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (params Check
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -13526,7 +13526,7 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (params Check
 				params.Ref = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: ref: parse")
 			}
 		} else {
 			return params, errors.New("path: ref: not specified")
@@ -13830,7 +13830,7 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (params Che
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -13861,7 +13861,7 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (params Che
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -13892,7 +13892,7 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (params Che
 				params.CheckSuiteID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: check_suite_id: parse")
 			}
 		} else {
 			return params, errors.New("path: check_suite_id: not specified")
@@ -14158,7 +14158,7 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (params
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -14189,7 +14189,7 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (params
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -14220,7 +14220,7 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (params
 				params.Ref = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: ref: parse")
 			}
 		} else {
 			return params, errors.New("path: ref: not specified")
@@ -14408,7 +14408,7 @@ func decodeChecksRerequestSuiteParams(args [3]string, r *http.Request) (params C
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -14439,7 +14439,7 @@ func decodeChecksRerequestSuiteParams(args [3]string, r *http.Request) (params C
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -14470,7 +14470,7 @@ func decodeChecksRerequestSuiteParams(args [3]string, r *http.Request) (params C
 				params.CheckSuiteID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: check_suite_id: parse")
 			}
 		} else {
 			return params, errors.New("path: check_suite_id: not specified")
@@ -14510,7 +14510,7 @@ func decodeChecksSetSuitesPreferencesParams(args [2]string, r *http.Request) (pa
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -14541,7 +14541,7 @@ func decodeChecksSetSuitesPreferencesParams(args [2]string, r *http.Request) (pa
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -14590,7 +14590,7 @@ func decodeCodeScanningDeleteAnalysisParams(args [3]string, r *http.Request) (pa
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -14621,7 +14621,7 @@ func decodeCodeScanningDeleteAnalysisParams(args [3]string, r *http.Request) (pa
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -14652,7 +14652,7 @@ func decodeCodeScanningDeleteAnalysisParams(args [3]string, r *http.Request) (pa
 				params.AnalysisID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: analysis_id: parse")
 			}
 		} else {
 			return params, errors.New("path: analysis_id: not specified")
@@ -14730,7 +14730,7 @@ func decodeCodeScanningGetAlertParams(args [3]string, r *http.Request) (params C
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -14761,7 +14761,7 @@ func decodeCodeScanningGetAlertParams(args [3]string, r *http.Request) (params C
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -14799,7 +14799,7 @@ func decodeCodeScanningGetAlertParams(args [3]string, r *http.Request) (params C
 				params.AlertNumber = AlertNumber(paramsDotAlertNumberVal)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: alert_number: parse")
 			}
 		} else {
 			return params, errors.New("path: alert_number: not specified")
@@ -14842,7 +14842,7 @@ func decodeCodeScanningGetAnalysisParams(args [3]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -14873,7 +14873,7 @@ func decodeCodeScanningGetAnalysisParams(args [3]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -14904,7 +14904,7 @@ func decodeCodeScanningGetAnalysisParams(args [3]string, r *http.Request) (param
 				params.AnalysisID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: analysis_id: parse")
 			}
 		} else {
 			return params, errors.New("path: analysis_id: not specified")
@@ -14946,7 +14946,7 @@ func decodeCodeScanningGetSarifParams(args [3]string, r *http.Request) (params C
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -14977,7 +14977,7 @@ func decodeCodeScanningGetSarifParams(args [3]string, r *http.Request) (params C
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -15008,7 +15008,7 @@ func decodeCodeScanningGetSarifParams(args [3]string, r *http.Request) (params C
 				params.SarifID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: sarif_id: parse")
 			}
 		} else {
 			return params, errors.New("path: sarif_id: not specified")
@@ -15061,7 +15061,7 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -15092,7 +15092,7 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -15130,7 +15130,7 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 				params.AlertNumber = AlertNumber(paramsDotAlertNumberVal)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: alert_number: parse")
 			}
 		} else {
 			return params, errors.New("path: alert_number: not specified")
@@ -15307,7 +15307,7 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -15338,7 +15338,7 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -15646,7 +15646,7 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -15677,7 +15677,7 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -15963,7 +15963,7 @@ func decodeCodeScanningUpdateAlertParams(args [3]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -15994,7 +15994,7 @@ func decodeCodeScanningUpdateAlertParams(args [3]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -16032,7 +16032,7 @@ func decodeCodeScanningUpdateAlertParams(args [3]string, r *http.Request) (param
 				params.AlertNumber = AlertNumber(paramsDotAlertNumberVal)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: alert_number: parse")
 			}
 		} else {
 			return params, errors.New("path: alert_number: not specified")
@@ -16072,7 +16072,7 @@ func decodeCodeScanningUploadSarifParams(args [2]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -16103,7 +16103,7 @@ func decodeCodeScanningUploadSarifParams(args [2]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -16142,7 +16142,7 @@ func decodeCodesOfConductGetConductCodeParams(args [1]string, r *http.Request) (
 				params.Key = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: key: parse")
 			}
 		} else {
 			return params, errors.New("path: key: not specified")
@@ -16186,7 +16186,7 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -16217,7 +16217,7 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -16248,7 +16248,7 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 				params.OrgID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org_id: parse")
 			}
 		} else {
 			return params, errors.New("path: org_id: not specified")
@@ -16292,7 +16292,7 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args [3]
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -16323,7 +16323,7 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args [3]
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -16354,7 +16354,7 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args [3]
 				params.RunnerID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_id: not specified")
@@ -16394,7 +16394,7 @@ func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args [1]str
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -16434,7 +16434,7 @@ func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args [1]string, r
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -16474,7 +16474,7 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args [1
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -16516,7 +16516,7 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args [2]string, r 
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -16547,7 +16547,7 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args [2]string, r 
 				params.ScimGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: scim_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: scim_group_id: not specified")
@@ -16589,7 +16589,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args [2]str
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -16620,7 +16620,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args [2]str
 				params.RunnerID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_id: not specified")
@@ -16662,7 +16662,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args [
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -16693,7 +16693,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args [
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -16735,7 +16735,7 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args [2]string, r *http
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -16766,7 +16766,7 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args [2]string, r *http
 				params.ScimUserID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: scim_user_id: parse")
 			}
 		} else {
 			return params, errors.New("path: scim_user_id: not specified")
@@ -16808,7 +16808,7 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprisePara
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -16839,7 +16839,7 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprisePara
 				params.OrgID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org_id: parse")
 			}
 		} else {
 			return params, errors.New("path: org_id: not specified")
@@ -16881,7 +16881,7 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParam
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -16912,7 +16912,7 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParam
 				params.OrgID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org_id: parse")
 			}
 		} else {
 			return params, errors.New("path: org_id: not specified")
@@ -16952,7 +16952,7 @@ func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args [1]string, r *h
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -17018,7 +17018,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (pa
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -17336,7 +17336,7 @@ func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args [1]st
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -17381,7 +17381,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(arg
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -17412,7 +17412,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(arg
 				params.ScimGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: scim_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: scim_group_id: not specified")
@@ -17488,7 +17488,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -17519,7 +17519,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args
 				params.ScimUserID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: scim_user_id: parse")
 			}
 		} else {
 			return params, errors.New("path: scim_user_id: not specified")
@@ -17561,7 +17561,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args [2]string,
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -17592,7 +17592,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args [2]string,
 				params.RunnerID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_id: not specified")
@@ -17634,7 +17634,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args [2]st
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -17665,7 +17665,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args [2]st
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -17712,7 +17712,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -17743,7 +17743,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -17870,7 +17870,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -18053,7 +18053,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -18195,7 +18195,7 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args [1]stri
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -18240,7 +18240,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -18363,7 +18363,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -18486,7 +18486,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -18611,7 +18611,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -18642,7 +18642,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -18760,7 +18760,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args [1]string
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -18800,7 +18800,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args [1]string,
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -18844,7 +18844,7 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -18875,7 +18875,7 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -18906,7 +18906,7 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 				params.OrgID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org_id: parse")
 			}
 		} else {
 			return params, errors.New("path: org_id: not specified")
@@ -18950,7 +18950,7 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(arg
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -18981,7 +18981,7 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(arg
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -19012,7 +19012,7 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(arg
 				params.RunnerID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_id: not specified")
@@ -19052,7 +19052,7 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args [1]string, r *h
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -19092,7 +19092,7 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args [1]st
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -19134,7 +19134,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -19165,7 +19165,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args
 				params.ScimGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: scim_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: scim_group_id: not specified")
@@ -19207,7 +19207,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args 
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -19238,7 +19238,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args 
 				params.ScimUserID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: scim_user_id: parse")
 			}
 		} else {
 			return params, errors.New("path: scim_user_id: not specified")
@@ -19280,7 +19280,7 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -19311,7 +19311,7 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -19351,7 +19351,7 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -19393,7 +19393,7 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args [2
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -19424,7 +19424,7 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args [2
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -19466,7 +19466,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args [2]string
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -19497,7 +19497,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args [2]string
 				params.ScimGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: scim_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: scim_group_id: not specified")
@@ -19539,7 +19539,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args [2]string,
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -19570,7 +19570,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args [2]string,
 				params.ScimUserID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: scim_user_id: parse")
 			}
 		} else {
 			return params, errors.New("path: scim_user_id: not specified")
@@ -19612,7 +19612,7 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args [2
 				params.Enterprise = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: enterprise: parse")
 			}
 		} else {
 			return params, errors.New("path: enterprise: not specified")
@@ -19643,7 +19643,7 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args [2
 				params.RunnerGroupID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: runner_group_id: parse")
 			}
 		} else {
 			return params, errors.New("path: runner_group_id: not specified")
@@ -19683,7 +19683,7 @@ func decodeGistsCheckIsStarredParams(args [1]string, r *http.Request) (params Gi
 				params.GistID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: gist_id: parse")
 			}
 		} else {
 			return params, errors.New("path: gist_id: not specified")
@@ -19723,7 +19723,7 @@ func decodeGistsCreateCommentParams(args [1]string, r *http.Request) (params Gis
 				params.GistID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: gist_id: parse")
 			}
 		} else {
 			return params, errors.New("path: gist_id: not specified")
@@ -19763,7 +19763,7 @@ func decodeGistsDeleteParams(args [1]string, r *http.Request) (params GistsDelet
 				params.GistID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: gist_id: parse")
 			}
 		} else {
 			return params, errors.New("path: gist_id: not specified")
@@ -19805,7 +19805,7 @@ func decodeGistsDeleteCommentParams(args [2]string, r *http.Request) (params Gis
 				params.GistID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: gist_id: parse")
 			}
 		} else {
 			return params, errors.New("path: gist_id: not specified")
@@ -19836,7 +19836,7 @@ func decodeGistsDeleteCommentParams(args [2]string, r *http.Request) (params Gis
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -19876,7 +19876,7 @@ func decodeGistsForkParams(args [1]string, r *http.Request) (params GistsForkPar
 				params.GistID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: gist_id: parse")
 			}
 		} else {
 			return params, errors.New("path: gist_id: not specified")
@@ -19916,7 +19916,7 @@ func decodeGistsGetParams(args [1]string, r *http.Request) (params GistsGetParam
 				params.GistID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: gist_id: parse")
 			}
 		} else {
 			return params, errors.New("path: gist_id: not specified")
@@ -19958,7 +19958,7 @@ func decodeGistsGetCommentParams(args [2]string, r *http.Request) (params GistsG
 				params.GistID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: gist_id: parse")
 			}
 		} else {
 			return params, errors.New("path: gist_id: not specified")
@@ -19989,7 +19989,7 @@ func decodeGistsGetCommentParams(args [2]string, r *http.Request) (params GistsG
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -20030,7 +20030,7 @@ func decodeGistsGetRevisionParams(args [2]string, r *http.Request) (params Gists
 				params.GistID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: gist_id: parse")
 			}
 		} else {
 			return params, errors.New("path: gist_id: not specified")
@@ -20061,7 +20061,7 @@ func decodeGistsGetRevisionParams(args [2]string, r *http.Request) (params Gists
 				params.Sha = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: sha: parse")
 			}
 		} else {
 			return params, errors.New("path: sha: not specified")
@@ -20233,7 +20233,7 @@ func decodeGistsListCommentsParams(args [1]string, r *http.Request) (params Gist
 				params.GistID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: gist_id: parse")
 			}
 		} else {
 			return params, errors.New("path: gist_id: not specified")
@@ -20356,7 +20356,7 @@ func decodeGistsListCommitsParams(args [1]string, r *http.Request) (params Gists
 				params.GistID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: gist_id: parse")
 			}
 		} else {
 			return params, errors.New("path: gist_id: not specified")
@@ -20481,7 +20481,7 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (params Gists
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -20638,7 +20638,7 @@ func decodeGistsListForksParams(args [1]string, r *http.Request) (params GistsLi
 				params.GistID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: gist_id: parse")
 			}
 		} else {
 			return params, errors.New("path: gist_id: not specified")
@@ -21010,7 +21010,7 @@ func decodeGistsStarParams(args [1]string, r *http.Request) (params GistsStarPar
 				params.GistID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: gist_id: parse")
 			}
 		} else {
 			return params, errors.New("path: gist_id: not specified")
@@ -21050,7 +21050,7 @@ func decodeGistsUnstarParams(args [1]string, r *http.Request) (params GistsUnsta
 				params.GistID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: gist_id: parse")
 			}
 		} else {
 			return params, errors.New("path: gist_id: not specified")
@@ -21092,7 +21092,7 @@ func decodeGistsUpdateCommentParams(args [2]string, r *http.Request) (params Gis
 				params.GistID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: gist_id: parse")
 			}
 		} else {
 			return params, errors.New("path: gist_id: not specified")
@@ -21123,7 +21123,7 @@ func decodeGistsUpdateCommentParams(args [2]string, r *http.Request) (params Gis
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -21163,7 +21163,7 @@ func decodeGitCreateBlobParams(args [2]string, r *http.Request) (params GitCreat
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -21194,7 +21194,7 @@ func decodeGitCreateBlobParams(args [2]string, r *http.Request) (params GitCreat
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -21234,7 +21234,7 @@ func decodeGitCreateCommitParams(args [2]string, r *http.Request) (params GitCre
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -21265,7 +21265,7 @@ func decodeGitCreateCommitParams(args [2]string, r *http.Request) (params GitCre
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -21305,7 +21305,7 @@ func decodeGitCreateRefParams(args [2]string, r *http.Request) (params GitCreate
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -21336,7 +21336,7 @@ func decodeGitCreateRefParams(args [2]string, r *http.Request) (params GitCreate
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -21376,7 +21376,7 @@ func decodeGitCreateTagParams(args [2]string, r *http.Request) (params GitCreate
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -21407,7 +21407,7 @@ func decodeGitCreateTagParams(args [2]string, r *http.Request) (params GitCreate
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -21447,7 +21447,7 @@ func decodeGitCreateTreeParams(args [2]string, r *http.Request) (params GitCreat
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -21478,7 +21478,7 @@ func decodeGitCreateTreeParams(args [2]string, r *http.Request) (params GitCreat
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -21520,7 +21520,7 @@ func decodeGitDeleteRefParams(args [3]string, r *http.Request) (params GitDelete
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -21551,7 +21551,7 @@ func decodeGitDeleteRefParams(args [3]string, r *http.Request) (params GitDelete
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -21582,7 +21582,7 @@ func decodeGitDeleteRefParams(args [3]string, r *http.Request) (params GitDelete
 				params.Ref = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: ref: parse")
 			}
 		} else {
 			return params, errors.New("path: ref: not specified")
@@ -21623,7 +21623,7 @@ func decodeGitGetBlobParams(args [3]string, r *http.Request) (params GitGetBlobP
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -21654,7 +21654,7 @@ func decodeGitGetBlobParams(args [3]string, r *http.Request) (params GitGetBlobP
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -21685,7 +21685,7 @@ func decodeGitGetBlobParams(args [3]string, r *http.Request) (params GitGetBlobP
 				params.FileSha = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: file_sha: parse")
 			}
 		} else {
 			return params, errors.New("path: file_sha: not specified")
@@ -21727,7 +21727,7 @@ func decodeGitGetCommitParams(args [3]string, r *http.Request) (params GitGetCom
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -21758,7 +21758,7 @@ func decodeGitGetCommitParams(args [3]string, r *http.Request) (params GitGetCom
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -21789,7 +21789,7 @@ func decodeGitGetCommitParams(args [3]string, r *http.Request) (params GitGetCom
 				params.CommitSha = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: commit_sha: parse")
 			}
 		} else {
 			return params, errors.New("path: commit_sha: not specified")
@@ -21831,7 +21831,7 @@ func decodeGitGetRefParams(args [3]string, r *http.Request) (params GitGetRefPar
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -21862,7 +21862,7 @@ func decodeGitGetRefParams(args [3]string, r *http.Request) (params GitGetRefPar
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -21893,7 +21893,7 @@ func decodeGitGetRefParams(args [3]string, r *http.Request) (params GitGetRefPar
 				params.Ref = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: ref: parse")
 			}
 		} else {
 			return params, errors.New("path: ref: not specified")
@@ -21934,7 +21934,7 @@ func decodeGitGetTagParams(args [3]string, r *http.Request) (params GitGetTagPar
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -21965,7 +21965,7 @@ func decodeGitGetTagParams(args [3]string, r *http.Request) (params GitGetTagPar
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -21996,7 +21996,7 @@ func decodeGitGetTagParams(args [3]string, r *http.Request) (params GitGetTagPar
 				params.TagSha = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: tag_sha: parse")
 			}
 		} else {
 			return params, errors.New("path: tag_sha: not specified")
@@ -22043,7 +22043,7 @@ func decodeGitGetTreeParams(args [3]string, r *http.Request) (params GitGetTreeP
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -22074,7 +22074,7 @@ func decodeGitGetTreeParams(args [3]string, r *http.Request) (params GitGetTreeP
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -22105,7 +22105,7 @@ func decodeGitGetTreeParams(args [3]string, r *http.Request) (params GitGetTreeP
 				params.TreeSha = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: tree_sha: parse")
 			}
 		} else {
 			return params, errors.New("path: tree_sha: not specified")
@@ -22186,7 +22186,7 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (params Gi
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -22217,7 +22217,7 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (params Gi
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -22248,7 +22248,7 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (params Gi
 				params.Ref = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: ref: parse")
 			}
 		} else {
 			return params, errors.New("path: ref: not specified")
@@ -22368,7 +22368,7 @@ func decodeGitUpdateRefParams(args [3]string, r *http.Request) (params GitUpdate
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -22399,7 +22399,7 @@ func decodeGitUpdateRefParams(args [3]string, r *http.Request) (params GitUpdate
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -22430,7 +22430,7 @@ func decodeGitUpdateRefParams(args [3]string, r *http.Request) (params GitUpdate
 				params.Ref = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: ref: parse")
 			}
 		} else {
 			return params, errors.New("path: ref: not specified")
@@ -22469,7 +22469,7 @@ func decodeGitignoreGetTemplateParams(args [1]string, r *http.Request) (params G
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -22508,7 +22508,7 @@ func decodeInteractionsRemoveRestrictionsForOrgParams(args [1]string, r *http.Re
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -22548,7 +22548,7 @@ func decodeInteractionsRemoveRestrictionsForRepoParams(args [2]string, r *http.R
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -22579,7 +22579,7 @@ func decodeInteractionsRemoveRestrictionsForRepoParams(args [2]string, r *http.R
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -22618,7 +22618,7 @@ func decodeInteractionsSetRestrictionsForOrgParams(args [1]string, r *http.Reque
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -22658,7 +22658,7 @@ func decodeInteractionsSetRestrictionsForRepoParams(args [2]string, r *http.Requ
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -22689,7 +22689,7 @@ func decodeInteractionsSetRestrictionsForRepoParams(args [2]string, r *http.Requ
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -22731,7 +22731,7 @@ func decodeIssuesAddAssigneesParams(args [3]string, r *http.Request) (params Iss
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -22762,7 +22762,7 @@ func decodeIssuesAddAssigneesParams(args [3]string, r *http.Request) (params Iss
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -22793,7 +22793,7 @@ func decodeIssuesAddAssigneesParams(args [3]string, r *http.Request) (params Iss
 				params.IssueNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: issue_number: parse")
 			}
 		} else {
 			return params, errors.New("path: issue_number: not specified")
@@ -22834,7 +22834,7 @@ func decodeIssuesCheckUserCanBeAssignedParams(args [3]string, r *http.Request) (
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -22865,7 +22865,7 @@ func decodeIssuesCheckUserCanBeAssignedParams(args [3]string, r *http.Request) (
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -22896,7 +22896,7 @@ func decodeIssuesCheckUserCanBeAssignedParams(args [3]string, r *http.Request) (
 				params.Assignee = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: assignee: parse")
 			}
 		} else {
 			return params, errors.New("path: assignee: not specified")
@@ -22936,7 +22936,7 @@ func decodeIssuesCreateParams(args [2]string, r *http.Request) (params IssuesCre
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -22967,7 +22967,7 @@ func decodeIssuesCreateParams(args [2]string, r *http.Request) (params IssuesCre
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -23009,7 +23009,7 @@ func decodeIssuesCreateCommentParams(args [3]string, r *http.Request) (params Is
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -23040,7 +23040,7 @@ func decodeIssuesCreateCommentParams(args [3]string, r *http.Request) (params Is
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -23071,7 +23071,7 @@ func decodeIssuesCreateCommentParams(args [3]string, r *http.Request) (params Is
 				params.IssueNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: issue_number: parse")
 			}
 		} else {
 			return params, errors.New("path: issue_number: not specified")
@@ -23111,7 +23111,7 @@ func decodeIssuesCreateLabelParams(args [2]string, r *http.Request) (params Issu
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -23142,7 +23142,7 @@ func decodeIssuesCreateLabelParams(args [2]string, r *http.Request) (params Issu
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -23182,7 +23182,7 @@ func decodeIssuesCreateMilestoneParams(args [2]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -23213,7 +23213,7 @@ func decodeIssuesCreateMilestoneParams(args [2]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -23255,7 +23255,7 @@ func decodeIssuesDeleteCommentParams(args [3]string, r *http.Request) (params Is
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -23286,7 +23286,7 @@ func decodeIssuesDeleteCommentParams(args [3]string, r *http.Request) (params Is
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -23317,7 +23317,7 @@ func decodeIssuesDeleteCommentParams(args [3]string, r *http.Request) (params Is
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -23358,7 +23358,7 @@ func decodeIssuesDeleteLabelParams(args [3]string, r *http.Request) (params Issu
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -23389,7 +23389,7 @@ func decodeIssuesDeleteLabelParams(args [3]string, r *http.Request) (params Issu
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -23420,7 +23420,7 @@ func decodeIssuesDeleteLabelParams(args [3]string, r *http.Request) (params Issu
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -23462,7 +23462,7 @@ func decodeIssuesDeleteMilestoneParams(args [3]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -23493,7 +23493,7 @@ func decodeIssuesDeleteMilestoneParams(args [3]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -23524,7 +23524,7 @@ func decodeIssuesDeleteMilestoneParams(args [3]string, r *http.Request) (params 
 				params.MilestoneNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: milestone_number: parse")
 			}
 		} else {
 			return params, errors.New("path: milestone_number: not specified")
@@ -23566,7 +23566,7 @@ func decodeIssuesGetParams(args [3]string, r *http.Request) (params IssuesGetPar
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -23597,7 +23597,7 @@ func decodeIssuesGetParams(args [3]string, r *http.Request) (params IssuesGetPar
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -23628,7 +23628,7 @@ func decodeIssuesGetParams(args [3]string, r *http.Request) (params IssuesGetPar
 				params.IssueNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: issue_number: parse")
 			}
 		} else {
 			return params, errors.New("path: issue_number: not specified")
@@ -23670,7 +23670,7 @@ func decodeIssuesGetCommentParams(args [3]string, r *http.Request) (params Issue
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -23701,7 +23701,7 @@ func decodeIssuesGetCommentParams(args [3]string, r *http.Request) (params Issue
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -23732,7 +23732,7 @@ func decodeIssuesGetCommentParams(args [3]string, r *http.Request) (params Issue
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -23773,7 +23773,7 @@ func decodeIssuesGetEventParams(args [3]string, r *http.Request) (params IssuesG
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -23804,7 +23804,7 @@ func decodeIssuesGetEventParams(args [3]string, r *http.Request) (params IssuesG
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -23835,7 +23835,7 @@ func decodeIssuesGetEventParams(args [3]string, r *http.Request) (params IssuesG
 				params.EventID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: event_id: parse")
 			}
 		} else {
 			return params, errors.New("path: event_id: not specified")
@@ -23876,7 +23876,7 @@ func decodeIssuesGetLabelParams(args [3]string, r *http.Request) (params IssuesG
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -23907,7 +23907,7 @@ func decodeIssuesGetLabelParams(args [3]string, r *http.Request) (params IssuesG
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -23938,7 +23938,7 @@ func decodeIssuesGetLabelParams(args [3]string, r *http.Request) (params IssuesG
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -23980,7 +23980,7 @@ func decodeIssuesGetMilestoneParams(args [3]string, r *http.Request) (params Iss
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -24011,7 +24011,7 @@ func decodeIssuesGetMilestoneParams(args [3]string, r *http.Request) (params Iss
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -24042,7 +24042,7 @@ func decodeIssuesGetMilestoneParams(args [3]string, r *http.Request) (params Iss
 				params.MilestoneNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: milestone_number: parse")
 			}
 		} else {
 			return params, errors.New("path: milestone_number: not specified")
@@ -24620,7 +24620,7 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (params Is
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -24651,7 +24651,7 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (params Is
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -24779,7 +24779,7 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (params Iss
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -24810,7 +24810,7 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (params Iss
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -24841,7 +24841,7 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (params Iss
 				params.IssueNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: issue_number: parse")
 			}
 		} else {
 			return params, errors.New("path: issue_number: not specified")
@@ -25005,7 +25005,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (par
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -25036,7 +25036,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (par
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -25296,7 +25296,7 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -25327,7 +25327,7 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -25861,7 +25861,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (params Issue
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -26290,7 +26290,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (params Issu
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -26321,7 +26321,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (params Issu
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -26812,7 +26812,7 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -26843,7 +26843,7 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -26874,7 +26874,7 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 				params.MilestoneNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: milestone_number: parse")
 			}
 		} else {
 			return params, errors.New("path: milestone_number: not specified")
@@ -26997,7 +26997,7 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -27028,7 +27028,7 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -27153,7 +27153,7 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -27184,7 +27184,7 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -27215,7 +27215,7 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (param
 				params.IssueNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: issue_number: parse")
 			}
 		} else {
 			return params, errors.New("path: issue_number: not specified")
@@ -27344,7 +27344,7 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (params I
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -27375,7 +27375,7 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (params I
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -27657,7 +27657,7 @@ func decodeIssuesLockParams(args [3]string, r *http.Request) (params IssuesLockP
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -27688,7 +27688,7 @@ func decodeIssuesLockParams(args [3]string, r *http.Request) (params IssuesLockP
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -27719,7 +27719,7 @@ func decodeIssuesLockParams(args [3]string, r *http.Request) (params IssuesLockP
 				params.IssueNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: issue_number: parse")
 			}
 		} else {
 			return params, errors.New("path: issue_number: not specified")
@@ -27761,7 +27761,7 @@ func decodeIssuesRemoveAllLabelsParams(args [3]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -27792,7 +27792,7 @@ func decodeIssuesRemoveAllLabelsParams(args [3]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -27823,7 +27823,7 @@ func decodeIssuesRemoveAllLabelsParams(args [3]string, r *http.Request) (params 
 				params.IssueNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: issue_number: parse")
 			}
 		} else {
 			return params, errors.New("path: issue_number: not specified")
@@ -27865,7 +27865,7 @@ func decodeIssuesRemoveAssigneesParams(args [3]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -27896,7 +27896,7 @@ func decodeIssuesRemoveAssigneesParams(args [3]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -27927,7 +27927,7 @@ func decodeIssuesRemoveAssigneesParams(args [3]string, r *http.Request) (params 
 				params.IssueNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: issue_number: parse")
 			}
 		} else {
 			return params, errors.New("path: issue_number: not specified")
@@ -27970,7 +27970,7 @@ func decodeIssuesRemoveLabelParams(args [4]string, r *http.Request) (params Issu
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -28001,7 +28001,7 @@ func decodeIssuesRemoveLabelParams(args [4]string, r *http.Request) (params Issu
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -28032,7 +28032,7 @@ func decodeIssuesRemoveLabelParams(args [4]string, r *http.Request) (params Issu
 				params.IssueNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: issue_number: parse")
 			}
 		} else {
 			return params, errors.New("path: issue_number: not specified")
@@ -28063,7 +28063,7 @@ func decodeIssuesRemoveLabelParams(args [4]string, r *http.Request) (params Issu
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -28105,7 +28105,7 @@ func decodeIssuesUnlockParams(args [3]string, r *http.Request) (params IssuesUnl
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -28136,7 +28136,7 @@ func decodeIssuesUnlockParams(args [3]string, r *http.Request) (params IssuesUnl
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -28167,7 +28167,7 @@ func decodeIssuesUnlockParams(args [3]string, r *http.Request) (params IssuesUnl
 				params.IssueNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: issue_number: parse")
 			}
 		} else {
 			return params, errors.New("path: issue_number: not specified")
@@ -28209,7 +28209,7 @@ func decodeIssuesUpdateParams(args [3]string, r *http.Request) (params IssuesUpd
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -28240,7 +28240,7 @@ func decodeIssuesUpdateParams(args [3]string, r *http.Request) (params IssuesUpd
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -28271,7 +28271,7 @@ func decodeIssuesUpdateParams(args [3]string, r *http.Request) (params IssuesUpd
 				params.IssueNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: issue_number: parse")
 			}
 		} else {
 			return params, errors.New("path: issue_number: not specified")
@@ -28313,7 +28313,7 @@ func decodeIssuesUpdateCommentParams(args [3]string, r *http.Request) (params Is
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -28344,7 +28344,7 @@ func decodeIssuesUpdateCommentParams(args [3]string, r *http.Request) (params Is
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -28375,7 +28375,7 @@ func decodeIssuesUpdateCommentParams(args [3]string, r *http.Request) (params Is
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -28416,7 +28416,7 @@ func decodeIssuesUpdateLabelParams(args [3]string, r *http.Request) (params Issu
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -28447,7 +28447,7 @@ func decodeIssuesUpdateLabelParams(args [3]string, r *http.Request) (params Issu
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -28478,7 +28478,7 @@ func decodeIssuesUpdateLabelParams(args [3]string, r *http.Request) (params Issu
 				params.Name = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: name: parse")
 			}
 		} else {
 			return params, errors.New("path: name: not specified")
@@ -28520,7 +28520,7 @@ func decodeIssuesUpdateMilestoneParams(args [3]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -28551,7 +28551,7 @@ func decodeIssuesUpdateMilestoneParams(args [3]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -28582,7 +28582,7 @@ func decodeIssuesUpdateMilestoneParams(args [3]string, r *http.Request) (params 
 				params.MilestoneNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: milestone_number: parse")
 			}
 		} else {
 			return params, errors.New("path: milestone_number: not specified")
@@ -28621,7 +28621,7 @@ func decodeLicensesGetParams(args [1]string, r *http.Request) (params LicensesGe
 				params.License = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: license: parse")
 			}
 		} else {
 			return params, errors.New("path: license: not specified")
@@ -28786,7 +28786,7 @@ func decodeLicensesGetForRepoParams(args [2]string, r *http.Request) (params Lic
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -28817,7 +28817,7 @@ func decodeLicensesGetForRepoParams(args [2]string, r *http.Request) (params Lic
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -28857,7 +28857,7 @@ func decodeMigrationsCancelImportParams(args [2]string, r *http.Request) (params
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -28888,7 +28888,7 @@ func decodeMigrationsCancelImportParams(args [2]string, r *http.Request) (params
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -28928,7 +28928,7 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args [1]string, r *
 				params.MigrationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: migration_id: parse")
 			}
 		} else {
 			return params, errors.New("path: migration_id: not specified")
@@ -28969,7 +28969,7 @@ func decodeMigrationsDeleteArchiveForOrgParams(args [2]string, r *http.Request) 
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -29000,7 +29000,7 @@ func decodeMigrationsDeleteArchiveForOrgParams(args [2]string, r *http.Request) 
 				params.MigrationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: migration_id: parse")
 			}
 		} else {
 			return params, errors.New("path: migration_id: not specified")
@@ -29041,7 +29041,7 @@ func decodeMigrationsDownloadArchiveForOrgParams(args [2]string, r *http.Request
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -29072,7 +29072,7 @@ func decodeMigrationsDownloadArchiveForOrgParams(args [2]string, r *http.Request
 				params.MigrationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: migration_id: parse")
 			}
 		} else {
 			return params, errors.New("path: migration_id: not specified")
@@ -29112,7 +29112,7 @@ func decodeMigrationsGetArchiveForAuthenticatedUserParams(args [1]string, r *htt
 				params.MigrationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: migration_id: parse")
 			}
 		} else {
 			return params, errors.New("path: migration_id: not specified")
@@ -29155,7 +29155,7 @@ func decodeMigrationsGetCommitAuthorsParams(args [2]string, r *http.Request) (pa
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -29186,7 +29186,7 @@ func decodeMigrationsGetCommitAuthorsParams(args [2]string, r *http.Request) (pa
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -29260,7 +29260,7 @@ func decodeMigrationsGetImportStatusParams(args [2]string, r *http.Request) (par
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -29291,7 +29291,7 @@ func decodeMigrationsGetImportStatusParams(args [2]string, r *http.Request) (par
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -29331,7 +29331,7 @@ func decodeMigrationsGetLargeFilesParams(args [2]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -29362,7 +29362,7 @@ func decodeMigrationsGetLargeFilesParams(args [2]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -29404,7 +29404,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(args [1]string, r *http
 				params.MigrationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: migration_id: parse")
 			}
 		} else {
 			return params, errors.New("path: migration_id: not specified")
@@ -29484,7 +29484,7 @@ func decodeMigrationsGetStatusForOrgParams(args [2]string, r *http.Request) (par
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -29515,7 +29515,7 @@ func decodeMigrationsGetStatusForOrgParams(args [2]string, r *http.Request) (par
 				params.MigrationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: migration_id: parse")
 			}
 		} else {
 			return params, errors.New("path: migration_id: not specified")
@@ -29709,7 +29709,7 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (params M
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -29891,7 +29891,7 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (par
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -29922,7 +29922,7 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (par
 				params.MigrationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: migration_id: parse")
 			}
 		} else {
 			return params, errors.New("path: migration_id: not specified")
@@ -30045,7 +30045,7 @@ func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (pa
 				params.MigrationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: migration_id: parse")
 			}
 		} else {
 			return params, errors.New("path: migration_id: not specified")
@@ -30164,7 +30164,7 @@ func decodeMigrationsMapCommitAuthorParams(args [3]string, r *http.Request) (par
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -30195,7 +30195,7 @@ func decodeMigrationsMapCommitAuthorParams(args [3]string, r *http.Request) (par
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -30226,7 +30226,7 @@ func decodeMigrationsMapCommitAuthorParams(args [3]string, r *http.Request) (par
 				params.AuthorID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: author_id: parse")
 			}
 		} else {
 			return params, errors.New("path: author_id: not specified")
@@ -30266,7 +30266,7 @@ func decodeMigrationsSetLfsPreferenceParams(args [2]string, r *http.Request) (pa
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -30297,7 +30297,7 @@ func decodeMigrationsSetLfsPreferenceParams(args [2]string, r *http.Request) (pa
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -30336,7 +30336,7 @@ func decodeMigrationsStartForOrgParams(args [1]string, r *http.Request) (params 
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -30376,7 +30376,7 @@ func decodeMigrationsStartImportParams(args [2]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -30407,7 +30407,7 @@ func decodeMigrationsStartImportParams(args [2]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -30449,7 +30449,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserParams(args [2]string, r *htt
 				params.MigrationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: migration_id: parse")
 			}
 		} else {
 			return params, errors.New("path: migration_id: not specified")
@@ -30480,7 +30480,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserParams(args [2]string, r *htt
 				params.RepoName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo_name: parse")
 			}
 		} else {
 			return params, errors.New("path: repo_name: not specified")
@@ -30523,7 +30523,7 @@ func decodeMigrationsUnlockRepoForOrgParams(args [3]string, r *http.Request) (pa
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -30554,7 +30554,7 @@ func decodeMigrationsUnlockRepoForOrgParams(args [3]string, r *http.Request) (pa
 				params.MigrationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: migration_id: parse")
 			}
 		} else {
 			return params, errors.New("path: migration_id: not specified")
@@ -30585,7 +30585,7 @@ func decodeMigrationsUnlockRepoForOrgParams(args [3]string, r *http.Request) (pa
 				params.RepoName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo_name: parse")
 			}
 		} else {
 			return params, errors.New("path: repo_name: not specified")
@@ -30625,7 +30625,7 @@ func decodeMigrationsUpdateImportParams(args [2]string, r *http.Request) (params
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -30656,7 +30656,7 @@ func decodeMigrationsUpdateImportParams(args [2]string, r *http.Request) (params
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -30696,7 +30696,7 @@ func decodeOAuthAuthorizationsDeleteAuthorizationParams(args [1]string, r *http.
 				params.AuthorizationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: authorization_id: parse")
 			}
 		} else {
 			return params, errors.New("path: authorization_id: not specified")
@@ -30736,7 +30736,7 @@ func decodeOAuthAuthorizationsDeleteGrantParams(args [1]string, r *http.Request)
 				params.GrantID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: grant_id: parse")
 			}
 		} else {
 			return params, errors.New("path: grant_id: not specified")
@@ -30776,7 +30776,7 @@ func decodeOAuthAuthorizationsGetAuthorizationParams(args [1]string, r *http.Req
 				params.AuthorizationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: authorization_id: parse")
 			}
 		} else {
 			return params, errors.New("path: authorization_id: not specified")
@@ -30816,7 +30816,7 @@ func decodeOAuthAuthorizationsGetGrantParams(args [1]string, r *http.Request) (p
 				params.GrantID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: grant_id: parse")
 			}
 		} else {
 			return params, errors.New("path: grant_id: not specified")
@@ -30856,7 +30856,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args [1]strin
 				params.ClientID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: client_id: parse")
 			}
 		} else {
 			return params, errors.New("path: client_id: not specified")
@@ -30897,7 +30897,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams
 				params.ClientID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: client_id: parse")
 			}
 		} else {
 			return params, errors.New("path: client_id: not specified")
@@ -30928,7 +30928,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams
 				params.Fingerprint = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: fingerprint: parse")
 			}
 		} else {
 			return params, errors.New("path: fingerprint: not specified")
@@ -31220,7 +31220,7 @@ func decodeOAuthAuthorizationsUpdateAuthorizationParams(args [1]string, r *http.
 				params.AuthorizationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: authorization_id: parse")
 			}
 		} else {
 			return params, errors.New("path: authorization_id: not specified")
@@ -31260,7 +31260,7 @@ func decodeOrgsBlockUserParams(args [2]string, r *http.Request) (params OrgsBloc
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -31291,7 +31291,7 @@ func decodeOrgsBlockUserParams(args [2]string, r *http.Request) (params OrgsBloc
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -31332,7 +31332,7 @@ func decodeOrgsCancelInvitationParams(args [2]string, r *http.Request) (params O
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -31363,7 +31363,7 @@ func decodeOrgsCancelInvitationParams(args [2]string, r *http.Request) (params O
 				params.InvitationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: invitation_id: parse")
 			}
 		} else {
 			return params, errors.New("path: invitation_id: not specified")
@@ -31403,7 +31403,7 @@ func decodeOrgsCheckBlockedUserParams(args [2]string, r *http.Request) (params O
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -31434,7 +31434,7 @@ func decodeOrgsCheckBlockedUserParams(args [2]string, r *http.Request) (params O
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -31474,7 +31474,7 @@ func decodeOrgsCheckMembershipForUserParams(args [2]string, r *http.Request) (pa
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -31505,7 +31505,7 @@ func decodeOrgsCheckMembershipForUserParams(args [2]string, r *http.Request) (pa
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -31545,7 +31545,7 @@ func decodeOrgsCheckPublicMembershipForUserParams(args [2]string, r *http.Reques
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -31576,7 +31576,7 @@ func decodeOrgsCheckPublicMembershipForUserParams(args [2]string, r *http.Reques
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -31616,7 +31616,7 @@ func decodeOrgsConvertMemberToOutsideCollaboratorParams(args [2]string, r *http.
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -31647,7 +31647,7 @@ func decodeOrgsConvertMemberToOutsideCollaboratorParams(args [2]string, r *http.
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -31686,7 +31686,7 @@ func decodeOrgsCreateInvitationParams(args [1]string, r *http.Request) (params O
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -31725,7 +31725,7 @@ func decodeOrgsCreateWebhookParams(args [1]string, r *http.Request) (params Orgs
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -31765,7 +31765,7 @@ func decodeOrgsDeleteWebhookParams(args [2]string, r *http.Request) (params Orgs
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -31796,7 +31796,7 @@ func decodeOrgsDeleteWebhookParams(args [2]string, r *http.Request) (params Orgs
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -31835,7 +31835,7 @@ func decodeOrgsGetParams(args [1]string, r *http.Request) (params OrgsGetParams,
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -31900,7 +31900,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (params OrgsGe
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -32217,7 +32217,7 @@ func decodeOrgsGetMembershipForAuthenticatedUserParams(args [1]string, r *http.R
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -32257,7 +32257,7 @@ func decodeOrgsGetMembershipForUserParams(args [2]string, r *http.Request) (para
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -32288,7 +32288,7 @@ func decodeOrgsGetMembershipForUserParams(args [2]string, r *http.Request) (para
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -32328,7 +32328,7 @@ func decodeOrgsGetWebhookParams(args [2]string, r *http.Request) (params OrgsGet
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -32359,7 +32359,7 @@ func decodeOrgsGetWebhookParams(args [2]string, r *http.Request) (params OrgsGet
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -32399,7 +32399,7 @@ func decodeOrgsGetWebhookConfigForOrgParams(args [2]string, r *http.Request) (pa
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -32430,7 +32430,7 @@ func decodeOrgsGetWebhookConfigForOrgParams(args [2]string, r *http.Request) (pa
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -32471,7 +32471,7 @@ func decodeOrgsGetWebhookDeliveryParams(args [3]string, r *http.Request) (params
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -32502,7 +32502,7 @@ func decodeOrgsGetWebhookDeliveryParams(args [3]string, r *http.Request) (params
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -32533,7 +32533,7 @@ func decodeOrgsGetWebhookDeliveryParams(args [3]string, r *http.Request) (params
 				params.DeliveryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: delivery_id: parse")
 			}
 		} else {
 			return params, errors.New("path: delivery_id: not specified")
@@ -32657,7 +32657,7 @@ func decodeOrgsListBlockedUsersParams(args [1]string, r *http.Request) (params O
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -32701,7 +32701,7 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (par
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -32913,7 +32913,7 @@ func decodeOrgsListForUserParams(args [1]string, r *http.Request) (params OrgsLi
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -33037,7 +33037,7 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (param
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -33068,7 +33068,7 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (param
 				params.InvitationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: invitation_id: parse")
 			}
 		} else {
 			return params, errors.New("path: invitation_id: not specified")
@@ -33200,7 +33200,7 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (params OrgsLi
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -33577,7 +33577,7 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -33753,7 +33753,7 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (pa
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -33875,7 +33875,7 @@ func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (params 
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -33992,7 +33992,7 @@ func decodeOrgsListSamlSSOAuthorizationsParams(args [1]string, r *http.Request) 
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -34038,7 +34038,7 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (par
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -34069,7 +34069,7 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (par
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -34186,7 +34186,7 @@ func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (params OrgsL
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -34304,7 +34304,7 @@ func decodeOrgsPingWebhookParams(args [2]string, r *http.Request) (params OrgsPi
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -34335,7 +34335,7 @@ func decodeOrgsPingWebhookParams(args [2]string, r *http.Request) (params OrgsPi
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -34376,7 +34376,7 @@ func decodeOrgsRedeliverWebhookDeliveryParams(args [3]string, r *http.Request) (
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -34407,7 +34407,7 @@ func decodeOrgsRedeliverWebhookDeliveryParams(args [3]string, r *http.Request) (
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -34438,7 +34438,7 @@ func decodeOrgsRedeliverWebhookDeliveryParams(args [3]string, r *http.Request) (
 				params.DeliveryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: delivery_id: parse")
 			}
 		} else {
 			return params, errors.New("path: delivery_id: not specified")
@@ -34478,7 +34478,7 @@ func decodeOrgsRemoveMemberParams(args [2]string, r *http.Request) (params OrgsR
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -34509,7 +34509,7 @@ func decodeOrgsRemoveMemberParams(args [2]string, r *http.Request) (params OrgsR
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -34549,7 +34549,7 @@ func decodeOrgsRemoveMembershipForUserParams(args [2]string, r *http.Request) (p
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -34580,7 +34580,7 @@ func decodeOrgsRemoveMembershipForUserParams(args [2]string, r *http.Request) (p
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -34620,7 +34620,7 @@ func decodeOrgsRemoveOutsideCollaboratorParams(args [2]string, r *http.Request) 
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -34651,7 +34651,7 @@ func decodeOrgsRemoveOutsideCollaboratorParams(args [2]string, r *http.Request) 
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -34691,7 +34691,7 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args [2]string, 
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -34722,7 +34722,7 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args [2]string, 
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -34762,7 +34762,7 @@ func decodeOrgsRemoveSamlSSOAuthorizationParams(args [2]string, r *http.Request)
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -34793,7 +34793,7 @@ func decodeOrgsRemoveSamlSSOAuthorizationParams(args [2]string, r *http.Request)
 				params.CredentialID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: credential_id: parse")
 			}
 		} else {
 			return params, errors.New("path: credential_id: not specified")
@@ -34833,7 +34833,7 @@ func decodeOrgsSetMembershipForUserParams(args [2]string, r *http.Request) (para
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -34864,7 +34864,7 @@ func decodeOrgsSetMembershipForUserParams(args [2]string, r *http.Request) (para
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -34904,7 +34904,7 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args [2]string, r *
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -34935,7 +34935,7 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args [2]string, r *
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -34975,7 +34975,7 @@ func decodeOrgsUnblockUserParams(args [2]string, r *http.Request) (params OrgsUn
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -35006,7 +35006,7 @@ func decodeOrgsUnblockUserParams(args [2]string, r *http.Request) (params OrgsUn
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -35045,7 +35045,7 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserParams(args [1]string, r *htt
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -35085,7 +35085,7 @@ func decodeOrgsUpdateWebhookParams(args [2]string, r *http.Request) (params Orgs
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -35116,7 +35116,7 @@ func decodeOrgsUpdateWebhookParams(args [2]string, r *http.Request) (params Orgs
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -35156,7 +35156,7 @@ func decodeOrgsUpdateWebhookConfigForOrgParams(args [2]string, r *http.Request) 
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -35187,7 +35187,7 @@ func decodeOrgsUpdateWebhookConfigForOrgParams(args [2]string, r *http.Request) 
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -35233,7 +35233,15 @@ func decodePackagesDeletePackageForAuthenticatedUserParams(args [2]string, r *ht
 				params.PackageType = PackagesDeletePackageForAuthenticatedUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -35264,7 +35272,7 @@ func decodePackagesDeletePackageForAuthenticatedUserParams(args [2]string, r *ht
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -35311,7 +35319,15 @@ func decodePackagesDeletePackageForOrgParams(args [3]string, r *http.Request) (p
 				params.PackageType = PackagesDeletePackageForOrgPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -35342,7 +35358,7 @@ func decodePackagesDeletePackageForOrgParams(args [3]string, r *http.Request) (p
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -35373,7 +35389,7 @@ func decodePackagesDeletePackageForOrgParams(args [3]string, r *http.Request) (p
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -35420,7 +35436,15 @@ func decodePackagesDeletePackageForUserParams(args [3]string, r *http.Request) (
 				params.PackageType = PackagesDeletePackageForUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -35451,7 +35475,7 @@ func decodePackagesDeletePackageForUserParams(args [3]string, r *http.Request) (
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -35482,7 +35506,7 @@ func decodePackagesDeletePackageForUserParams(args [3]string, r *http.Request) (
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -35530,7 +35554,15 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args [3]string
 				params.PackageType = PackagesDeletePackageVersionForAuthenticatedUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -35561,7 +35593,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args [3]string
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -35592,7 +35624,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args [3]string
 				params.PackageVersionID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_version_id: parse")
 			}
 		} else {
 			return params, errors.New("path: package_version_id: not specified")
@@ -35641,7 +35673,15 @@ func decodePackagesDeletePackageVersionForOrgParams(args [4]string, r *http.Requ
 				params.PackageType = PackagesDeletePackageVersionForOrgPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -35672,7 +35712,7 @@ func decodePackagesDeletePackageVersionForOrgParams(args [4]string, r *http.Requ
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -35703,7 +35743,7 @@ func decodePackagesDeletePackageVersionForOrgParams(args [4]string, r *http.Requ
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -35734,7 +35774,7 @@ func decodePackagesDeletePackageVersionForOrgParams(args [4]string, r *http.Requ
 				params.PackageVersionID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_version_id: parse")
 			}
 		} else {
 			return params, errors.New("path: package_version_id: not specified")
@@ -35783,7 +35823,15 @@ func decodePackagesDeletePackageVersionForUserParams(args [4]string, r *http.Req
 				params.PackageType = PackagesDeletePackageVersionForUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -35814,7 +35862,7 @@ func decodePackagesDeletePackageVersionForUserParams(args [4]string, r *http.Req
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -35845,7 +35893,7 @@ func decodePackagesDeletePackageVersionForUserParams(args [4]string, r *http.Req
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -35876,7 +35924,7 @@ func decodePackagesDeletePackageVersionForUserParams(args [4]string, r *http.Req
 				params.PackageVersionID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_version_id: parse")
 			}
 		} else {
 			return params, errors.New("path: package_version_id: not specified")
@@ -35929,7 +35977,15 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 				params.PackageType = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -35960,7 +36016,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -36146,7 +36202,15 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 				params.PackageType = PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -36177,7 +36241,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -36208,7 +36272,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -36387,7 +36451,15 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args [3]stri
 				params.PackageType = PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -36418,7 +36490,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args [3]stri
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -36449,7 +36521,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args [3]stri
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -36495,7 +36567,15 @@ func decodePackagesGetPackageForAuthenticatedUserParams(args [2]string, r *http.
 				params.PackageType = PackagesGetPackageForAuthenticatedUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -36526,7 +36606,7 @@ func decodePackagesGetPackageForAuthenticatedUserParams(args [2]string, r *http.
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -36573,7 +36653,15 @@ func decodePackagesGetPackageForOrganizationParams(args [3]string, r *http.Reque
 				params.PackageType = PackagesGetPackageForOrganizationPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -36604,7 +36692,7 @@ func decodePackagesGetPackageForOrganizationParams(args [3]string, r *http.Reque
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -36635,7 +36723,7 @@ func decodePackagesGetPackageForOrganizationParams(args [3]string, r *http.Reque
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -36682,7 +36770,15 @@ func decodePackagesGetPackageForUserParams(args [3]string, r *http.Request) (par
 				params.PackageType = PackagesGetPackageForUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -36713,7 +36809,7 @@ func decodePackagesGetPackageForUserParams(args [3]string, r *http.Request) (par
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -36744,7 +36840,7 @@ func decodePackagesGetPackageForUserParams(args [3]string, r *http.Request) (par
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -36792,7 +36888,15 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(args [3]string, r
 				params.PackageType = PackagesGetPackageVersionForAuthenticatedUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -36823,7 +36927,7 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(args [3]string, r
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -36854,7 +36958,7 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(args [3]string, r
 				params.PackageVersionID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_version_id: parse")
 			}
 		} else {
 			return params, errors.New("path: package_version_id: not specified")
@@ -36903,7 +37007,15 @@ func decodePackagesGetPackageVersionForOrganizationParams(args [4]string, r *htt
 				params.PackageType = PackagesGetPackageVersionForOrganizationPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -36934,7 +37046,7 @@ func decodePackagesGetPackageVersionForOrganizationParams(args [4]string, r *htt
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -36965,7 +37077,7 @@ func decodePackagesGetPackageVersionForOrganizationParams(args [4]string, r *htt
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -36996,7 +37108,7 @@ func decodePackagesGetPackageVersionForOrganizationParams(args [4]string, r *htt
 				params.PackageVersionID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_version_id: parse")
 			}
 		} else {
 			return params, errors.New("path: package_version_id: not specified")
@@ -37045,7 +37157,15 @@ func decodePackagesGetPackageVersionForUserParams(args [4]string, r *http.Reques
 				params.PackageType = PackagesGetPackageVersionForUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -37076,7 +37196,7 @@ func decodePackagesGetPackageVersionForUserParams(args [4]string, r *http.Reques
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -37107,7 +37227,7 @@ func decodePackagesGetPackageVersionForUserParams(args [4]string, r *http.Reques
 				params.PackageVersionID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_version_id: parse")
 			}
 		} else {
 			return params, errors.New("path: package_version_id: not specified")
@@ -37138,7 +37258,7 @@ func decodePackagesGetPackageVersionForUserParams(args [4]string, r *http.Reques
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -37331,7 +37451,7 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, r *http.Req
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -37517,7 +37637,7 @@ func decodePackagesListPackagesForUserParams(args [1]string, r *http.Request) (p
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -37566,7 +37686,15 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, r *h
 				params.PackageType = PackagesRestorePackageForAuthenticatedUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -37597,7 +37725,7 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, r *h
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -37681,7 +37809,15 @@ func decodePackagesRestorePackageForOrgParams(args [3]string, r *http.Request) (
 				params.PackageType = PackagesRestorePackageForOrgPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -37712,7 +37848,7 @@ func decodePackagesRestorePackageForOrgParams(args [3]string, r *http.Request) (
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -37743,7 +37879,7 @@ func decodePackagesRestorePackageForOrgParams(args [3]string, r *http.Request) (
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -37827,7 +37963,15 @@ func decodePackagesRestorePackageForUserParams(args [3]string, r *http.Request) 
 				params.PackageType = PackagesRestorePackageForUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -37858,7 +38002,7 @@ func decodePackagesRestorePackageForUserParams(args [3]string, r *http.Request) 
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -37889,7 +38033,7 @@ func decodePackagesRestorePackageForUserParams(args [3]string, r *http.Request) 
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -37971,7 +38115,15 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args [3]strin
 				params.PackageType = PackagesRestorePackageVersionForAuthenticatedUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -38002,7 +38154,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args [3]strin
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -38033,7 +38185,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args [3]strin
 				params.PackageVersionID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_version_id: parse")
 			}
 		} else {
 			return params, errors.New("path: package_version_id: not specified")
@@ -38082,7 +38234,15 @@ func decodePackagesRestorePackageVersionForOrgParams(args [4]string, r *http.Req
 				params.PackageType = PackagesRestorePackageVersionForOrgPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -38113,7 +38273,7 @@ func decodePackagesRestorePackageVersionForOrgParams(args [4]string, r *http.Req
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -38144,7 +38304,7 @@ func decodePackagesRestorePackageVersionForOrgParams(args [4]string, r *http.Req
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -38175,7 +38335,7 @@ func decodePackagesRestorePackageVersionForOrgParams(args [4]string, r *http.Req
 				params.PackageVersionID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_version_id: parse")
 			}
 		} else {
 			return params, errors.New("path: package_version_id: not specified")
@@ -38224,7 +38384,15 @@ func decodePackagesRestorePackageVersionForUserParams(args [4]string, r *http.Re
 				params.PackageType = PackagesRestorePackageVersionForUserPackageType(c)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_type: parse")
+			}
+			if err := func() error {
+				if err := params.PackageType.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return params, errors.Wrap(err, "path: package_type: invalid")
 			}
 		} else {
 			return params, errors.New("path: package_type: not specified")
@@ -38255,7 +38423,7 @@ func decodePackagesRestorePackageVersionForUserParams(args [4]string, r *http.Re
 				params.PackageName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_name: parse")
 			}
 		} else {
 			return params, errors.New("path: package_name: not specified")
@@ -38286,7 +38454,7 @@ func decodePackagesRestorePackageVersionForUserParams(args [4]string, r *http.Re
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -38317,7 +38485,7 @@ func decodePackagesRestorePackageVersionForUserParams(args [4]string, r *http.Re
 				params.PackageVersionID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: package_version_id: parse")
 			}
 		} else {
 			return params, errors.New("path: package_version_id: not specified")
@@ -38357,7 +38525,7 @@ func decodeProjectsAddCollaboratorParams(args [2]string, r *http.Request) (param
 				params.ProjectID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: project_id: parse")
 			}
 		} else {
 			return params, errors.New("path: project_id: not specified")
@@ -38388,7 +38556,7 @@ func decodeProjectsAddCollaboratorParams(args [2]string, r *http.Request) (param
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -38427,7 +38595,7 @@ func decodeProjectsCreateColumnParams(args [1]string, r *http.Request) (params P
 				params.ProjectID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: project_id: parse")
 			}
 		} else {
 			return params, errors.New("path: project_id: not specified")
@@ -38466,7 +38634,7 @@ func decodeProjectsCreateForOrgParams(args [1]string, r *http.Request) (params P
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -38506,7 +38674,7 @@ func decodeProjectsCreateForRepoParams(args [2]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -38537,7 +38705,7 @@ func decodeProjectsCreateForRepoParams(args [2]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -38576,7 +38744,7 @@ func decodeProjectsDeleteParams(args [1]string, r *http.Request) (params Project
 				params.ProjectID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: project_id: parse")
 			}
 		} else {
 			return params, errors.New("path: project_id: not specified")
@@ -38616,7 +38784,7 @@ func decodeProjectsDeleteCardParams(args [1]string, r *http.Request) (params Pro
 				params.CardID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: card_id: parse")
 			}
 		} else {
 			return params, errors.New("path: card_id: not specified")
@@ -38656,7 +38824,7 @@ func decodeProjectsDeleteColumnParams(args [1]string, r *http.Request) (params P
 				params.ColumnID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: column_id: parse")
 			}
 		} else {
 			return params, errors.New("path: column_id: not specified")
@@ -38695,7 +38863,7 @@ func decodeProjectsGetParams(args [1]string, r *http.Request) (params ProjectsGe
 				params.ProjectID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: project_id: parse")
 			}
 		} else {
 			return params, errors.New("path: project_id: not specified")
@@ -38735,7 +38903,7 @@ func decodeProjectsGetCardParams(args [1]string, r *http.Request) (params Projec
 				params.CardID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: card_id: parse")
 			}
 		} else {
 			return params, errors.New("path: card_id: not specified")
@@ -38775,7 +38943,7 @@ func decodeProjectsGetColumnParams(args [1]string, r *http.Request) (params Proj
 				params.ColumnID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: column_id: parse")
 			}
 		} else {
 			return params, errors.New("path: column_id: not specified")
@@ -38815,7 +38983,7 @@ func decodeProjectsGetPermissionForUserParams(args [2]string, r *http.Request) (
 				params.ProjectID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: project_id: parse")
 			}
 		} else {
 			return params, errors.New("path: project_id: not specified")
@@ -38846,7 +39014,7 @@ func decodeProjectsGetPermissionForUserParams(args [2]string, r *http.Request) (
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -38894,7 +39062,7 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (params Proj
 				params.ColumnID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: column_id: parse")
 			}
 		} else {
 			return params, errors.New("path: column_id: not specified")
@@ -39077,7 +39245,7 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (par
 				params.ProjectID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: project_id: parse")
 			}
 		} else {
 			return params, errors.New("path: project_id: not specified")
@@ -39253,7 +39421,7 @@ func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (params Pr
 				params.ProjectID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: project_id: parse")
 			}
 		} else {
 			return params, errors.New("path: project_id: not specified")
@@ -39377,7 +39545,7 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (params Pro
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -39556,7 +39724,7 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (params Pr
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -39587,7 +39755,7 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (params Pr
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -39765,7 +39933,7 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (params Pr
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -39937,7 +40105,7 @@ func decodeProjectsMoveCardParams(args [1]string, r *http.Request) (params Proje
 				params.CardID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: card_id: parse")
 			}
 		} else {
 			return params, errors.New("path: card_id: not specified")
@@ -39977,7 +40145,7 @@ func decodeProjectsMoveColumnParams(args [1]string, r *http.Request) (params Pro
 				params.ColumnID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: column_id: parse")
 			}
 		} else {
 			return params, errors.New("path: column_id: not specified")
@@ -40017,7 +40185,7 @@ func decodeProjectsRemoveCollaboratorParams(args [2]string, r *http.Request) (pa
 				params.ProjectID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: project_id: parse")
 			}
 		} else {
 			return params, errors.New("path: project_id: not specified")
@@ -40048,7 +40216,7 @@ func decodeProjectsRemoveCollaboratorParams(args [2]string, r *http.Request) (pa
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -40087,7 +40255,7 @@ func decodeProjectsUpdateParams(args [1]string, r *http.Request) (params Project
 				params.ProjectID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: project_id: parse")
 			}
 		} else {
 			return params, errors.New("path: project_id: not specified")
@@ -40127,7 +40295,7 @@ func decodeProjectsUpdateCardParams(args [1]string, r *http.Request) (params Pro
 				params.CardID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: card_id: parse")
 			}
 		} else {
 			return params, errors.New("path: card_id: not specified")
@@ -40167,7 +40335,7 @@ func decodeProjectsUpdateColumnParams(args [1]string, r *http.Request) (params P
 				params.ColumnID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: column_id: parse")
 			}
 		} else {
 			return params, errors.New("path: column_id: not specified")
@@ -40208,7 +40376,7 @@ func decodePullsCheckIfMergedParams(args [3]string, r *http.Request) (params Pul
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -40239,7 +40407,7 @@ func decodePullsCheckIfMergedParams(args [3]string, r *http.Request) (params Pul
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -40270,7 +40438,7 @@ func decodePullsCheckIfMergedParams(args [3]string, r *http.Request) (params Pul
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -40310,7 +40478,7 @@ func decodePullsCreateParams(args [2]string, r *http.Request) (params PullsCreat
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -40341,7 +40509,7 @@ func decodePullsCreateParams(args [2]string, r *http.Request) (params PullsCreat
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -40384,7 +40552,7 @@ func decodePullsCreateReplyForReviewCommentParams(args [4]string, r *http.Reques
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -40415,7 +40583,7 @@ func decodePullsCreateReplyForReviewCommentParams(args [4]string, r *http.Reques
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -40446,7 +40614,7 @@ func decodePullsCreateReplyForReviewCommentParams(args [4]string, r *http.Reques
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -40477,7 +40645,7 @@ func decodePullsCreateReplyForReviewCommentParams(args [4]string, r *http.Reques
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -40518,7 +40686,7 @@ func decodePullsCreateReviewParams(args [3]string, r *http.Request) (params Pull
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -40549,7 +40717,7 @@ func decodePullsCreateReviewParams(args [3]string, r *http.Request) (params Pull
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -40580,7 +40748,7 @@ func decodePullsCreateReviewParams(args [3]string, r *http.Request) (params Pull
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -40621,7 +40789,7 @@ func decodePullsCreateReviewCommentParams(args [3]string, r *http.Request) (para
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -40652,7 +40820,7 @@ func decodePullsCreateReviewCommentParams(args [3]string, r *http.Request) (para
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -40683,7 +40851,7 @@ func decodePullsCreateReviewCommentParams(args [3]string, r *http.Request) (para
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -40726,7 +40894,7 @@ func decodePullsDeletePendingReviewParams(args [4]string, r *http.Request) (para
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -40757,7 +40925,7 @@ func decodePullsDeletePendingReviewParams(args [4]string, r *http.Request) (para
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -40788,7 +40956,7 @@ func decodePullsDeletePendingReviewParams(args [4]string, r *http.Request) (para
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -40819,7 +40987,7 @@ func decodePullsDeletePendingReviewParams(args [4]string, r *http.Request) (para
 				params.ReviewID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: review_id: parse")
 			}
 		} else {
 			return params, errors.New("path: review_id: not specified")
@@ -40861,7 +41029,7 @@ func decodePullsDeleteReviewCommentParams(args [3]string, r *http.Request) (para
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -40892,7 +41060,7 @@ func decodePullsDeleteReviewCommentParams(args [3]string, r *http.Request) (para
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -40923,7 +41091,7 @@ func decodePullsDeleteReviewCommentParams(args [3]string, r *http.Request) (para
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -40966,7 +41134,7 @@ func decodePullsDismissReviewParams(args [4]string, r *http.Request) (params Pul
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -40997,7 +41165,7 @@ func decodePullsDismissReviewParams(args [4]string, r *http.Request) (params Pul
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -41028,7 +41196,7 @@ func decodePullsDismissReviewParams(args [4]string, r *http.Request) (params Pul
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -41059,7 +41227,7 @@ func decodePullsDismissReviewParams(args [4]string, r *http.Request) (params Pul
 				params.ReviewID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: review_id: parse")
 			}
 		} else {
 			return params, errors.New("path: review_id: not specified")
@@ -41100,7 +41268,7 @@ func decodePullsGetParams(args [3]string, r *http.Request) (params PullsGetParam
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -41131,7 +41299,7 @@ func decodePullsGetParams(args [3]string, r *http.Request) (params PullsGetParam
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -41162,7 +41330,7 @@ func decodePullsGetParams(args [3]string, r *http.Request) (params PullsGetParam
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -41205,7 +41373,7 @@ func decodePullsGetReviewParams(args [4]string, r *http.Request) (params PullsGe
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -41236,7 +41404,7 @@ func decodePullsGetReviewParams(args [4]string, r *http.Request) (params PullsGe
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -41267,7 +41435,7 @@ func decodePullsGetReviewParams(args [4]string, r *http.Request) (params PullsGe
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -41298,7 +41466,7 @@ func decodePullsGetReviewParams(args [4]string, r *http.Request) (params PullsGe
 				params.ReviewID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: review_id: parse")
 			}
 		} else {
 			return params, errors.New("path: review_id: not specified")
@@ -41340,7 +41508,7 @@ func decodePullsGetReviewCommentParams(args [3]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -41371,7 +41539,7 @@ func decodePullsGetReviewCommentParams(args [3]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -41402,7 +41570,7 @@ func decodePullsGetReviewCommentParams(args [3]string, r *http.Request) (params 
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -41460,7 +41628,7 @@ func decodePullsListParams(args [2]string, r *http.Request) (params PullsListPar
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -41491,7 +41659,7 @@ func decodePullsListParams(args [2]string, r *http.Request) (params PullsListPar
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -41842,7 +42010,7 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (pa
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -41873,7 +42041,7 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (pa
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -41904,7 +42072,7 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (pa
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -41935,7 +42103,7 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (pa
 				params.ReviewID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: review_id: parse")
 			}
 		} else {
 			return params, errors.New("path: review_id: not specified")
@@ -42059,7 +42227,7 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (params Pulls
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -42090,7 +42258,7 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (params Pulls
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -42121,7 +42289,7 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (params Pulls
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -42245,7 +42413,7 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (params PullsLi
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -42276,7 +42444,7 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (params PullsLi
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -42307,7 +42475,7 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (params PullsLi
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -42431,7 +42599,7 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (p
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -42462,7 +42630,7 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (p
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -42493,7 +42661,7 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (p
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -42624,7 +42792,7 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -42655,7 +42823,7 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -42686,7 +42854,7 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (param
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -42952,7 +43120,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -42983,7 +43151,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -43239,7 +43407,7 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (params Pulls
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -43270,7 +43438,7 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (params Pulls
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -43301,7 +43469,7 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (params Pulls
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -43420,7 +43588,7 @@ func decodePullsMergeParams(args [3]string, r *http.Request) (params PullsMergeP
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -43451,7 +43619,7 @@ func decodePullsMergeParams(args [3]string, r *http.Request) (params PullsMergeP
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -43482,7 +43650,7 @@ func decodePullsMergeParams(args [3]string, r *http.Request) (params PullsMergeP
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -43523,7 +43691,7 @@ func decodePullsRemoveRequestedReviewersParams(args [3]string, r *http.Request) 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -43554,7 +43722,7 @@ func decodePullsRemoveRequestedReviewersParams(args [3]string, r *http.Request) 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -43585,7 +43753,7 @@ func decodePullsRemoveRequestedReviewersParams(args [3]string, r *http.Request) 
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -43628,7 +43796,7 @@ func decodePullsSubmitReviewParams(args [4]string, r *http.Request) (params Pull
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -43659,7 +43827,7 @@ func decodePullsSubmitReviewParams(args [4]string, r *http.Request) (params Pull
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -43690,7 +43858,7 @@ func decodePullsSubmitReviewParams(args [4]string, r *http.Request) (params Pull
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -43721,7 +43889,7 @@ func decodePullsSubmitReviewParams(args [4]string, r *http.Request) (params Pull
 				params.ReviewID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: review_id: parse")
 			}
 		} else {
 			return params, errors.New("path: review_id: not specified")
@@ -43762,7 +43930,7 @@ func decodePullsUpdateParams(args [3]string, r *http.Request) (params PullsUpdat
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -43793,7 +43961,7 @@ func decodePullsUpdateParams(args [3]string, r *http.Request) (params PullsUpdat
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -43824,7 +43992,7 @@ func decodePullsUpdateParams(args [3]string, r *http.Request) (params PullsUpdat
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -43865,7 +44033,7 @@ func decodePullsUpdateBranchParams(args [3]string, r *http.Request) (params Pull
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -43896,7 +44064,7 @@ func decodePullsUpdateBranchParams(args [3]string, r *http.Request) (params Pull
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -43927,7 +44095,7 @@ func decodePullsUpdateBranchParams(args [3]string, r *http.Request) (params Pull
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -43970,7 +44138,7 @@ func decodePullsUpdateReviewParams(args [4]string, r *http.Request) (params Pull
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -44001,7 +44169,7 @@ func decodePullsUpdateReviewParams(args [4]string, r *http.Request) (params Pull
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -44032,7 +44200,7 @@ func decodePullsUpdateReviewParams(args [4]string, r *http.Request) (params Pull
 				params.PullNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: pull_number: parse")
 			}
 		} else {
 			return params, errors.New("path: pull_number: not specified")
@@ -44063,7 +44231,7 @@ func decodePullsUpdateReviewParams(args [4]string, r *http.Request) (params Pull
 				params.ReviewID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: review_id: parse")
 			}
 		} else {
 			return params, errors.New("path: review_id: not specified")
@@ -44105,7 +44273,7 @@ func decodePullsUpdateReviewCommentParams(args [3]string, r *http.Request) (para
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -44136,7 +44304,7 @@ func decodePullsUpdateReviewCommentParams(args [3]string, r *http.Request) (para
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -44167,7 +44335,7 @@ func decodePullsUpdateReviewCommentParams(args [3]string, r *http.Request) (para
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -44209,7 +44377,7 @@ func decodeReactionsCreateForCommitCommentParams(args [3]string, r *http.Request
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -44240,7 +44408,7 @@ func decodeReactionsCreateForCommitCommentParams(args [3]string, r *http.Request
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -44271,7 +44439,7 @@ func decodeReactionsCreateForCommitCommentParams(args [3]string, r *http.Request
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -44313,7 +44481,7 @@ func decodeReactionsCreateForIssueParams(args [3]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -44344,7 +44512,7 @@ func decodeReactionsCreateForIssueParams(args [3]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -44375,7 +44543,7 @@ func decodeReactionsCreateForIssueParams(args [3]string, r *http.Request) (param
 				params.IssueNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: issue_number: parse")
 			}
 		} else {
 			return params, errors.New("path: issue_number: not specified")
@@ -44417,7 +44585,7 @@ func decodeReactionsCreateForIssueCommentParams(args [3]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -44448,7 +44616,7 @@ func decodeReactionsCreateForIssueCommentParams(args [3]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -44479,7 +44647,7 @@ func decodeReactionsCreateForIssueCommentParams(args [3]string, r *http.Request)
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -44521,7 +44689,7 @@ func decodeReactionsCreateForPullRequestReviewCommentParams(args [3]string, r *h
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -44552,7 +44720,7 @@ func decodeReactionsCreateForPullRequestReviewCommentParams(args [3]string, r *h
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -44583,7 +44751,7 @@ func decodeReactionsCreateForPullRequestReviewCommentParams(args [3]string, r *h
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -44625,7 +44793,7 @@ func decodeReactionsCreateForReleaseParams(args [3]string, r *http.Request) (par
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -44656,7 +44824,7 @@ func decodeReactionsCreateForReleaseParams(args [3]string, r *http.Request) (par
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -44687,7 +44855,7 @@ func decodeReactionsCreateForReleaseParams(args [3]string, r *http.Request) (par
 				params.ReleaseID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: release_id: parse")
 			}
 		} else {
 			return params, errors.New("path: release_id: not specified")
@@ -44730,7 +44898,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args [4]string, r 
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -44761,7 +44929,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args [4]string, r 
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -44792,7 +44960,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args [4]string, r 
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -44823,7 +44991,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args [4]string, r 
 				params.CommentNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_number: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_number: not specified")
@@ -44864,7 +45032,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args [3]string, r
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -44895,7 +45063,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args [3]string, r
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -44926,7 +45094,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args [3]string, r
 				params.CommentNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_number: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_number: not specified")
@@ -44968,7 +45136,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(args [3]string, r *http.R
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -44999,7 +45167,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(args [3]string, r *http.R
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -45030,7 +45198,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(args [3]string, r *http.R
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -45070,7 +45238,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyParams(args [2]string, r *http.
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -45101,7 +45269,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyParams(args [2]string, r *http.
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -45144,7 +45312,7 @@ func decodeReactionsDeleteForCommitCommentParams(args [4]string, r *http.Request
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -45175,7 +45343,7 @@ func decodeReactionsDeleteForCommitCommentParams(args [4]string, r *http.Request
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -45206,7 +45374,7 @@ func decodeReactionsDeleteForCommitCommentParams(args [4]string, r *http.Request
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -45237,7 +45405,7 @@ func decodeReactionsDeleteForCommitCommentParams(args [4]string, r *http.Request
 				params.ReactionID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: reaction_id: parse")
 			}
 		} else {
 			return params, errors.New("path: reaction_id: not specified")
@@ -45280,7 +45448,7 @@ func decodeReactionsDeleteForIssueParams(args [4]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -45311,7 +45479,7 @@ func decodeReactionsDeleteForIssueParams(args [4]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -45342,7 +45510,7 @@ func decodeReactionsDeleteForIssueParams(args [4]string, r *http.Request) (param
 				params.IssueNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: issue_number: parse")
 			}
 		} else {
 			return params, errors.New("path: issue_number: not specified")
@@ -45373,7 +45541,7 @@ func decodeReactionsDeleteForIssueParams(args [4]string, r *http.Request) (param
 				params.ReactionID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: reaction_id: parse")
 			}
 		} else {
 			return params, errors.New("path: reaction_id: not specified")
@@ -45416,7 +45584,7 @@ func decodeReactionsDeleteForIssueCommentParams(args [4]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -45447,7 +45615,7 @@ func decodeReactionsDeleteForIssueCommentParams(args [4]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -45478,7 +45646,7 @@ func decodeReactionsDeleteForIssueCommentParams(args [4]string, r *http.Request)
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -45509,7 +45677,7 @@ func decodeReactionsDeleteForIssueCommentParams(args [4]string, r *http.Request)
 				params.ReactionID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: reaction_id: parse")
 			}
 		} else {
 			return params, errors.New("path: reaction_id: not specified")
@@ -45552,7 +45720,7 @@ func decodeReactionsDeleteForPullRequestCommentParams(args [4]string, r *http.Re
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -45583,7 +45751,7 @@ func decodeReactionsDeleteForPullRequestCommentParams(args [4]string, r *http.Re
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -45614,7 +45782,7 @@ func decodeReactionsDeleteForPullRequestCommentParams(args [4]string, r *http.Re
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -45645,7 +45813,7 @@ func decodeReactionsDeleteForPullRequestCommentParams(args [4]string, r *http.Re
 				params.ReactionID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: reaction_id: parse")
 			}
 		} else {
 			return params, errors.New("path: reaction_id: not specified")
@@ -45688,7 +45856,7 @@ func decodeReactionsDeleteForTeamDiscussionParams(args [4]string, r *http.Reques
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -45719,7 +45887,7 @@ func decodeReactionsDeleteForTeamDiscussionParams(args [4]string, r *http.Reques
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -45750,7 +45918,7 @@ func decodeReactionsDeleteForTeamDiscussionParams(args [4]string, r *http.Reques
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -45781,7 +45949,7 @@ func decodeReactionsDeleteForTeamDiscussionParams(args [4]string, r *http.Reques
 				params.ReactionID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: reaction_id: parse")
 			}
 		} else {
 			return params, errors.New("path: reaction_id: not specified")
@@ -45825,7 +45993,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(args [5]string, r *http
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -45856,7 +46024,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(args [5]string, r *http
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -45887,7 +46055,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(args [5]string, r *http
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -45918,7 +46086,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(args [5]string, r *http
 				params.CommentNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_number: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_number: not specified")
@@ -45949,7 +46117,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(args [5]string, r *http
 				params.ReactionID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: reaction_id: parse")
 			}
 		} else {
 			return params, errors.New("path: reaction_id: not specified")
@@ -45988,7 +46156,7 @@ func decodeReactionsDeleteLegacyParams(args [1]string, r *http.Request) (params 
 				params.ReactionID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: reaction_id: parse")
 			}
 		} else {
 			return params, errors.New("path: reaction_id: not specified")
@@ -46038,7 +46206,7 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -46069,7 +46237,7 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -46100,7 +46268,7 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -46277,7 +46445,7 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -46308,7 +46476,7 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -46339,7 +46507,7 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (params 
 				params.IssueNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: issue_number: parse")
 			}
 		} else {
 			return params, errors.New("path: issue_number: not specified")
@@ -46516,7 +46684,7 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -46547,7 +46715,7 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -46578,7 +46746,7 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -46755,7 +46923,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -46786,7 +46954,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -46817,7 +46985,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -46995,7 +47163,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -47026,7 +47194,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -47057,7 +47225,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -47088,7 +47256,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 				params.CommentNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_number: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_number: not specified")
@@ -47264,7 +47432,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -47295,7 +47463,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -47326,7 +47494,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 				params.CommentNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_number: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_number: not specified")
@@ -47503,7 +47671,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -47534,7 +47702,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -47565,7 +47733,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -47740,7 +47908,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -47771,7 +47939,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -47938,7 +48106,7 @@ func decodeReposAcceptInvitationParams(args [1]string, r *http.Request) (params 
 				params.InvitationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: invitation_id: parse")
 			}
 		} else {
 			return params, errors.New("path: invitation_id: not specified")
@@ -47980,7 +48148,7 @@ func decodeReposAddAppAccessRestrictionsParams(args [3]string, r *http.Request) 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -48011,7 +48179,7 @@ func decodeReposAddAppAccessRestrictionsParams(args [3]string, r *http.Request) 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -48042,7 +48210,7 @@ func decodeReposAddAppAccessRestrictionsParams(args [3]string, r *http.Request) 
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -48083,7 +48251,7 @@ func decodeReposAddCollaboratorParams(args [3]string, r *http.Request) (params R
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -48114,7 +48282,7 @@ func decodeReposAddCollaboratorParams(args [3]string, r *http.Request) (params R
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -48145,7 +48313,7 @@ func decodeReposAddCollaboratorParams(args [3]string, r *http.Request) (params R
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -48187,7 +48355,7 @@ func decodeReposAddStatusCheckContextsParams(args [3]string, r *http.Request) (p
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -48218,7 +48386,7 @@ func decodeReposAddStatusCheckContextsParams(args [3]string, r *http.Request) (p
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -48249,7 +48417,7 @@ func decodeReposAddStatusCheckContextsParams(args [3]string, r *http.Request) (p
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -48291,7 +48459,7 @@ func decodeReposAddTeamAccessRestrictionsParams(args [3]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -48322,7 +48490,7 @@ func decodeReposAddTeamAccessRestrictionsParams(args [3]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -48353,7 +48521,7 @@ func decodeReposAddTeamAccessRestrictionsParams(args [3]string, r *http.Request)
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -48395,7 +48563,7 @@ func decodeReposAddUserAccessRestrictionsParams(args [3]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -48426,7 +48594,7 @@ func decodeReposAddUserAccessRestrictionsParams(args [3]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -48457,7 +48625,7 @@ func decodeReposAddUserAccessRestrictionsParams(args [3]string, r *http.Request)
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -48498,7 +48666,7 @@ func decodeReposCheckCollaboratorParams(args [3]string, r *http.Request) (params
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -48529,7 +48697,7 @@ func decodeReposCheckCollaboratorParams(args [3]string, r *http.Request) (params
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -48560,7 +48728,7 @@ func decodeReposCheckCollaboratorParams(args [3]string, r *http.Request) (params
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -48600,7 +48768,7 @@ func decodeReposCheckVulnerabilityAlertsParams(args [2]string, r *http.Request) 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -48631,7 +48799,7 @@ func decodeReposCheckVulnerabilityAlertsParams(args [2]string, r *http.Request) 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -48678,7 +48846,7 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (params Re
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -48709,7 +48877,7 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (params Re
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -48818,7 +48986,7 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (params Re
 				params.Basehead = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: basehead: parse")
 			}
 		} else {
 			return params, errors.New("path: basehead: not specified")
@@ -48858,7 +49026,7 @@ func decodeReposCreateAutolinkParams(args [2]string, r *http.Request) (params Re
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -48889,7 +49057,7 @@ func decodeReposCreateAutolinkParams(args [2]string, r *http.Request) (params Re
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -48931,7 +49099,7 @@ func decodeReposCreateCommitCommentParams(args [3]string, r *http.Request) (para
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -48962,7 +49130,7 @@ func decodeReposCreateCommitCommentParams(args [3]string, r *http.Request) (para
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -48993,7 +49161,7 @@ func decodeReposCreateCommitCommentParams(args [3]string, r *http.Request) (para
 				params.CommitSha = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: commit_sha: parse")
 			}
 		} else {
 			return params, errors.New("path: commit_sha: not specified")
@@ -49035,7 +49203,7 @@ func decodeReposCreateCommitSignatureProtectionParams(args [3]string, r *http.Re
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -49066,7 +49234,7 @@ func decodeReposCreateCommitSignatureProtectionParams(args [3]string, r *http.Re
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -49097,7 +49265,7 @@ func decodeReposCreateCommitSignatureProtectionParams(args [3]string, r *http.Re
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -49138,7 +49306,7 @@ func decodeReposCreateCommitStatusParams(args [3]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -49169,7 +49337,7 @@ func decodeReposCreateCommitStatusParams(args [3]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -49200,7 +49368,7 @@ func decodeReposCreateCommitStatusParams(args [3]string, r *http.Request) (param
 				params.Sha = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: sha: parse")
 			}
 		} else {
 			return params, errors.New("path: sha: not specified")
@@ -49240,7 +49408,7 @@ func decodeReposCreateDeployKeyParams(args [2]string, r *http.Request) (params R
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -49271,7 +49439,7 @@ func decodeReposCreateDeployKeyParams(args [2]string, r *http.Request) (params R
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -49311,7 +49479,7 @@ func decodeReposCreateDeploymentParams(args [2]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -49342,7 +49510,7 @@ func decodeReposCreateDeploymentParams(args [2]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -49384,7 +49552,7 @@ func decodeReposCreateDeploymentStatusParams(args [3]string, r *http.Request) (p
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -49415,7 +49583,7 @@ func decodeReposCreateDeploymentStatusParams(args [3]string, r *http.Request) (p
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -49446,7 +49614,7 @@ func decodeReposCreateDeploymentStatusParams(args [3]string, r *http.Request) (p
 				params.DeploymentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: deployment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: deployment_id: not specified")
@@ -49486,7 +49654,7 @@ func decodeReposCreateDispatchEventParams(args [2]string, r *http.Request) (para
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -49517,7 +49685,7 @@ func decodeReposCreateDispatchEventParams(args [2]string, r *http.Request) (para
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -49557,7 +49725,7 @@ func decodeReposCreateForkParams(args [2]string, r *http.Request) (params ReposC
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -49588,7 +49756,7 @@ func decodeReposCreateForkParams(args [2]string, r *http.Request) (params ReposC
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -49627,7 +49795,7 @@ func decodeReposCreateInOrgParams(args [1]string, r *http.Request) (params Repos
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -49669,7 +49837,7 @@ func decodeReposCreateOrUpdateFileContentsParams(args [3]string, r *http.Request
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -49700,7 +49868,7 @@ func decodeReposCreateOrUpdateFileContentsParams(args [3]string, r *http.Request
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -49731,7 +49899,7 @@ func decodeReposCreateOrUpdateFileContentsParams(args [3]string, r *http.Request
 				params.Path = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: path: parse")
 			}
 		} else {
 			return params, errors.New("path: path: not specified")
@@ -49771,7 +49939,7 @@ func decodeReposCreatePagesSiteParams(args [2]string, r *http.Request) (params R
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -49802,7 +49970,7 @@ func decodeReposCreatePagesSiteParams(args [2]string, r *http.Request) (params R
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -49842,7 +50010,7 @@ func decodeReposCreateReleaseParams(args [2]string, r *http.Request) (params Rep
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -49873,7 +50041,7 @@ func decodeReposCreateReleaseParams(args [2]string, r *http.Request) (params Rep
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -49913,7 +50081,7 @@ func decodeReposCreateUsingTemplateParams(args [2]string, r *http.Request) (para
 				params.TemplateOwner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: template_owner: parse")
 			}
 		} else {
 			return params, errors.New("path: template_owner: not specified")
@@ -49944,7 +50112,7 @@ func decodeReposCreateUsingTemplateParams(args [2]string, r *http.Request) (para
 				params.TemplateRepo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: template_repo: parse")
 			}
 		} else {
 			return params, errors.New("path: template_repo: not specified")
@@ -49984,7 +50152,7 @@ func decodeReposCreateWebhookParams(args [2]string, r *http.Request) (params Rep
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -50015,7 +50183,7 @@ func decodeReposCreateWebhookParams(args [2]string, r *http.Request) (params Rep
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -50055,7 +50223,7 @@ func decodeReposDeclineInvitationParams(args [1]string, r *http.Request) (params
 				params.InvitationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: invitation_id: parse")
 			}
 		} else {
 			return params, errors.New("path: invitation_id: not specified")
@@ -50095,7 +50263,7 @@ func decodeReposDeleteParams(args [2]string, r *http.Request) (params ReposDelet
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -50126,7 +50294,7 @@ func decodeReposDeleteParams(args [2]string, r *http.Request) (params ReposDelet
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -50168,7 +50336,7 @@ func decodeReposDeleteAccessRestrictionsParams(args [3]string, r *http.Request) 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -50199,7 +50367,7 @@ func decodeReposDeleteAccessRestrictionsParams(args [3]string, r *http.Request) 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -50230,7 +50398,7 @@ func decodeReposDeleteAccessRestrictionsParams(args [3]string, r *http.Request) 
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -50272,7 +50440,7 @@ func decodeReposDeleteAdminBranchProtectionParams(args [3]string, r *http.Reques
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -50303,7 +50471,7 @@ func decodeReposDeleteAdminBranchProtectionParams(args [3]string, r *http.Reques
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -50334,7 +50502,7 @@ func decodeReposDeleteAdminBranchProtectionParams(args [3]string, r *http.Reques
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -50376,7 +50544,7 @@ func decodeReposDeleteAnEnvironmentParams(args [3]string, r *http.Request) (para
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -50407,7 +50575,7 @@ func decodeReposDeleteAnEnvironmentParams(args [3]string, r *http.Request) (para
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -50438,7 +50606,7 @@ func decodeReposDeleteAnEnvironmentParams(args [3]string, r *http.Request) (para
 				params.EnvironmentName = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: environment_name: parse")
 			}
 		} else {
 			return params, errors.New("path: environment_name: not specified")
@@ -50480,7 +50648,7 @@ func decodeReposDeleteAutolinkParams(args [3]string, r *http.Request) (params Re
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -50511,7 +50679,7 @@ func decodeReposDeleteAutolinkParams(args [3]string, r *http.Request) (params Re
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -50542,7 +50710,7 @@ func decodeReposDeleteAutolinkParams(args [3]string, r *http.Request) (params Re
 				params.AutolinkID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: autolink_id: parse")
 			}
 		} else {
 			return params, errors.New("path: autolink_id: not specified")
@@ -50584,7 +50752,7 @@ func decodeReposDeleteBranchProtectionParams(args [3]string, r *http.Request) (p
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -50615,7 +50783,7 @@ func decodeReposDeleteBranchProtectionParams(args [3]string, r *http.Request) (p
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -50646,7 +50814,7 @@ func decodeReposDeleteBranchProtectionParams(args [3]string, r *http.Request) (p
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -50688,7 +50856,7 @@ func decodeReposDeleteCommitCommentParams(args [3]string, r *http.Request) (para
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -50719,7 +50887,7 @@ func decodeReposDeleteCommitCommentParams(args [3]string, r *http.Request) (para
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -50750,7 +50918,7 @@ func decodeReposDeleteCommitCommentParams(args [3]string, r *http.Request) (para
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -50792,7 +50960,7 @@ func decodeReposDeleteCommitSignatureProtectionParams(args [3]string, r *http.Re
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -50823,7 +50991,7 @@ func decodeReposDeleteCommitSignatureProtectionParams(args [3]string, r *http.Re
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -50854,7 +51022,7 @@ func decodeReposDeleteCommitSignatureProtectionParams(args [3]string, r *http.Re
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -50896,7 +51064,7 @@ func decodeReposDeleteDeployKeyParams(args [3]string, r *http.Request) (params R
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -50927,7 +51095,7 @@ func decodeReposDeleteDeployKeyParams(args [3]string, r *http.Request) (params R
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -50958,7 +51126,7 @@ func decodeReposDeleteDeployKeyParams(args [3]string, r *http.Request) (params R
 				params.KeyID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: key_id: parse")
 			}
 		} else {
 			return params, errors.New("path: key_id: not specified")
@@ -51000,7 +51168,7 @@ func decodeReposDeleteDeploymentParams(args [3]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -51031,7 +51199,7 @@ func decodeReposDeleteDeploymentParams(args [3]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -51062,7 +51230,7 @@ func decodeReposDeleteDeploymentParams(args [3]string, r *http.Request) (params 
 				params.DeploymentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: deployment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: deployment_id: not specified")
@@ -51104,7 +51272,7 @@ func decodeReposDeleteFileParams(args [3]string, r *http.Request) (params ReposD
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -51135,7 +51303,7 @@ func decodeReposDeleteFileParams(args [3]string, r *http.Request) (params ReposD
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -51166,7 +51334,7 @@ func decodeReposDeleteFileParams(args [3]string, r *http.Request) (params ReposD
 				params.Path = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: path: parse")
 			}
 		} else {
 			return params, errors.New("path: path: not specified")
@@ -51208,7 +51376,7 @@ func decodeReposDeleteInvitationParams(args [3]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -51239,7 +51407,7 @@ func decodeReposDeleteInvitationParams(args [3]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -51270,7 +51438,7 @@ func decodeReposDeleteInvitationParams(args [3]string, r *http.Request) (params 
 				params.InvitationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: invitation_id: parse")
 			}
 		} else {
 			return params, errors.New("path: invitation_id: not specified")
@@ -51310,7 +51478,7 @@ func decodeReposDeletePagesSiteParams(args [2]string, r *http.Request) (params R
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -51341,7 +51509,7 @@ func decodeReposDeletePagesSiteParams(args [2]string, r *http.Request) (params R
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -51383,7 +51551,7 @@ func decodeReposDeletePullRequestReviewProtectionParams(args [3]string, r *http.
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -51414,7 +51582,7 @@ func decodeReposDeletePullRequestReviewProtectionParams(args [3]string, r *http.
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -51445,7 +51613,7 @@ func decodeReposDeletePullRequestReviewProtectionParams(args [3]string, r *http.
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -51487,7 +51655,7 @@ func decodeReposDeleteReleaseParams(args [3]string, r *http.Request) (params Rep
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -51518,7 +51686,7 @@ func decodeReposDeleteReleaseParams(args [3]string, r *http.Request) (params Rep
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -51549,7 +51717,7 @@ func decodeReposDeleteReleaseParams(args [3]string, r *http.Request) (params Rep
 				params.ReleaseID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: release_id: parse")
 			}
 		} else {
 			return params, errors.New("path: release_id: not specified")
@@ -51591,7 +51759,7 @@ func decodeReposDeleteReleaseAssetParams(args [3]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -51622,7 +51790,7 @@ func decodeReposDeleteReleaseAssetParams(args [3]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -51653,7 +51821,7 @@ func decodeReposDeleteReleaseAssetParams(args [3]string, r *http.Request) (param
 				params.AssetID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: asset_id: parse")
 			}
 		} else {
 			return params, errors.New("path: asset_id: not specified")
@@ -51694,7 +51862,7 @@ func decodeReposDeleteWebhookParams(args [3]string, r *http.Request) (params Rep
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -51725,7 +51893,7 @@ func decodeReposDeleteWebhookParams(args [3]string, r *http.Request) (params Rep
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -51756,7 +51924,7 @@ func decodeReposDeleteWebhookParams(args [3]string, r *http.Request) (params Rep
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -51796,7 +51964,7 @@ func decodeReposDisableAutomatedSecurityFixesParams(args [2]string, r *http.Requ
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -51827,7 +51995,7 @@ func decodeReposDisableAutomatedSecurityFixesParams(args [2]string, r *http.Requ
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -51867,7 +52035,7 @@ func decodeReposDisableLfsForRepoParams(args [2]string, r *http.Request) (params
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -51898,7 +52066,7 @@ func decodeReposDisableLfsForRepoParams(args [2]string, r *http.Request) (params
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -51938,7 +52106,7 @@ func decodeReposDisableVulnerabilityAlertsParams(args [2]string, r *http.Request
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -51969,7 +52137,7 @@ func decodeReposDisableVulnerabilityAlertsParams(args [2]string, r *http.Request
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -52010,7 +52178,7 @@ func decodeReposDownloadTarballArchiveParams(args [3]string, r *http.Request) (p
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -52041,7 +52209,7 @@ func decodeReposDownloadTarballArchiveParams(args [3]string, r *http.Request) (p
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -52072,7 +52240,7 @@ func decodeReposDownloadTarballArchiveParams(args [3]string, r *http.Request) (p
 				params.Ref = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: ref: parse")
 			}
 		} else {
 			return params, errors.New("path: ref: not specified")
@@ -52113,7 +52281,7 @@ func decodeReposDownloadZipballArchiveParams(args [3]string, r *http.Request) (p
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -52144,7 +52312,7 @@ func decodeReposDownloadZipballArchiveParams(args [3]string, r *http.Request) (p
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -52175,7 +52343,7 @@ func decodeReposDownloadZipballArchiveParams(args [3]string, r *http.Request) (p
 				params.Ref = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: ref: parse")
 			}
 		} else {
 			return params, errors.New("path: ref: not specified")
@@ -52215,7 +52383,7 @@ func decodeReposEnableAutomatedSecurityFixesParams(args [2]string, r *http.Reque
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -52246,7 +52414,7 @@ func decodeReposEnableAutomatedSecurityFixesParams(args [2]string, r *http.Reque
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -52286,7 +52454,7 @@ func decodeReposEnableLfsForRepoParams(args [2]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -52317,7 +52485,7 @@ func decodeReposEnableLfsForRepoParams(args [2]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -52357,7 +52525,7 @@ func decodeReposEnableVulnerabilityAlertsParams(args [2]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -52388,7 +52556,7 @@ func decodeReposEnableVulnerabilityAlertsParams(args [2]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -52428,7 +52596,7 @@ func decodeReposGetParams(args [2]string, r *http.Request) (params ReposGetParam
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -52459,7 +52627,7 @@ func decodeReposGetParams(args [2]string, r *http.Request) (params ReposGetParam
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -52501,7 +52669,7 @@ func decodeReposGetAccessRestrictionsParams(args [3]string, r *http.Request) (pa
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -52532,7 +52700,7 @@ func decodeReposGetAccessRestrictionsParams(args [3]string, r *http.Request) (pa
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -52563,7 +52731,7 @@ func decodeReposGetAccessRestrictionsParams(args [3]string, r *http.Request) (pa
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -52605,7 +52773,7 @@ func decodeReposGetAdminBranchProtectionParams(args [3]string, r *http.Request) 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -52636,7 +52804,7 @@ func decodeReposGetAdminBranchProtectionParams(args [3]string, r *http.Request) 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -52667,7 +52835,7 @@ func decodeReposGetAdminBranchProtectionParams(args [3]string, r *http.Request) 
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -52709,7 +52877,7 @@ func decodeReposGetAllStatusCheckContextsParams(args [3]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -52740,7 +52908,7 @@ func decodeReposGetAllStatusCheckContextsParams(args [3]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -52771,7 +52939,7 @@ func decodeReposGetAllStatusCheckContextsParams(args [3]string, r *http.Request)
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -52816,7 +52984,7 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (params Repo
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -52847,7 +53015,7 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (params Repo
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -52967,7 +53135,7 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(args [3]string, r *http
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -52998,7 +53166,7 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(args [3]string, r *http
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -53029,7 +53197,7 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(args [3]string, r *http
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -53071,7 +53239,7 @@ func decodeReposGetAutolinkParams(args [3]string, r *http.Request) (params Repos
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -53102,7 +53270,7 @@ func decodeReposGetAutolinkParams(args [3]string, r *http.Request) (params Repos
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -53133,7 +53301,7 @@ func decodeReposGetAutolinkParams(args [3]string, r *http.Request) (params Repos
 				params.AutolinkID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: autolink_id: parse")
 			}
 		} else {
 			return params, errors.New("path: autolink_id: not specified")
@@ -53175,7 +53343,7 @@ func decodeReposGetBranchParams(args [3]string, r *http.Request) (params ReposGe
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -53206,7 +53374,7 @@ func decodeReposGetBranchParams(args [3]string, r *http.Request) (params ReposGe
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -53237,7 +53405,7 @@ func decodeReposGetBranchParams(args [3]string, r *http.Request) (params ReposGe
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -53279,7 +53447,7 @@ func decodeReposGetBranchProtectionParams(args [3]string, r *http.Request) (para
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -53310,7 +53478,7 @@ func decodeReposGetBranchProtectionParams(args [3]string, r *http.Request) (para
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -53341,7 +53509,7 @@ func decodeReposGetBranchProtectionParams(args [3]string, r *http.Request) (para
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -53384,7 +53552,7 @@ func decodeReposGetClonesParams(args [2]string, r *http.Request) (params ReposGe
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -53415,7 +53583,7 @@ func decodeReposGetClonesParams(args [2]string, r *http.Request) (params ReposGe
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -53509,7 +53677,7 @@ func decodeReposGetCodeFrequencyStatsParams(args [2]string, r *http.Request) (pa
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -53540,7 +53708,7 @@ func decodeReposGetCodeFrequencyStatsParams(args [2]string, r *http.Request) (pa
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -53581,7 +53749,7 @@ func decodeReposGetCollaboratorPermissionLevelParams(args [3]string, r *http.Req
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -53612,7 +53780,7 @@ func decodeReposGetCollaboratorPermissionLevelParams(args [3]string, r *http.Req
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -53643,7 +53811,7 @@ func decodeReposGetCollaboratorPermissionLevelParams(args [3]string, r *http.Req
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -53690,7 +53858,7 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -53721,7 +53889,7 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -53752,7 +53920,7 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 				params.Ref = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: ref: parse")
 			}
 		} else {
 			return params, errors.New("path: ref: not specified")
@@ -53877,7 +54045,7 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (params ReposGe
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -53908,7 +54076,7 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (params ReposGe
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -54017,7 +54185,7 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (params ReposGe
 				params.Ref = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: ref: parse")
 			}
 		} else {
 			return params, errors.New("path: ref: not specified")
@@ -54057,7 +54225,7 @@ func decodeReposGetCommitActivityStatsParams(args [2]string, r *http.Request) (p
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -54088,7 +54256,7 @@ func decodeReposGetCommitActivityStatsParams(args [2]string, r *http.Request) (p
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -54130,7 +54298,7 @@ func decodeReposGetCommitCommentParams(args [3]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -54161,7 +54329,7 @@ func decodeReposGetCommitCommentParams(args [3]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -54192,7 +54360,7 @@ func decodeReposGetCommitCommentParams(args [3]string, r *http.Request) (params 
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -54234,7 +54402,7 @@ func decodeReposGetCommitSignatureProtectionParams(args [3]string, r *http.Reque
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -54265,7 +54433,7 @@ func decodeReposGetCommitSignatureProtectionParams(args [3]string, r *http.Reque
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -54296,7 +54464,7 @@ func decodeReposGetCommitSignatureProtectionParams(args [3]string, r *http.Reque
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -54336,7 +54504,7 @@ func decodeReposGetCommunityProfileMetricsParams(args [2]string, r *http.Request
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -54367,7 +54535,7 @@ func decodeReposGetCommunityProfileMetricsParams(args [2]string, r *http.Request
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -54407,7 +54575,7 @@ func decodeReposGetContributorsStatsParams(args [2]string, r *http.Request) (par
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -54438,7 +54606,7 @@ func decodeReposGetContributorsStatsParams(args [2]string, r *http.Request) (par
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -54480,7 +54648,7 @@ func decodeReposGetDeployKeyParams(args [3]string, r *http.Request) (params Repo
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -54511,7 +54679,7 @@ func decodeReposGetDeployKeyParams(args [3]string, r *http.Request) (params Repo
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -54542,7 +54710,7 @@ func decodeReposGetDeployKeyParams(args [3]string, r *http.Request) (params Repo
 				params.KeyID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: key_id: parse")
 			}
 		} else {
 			return params, errors.New("path: key_id: not specified")
@@ -54584,7 +54752,7 @@ func decodeReposGetDeploymentParams(args [3]string, r *http.Request) (params Rep
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -54615,7 +54783,7 @@ func decodeReposGetDeploymentParams(args [3]string, r *http.Request) (params Rep
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -54646,7 +54814,7 @@ func decodeReposGetDeploymentParams(args [3]string, r *http.Request) (params Rep
 				params.DeploymentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: deployment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: deployment_id: not specified")
@@ -54689,7 +54857,7 @@ func decodeReposGetDeploymentStatusParams(args [4]string, r *http.Request) (para
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -54720,7 +54888,7 @@ func decodeReposGetDeploymentStatusParams(args [4]string, r *http.Request) (para
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -54751,7 +54919,7 @@ func decodeReposGetDeploymentStatusParams(args [4]string, r *http.Request) (para
 				params.DeploymentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: deployment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: deployment_id: not specified")
@@ -54782,7 +54950,7 @@ func decodeReposGetDeploymentStatusParams(args [4]string, r *http.Request) (para
 				params.StatusID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: status_id: parse")
 			}
 		} else {
 			return params, errors.New("path: status_id: not specified")
@@ -54822,7 +54990,7 @@ func decodeReposGetLatestPagesBuildParams(args [2]string, r *http.Request) (para
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -54853,7 +55021,7 @@ func decodeReposGetLatestPagesBuildParams(args [2]string, r *http.Request) (para
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -54893,7 +55061,7 @@ func decodeReposGetLatestReleaseParams(args [2]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -54924,7 +55092,7 @@ func decodeReposGetLatestReleaseParams(args [2]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -54964,7 +55132,7 @@ func decodeReposGetPagesParams(args [2]string, r *http.Request) (params ReposGet
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -54995,7 +55163,7 @@ func decodeReposGetPagesParams(args [2]string, r *http.Request) (params ReposGet
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -55036,7 +55204,7 @@ func decodeReposGetPagesBuildParams(args [3]string, r *http.Request) (params Rep
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -55067,7 +55235,7 @@ func decodeReposGetPagesBuildParams(args [3]string, r *http.Request) (params Rep
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -55098,7 +55266,7 @@ func decodeReposGetPagesBuildParams(args [3]string, r *http.Request) (params Rep
 				params.BuildID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: build_id: parse")
 			}
 		} else {
 			return params, errors.New("path: build_id: not specified")
@@ -55138,7 +55306,7 @@ func decodeReposGetPagesHealthCheckParams(args [2]string, r *http.Request) (para
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -55169,7 +55337,7 @@ func decodeReposGetPagesHealthCheckParams(args [2]string, r *http.Request) (para
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -55209,7 +55377,7 @@ func decodeReposGetParticipationStatsParams(args [2]string, r *http.Request) (pa
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -55240,7 +55408,7 @@ func decodeReposGetParticipationStatsParams(args [2]string, r *http.Request) (pa
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -55282,7 +55450,7 @@ func decodeReposGetPullRequestReviewProtectionParams(args [3]string, r *http.Req
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -55313,7 +55481,7 @@ func decodeReposGetPullRequestReviewProtectionParams(args [3]string, r *http.Req
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -55344,7 +55512,7 @@ func decodeReposGetPullRequestReviewProtectionParams(args [3]string, r *http.Req
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -55384,7 +55552,7 @@ func decodeReposGetPunchCardStatsParams(args [2]string, r *http.Request) (params
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -55415,7 +55583,7 @@ func decodeReposGetPunchCardStatsParams(args [2]string, r *http.Request) (params
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -55458,7 +55626,7 @@ func decodeReposGetReadmeParams(args [2]string, r *http.Request) (params ReposGe
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -55489,7 +55657,7 @@ func decodeReposGetReadmeParams(args [2]string, r *http.Request) (params ReposGe
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -55568,7 +55736,7 @@ func decodeReposGetReadmeInDirectoryParams(args [3]string, r *http.Request) (par
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -55599,7 +55767,7 @@ func decodeReposGetReadmeInDirectoryParams(args [3]string, r *http.Request) (par
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -55630,7 +55798,7 @@ func decodeReposGetReadmeInDirectoryParams(args [3]string, r *http.Request) (par
 				params.Dir = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: dir: parse")
 			}
 		} else {
 			return params, errors.New("path: dir: not specified")
@@ -55706,7 +55874,7 @@ func decodeReposGetReleaseParams(args [3]string, r *http.Request) (params ReposG
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -55737,7 +55905,7 @@ func decodeReposGetReleaseParams(args [3]string, r *http.Request) (params ReposG
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -55768,7 +55936,7 @@ func decodeReposGetReleaseParams(args [3]string, r *http.Request) (params ReposG
 				params.ReleaseID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: release_id: parse")
 			}
 		} else {
 			return params, errors.New("path: release_id: not specified")
@@ -55810,7 +55978,7 @@ func decodeReposGetReleaseAssetParams(args [3]string, r *http.Request) (params R
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -55841,7 +56009,7 @@ func decodeReposGetReleaseAssetParams(args [3]string, r *http.Request) (params R
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -55872,7 +56040,7 @@ func decodeReposGetReleaseAssetParams(args [3]string, r *http.Request) (params R
 				params.AssetID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: asset_id: parse")
 			}
 		} else {
 			return params, errors.New("path: asset_id: not specified")
@@ -55914,7 +56082,7 @@ func decodeReposGetReleaseByTagParams(args [3]string, r *http.Request) (params R
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -55945,7 +56113,7 @@ func decodeReposGetReleaseByTagParams(args [3]string, r *http.Request) (params R
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -55976,7 +56144,7 @@ func decodeReposGetReleaseByTagParams(args [3]string, r *http.Request) (params R
 				params.Tag = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: tag: parse")
 			}
 		} else {
 			return params, errors.New("path: tag: not specified")
@@ -56018,7 +56186,7 @@ func decodeReposGetStatusChecksProtectionParams(args [3]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -56049,7 +56217,7 @@ func decodeReposGetStatusChecksProtectionParams(args [3]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -56080,7 +56248,7 @@ func decodeReposGetStatusChecksProtectionParams(args [3]string, r *http.Request)
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -56122,7 +56290,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(args [3]string, r *htt
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -56153,7 +56321,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(args [3]string, r *htt
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -56184,7 +56352,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(args [3]string, r *htt
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -56224,7 +56392,7 @@ func decodeReposGetTopPathsParams(args [2]string, r *http.Request) (params Repos
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -56255,7 +56423,7 @@ func decodeReposGetTopPathsParams(args [2]string, r *http.Request) (params Repos
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -56295,7 +56463,7 @@ func decodeReposGetTopReferrersParams(args [2]string, r *http.Request) (params R
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -56326,7 +56494,7 @@ func decodeReposGetTopReferrersParams(args [2]string, r *http.Request) (params R
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -56368,7 +56536,7 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(args [3]string, r *htt
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -56399,7 +56567,7 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(args [3]string, r *htt
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -56430,7 +56598,7 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(args [3]string, r *htt
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -56473,7 +56641,7 @@ func decodeReposGetViewsParams(args [2]string, r *http.Request) (params ReposGet
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -56504,7 +56672,7 @@ func decodeReposGetViewsParams(args [2]string, r *http.Request) (params ReposGet
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -56599,7 +56767,7 @@ func decodeReposGetWebhookParams(args [3]string, r *http.Request) (params ReposG
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -56630,7 +56798,7 @@ func decodeReposGetWebhookParams(args [3]string, r *http.Request) (params ReposG
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -56661,7 +56829,7 @@ func decodeReposGetWebhookParams(args [3]string, r *http.Request) (params ReposG
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -56702,7 +56870,7 @@ func decodeReposGetWebhookConfigForRepoParams(args [3]string, r *http.Request) (
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -56733,7 +56901,7 @@ func decodeReposGetWebhookConfigForRepoParams(args [3]string, r *http.Request) (
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -56764,7 +56932,7 @@ func decodeReposGetWebhookConfigForRepoParams(args [3]string, r *http.Request) (
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -56806,7 +56974,7 @@ func decodeReposGetWebhookDeliveryParams(args [4]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -56837,7 +57005,7 @@ func decodeReposGetWebhookDeliveryParams(args [4]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -56868,7 +57036,7 @@ func decodeReposGetWebhookDeliveryParams(args [4]string, r *http.Request) (param
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -56899,7 +57067,7 @@ func decodeReposGetWebhookDeliveryParams(args [4]string, r *http.Request) (param
 				params.DeliveryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: delivery_id: parse")
 			}
 		} else {
 			return params, errors.New("path: delivery_id: not specified")
@@ -56942,7 +57110,7 @@ func decodeReposListAutolinksParams(args [2]string, r *http.Request) (params Rep
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -56973,7 +57141,7 @@ func decodeReposListAutolinksParams(args [2]string, r *http.Request) (params Rep
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -57060,7 +57228,7 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (params Repo
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -57091,7 +57259,7 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (params Repo
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -57245,7 +57413,7 @@ func decodeReposListBranchesForHeadCommitParams(args [3]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -57276,7 +57444,7 @@ func decodeReposListBranchesForHeadCommitParams(args [3]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -57307,7 +57475,7 @@ func decodeReposListBranchesForHeadCommitParams(args [3]string, r *http.Request)
 				params.CommitSha = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: commit_sha: parse")
 			}
 		} else {
 			return params, errors.New("path: commit_sha: not specified")
@@ -57358,7 +57526,7 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (params
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -57389,7 +57557,7 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (params
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -57568,7 +57736,7 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (pa
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -57599,7 +57767,7 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (pa
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -57630,7 +57798,7 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (pa
 				params.CommitSha = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: commit_sha: parse")
 			}
 		} else {
 			return params, errors.New("path: commit_sha: not specified")
@@ -57753,7 +57921,7 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -57784,7 +57952,7 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -57909,7 +58077,7 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -57940,7 +58108,7 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -57971,7 +58139,7 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 				params.Ref = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: ref: parse")
 			}
 		} else {
 			return params, errors.New("path: ref: not specified")
@@ -58107,7 +58275,7 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (params Repos
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -58138,7 +58306,7 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (params Repos
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -58433,7 +58601,7 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -58464,7 +58632,7 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -58621,7 +58789,7 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (params Re
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -58652,7 +58820,7 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (params Re
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -58777,7 +58945,7 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (p
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -58808,7 +58976,7 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (p
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -58839,7 +59007,7 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (p
 				params.DeploymentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: deployment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: deployment_id: not specified")
@@ -58970,7 +59138,7 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (params R
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -59001,7 +59169,7 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (params R
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -59722,7 +59890,7 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (params ReposL
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -60002,7 +60170,7 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (params Repos
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -60284,7 +60452,7 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (params ReposLi
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -60315,7 +60483,7 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (params ReposLi
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -60492,7 +60660,7 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (params R
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -60523,7 +60691,7 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (params R
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -60731,7 +60899,7 @@ func decodeReposListLanguagesParams(args [2]string, r *http.Request) (params Rep
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -60762,7 +60930,7 @@ func decodeReposListLanguagesParams(args [2]string, r *http.Request) (params Rep
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -60807,7 +60975,7 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (params R
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -60838,7 +61006,7 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (params R
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -61007,7 +61175,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -61038,7 +61206,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -61069,7 +61237,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 				params.CommitSha = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: commit_sha: parse")
 			}
 		} else {
 			return params, errors.New("path: commit_sha: not specified")
@@ -61194,7 +61362,7 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (params
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -61225,7 +61393,7 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (params
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -61256,7 +61424,7 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (params
 				params.ReleaseID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: release_id: parse")
 			}
 		} else {
 			return params, errors.New("path: release_id: not specified")
@@ -61379,7 +61547,7 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (params Repo
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -61410,7 +61578,7 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (params Repo
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -61533,7 +61701,7 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (params ReposLis
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -61564,7 +61732,7 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (params ReposLis
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -61687,7 +61855,7 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (params ReposLi
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -61718,7 +61886,7 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (params ReposLi
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -61843,7 +62011,7 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (pa
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -61874,7 +62042,7 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (pa
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -61905,7 +62073,7 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (pa
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -62023,7 +62191,7 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (params Repo
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -62054,7 +62222,7 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (params Repo
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -62172,7 +62340,7 @@ func decodeReposMergeParams(args [2]string, r *http.Request) (params ReposMergeP
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -62203,7 +62371,7 @@ func decodeReposMergeParams(args [2]string, r *http.Request) (params ReposMergeP
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -62243,7 +62411,7 @@ func decodeReposMergeUpstreamParams(args [2]string, r *http.Request) (params Rep
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -62274,7 +62442,7 @@ func decodeReposMergeUpstreamParams(args [2]string, r *http.Request) (params Rep
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -62315,7 +62483,7 @@ func decodeReposPingWebhookParams(args [3]string, r *http.Request) (params Repos
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -62346,7 +62514,7 @@ func decodeReposPingWebhookParams(args [3]string, r *http.Request) (params Repos
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -62377,7 +62545,7 @@ func decodeReposPingWebhookParams(args [3]string, r *http.Request) (params Repos
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -62419,7 +62587,7 @@ func decodeReposRedeliverWebhookDeliveryParams(args [4]string, r *http.Request) 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -62450,7 +62618,7 @@ func decodeReposRedeliverWebhookDeliveryParams(args [4]string, r *http.Request) 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -62481,7 +62649,7 @@ func decodeReposRedeliverWebhookDeliveryParams(args [4]string, r *http.Request) 
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -62512,7 +62680,7 @@ func decodeReposRedeliverWebhookDeliveryParams(args [4]string, r *http.Request) 
 				params.DeliveryID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: delivery_id: parse")
 			}
 		} else {
 			return params, errors.New("path: delivery_id: not specified")
@@ -62554,7 +62722,7 @@ func decodeReposRemoveAppAccessRestrictionsParams(args [3]string, r *http.Reques
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -62585,7 +62753,7 @@ func decodeReposRemoveAppAccessRestrictionsParams(args [3]string, r *http.Reques
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -62616,7 +62784,7 @@ func decodeReposRemoveAppAccessRestrictionsParams(args [3]string, r *http.Reques
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -62657,7 +62825,7 @@ func decodeReposRemoveCollaboratorParams(args [3]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -62688,7 +62856,7 @@ func decodeReposRemoveCollaboratorParams(args [3]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -62719,7 +62887,7 @@ func decodeReposRemoveCollaboratorParams(args [3]string, r *http.Request) (param
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -62761,7 +62929,7 @@ func decodeReposRemoveStatusCheckContextsParams(args [3]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -62792,7 +62960,7 @@ func decodeReposRemoveStatusCheckContextsParams(args [3]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -62823,7 +62991,7 @@ func decodeReposRemoveStatusCheckContextsParams(args [3]string, r *http.Request)
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -62865,7 +63033,7 @@ func decodeReposRemoveStatusCheckProtectionParams(args [3]string, r *http.Reques
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -62896,7 +63064,7 @@ func decodeReposRemoveStatusCheckProtectionParams(args [3]string, r *http.Reques
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -62927,7 +63095,7 @@ func decodeReposRemoveStatusCheckProtectionParams(args [3]string, r *http.Reques
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -62969,7 +63137,7 @@ func decodeReposRemoveTeamAccessRestrictionsParams(args [3]string, r *http.Reque
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -63000,7 +63168,7 @@ func decodeReposRemoveTeamAccessRestrictionsParams(args [3]string, r *http.Reque
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -63031,7 +63199,7 @@ func decodeReposRemoveTeamAccessRestrictionsParams(args [3]string, r *http.Reque
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -63073,7 +63241,7 @@ func decodeReposRemoveUserAccessRestrictionsParams(args [3]string, r *http.Reque
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -63104,7 +63272,7 @@ func decodeReposRemoveUserAccessRestrictionsParams(args [3]string, r *http.Reque
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -63135,7 +63303,7 @@ func decodeReposRemoveUserAccessRestrictionsParams(args [3]string, r *http.Reque
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -63177,7 +63345,7 @@ func decodeReposRenameBranchParams(args [3]string, r *http.Request) (params Repo
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -63208,7 +63376,7 @@ func decodeReposRenameBranchParams(args [3]string, r *http.Request) (params Repo
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -63239,7 +63407,7 @@ func decodeReposRenameBranchParams(args [3]string, r *http.Request) (params Repo
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -63279,7 +63447,7 @@ func decodeReposReplaceAllTopicsParams(args [2]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -63310,7 +63478,7 @@ func decodeReposReplaceAllTopicsParams(args [2]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -63350,7 +63518,7 @@ func decodeReposRequestPagesBuildParams(args [2]string, r *http.Request) (params
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -63381,7 +63549,7 @@ func decodeReposRequestPagesBuildParams(args [2]string, r *http.Request) (params
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -63423,7 +63591,7 @@ func decodeReposSetAdminBranchProtectionParams(args [3]string, r *http.Request) 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -63454,7 +63622,7 @@ func decodeReposSetAdminBranchProtectionParams(args [3]string, r *http.Request) 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -63485,7 +63653,7 @@ func decodeReposSetAdminBranchProtectionParams(args [3]string, r *http.Request) 
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -63527,7 +63695,7 @@ func decodeReposSetAppAccessRestrictionsParams(args [3]string, r *http.Request) 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -63558,7 +63726,7 @@ func decodeReposSetAppAccessRestrictionsParams(args [3]string, r *http.Request) 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -63589,7 +63757,7 @@ func decodeReposSetAppAccessRestrictionsParams(args [3]string, r *http.Request) 
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -63631,7 +63799,7 @@ func decodeReposSetStatusCheckContextsParams(args [3]string, r *http.Request) (p
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -63662,7 +63830,7 @@ func decodeReposSetStatusCheckContextsParams(args [3]string, r *http.Request) (p
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -63693,7 +63861,7 @@ func decodeReposSetStatusCheckContextsParams(args [3]string, r *http.Request) (p
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -63735,7 +63903,7 @@ func decodeReposSetTeamAccessRestrictionsParams(args [3]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -63766,7 +63934,7 @@ func decodeReposSetTeamAccessRestrictionsParams(args [3]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -63797,7 +63965,7 @@ func decodeReposSetTeamAccessRestrictionsParams(args [3]string, r *http.Request)
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -63839,7 +64007,7 @@ func decodeReposSetUserAccessRestrictionsParams(args [3]string, r *http.Request)
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -63870,7 +64038,7 @@ func decodeReposSetUserAccessRestrictionsParams(args [3]string, r *http.Request)
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -63901,7 +64069,7 @@ func decodeReposSetUserAccessRestrictionsParams(args [3]string, r *http.Request)
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -63942,7 +64110,7 @@ func decodeReposTestPushWebhookParams(args [3]string, r *http.Request) (params R
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -63973,7 +64141,7 @@ func decodeReposTestPushWebhookParams(args [3]string, r *http.Request) (params R
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -64004,7 +64172,7 @@ func decodeReposTestPushWebhookParams(args [3]string, r *http.Request) (params R
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -64044,7 +64212,7 @@ func decodeReposTransferParams(args [2]string, r *http.Request) (params ReposTra
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -64075,7 +64243,7 @@ func decodeReposTransferParams(args [2]string, r *http.Request) (params ReposTra
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -64115,7 +64283,7 @@ func decodeReposUpdateParams(args [2]string, r *http.Request) (params ReposUpdat
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -64146,7 +64314,7 @@ func decodeReposUpdateParams(args [2]string, r *http.Request) (params ReposUpdat
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -64188,7 +64356,7 @@ func decodeReposUpdateBranchProtectionParams(args [3]string, r *http.Request) (p
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -64219,7 +64387,7 @@ func decodeReposUpdateBranchProtectionParams(args [3]string, r *http.Request) (p
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -64250,7 +64418,7 @@ func decodeReposUpdateBranchProtectionParams(args [3]string, r *http.Request) (p
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -64292,7 +64460,7 @@ func decodeReposUpdateCommitCommentParams(args [3]string, r *http.Request) (para
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -64323,7 +64491,7 @@ func decodeReposUpdateCommitCommentParams(args [3]string, r *http.Request) (para
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -64354,7 +64522,7 @@ func decodeReposUpdateCommitCommentParams(args [3]string, r *http.Request) (para
 				params.CommentID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_id: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_id: not specified")
@@ -64396,7 +64564,7 @@ func decodeReposUpdateInvitationParams(args [3]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -64427,7 +64595,7 @@ func decodeReposUpdateInvitationParams(args [3]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -64458,7 +64626,7 @@ func decodeReposUpdateInvitationParams(args [3]string, r *http.Request) (params 
 				params.InvitationID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: invitation_id: parse")
 			}
 		} else {
 			return params, errors.New("path: invitation_id: not specified")
@@ -64500,7 +64668,7 @@ func decodeReposUpdatePullRequestReviewProtectionParams(args [3]string, r *http.
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -64531,7 +64699,7 @@ func decodeReposUpdatePullRequestReviewProtectionParams(args [3]string, r *http.
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -64562,7 +64730,7 @@ func decodeReposUpdatePullRequestReviewProtectionParams(args [3]string, r *http.
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -64604,7 +64772,7 @@ func decodeReposUpdateReleaseParams(args [3]string, r *http.Request) (params Rep
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -64635,7 +64803,7 @@ func decodeReposUpdateReleaseParams(args [3]string, r *http.Request) (params Rep
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -64666,7 +64834,7 @@ func decodeReposUpdateReleaseParams(args [3]string, r *http.Request) (params Rep
 				params.ReleaseID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: release_id: parse")
 			}
 		} else {
 			return params, errors.New("path: release_id: not specified")
@@ -64708,7 +64876,7 @@ func decodeReposUpdateReleaseAssetParams(args [3]string, r *http.Request) (param
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -64739,7 +64907,7 @@ func decodeReposUpdateReleaseAssetParams(args [3]string, r *http.Request) (param
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -64770,7 +64938,7 @@ func decodeReposUpdateReleaseAssetParams(args [3]string, r *http.Request) (param
 				params.AssetID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: asset_id: parse")
 			}
 		} else {
 			return params, errors.New("path: asset_id: not specified")
@@ -64812,7 +64980,7 @@ func decodeReposUpdateStatusCheckProtectionParams(args [3]string, r *http.Reques
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -64843,7 +65011,7 @@ func decodeReposUpdateStatusCheckProtectionParams(args [3]string, r *http.Reques
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -64874,7 +65042,7 @@ func decodeReposUpdateStatusCheckProtectionParams(args [3]string, r *http.Reques
 				params.Branch = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: branch: parse")
 			}
 		} else {
 			return params, errors.New("path: branch: not specified")
@@ -64915,7 +65083,7 @@ func decodeReposUpdateWebhookParams(args [3]string, r *http.Request) (params Rep
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -64946,7 +65114,7 @@ func decodeReposUpdateWebhookParams(args [3]string, r *http.Request) (params Rep
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -64977,7 +65145,7 @@ func decodeReposUpdateWebhookParams(args [3]string, r *http.Request) (params Rep
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -65018,7 +65186,7 @@ func decodeReposUpdateWebhookConfigForRepoParams(args [3]string, r *http.Request
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -65049,7 +65217,7 @@ func decodeReposUpdateWebhookConfigForRepoParams(args [3]string, r *http.Request
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -65080,7 +65248,7 @@ func decodeReposUpdateWebhookConfigForRepoParams(args [3]string, r *http.Request
 				params.HookID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: hook_id: parse")
 			}
 		} else {
 			return params, errors.New("path: hook_id: not specified")
@@ -65121,7 +65289,7 @@ func decodeScimDeleteUserFromOrgParams(args [2]string, r *http.Request) (params 
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -65152,7 +65320,7 @@ func decodeScimDeleteUserFromOrgParams(args [2]string, r *http.Request) (params 
 				params.ScimUserID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: scim_user_id: parse")
 			}
 		} else {
 			return params, errors.New("path: scim_user_id: not specified")
@@ -66760,7 +66928,7 @@ func decodeSecretScanningGetAlertParams(args [3]string, r *http.Request) (params
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -66791,7 +66959,7 @@ func decodeSecretScanningGetAlertParams(args [3]string, r *http.Request) (params
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -66829,7 +66997,7 @@ func decodeSecretScanningGetAlertParams(args [3]string, r *http.Request) (params
 				params.AlertNumber = AlertNumber(paramsDotAlertNumberVal)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: alert_number: parse")
 			}
 		} else {
 			return params, errors.New("path: alert_number: not specified")
@@ -66877,7 +67045,7 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -67089,7 +67257,7 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -67120,7 +67288,7 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -67325,7 +67493,7 @@ func decodeSecretScanningUpdateAlertParams(args [3]string, r *http.Request) (par
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -67356,7 +67524,7 @@ func decodeSecretScanningUpdateAlertParams(args [3]string, r *http.Request) (par
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -67394,7 +67562,7 @@ func decodeSecretScanningUpdateAlertParams(args [3]string, r *http.Request) (par
 				params.AlertNumber = AlertNumber(paramsDotAlertNumberVal)
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: alert_number: parse")
 			}
 		} else {
 			return params, errors.New("path: alert_number: not specified")
@@ -67434,7 +67602,7 @@ func decodeTeamsAddMemberLegacyParams(args [2]string, r *http.Request) (params T
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -67465,7 +67633,7 @@ func decodeTeamsAddMemberLegacyParams(args [2]string, r *http.Request) (params T
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -67507,7 +67675,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args [3]string, r *http.
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -67538,7 +67706,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args [3]string, r *http.
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -67569,7 +67737,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args [3]string, r *http.
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -67609,7 +67777,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args [2]string, r *http
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -67640,7 +67808,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args [2]string, r *http
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -67682,7 +67850,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args [3]string, r *http
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -67713,7 +67881,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args [3]string, r *http
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -67744,7 +67912,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args [3]string, r *http
 				params.ProjectID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: project_id: parse")
 			}
 		} else {
 			return params, errors.New("path: project_id: not specified")
@@ -67784,7 +67952,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args [2]string, r *htt
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -67815,7 +67983,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args [2]string, r *htt
 				params.ProjectID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: project_id: parse")
 			}
 		} else {
 			return params, errors.New("path: project_id: not specified")
@@ -67858,7 +68026,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args [4]string, r *http.Re
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -67889,7 +68057,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args [4]string, r *http.Re
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -67920,7 +68088,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args [4]string, r *http.Re
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -67951,7 +68119,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args [4]string, r *http.Re
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -67992,7 +68160,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args [3]string, r *http.R
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -68023,7 +68191,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args [3]string, r *http.R
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -68054,7 +68222,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args [3]string, r *http.R
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -68096,7 +68264,7 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(args [3]string, r *http.Re
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -68127,7 +68295,7 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(args [3]string, r *http.Re
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -68158,7 +68326,7 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(args [3]string, r *http.Re
 				params.ProjectID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: project_id: parse")
 			}
 		} else {
 			return params, errors.New("path: project_id: not specified")
@@ -68198,7 +68366,7 @@ func decodeTeamsCheckPermissionsForProjectLegacyParams(args [2]string, r *http.R
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -68229,7 +68397,7 @@ func decodeTeamsCheckPermissionsForProjectLegacyParams(args [2]string, r *http.R
 				params.ProjectID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: project_id: parse")
 			}
 		} else {
 			return params, errors.New("path: project_id: not specified")
@@ -68272,7 +68440,7 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(args [4]string, r *http.Reque
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -68303,7 +68471,7 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(args [4]string, r *http.Reque
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -68334,7 +68502,7 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(args [4]string, r *http.Reque
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -68365,7 +68533,7 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(args [4]string, r *http.Reque
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -68406,7 +68574,7 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(args [3]string, r *http.Requ
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -68437,7 +68605,7 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(args [3]string, r *http.Requ
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -68468,7 +68636,7 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(args [3]string, r *http.Requ
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -68507,7 +68675,7 @@ func decodeTeamsCreateParams(args [1]string, r *http.Request) (params TeamsCreat
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -68549,7 +68717,7 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(args [3]string, r *http.Reque
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -68580,7 +68748,7 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(args [3]string, r *http.Reque
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -68611,7 +68779,7 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(args [3]string, r *http.Reque
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -68651,7 +68819,7 @@ func decodeTeamsCreateDiscussionCommentLegacyParams(args [2]string, r *http.Requ
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -68682,7 +68850,7 @@ func decodeTeamsCreateDiscussionCommentLegacyParams(args [2]string, r *http.Requ
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -68723,7 +68891,7 @@ func decodeTeamsCreateDiscussionInOrgParams(args [2]string, r *http.Request) (pa
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -68754,7 +68922,7 @@ func decodeTeamsCreateDiscussionInOrgParams(args [2]string, r *http.Request) (pa
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -68793,7 +68961,7 @@ func decodeTeamsCreateDiscussionLegacyParams(args [1]string, r *http.Request) (p
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -68834,7 +69002,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args [2]string, r *
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -68865,7 +69033,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args [2]string, r *
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -68904,7 +69072,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args [1]string, r 
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -68947,7 +69115,7 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -68978,7 +69146,7 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -69009,7 +69177,7 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -69040,7 +69208,7 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 				params.CommentNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_number: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_number: not specified")
@@ -69081,7 +69249,7 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(args [3]string, r *http.Requ
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -69112,7 +69280,7 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(args [3]string, r *http.Requ
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -69143,7 +69311,7 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(args [3]string, r *http.Requ
 				params.CommentNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_number: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_number: not specified")
@@ -69185,7 +69353,7 @@ func decodeTeamsDeleteDiscussionInOrgParams(args [3]string, r *http.Request) (pa
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -69216,7 +69384,7 @@ func decodeTeamsDeleteDiscussionInOrgParams(args [3]string, r *http.Request) (pa
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -69247,7 +69415,7 @@ func decodeTeamsDeleteDiscussionInOrgParams(args [3]string, r *http.Request) (pa
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -69287,7 +69455,7 @@ func decodeTeamsDeleteDiscussionLegacyParams(args [2]string, r *http.Request) (p
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -69318,7 +69486,7 @@ func decodeTeamsDeleteDiscussionLegacyParams(args [2]string, r *http.Request) (p
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -69359,7 +69527,7 @@ func decodeTeamsDeleteInOrgParams(args [2]string, r *http.Request) (params Teams
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -69390,7 +69558,7 @@ func decodeTeamsDeleteInOrgParams(args [2]string, r *http.Request) (params Teams
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -69429,7 +69597,7 @@ func decodeTeamsDeleteLegacyParams(args [1]string, r *http.Request) (params Team
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -69470,7 +69638,7 @@ func decodeTeamsGetByNameParams(args [2]string, r *http.Request) (params TeamsGe
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -69501,7 +69669,7 @@ func decodeTeamsGetByNameParams(args [2]string, r *http.Request) (params TeamsGe
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -69544,7 +69712,7 @@ func decodeTeamsGetDiscussionCommentInOrgParams(args [4]string, r *http.Request)
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -69575,7 +69743,7 @@ func decodeTeamsGetDiscussionCommentInOrgParams(args [4]string, r *http.Request)
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -69606,7 +69774,7 @@ func decodeTeamsGetDiscussionCommentInOrgParams(args [4]string, r *http.Request)
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -69637,7 +69805,7 @@ func decodeTeamsGetDiscussionCommentInOrgParams(args [4]string, r *http.Request)
 				params.CommentNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_number: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_number: not specified")
@@ -69678,7 +69846,7 @@ func decodeTeamsGetDiscussionCommentLegacyParams(args [3]string, r *http.Request
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -69709,7 +69877,7 @@ func decodeTeamsGetDiscussionCommentLegacyParams(args [3]string, r *http.Request
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -69740,7 +69908,7 @@ func decodeTeamsGetDiscussionCommentLegacyParams(args [3]string, r *http.Request
 				params.CommentNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_number: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_number: not specified")
@@ -69782,7 +69950,7 @@ func decodeTeamsGetDiscussionInOrgParams(args [3]string, r *http.Request) (param
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -69813,7 +69981,7 @@ func decodeTeamsGetDiscussionInOrgParams(args [3]string, r *http.Request) (param
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -69844,7 +70012,7 @@ func decodeTeamsGetDiscussionInOrgParams(args [3]string, r *http.Request) (param
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -69884,7 +70052,7 @@ func decodeTeamsGetDiscussionLegacyParams(args [2]string, r *http.Request) (para
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -69915,7 +70083,7 @@ func decodeTeamsGetDiscussionLegacyParams(args [2]string, r *http.Request) (para
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -69954,7 +70122,7 @@ func decodeTeamsGetLegacyParams(args [1]string, r *http.Request) (params TeamsGe
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -69994,7 +70162,7 @@ func decodeTeamsGetMemberLegacyParams(args [2]string, r *http.Request) (params T
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -70025,7 +70193,7 @@ func decodeTeamsGetMemberLegacyParams(args [2]string, r *http.Request) (params T
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -70067,7 +70235,7 @@ func decodeTeamsGetMembershipForUserInOrgParams(args [3]string, r *http.Request)
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -70098,7 +70266,7 @@ func decodeTeamsGetMembershipForUserInOrgParams(args [3]string, r *http.Request)
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -70129,7 +70297,7 @@ func decodeTeamsGetMembershipForUserInOrgParams(args [3]string, r *http.Request)
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -70169,7 +70337,7 @@ func decodeTeamsGetMembershipForUserLegacyParams(args [2]string, r *http.Request
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -70200,7 +70368,7 @@ func decodeTeamsGetMembershipForUserLegacyParams(args [2]string, r *http.Request
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -70244,7 +70412,7 @@ func decodeTeamsListParams(args [1]string, r *http.Request) (params TeamsListPar
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -70368,7 +70536,7 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (params Te
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -70399,7 +70567,7 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (params Te
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -70521,7 +70689,7 @@ func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (params T
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -70648,7 +70816,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -70679,7 +70847,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -70710,7 +70878,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -70889,7 +71057,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -70920,7 +71088,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -71102,7 +71270,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (par
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -71133,7 +71301,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (par
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -71345,7 +71513,7 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (pa
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -71606,7 +71774,7 @@ func decodeTeamsListIdpGroupsForLegacyParams(args [1]string, r *http.Request) (p
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -71650,7 +71818,7 @@ func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (para
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -71764,7 +71932,7 @@ func decodeTeamsListIdpGroupsInOrgParams(args [2]string, r *http.Request) (param
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -71795,7 +71963,7 @@ func decodeTeamsListIdpGroupsInOrgParams(args [2]string, r *http.Request) (param
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -71846,7 +72014,7 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (params 
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -71877,7 +72045,7 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (params 
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -72058,7 +72226,7 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (params
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -72236,7 +72404,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -72267,7 +72435,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -72389,7 +72557,7 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Reque
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -72513,7 +72681,7 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (params
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -72544,7 +72712,7 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (params
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -72666,7 +72834,7 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (param
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -72790,7 +72958,7 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (params Te
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -72821,7 +72989,7 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (params Te
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -72943,7 +73111,7 @@ func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (params T
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -73061,7 +73229,7 @@ func decodeTeamsRemoveMemberLegacyParams(args [2]string, r *http.Request) (param
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -73092,7 +73260,7 @@ func decodeTeamsRemoveMemberLegacyParams(args [2]string, r *http.Request) (param
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -73134,7 +73302,7 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(args [3]string, r *http.Reque
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -73165,7 +73333,7 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(args [3]string, r *http.Reque
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -73196,7 +73364,7 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(args [3]string, r *http.Reque
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -73236,7 +73404,7 @@ func decodeTeamsRemoveMembershipForUserLegacyParams(args [2]string, r *http.Requ
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -73267,7 +73435,7 @@ func decodeTeamsRemoveMembershipForUserLegacyParams(args [2]string, r *http.Requ
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -73309,7 +73477,7 @@ func decodeTeamsRemoveProjectInOrgParams(args [3]string, r *http.Request) (param
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -73340,7 +73508,7 @@ func decodeTeamsRemoveProjectInOrgParams(args [3]string, r *http.Request) (param
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -73371,7 +73539,7 @@ func decodeTeamsRemoveProjectInOrgParams(args [3]string, r *http.Request) (param
 				params.ProjectID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: project_id: parse")
 			}
 		} else {
 			return params, errors.New("path: project_id: not specified")
@@ -73411,7 +73579,7 @@ func decodeTeamsRemoveProjectLegacyParams(args [2]string, r *http.Request) (para
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -73442,7 +73610,7 @@ func decodeTeamsRemoveProjectLegacyParams(args [2]string, r *http.Request) (para
 				params.ProjectID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: project_id: parse")
 			}
 		} else {
 			return params, errors.New("path: project_id: not specified")
@@ -73485,7 +73653,7 @@ func decodeTeamsRemoveRepoInOrgParams(args [4]string, r *http.Request) (params T
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -73516,7 +73684,7 @@ func decodeTeamsRemoveRepoInOrgParams(args [4]string, r *http.Request) (params T
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -73547,7 +73715,7 @@ func decodeTeamsRemoveRepoInOrgParams(args [4]string, r *http.Request) (params T
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -73578,7 +73746,7 @@ func decodeTeamsRemoveRepoInOrgParams(args [4]string, r *http.Request) (params T
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -73619,7 +73787,7 @@ func decodeTeamsRemoveRepoLegacyParams(args [3]string, r *http.Request) (params 
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -73650,7 +73818,7 @@ func decodeTeamsRemoveRepoLegacyParams(args [3]string, r *http.Request) (params 
 				params.Owner = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: owner: parse")
 			}
 		} else {
 			return params, errors.New("path: owner: not specified")
@@ -73681,7 +73849,7 @@ func decodeTeamsRemoveRepoLegacyParams(args [3]string, r *http.Request) (params 
 				params.Repo = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: repo: parse")
 			}
 		} else {
 			return params, errors.New("path: repo: not specified")
@@ -73724,7 +73892,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -73755,7 +73923,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -73786,7 +73954,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -73817,7 +73985,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 				params.CommentNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_number: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_number: not specified")
@@ -73858,7 +74026,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(args [3]string, r *http.Requ
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -73889,7 +74057,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(args [3]string, r *http.Requ
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -73920,7 +74088,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(args [3]string, r *http.Requ
 				params.CommentNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: comment_number: parse")
 			}
 		} else {
 			return params, errors.New("path: comment_number: not specified")
@@ -73962,7 +74130,7 @@ func decodeTeamsUpdateDiscussionInOrgParams(args [3]string, r *http.Request) (pa
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -73993,7 +74161,7 @@ func decodeTeamsUpdateDiscussionInOrgParams(args [3]string, r *http.Request) (pa
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -74024,7 +74192,7 @@ func decodeTeamsUpdateDiscussionInOrgParams(args [3]string, r *http.Request) (pa
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -74064,7 +74232,7 @@ func decodeTeamsUpdateDiscussionLegacyParams(args [2]string, r *http.Request) (p
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -74095,7 +74263,7 @@ func decodeTeamsUpdateDiscussionLegacyParams(args [2]string, r *http.Request) (p
 				params.DiscussionNumber = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: discussion_number: parse")
 			}
 		} else {
 			return params, errors.New("path: discussion_number: not specified")
@@ -74136,7 +74304,7 @@ func decodeTeamsUpdateInOrgParams(args [2]string, r *http.Request) (params Teams
 				params.Org = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: org: parse")
 			}
 		} else {
 			return params, errors.New("path: org: not specified")
@@ -74167,7 +74335,7 @@ func decodeTeamsUpdateInOrgParams(args [2]string, r *http.Request) (params Teams
 				params.TeamSlug = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_slug: parse")
 			}
 		} else {
 			return params, errors.New("path: team_slug: not specified")
@@ -74206,7 +74374,7 @@ func decodeTeamsUpdateLegacyParams(args [1]string, r *http.Request) (params Team
 				params.TeamID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: team_id: parse")
 			}
 		} else {
 			return params, errors.New("path: team_id: not specified")
@@ -74245,7 +74413,7 @@ func decodeUsersBlockParams(args [1]string, r *http.Request) (params UsersBlockP
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -74284,7 +74452,7 @@ func decodeUsersCheckBlockedParams(args [1]string, r *http.Request) (params User
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -74324,7 +74492,7 @@ func decodeUsersCheckFollowingForUserParams(args [2]string, r *http.Request) (pa
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -74355,7 +74523,7 @@ func decodeUsersCheckFollowingForUserParams(args [2]string, r *http.Request) (pa
 				params.TargetUser = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: target_user: parse")
 			}
 		} else {
 			return params, errors.New("path: target_user: not specified")
@@ -74394,7 +74562,7 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args [1]string, r *ht
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -74434,7 +74602,7 @@ func decodeUsersDeleteGpgKeyForAuthenticatedParams(args [1]string, r *http.Reque
 				params.GpgKeyID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: gpg_key_id: parse")
 			}
 		} else {
 			return params, errors.New("path: gpg_key_id: not specified")
@@ -74474,7 +74642,7 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args [1]string, r *http
 				params.KeyID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: key_id: parse")
 			}
 		} else {
 			return params, errors.New("path: key_id: not specified")
@@ -74513,7 +74681,7 @@ func decodeUsersFollowParams(args [1]string, r *http.Request) (params UsersFollo
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -74552,7 +74720,7 @@ func decodeUsersGetByUsernameParams(args [1]string, r *http.Request) (params Use
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -74597,7 +74765,7 @@ func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (params
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -74720,7 +74888,7 @@ func decodeUsersGetGpgKeyForAuthenticatedParams(args [1]string, r *http.Request)
 				params.GpgKeyID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: gpg_key_id: parse")
 			}
 		} else {
 			return params, errors.New("path: gpg_key_id: not specified")
@@ -74760,7 +74928,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedParams(args [1]string, r *http.Re
 				params.KeyID = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: key_id: parse")
 			}
 		} else {
 			return params, errors.New("path: key_id: not specified")
@@ -75159,7 +75327,7 @@ func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (par
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -75281,7 +75449,7 @@ func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (par
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -75493,7 +75661,7 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (param
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -75705,7 +75873,7 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (pa
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -75912,7 +76080,7 @@ func decodeUsersUnblockParams(args [1]string, r *http.Request) (params UsersUnbl
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
@@ -75951,7 +76119,7 @@ func decodeUsersUnfollowParams(args [1]string, r *http.Request) (params UsersUnf
 				params.Username = c
 				return nil
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, "path: username: parse")
 			}
 		} else {
 			return params, errors.New("path: username: not specified")
