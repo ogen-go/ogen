@@ -83,8 +83,16 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, r *http.Requ
 			if err := func() error {
 				{{- template "uri/decode" $el }}
 			}(); err != nil {
-				return params, err
+				return params, errors.Wrap(err, {{ quote $errParse }})
 			}
+
+			{{- if $p.Type.NeedValidation }}
+			if err := func() error {
+				{{- template "validate" $el }}
+			}(); err != nil {
+				return params, errors.Wrap(err, {{ quote $errInvalid }})
+			}
+			{{- end }}
 		} {{ if $p.Spec.Required }} else {
 			return params, errors.New({{ quote $errNotSpecified }})
 		} {{ end }}
@@ -118,6 +126,14 @@ func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, r *http.Requ
 			}); err != nil {
 				return params, errors.Wrap(err, {{ quote $errParse }})
 			}
+
+			{{- if $p.Type.NeedValidation }}
+			if err := func() error {
+				{{- template "validate" $el }}
+			}(); err != nil {
+				return params, errors.Wrap(err, {{ quote $errInvalid }})
+			}
+			{{- end }}
 		} {{ if $p.Spec.Required }} else {
 			return params, errors.New({{ quote $errNotSpecified }})
 		} {{ end }}
