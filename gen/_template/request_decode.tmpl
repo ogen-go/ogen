@@ -36,11 +36,17 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
+	switch {
 {{- range $contentType, $media := $op.Request.Contents }}
 	{{- $t := $media.Type }}
 	{{- $e := $media.Encoding }}
-	case {{ quote $contentType }}:
+
+	{{- if not $contentType.Mask }}
+	case ct == {{ quote $contentType }}:
+	{{- else }}
+	case ht.MatchContentType({{ quote $contentType }}, ct):
+    {{- $t = ($media.Type.MustField "Content").Type }}
+	{{- end }}
 	{{- if $t.IsStream }}
 		request := {{ $t.Go }}{Data: r.Body}
 	{{- else if $e.JSON }}
@@ -112,7 +118,16 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
 	{{- else }}
 		{{- errorf "%s decoder not implemented" $contentType }}
 	{{- end }}
+
+    {{- if not $contentType.Mask }}
 	return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, close, nil
+	{{- else }}
+	wrapped := {{ $media.Type.Go }}{
+		ContentType: ct,
+		Content: request,
+	}
+	return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}wrapped, close, nil
+	{{- end }}
 {{- end }}
 	default:
 		return req, close, validate.InvalidContentType(ct)

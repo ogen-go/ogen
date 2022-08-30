@@ -13,16 +13,34 @@ func encode{{ $op.Name }}Request(
 
 {{- if eq $requestsLength 1 }}
 	{{- range $contentType, $media := $contents }}
+		{{- if not $contentType.Mask }}
 		const contentType = {{ quote $contentType }}
-		{{- template "encode_request" $media }}
+        {{- template "encode_request" $media }}
+		{{- else }}
+		contentType := req.ContentType
+		{
+			req := req.Content
+        	{{- $t := ($media.Type.MustField "Content").Type }}
+        	{{- template "encode_request" ir_media $media.Encoding $t }}
+		}
+		{{- end }}
 	{{- end }}
 {{- else }}
 	{{- /* Multiple requests */}}
 	switch req := req.(type) {
 	{{- range $contentType, $media := $contents }}
 	case *{{ $media.Type.Go }}:
+		{{- if not $contentType.Mask }}
 		const contentType = {{ quote $contentType }}
-    	{{- template "encode_request" $media }}
+        {{- template "encode_request" $media }}
+		{{- else }}
+		contentType := req.ContentType
+		{
+			req := req
+        	{{- $t := ($media.Type.MustField "Content").Type }}
+        	{{- template "encode_request" ir_media $media.Encoding $t }}
+		}
+		{{- end }}
 	{{- end }}
 	default:
 		return errors.Errorf("unexpected request type: %T", req)
@@ -35,7 +53,7 @@ func encode{{ $op.Name }}Request(
 {{- define "encode_request" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Media*/ -}}
 {{- $type := $.Type }}
-{{- $contentType := $.Encoding }}
+{{- $encoding := $.Encoding }}
 {{- $unaliased := $type }}{{- if $type.IsAlias }}{{ $unaliased = $type.AliasTo }}{{- end }}
 
 {{- if $unaliased.GenericVariant.Optional }}
@@ -48,7 +66,7 @@ func encode{{ $op.Name }}Request(
 {{- if $type.IsStream }}
 	ht.SetBody(r, req, contentType)
 	return nil
-{{- else if $contentType.JSON }}
+{{- else if $encoding.JSON }}
 	e := jx.GetEncoder()
 	{
 	   {{- template "json/enc" elem $type "req" }}
@@ -56,7 +74,7 @@ func encode{{ $op.Name }}Request(
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
-{{- else if or $contentType.FormURLEncoded $contentType.MultipartForm }}
+{{- else if or $encoding.FormURLEncoded $encoding.MultipartForm }}
 	{{- if $unaliased.IsGeneric }}
 		request := req.Value
 		{{ $type = $unaliased.GenericOf }}
@@ -82,11 +100,11 @@ func encode{{ $op.Name }}Request(
 		}
 	}
 	{{- end }}
-	{{- if $contentType.FormURLEncoded }}
+	{{- if $encoding.FormURLEncoded }}
 		encoded := q.Values().Encode()
 		ht.SetBody(r, strings.NewReader(encoded), contentType)
 		return nil
-	{{- else if $contentType.MultipartForm }}
+	{{- else if $encoding.MultipartForm }}
 		body, boundary := ht.CreateMultipartBody(func(w *multipart.Writer) error {
         	{{- range $param := $type.FileParameters }}
 				{{- template "encode_multipart_file_param" $param }}
@@ -99,10 +117,10 @@ func encode{{ $op.Name }}Request(
 		ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 		return nil
 	{{- else }}
-		{{- errorf "%s encoder not implemented" $contentType }}
+		{{- errorf "%s: %s encoder not implemented" $type $encoding }}
 	{{- end }}
 {{- else }}
-	{{- errorf "%s encoder not implemented" $contentType }}
+	{{- errorf "%s: %s encoder not implemented" $type $encoding }}
 {{- end }}
 
 {{- end }}

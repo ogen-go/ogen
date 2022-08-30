@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"fmt"
 	"mime"
 	"path"
 	"sort"
@@ -63,6 +64,33 @@ func filterMostSpecific(contents map[string]*openapi.MediaType, log *zap.Logger)
 		}
 	}
 	return nil
+}
+
+func (g *Generator) wrapContent(ctx *genctx, name string, t *ir.Type) (ret *ir.Type, rerr error) {
+	defer func() {
+		if rerr != nil {
+			return
+		}
+
+		if err := ctx.saveType(ret); err != nil {
+			rerr = err
+			ret = nil
+		}
+	}()
+
+	if t.Name != "" {
+		name = t.Name
+	}
+	wrapper := &ir.Type{
+		Kind: ir.KindStruct,
+		Name: name + "WithContentType",
+		Doc:  fmt.Sprintf("%sWithContentType wraps %s with Content-Type.", name, t.Go()),
+		Fields: []*ir.Field{
+			{Name: "ContentType", Type: ir.Primitive(ir.String, nil)},
+			{Name: "Content", Type: t},
+		},
+	}
+	return wrapper, nil
 }
 
 func (g *Generator) generateFormContent(
@@ -150,7 +178,7 @@ func (g *Generator) generateFormContent(
 func (g *Generator) generateContents(
 	ctx *genctx,
 	name string,
-	optional bool,
+	optional, request bool,
 	contents map[string]*openapi.MediaType,
 ) (_ map[ir.ContentType]ir.Media, err error) {
 	if err := filterMostSpecific(contents, g.log); err != nil {
@@ -158,7 +186,9 @@ func (g *Generator) generateContents(
 	}
 
 	var (
-		result      = make(map[ir.ContentType]ir.Media, len(contents))
+		result = make(map[ir.ContentType]ir.Media, len(contents))
+		names  = make(map[ir.ContentType]string, len(contents))
+
 		keys        = make([]string, 0, len(contents))
 		unsupported []string
 		lastErr     error
@@ -183,6 +213,7 @@ func (g *Generator) generateContents(
 				return nil, errors.Wrapf(err, "name for %q", contentType)
 			}
 		}
+		names[ir.ContentType(parsedContentType)] = typeName
 
 		ctx := ctx.appendPath(contentType)
 		if err := func() error {
@@ -365,6 +396,22 @@ func (g *Generator) generateContents(
 			return nil, lastErr
 		}
 		return nil, &ErrUnsupportedContentTypes{ContentTypes: unsupported}
+	}
+
+	if request {
+		for ct, m := range result {
+			if !ct.Mask() {
+				continue
+			}
+			t, err := g.wrapContent(ctx, names[ct], m.Type)
+			if err != nil {
+				return nil, err
+			}
+			result[ct] = ir.Media{
+				Type:     t,
+				Encoding: m.Encoding,
+			}
+		}
 	}
 
 	return result, nil

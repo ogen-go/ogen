@@ -157,6 +157,12 @@ func templateFunctions() template.FuncMap {
 				},
 			}
 		},
+		"ir_media": func(e ir.Encoding, t *ir.Type) ir.Media {
+			return ir.Media{
+				Encoding: e,
+				Type:     t,
+			}
+		},
 		"print_go": ir.PrintGoValue,
 		// We use interface{} to prevent template type matching errors
 		// for type aliases (e.g. for quoting ir.ContentType).

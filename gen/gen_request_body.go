@@ -10,7 +10,7 @@ import (
 func (g *Generator) generateRequest(ctx *genctx, opName string, body *openapi.RequestBody) (*ir.Request, error) {
 	name := opName + "Req"
 
-	contents, err := g.generateContents(ctx.appendPath("content"), name, !body.Required, body.Content)
+	contents, err := g.generateContents(ctx.appendPath("content"), name, !body.Required, true, body.Content)
 	if err != nil {
 		return nil, errors.Wrap(err, "contents")
 	}
@@ -29,10 +29,6 @@ func (g *Generator) generateRequest(ctx *genctx, opName string, body *openapi.Re
 	}
 
 	for contentType, content := range contents {
-		if contentType.Mask() {
-			return nil, &ErrNotImplemented{"masked request content type"}
-		}
-
 		t := content.Type
 		switch {
 		case len(contents) > 1:
