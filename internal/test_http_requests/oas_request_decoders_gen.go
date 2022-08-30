@@ -14,6 +14,7 @@ import (
 	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -43,8 +44,8 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request, span trace.Span)
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -69,10 +70,10 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request, span trace.Span)
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return &request, close, nil
-	case "application/octet-stream":
+	case ct == "application/octet-stream":
 		request := AllRequestBodiesReqApplicationOctetStream{Data: r.Body}
 		return &request, close, nil
-	case "application/x-www-form-urlencoded":
+	case ct == "application/x-www-form-urlencoded":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -147,7 +148,7 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request, span trace.Span)
 			request = AllRequestBodiesApplicationXWwwFormUrlencoded(unwrapped)
 		}
 		return &request, close, nil
-	case "multipart/form-data":
+	case ct == "multipart/form-data":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -227,7 +228,7 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request, span trace.Span)
 			request = AllRequestBodiesMultipartFormData(unwrapped)
 		}
 		return &request, close, nil
-	case "text/plain":
+	case ct == "text/plain":
 		request := AllRequestBodiesReqTextPlain{Data: r.Body}
 		return &request, close, nil
 	default:
@@ -263,8 +264,8 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request, span tra
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -289,10 +290,10 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request, span tra
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return &request, close, nil
-	case "application/octet-stream":
+	case ct == "application/octet-stream":
 		request := AllRequestBodiesOptionalReqApplicationOctetStream{Data: r.Body}
 		return &request, close, nil
-	case "application/x-www-form-urlencoded":
+	case ct == "application/x-www-form-urlencoded":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -374,7 +375,7 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request, span tra
 			request = AllRequestBodiesOptionalApplicationXWwwFormUrlencoded(unwrapped)
 		}
 		return &request, close, nil
-	case "multipart/form-data":
+	case ct == "multipart/form-data":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -461,9 +462,88 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request, span tra
 			request = AllRequestBodiesOptionalMultipartFormData(unwrapped)
 		}
 		return &request, close, nil
-	case "text/plain":
+	case ct == "text/plain":
 		request := AllRequestBodiesOptionalReqTextPlain{Data: r.Body}
 		return &request, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeMaskContentTypeRequest(r *http.Request, span trace.Span) (
+	req MaskContentTypeReqWithContentType,
+	close func() error,
+	rerr error,
+) {
+	var closers []func() error
+	close = func() error {
+		var merr error
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ht.MatchContentType("*/*", ct):
+		request := MaskContentTypeReq{Data: r.Body}
+		wrapped := MaskContentTypeReqWithContentType{
+			ContentType: ct,
+			Content:     request,
+		}
+		return wrapped, close, nil
+	default:
+		return req, close, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeMaskContentTypeOptionalRequest(r *http.Request, span trace.Span) (
+	req MaskContentTypeOptionalReqWithContentType,
+	close func() error,
+	rerr error,
+) {
+	var closers []func() error
+	close = func() error {
+		var merr error
+		// Close in reverse order, to match defer behavior.
+		for i := len(closers) - 1; i >= 0; i-- {
+			c := closers[i]
+			merr = multierr.Append(merr, c())
+		}
+		return merr
+	}
+	defer func() {
+		if rerr != nil {
+			rerr = multierr.Append(rerr, close())
+		}
+	}()
+	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
+		return req, close, nil
+	}
+
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, close, errors.Wrap(err, "parse media type")
+	}
+	switch {
+	case ht.MatchContentType("*/*", ct):
+		request := MaskContentTypeOptionalReq{Data: r.Body}
+		wrapped := MaskContentTypeOptionalReqWithContentType{
+			ContentType: ct,
+			Content:     request,
+		}
+		return wrapped, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
 	}

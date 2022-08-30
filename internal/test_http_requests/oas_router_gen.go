@@ -30,41 +30,90 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 		switch elem[0] {
-		case '/': // Prefix: "/allRequestBodies"
-			if l := len("/allRequestBodies"); len(elem) >= l && elem[0:l] == "/allRequestBodies" {
+		case '/': // Prefix: "/"
+			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 				elem = elem[l:]
 			} else {
 				break
 			}
 
 			if len(elem) == 0 {
-				switch r.Method {
-				case "POST":
-					s.handleAllRequestBodiesRequest([0]string{}, w, r)
-				default:
-					s.notAllowed(w, r, "POST")
-				}
-
-				return
+				break
 			}
 			switch elem[0] {
-			case 'O': // Prefix: "Optional"
-				if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+			case 'a': // Prefix: "allRequestBodies"
+				if l := len("allRequestBodies"); len(elem) >= l && elem[0:l] == "allRequestBodies" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf node.
 					switch r.Method {
 					case "POST":
-						s.handleAllRequestBodiesOptionalRequest([0]string{}, w, r)
+						s.handleAllRequestBodiesRequest([0]string{}, w, r)
 					default:
 						s.notAllowed(w, r, "POST")
 					}
 
 					return
+				}
+				switch elem[0] {
+				case 'O': // Prefix: "Optional"
+					if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleAllRequestBodiesOptionalRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
+
+						return
+					}
+				}
+			case 'm': // Prefix: "maskContentType"
+				if l := len("maskContentType"); len(elem) >= l && elem[0:l] == "maskContentType" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					switch r.Method {
+					case "POST":
+						s.handleMaskContentTypeRequest([0]string{}, w, r)
+					default:
+						s.notAllowed(w, r, "POST")
+					}
+
+					return
+				}
+				switch elem[0] {
+				case 'O': // Prefix: "Optional"
+					if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf node.
+						switch r.Method {
+						case "POST":
+							s.handleMaskContentTypeOptionalRequest([0]string{}, w, r)
+						default:
+							s.notAllowed(w, r, "POST")
+						}
+
+						return
+					}
 				}
 			}
 		}
@@ -115,28 +164,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			break
 		}
 		switch elem[0] {
-		case '/': // Prefix: "/allRequestBodies"
-			if l := len("/allRequestBodies"); len(elem) >= l && elem[0:l] == "/allRequestBodies" {
+		case '/': // Prefix: "/"
+			if l := len("/"); len(elem) >= l && elem[0:l] == "/" {
 				elem = elem[l:]
 			} else {
 				break
 			}
 
 			if len(elem) == 0 {
-				switch method {
-				case "POST":
-					r.name = "AllRequestBodies"
-					r.operationID = "allRequestBodies"
-					r.args = args
-					r.count = 0
-					return r, true
-				default:
-					return
-				}
+				break
 			}
 			switch elem[0] {
-			case 'O': // Prefix: "Optional"
-				if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+			case 'a': // Prefix: "allRequestBodies"
+				if l := len("allRequestBodies"); len(elem) >= l && elem[0:l] == "allRequestBodies" {
 					elem = elem[l:]
 				} else {
 					break
@@ -145,14 +185,76 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				if len(elem) == 0 {
 					switch method {
 					case "POST":
-						// Leaf: AllRequestBodiesOptional
-						r.name = "AllRequestBodiesOptional"
-						r.operationID = "allRequestBodiesOptional"
+						r.name = "AllRequestBodies"
+						r.operationID = "allRequestBodies"
 						r.args = args
 						r.count = 0
 						return r, true
 					default:
 						return
+					}
+				}
+				switch elem[0] {
+				case 'O': // Prefix: "Optional"
+					if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch method {
+						case "POST":
+							// Leaf: AllRequestBodiesOptional
+							r.name = "AllRequestBodiesOptional"
+							r.operationID = "allRequestBodiesOptional"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
+					}
+				}
+			case 'm': // Prefix: "maskContentType"
+				if l := len("maskContentType"); len(elem) >= l && elem[0:l] == "maskContentType" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					switch method {
+					case "POST":
+						r.name = "MaskContentType"
+						r.operationID = "maskContentType"
+						r.args = args
+						r.count = 0
+						return r, true
+					default:
+						return
+					}
+				}
+				switch elem[0] {
+				case 'O': // Prefix: "Optional"
+					if l := len("Optional"); len(elem) >= l && elem[0:l] == "Optional" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						switch method {
+						case "POST":
+							// Leaf: MaskContentTypeOptional
+							r.name = "MaskContentTypeOptional"
+							r.operationID = "maskContentTypeOptional"
+							r.args = args
+							r.count = 0
+							return r, true
+						default:
+							return
+						}
 					}
 				}
 			}

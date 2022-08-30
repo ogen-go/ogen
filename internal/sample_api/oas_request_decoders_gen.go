@@ -40,8 +40,8 @@ func (s *Server) decodeDefaultTestRequest(r *http.Request, span trace.Span) (
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -107,8 +107,8 @@ func (s *Server) decodeFoobarPostRequest(r *http.Request, span trace.Span) (
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -179,8 +179,8 @@ func (s *Server) decodeOneofBugRequest(r *http.Request, span trace.Span) (
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -246,8 +246,8 @@ func (s *Server) decodePetCreateRequest(r *http.Request, span trace.Span) (
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -321,8 +321,8 @@ func (s *Server) decodePetUpdateNameAliasPostRequest(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -396,8 +396,8 @@ func (s *Server) decodePetUpdateNamePostRequest(r *http.Request, span trace.Span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -479,8 +479,8 @@ func (s *Server) decodePetUploadAvatarByIDRequest(r *http.Request, span trace.Sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/octet-stream":
+	switch {
+	case ct == "application/octet-stream":
 		request := PetUploadAvatarByIDReq{Data: r.Body}
 		return request, close, nil
 	default:
@@ -513,8 +513,8 @@ func (s *Server) decodeTestFloatValidationRequest(r *http.Request, span trace.Sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}

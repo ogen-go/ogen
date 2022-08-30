@@ -40,8 +40,8 @@ func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.S
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -104,8 +104,8 @@ func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -168,8 +168,8 @@ func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -232,8 +232,8 @@ func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -299,8 +299,8 @@ func (s *Server) decodeSandboxRegisterPostRequest(r *http.Request, span trace.Sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
