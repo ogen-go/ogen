@@ -74,6 +74,28 @@ func (t testHTTPRequests) AllRequestBodiesOptional(
 	}, nil
 }
 
+func (t testHTTPRequests) MaskContentType(ctx context.Context, req api.MaskContentTypeReqWithContentType) (api.MaskResponse, error) {
+	var s strings.Builder
+	if _, err := io.Copy(&s, req.Content); err != nil {
+		return api.MaskResponse{}, err
+	}
+	return api.MaskResponse{
+		ContentType: req.ContentType,
+		Content:     s.String(),
+	}, nil
+}
+
+func (t testHTTPRequests) MaskContentTypeOptional(ctx context.Context, req api.MaskContentTypeOptionalReqWithContentType) (api.MaskResponse, error) {
+	var s strings.Builder
+	if _, err := io.Copy(&s, req.Content); err != nil {
+		return api.MaskResponse{}, err
+	}
+	return api.MaskResponse{
+		ContentType: req.ContentType,
+		Content:     s.String(),
+	}, nil
+}
+
 func TestRequests(t *testing.T) {
 	a := require.New(t)
 	ctx := context.Background()

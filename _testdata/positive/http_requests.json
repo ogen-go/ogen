@@ -102,6 +102,62 @@
           }
         }
       }
+    },
+    "/maskContentType": {
+      "post": {
+        "operationId": "maskContentType",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaskResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/maskContentTypeOptional": {
+      "post": {
+        "operationId": "maskContentTypeOptional",
+        "requestBody": {
+          "required": false,
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MaskResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -117,6 +173,21 @@
           },
           "age": {
             "type": "integer"
+          }
+        }
+      },
+      "MaskResponse": {
+        "type": "object",
+        "required": [
+          "contentType",
+          "content"
+        ],
+        "properties": {
+          "contentType": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
           }
         }
       }
