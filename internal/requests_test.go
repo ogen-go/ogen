@@ -139,4 +139,25 @@ func TestRequests(t *testing.T) {
 			a.Equal(testData, string(data))
 		}
 	})
+	t.Run("MaskContentType", func(t *testing.T) {
+		a := require.New(t)
+
+		_, err := client.MaskContentType(ctx, api.MaskContentTypeReqWithContentType{
+			ContentType: "invalidCT",
+			Content: api.MaskContentTypeReq{
+				Data: strings.NewReader(testData),
+			},
+		})
+		a.EqualError(err, `encode request: "invalidCT" does not match mask "*/*"`)
+
+		resp, err := client.MaskContentType(ctx, api.MaskContentTypeReqWithContentType{
+			ContentType: "application/json",
+			Content: api.MaskContentTypeReq{
+				Data: strings.NewReader(testData),
+			},
+		})
+		a.NoError(err)
+		a.Equal("application/json", resp.ContentType)
+		a.Equal(testData, resp.Content)
+	})
 }
