@@ -21,7 +21,9 @@ func SetBody(req *http.Request, body io.Reader, contentType string) {
 	if req.Header == nil {
 		req.Header = make(http.Header)
 	}
-	req.Header.Set("Content-Type", contentType)
+	if contentType != "" {
+		req.Header.Set("Content-Type", contentType)
+	}
 	req.Body = io.NopCloser(body)
 
 	switch v := body.(type) {
