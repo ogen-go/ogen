@@ -44,8 +44,8 @@ func (s *Server) decodeUserPassloginPostRequest(r *http.Request, span trace.Span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "multipart/form-data":
+	switch {
+	case ct == "multipart/form-data":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -129,8 +129,8 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "multipart/form-data":
+	switch {
+	case ct == "multipart/form-data":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -539,8 +539,8 @@ func (s *Server) decodeUserReportPostRequest(r *http.Request, span trace.Span) (
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "multipart/form-data":
+	switch {
+	case ct == "multipart/form-data":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}

@@ -239,3 +239,31 @@ func encodeAllRequestBodiesOptionalRequest(
 		return errors.Errorf("unexpected request type: %T", req)
 	}
 }
+func encodeMaskContentTypeRequest(
+	req MaskContentTypeReqWithContentType,
+	r *http.Request,
+) error {
+	contentType := req.ContentType
+	if contentType != "" && !ht.MatchContentType("*/*", contentType) {
+		return errors.Errorf("%q does not match mask %q", contentType, "*/*")
+	}
+	{
+		req := req.Content
+		ht.SetBody(r, req, contentType)
+		return nil
+	}
+}
+func encodeMaskContentTypeOptionalRequest(
+	req MaskContentTypeOptionalReqWithContentType,
+	r *http.Request,
+) error {
+	contentType := req.ContentType
+	if contentType != "" && !ht.MatchContentType("*/*", contentType) {
+		return errors.Errorf("%q does not match mask %q", contentType, "*/*")
+	}
+	{
+		req := req.Content
+		ht.SetBody(r, req, contentType)
+		return nil
+	}
+}

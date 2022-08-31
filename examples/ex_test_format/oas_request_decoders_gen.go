@@ -46,8 +46,8 @@ func (s *Server) decodeTestQueryParameterRequest(r *http.Request, span trace.Spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -107,8 +107,8 @@ func (s *Server) decodeTestRequestAnyRequest(r *http.Request, span trace.Span) (
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -168,8 +168,8 @@ func (s *Server) decodeTestRequestBooleanRequest(r *http.Request, span trace.Spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -228,8 +228,8 @@ func (s *Server) decodeTestRequestBooleanArrayRequest(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -297,8 +297,8 @@ func (s *Server) decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -396,8 +396,8 @@ func (s *Server) decodeTestRequestBooleanNullableRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -456,8 +456,8 @@ func (s *Server) decodeTestRequestBooleanNullableArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -523,8 +523,8 @@ func (s *Server) decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -620,8 +620,8 @@ func (s *Server) decodeTestRequestEmptyStructRequest(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -682,8 +682,8 @@ func (s *Server) decodeTestRequestFormatTestRequest(r *http.Request, span trace.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -757,8 +757,8 @@ func (s *Server) decodeTestRequestIntegerRequest(r *http.Request, span trace.Spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -817,8 +817,8 @@ func (s *Server) decodeTestRequestIntegerArrayRequest(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -886,8 +886,8 @@ func (s *Server) decodeTestRequestIntegerArrayArrayRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -985,8 +985,8 @@ func (s *Server) decodeTestRequestIntegerInt32Request(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -1045,8 +1045,8 @@ func (s *Server) decodeTestRequestIntegerInt32ArrayRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -1114,8 +1114,8 @@ func (s *Server) decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -1213,8 +1213,8 @@ func (s *Server) decodeTestRequestIntegerInt32NullableRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -1273,8 +1273,8 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -1340,8 +1340,8 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -1437,8 +1437,8 @@ func (s *Server) decodeTestRequestIntegerInt64Request(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -1497,8 +1497,8 @@ func (s *Server) decodeTestRequestIntegerInt64ArrayRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -1566,8 +1566,8 @@ func (s *Server) decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -1665,8 +1665,8 @@ func (s *Server) decodeTestRequestIntegerInt64NullableRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -1725,8 +1725,8 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -1792,8 +1792,8 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -1889,8 +1889,8 @@ func (s *Server) decodeTestRequestIntegerNullableRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -1949,8 +1949,8 @@ func (s *Server) decodeTestRequestIntegerNullableArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -2016,8 +2016,8 @@ func (s *Server) decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -2113,8 +2113,8 @@ func (s *Server) decodeTestRequestIntegerUnixRequest(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -2173,8 +2173,8 @@ func (s *Server) decodeTestRequestIntegerUnixArrayRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -2242,8 +2242,8 @@ func (s *Server) decodeTestRequestIntegerUnixArrayArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -2341,8 +2341,8 @@ func (s *Server) decodeTestRequestIntegerUnixMicroRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -2401,8 +2401,8 @@ func (s *Server) decodeTestRequestIntegerUnixMicroArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -2470,8 +2470,8 @@ func (s *Server) decodeTestRequestIntegerUnixMicroArrayArrayRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -2569,8 +2569,8 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -2629,8 +2629,8 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -2696,8 +2696,8 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayArrayRequest(r *h
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -2793,8 +2793,8 @@ func (s *Server) decodeTestRequestIntegerUnixMilliRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -2853,8 +2853,8 @@ func (s *Server) decodeTestRequestIntegerUnixMilliArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -2922,8 +2922,8 @@ func (s *Server) decodeTestRequestIntegerUnixMilliArrayArrayRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -3021,8 +3021,8 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -3081,8 +3081,8 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -3148,8 +3148,8 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayArrayRequest(r *h
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -3245,8 +3245,8 @@ func (s *Server) decodeTestRequestIntegerUnixNanoRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -3305,8 +3305,8 @@ func (s *Server) decodeTestRequestIntegerUnixNanoArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -3374,8 +3374,8 @@ func (s *Server) decodeTestRequestIntegerUnixNanoArrayArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -3473,8 +3473,8 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -3533,8 +3533,8 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -3600,8 +3600,8 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayArrayRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -3697,8 +3697,8 @@ func (s *Server) decodeTestRequestIntegerUnixNullableRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -3757,8 +3757,8 @@ func (s *Server) decodeTestRequestIntegerUnixNullableArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -3824,8 +3824,8 @@ func (s *Server) decodeTestRequestIntegerUnixNullableArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -3921,8 +3921,8 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -3981,8 +3981,8 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -4050,8 +4050,8 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsArrayArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -4149,8 +4149,8 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -4209,8 +4209,8 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayRequest(r *http
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -4276,8 +4276,8 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayArrayRequest(r 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -4373,8 +4373,8 @@ func (s *Server) decodeTestRequestNullRequest(r *http.Request, span trace.Span) 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -4433,8 +4433,8 @@ func (s *Server) decodeTestRequestNullArrayRequest(r *http.Request, span trace.S
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -4500,8 +4500,8 @@ func (s *Server) decodeTestRequestNullArrayArrayRequest(r *http.Request, span tr
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -4597,8 +4597,8 @@ func (s *Server) decodeTestRequestNullNullableRequest(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -4657,8 +4657,8 @@ func (s *Server) decodeTestRequestNullNullableArrayRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -4724,8 +4724,8 @@ func (s *Server) decodeTestRequestNullNullableArrayArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -4821,8 +4821,8 @@ func (s *Server) decodeTestRequestNumberRequest(r *http.Request, span trace.Span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -4896,8 +4896,8 @@ func (s *Server) decodeTestRequestNumberArrayRequest(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -4987,8 +4987,8 @@ func (s *Server) decodeTestRequestNumberArrayArrayRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -5103,8 +5103,8 @@ func (s *Server) decodeTestRequestNumberDoubleRequest(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -5178,8 +5178,8 @@ func (s *Server) decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -5269,8 +5269,8 @@ func (s *Server) decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -5385,8 +5385,8 @@ func (s *Server) decodeTestRequestNumberDoubleNullableRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -5460,8 +5460,8 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -5549,8 +5549,8 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -5663,8 +5663,8 @@ func (s *Server) decodeTestRequestNumberFloatRequest(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -5738,8 +5738,8 @@ func (s *Server) decodeTestRequestNumberFloatArrayRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -5829,8 +5829,8 @@ func (s *Server) decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -5945,8 +5945,8 @@ func (s *Server) decodeTestRequestNumberFloatNullableRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -6020,8 +6020,8 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -6109,8 +6109,8 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -6223,8 +6223,8 @@ func (s *Server) decodeTestRequestNumberInt32Request(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -6283,8 +6283,8 @@ func (s *Server) decodeTestRequestNumberInt32ArrayRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -6352,8 +6352,8 @@ func (s *Server) decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -6451,8 +6451,8 @@ func (s *Server) decodeTestRequestNumberInt32NullableRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -6511,8 +6511,8 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -6578,8 +6578,8 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -6675,8 +6675,8 @@ func (s *Server) decodeTestRequestNumberInt64Request(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -6735,8 +6735,8 @@ func (s *Server) decodeTestRequestNumberInt64ArrayRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -6804,8 +6804,8 @@ func (s *Server) decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -6903,8 +6903,8 @@ func (s *Server) decodeTestRequestNumberInt64NullableRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -6963,8 +6963,8 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -7030,8 +7030,8 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -7127,8 +7127,8 @@ func (s *Server) decodeTestRequestNumberNullableRequest(r *http.Request, span tr
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -7202,8 +7202,8 @@ func (s *Server) decodeTestRequestNumberNullableArrayRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -7291,8 +7291,8 @@ func (s *Server) decodeTestRequestNumberNullableArrayArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -7402,8 +7402,8 @@ func (s *Server) decodeTestRequestRequiredAnyRequest(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -7460,8 +7460,8 @@ func (s *Server) decodeTestRequestRequiredBooleanRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -7518,8 +7518,8 @@ func (s *Server) decodeTestRequestRequiredBooleanArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -7592,8 +7592,8 @@ func (s *Server) decodeTestRequestRequiredBooleanArrayArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -7691,8 +7691,8 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -7747,8 +7747,8 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -7819,8 +7819,8 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -7916,8 +7916,8 @@ func (s *Server) decodeTestRequestRequiredEmptyStructRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -7972,8 +7972,8 @@ func (s *Server) decodeTestRequestRequiredFormatTestRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -8036,8 +8036,8 @@ func (s *Server) decodeTestRequestRequiredIntegerRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -8094,8 +8094,8 @@ func (s *Server) decodeTestRequestRequiredIntegerArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -8168,8 +8168,8 @@ func (s *Server) decodeTestRequestRequiredIntegerArrayArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -8267,8 +8267,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32Request(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -8325,8 +8325,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -8399,8 +8399,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -8498,8 +8498,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -8554,8 +8554,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -8626,8 +8626,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -8723,8 +8723,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64Request(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -8781,8 +8781,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -8855,8 +8855,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -8954,8 +8954,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -9010,8 +9010,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -9082,8 +9082,8 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -9179,8 +9179,8 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -9235,8 +9235,8 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -9307,8 +9307,8 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -9404,8 +9404,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -9462,8 +9462,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -9536,8 +9536,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -9635,8 +9635,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -9693,8 +9693,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -9767,8 +9767,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayArrayRequest(r *h
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -9866,8 +9866,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -9922,8 +9922,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayRequest(r
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -9994,8 +9994,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -10091,8 +10091,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -10149,8 +10149,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -10223,8 +10223,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayArrayRequest(r *h
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -10322,8 +10322,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -10378,8 +10378,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayRequest(r
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -10450,8 +10450,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -10547,8 +10547,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -10605,8 +10605,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -10679,8 +10679,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayArrayRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -10778,8 +10778,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableRequest(r *http
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -10834,8 +10834,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayRequest(r 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -10906,8 +10906,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -11003,8 +11003,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -11059,8 +11059,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -11131,8 +11131,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayArrayRequest(r
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -11228,8 +11228,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -11286,8 +11286,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayRequest(r *http
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -11360,8 +11360,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(r 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -11459,8 +11459,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableRequest(r *h
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -11515,8 +11515,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -11587,8 +11587,8 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -11684,8 +11684,8 @@ func (s *Server) decodeTestRequestRequiredNullRequest(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -11740,8 +11740,8 @@ func (s *Server) decodeTestRequestRequiredNullArrayRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -11812,8 +11812,8 @@ func (s *Server) decodeTestRequestRequiredNullArrayArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -11909,8 +11909,8 @@ func (s *Server) decodeTestRequestRequiredNullNullableRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -11965,8 +11965,8 @@ func (s *Server) decodeTestRequestRequiredNullNullableArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -12037,8 +12037,8 @@ func (s *Server) decodeTestRequestRequiredNullNullableArrayArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -12134,8 +12134,8 @@ func (s *Server) decodeTestRequestRequiredNumberRequest(r *http.Request, span tr
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -12200,8 +12200,8 @@ func (s *Server) decodeTestRequestRequiredNumberArrayRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -12291,8 +12291,8 @@ func (s *Server) decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -12407,8 +12407,8 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -12473,8 +12473,8 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -12564,8 +12564,8 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -12680,8 +12680,8 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -12744,8 +12744,8 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -12833,8 +12833,8 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -12947,8 +12947,8 @@ func (s *Server) decodeTestRequestRequiredNumberFloatRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -13013,8 +13013,8 @@ func (s *Server) decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -13104,8 +13104,8 @@ func (s *Server) decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -13220,8 +13220,8 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -13284,8 +13284,8 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -13373,8 +13373,8 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -13487,8 +13487,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt32Request(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -13545,8 +13545,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt32ArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -13619,8 +13619,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -13718,8 +13718,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -13774,8 +13774,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -13846,8 +13846,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -13943,8 +13943,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt64Request(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -14001,8 +14001,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt64ArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -14075,8 +14075,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -14174,8 +14174,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -14230,8 +14230,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -14302,8 +14302,8 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -14399,8 +14399,8 @@ func (s *Server) decodeTestRequestRequiredNumberNullableRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -14463,8 +14463,8 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -14552,8 +14552,8 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -14666,8 +14666,8 @@ func (s *Server) decodeTestRequestRequiredStringRequest(r *http.Request, span tr
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -14724,8 +14724,8 @@ func (s *Server) decodeTestRequestRequiredStringArrayRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -14798,8 +14798,8 @@ func (s *Server) decodeTestRequestRequiredStringArrayArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -14897,8 +14897,8 @@ func (s *Server) decodeTestRequestRequiredStringBinaryRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -14955,8 +14955,8 @@ func (s *Server) decodeTestRequestRequiredStringBinaryArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -15029,8 +15029,8 @@ func (s *Server) decodeTestRequestRequiredStringBinaryArrayArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -15128,8 +15128,8 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -15184,8 +15184,8 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -15256,8 +15256,8 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -15353,8 +15353,8 @@ func (s *Server) decodeTestRequestRequiredStringByteRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -15411,8 +15411,8 @@ func (s *Server) decodeTestRequestRequiredStringByteArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -15485,8 +15485,8 @@ func (s *Server) decodeTestRequestRequiredStringByteArrayArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -15584,8 +15584,8 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -15642,8 +15642,8 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableArrayRequest(r *http
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -15716,8 +15716,8 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -15815,8 +15815,8 @@ func (s *Server) decodeTestRequestRequiredStringDateRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -15873,8 +15873,8 @@ func (s *Server) decodeTestRequestRequiredStringDateArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -15947,8 +15947,8 @@ func (s *Server) decodeTestRequestRequiredStringDateArrayArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -16046,8 +16046,8 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -16102,8 +16102,8 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayRequest(r *http
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -16174,8 +16174,8 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -16271,8 +16271,8 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -16329,8 +16329,8 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -16403,8 +16403,8 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -16502,8 +16502,8 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -16558,8 +16558,8 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -16630,8 +16630,8 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayArrayReques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -16727,8 +16727,8 @@ func (s *Server) decodeTestRequestRequiredStringDurationRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -16785,8 +16785,8 @@ func (s *Server) decodeTestRequestRequiredStringDurationArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -16859,8 +16859,8 @@ func (s *Server) decodeTestRequestRequiredStringDurationArrayArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -16958,8 +16958,8 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -17014,8 +17014,8 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayRequest(r *
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -17086,8 +17086,8 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayArrayReques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -17183,8 +17183,8 @@ func (s *Server) decodeTestRequestRequiredStringEmailRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -17257,8 +17257,8 @@ func (s *Server) decodeTestRequestRequiredStringEmailArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -17356,8 +17356,8 @@ func (s *Server) decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -17480,8 +17480,8 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -17552,8 +17552,8 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -17649,8 +17649,8 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -17771,8 +17771,8 @@ func (s *Server) decodeTestRequestRequiredStringHostnameRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -17845,8 +17845,8 @@ func (s *Server) decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -17944,8 +17944,8 @@ func (s *Server) decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -18068,8 +18068,8 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -18140,8 +18140,8 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -18237,8 +18237,8 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayArrayReques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -18359,8 +18359,8 @@ func (s *Server) decodeTestRequestRequiredStringIPRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -18417,8 +18417,8 @@ func (s *Server) decodeTestRequestRequiredStringIPArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -18491,8 +18491,8 @@ func (s *Server) decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -18590,8 +18590,8 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -18646,8 +18646,8 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -18718,8 +18718,8 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *h
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -18815,8 +18815,8 @@ func (s *Server) decodeTestRequestRequiredStringInt32Request(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -18873,8 +18873,8 @@ func (s *Server) decodeTestRequestRequiredStringInt32ArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -18947,8 +18947,8 @@ func (s *Server) decodeTestRequestRequiredStringInt32ArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -19046,8 +19046,8 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -19102,8 +19102,8 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -19174,8 +19174,8 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -19271,8 +19271,8 @@ func (s *Server) decodeTestRequestRequiredStringInt64Request(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -19329,8 +19329,8 @@ func (s *Server) decodeTestRequestRequiredStringInt64ArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -19403,8 +19403,8 @@ func (s *Server) decodeTestRequestRequiredStringInt64ArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -19502,8 +19502,8 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -19558,8 +19558,8 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -19630,8 +19630,8 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -19727,8 +19727,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv4Request(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -19785,8 +19785,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -19859,8 +19859,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -19958,8 +19958,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -20014,8 +20014,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -20086,8 +20086,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -20183,8 +20183,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv6Request(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -20241,8 +20241,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -20315,8 +20315,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -20414,8 +20414,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -20470,8 +20470,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -20542,8 +20542,8 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -20639,8 +20639,8 @@ func (s *Server) decodeTestRequestRequiredStringNullableRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -20695,8 +20695,8 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -20767,8 +20767,8 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -20864,8 +20864,8 @@ func (s *Server) decodeTestRequestRequiredStringPasswordRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -20922,8 +20922,8 @@ func (s *Server) decodeTestRequestRequiredStringPasswordArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -20996,8 +20996,8 @@ func (s *Server) decodeTestRequestRequiredStringPasswordArrayArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -21095,8 +21095,8 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -21151,8 +21151,8 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -21223,8 +21223,8 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayArrayReques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -21320,8 +21320,8 @@ func (s *Server) decodeTestRequestRequiredStringTimeRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -21378,8 +21378,8 @@ func (s *Server) decodeTestRequestRequiredStringTimeArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -21452,8 +21452,8 @@ func (s *Server) decodeTestRequestRequiredStringTimeArrayArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -21551,8 +21551,8 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -21607,8 +21607,8 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -21679,8 +21679,8 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -21776,8 +21776,8 @@ func (s *Server) decodeTestRequestRequiredStringURIRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -21834,8 +21834,8 @@ func (s *Server) decodeTestRequestRequiredStringURIArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -21908,8 +21908,8 @@ func (s *Server) decodeTestRequestRequiredStringURIArrayArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -22007,8 +22007,8 @@ func (s *Server) decodeTestRequestRequiredStringURINullableRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -22063,8 +22063,8 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -22135,8 +22135,8 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -22232,8 +22232,8 @@ func (s *Server) decodeTestRequestRequiredStringUUIDRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -22290,8 +22290,8 @@ func (s *Server) decodeTestRequestRequiredStringUUIDArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -22364,8 +22364,8 @@ func (s *Server) decodeTestRequestRequiredStringUUIDArrayArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -22463,8 +22463,8 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -22519,8 +22519,8 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -22591,8 +22591,8 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -22688,8 +22688,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -22746,8 +22746,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -22820,8 +22820,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixArrayArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -22919,8 +22919,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -22977,8 +22977,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -23051,8 +23051,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -23150,8 +23150,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -23206,8 +23206,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -23278,8 +23278,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -23375,8 +23375,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -23433,8 +23433,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -23507,8 +23507,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -23606,8 +23606,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -23662,8 +23662,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -23734,8 +23734,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -23831,8 +23831,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -23889,8 +23889,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -23963,8 +23963,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -24062,8 +24062,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -24118,8 +24118,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -24190,8 +24190,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -24287,8 +24287,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -24343,8 +24343,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -24415,8 +24415,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -24512,8 +24512,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -24570,8 +24570,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -24644,8 +24644,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -24743,8 +24743,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -24799,8 +24799,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -24871,8 +24871,8 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -24971,8 +24971,8 @@ func (s *Server) decodeTestRequestStringRequest(r *http.Request, span trace.Span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -25031,8 +25031,8 @@ func (s *Server) decodeTestRequestStringArrayRequest(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -25100,8 +25100,8 @@ func (s *Server) decodeTestRequestStringArrayArrayRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -25199,8 +25199,8 @@ func (s *Server) decodeTestRequestStringBinaryRequest(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -25259,8 +25259,8 @@ func (s *Server) decodeTestRequestStringBinaryArrayRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -25328,8 +25328,8 @@ func (s *Server) decodeTestRequestStringBinaryArrayArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -25427,8 +25427,8 @@ func (s *Server) decodeTestRequestStringBinaryNullableRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -25487,8 +25487,8 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -25554,8 +25554,8 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -25651,8 +25651,8 @@ func (s *Server) decodeTestRequestStringByteRequest(r *http.Request, span trace.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -25712,8 +25712,8 @@ func (s *Server) decodeTestRequestStringByteArrayRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -25781,8 +25781,8 @@ func (s *Server) decodeTestRequestStringByteArrayArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -25880,8 +25880,8 @@ func (s *Server) decodeTestRequestStringByteNullableRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -25940,8 +25940,8 @@ func (s *Server) decodeTestRequestStringByteNullableArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -26009,8 +26009,8 @@ func (s *Server) decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -26108,8 +26108,8 @@ func (s *Server) decodeTestRequestStringDateRequest(r *http.Request, span trace.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -26168,8 +26168,8 @@ func (s *Server) decodeTestRequestStringDateArrayRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -26237,8 +26237,8 @@ func (s *Server) decodeTestRequestStringDateArrayArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -26336,8 +26336,8 @@ func (s *Server) decodeTestRequestStringDateNullableRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -26396,8 +26396,8 @@ func (s *Server) decodeTestRequestStringDateNullableArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -26463,8 +26463,8 @@ func (s *Server) decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -26560,8 +26560,8 @@ func (s *Server) decodeTestRequestStringDateTimeRequest(r *http.Request, span tr
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -26620,8 +26620,8 @@ func (s *Server) decodeTestRequestStringDateTimeArrayRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -26689,8 +26689,8 @@ func (s *Server) decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -26788,8 +26788,8 @@ func (s *Server) decodeTestRequestStringDateTimeNullableRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -26848,8 +26848,8 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -26915,8 +26915,8 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -27012,8 +27012,8 @@ func (s *Server) decodeTestRequestStringDurationRequest(r *http.Request, span tr
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -27072,8 +27072,8 @@ func (s *Server) decodeTestRequestStringDurationArrayRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -27141,8 +27141,8 @@ func (s *Server) decodeTestRequestStringDurationArrayArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -27240,8 +27240,8 @@ func (s *Server) decodeTestRequestStringDurationNullableRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -27300,8 +27300,8 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -27367,8 +27367,8 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -27464,8 +27464,8 @@ func (s *Server) decodeTestRequestStringEmailRequest(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -27547,8 +27547,8 @@ func (s *Server) decodeTestRequestStringEmailArrayRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -27646,8 +27646,8 @@ func (s *Server) decodeTestRequestStringEmailArrayArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -27770,8 +27770,8 @@ func (s *Server) decodeTestRequestStringEmailNullableRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -27853,8 +27853,8 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -27950,8 +27950,8 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -28072,8 +28072,8 @@ func (s *Server) decodeTestRequestStringHostnameRequest(r *http.Request, span tr
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -28155,8 +28155,8 @@ func (s *Server) decodeTestRequestStringHostnameArrayRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -28254,8 +28254,8 @@ func (s *Server) decodeTestRequestStringHostnameArrayArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -28378,8 +28378,8 @@ func (s *Server) decodeTestRequestStringHostnameNullableRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -28461,8 +28461,8 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -28558,8 +28558,8 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -28680,8 +28680,8 @@ func (s *Server) decodeTestRequestStringIPRequest(r *http.Request, span trace.Sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -28740,8 +28740,8 @@ func (s *Server) decodeTestRequestStringIPArrayRequest(r *http.Request, span tra
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -28809,8 +28809,8 @@ func (s *Server) decodeTestRequestStringIPArrayArrayRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -28908,8 +28908,8 @@ func (s *Server) decodeTestRequestStringIPNullableRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -28968,8 +28968,8 @@ func (s *Server) decodeTestRequestStringIPNullableArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -29035,8 +29035,8 @@ func (s *Server) decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -29132,8 +29132,8 @@ func (s *Server) decodeTestRequestStringInt32Request(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -29192,8 +29192,8 @@ func (s *Server) decodeTestRequestStringInt32ArrayRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -29261,8 +29261,8 @@ func (s *Server) decodeTestRequestStringInt32ArrayArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -29360,8 +29360,8 @@ func (s *Server) decodeTestRequestStringInt32NullableRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -29420,8 +29420,8 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -29487,8 +29487,8 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -29584,8 +29584,8 @@ func (s *Server) decodeTestRequestStringInt64Request(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -29644,8 +29644,8 @@ func (s *Server) decodeTestRequestStringInt64ArrayRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -29713,8 +29713,8 @@ func (s *Server) decodeTestRequestStringInt64ArrayArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -29812,8 +29812,8 @@ func (s *Server) decodeTestRequestStringInt64NullableRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -29872,8 +29872,8 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -29939,8 +29939,8 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -30036,8 +30036,8 @@ func (s *Server) decodeTestRequestStringIpv4Request(r *http.Request, span trace.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -30096,8 +30096,8 @@ func (s *Server) decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -30165,8 +30165,8 @@ func (s *Server) decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -30264,8 +30264,8 @@ func (s *Server) decodeTestRequestStringIpv4NullableRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -30324,8 +30324,8 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -30391,8 +30391,8 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -30488,8 +30488,8 @@ func (s *Server) decodeTestRequestStringIpv6Request(r *http.Request, span trace.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -30548,8 +30548,8 @@ func (s *Server) decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -30617,8 +30617,8 @@ func (s *Server) decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -30716,8 +30716,8 @@ func (s *Server) decodeTestRequestStringIpv6NullableRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -30776,8 +30776,8 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -30843,8 +30843,8 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -30940,8 +30940,8 @@ func (s *Server) decodeTestRequestStringNullableRequest(r *http.Request, span tr
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -31000,8 +31000,8 @@ func (s *Server) decodeTestRequestStringNullableArrayRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -31067,8 +31067,8 @@ func (s *Server) decodeTestRequestStringNullableArrayArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -31164,8 +31164,8 @@ func (s *Server) decodeTestRequestStringPasswordRequest(r *http.Request, span tr
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -31224,8 +31224,8 @@ func (s *Server) decodeTestRequestStringPasswordArrayRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -31293,8 +31293,8 @@ func (s *Server) decodeTestRequestStringPasswordArrayArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -31392,8 +31392,8 @@ func (s *Server) decodeTestRequestStringPasswordNullableRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -31452,8 +31452,8 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -31519,8 +31519,8 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -31616,8 +31616,8 @@ func (s *Server) decodeTestRequestStringTimeRequest(r *http.Request, span trace.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -31676,8 +31676,8 @@ func (s *Server) decodeTestRequestStringTimeArrayRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -31745,8 +31745,8 @@ func (s *Server) decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -31844,8 +31844,8 @@ func (s *Server) decodeTestRequestStringTimeNullableRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -31904,8 +31904,8 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -31971,8 +31971,8 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -32068,8 +32068,8 @@ func (s *Server) decodeTestRequestStringURIRequest(r *http.Request, span trace.S
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -32128,8 +32128,8 @@ func (s *Server) decodeTestRequestStringURIArrayRequest(r *http.Request, span tr
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -32197,8 +32197,8 @@ func (s *Server) decodeTestRequestStringURIArrayArrayRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -32296,8 +32296,8 @@ func (s *Server) decodeTestRequestStringURINullableRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -32356,8 +32356,8 @@ func (s *Server) decodeTestRequestStringURINullableArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -32423,8 +32423,8 @@ func (s *Server) decodeTestRequestStringURINullableArrayArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -32520,8 +32520,8 @@ func (s *Server) decodeTestRequestStringUUIDRequest(r *http.Request, span trace.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -32580,8 +32580,8 @@ func (s *Server) decodeTestRequestStringUUIDArrayRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -32649,8 +32649,8 @@ func (s *Server) decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -32748,8 +32748,8 @@ func (s *Server) decodeTestRequestStringUUIDNullableRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -32808,8 +32808,8 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -32875,8 +32875,8 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -32972,8 +32972,8 @@ func (s *Server) decodeTestRequestStringUnixRequest(r *http.Request, span trace.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -33032,8 +33032,8 @@ func (s *Server) decodeTestRequestStringUnixArrayRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -33101,8 +33101,8 @@ func (s *Server) decodeTestRequestStringUnixArrayArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -33200,8 +33200,8 @@ func (s *Server) decodeTestRequestStringUnixMicroRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -33260,8 +33260,8 @@ func (s *Server) decodeTestRequestStringUnixMicroArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -33329,8 +33329,8 @@ func (s *Server) decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -33428,8 +33428,8 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -33488,8 +33488,8 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -33555,8 +33555,8 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -33652,8 +33652,8 @@ func (s *Server) decodeTestRequestStringUnixMilliRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -33712,8 +33712,8 @@ func (s *Server) decodeTestRequestStringUnixMilliArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -33781,8 +33781,8 @@ func (s *Server) decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -33880,8 +33880,8 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -33940,8 +33940,8 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -34007,8 +34007,8 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -34104,8 +34104,8 @@ func (s *Server) decodeTestRequestStringUnixNanoRequest(r *http.Request, span tr
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -34164,8 +34164,8 @@ func (s *Server) decodeTestRequestStringUnixNanoArrayRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -34233,8 +34233,8 @@ func (s *Server) decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -34332,8 +34332,8 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -34392,8 +34392,8 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -34459,8 +34459,8 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -34556,8 +34556,8 @@ func (s *Server) decodeTestRequestStringUnixNullableRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -34616,8 +34616,8 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -34683,8 +34683,8 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -34780,8 +34780,8 @@ func (s *Server) decodeTestRequestStringUnixSecondsRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -34840,8 +34840,8 @@ func (s *Server) decodeTestRequestStringUnixSecondsArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -34909,8 +34909,8 @@ func (s *Server) decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -35008,8 +35008,8 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -35068,8 +35068,8 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -35135,8 +35135,8 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
@@ -35229,8 +35229,8 @@ func (s *Server) decodeTestResponseAnyRequest(r *http.Request, span trace.Span) 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -35287,8 +35287,8 @@ func (s *Server) decodeTestResponseBooleanRequest(r *http.Request, span trace.Sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -35345,8 +35345,8 @@ func (s *Server) decodeTestResponseBooleanArrayRequest(r *http.Request, span tra
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -35403,8 +35403,8 @@ func (s *Server) decodeTestResponseBooleanArrayArrayRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -35461,8 +35461,8 @@ func (s *Server) decodeTestResponseBooleanNullableRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -35519,8 +35519,8 @@ func (s *Server) decodeTestResponseBooleanNullableArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -35577,8 +35577,8 @@ func (s *Server) decodeTestResponseBooleanNullableArrayArrayRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -35635,8 +35635,8 @@ func (s *Server) decodeTestResponseEmptyStructRequest(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -35693,8 +35693,8 @@ func (s *Server) decodeTestResponseFormatTestRequest(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -35751,8 +35751,8 @@ func (s *Server) decodeTestResponseIntegerRequest(r *http.Request, span trace.Sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -35809,8 +35809,8 @@ func (s *Server) decodeTestResponseIntegerArrayRequest(r *http.Request, span tra
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -35867,8 +35867,8 @@ func (s *Server) decodeTestResponseIntegerArrayArrayRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -35925,8 +35925,8 @@ func (s *Server) decodeTestResponseIntegerInt32Request(r *http.Request, span tra
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -35983,8 +35983,8 @@ func (s *Server) decodeTestResponseIntegerInt32ArrayRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -36041,8 +36041,8 @@ func (s *Server) decodeTestResponseIntegerInt32ArrayArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -36099,8 +36099,8 @@ func (s *Server) decodeTestResponseIntegerInt32NullableRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -36157,8 +36157,8 @@ func (s *Server) decodeTestResponseIntegerInt32NullableArrayRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -36215,8 +36215,8 @@ func (s *Server) decodeTestResponseIntegerInt32NullableArrayArrayRequest(r *http
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -36273,8 +36273,8 @@ func (s *Server) decodeTestResponseIntegerInt64Request(r *http.Request, span tra
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -36331,8 +36331,8 @@ func (s *Server) decodeTestResponseIntegerInt64ArrayRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -36389,8 +36389,8 @@ func (s *Server) decodeTestResponseIntegerInt64ArrayArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -36447,8 +36447,8 @@ func (s *Server) decodeTestResponseIntegerInt64NullableRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -36505,8 +36505,8 @@ func (s *Server) decodeTestResponseIntegerInt64NullableArrayRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -36563,8 +36563,8 @@ func (s *Server) decodeTestResponseIntegerInt64NullableArrayArrayRequest(r *http
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -36621,8 +36621,8 @@ func (s *Server) decodeTestResponseIntegerNullableRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -36679,8 +36679,8 @@ func (s *Server) decodeTestResponseIntegerNullableArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -36737,8 +36737,8 @@ func (s *Server) decodeTestResponseIntegerNullableArrayArrayRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -36795,8 +36795,8 @@ func (s *Server) decodeTestResponseIntegerUnixRequest(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -36853,8 +36853,8 @@ func (s *Server) decodeTestResponseIntegerUnixArrayRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -36911,8 +36911,8 @@ func (s *Server) decodeTestResponseIntegerUnixArrayArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -36969,8 +36969,8 @@ func (s *Server) decodeTestResponseIntegerUnixMicroRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -37027,8 +37027,8 @@ func (s *Server) decodeTestResponseIntegerUnixMicroArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -37085,8 +37085,8 @@ func (s *Server) decodeTestResponseIntegerUnixMicroArrayArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -37143,8 +37143,8 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -37201,8 +37201,8 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -37259,8 +37259,8 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayArrayRequest(r *
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -37317,8 +37317,8 @@ func (s *Server) decodeTestResponseIntegerUnixMilliRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -37375,8 +37375,8 @@ func (s *Server) decodeTestResponseIntegerUnixMilliArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -37433,8 +37433,8 @@ func (s *Server) decodeTestResponseIntegerUnixMilliArrayArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -37491,8 +37491,8 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -37549,8 +37549,8 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -37607,8 +37607,8 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayArrayRequest(r *
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -37665,8 +37665,8 @@ func (s *Server) decodeTestResponseIntegerUnixNanoRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -37723,8 +37723,8 @@ func (s *Server) decodeTestResponseIntegerUnixNanoArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -37781,8 +37781,8 @@ func (s *Server) decodeTestResponseIntegerUnixNanoArrayArrayRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -37839,8 +37839,8 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -37897,8 +37897,8 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -37955,8 +37955,8 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayArrayRequest(r *h
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38013,8 +38013,8 @@ func (s *Server) decodeTestResponseIntegerUnixNullableRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38071,8 +38071,8 @@ func (s *Server) decodeTestResponseIntegerUnixNullableArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38129,8 +38129,8 @@ func (s *Server) decodeTestResponseIntegerUnixNullableArrayArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38187,8 +38187,8 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38245,8 +38245,8 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38303,8 +38303,8 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38361,8 +38361,8 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38419,8 +38419,8 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayRequest(r *htt
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38477,8 +38477,8 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayArrayRequest(r
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38535,8 +38535,8 @@ func (s *Server) decodeTestResponseNullRequest(r *http.Request, span trace.Span)
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38593,8 +38593,8 @@ func (s *Server) decodeTestResponseNullArrayRequest(r *http.Request, span trace.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38651,8 +38651,8 @@ func (s *Server) decodeTestResponseNullArrayArrayRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38709,8 +38709,8 @@ func (s *Server) decodeTestResponseNullNullableRequest(r *http.Request, span tra
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38767,8 +38767,8 @@ func (s *Server) decodeTestResponseNullNullableArrayRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38825,8 +38825,8 @@ func (s *Server) decodeTestResponseNullNullableArrayArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38883,8 +38883,8 @@ func (s *Server) decodeTestResponseNumberRequest(r *http.Request, span trace.Spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38941,8 +38941,8 @@ func (s *Server) decodeTestResponseNumberArrayRequest(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -38999,8 +38999,8 @@ func (s *Server) decodeTestResponseNumberArrayArrayRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -39057,8 +39057,8 @@ func (s *Server) decodeTestResponseNumberDoubleRequest(r *http.Request, span tra
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -39115,8 +39115,8 @@ func (s *Server) decodeTestResponseNumberDoubleArrayRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -39173,8 +39173,8 @@ func (s *Server) decodeTestResponseNumberDoubleArrayArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -39231,8 +39231,8 @@ func (s *Server) decodeTestResponseNumberDoubleNullableRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -39289,8 +39289,8 @@ func (s *Server) decodeTestResponseNumberDoubleNullableArrayRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -39347,8 +39347,8 @@ func (s *Server) decodeTestResponseNumberDoubleNullableArrayArrayRequest(r *http
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -39405,8 +39405,8 @@ func (s *Server) decodeTestResponseNumberFloatRequest(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -39463,8 +39463,8 @@ func (s *Server) decodeTestResponseNumberFloatArrayRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -39521,8 +39521,8 @@ func (s *Server) decodeTestResponseNumberFloatArrayArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -39579,8 +39579,8 @@ func (s *Server) decodeTestResponseNumberFloatNullableRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -39637,8 +39637,8 @@ func (s *Server) decodeTestResponseNumberFloatNullableArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -39695,8 +39695,8 @@ func (s *Server) decodeTestResponseNumberFloatNullableArrayArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -39753,8 +39753,8 @@ func (s *Server) decodeTestResponseNumberInt32Request(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -39811,8 +39811,8 @@ func (s *Server) decodeTestResponseNumberInt32ArrayRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -39869,8 +39869,8 @@ func (s *Server) decodeTestResponseNumberInt32ArrayArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -39927,8 +39927,8 @@ func (s *Server) decodeTestResponseNumberInt32NullableRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -39985,8 +39985,8 @@ func (s *Server) decodeTestResponseNumberInt32NullableArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -40043,8 +40043,8 @@ func (s *Server) decodeTestResponseNumberInt32NullableArrayArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -40101,8 +40101,8 @@ func (s *Server) decodeTestResponseNumberInt64Request(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -40159,8 +40159,8 @@ func (s *Server) decodeTestResponseNumberInt64ArrayRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -40217,8 +40217,8 @@ func (s *Server) decodeTestResponseNumberInt64ArrayArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -40275,8 +40275,8 @@ func (s *Server) decodeTestResponseNumberInt64NullableRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -40333,8 +40333,8 @@ func (s *Server) decodeTestResponseNumberInt64NullableArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -40391,8 +40391,8 @@ func (s *Server) decodeTestResponseNumberInt64NullableArrayArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -40449,8 +40449,8 @@ func (s *Server) decodeTestResponseNumberNullableRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -40507,8 +40507,8 @@ func (s *Server) decodeTestResponseNumberNullableArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -40565,8 +40565,8 @@ func (s *Server) decodeTestResponseNumberNullableArrayArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -40623,8 +40623,8 @@ func (s *Server) decodeTestResponseStringRequest(r *http.Request, span trace.Spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -40681,8 +40681,8 @@ func (s *Server) decodeTestResponseStringArrayRequest(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -40739,8 +40739,8 @@ func (s *Server) decodeTestResponseStringArrayArrayRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -40797,8 +40797,8 @@ func (s *Server) decodeTestResponseStringBinaryRequest(r *http.Request, span tra
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -40855,8 +40855,8 @@ func (s *Server) decodeTestResponseStringBinaryArrayRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -40913,8 +40913,8 @@ func (s *Server) decodeTestResponseStringBinaryArrayArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -40971,8 +40971,8 @@ func (s *Server) decodeTestResponseStringBinaryNullableRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -41029,8 +41029,8 @@ func (s *Server) decodeTestResponseStringBinaryNullableArrayRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -41087,8 +41087,8 @@ func (s *Server) decodeTestResponseStringBinaryNullableArrayArrayRequest(r *http
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -41145,8 +41145,8 @@ func (s *Server) decodeTestResponseStringByteRequest(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -41203,8 +41203,8 @@ func (s *Server) decodeTestResponseStringByteArrayRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -41261,8 +41261,8 @@ func (s *Server) decodeTestResponseStringByteArrayArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -41319,8 +41319,8 @@ func (s *Server) decodeTestResponseStringByteNullableRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -41377,8 +41377,8 @@ func (s *Server) decodeTestResponseStringByteNullableArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -41435,8 +41435,8 @@ func (s *Server) decodeTestResponseStringByteNullableArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -41493,8 +41493,8 @@ func (s *Server) decodeTestResponseStringDateRequest(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -41551,8 +41551,8 @@ func (s *Server) decodeTestResponseStringDateArrayRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -41609,8 +41609,8 @@ func (s *Server) decodeTestResponseStringDateArrayArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -41667,8 +41667,8 @@ func (s *Server) decodeTestResponseStringDateNullableRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -41725,8 +41725,8 @@ func (s *Server) decodeTestResponseStringDateNullableArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -41783,8 +41783,8 @@ func (s *Server) decodeTestResponseStringDateNullableArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -41841,8 +41841,8 @@ func (s *Server) decodeTestResponseStringDateTimeRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -41899,8 +41899,8 @@ func (s *Server) decodeTestResponseStringDateTimeArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -41957,8 +41957,8 @@ func (s *Server) decodeTestResponseStringDateTimeArrayArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -42015,8 +42015,8 @@ func (s *Server) decodeTestResponseStringDateTimeNullableRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -42073,8 +42073,8 @@ func (s *Server) decodeTestResponseStringDateTimeNullableArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -42131,8 +42131,8 @@ func (s *Server) decodeTestResponseStringDateTimeNullableArrayArrayRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -42189,8 +42189,8 @@ func (s *Server) decodeTestResponseStringDurationRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -42247,8 +42247,8 @@ func (s *Server) decodeTestResponseStringDurationArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -42305,8 +42305,8 @@ func (s *Server) decodeTestResponseStringDurationArrayArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -42363,8 +42363,8 @@ func (s *Server) decodeTestResponseStringDurationNullableRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -42421,8 +42421,8 @@ func (s *Server) decodeTestResponseStringDurationNullableArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -42479,8 +42479,8 @@ func (s *Server) decodeTestResponseStringDurationNullableArrayArrayRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -42537,8 +42537,8 @@ func (s *Server) decodeTestResponseStringEmailRequest(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -42595,8 +42595,8 @@ func (s *Server) decodeTestResponseStringEmailArrayRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -42653,8 +42653,8 @@ func (s *Server) decodeTestResponseStringEmailArrayArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -42711,8 +42711,8 @@ func (s *Server) decodeTestResponseStringEmailNullableRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -42769,8 +42769,8 @@ func (s *Server) decodeTestResponseStringEmailNullableArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -42827,8 +42827,8 @@ func (s *Server) decodeTestResponseStringEmailNullableArrayArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -42885,8 +42885,8 @@ func (s *Server) decodeTestResponseStringHostnameRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -42943,8 +42943,8 @@ func (s *Server) decodeTestResponseStringHostnameArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43001,8 +43001,8 @@ func (s *Server) decodeTestResponseStringHostnameArrayArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43059,8 +43059,8 @@ func (s *Server) decodeTestResponseStringHostnameNullableRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43117,8 +43117,8 @@ func (s *Server) decodeTestResponseStringHostnameNullableArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43175,8 +43175,8 @@ func (s *Server) decodeTestResponseStringHostnameNullableArrayArrayRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43233,8 +43233,8 @@ func (s *Server) decodeTestResponseStringIPRequest(r *http.Request, span trace.S
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43291,8 +43291,8 @@ func (s *Server) decodeTestResponseStringIPArrayRequest(r *http.Request, span tr
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43349,8 +43349,8 @@ func (s *Server) decodeTestResponseStringIPArrayArrayRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43407,8 +43407,8 @@ func (s *Server) decodeTestResponseStringIPNullableRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43465,8 +43465,8 @@ func (s *Server) decodeTestResponseStringIPNullableArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43523,8 +43523,8 @@ func (s *Server) decodeTestResponseStringIPNullableArrayArrayRequest(r *http.Req
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43581,8 +43581,8 @@ func (s *Server) decodeTestResponseStringInt32Request(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43639,8 +43639,8 @@ func (s *Server) decodeTestResponseStringInt32ArrayRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43697,8 +43697,8 @@ func (s *Server) decodeTestResponseStringInt32ArrayArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43755,8 +43755,8 @@ func (s *Server) decodeTestResponseStringInt32NullableRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43813,8 +43813,8 @@ func (s *Server) decodeTestResponseStringInt32NullableArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43871,8 +43871,8 @@ func (s *Server) decodeTestResponseStringInt32NullableArrayArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43929,8 +43929,8 @@ func (s *Server) decodeTestResponseStringInt64Request(r *http.Request, span trac
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -43987,8 +43987,8 @@ func (s *Server) decodeTestResponseStringInt64ArrayRequest(r *http.Request, span
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -44045,8 +44045,8 @@ func (s *Server) decodeTestResponseStringInt64ArrayArrayRequest(r *http.Request,
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -44103,8 +44103,8 @@ func (s *Server) decodeTestResponseStringInt64NullableRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -44161,8 +44161,8 @@ func (s *Server) decodeTestResponseStringInt64NullableArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -44219,8 +44219,8 @@ func (s *Server) decodeTestResponseStringInt64NullableArrayArrayRequest(r *http.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -44277,8 +44277,8 @@ func (s *Server) decodeTestResponseStringIpv4Request(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -44335,8 +44335,8 @@ func (s *Server) decodeTestResponseStringIpv4ArrayRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -44393,8 +44393,8 @@ func (s *Server) decodeTestResponseStringIpv4ArrayArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -44451,8 +44451,8 @@ func (s *Server) decodeTestResponseStringIpv4NullableRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -44509,8 +44509,8 @@ func (s *Server) decodeTestResponseStringIpv4NullableArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -44567,8 +44567,8 @@ func (s *Server) decodeTestResponseStringIpv4NullableArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -44625,8 +44625,8 @@ func (s *Server) decodeTestResponseStringIpv6Request(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -44683,8 +44683,8 @@ func (s *Server) decodeTestResponseStringIpv6ArrayRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -44741,8 +44741,8 @@ func (s *Server) decodeTestResponseStringIpv6ArrayArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -44799,8 +44799,8 @@ func (s *Server) decodeTestResponseStringIpv6NullableRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -44857,8 +44857,8 @@ func (s *Server) decodeTestResponseStringIpv6NullableArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -44915,8 +44915,8 @@ func (s *Server) decodeTestResponseStringIpv6NullableArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -44973,8 +44973,8 @@ func (s *Server) decodeTestResponseStringNullableRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -45031,8 +45031,8 @@ func (s *Server) decodeTestResponseStringNullableArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -45089,8 +45089,8 @@ func (s *Server) decodeTestResponseStringNullableArrayArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -45147,8 +45147,8 @@ func (s *Server) decodeTestResponseStringPasswordRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -45205,8 +45205,8 @@ func (s *Server) decodeTestResponseStringPasswordArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -45263,8 +45263,8 @@ func (s *Server) decodeTestResponseStringPasswordArrayArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -45321,8 +45321,8 @@ func (s *Server) decodeTestResponseStringPasswordNullableRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -45379,8 +45379,8 @@ func (s *Server) decodeTestResponseStringPasswordNullableArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -45437,8 +45437,8 @@ func (s *Server) decodeTestResponseStringPasswordNullableArrayArrayRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -45495,8 +45495,8 @@ func (s *Server) decodeTestResponseStringTimeRequest(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -45553,8 +45553,8 @@ func (s *Server) decodeTestResponseStringTimeArrayRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -45611,8 +45611,8 @@ func (s *Server) decodeTestResponseStringTimeArrayArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -45669,8 +45669,8 @@ func (s *Server) decodeTestResponseStringTimeNullableRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -45727,8 +45727,8 @@ func (s *Server) decodeTestResponseStringTimeNullableArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -45785,8 +45785,8 @@ func (s *Server) decodeTestResponseStringTimeNullableArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -45843,8 +45843,8 @@ func (s *Server) decodeTestResponseStringURIRequest(r *http.Request, span trace.
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -45901,8 +45901,8 @@ func (s *Server) decodeTestResponseStringURIArrayRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -45959,8 +45959,8 @@ func (s *Server) decodeTestResponseStringURIArrayArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -46017,8 +46017,8 @@ func (s *Server) decodeTestResponseStringURINullableRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -46075,8 +46075,8 @@ func (s *Server) decodeTestResponseStringURINullableArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -46133,8 +46133,8 @@ func (s *Server) decodeTestResponseStringURINullableArrayArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -46191,8 +46191,8 @@ func (s *Server) decodeTestResponseStringUUIDRequest(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -46249,8 +46249,8 @@ func (s *Server) decodeTestResponseStringUUIDArrayRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -46307,8 +46307,8 @@ func (s *Server) decodeTestResponseStringUUIDArrayArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -46365,8 +46365,8 @@ func (s *Server) decodeTestResponseStringUUIDNullableRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -46423,8 +46423,8 @@ func (s *Server) decodeTestResponseStringUUIDNullableArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -46481,8 +46481,8 @@ func (s *Server) decodeTestResponseStringUUIDNullableArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -46539,8 +46539,8 @@ func (s *Server) decodeTestResponseStringUnixRequest(r *http.Request, span trace
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -46597,8 +46597,8 @@ func (s *Server) decodeTestResponseStringUnixArrayRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -46655,8 +46655,8 @@ func (s *Server) decodeTestResponseStringUnixArrayArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -46713,8 +46713,8 @@ func (s *Server) decodeTestResponseStringUnixMicroRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -46771,8 +46771,8 @@ func (s *Server) decodeTestResponseStringUnixMicroArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -46829,8 +46829,8 @@ func (s *Server) decodeTestResponseStringUnixMicroArrayArrayRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -46887,8 +46887,8 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -46945,8 +46945,8 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47003,8 +47003,8 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableArrayArrayRequest(r *h
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47061,8 +47061,8 @@ func (s *Server) decodeTestResponseStringUnixMilliRequest(r *http.Request, span 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47119,8 +47119,8 @@ func (s *Server) decodeTestResponseStringUnixMilliArrayRequest(r *http.Request, 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47177,8 +47177,8 @@ func (s *Server) decodeTestResponseStringUnixMilliArrayArrayRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47235,8 +47235,8 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47293,8 +47293,8 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47351,8 +47351,8 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableArrayArrayRequest(r *h
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47409,8 +47409,8 @@ func (s *Server) decodeTestResponseStringUnixNanoRequest(r *http.Request, span t
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47467,8 +47467,8 @@ func (s *Server) decodeTestResponseStringUnixNanoArrayRequest(r *http.Request, s
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47525,8 +47525,8 @@ func (s *Server) decodeTestResponseStringUnixNanoArrayArrayRequest(r *http.Reque
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47583,8 +47583,8 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47641,8 +47641,8 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47699,8 +47699,8 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableArrayArrayRequest(r *ht
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47757,8 +47757,8 @@ func (s *Server) decodeTestResponseStringUnixNullableRequest(r *http.Request, sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47815,8 +47815,8 @@ func (s *Server) decodeTestResponseStringUnixNullableArrayRequest(r *http.Reques
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47873,8 +47873,8 @@ func (s *Server) decodeTestResponseStringUnixNullableArrayArrayRequest(r *http.R
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47931,8 +47931,8 @@ func (s *Server) decodeTestResponseStringUnixSecondsRequest(r *http.Request, spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -47989,8 +47989,8 @@ func (s *Server) decodeTestResponseStringUnixSecondsArrayRequest(r *http.Request
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -48047,8 +48047,8 @@ func (s *Server) decodeTestResponseStringUnixSecondsArrayArrayRequest(r *http.Re
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -48105,8 +48105,8 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableRequest(r *http.Requ
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -48163,8 +48163,8 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayRequest(r *http
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -48221,8 +48221,8 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayArrayRequest(r 
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}

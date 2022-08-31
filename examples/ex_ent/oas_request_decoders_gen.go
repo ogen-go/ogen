@@ -40,8 +40,8 @@ func (s *Server) decodeCreatePetRequest(r *http.Request, span trace.Span) (
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -96,8 +96,8 @@ func (s *Server) decodeCreatePetCategoriesRequest(r *http.Request, span trace.Sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -152,8 +152,8 @@ func (s *Server) decodeCreatePetFriendsRequest(r *http.Request, span trace.Span)
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -208,8 +208,8 @@ func (s *Server) decodeCreatePetOwnerRequest(r *http.Request, span trace.Span) (
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -264,8 +264,8 @@ func (s *Server) decodeUpdatePetRequest(r *http.Request, span trace.Span) (
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}

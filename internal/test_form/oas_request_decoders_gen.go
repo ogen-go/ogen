@@ -45,8 +45,8 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/x-www-form-urlencoded":
+	switch {
+	case ct == "application/x-www-form-urlencoded":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -257,8 +257,8 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "multipart/form-data":
+	switch {
+	case ct == "multipart/form-data":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -474,8 +474,8 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "multipart/form-data":
+	switch {
+	case ct == "multipart/form-data":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -668,8 +668,8 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request, span trace.Sp
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
 	}
-	switch ct {
-	case "application/json":
+	switch {
+	case ct == "application/json":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
@@ -694,7 +694,7 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request, span trace.Sp
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return &request, close, nil
-	case "multipart/form-data":
+	case ct == "multipart/form-data":
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}

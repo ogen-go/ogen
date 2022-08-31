@@ -86,6 +86,40 @@ func (s AllRequestBodiesReqTextPlain) Read(p []byte) (n int, err error) {
 
 func (*AllRequestBodiesReqTextPlain) allRequestBodiesReq() {}
 
+type MaskContentTypeOptionalReq struct {
+	Data io.Reader
+}
+
+func (s MaskContentTypeOptionalReq) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+// MaskContentTypeOptionalReqWithContentType wraps MaskContentTypeOptionalReq with Content-Type.
+type MaskContentTypeOptionalReqWithContentType struct {
+	ContentType string
+	Content     MaskContentTypeOptionalReq
+}
+
+type MaskContentTypeReq struct {
+	Data io.Reader
+}
+
+func (s MaskContentTypeReq) Read(p []byte) (n int, err error) {
+	return s.Data.Read(p)
+}
+
+// MaskContentTypeReqWithContentType wraps MaskContentTypeReq with Content-Type.
+type MaskContentTypeReqWithContentType struct {
+	ContentType string
+	Content     MaskContentTypeReq
+}
+
+// Ref: #/components/schemas/MaskResponse
+type MaskResponse struct {
+	ContentType string "json:\"contentType\""
+	Content     string "json:\"content\""
+}
+
 // NewOptInt returns new OptInt with value set to v.
 func NewOptInt(v int) OptInt {
 	return OptInt{

@@ -208,7 +208,7 @@ func (g *Generator) responseToIR(
 		}, nil
 	}
 
-	contents, err := g.generateContents(ctx.appendPath("content"), name, false, resp.Content)
+	contents, err := g.generateContents(ctx.appendPath("content"), name, false, false, resp.Content)
 	if err != nil {
 		return nil, errors.Wrap(err, "contents")
 	}

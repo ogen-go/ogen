@@ -26,3 +26,17 @@ func (UnimplementedHandler) AllRequestBodies(ctx context.Context, req AllRequest
 func (UnimplementedHandler) AllRequestBodiesOptional(ctx context.Context, req AllRequestBodiesOptionalReq) (r AllRequestBodiesOptionalOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
+
+// MaskContentType implements maskContentType operation.
+//
+// POST /maskContentType
+func (UnimplementedHandler) MaskContentType(ctx context.Context, req MaskContentTypeReqWithContentType) (r MaskResponse, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// MaskContentTypeOptional implements maskContentTypeOptional operation.
+//
+// POST /maskContentTypeOptional
+func (UnimplementedHandler) MaskContentTypeOptional(ctx context.Context, req MaskContentTypeOptionalReqWithContentType) (r MaskResponse, _ error) {
+	return r, ht.ErrNotImplemented
+}

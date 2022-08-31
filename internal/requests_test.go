@@ -74,6 +74,28 @@ func (t testHTTPRequests) AllRequestBodiesOptional(
 	}, nil
 }
 
+func (t testHTTPRequests) MaskContentType(ctx context.Context, req api.MaskContentTypeReqWithContentType) (api.MaskResponse, error) {
+	var s strings.Builder
+	if _, err := io.Copy(&s, req.Content); err != nil {
+		return api.MaskResponse{}, err
+	}
+	return api.MaskResponse{
+		ContentType: req.ContentType,
+		Content:     s.String(),
+	}, nil
+}
+
+func (t testHTTPRequests) MaskContentTypeOptional(ctx context.Context, req api.MaskContentTypeOptionalReqWithContentType) (api.MaskResponse, error) {
+	var s strings.Builder
+	if _, err := io.Copy(&s, req.Content); err != nil {
+		return api.MaskResponse{}, err
+	}
+	return api.MaskResponse{
+		ContentType: req.ContentType,
+		Content:     s.String(),
+	}, nil
+}
+
 func TestRequests(t *testing.T) {
 	a := require.New(t)
 	ctx := context.Background()
@@ -116,5 +138,26 @@ func TestRequests(t *testing.T) {
 			a.NoError(err)
 			a.Equal(testData, string(data))
 		}
+	})
+	t.Run("MaskContentType", func(t *testing.T) {
+		a := require.New(t)
+
+		_, err := client.MaskContentType(ctx, api.MaskContentTypeReqWithContentType{
+			ContentType: "invalidCT",
+			Content: api.MaskContentTypeReq{
+				Data: strings.NewReader(testData),
+			},
+		})
+		a.EqualError(err, `encode request: "invalidCT" does not match mask "*/*"`)
+
+		resp, err := client.MaskContentType(ctx, api.MaskContentTypeReqWithContentType{
+			ContentType: "application/json",
+			Content: api.MaskContentTypeReq{
+				Data: strings.NewReader(testData),
+			},
+		})
+		a.NoError(err)
+		a.Equal("application/json", resp.ContentType)
+		a.Equal(testData, resp.Content)
 	})
 }
