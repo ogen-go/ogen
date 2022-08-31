@@ -18,6 +18,9 @@ func encode{{ $op.Name }}Request(
         {{- template "encode_request" $media }}
 		{{- else }}
 		contentType := req.ContentType
+		if contentType != "" && !ht.MatchContentType({{ quote $contentType }}, contentType) {
+			return errors.Errorf("%q does not match mask %q", contentType, {{ quote $contentType }})
+		}
 		{
 			req := req.Content
         	{{- $t := ($media.Type.MustField "Content").Type }}
@@ -35,6 +38,9 @@ func encode{{ $op.Name }}Request(
         {{- template "encode_request" $media }}
 		{{- else }}
 		contentType := req.ContentType
+		if contentType != "" && !ht.MatchContentType({{ quote $contentType }}, contentType) {
+			return errors.Errorf("%q does not match mask %q", contentType, {{ quote $contentType }})
+		}
 		{
 			req := req
         	{{- $t := ($media.Type.MustField "Content").Type }}
