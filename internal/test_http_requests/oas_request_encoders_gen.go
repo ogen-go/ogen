@@ -244,6 +244,9 @@ func encodeMaskContentTypeRequest(
 	r *http.Request,
 ) error {
 	contentType := req.ContentType
+	if contentType != "" && !ht.MatchContentType("*/*", contentType) {
+		return errors.Errorf("%q does not match mask %q", contentType, "*/*")
+	}
 	{
 		req := req.Content
 		ht.SetBody(r, req, contentType)
@@ -255,6 +258,9 @@ func encodeMaskContentTypeOptionalRequest(
 	r *http.Request,
 ) error {
 	contentType := req.ContentType
+	if contentType != "" && !ht.MatchContentType("*/*", contentType) {
+		return errors.Errorf("%q does not match mask %q", contentType, "*/*")
+	}
 	{
 		req := req.Content
 		ht.SetBody(r, req, contentType)
