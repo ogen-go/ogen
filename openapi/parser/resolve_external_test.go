@@ -3,7 +3,6 @@ package parser
 import (
 	"context"
 	"encoding/json"
-	"strings"
 	"testing"
 
 	"github.com/go-faster/errors"
@@ -17,7 +16,6 @@ import (
 type external map[string]any
 
 func (e external) Get(_ context.Context, loc string) ([]byte, error) {
-	loc = strings.TrimPrefix(loc, "/")
 	r, ok := e[loc]
 	if !ok {
 		return nil, errors.Errorf("unexpected location %q", loc)
