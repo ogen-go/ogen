@@ -189,7 +189,7 @@ func run() error {
 		_ = logger.Sync()
 	}()
 
-	_, fileName := filepath.Split(specPath)
+	specDir, fileName := filepath.Split(specPath)
 	opts := gen.Options{
 		NoClient:             *noClient,
 		NoServer:             *noServer,
@@ -198,6 +198,11 @@ func run() error {
 		SkipUnimplemented:    *skipUnimplemented,
 		InferSchemaType:      *inferTypes,
 		AllowRemote:          *allowRemote,
+		Remote: gen.RemoteOptions{
+			ReadFile: func(p string) ([]byte, error) {
+				return os.ReadFile(filepath.Join(specDir, p))
+			},
+		},
 		Filters: gen.Filters{
 			PathRegex: filterPath,
 			Methods:   filterMethods,
