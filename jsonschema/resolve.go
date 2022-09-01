@@ -114,7 +114,16 @@ func (p *Parser) getResolver(ctx *resolveCtx) (ReferenceResolver, error) {
 }
 
 func (p *Parser) resolve(ref string, ctx *resolveCtx) (*Schema, error) {
-	u, err := url.Parse(ref)
+	parser := url.Parse
+	if loc := ctx.lastLoc(); loc != "" {
+		base, err := url.Parse(loc)
+		if err != nil {
+			return nil, err
+		}
+		parser = base.Parse
+	}
+
+	u, err := parser(ref)
 	if err != nil {
 		return nil, err
 	}
