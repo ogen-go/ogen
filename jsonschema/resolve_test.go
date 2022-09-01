@@ -114,7 +114,7 @@ func TestExternalReference(t *testing.T) {
 				},
 				{
 					Name:   "absolute",
-					Schema: &Schema{Ref: "#/components/schemas/Property", Type: Number},
+					Schema: &Schema{Ref: "foo.json#/components/schemas/Property", Type: Number},
 				},
 				{
 					Name:   "remote_absolute",
@@ -172,7 +172,6 @@ func TestLimitDepth(t *testing.T) {
 		{2, require.Error},
 		{3, require.Error},
 		{4, require.NoError},
-		{0, require.NoError}, // Default
 	}
 
 	for _, tt := range tests {
