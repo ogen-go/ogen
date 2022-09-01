@@ -7,6 +7,7 @@ import (
 	"golang.org/x/net/http/httpguts"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
@@ -37,7 +38,7 @@ func mergeParams(opParams, itemParams []*openapi.Parameter) []*openapi.Parameter
 func (p *parser) parseParams(
 	params []*ogen.Parameter,
 	locator location.Locator,
-	ctx *resolveCtx,
+	ctx *jsonpointer.ResolveCtx,
 ) ([]*openapi.Parameter, error) {
 	// Unique parameter is defined by a combination of a name and location.
 	type pnameLoc struct {
@@ -54,7 +55,7 @@ func (p *parser) parseParams(
 		if spec == nil {
 			loc := locator.Index(idx)
 			err := errors.Errorf("parameter %d is empty or null", idx)
-			return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
+			return nil, p.wrapLocation(ctx.LastLoc(), loc, err)
 		}
 
 		param, err := p.parseParameter(spec, ctx)
@@ -68,7 +69,7 @@ func (p *parser) parseParams(
 		}
 		if _, ok := unique[ploc]; ok {
 			err := errors.Errorf("duplicate parameter: %q in %q", param.Name, param.In)
-			return nil, p.wrapLocation(ctx.lastLoc(), spec.Locator, err)
+			return nil, p.wrapLocation(ctx.LastLoc(), spec.Locator, err)
 		}
 
 		unique[ploc] = struct{}{}
@@ -112,17 +113,17 @@ func (p *parser) validateParameter(
 	return nil
 }
 
-func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (_ *openapi.Parameter, rerr error) {
+func (p *parser) parseParameter(param *ogen.Parameter, ctx *jsonpointer.ResolveCtx) (_ *openapi.Parameter, rerr error) {
 	if param == nil {
 		return nil, errors.New("parameter object is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(ctx.lastLoc(), param.Locator, rerr)
+		rerr = p.wrapLocation(ctx.LastLoc(), param.Locator, rerr)
 	}()
 	if ref := param.Ref; ref != "" {
 		parsed, err := p.resolveParameter(ref, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.lastLoc(), param.Locator, err)
+			return nil, p.wrapRef(ctx.LastLoc(), param.Locator, err)
 		}
 		return parsed, nil
 	}
@@ -137,23 +138,23 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (_ *open
 	locatedIn, exists := types[strings.ToLower(param.In)]
 	if !exists {
 		err := errors.Errorf("unknown parameter location %q", param.In)
-		return nil, p.wrapField("in", ctx.lastLoc(), param.Locator, err)
+		return nil, p.wrapField("in", ctx.LastLoc(), param.Locator, err)
 	}
 
-	if err := p.validateParameter(param.Name, locatedIn, param, ctx.lastLoc()); err != nil {
+	if err := p.validateParameter(param.Name, locatedIn, param, ctx.LastLoc()); err != nil {
 		return nil, err
 	}
 
 	schema, err := p.parseSchema(param.Schema, ctx)
 	if err != nil {
 		err := errors.Wrap(err, "schema")
-		return nil, p.wrapField("schema", ctx.lastLoc(), param.Locator, err)
+		return nil, p.wrapField("schema", ctx.LastLoc(), param.Locator, err)
 	}
 
 	content, err := p.parseParameterContent(param.Content, param.Locator.Field("content"), ctx)
 	if err != nil {
 		err := errors.Wrap(err, "content")
-		return nil, p.wrapField("content", ctx.lastLoc(), param.Locator, err)
+		return nil, p.wrapField("content", ctx.LastLoc(), param.Locator, err)
 	}
 
 	op := &openapi.Parameter{
@@ -172,7 +173,7 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *resolveCtx) (_ *open
 
 	// TODO: Validate content?
 	if param.Content == nil {
-		if err := p.validateParamStyle(op, ctx.lastLoc()); err != nil {
+		if err := p.validateParamStyle(op, ctx.LastLoc()); err != nil {
 			return nil, err
 		}
 	}

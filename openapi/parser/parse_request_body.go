@@ -4,20 +4,21 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx *resolveCtx) (_ *openapi.RequestBody, rerr error) {
+func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx *jsonpointer.ResolveCtx) (_ *openapi.RequestBody, rerr error) {
 	if body == nil {
 		return nil, errors.New("requestBody object is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(ctx.lastLoc(), body.Locator, rerr)
+		rerr = p.wrapLocation(ctx.LastLoc(), body.Locator, rerr)
 	}()
 	if ref := body.Ref; ref != "" {
 		resolved, err := p.resolveRequestBody(ref, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.lastLoc(), body.Locator, err)
+			return nil, p.wrapRef(ctx.LastLoc(), body.Locator, err)
 		}
 		return resolved, nil
 	}
@@ -36,7 +37,7 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx *resolveCtx) (_ *o
 		return content, nil
 	}()
 	if err != nil {
-		return nil, p.wrapField("content", ctx.lastLoc(), body.Locator, err)
+		return nil, p.wrapField("content", ctx.LastLoc(), body.Locator, err)
 	}
 
 	return &openapi.RequestBody{

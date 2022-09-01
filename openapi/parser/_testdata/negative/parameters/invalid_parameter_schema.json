@@ -12,7 +12,7 @@
             "name": "foo",
             "in": "query",
             "schema": {
-                "type": "foobar"
+              "type": "foobar"
             }
           }
         ],

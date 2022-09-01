@@ -15,9 +15,6 @@ type Settings struct {
 	// Used for error messages.
 	Filename string
 
-	// DepthLimit limits the number of nested references. Default is 1000.
-	DepthLimit int
-
 	// Enables type inference.
 	//
 	// For example:
@@ -44,8 +41,5 @@ func (s *Settings) setDefaults() {
 	}
 	if s.Resolver == nil {
 		s.Resolver = nopResolver{}
-	}
-	if s.DepthLimit == 0 {
-		s.DepthLimit = 1000
 	}
 }

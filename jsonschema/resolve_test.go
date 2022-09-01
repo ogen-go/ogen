@@ -3,18 +3,22 @@ package jsonschema
 import (
 	"context"
 	"encoding/json"
+	"strings"
 	"testing"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/stretchr/testify/require"
 
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/location"
 )
 
 type external map[string]components
 
 func (e external) Get(_ context.Context, loc string) ([]byte, error) {
+	loc = strings.TrimPrefix(loc, "/")
+
 	r, ok := e[loc]
 	if !ok {
 		return nil, errors.Errorf("unexpected location %q", loc)
@@ -66,12 +70,6 @@ func TestExternalReference(t *testing.T) {
 							Ref: "https://example.com/bar.json#/components/schemas/Property",
 						},
 					},
-					{
-						Name: "remote_recursive",
-						Schema: &RawSchema{
-							Ref: "https://example.com/bar.json#/components/schemas/Recursive",
-						},
-					},
 				},
 			},
 			"Property": {
@@ -87,9 +85,6 @@ func TestExternalReference(t *testing.T) {
 			},
 			"Property": {
 				Type: "boolean",
-			},
-			"Recursive": {
-				Ref: "foo.json#/components/schemas/Property",
 			},
 		},
 	}
@@ -119,15 +114,11 @@ func TestExternalReference(t *testing.T) {
 				},
 				{
 					Name:   "absolute",
-					Schema: &Schema{Ref: "foo.json#/components/schemas/Property", Type: Number},
+					Schema: &Schema{Ref: "#/components/schemas/Property", Type: Number},
 				},
 				{
 					Name:   "remote_absolute",
 					Schema: &Schema{Ref: "https://example.com/bar.json#/components/schemas/Property", Type: Boolean},
-				},
-				{
-					Name:   "remote_recursive",
-					Schema: &Schema{Ref: "foo.json#/components/schemas/Property", Type: Number},
 				},
 			},
 		},
@@ -186,10 +177,9 @@ func TestLimitDepth(t *testing.T) {
 
 	for _, tt := range tests {
 		parser := NewParser(Settings{
-			Resolver:   root,
-			DepthLimit: tt.limit,
+			Resolver: root,
 		})
-		_, err := parser.Resolve("#/components/schemas/Schema1")
+		_, err := parser.Resolve("#/components/schemas/Schema1", jsonpointer.NewResolveCtx(tt.limit))
 		tt.checker(t, err, "limit: %d", tt.limit)
 	}
 }

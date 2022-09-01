@@ -4,6 +4,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/openapi"
 )
@@ -14,19 +15,19 @@ func (p *parser) parsePathItem(
 	path string,
 	item *ogen.PathItem,
 	operationIDs map[string]struct{},
-	ctx *resolveCtx,
+	ctx *jsonpointer.ResolveCtx,
 ) (_ pathItem, rerr error) {
 	if item == nil {
 		return nil, errors.New("pathItem object is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(ctx.lastLoc(), item.Locator, rerr)
+		rerr = p.wrapLocation(ctx.LastLoc(), item.Locator, rerr)
 	}()
 
 	if ref := item.Ref; ref != "" {
 		ops, err := p.resolvePathItem(path, ref, operationIDs, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.lastLoc(), item.Locator, err)
+			return nil, p.wrapRef(ctx.LastLoc(), item.Locator, err)
 		}
 		return ops, nil
 	}
@@ -66,10 +67,10 @@ func (p *parser) parseOp(
 	path, httpMethod string,
 	spec ogen.Operation,
 	itemParams []*openapi.Parameter,
-	ctx *resolveCtx,
+	ctx *jsonpointer.ResolveCtx,
 ) (_ *openapi.Operation, err error) {
 	defer func() {
-		err = p.wrapLocation(ctx.lastLoc(), spec.Locator, err)
+		err = p.wrapLocation(ctx.LastLoc(), spec.Locator, err)
 	}()
 
 	op := &openapi.Operation{
@@ -106,7 +107,7 @@ func (p *parser) parseOp(
 		op.Responses, err = p.parseResponses(spec.Responses, locator, ctx)
 		if err != nil {
 			err := errors.Wrap(err, "responses")
-			return nil, p.wrapLocation(ctx.lastLoc(), locator, err)
+			return nil, p.wrapLocation(ctx.LastLoc(), locator, err)
 		}
 	}
 
@@ -114,7 +115,7 @@ func (p *parser) parseOp(
 		op.Security, err = p.parseSecurityRequirements(spec, locator, ctx)
 		if err != nil {
 			err := errors.Wrap(err, "security")
-			return p.wrapLocation(ctx.lastLoc(), locator, err)
+			return p.wrapLocation(ctx.LastLoc(), locator, err)
 		}
 		return nil
 	}

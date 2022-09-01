@@ -8,6 +8,7 @@ import (
 	yaml "github.com/go-faster/yamlx"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
@@ -80,7 +81,6 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 				root:       jsonschema.NewRootResolver(spec.Raw),
 			},
 			Filename:   s.Filename,
-			DepthLimit: s.DepthLimit,
 			InferTypes: s.InferTypes,
 		}),
 	}
@@ -148,7 +148,7 @@ func (p *parser) parsePathItems() error {
 			return p.wrapLocation("", pathsLoc.Key(path), err)
 		}
 
-		ops, err := p.parsePathItem(path, item, operationIDs, newResolveCtx(p.depthLimit))
+		ops, err := p.parsePathItem(path, item, operationIDs, jsonpointer.NewResolveCtx(p.depthLimit))
 		if err != nil {
 			err := errors.Wrapf(err, "path %q", path)
 			return p.wrapLocation("", pathsLoc.Field(path), err)

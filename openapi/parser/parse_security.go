@@ -7,25 +7,26 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/openapi"
 )
 
 func (p *parser) parseSecurityScheme(
 	scheme *ogen.SecurityScheme,
-	ctx *resolveCtx,
+	ctx *jsonpointer.ResolveCtx,
 ) (_ *ogen.SecurityScheme, rerr error) {
 	if scheme == nil {
 		return nil, errors.New("securityScheme is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(ctx.lastLoc(), scheme.Locator, rerr)
+		rerr = p.wrapLocation(ctx.LastLoc(), scheme.Locator, rerr)
 	}()
 
 	if ref := scheme.Ref; ref != "" {
 		resolved, err := p.resolveSecurityScheme(ref, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.lastLoc(), scheme.Locator, err)
+			return nil, p.wrapRef(ctx.LastLoc(), scheme.Locator, err)
 		}
 		return resolved, nil
 	}
@@ -37,11 +38,11 @@ func (p *parser) parseSecurityScheme(
 			case "query", "header", "cookie":
 			default:
 				err := errors.Errorf(`invalid "in": %q`, scheme.In)
-				return p.wrapField("in", ctx.lastLoc(), scheme.Locator, err)
+				return p.wrapField("in", ctx.LastLoc(), scheme.Locator, err)
 			}
 			if scheme.Name == "" {
 				err := errors.New(`"name" is required and MUST be a non-empty string`)
-				return p.wrapField("name", ctx.lastLoc(), scheme.Locator, err)
+				return p.wrapField("name", ctx.LastLoc(), scheme.Locator, err)
 			}
 			return nil
 		case "http":
@@ -63,23 +64,23 @@ func (p *parser) parseSecurityScheme(
 				"vapid":
 			default:
 				err := errors.Errorf(`invalid "scheme": %q`, scheme.Scheme)
-				return p.wrapField("scheme", ctx.lastLoc(), scheme.Locator, err)
+				return p.wrapField("scheme", ctx.LastLoc(), scheme.Locator, err)
 			}
 			return nil
 		case "mutualTLS":
 			return nil
 		case "oauth2":
-			err := p.validateOAuthFlows(scheme.Flows, ctx.lastLoc())
-			return p.wrapField("flows", ctx.lastLoc(), scheme.Locator, err)
+			err := p.validateOAuthFlows(scheme.Flows, ctx.LastLoc())
+			return p.wrapField("flows", ctx.LastLoc(), scheme.Locator, err)
 		case "openIdConnect":
 			if _, err := url.ParseRequestURI(scheme.OpenIDConnectURL); err != nil {
 				err := errors.Wrap(err, `"openIdConnectUrl" MUST be in the form of a URL`)
-				return p.wrapField("openIdConnectUrl", ctx.lastLoc(), scheme.Locator, err)
+				return p.wrapField("openIdConnectUrl", ctx.LastLoc(), scheme.Locator, err)
 			}
 			return nil
 		default:
 			err := errors.Errorf("unknown security scheme type %q", scheme.Type)
-			return p.wrapField("type", ctx.lastLoc(), scheme.Locator, err)
+			return p.wrapField("type", ctx.LastLoc(), scheme.Locator, err)
 		}
 	}(); err != nil {
 		return nil, errors.Wrap(err, scheme.Type)
@@ -180,7 +181,7 @@ func cloneOAuthFlows(flows ogen.OAuthFlows) (r openapi.OAuthFlows) {
 func (p *parser) parseSecurityRequirements(
 	requirements ogen.SecurityRequirements,
 	locator location.Locator,
-	ctx *resolveCtx,
+	ctx *jsonpointer.ResolveCtx,
 ) ([]openapi.SecurityRequirement, error) {
 	result := make([]openapi.SecurityRequirement, 0, len(requirements))
 	securitySchemesLoc := p.rootLoc.Field("components").Field("securitySchemes")
@@ -192,14 +193,14 @@ func (p *parser) parseSecurityRequirements(
 			v, ok := p.refs.securitySchemes[name]
 			if !ok {
 				err := errors.Errorf("unknown security schema %q", name)
-				return nil, p.wrapLocation(ctx.lastLoc(), locator.Key(name), err)
+				return nil, p.wrapLocation(ctx.LastLoc(), locator.Key(name), err)
 			}
 
 			spec, err := p.parseSecurityScheme(v, ctx)
 			if err != nil {
 				loc := securitySchemesLoc.Field(name)
 				err := errors.Wrapf(err, "parse security scheme %q", name)
-				return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
+				return nil, p.wrapLocation(ctx.LastLoc(), loc, err)
 			}
 
 			if len(scopes) > 0 {
@@ -209,7 +210,7 @@ func (p *parser) parseSecurityRequirements(
 					// Point to the first scope in the list.
 					locator := locator.Field(name).Index(0)
 					err := errors.Errorf(`list of scopes MUST be empty for "type" %q`, spec.Type)
-					return nil, p.wrapLocation(ctx.lastLoc(), locator, err)
+					return nil, p.wrapLocation(ctx.LastLoc(), locator, err)
 				}
 			}
 

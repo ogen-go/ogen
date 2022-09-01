@@ -4,10 +4,11 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (p *parser) parseHeaders(headers map[string]*ogen.Header, ctx *resolveCtx) (_ map[string]*openapi.Header, err error) {
+func (p *parser) parseHeaders(headers map[string]*ogen.Header, ctx *jsonpointer.ResolveCtx) (_ map[string]*openapi.Header, err error) {
 	if len(headers) == 0 {
 		return nil, nil
 	}
@@ -23,17 +24,17 @@ func (p *parser) parseHeaders(headers map[string]*ogen.Header, ctx *resolveCtx) 
 	return result, nil
 }
 
-func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) (_ *openapi.Header, rerr error) {
+func (p *parser) parseHeader(name string, header *ogen.Header, ctx *jsonpointer.ResolveCtx) (_ *openapi.Header, rerr error) {
 	if header == nil {
 		return nil, errors.New("header object is empty or null")
 	}
 	defer func() {
-		rerr = p.wrapLocation(ctx.lastLoc(), header.Locator, rerr)
+		rerr = p.wrapLocation(ctx.LastLoc(), header.Locator, rerr)
 	}()
 	if ref := header.Ref; ref != "" {
 		resolved, err := p.resolveHeader(name, ref, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.lastLoc(), header.Locator, err)
+			return nil, p.wrapRef(ctx.LastLoc(), header.Locator, err)
 		}
 		return resolved, nil
 	}
@@ -43,7 +44,7 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 			return nil
 		}
 		err := errors.Errorf(`%q MUST NOT be specified, got %q`, name, got)
-		return p.wrapField(name, ctx.lastLoc(), header.Locator, err)
+		return p.wrapField(name, ctx.LastLoc(), header.Locator, err)
 	}
 	if err := mustNotSpecified("in", header.In); err != nil {
 		return nil, err
@@ -53,20 +54,20 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 	}
 	locatedIn := openapi.LocationHeader
 
-	if err := p.validateParameter(name, locatedIn, header, ctx.lastLoc()); err != nil {
+	if err := p.validateParameter(name, locatedIn, header, ctx.LastLoc()); err != nil {
 		return nil, err
 	}
 
 	schema, err := p.parseSchema(header.Schema, ctx)
 	if err != nil {
 		err := errors.Wrap(err, "schema")
-		return nil, p.wrapField("schema", ctx.lastLoc(), header.Locator, err)
+		return nil, p.wrapField("schema", ctx.LastLoc(), header.Locator, err)
 	}
 
 	content, err := p.parseParameterContent(header.Content, header.Locator.Field("content"), ctx)
 	if err != nil {
 		err := errors.Wrap(err, "content")
-		return nil, p.wrapField("content", ctx.lastLoc(), header.Locator, err)
+		return nil, p.wrapField("content", ctx.LastLoc(), header.Locator, err)
 	}
 
 	op := &openapi.Header{
@@ -84,7 +85,7 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *resolveCtx) 
 
 	// TODO: Validate content?
 	if header.Content == nil {
-		if err := p.validateParamStyle(op, ctx.lastLoc()); err != nil {
+		if err := p.validateParamStyle(op, ctx.LastLoc()); err != nil {
 			return nil, err
 		}
 	}
