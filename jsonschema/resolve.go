@@ -2,10 +2,11 @@ package jsonschema
 
 import (
 	"context"
-	"net/url"
 
 	"github.com/go-faster/errors"
 	yaml "github.com/go-faster/yamlx"
+
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 )
 
 // ReferenceResolver resolves JSON schema references.
@@ -13,78 +14,8 @@ type ReferenceResolver interface {
 	ResolveReference(ref string) (*RawSchema, error)
 }
 
-type refKey struct {
-	loc string
-	ref string
-}
-
-func (r *refKey) fromURL(u *url.URL) {
-	{
-		// Make copy.
-		u2 := *u
-		u2.Fragment = ""
-		r.loc = u2.String()
-	}
-	r.ref = "#" + u.Fragment
-}
-
-type resolveCtx struct {
-	// Location stack. Used for context-depending resolving.
-	//
-	// For resolve trace like
-	//
-	// 	"#/components/schemas/Schema" ->
-	// 	"https://example.com/schema#Schema" ->
-	//	"#/definitions/SchemaProperty"
-	//
-	// "#/definitions/SchemaProperty" should be resolved against "https://example.com/schema".
-	locstack []string
-	// Store references to detect infinite recursive references.
-	refs       map[refKey]struct{}
-	depthLimit int
-}
-
-func newResolveCtx(depthLimit int) *resolveCtx {
-	return &resolveCtx{
-		refs:       map[refKey]struct{}{},
-		depthLimit: depthLimit,
-	}
-}
-
-func (r *resolveCtx) add(key refKey) error {
-	if r.depthLimit <= 0 {
-		return errors.New("reference depth limit exceeded")
-	}
-	if _, ok := r.refs[key]; ok {
-		return errors.New("infinite recursion")
-	}
-	r.refs[key] = struct{}{}
-	r.depthLimit--
-
-	if key.loc != "" {
-		r.locstack = append(r.locstack, key.loc)
-	}
-	return nil
-}
-
-func (r *resolveCtx) delete(key refKey) {
-	r.depthLimit++
-	delete(r.refs, key)
-	if key.loc != "" && len(r.locstack) > 0 {
-		r.locstack = r.locstack[:len(r.locstack)-1]
-	}
-}
-
-func (r *resolveCtx) lastLoc() string {
-	s := r.locstack
-	if len(s) == 0 {
-		return ""
-	}
-	return s[len(s)-1]
-}
-
-func (p *Parser) getResolver(ctx *resolveCtx) (ReferenceResolver, error) {
-	loc := ctx.lastLoc()
+func (p *Parser) getResolver(ctx *jsonpointer.ResolveCtx) (ReferenceResolver, error) {
+	loc := ctx.LastLoc()
 
 	r, ok := p.schemas[loc]
 	if ok {
@@ -113,24 +44,18 @@ func (p *Parser) getResolver(ctx *resolveCtx) (ReferenceResolver, error) {
 	return r, nil
 }
 
-func (p *Parser) resolve(ref string, ctx *resolveCtx) (*Schema, error) {
-	u, err := url.Parse(ref)
-	if err != nil {
-		return nil, err
-	}
-	var key refKey
-	key.fromURL(u)
-
-	if s, ok := p.refcache[key]; ok {
+func (p *Parser) resolve(ref string, ctx *jsonpointer.ResolveCtx) (*Schema, error) {
+	if s, ok := p.refcache[ref]; ok {
 		return s, nil
 	}
 
-	if err := ctx.add(key); err != nil {
+	key, err := ctx.Add(ref)
+	if err != nil {
 		return nil, err
 	}
 	defer func() {
 		// Drop the resolved ref to prevent false-positive infinite recursion detection.
-		ctx.delete(key)
+		ctx.Delete(key)
 	}()
 
 	resolver, err := p.getResolver(ctx)
@@ -138,14 +63,14 @@ func (p *Parser) resolve(ref string, ctx *resolveCtx) (*Schema, error) {
 		return nil, err
 	}
 
-	raw, err := resolver.ResolveReference(key.ref)
+	raw, err := resolver.ResolveReference(key.Ref)
 	if err != nil {
 		return nil, errors.Wrap(err, "find schema")
 	}
 
 	return p.parse1(raw, ctx, func(s *Schema) *Schema {
 		s.Ref = ref
-		p.refcache[key] = s
+		p.refcache[ref] = s
 		return p.extendInfo(raw, s)
 	})
 }

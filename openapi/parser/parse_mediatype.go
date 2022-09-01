@@ -7,6 +7,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
@@ -15,7 +16,7 @@ import (
 func (p *parser) parseContent(
 	content map[string]ogen.Media,
 	locator location.Locator,
-	ctx *resolveCtx,
+	ctx *jsonpointer.ResolveCtx,
 ) (_ map[string]*openapi.MediaType, err error) {
 	if len(content) == 0 {
 		return nil, nil
@@ -26,7 +27,7 @@ func (p *parser) parseContent(
 		ct, _, err := mime.ParseMediaType(name)
 		if err != nil {
 			err := errors.Wrapf(err, "content type %q", name)
-			return nil, p.wrapLocation(ctx.lastLoc(), locator.Key(name), err)
+			return nil, p.wrapLocation(ctx.LastLoc(), locator.Key(name), err)
 		}
 
 		result[name], err = p.parseMediaType(ct, m, ctx)
@@ -41,7 +42,7 @@ func (p *parser) parseContent(
 func (p *parser) parseParameterContent(
 	content map[string]ogen.Media,
 	locator location.Locator,
-	ctx *resolveCtx,
+	ctx *jsonpointer.ResolveCtx,
 ) (*openapi.ParameterContent, error) {
 	if content == nil {
 		return nil, nil
@@ -53,14 +54,14 @@ func (p *parser) parseParameterContent(
 		}
 
 		err := errors.New(`"content" map MUST only contain one entry`)
-		return nil, p.wrapLocation(ctx.lastLoc(), locator, err)
+		return nil, p.wrapLocation(ctx.LastLoc(), locator, err)
 	}
 
 	for name, m := range content {
 		ct, _, err := mime.ParseMediaType(name)
 		if err != nil {
 			err := errors.Wrapf(err, "content type %q", name)
-			return nil, p.wrapLocation(ctx.lastLoc(), locator.Key(name), err)
+			return nil, p.wrapLocation(ctx.LastLoc(), locator.Key(name), err)
 		}
 
 		media, err := p.parseMediaType(ct, m, ctx)
@@ -76,9 +77,9 @@ func (p *parser) parseParameterContent(
 	panic("unreachable")
 }
 
-func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *resolveCtx) (_ *openapi.MediaType, rerr error) {
+func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.ResolveCtx) (_ *openapi.MediaType, rerr error) {
 	defer func() {
-		rerr = p.wrapLocation(ctx.lastLoc(), m.Locator, rerr)
+		rerr = p.wrapLocation(ctx.LastLoc(), m.Locator, rerr)
 	}()
 
 	s, err := p.parseSchema(m.Schema, ctx)
@@ -100,7 +101,7 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *resolveCtx) (_ *op
 
 			parseEncoding := func(name string, prop jsonschema.Property, e ogen.Encoding) (rerr error) {
 				defer func() {
-					rerr = p.wrapLocation(ctx.lastLoc(), e.Locator, rerr)
+					rerr = p.wrapLocation(ctx.LastLoc(), e.Locator, rerr)
 				}()
 
 				encoding := &openapi.Encoding{
@@ -113,7 +114,7 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *resolveCtx) (_ *op
 				}
 				encoding.Headers, err = p.parseHeaders(e.Headers, ctx)
 				if err != nil {
-					return p.wrapField("headers", ctx.lastLoc(), e.Locator, err)
+					return p.wrapField("headers", ctx.LastLoc(), e.Locator, err)
 				}
 				encodings[name] = encoding
 
@@ -126,7 +127,7 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *resolveCtx) (_ *op
 					Required:      prop.Required,
 					AllowReserved: encoding.AllowReserved,
 					Locator:       encoding.Locator,
-				}, ctx.lastLoc()); err != nil {
+				}, ctx.LastLoc()); err != nil {
 					return errors.Wrap(err, "param style")
 				}
 
@@ -139,7 +140,7 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *resolveCtx) (_ *op
 				if !ok {
 					loc := encodingLoc.Key(name)
 					err := errors.Errorf("unknown property %q", name)
-					return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
+					return nil, p.wrapLocation(ctx.LastLoc(), loc, err)
 				}
 
 				if err := parseEncoding(name, prop, e); err != nil {

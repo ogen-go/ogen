@@ -4,6 +4,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
@@ -37,7 +38,7 @@ func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rer
 
 	for name := range c.Schemas {
 		ref := "#/components/schemas/" + name
-		s, err := p.schemaParser.Resolve(ref)
+		s, err := p.schemaParser.Resolve(ref, jsonpointer.NewResolveCtx(p.depthLimit))
 		if err != nil {
 			return nil, wrapErr("schemas", name, err)
 		}
@@ -47,7 +48,7 @@ func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rer
 
 	for name := range c.Responses {
 		ref := "#/components/responses/" + name
-		r, err := p.resolveResponse(ref, newResolveCtx(p.depthLimit))
+		r, err := p.resolveResponse(ref, jsonpointer.NewResolveCtx(p.depthLimit))
 		if err != nil {
 			return nil, wrapErr("responses", name, err)
 		}
@@ -57,7 +58,7 @@ func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rer
 
 	for name := range c.Parameters {
 		ref := "#/components/parameters/" + name
-		pp, err := p.resolveParameter(ref, newResolveCtx(p.depthLimit))
+		pp, err := p.resolveParameter(ref, jsonpointer.NewResolveCtx(p.depthLimit))
 		if err != nil {
 			return nil, wrapErr("parameters", name, err)
 		}
@@ -67,7 +68,7 @@ func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rer
 
 	for name := range c.Examples {
 		ref := "#/components/examples/" + name
-		ex, err := p.resolveExample(ref, newResolveCtx(p.depthLimit))
+		ex, err := p.resolveExample(ref, jsonpointer.NewResolveCtx(p.depthLimit))
 		if err != nil {
 			return nil, wrapErr("examples", name, err)
 		}
@@ -77,7 +78,7 @@ func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rer
 
 	for name := range c.RequestBodies {
 		ref := "#/components/requestBodies/" + name
-		b, err := p.resolveRequestBody(ref, newResolveCtx(p.depthLimit))
+		b, err := p.resolveRequestBody(ref, jsonpointer.NewResolveCtx(p.depthLimit))
 		if err != nil {
 			return nil, wrapErr("requestBodies", name, err)
 		}

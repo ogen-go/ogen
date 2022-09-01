@@ -1,6 +1,9 @@
 package parser
 
-import "github.com/ogen-go/ogen/jsonschema"
+import (
+	"github.com/ogen-go/ogen/internal/jsonpointer"
+	"github.com/ogen-go/ogen/jsonschema"
+)
 
 // Settings is parser settings.
 type Settings struct {
@@ -34,6 +37,6 @@ func (s *Settings) setDefaults() {
 		s.External = jsonschema.NoExternal{}
 	}
 	if s.DepthLimit == 0 {
-		s.DepthLimit = 1000
+		s.DepthLimit = jsonpointer.DefaultDepthLimit
 	}
 }

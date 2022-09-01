@@ -12,8 +12,8 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (p *parser) getSchema(ctx *resolveCtx) (*yaml.Node, error) {
-	loc := ctx.lastLoc()
+func (p *parser) getSchema(ctx *jsonpointer.ResolveCtx) (*yaml.Node, error) {
+	loc := ctx.LastLoc()
 
 	r, ok := p.schemas[loc]
 	if ok {
@@ -48,31 +48,31 @@ func resolvePointer(root *yaml.Node, ptr string, to any) error {
 	return n.Decode(to)
 }
 
-func (p *parser) resolve(key refKey, ctx *resolveCtx, to any) error {
+func (p *parser) resolve(key jsonpointer.RefKey, ctx *jsonpointer.ResolveCtx, to any) error {
 	schema, err := p.getSchema(ctx)
 	if err != nil {
 		return err
 	}
-	return resolvePointer(schema, key.ref, to)
+	return resolvePointer(schema, key.Ref, to)
 }
 
-func (p *parser) resolveRequestBody(ref string, ctx *resolveCtx) (*openapi.RequestBody, error) {
+func (p *parser) resolveRequestBody(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.RequestBody, error) {
 	const prefix = "#/components/requestBodies/"
 
 	if r, ok := p.refs.requestBodies[ref]; ok {
 		return r, nil
 	}
 
-	key, err := ctx.add(ref)
+	key, err := ctx.Add(ref)
 	if err != nil {
 		return nil, err
 	}
 	defer func() {
-		ctx.delete(key)
+		ctx.Delete(key)
 	}()
 
 	var component *ogen.RequestBody
-	if key.loc == "" && ctx.lastLoc() == "" {
+	if key.Loc == "" && ctx.LastLoc() == "" {
 		name := strings.TrimPrefix(ref, prefix)
 		c, found := p.spec.Components.RequestBodies[name]
 		if found {
@@ -98,23 +98,23 @@ func (p *parser) resolveRequestBody(ref string, ctx *resolveCtx) (*openapi.Reque
 	return r, nil
 }
 
-func (p *parser) resolveResponse(ref string, ctx *resolveCtx) (*openapi.Response, error) {
+func (p *parser) resolveResponse(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.Response, error) {
 	const prefix = "#/components/responses/"
 
 	if r, ok := p.refs.responses[ref]; ok {
 		return r, nil
 	}
 
-	key, err := ctx.add(ref)
+	key, err := ctx.Add(ref)
 	if err != nil {
 		return nil, err
 	}
 	defer func() {
-		ctx.delete(key)
+		ctx.Delete(key)
 	}()
 
 	var component *ogen.Response
-	if key.loc == "" && ctx.lastLoc() == "" {
+	if key.Loc == "" && ctx.LastLoc() == "" {
 		name := strings.TrimPrefix(ref, prefix)
 		c, found := p.spec.Components.Responses[name]
 		if found {
@@ -140,23 +140,23 @@ func (p *parser) resolveResponse(ref string, ctx *resolveCtx) (*openapi.Response
 	return r, nil
 }
 
-func (p *parser) resolveParameter(ref string, ctx *resolveCtx) (*openapi.Parameter, error) {
+func (p *parser) resolveParameter(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.Parameter, error) {
 	const prefix = "#/components/parameters/"
 
 	if param, ok := p.refs.parameters[ref]; ok {
 		return param, nil
 	}
 
-	key, err := ctx.add(ref)
+	key, err := ctx.Add(ref)
 	if err != nil {
 		return nil, err
 	}
 	defer func() {
-		ctx.delete(key)
+		ctx.Delete(key)
 	}()
 
 	var component *ogen.Parameter
-	if key.loc == "" && ctx.lastLoc() == "" {
+	if key.Loc == "" && ctx.LastLoc() == "" {
 		name := strings.TrimPrefix(ref, prefix)
 		c, found := p.spec.Components.Parameters[name]
 		if found {
@@ -182,23 +182,23 @@ func (p *parser) resolveParameter(ref string, ctx *resolveCtx) (*openapi.Paramet
 	return param, nil
 }
 
-func (p *parser) resolveHeader(headerName, ref string, ctx *resolveCtx) (*openapi.Header, error) {
+func (p *parser) resolveHeader(headerName, ref string, ctx *jsonpointer.ResolveCtx) (*openapi.Header, error) {
 	const prefix = "#/components/headers/"
 
 	if header, ok := p.refs.headers[ref]; ok {
 		return header, nil
 	}
 
-	key, err := ctx.add(ref)
+	key, err := ctx.Add(ref)
 	if err != nil {
 		return nil, err
 	}
 	defer func() {
-		ctx.delete(key)
+		ctx.Delete(key)
 	}()
 
 	var component *ogen.Header
-	if key.loc == "" && ctx.lastLoc() == "" {
+	if key.Loc == "" && ctx.LastLoc() == "" {
 		name := strings.TrimPrefix(ref, prefix)
 		c, found := p.spec.Components.Headers[name]
 		if found {
@@ -224,23 +224,23 @@ func (p *parser) resolveHeader(headerName, ref string, ctx *resolveCtx) (*openap
 	return header, nil
 }
 
-func (p *parser) resolveExample(ref string, ctx *resolveCtx) (*openapi.Example, error) {
+func (p *parser) resolveExample(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.Example, error) {
 	const prefix = "#/components/examples/"
 
 	if ex, ok := p.refs.examples[ref]; ok {
 		return ex, nil
 	}
 
-	key, err := ctx.add(ref)
+	key, err := ctx.Add(ref)
 	if err != nil {
 		return nil, err
 	}
 	defer func() {
-		ctx.delete(key)
+		ctx.Delete(key)
 	}()
 
 	var component *ogen.Example
-	if key.loc == "" && ctx.lastLoc() == "" {
+	if key.Loc == "" && ctx.LastLoc() == "" {
 		name := strings.TrimPrefix(ref, prefix)
 		c, found := p.spec.Components.Examples[name]
 		if found {
@@ -268,23 +268,23 @@ func (p *parser) resolveExample(ref string, ctx *resolveCtx) (*openapi.Example, 
 	return ex, nil
 }
 
-func (p *parser) resolveSecurityScheme(ref string, ctx *resolveCtx) (*ogen.SecurityScheme, error) {
+func (p *parser) resolveSecurityScheme(ref string, ctx *jsonpointer.ResolveCtx) (*ogen.SecurityScheme, error) {
 	const prefix = "#/components/securitySchemes/"
 
 	if r, ok := p.refs.securitySchemes[ref]; ok {
 		return r, nil
 	}
 
-	key, err := ctx.add(ref)
+	key, err := ctx.Add(ref)
 	if err != nil {
 		return nil, err
 	}
 	defer func() {
-		ctx.delete(key)
+		ctx.Delete(key)
 	}()
 
 	var component *ogen.SecurityScheme
-	if key.loc == "" && ctx.lastLoc() == "" {
+	if key.Loc == "" && ctx.LastLoc() == "" {
 		name := strings.TrimPrefix(ref, prefix)
 		c, found := p.spec.Components.SecuritySchemes[name]
 		if found {
@@ -312,7 +312,7 @@ func (p *parser) resolveSecurityScheme(ref string, ctx *resolveCtx) (*ogen.Secur
 func (p *parser) resolvePathItem(
 	itemPath, ref string,
 	operationIDs map[string]struct{},
-	ctx *resolveCtx,
+	ctx *jsonpointer.ResolveCtx,
 ) (pathItem, error) {
 	const prefix = "#/components/pathItems/"
 
@@ -320,16 +320,16 @@ func (p *parser) resolvePathItem(
 		return r, nil
 	}
 
-	key, err := ctx.add(ref)
+	key, err := ctx.Add(ref)
 	if err != nil {
 		return nil, err
 	}
 	defer func() {
-		ctx.delete(key)
+		ctx.Delete(key)
 	}()
 
 	var component *ogen.PathItem
-	if key.loc == "" && ctx.lastLoc() == "" {
+	if key.Loc == "" && ctx.LastLoc() == "" {
 		name := strings.TrimPrefix(ref, prefix)
 		c, found := p.spec.Components.PathItems[name]
 		if found {

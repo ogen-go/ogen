@@ -9,6 +9,7 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/location"
 	ogenjson "github.com/ogen-go/ogen/json"
 )
@@ -17,10 +18,9 @@ import (
 type Parser struct {
 	external ExternalResolver
 	schemas  map[string]ReferenceResolver
-	refcache map[refKey]*Schema
+	refcache map[string]*Schema
 
-	depthLimit int
-	filename   string // optional, used for error messages
+	filename string // optional, used for error messages
 
 	inferTypes bool
 }
@@ -33,8 +33,7 @@ func NewParser(s Settings) *Parser {
 		schemas: map[string]ReferenceResolver{
 			"": s.Resolver,
 		},
-		refcache:   map[refKey]*Schema{},
-		depthLimit: s.DepthLimit,
+		refcache:   map[string]*Schema{},
 		filename:   s.Filename,
 		inferTypes: s.InferTypes,
 	}
@@ -42,18 +41,23 @@ func NewParser(s Settings) *Parser {
 
 // Parse parses given RawSchema and returns parsed Schema.
 func (p *Parser) Parse(schema *RawSchema) (*Schema, error) {
-	return p.parse(schema, newResolveCtx(p.depthLimit))
+	return p.ParseWithContext(schema, jsonpointer.DefaultCtx())
+}
+
+// ParseWithContext parses given RawSchema and returns parsed Schema.
+func (p *Parser) ParseWithContext(schema *RawSchema, ctx *jsonpointer.ResolveCtx) (*Schema, error) {
+	return p.parse(schema, ctx)
 }
 
 // Resolve resolves Schema by given ref.
-func (p *Parser) Resolve(ref string) (*Schema, error) {
-	return p.resolve(ref, newResolveCtx(p.depthLimit))
+func (p *Parser) Resolve(ref string, ctx *jsonpointer.ResolveCtx) (*Schema, error) {
+	return p.resolve(ref, ctx)
 }
 
-func (p *Parser) parse(schema *RawSchema, ctx *resolveCtx) (_ *Schema, rerr error) {
+func (p *Parser) parse(schema *RawSchema, ctx *jsonpointer.ResolveCtx) (_ *Schema, rerr error) {
 	if schema != nil {
 		defer func() {
-			rerr = p.wrapLocation(ctx.lastLoc(), schema.Locator, rerr)
+			rerr = p.wrapLocation(ctx.LastLoc(), schema.Locator, rerr)
 		}()
 	}
 	return p.parse1(schema, ctx, func(s *Schema) *Schema {
@@ -61,7 +65,7 @@ func (p *Parser) parse(schema *RawSchema, ctx *resolveCtx) (_ *Schema, rerr erro
 	})
 }
 
-func (p *Parser) parse1(schema *RawSchema, ctx *resolveCtx, hook func(*Schema) *Schema) (*Schema, error) {
+func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook func(*Schema) *Schema) (*Schema, error) {
 	s, err := p.parseSchema(schema, ctx, hook)
 	if err != nil {
 		return nil, errors.Wrap(err, "parse schema")
@@ -79,7 +83,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *resolveCtx, hook func(*Schema) *
 					if ok, _ := ogenjson.Equal(a, b); ok {
 						loc := loc.Index(i)
 						err := errors.Errorf("duplicate enum value: %q", a)
-						return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
+						return nil, p.wrapLocation(ctx.LastLoc(), loc, err)
 					}
 				}
 			}
@@ -87,7 +91,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *resolveCtx, hook func(*Schema) *
 			values, err := parseEnumValues(s, enum)
 			if err != nil {
 				err := errors.Wrap(err, "parse enum values")
-				return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
+				return nil, p.wrapLocation(ctx.LastLoc(), loc, err)
 			}
 			s.Enum = values
 			handleNullableEnum(s)
@@ -108,7 +112,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *resolveCtx, hook func(*Schema) *
 				return nil
 			}(); err != nil {
 				err := errors.Wrap(err, "parse default")
-				return nil, p.wrapField("default", ctx.lastLoc(), schema.Locator, err)
+				return nil, p.wrapField("default", ctx.LastLoc(), schema.Locator, err)
 			}
 		}
 		if a, ok := schema.XAnnotations["x-ogen-name"]; ok {
@@ -123,12 +127,12 @@ func (p *Parser) parse1(schema *RawSchema, ctx *resolveCtx, hook func(*Schema) *
 	return s, nil
 }
 
-func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Schema) *Schema) (*Schema, error) {
+func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook func(*Schema) *Schema) (*Schema, error) {
 	if schema == nil {
 		return nil, nil
 	}
 	wrapField := func(field string, err error) error {
-		return p.wrapField(field, ctx.lastLoc(), schema.Locator, err)
+		return p.wrapField(field, ctx.LastLoc(), schema.Locator, err)
 	}
 
 	validateMinMax := func(prop string, min, max *uint64) (rerr error) {
@@ -307,12 +311,12 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 				if err != nil {
 					loc := ppLoc.Key(pattern)
 					err := errors.Wrapf(err, "compile pattern %q", pattern)
-					return nil, p.wrapLocation(ctx.lastLoc(), loc, err)
+					return nil, p.wrapLocation(ctx.LastLoc(), loc, err)
 				}
 				sch, err := p.parse(prop.Schema, ctx)
 				if err != nil {
 					err := errors.Wrapf(err, "pattern schema %q", pattern)
-					return nil, p.wrapField(pattern, ctx.lastLoc(), ppLoc, err)
+					return nil, p.wrapField(pattern, ctx.LastLoc(), ppLoc, err)
 				}
 				patterns[idx] = PatternProperty{
 					Pattern: r,
@@ -327,7 +331,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 			prop, err := p.parse(propSpec.Schema, ctx)
 			if err != nil {
 				err := errors.Wrapf(err, "property %q", propSpec.Name)
-				return nil, p.wrapField(propSpec.Name, ctx.lastLoc(), propsLoc, err)
+				return nil, p.wrapField(propSpec.Name, ctx.LastLoc(), propsLoc, err)
 			}
 
 			var description string
@@ -444,12 +448,12 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *resolveCtx, hook func(*Sche
 	}
 }
 
-func (p *Parser) parseMany(schemas []*RawSchema, loc location.Locator, ctx *resolveCtx) ([]*Schema, error) {
+func (p *Parser) parseMany(schemas []*RawSchema, loc location.Locator, ctx *jsonpointer.ResolveCtx) ([]*Schema, error) {
 	result := make([]*Schema, 0, len(schemas))
 	for i, schema := range schemas {
 		s, err := p.parse(schema, ctx)
 		if err != nil {
-			return nil, p.wrapLocation(ctx.lastLoc(), loc.Index(i), err)
+			return nil, p.wrapLocation(ctx.LastLoc(), loc.Index(i), err)
 		}
 		result = append(result, s)
 	}
