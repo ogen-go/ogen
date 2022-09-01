@@ -2,6 +2,7 @@ package jsonpointer
 
 import (
 	"net/url"
+	"strings"
 
 	"github.com/go-faster/errors"
 )
@@ -65,7 +66,14 @@ func (r *ResolveCtx) Add(ref string) (key RefKey, _ error) {
 		if err != nil {
 			return key, err
 		}
-		parser = base.Parse
+		parser = func(rawURL string) (*url.URL, error) {
+			u, err := base.Parse(rawURL)
+			if err != nil {
+				return nil, err
+			}
+			u.Path = strings.TrimPrefix(u.Path, "/")
+			return u, nil
+		}
 	}
 
 	u, err := parser(ref)
