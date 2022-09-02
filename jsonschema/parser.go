@@ -18,7 +18,7 @@ import (
 type Parser struct {
 	external ExternalResolver
 	schemas  map[string]ReferenceResolver
-	refcache map[string]*Schema
+	refcache map[jsonpointer.RefKey]*Schema
 
 	filename string // optional, used for error messages
 
@@ -33,7 +33,7 @@ func NewParser(s Settings) *Parser {
 		schemas: map[string]ReferenceResolver{
 			"": s.Resolver,
 		},
-		refcache:   map[string]*Schema{},
+		refcache:   map[jsonpointer.RefKey]*Schema{},
 		filename:   s.Filename,
 		inferTypes: s.InferTypes,
 	}
