@@ -7,6 +7,8 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/stretchr/testify/require"
+
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 )
 
 type components map[string]*RawSchema
@@ -116,8 +118,8 @@ func TestSchemaRecursive(t *testing.T) {
 		},
 	}
 
-	expectRefcache := map[string]*Schema{
-		"#/components/schemas/Pet": {
+	expectRefcache := map[jsonpointer.RefKey]*Schema{
+		{Ref: "#/components/schemas/Pet"}: {
 			Type: Object,
 			Ref:  "#/components/schemas/Pet",
 			Properties: []Property{
@@ -306,8 +308,8 @@ func TestSchemaReferencedArray(t *testing.T) {
 		Item: &Schema{Type: String},
 	}
 
-	expectRefcache := map[string]*Schema{
-		"#/components/schemas/Pets": pets,
+	expectRefcache := map[jsonpointer.RefKey]*Schema{
+		{Ref: "#/components/schemas/Pets"}: pets,
 	}
 
 	expect := &Schema{

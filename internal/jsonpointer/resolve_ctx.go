@@ -59,7 +59,17 @@ func NewResolveCtx(depthLimit int) *ResolveCtx {
 }
 
 // Add adds reference to context and returns key.
-func (r *ResolveCtx) Add(ref string) (key RefKey, _ error) {
+func (r *ResolveCtx) Add(ref string) (key RefKey, err error) {
+	key, err = r.Key(ref)
+	if err != nil {
+		return key, err
+	}
+	err = r.AddKey(key)
+	return key, err
+}
+
+// Key creates new reference key.
+func (r *ResolveCtx) Key(ref string) (key RefKey, _ error) {
 	parser := url.Parse
 	if loc := r.LastLoc(); loc != "" {
 		base, err := url.Parse(loc)
@@ -81,12 +91,16 @@ func (r *ResolveCtx) Add(ref string) (key RefKey, _ error) {
 		return RefKey{}, err
 	}
 	key.FromURL(u)
+	return key, nil
+}
 
+// AddKey adds reference key to context.
+func (r *ResolveCtx) AddKey(key RefKey) error {
 	if r.depthLimit <= 0 {
-		return RefKey{}, errors.New("depth limit exceeded")
+		return errors.New("depth limit exceeded")
 	}
 	if _, ok := r.refs[key]; ok {
-		return key, errors.New("infinite recursion")
+		return errors.New("infinite recursion")
 	}
 	r.refs[key] = struct{}{}
 	r.depthLimit--
@@ -94,7 +108,7 @@ func (r *ResolveCtx) Add(ref string) (key RefKey, _ error) {
 	if key.Loc != "" {
 		r.locstack = append(r.locstack, key.Loc)
 	}
-	return key, nil
+	return nil
 }
 
 // Delete removes reference from context.

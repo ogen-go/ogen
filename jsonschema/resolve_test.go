@@ -111,7 +111,7 @@ func TestExternalReference(t *testing.T) {
 				},
 				{
 					Name:   "absolute",
-					Schema: &Schema{Ref: "foo.json#/components/schemas/Property", Type: Number},
+					Schema: &Schema{Ref: "#/components/schemas/Property", Type: Number},
 				},
 				{
 					Name:   "remote_absolute",

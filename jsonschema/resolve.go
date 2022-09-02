@@ -45,12 +45,16 @@ func (p *Parser) getResolver(ctx *jsonpointer.ResolveCtx) (ReferenceResolver, er
 }
 
 func (p *Parser) resolve(ref string, ctx *jsonpointer.ResolveCtx) (*Schema, error) {
-	if s, ok := p.refcache[ref]; ok {
+	key, err := ctx.Key(ref)
+	if err != nil {
+		return nil, err
+	}
+
+	if s, ok := p.refcache[key]; ok {
 		return s, nil
 	}
 
-	key, err := ctx.Add(ref)
-	if err != nil {
+	if err := ctx.AddKey(key); err != nil {
 		return nil, err
 	}
 	defer func() {
@@ -70,7 +74,7 @@ func (p *Parser) resolve(ref string, ctx *jsonpointer.ResolveCtx) (*Schema, erro
 
 	return p.parse1(raw, ctx, func(s *Schema) *Schema {
 		s.Ref = ref
-		p.refcache[ref] = s
+		p.refcache[key] = s
 		return p.extendInfo(raw, s)
 	})
 }
