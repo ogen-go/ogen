@@ -223,7 +223,7 @@ func TestExternalReference(t *testing.T) {
 					Schema: schema,
 					Examples: map[string]*openapi.Example{
 						"ref": {
-							Ref:   "#/components/examples/RemoteExample",
+							Ref:   "#/components/examples/LocalExample",
 							Value: exampleValue,
 						},
 					},

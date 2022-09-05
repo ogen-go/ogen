@@ -190,7 +190,7 @@ func (p *parser) parseSecurityRequirements(
 		locator := locator.Index(idx)
 
 		for name, scopes := range req {
-			v, ok := p.refs.securitySchemes[name]
+			v, ok := p.securitySchemes[name]
 			if !ok {
 				err := errors.Errorf("unknown security schema %q", name)
 				return nil, p.wrapLocation(ctx.LastLoc(), locator.Key(name), err)

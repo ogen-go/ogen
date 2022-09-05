@@ -59,12 +59,16 @@ func (p *parser) resolve(key jsonpointer.RefKey, ctx *jsonpointer.ResolveCtx, to
 func (p *parser) resolveRequestBody(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.RequestBody, error) {
 	const prefix = "#/components/requestBodies/"
 
-	if r, ok := p.refs.requestBodies[ref]; ok {
+	key, err := ctx.Key(ref)
+	if err != nil {
+		return nil, err
+	}
+
+	if r, ok := p.refs.requestBodies[key]; ok {
 		return r, nil
 	}
 
-	key, err := ctx.Add(ref)
-	if err != nil {
+	if err := ctx.AddKey(key); err != nil {
 		return nil, err
 	}
 	defer func() {
@@ -94,19 +98,23 @@ func (p *parser) resolveRequestBody(ref string, ctx *jsonpointer.ResolveCtx) (*o
 	}
 
 	r.Ref = ref
-	p.refs.requestBodies[ref] = r
+	p.refs.requestBodies[key] = r
 	return r, nil
 }
 
 func (p *parser) resolveResponse(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.Response, error) {
 	const prefix = "#/components/responses/"
 
-	if r, ok := p.refs.responses[ref]; ok {
+	key, err := ctx.Key(ref)
+	if err != nil {
+		return nil, err
+	}
+
+	if r, ok := p.refs.responses[key]; ok {
 		return r, nil
 	}
 
-	key, err := ctx.Add(ref)
-	if err != nil {
+	if err := ctx.AddKey(key); err != nil {
 		return nil, err
 	}
 	defer func() {
@@ -136,19 +144,23 @@ func (p *parser) resolveResponse(ref string, ctx *jsonpointer.ResolveCtx) (*open
 	}
 
 	r.Ref = ref
-	p.refs.responses[ref] = r
+	p.refs.responses[key] = r
 	return r, nil
 }
 
 func (p *parser) resolveParameter(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.Parameter, error) {
 	const prefix = "#/components/parameters/"
 
-	if param, ok := p.refs.parameters[ref]; ok {
+	key, err := ctx.Key(ref)
+	if err != nil {
+		return nil, err
+	}
+
+	if param, ok := p.refs.parameters[key]; ok {
 		return param, nil
 	}
 
-	key, err := ctx.Add(ref)
-	if err != nil {
+	if err := ctx.AddKey(key); err != nil {
 		return nil, err
 	}
 	defer func() {
@@ -178,19 +190,23 @@ func (p *parser) resolveParameter(ref string, ctx *jsonpointer.ResolveCtx) (*ope
 	}
 
 	param.Ref = ref
-	p.refs.parameters[ref] = param
+	p.refs.parameters[key] = param
 	return param, nil
 }
 
 func (p *parser) resolveHeader(headerName, ref string, ctx *jsonpointer.ResolveCtx) (*openapi.Header, error) {
 	const prefix = "#/components/headers/"
 
-	if header, ok := p.refs.headers[ref]; ok {
+	key, err := ctx.Key(ref)
+	if err != nil {
+		return nil, err
+	}
+
+	if header, ok := p.refs.headers[key]; ok {
 		return header, nil
 	}
 
-	key, err := ctx.Add(ref)
-	if err != nil {
+	if err := ctx.AddKey(key); err != nil {
 		return nil, err
 	}
 	defer func() {
@@ -220,19 +236,23 @@ func (p *parser) resolveHeader(headerName, ref string, ctx *jsonpointer.ResolveC
 	}
 
 	header.Ref = ref
-	p.refs.headers[ref] = header
+	p.refs.headers[key] = header
 	return header, nil
 }
 
 func (p *parser) resolveExample(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.Example, error) {
 	const prefix = "#/components/examples/"
 
-	if ex, ok := p.refs.examples[ref]; ok {
+	key, err := ctx.Key(ref)
+	if err != nil {
+		return nil, err
+	}
+
+	if ex, ok := p.refs.examples[key]; ok {
 		return ex, nil
 	}
 
-	key, err := ctx.Add(ref)
-	if err != nil {
+	if err := ctx.AddKey(key); err != nil {
 		return nil, err
 	}
 	defer func() {
@@ -264,19 +284,23 @@ func (p *parser) resolveExample(ref string, ctx *jsonpointer.ResolveCtx) (*opena
 	if ex != nil {
 		ex.Ref = ref
 	}
-	p.refs.examples[ref] = ex
+	p.refs.examples[key] = ex
 	return ex, nil
 }
 
 func (p *parser) resolveSecurityScheme(ref string, ctx *jsonpointer.ResolveCtx) (*ogen.SecurityScheme, error) {
 	const prefix = "#/components/securitySchemes/"
 
-	if r, ok := p.refs.securitySchemes[ref]; ok {
-		return r, nil
+	key, err := ctx.Key(ref)
+	if err != nil {
+		return nil, err
 	}
 
-	key, err := ctx.Add(ref)
-	if err != nil {
+	if s, ok := p.refs.securitySchemes[key]; ok {
+		return s, nil
+	}
+
+	if err := ctx.AddKey(key); err != nil {
 		return nil, err
 	}
 	defer func() {
@@ -305,7 +329,7 @@ func (p *parser) resolveSecurityScheme(ref string, ctx *jsonpointer.ResolveCtx) 
 		return nil, err
 	}
 
-	p.refs.securitySchemes[ref] = ss
+	p.refs.securitySchemes[key] = ss
 	return ss, nil
 }
 
@@ -316,12 +340,16 @@ func (p *parser) resolvePathItem(
 ) (pathItem, error) {
 	const prefix = "#/components/pathItems/"
 
-	if r, ok := p.refs.pathItems[ref]; ok {
+	key, err := ctx.Key(ref)
+	if err != nil {
+		return nil, err
+	}
+
+	if r, ok := p.refs.pathItems[key]; ok {
 		return r, nil
 	}
 
-	key, err := ctx.Add(ref)
-	if err != nil {
+	if err := ctx.AddKey(key); err != nil {
 		return nil, err
 	}
 	defer func() {
@@ -350,6 +378,6 @@ func (p *parser) resolvePathItem(
 		return nil, err
 	}
 
-	p.refs.pathItems[ref] = r
+	p.refs.pathItems[key] = r
 	return r, nil
 }
