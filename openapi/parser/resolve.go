@@ -56,281 +56,169 @@ func (p *parser) resolve(key jsonpointer.RefKey, ctx *jsonpointer.ResolveCtx, to
 	return resolvePointer(schema, key.Ref, to)
 }
 
-func (p *parser) resolveRequestBody(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.RequestBody, error) {
-	const prefix = "#/components/requestBodies/"
+// componentResolve contains all the information needed to resolve a component.
+type componentResolve[Raw, Target any] struct {
+	// prefix is the usual prefix of the component reference (e.g "#/components/requestBodies/").
+	prefix string
+	// components is the root spec components field.
+	components map[string]Raw
+	// cache is the cache of already resolved components.
+	cache map[refKey]Target
+	// parse is the function that parses the raw component.
+	parse func(Raw, *jsonpointer.ResolveCtx) (Target, error)
+}
 
+// resolveComponent is a generic function that resolves a component.
+//
+// We return a boolean indicating whether the component was already cached.
+// Do not set the ref if it was cached.
+func resolveComponent[Raw, Target any](
+	p *parser,
+	cr componentResolve[Raw, Target],
+	ref string,
+	ctx *jsonpointer.ResolveCtx,
+) (zero Target, cached bool, _ error) {
 	key, err := ctx.Key(ref)
 	if err != nil {
-		return nil, err
+		return zero, false, err
 	}
 
-	if r, ok := p.refs.requestBodies[key]; ok {
-		return r, nil
+	if r, ok := cr.cache[key]; ok {
+		return r, true, nil
 	}
 
 	if err := ctx.AddKey(key); err != nil {
-		return nil, err
+		return zero, false, err
 	}
 	defer func() {
 		ctx.Delete(key)
 	}()
 
-	var component *ogen.RequestBody
+	var raw Raw
 	if key.Loc == "" && ctx.LastLoc() == "" {
-		name := strings.TrimPrefix(ref, prefix)
-		c, found := p.spec.Components.RequestBodies[name]
+		name := strings.TrimPrefix(ref, cr.prefix)
+		c, found := cr.components[name]
 		if found {
-			component = c
+			raw = c
 		} else {
-			if err := resolvePointer(p.spec.Raw, ref, &component); err != nil {
-				return nil, err
+			if err := resolvePointer(p.spec.Raw, ref, &raw); err != nil {
+				return zero, false, err
 			}
 		}
 	} else {
-		if err := p.resolve(key, ctx, &component); err != nil {
-			return nil, err
+		if err := p.resolve(key, ctx, &raw); err != nil {
+			return zero, false, err
 		}
 	}
 
-	r, err := p.parseRequestBody(component, ctx)
+	r, err := cr.parse(raw, ctx)
+	if err != nil {
+		return zero, false, err
+	}
+	cr.cache[key] = r
+
+	return r, false, nil
+}
+
+func (p *parser) resolveRequestBody(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.RequestBody, error) {
+	const prefix = "#/components/requestBodies/"
+	c, cached, err := resolveComponent(p, componentResolve[*ogen.RequestBody, *openapi.RequestBody]{
+		prefix:     prefix,
+		components: p.spec.Components.RequestBodies,
+		cache:      p.refs.requestBodies,
+		parse:      p.parseRequestBody,
+	}, ref, ctx)
 	if err != nil {
 		return nil, err
 	}
-
-	r.Ref = ref
-	p.refs.requestBodies[key] = r
-	return r, nil
+	if !cached {
+		c.Ref = ref
+	}
+	return c, nil
 }
 
 func (p *parser) resolveResponse(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.Response, error) {
 	const prefix = "#/components/responses/"
-
-	key, err := ctx.Key(ref)
+	c, cached, err := resolveComponent(p, componentResolve[*ogen.Response, *openapi.Response]{
+		prefix:     prefix,
+		components: p.spec.Components.Responses,
+		cache:      p.refs.responses,
+		parse:      p.parseResponse,
+	}, ref, ctx)
 	if err != nil {
 		return nil, err
 	}
-
-	if r, ok := p.refs.responses[key]; ok {
-		return r, nil
+	if !cached {
+		c.Ref = ref
 	}
-
-	if err := ctx.AddKey(key); err != nil {
-		return nil, err
-	}
-	defer func() {
-		ctx.Delete(key)
-	}()
-
-	var component *ogen.Response
-	if key.Loc == "" && ctx.LastLoc() == "" {
-		name := strings.TrimPrefix(ref, prefix)
-		c, found := p.spec.Components.Responses[name]
-		if found {
-			component = c
-		} else {
-			if err := resolvePointer(p.spec.Raw, ref, &component); err != nil {
-				return nil, err
-			}
-		}
-	} else {
-		if err := p.resolve(key, ctx, &component); err != nil {
-			return nil, err
-		}
-	}
-
-	r, err := p.parseResponse(component, ctx)
-	if err != nil {
-		return nil, err
-	}
-
-	r.Ref = ref
-	p.refs.responses[key] = r
-	return r, nil
+	return c, nil
 }
 
 func (p *parser) resolveParameter(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.Parameter, error) {
 	const prefix = "#/components/parameters/"
-
-	key, err := ctx.Key(ref)
+	c, cached, err := resolveComponent(p, componentResolve[*ogen.Parameter, *openapi.Parameter]{
+		prefix:     prefix,
+		components: p.spec.Components.Parameters,
+		cache:      p.refs.parameters,
+		parse:      p.parseParameter,
+	}, ref, ctx)
 	if err != nil {
 		return nil, err
 	}
-
-	if param, ok := p.refs.parameters[key]; ok {
-		return param, nil
+	if !cached {
+		c.Ref = ref
 	}
-
-	if err := ctx.AddKey(key); err != nil {
-		return nil, err
-	}
-	defer func() {
-		ctx.Delete(key)
-	}()
-
-	var component *ogen.Parameter
-	if key.Loc == "" && ctx.LastLoc() == "" {
-		name := strings.TrimPrefix(ref, prefix)
-		c, found := p.spec.Components.Parameters[name]
-		if found {
-			component = c
-		} else {
-			if err := resolvePointer(p.spec.Raw, ref, &component); err != nil {
-				return nil, err
-			}
-		}
-	} else {
-		if err := p.resolve(key, ctx, &component); err != nil {
-			return nil, err
-		}
-	}
-
-	param, err := p.parseParameter(component, ctx)
-	if err != nil {
-		return nil, err
-	}
-
-	param.Ref = ref
-	p.refs.parameters[key] = param
-	return param, nil
+	return c, nil
 }
 
 func (p *parser) resolveHeader(headerName, ref string, ctx *jsonpointer.ResolveCtx) (*openapi.Header, error) {
 	const prefix = "#/components/headers/"
-
-	key, err := ctx.Key(ref)
+	c, cached, err := resolveComponent(p, componentResolve[*ogen.Header, *openapi.Header]{
+		prefix:     prefix,
+		components: p.spec.Components.Headers,
+		cache:      p.refs.headers,
+		parse: func(raw *ogen.Header, ctx *jsonpointer.ResolveCtx) (*openapi.Header, error) {
+			return p.parseHeader(headerName, raw, ctx)
+		},
+	}, ref, ctx)
 	if err != nil {
 		return nil, err
 	}
-
-	if header, ok := p.refs.headers[key]; ok {
-		return header, nil
+	if !cached {
+		c.Ref = ref
 	}
-
-	if err := ctx.AddKey(key); err != nil {
-		return nil, err
-	}
-	defer func() {
-		ctx.Delete(key)
-	}()
-
-	var component *ogen.Header
-	if key.Loc == "" && ctx.LastLoc() == "" {
-		name := strings.TrimPrefix(ref, prefix)
-		c, found := p.spec.Components.Headers[name]
-		if found {
-			component = c
-		} else {
-			if err := resolvePointer(p.spec.Raw, ref, &component); err != nil {
-				return nil, err
-			}
-		}
-	} else {
-		if err := p.resolve(key, ctx, &component); err != nil {
-			return nil, err
-		}
-	}
-
-	header, err := p.parseHeader(headerName, component, ctx)
-	if err != nil {
-		return nil, err
-	}
-
-	header.Ref = ref
-	p.refs.headers[key] = header
-	return header, nil
+	return c, nil
 }
 
 func (p *parser) resolveExample(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.Example, error) {
 	const prefix = "#/components/examples/"
-
-	key, err := ctx.Key(ref)
+	c, cached, err := resolveComponent(p, componentResolve[*ogen.Example, *openapi.Example]{
+		prefix:     prefix,
+		components: p.spec.Components.Examples,
+		cache:      p.refs.examples,
+		parse:      p.parseExample,
+	}, ref, ctx)
 	if err != nil {
 		return nil, err
 	}
-
-	if ex, ok := p.refs.examples[key]; ok {
-		return ex, nil
+	if !cached && c != nil {
+		c.Ref = ref
 	}
-
-	if err := ctx.AddKey(key); err != nil {
-		return nil, err
-	}
-	defer func() {
-		ctx.Delete(key)
-	}()
-
-	var component *ogen.Example
-	if key.Loc == "" && ctx.LastLoc() == "" {
-		name := strings.TrimPrefix(ref, prefix)
-		c, found := p.spec.Components.Examples[name]
-		if found {
-			component = c
-		} else {
-			if err := resolvePointer(p.spec.Raw, ref, &component); err != nil {
-				return nil, err
-			}
-		}
-	} else {
-		if err := p.resolve(key, ctx, &component); err != nil {
-			return nil, err
-		}
-	}
-
-	ex, err := p.parseExample(component, ctx)
-	if err != nil {
-		return nil, err
-	}
-
-	if ex != nil {
-		ex.Ref = ref
-	}
-	p.refs.examples[key] = ex
-	return ex, nil
+	return c, nil
 }
 
 func (p *parser) resolveSecurityScheme(ref string, ctx *jsonpointer.ResolveCtx) (*ogen.SecurityScheme, error) {
 	const prefix = "#/components/securitySchemes/"
-
-	key, err := ctx.Key(ref)
+	c, _, err := resolveComponent(p, componentResolve[*ogen.SecurityScheme, *ogen.SecurityScheme]{
+		prefix:     prefix,
+		components: p.spec.Components.SecuritySchemes,
+		cache:      p.refs.securitySchemes,
+		parse:      p.parseSecurityScheme,
+	}, ref, ctx)
 	if err != nil {
 		return nil, err
 	}
-
-	if s, ok := p.refs.securitySchemes[key]; ok {
-		return s, nil
-	}
-
-	if err := ctx.AddKey(key); err != nil {
-		return nil, err
-	}
-	defer func() {
-		ctx.Delete(key)
-	}()
-
-	var component *ogen.SecurityScheme
-	if key.Loc == "" && ctx.LastLoc() == "" {
-		name := strings.TrimPrefix(ref, prefix)
-		c, found := p.spec.Components.SecuritySchemes[name]
-		if found {
-			component = c
-		} else {
-			if err := resolvePointer(p.spec.Raw, ref, &component); err != nil {
-				return nil, err
-			}
-		}
-	} else {
-		if err := p.resolve(key, ctx, &component); err != nil {
-			return nil, err
-		}
-	}
-
-	ss, err := p.parseSecurityScheme(component, ctx)
-	if err != nil {
-		return nil, err
-	}
-
-	p.refs.securitySchemes[key] = ss
-	return ss, nil
+	return c, nil
 }
 
 func (p *parser) resolvePathItem(
@@ -339,45 +227,16 @@ func (p *parser) resolvePathItem(
 	ctx *jsonpointer.ResolveCtx,
 ) (pathItem, error) {
 	const prefix = "#/components/pathItems/"
-
-	key, err := ctx.Key(ref)
+	c, _, err := resolveComponent(p, componentResolve[*ogen.PathItem, pathItem]{
+		prefix:     prefix,
+		components: p.spec.Components.PathItems,
+		cache:      p.refs.pathItems,
+		parse: func(raw *ogen.PathItem, ctx *jsonpointer.ResolveCtx) (pathItem, error) {
+			return p.parsePathItem(itemPath, raw, operationIDs, ctx)
+		},
+	}, ref, ctx)
 	if err != nil {
 		return nil, err
 	}
-
-	if r, ok := p.refs.pathItems[key]; ok {
-		return r, nil
-	}
-
-	if err := ctx.AddKey(key); err != nil {
-		return nil, err
-	}
-	defer func() {
-		ctx.Delete(key)
-	}()
-
-	var component *ogen.PathItem
-	if key.Loc == "" && ctx.LastLoc() == "" {
-		name := strings.TrimPrefix(ref, prefix)
-		c, found := p.spec.Components.PathItems[name]
-		if found {
-			component = c
-		} else {
-			if err := resolvePointer(p.spec.Raw, ref, &component); err != nil {
-				return nil, err
-			}
-		}
-	} else {
-		if err := p.resolve(key, ctx, &component); err != nil {
-			return nil, err
-		}
-	}
-
-	r, err := p.parsePathItem(itemPath, component, operationIDs, ctx)
-	if err != nil {
-		return nil, err
-	}
-
-	p.refs.pathItems[key] = r
-	return r, nil
+	return c, nil
 }
