@@ -14,6 +14,8 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
+type refKey = jsonpointer.RefKey
+
 type parser struct {
 	// api spec, immutable.
 	spec *ogen.Spec
@@ -23,14 +25,16 @@ type parser struct {
 	operations []*openapi.Operation
 	// refs contains lazy-initialized referenced components.
 	refs struct {
-		requestBodies   map[string]*openapi.RequestBody
-		responses       map[string]*openapi.Response
-		parameters      map[string]*openapi.Parameter
-		headers         map[string]*openapi.Header
-		examples        map[string]*openapi.Example
-		securitySchemes map[string]*ogen.SecurityScheme
-		pathItems       map[string]pathItem
+		requestBodies   map[refKey]*openapi.RequestBody
+		responses       map[refKey]*openapi.Response
+		parameters      map[refKey]*openapi.Parameter
+		headers         map[refKey]*openapi.Header
+		examples        map[refKey]*openapi.Example
+		securitySchemes map[refKey]*ogen.SecurityScheme
+		pathItems       map[refKey]pathItem
 	}
+	// securitySchemes contains security schemes defined in the root spec.
+	securitySchemes map[string]*ogen.SecurityScheme
 
 	external   jsonschema.ExternalResolver
 	schemas    map[string]*yaml.Node
@@ -52,23 +56,24 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 		spec:       spec,
 		operations: nil,
 		refs: struct {
-			requestBodies   map[string]*openapi.RequestBody
-			responses       map[string]*openapi.Response
-			parameters      map[string]*openapi.Parameter
-			headers         map[string]*openapi.Header
-			examples        map[string]*openapi.Example
-			securitySchemes map[string]*ogen.SecurityScheme
-			pathItems       map[string]pathItem
+			requestBodies   map[refKey]*openapi.RequestBody
+			responses       map[refKey]*openapi.Response
+			parameters      map[refKey]*openapi.Parameter
+			headers         map[refKey]*openapi.Header
+			examples        map[refKey]*openapi.Example
+			securitySchemes map[refKey]*ogen.SecurityScheme
+			pathItems       map[refKey]pathItem
 		}{
-			requestBodies:   map[string]*openapi.RequestBody{},
-			responses:       map[string]*openapi.Response{},
-			parameters:      map[string]*openapi.Parameter{},
-			headers:         map[string]*openapi.Header{},
-			examples:        map[string]*openapi.Example{},
-			securitySchemes: map[string]*ogen.SecurityScheme{},
-			pathItems:       map[string]pathItem{},
+			requestBodies:   map[refKey]*openapi.RequestBody{},
+			responses:       map[refKey]*openapi.Response{},
+			parameters:      map[refKey]*openapi.Parameter{},
+			headers:         map[refKey]*openapi.Header{},
+			examples:        map[refKey]*openapi.Example{},
+			securitySchemes: map[refKey]*ogen.SecurityScheme{},
+			pathItems:       map[refKey]pathItem{},
 		},
-		external: s.External,
+		securitySchemes: map[string]*ogen.SecurityScheme{},
+		external:        s.External,
 		schemas: map[string]*yaml.Node{
 			"": spec.Raw,
 		},
@@ -91,7 +96,7 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 	}
 
 	for name, s := range spec.Components.SecuritySchemes {
-		p.refs.securitySchemes[name] = s
+		p.securitySchemes[name] = s
 	}
 
 	components, err := p.parseComponents(spec.Components)
