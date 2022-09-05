@@ -28,6 +28,7 @@ linters-settings:
       - octalLiteral
       - httpNoBody
       - unnecessaryBlock # for UUID encoder
+      - paramTypeCombine # https://github.com/go-critic/go-critic/issues/1248, waiting for 0.6.5 bundled with golangci-lint
 
 linters:
   enable:
