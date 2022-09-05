@@ -8,6 +8,33 @@ import (
 	"github.com/go-faster/errors"
 )
 
+func cleanRef(ref string) string {
+	_, result, ok := strings.Cut(ref, "#")
+	if !ok {
+		result = ref
+	}
+
+	for _, prefix := range []string{
+		"/components/schemas/",
+		"/components/responses/",
+		"/components/parameters/",
+		"/components/examples/",
+		"/components/requestBodies/",
+		"/components/headers/",
+		"/components/securitySchemes/",
+		"/components/links/",
+		"/components/callbacks/",
+		"/components/pathItems/",
+	} {
+		// Do not try to trim all prefixes, do it only once.
+		if strings.HasPrefix(result, prefix) {
+			result = strings.TrimPrefix(result, prefix)
+			break
+		}
+	}
+	return result
+}
+
 type nameGen struct {
 	parts []string
 	src   []rune
