@@ -157,7 +157,7 @@ func (g *Generator) responseToIR(
 			return r, nil
 		}
 
-		n, err := pascal(strings.TrimPrefix(ref, "#/components/responses/"))
+		n, err := pascal(cleanRef(ref))
 		if err != nil {
 			return nil, errors.Wrapf(err, "response name: %q", ref)
 		}

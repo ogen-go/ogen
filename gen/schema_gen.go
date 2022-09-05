@@ -29,7 +29,7 @@ func newSchemaGen(filename string, lookupRef func(ref string) (*ir.Type, bool)) 
 		localRefs: map[string]*ir.Type{},
 		lookupRef: lookupRef,
 		nameRef: func(ref string) (string, error) {
-			name, err := pascal(strings.TrimPrefix(ref, "#/components/schemas/"))
+			name, err := pascal(cleanRef(ref))
 			if err != nil {
 				return "", err
 			}
