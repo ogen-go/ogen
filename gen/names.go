@@ -2,6 +2,8 @@ package gen
 
 import (
 	"go/token"
+	"net/url"
+	"path"
 	"strings"
 	"unicode"
 
@@ -9,28 +11,25 @@ import (
 )
 
 func cleanRef(ref string) string {
-	_, result, ok := strings.Cut(ref, "#")
-	if !ok {
+	before, result, _ := strings.Cut(ref, "#")
+	if result == "" {
 		result = ref
+		// Cuts file name.
+		//
+		// https://example.com/foo/bar.json -> bar
+		// foo/bar.json -> bar
+		if u, err := url.Parse(before); before != "" && err == nil {
+			_, result = path.Split(u.Path)
+			result = strings.TrimSuffix(result, path.Ext(result))
+		}
 	}
 
-	for _, prefix := range []string{
-		"/components/schemas/",
-		"/components/responses/",
-		"/components/parameters/",
-		"/components/examples/",
-		"/components/requestBodies/",
-		"/components/headers/",
-		"/components/securitySchemes/",
-		"/components/links/",
-		"/components/callbacks/",
-		"/components/pathItems/",
-	} {
-		// Do not try to trim all prefixes, do it only once.
-		if strings.HasPrefix(result, prefix) {
-			result = strings.TrimPrefix(result, prefix)
-			break
-		}
+	idx := strings.LastIndexByte(result, '/')
+	if idx < 0 {
+		return result
+	}
+	if cut := result[idx+1:]; cut != "" {
+		result = cut
 	}
 	return result
 }
