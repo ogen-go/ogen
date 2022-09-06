@@ -58,16 +58,6 @@ func NewResolveCtx(depthLimit int) *ResolveCtx {
 	}
 }
 
-// Add adds reference to context and returns key.
-func (r *ResolveCtx) Add(ref string) (key RefKey, err error) {
-	key, err = r.Key(ref)
-	if err != nil {
-		return key, err
-	}
-	err = r.AddKey(key)
-	return key, err
-}
-
 // Key creates new reference key.
 func (r *ResolveCtx) Key(ref string) (key RefKey, _ error) {
 	parser := url.Parse

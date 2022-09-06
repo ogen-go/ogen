@@ -51,6 +51,7 @@ linters:
     - unparam
     - varcheck
     - whitespace
+    - unused
     # Do not enable:
     # - wsl       (too opinionated about newlines)
     # - godox     (todos are OK)
