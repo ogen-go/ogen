@@ -245,6 +245,8 @@ func (s *Encodings) init() Encodings {
 	return m
 }
 
+type Enum []jx.Raw
+
 // Ref: #/definitions/example
 type Example struct {
 	Summary       OptString "json:\"summary\""
@@ -342,6 +344,10 @@ func (s *ExamplesOrReferences) init() ExamplesOrReferences {
 	}
 	return m
 }
+
+type ExclusiveMaximum bool
+
+type ExclusiveMinimum bool
 
 // Allows referencing an external resource for extended documentation.
 // Ref: #/definitions/externalDocs
@@ -497,24 +503,6 @@ func (s *InfoPattern0) init() InfoPattern0 {
 	return m
 }
 
-type JsonschemaDraft4PropertiesEnum []jx.Raw
-
-type JsonschemaDraft4PropertiesExclusiveMaximum bool
-
-type JsonschemaDraft4PropertiesExclusiveMinimum bool
-
-type JsonschemaDraft4PropertiesMaximum float64
-
-type JsonschemaDraft4PropertiesMinimum float64
-
-type JsonschemaDraft4PropertiesMultipleOf float64
-
-type JsonschemaDraft4PropertiesPattern string
-
-type JsonschemaDraft4PropertiesTitle string
-
-type JsonschemaDraft4PropertiesUniqueItems bool
-
 // License information for the exposed API.
 // Ref: #/definitions/license
 type License struct {
@@ -642,6 +630,8 @@ func (s *LinksOrReferences) init() LinksOrReferences {
 	return m
 }
 
+type Maximum float64
+
 // Each Media Type Object provides schema and examples for the media type identified by its key.
 // Ref: #/definitions/mediaType
 type MediaType struct {
@@ -675,6 +665,10 @@ func (s *MediaTypes) init() MediaTypes {
 	}
 	return m
 }
+
+type Minimum float64
+
+type MultipleOf float64
 
 // Configuration details for a supported OAuth Flow.
 // Ref: #/definitions/oauthFlow
@@ -1118,6 +1112,98 @@ func (o OptExamplesOrReferences) Or(d ExamplesOrReferences) ExamplesOrReferences
 	return d
 }
 
+// NewOptExclusiveMaximum returns new OptExclusiveMaximum with value set to v.
+func NewOptExclusiveMaximum(v ExclusiveMaximum) OptExclusiveMaximum {
+	return OptExclusiveMaximum{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptExclusiveMaximum is optional ExclusiveMaximum.
+type OptExclusiveMaximum struct {
+	Value ExclusiveMaximum
+	Set   bool
+}
+
+// IsSet returns true if OptExclusiveMaximum was set.
+func (o OptExclusiveMaximum) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptExclusiveMaximum) Reset() {
+	var v ExclusiveMaximum
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptExclusiveMaximum) SetTo(v ExclusiveMaximum) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptExclusiveMaximum) Get() (v ExclusiveMaximum, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptExclusiveMaximum) Or(d ExclusiveMaximum) ExclusiveMaximum {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptExclusiveMinimum returns new OptExclusiveMinimum with value set to v.
+func NewOptExclusiveMinimum(v ExclusiveMinimum) OptExclusiveMinimum {
+	return OptExclusiveMinimum{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptExclusiveMinimum is optional ExclusiveMinimum.
+type OptExclusiveMinimum struct {
+	Value ExclusiveMinimum
+	Set   bool
+}
+
+// IsSet returns true if OptExclusiveMinimum was set.
+func (o OptExclusiveMinimum) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptExclusiveMinimum) Reset() {
+	var v ExclusiveMinimum
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptExclusiveMinimum) SetTo(v ExclusiveMinimum) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptExclusiveMinimum) Get() (v ExclusiveMinimum, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptExclusiveMinimum) Or(d ExclusiveMinimum) ExclusiveMinimum {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptExternalDocs returns new OptExternalDocs with value set to v.
 func NewOptExternalDocs(v ExternalDocs) OptExternalDocs {
 	return OptExternalDocs{
@@ -1204,374 +1290,6 @@ func (o OptHeadersOrReferences) Get() (v HeadersOrReferences, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptHeadersOrReferences) Or(d HeadersOrReferences) HeadersOrReferences {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptJsonschemaDraft4PropertiesExclusiveMaximum returns new OptJsonschemaDraft4PropertiesExclusiveMaximum with value set to v.
-func NewOptJsonschemaDraft4PropertiesExclusiveMaximum(v JsonschemaDraft4PropertiesExclusiveMaximum) OptJsonschemaDraft4PropertiesExclusiveMaximum {
-	return OptJsonschemaDraft4PropertiesExclusiveMaximum{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptJsonschemaDraft4PropertiesExclusiveMaximum is optional JsonschemaDraft4PropertiesExclusiveMaximum.
-type OptJsonschemaDraft4PropertiesExclusiveMaximum struct {
-	Value JsonschemaDraft4PropertiesExclusiveMaximum
-	Set   bool
-}
-
-// IsSet returns true if OptJsonschemaDraft4PropertiesExclusiveMaximum was set.
-func (o OptJsonschemaDraft4PropertiesExclusiveMaximum) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptJsonschemaDraft4PropertiesExclusiveMaximum) Reset() {
-	var v JsonschemaDraft4PropertiesExclusiveMaximum
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptJsonschemaDraft4PropertiesExclusiveMaximum) SetTo(v JsonschemaDraft4PropertiesExclusiveMaximum) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptJsonschemaDraft4PropertiesExclusiveMaximum) Get() (v JsonschemaDraft4PropertiesExclusiveMaximum, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptJsonschemaDraft4PropertiesExclusiveMaximum) Or(d JsonschemaDraft4PropertiesExclusiveMaximum) JsonschemaDraft4PropertiesExclusiveMaximum {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptJsonschemaDraft4PropertiesExclusiveMinimum returns new OptJsonschemaDraft4PropertiesExclusiveMinimum with value set to v.
-func NewOptJsonschemaDraft4PropertiesExclusiveMinimum(v JsonschemaDraft4PropertiesExclusiveMinimum) OptJsonschemaDraft4PropertiesExclusiveMinimum {
-	return OptJsonschemaDraft4PropertiesExclusiveMinimum{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptJsonschemaDraft4PropertiesExclusiveMinimum is optional JsonschemaDraft4PropertiesExclusiveMinimum.
-type OptJsonschemaDraft4PropertiesExclusiveMinimum struct {
-	Value JsonschemaDraft4PropertiesExclusiveMinimum
-	Set   bool
-}
-
-// IsSet returns true if OptJsonschemaDraft4PropertiesExclusiveMinimum was set.
-func (o OptJsonschemaDraft4PropertiesExclusiveMinimum) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptJsonschemaDraft4PropertiesExclusiveMinimum) Reset() {
-	var v JsonschemaDraft4PropertiesExclusiveMinimum
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptJsonschemaDraft4PropertiesExclusiveMinimum) SetTo(v JsonschemaDraft4PropertiesExclusiveMinimum) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptJsonschemaDraft4PropertiesExclusiveMinimum) Get() (v JsonschemaDraft4PropertiesExclusiveMinimum, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptJsonschemaDraft4PropertiesExclusiveMinimum) Or(d JsonschemaDraft4PropertiesExclusiveMinimum) JsonschemaDraft4PropertiesExclusiveMinimum {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptJsonschemaDraft4PropertiesMaximum returns new OptJsonschemaDraft4PropertiesMaximum with value set to v.
-func NewOptJsonschemaDraft4PropertiesMaximum(v JsonschemaDraft4PropertiesMaximum) OptJsonschemaDraft4PropertiesMaximum {
-	return OptJsonschemaDraft4PropertiesMaximum{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptJsonschemaDraft4PropertiesMaximum is optional JsonschemaDraft4PropertiesMaximum.
-type OptJsonschemaDraft4PropertiesMaximum struct {
-	Value JsonschemaDraft4PropertiesMaximum
-	Set   bool
-}
-
-// IsSet returns true if OptJsonschemaDraft4PropertiesMaximum was set.
-func (o OptJsonschemaDraft4PropertiesMaximum) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptJsonschemaDraft4PropertiesMaximum) Reset() {
-	var v JsonschemaDraft4PropertiesMaximum
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptJsonschemaDraft4PropertiesMaximum) SetTo(v JsonschemaDraft4PropertiesMaximum) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptJsonschemaDraft4PropertiesMaximum) Get() (v JsonschemaDraft4PropertiesMaximum, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptJsonschemaDraft4PropertiesMaximum) Or(d JsonschemaDraft4PropertiesMaximum) JsonschemaDraft4PropertiesMaximum {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptJsonschemaDraft4PropertiesMinimum returns new OptJsonschemaDraft4PropertiesMinimum with value set to v.
-func NewOptJsonschemaDraft4PropertiesMinimum(v JsonschemaDraft4PropertiesMinimum) OptJsonschemaDraft4PropertiesMinimum {
-	return OptJsonschemaDraft4PropertiesMinimum{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptJsonschemaDraft4PropertiesMinimum is optional JsonschemaDraft4PropertiesMinimum.
-type OptJsonschemaDraft4PropertiesMinimum struct {
-	Value JsonschemaDraft4PropertiesMinimum
-	Set   bool
-}
-
-// IsSet returns true if OptJsonschemaDraft4PropertiesMinimum was set.
-func (o OptJsonschemaDraft4PropertiesMinimum) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptJsonschemaDraft4PropertiesMinimum) Reset() {
-	var v JsonschemaDraft4PropertiesMinimum
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptJsonschemaDraft4PropertiesMinimum) SetTo(v JsonschemaDraft4PropertiesMinimum) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptJsonschemaDraft4PropertiesMinimum) Get() (v JsonschemaDraft4PropertiesMinimum, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptJsonschemaDraft4PropertiesMinimum) Or(d JsonschemaDraft4PropertiesMinimum) JsonschemaDraft4PropertiesMinimum {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptJsonschemaDraft4PropertiesMultipleOf returns new OptJsonschemaDraft4PropertiesMultipleOf with value set to v.
-func NewOptJsonschemaDraft4PropertiesMultipleOf(v JsonschemaDraft4PropertiesMultipleOf) OptJsonschemaDraft4PropertiesMultipleOf {
-	return OptJsonschemaDraft4PropertiesMultipleOf{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptJsonschemaDraft4PropertiesMultipleOf is optional JsonschemaDraft4PropertiesMultipleOf.
-type OptJsonschemaDraft4PropertiesMultipleOf struct {
-	Value JsonschemaDraft4PropertiesMultipleOf
-	Set   bool
-}
-
-// IsSet returns true if OptJsonschemaDraft4PropertiesMultipleOf was set.
-func (o OptJsonschemaDraft4PropertiesMultipleOf) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptJsonschemaDraft4PropertiesMultipleOf) Reset() {
-	var v JsonschemaDraft4PropertiesMultipleOf
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptJsonschemaDraft4PropertiesMultipleOf) SetTo(v JsonschemaDraft4PropertiesMultipleOf) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptJsonschemaDraft4PropertiesMultipleOf) Get() (v JsonschemaDraft4PropertiesMultipleOf, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptJsonschemaDraft4PropertiesMultipleOf) Or(d JsonschemaDraft4PropertiesMultipleOf) JsonschemaDraft4PropertiesMultipleOf {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptJsonschemaDraft4PropertiesPattern returns new OptJsonschemaDraft4PropertiesPattern with value set to v.
-func NewOptJsonschemaDraft4PropertiesPattern(v JsonschemaDraft4PropertiesPattern) OptJsonschemaDraft4PropertiesPattern {
-	return OptJsonschemaDraft4PropertiesPattern{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptJsonschemaDraft4PropertiesPattern is optional JsonschemaDraft4PropertiesPattern.
-type OptJsonschemaDraft4PropertiesPattern struct {
-	Value JsonschemaDraft4PropertiesPattern
-	Set   bool
-}
-
-// IsSet returns true if OptJsonschemaDraft4PropertiesPattern was set.
-func (o OptJsonschemaDraft4PropertiesPattern) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptJsonschemaDraft4PropertiesPattern) Reset() {
-	var v JsonschemaDraft4PropertiesPattern
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptJsonschemaDraft4PropertiesPattern) SetTo(v JsonschemaDraft4PropertiesPattern) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptJsonschemaDraft4PropertiesPattern) Get() (v JsonschemaDraft4PropertiesPattern, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptJsonschemaDraft4PropertiesPattern) Or(d JsonschemaDraft4PropertiesPattern) JsonschemaDraft4PropertiesPattern {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptJsonschemaDraft4PropertiesTitle returns new OptJsonschemaDraft4PropertiesTitle with value set to v.
-func NewOptJsonschemaDraft4PropertiesTitle(v JsonschemaDraft4PropertiesTitle) OptJsonschemaDraft4PropertiesTitle {
-	return OptJsonschemaDraft4PropertiesTitle{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptJsonschemaDraft4PropertiesTitle is optional JsonschemaDraft4PropertiesTitle.
-type OptJsonschemaDraft4PropertiesTitle struct {
-	Value JsonschemaDraft4PropertiesTitle
-	Set   bool
-}
-
-// IsSet returns true if OptJsonschemaDraft4PropertiesTitle was set.
-func (o OptJsonschemaDraft4PropertiesTitle) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptJsonschemaDraft4PropertiesTitle) Reset() {
-	var v JsonschemaDraft4PropertiesTitle
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptJsonschemaDraft4PropertiesTitle) SetTo(v JsonschemaDraft4PropertiesTitle) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptJsonschemaDraft4PropertiesTitle) Get() (v JsonschemaDraft4PropertiesTitle, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptJsonschemaDraft4PropertiesTitle) Or(d JsonschemaDraft4PropertiesTitle) JsonschemaDraft4PropertiesTitle {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptJsonschemaDraft4PropertiesUniqueItems returns new OptJsonschemaDraft4PropertiesUniqueItems with value set to v.
-func NewOptJsonschemaDraft4PropertiesUniqueItems(v JsonschemaDraft4PropertiesUniqueItems) OptJsonschemaDraft4PropertiesUniqueItems {
-	return OptJsonschemaDraft4PropertiesUniqueItems{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptJsonschemaDraft4PropertiesUniqueItems is optional JsonschemaDraft4PropertiesUniqueItems.
-type OptJsonschemaDraft4PropertiesUniqueItems struct {
-	Value JsonschemaDraft4PropertiesUniqueItems
-	Set   bool
-}
-
-// IsSet returns true if OptJsonschemaDraft4PropertiesUniqueItems was set.
-func (o OptJsonschemaDraft4PropertiesUniqueItems) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptJsonschemaDraft4PropertiesUniqueItems) Reset() {
-	var v JsonschemaDraft4PropertiesUniqueItems
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptJsonschemaDraft4PropertiesUniqueItems) SetTo(v JsonschemaDraft4PropertiesUniqueItems) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptJsonschemaDraft4PropertiesUniqueItems) Get() (v JsonschemaDraft4PropertiesUniqueItems, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptJsonschemaDraft4PropertiesUniqueItems) Or(d JsonschemaDraft4PropertiesUniqueItems) JsonschemaDraft4PropertiesUniqueItems {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -1670,6 +1388,52 @@ func (o OptLinksOrReferences) Or(d LinksOrReferences) LinksOrReferences {
 	return d
 }
 
+// NewOptMaximum returns new OptMaximum with value set to v.
+func NewOptMaximum(v Maximum) OptMaximum {
+	return OptMaximum{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMaximum is optional Maximum.
+type OptMaximum struct {
+	Value Maximum
+	Set   bool
+}
+
+// IsSet returns true if OptMaximum was set.
+func (o OptMaximum) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMaximum) Reset() {
+	var v Maximum
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMaximum) SetTo(v Maximum) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMaximum) Get() (v Maximum, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMaximum) Or(d Maximum) Maximum {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptMediaTypes returns new OptMediaTypes with value set to v.
 func NewOptMediaTypes(v MediaTypes) OptMediaTypes {
 	return OptMediaTypes{
@@ -1710,6 +1474,98 @@ func (o OptMediaTypes) Get() (v MediaTypes, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptMediaTypes) Or(d MediaTypes) MediaTypes {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptMinimum returns new OptMinimum with value set to v.
+func NewOptMinimum(v Minimum) OptMinimum {
+	return OptMinimum{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMinimum is optional Minimum.
+type OptMinimum struct {
+	Value Minimum
+	Set   bool
+}
+
+// IsSet returns true if OptMinimum was set.
+func (o OptMinimum) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMinimum) Reset() {
+	var v Minimum
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMinimum) SetTo(v Minimum) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMinimum) Get() (v Minimum, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMinimum) Or(d Minimum) Minimum {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptMultipleOf returns new OptMultipleOf with value set to v.
+func NewOptMultipleOf(v MultipleOf) OptMultipleOf {
+	return OptMultipleOf{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMultipleOf is optional MultipleOf.
+type OptMultipleOf struct {
+	Value MultipleOf
+	Set   bool
+}
+
+// IsSet returns true if OptMultipleOf was set.
+func (o OptMultipleOf) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMultipleOf) Reset() {
+	var v MultipleOf
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMultipleOf) SetTo(v MultipleOf) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMultipleOf) Get() (v MultipleOf, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMultipleOf) Or(d MultipleOf) MultipleOf {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -1940,6 +1796,52 @@ func (o OptParametersOrReferences) Get() (v ParametersOrReferences, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptParametersOrReferences) Or(d ParametersOrReferences) ParametersOrReferences {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptPattern returns new OptPattern with value set to v.
+func NewOptPattern(v Pattern) OptPattern {
+	return OptPattern{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPattern is optional Pattern.
+type OptPattern struct {
+	Value Pattern
+	Set   bool
+}
+
+// IsSet returns true if OptPattern was set.
+func (o OptPattern) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPattern) Reset() {
+	var v Pattern
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPattern) SetTo(v Pattern) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPattern) Get() (v Pattern, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPattern) Or(d Pattern) Pattern {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -2682,6 +2584,98 @@ func (o OptStrings) Or(d Strings) Strings {
 	return d
 }
 
+// NewOptTitle returns new OptTitle with value set to v.
+func NewOptTitle(v Title) OptTitle {
+	return OptTitle{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTitle is optional Title.
+type OptTitle struct {
+	Value Title
+	Set   bool
+}
+
+// IsSet returns true if OptTitle was set.
+func (o OptTitle) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTitle) Reset() {
+	var v Title
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTitle) SetTo(v Title) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTitle) Get() (v Title, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTitle) Or(d Title) Title {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptUniqueItems returns new OptUniqueItems with value set to v.
+func NewOptUniqueItems(v UniqueItems) OptUniqueItems {
+	return OptUniqueItems{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptUniqueItems is optional UniqueItems.
+type OptUniqueItems struct {
+	Value UniqueItems
+	Set   bool
+}
+
+// IsSet returns true if OptUniqueItems was set.
+func (o OptUniqueItems) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptUniqueItems) Reset() {
+	var v UniqueItems
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptUniqueItems) SetTo(v UniqueItems) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptUniqueItems) Get() (v UniqueItems, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptUniqueItems) Or(d UniqueItems) UniqueItems {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptXML returns new OptXML with value set to v.
 func NewOptXML(v XML) OptXML {
 	return OptXML{
@@ -2923,6 +2917,8 @@ func (s *PathsPattern1) init() PathsPattern1 {
 	}
 	return m
 }
+
+type Pattern string
 
 type PositiveInteger int
 
@@ -3184,41 +3180,41 @@ func (s *ResponsesPattern1) init() ResponsesPattern1 {
 // Schema.
 // Ref: #/definitions/schema
 type Schema struct {
-	Nullable             OptBool                                       "json:\"nullable\""
-	Discriminator        OptDiscriminator                              "json:\"discriminator\""
-	ReadOnly             OptBool                                       "json:\"readOnly\""
-	WriteOnly            OptBool                                       "json:\"writeOnly\""
-	XML                  OptXML                                        "json:\"xml\""
-	ExternalDocs         OptExternalDocs                               "json:\"externalDocs\""
-	Example              *Any                                          "json:\"example\""
-	Deprecated           OptBool                                       "json:\"deprecated\""
-	Title                OptJsonschemaDraft4PropertiesTitle            "json:\"title\""
-	MultipleOf           OptJsonschemaDraft4PropertiesMultipleOf       "json:\"multipleOf\""
-	Maximum              OptJsonschemaDraft4PropertiesMaximum          "json:\"maximum\""
-	ExclusiveMaximum     OptJsonschemaDraft4PropertiesExclusiveMaximum "json:\"exclusiveMaximum\""
-	Minimum              OptJsonschemaDraft4PropertiesMinimum          "json:\"minimum\""
-	ExclusiveMinimum     OptJsonschemaDraft4PropertiesExclusiveMinimum "json:\"exclusiveMinimum\""
-	MaxLength            OptPositiveInteger                            "json:\"maxLength\""
-	MinLength            OptPositiveInteger                            "json:\"minLength\""
-	Pattern              OptJsonschemaDraft4PropertiesPattern          "json:\"pattern\""
-	MaxItems             OptPositiveInteger                            "json:\"maxItems\""
-	MinItems             OptPositiveInteger                            "json:\"minItems\""
-	UniqueItems          OptJsonschemaDraft4PropertiesUniqueItems      "json:\"uniqueItems\""
-	MaxProperties        OptPositiveInteger                            "json:\"maxProperties\""
-	MinProperties        OptPositiveInteger                            "json:\"minProperties\""
-	Required             *StringArray                                  "json:\"required\""
-	Enum                 *JsonschemaDraft4PropertiesEnum               "json:\"enum\""
-	Type                 OptSchemaType                                 "json:\"type\""
-	AllOf                []SchemaOrReference                           "json:\"allOf\""
-	OneOf                []SchemaOrReference                           "json:\"oneOf\""
-	AnyOf                []SchemaOrReference                           "json:\"anyOf\""
-	Not                  *Schema                                       "json:\"not\""
-	Items                *SchemaOrReference                            "json:\"items\""
-	Properties           OptSchemaProperties                           "json:\"properties\""
-	AdditionalProperties *SchemaAdditionalProperties                   "json:\"additionalProperties\""
-	Default              *DefaultType                                  "json:\"default\""
-	Description          OptString                                     "json:\"description\""
-	Format               OptString                                     "json:\"format\""
+	Nullable             OptBool                     "json:\"nullable\""
+	Discriminator        OptDiscriminator            "json:\"discriminator\""
+	ReadOnly             OptBool                     "json:\"readOnly\""
+	WriteOnly            OptBool                     "json:\"writeOnly\""
+	XML                  OptXML                      "json:\"xml\""
+	ExternalDocs         OptExternalDocs             "json:\"externalDocs\""
+	Example              *Any                        "json:\"example\""
+	Deprecated           OptBool                     "json:\"deprecated\""
+	Title                OptTitle                    "json:\"title\""
+	MultipleOf           OptMultipleOf               "json:\"multipleOf\""
+	Maximum              OptMaximum                  "json:\"maximum\""
+	ExclusiveMaximum     OptExclusiveMaximum         "json:\"exclusiveMaximum\""
+	Minimum              OptMinimum                  "json:\"minimum\""
+	ExclusiveMinimum     OptExclusiveMinimum         "json:\"exclusiveMinimum\""
+	MaxLength            OptPositiveInteger          "json:\"maxLength\""
+	MinLength            OptPositiveInteger          "json:\"minLength\""
+	Pattern              OptPattern                  "json:\"pattern\""
+	MaxItems             OptPositiveInteger          "json:\"maxItems\""
+	MinItems             OptPositiveInteger          "json:\"minItems\""
+	UniqueItems          OptUniqueItems              "json:\"uniqueItems\""
+	MaxProperties        OptPositiveInteger          "json:\"maxProperties\""
+	MinProperties        OptPositiveInteger          "json:\"minProperties\""
+	Required             *StringArray                "json:\"required\""
+	Enum                 *Enum                       "json:\"enum\""
+	Type                 OptSchemaType               "json:\"type\""
+	AllOf                []SchemaOrReference         "json:\"allOf\""
+	OneOf                []SchemaOrReference         "json:\"oneOf\""
+	AnyOf                []SchemaOrReference         "json:\"anyOf\""
+	Not                  *Schema                     "json:\"not\""
+	Items                *SchemaOrReference          "json:\"items\""
+	Properties           OptSchemaProperties         "json:\"properties\""
+	AdditionalProperties *SchemaAdditionalProperties "json:\"additionalProperties\""
+	Default              *DefaultType                "json:\"default\""
+	Description          OptString                   "json:\"description\""
+	Format               OptString                   "json:\"format\""
 	// Pattern: "^x-".
 	Pattern0Props SchemaPattern0
 }
@@ -3648,6 +3644,10 @@ func (s *TagPattern0) init() TagPattern0 {
 	return m
 }
 
+type Title string
+
+type UniqueItems bool
+
 // A metadata object that allows for more fine-tuned XML model definitions.  When using arrays, XML
 // element names are *not* inferred (for singular/plural forms) and the `name` property SHOULD be
 // used to add that information. See examples for expected behavior.
@@ -3676,15 +3676,15 @@ func (s *XMLPattern0) init() XMLPattern0 {
 // setDefaults set default value of fields.
 func (s *Schema) setDefaults() {
 	{
-		val := JsonschemaDraft4PropertiesExclusiveMaximum(false)
+		val := ExclusiveMaximum(false)
 		s.ExclusiveMaximum.SetTo(val)
 	}
 	{
-		val := JsonschemaDraft4PropertiesExclusiveMinimum(false)
+		val := ExclusiveMinimum(false)
 		s.ExclusiveMinimum.SetTo(val)
 	}
 	{
-		val := JsonschemaDraft4PropertiesUniqueItems(false)
+		val := UniqueItems(false)
 		s.UniqueItems.SetTo(val)
 	}
 }
@@ -4991,6 +4991,60 @@ func (s *Encodings) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes Enum as json.
+func (s Enum) Encode(e *jx.Encoder) {
+	unwrapped := []jx.Raw(s)
+
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes Enum from json.
+func (s *Enum) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode Enum to nil")
+	}
+	var unwrapped []jx.Raw
+	if err := func() error {
+		unwrapped = make([]jx.Raw, 0)
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem jx.Raw
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = Enum(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s Enum) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Enum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s Example) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -5339,6 +5393,86 @@ func (s ExamplesOrReferences) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *ExamplesOrReferences) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes ExclusiveMaximum as json.
+func (s ExclusiveMaximum) Encode(e *jx.Encoder) {
+	unwrapped := bool(s)
+
+	e.Bool(unwrapped)
+}
+
+// Decode decodes ExclusiveMaximum from json.
+func (s *ExclusiveMaximum) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode ExclusiveMaximum to nil")
+	}
+	var unwrapped bool
+	if err := func() error {
+		v, err := d.Bool()
+		unwrapped = bool(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ExclusiveMaximum(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s ExclusiveMaximum) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ExclusiveMaximum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes ExclusiveMinimum as json.
+func (s ExclusiveMinimum) Encode(e *jx.Encoder) {
+	unwrapped := bool(s)
+
+	e.Bool(unwrapped)
+}
+
+// Decode decodes ExclusiveMinimum from json.
+func (s *ExclusiveMinimum) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode ExclusiveMinimum to nil")
+	}
+	var unwrapped bool
+	if err := func() error {
+		v, err := d.Bool()
+		unwrapped = bool(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = ExclusiveMinimum(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s ExclusiveMinimum) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *ExclusiveMinimum) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -6329,380 +6463,6 @@ func (s *InfoPattern0) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes JsonschemaDraft4PropertiesEnum as json.
-func (s JsonschemaDraft4PropertiesEnum) Encode(e *jx.Encoder) {
-	unwrapped := []jx.Raw(s)
-
-	e.ArrStart()
-	for _, elem := range unwrapped {
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-	e.ArrEnd()
-}
-
-// Decode decodes JsonschemaDraft4PropertiesEnum from json.
-func (s *JsonschemaDraft4PropertiesEnum) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesEnum to nil")
-	}
-	var unwrapped []jx.Raw
-	if err := func() error {
-		unwrapped = make([]jx.Raw, 0)
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem jx.Raw
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			unwrapped = append(unwrapped, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = JsonschemaDraft4PropertiesEnum(unwrapped)
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s JsonschemaDraft4PropertiesEnum) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *JsonschemaDraft4PropertiesEnum) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes JsonschemaDraft4PropertiesExclusiveMaximum as json.
-func (s JsonschemaDraft4PropertiesExclusiveMaximum) Encode(e *jx.Encoder) {
-	unwrapped := bool(s)
-
-	e.Bool(unwrapped)
-}
-
-// Decode decodes JsonschemaDraft4PropertiesExclusiveMaximum from json.
-func (s *JsonschemaDraft4PropertiesExclusiveMaximum) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesExclusiveMaximum to nil")
-	}
-	var unwrapped bool
-	if err := func() error {
-		v, err := d.Bool()
-		unwrapped = bool(v)
-		if err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = JsonschemaDraft4PropertiesExclusiveMaximum(unwrapped)
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s JsonschemaDraft4PropertiesExclusiveMaximum) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *JsonschemaDraft4PropertiesExclusiveMaximum) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes JsonschemaDraft4PropertiesExclusiveMinimum as json.
-func (s JsonschemaDraft4PropertiesExclusiveMinimum) Encode(e *jx.Encoder) {
-	unwrapped := bool(s)
-
-	e.Bool(unwrapped)
-}
-
-// Decode decodes JsonschemaDraft4PropertiesExclusiveMinimum from json.
-func (s *JsonschemaDraft4PropertiesExclusiveMinimum) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesExclusiveMinimum to nil")
-	}
-	var unwrapped bool
-	if err := func() error {
-		v, err := d.Bool()
-		unwrapped = bool(v)
-		if err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = JsonschemaDraft4PropertiesExclusiveMinimum(unwrapped)
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s JsonschemaDraft4PropertiesExclusiveMinimum) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *JsonschemaDraft4PropertiesExclusiveMinimum) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes JsonschemaDraft4PropertiesMaximum as json.
-func (s JsonschemaDraft4PropertiesMaximum) Encode(e *jx.Encoder) {
-	unwrapped := float64(s)
-
-	e.Float64(unwrapped)
-}
-
-// Decode decodes JsonschemaDraft4PropertiesMaximum from json.
-func (s *JsonschemaDraft4PropertiesMaximum) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesMaximum to nil")
-	}
-	var unwrapped float64
-	if err := func() error {
-		v, err := d.Float64()
-		unwrapped = float64(v)
-		if err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = JsonschemaDraft4PropertiesMaximum(unwrapped)
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s JsonschemaDraft4PropertiesMaximum) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *JsonschemaDraft4PropertiesMaximum) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes JsonschemaDraft4PropertiesMinimum as json.
-func (s JsonschemaDraft4PropertiesMinimum) Encode(e *jx.Encoder) {
-	unwrapped := float64(s)
-
-	e.Float64(unwrapped)
-}
-
-// Decode decodes JsonschemaDraft4PropertiesMinimum from json.
-func (s *JsonschemaDraft4PropertiesMinimum) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesMinimum to nil")
-	}
-	var unwrapped float64
-	if err := func() error {
-		v, err := d.Float64()
-		unwrapped = float64(v)
-		if err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = JsonschemaDraft4PropertiesMinimum(unwrapped)
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s JsonschemaDraft4PropertiesMinimum) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *JsonschemaDraft4PropertiesMinimum) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes JsonschemaDraft4PropertiesMultipleOf as json.
-func (s JsonschemaDraft4PropertiesMultipleOf) Encode(e *jx.Encoder) {
-	unwrapped := float64(s)
-
-	e.Float64(unwrapped)
-}
-
-// Decode decodes JsonschemaDraft4PropertiesMultipleOf from json.
-func (s *JsonschemaDraft4PropertiesMultipleOf) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesMultipleOf to nil")
-	}
-	var unwrapped float64
-	if err := func() error {
-		v, err := d.Float64()
-		unwrapped = float64(v)
-		if err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = JsonschemaDraft4PropertiesMultipleOf(unwrapped)
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s JsonschemaDraft4PropertiesMultipleOf) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *JsonschemaDraft4PropertiesMultipleOf) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes JsonschemaDraft4PropertiesPattern as json.
-func (s JsonschemaDraft4PropertiesPattern) Encode(e *jx.Encoder) {
-	unwrapped := string(s)
-
-	e.Str(unwrapped)
-}
-
-// Decode decodes JsonschemaDraft4PropertiesPattern from json.
-func (s *JsonschemaDraft4PropertiesPattern) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesPattern to nil")
-	}
-	var unwrapped string
-	if err := func() error {
-		v, err := d.Str()
-		unwrapped = string(v)
-		if err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = JsonschemaDraft4PropertiesPattern(unwrapped)
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s JsonschemaDraft4PropertiesPattern) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *JsonschemaDraft4PropertiesPattern) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes JsonschemaDraft4PropertiesTitle as json.
-func (s JsonschemaDraft4PropertiesTitle) Encode(e *jx.Encoder) {
-	unwrapped := string(s)
-
-	e.Str(unwrapped)
-}
-
-// Decode decodes JsonschemaDraft4PropertiesTitle from json.
-func (s *JsonschemaDraft4PropertiesTitle) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesTitle to nil")
-	}
-	var unwrapped string
-	if err := func() error {
-		v, err := d.Str()
-		unwrapped = string(v)
-		if err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = JsonschemaDraft4PropertiesTitle(unwrapped)
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s JsonschemaDraft4PropertiesTitle) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *JsonschemaDraft4PropertiesTitle) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes JsonschemaDraft4PropertiesUniqueItems as json.
-func (s JsonschemaDraft4PropertiesUniqueItems) Encode(e *jx.Encoder) {
-	unwrapped := bool(s)
-
-	e.Bool(unwrapped)
-}
-
-// Decode decodes JsonschemaDraft4PropertiesUniqueItems from json.
-func (s *JsonschemaDraft4PropertiesUniqueItems) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesUniqueItems to nil")
-	}
-	var unwrapped bool
-	if err := func() error {
-		v, err := d.Bool()
-		unwrapped = bool(v)
-		if err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = JsonschemaDraft4PropertiesUniqueItems(unwrapped)
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s JsonschemaDraft4PropertiesUniqueItems) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *JsonschemaDraft4PropertiesUniqueItems) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
 // Encode implements json.Marshaler.
 func (s License) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -7300,6 +7060,46 @@ func (s *LinksOrReferences) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes Maximum as json.
+func (s Maximum) Encode(e *jx.Encoder) {
+	unwrapped := float64(s)
+
+	e.Float64(unwrapped)
+}
+
+// Decode decodes Maximum from json.
+func (s *Maximum) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode Maximum to nil")
+	}
+	var unwrapped float64
+	if err := func() error {
+		v, err := d.Float64()
+		unwrapped = float64(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = Maximum(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s Maximum) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Maximum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s MediaType) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -7547,6 +7347,86 @@ func (s MediaTypes) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *MediaTypes) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes Minimum as json.
+func (s Minimum) Encode(e *jx.Encoder) {
+	unwrapped := float64(s)
+
+	e.Float64(unwrapped)
+}
+
+// Decode decodes Minimum from json.
+func (s *Minimum) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode Minimum to nil")
+	}
+	var unwrapped float64
+	if err := func() error {
+		v, err := d.Float64()
+		unwrapped = float64(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = Minimum(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s Minimum) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Minimum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes MultipleOf as json.
+func (s MultipleOf) Encode(e *jx.Encoder) {
+	unwrapped := float64(s)
+
+	e.Float64(unwrapped)
+}
+
+// Decode decodes MultipleOf from json.
+func (s *MultipleOf) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode MultipleOf to nil")
+	}
+	var unwrapped float64
+	if err := func() error {
+		v, err := d.Float64()
+		unwrapped = float64(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = MultipleOf(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s MultipleOf) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *MultipleOf) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -8621,6 +8501,72 @@ func (s *OptExamplesOrReferences) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes ExclusiveMaximum as json.
+func (o OptExclusiveMaximum) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes ExclusiveMaximum from json.
+func (o *OptExclusiveMaximum) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptExclusiveMaximum to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptExclusiveMaximum) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptExclusiveMaximum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes ExclusiveMinimum as json.
+func (o OptExclusiveMinimum) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes ExclusiveMinimum from json.
+func (o *OptExclusiveMinimum) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptExclusiveMinimum to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptExclusiveMinimum) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptExclusiveMinimum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes ExternalDocs as json.
 func (o OptExternalDocs) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -8684,270 +8630,6 @@ func (s OptHeadersOrReferences) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptHeadersOrReferences) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes JsonschemaDraft4PropertiesExclusiveMaximum as json.
-func (o OptJsonschemaDraft4PropertiesExclusiveMaximum) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes JsonschemaDraft4PropertiesExclusiveMaximum from json.
-func (o *OptJsonschemaDraft4PropertiesExclusiveMaximum) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptJsonschemaDraft4PropertiesExclusiveMaximum to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptJsonschemaDraft4PropertiesExclusiveMaximum) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptJsonschemaDraft4PropertiesExclusiveMaximum) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes JsonschemaDraft4PropertiesExclusiveMinimum as json.
-func (o OptJsonschemaDraft4PropertiesExclusiveMinimum) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes JsonschemaDraft4PropertiesExclusiveMinimum from json.
-func (o *OptJsonschemaDraft4PropertiesExclusiveMinimum) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptJsonschemaDraft4PropertiesExclusiveMinimum to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptJsonschemaDraft4PropertiesExclusiveMinimum) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptJsonschemaDraft4PropertiesExclusiveMinimum) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes JsonschemaDraft4PropertiesMaximum as json.
-func (o OptJsonschemaDraft4PropertiesMaximum) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes JsonschemaDraft4PropertiesMaximum from json.
-func (o *OptJsonschemaDraft4PropertiesMaximum) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptJsonschemaDraft4PropertiesMaximum to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptJsonschemaDraft4PropertiesMaximum) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptJsonschemaDraft4PropertiesMaximum) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes JsonschemaDraft4PropertiesMinimum as json.
-func (o OptJsonschemaDraft4PropertiesMinimum) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes JsonschemaDraft4PropertiesMinimum from json.
-func (o *OptJsonschemaDraft4PropertiesMinimum) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptJsonschemaDraft4PropertiesMinimum to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptJsonschemaDraft4PropertiesMinimum) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptJsonschemaDraft4PropertiesMinimum) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes JsonschemaDraft4PropertiesMultipleOf as json.
-func (o OptJsonschemaDraft4PropertiesMultipleOf) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes JsonschemaDraft4PropertiesMultipleOf from json.
-func (o *OptJsonschemaDraft4PropertiesMultipleOf) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptJsonschemaDraft4PropertiesMultipleOf to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptJsonschemaDraft4PropertiesMultipleOf) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptJsonschemaDraft4PropertiesMultipleOf) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes JsonschemaDraft4PropertiesPattern as json.
-func (o OptJsonschemaDraft4PropertiesPattern) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes JsonschemaDraft4PropertiesPattern from json.
-func (o *OptJsonschemaDraft4PropertiesPattern) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptJsonschemaDraft4PropertiesPattern to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptJsonschemaDraft4PropertiesPattern) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptJsonschemaDraft4PropertiesPattern) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes JsonschemaDraft4PropertiesTitle as json.
-func (o OptJsonschemaDraft4PropertiesTitle) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes JsonschemaDraft4PropertiesTitle from json.
-func (o *OptJsonschemaDraft4PropertiesTitle) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptJsonschemaDraft4PropertiesTitle to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptJsonschemaDraft4PropertiesTitle) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptJsonschemaDraft4PropertiesTitle) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes JsonschemaDraft4PropertiesUniqueItems as json.
-func (o OptJsonschemaDraft4PropertiesUniqueItems) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes JsonschemaDraft4PropertiesUniqueItems from json.
-func (o *OptJsonschemaDraft4PropertiesUniqueItems) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptJsonschemaDraft4PropertiesUniqueItems to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptJsonschemaDraft4PropertiesUniqueItems) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptJsonschemaDraft4PropertiesUniqueItems) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -9019,6 +8701,39 @@ func (s *OptLinksOrReferences) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes Maximum as json.
+func (o OptMaximum) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes Maximum from json.
+func (o *OptMaximum) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptMaximum to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptMaximum) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptMaximum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes MediaTypes as json.
 func (o OptMediaTypes) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -9049,6 +8764,72 @@ func (s OptMediaTypes) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptMediaTypes) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes Minimum as json.
+func (o OptMinimum) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes Minimum from json.
+func (o *OptMinimum) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptMinimum to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptMinimum) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptMinimum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes MultipleOf as json.
+func (o OptMultipleOf) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes MultipleOf from json.
+func (o *OptMultipleOf) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptMultipleOf to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptMultipleOf) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptMultipleOf) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -9215,6 +8996,39 @@ func (s OptParametersOrReferences) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptParametersOrReferences) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes Pattern as json.
+func (o OptPattern) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes Pattern from json.
+func (o *OptPattern) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptPattern to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptPattern) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptPattern) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -9752,6 +9566,72 @@ func (s OptStrings) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptStrings) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes Title as json.
+func (o OptTitle) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes Title from json.
+func (o *OptTitle) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptTitle to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptTitle) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptTitle) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes UniqueItems as json.
+func (o OptUniqueItems) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes UniqueItems from json.
+func (o *OptUniqueItems) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptUniqueItems to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptUniqueItems) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptUniqueItems) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -11063,6 +10943,46 @@ func (s PathsPattern1) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *PathsPattern1) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes Pattern as json.
+func (s Pattern) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+
+	e.Str(unwrapped)
+}
+
+// Decode decodes Pattern from json.
+func (s *Pattern) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode Pattern to nil")
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = Pattern(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s Pattern) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Pattern) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -12689,7 +12609,7 @@ func (s *Schema) Decode(d *jx.Decoder) error {
 		case "enum":
 			if err := func() error {
 				s.Enum = nil
-				var elem JsonschemaDraft4PropertiesEnum
+				var elem Enum
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -15228,6 +15148,86 @@ func (s *TagPattern0) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes Title as json.
+func (s Title) Encode(e *jx.Encoder) {
+	unwrapped := string(s)
+
+	e.Str(unwrapped)
+}
+
+// Decode decodes Title from json.
+func (s *Title) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode Title to nil")
+	}
+	var unwrapped string
+	if err := func() error {
+		v, err := d.Str()
+		unwrapped = string(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = Title(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s Title) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Title) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes UniqueItems as json.
+func (s UniqueItems) Encode(e *jx.Encoder) {
+	unwrapped := bool(s)
+
+	e.Bool(unwrapped)
+}
+
+// Decode decodes UniqueItems from json.
+func (s *UniqueItems) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode UniqueItems to nil")
+	}
+	var unwrapped bool
+	if err := func() error {
+		v, err := d.Bool()
+		unwrapped = bool(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = UniqueItems(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s UniqueItems) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *UniqueItems) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s XML) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -15675,6 +15675,20 @@ func (s Encodings) Validate() error {
 	}
 	return nil
 }
+func (s Enum) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	if err := (validate.Array{
+		MinLength:    1,
+		MinLengthSet: true,
+		MaxLength:    0,
+		MaxLengthSet: false,
+	}).ValidateLength(len(s)); err != nil {
+		return errors.Wrap(err, "array")
+	}
+	return nil
+}
 func (s Header) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -15753,43 +15767,8 @@ func (s HeadersOrReferences) Validate() error {
 	}
 	return nil
 }
-func (s JsonschemaDraft4PropertiesEnum) Validate() error {
-	if s == nil {
-		return errors.New("nil is invalid value")
-	}
-	if err := (validate.Array{
-		MinLength:    1,
-		MinLengthSet: true,
-		MaxLength:    0,
-		MaxLengthSet: false,
-	}).ValidateLength(len(s)); err != nil {
-		return errors.Wrap(err, "array")
-	}
-	return nil
-}
-func (s JsonschemaDraft4PropertiesMaximum) Validate() error {
+func (s Maximum) Validate() error {
 	if err := (validate.Float{}).Validate(float64(s)); err != nil {
-		return errors.Wrap(err, "float")
-	}
-	return nil
-}
-func (s JsonschemaDraft4PropertiesMinimum) Validate() error {
-	if err := (validate.Float{}).Validate(float64(s)); err != nil {
-		return errors.Wrap(err, "float")
-	}
-	return nil
-}
-func (s JsonschemaDraft4PropertiesMultipleOf) Validate() error {
-	if err := (validate.Float{
-		MinSet:        true,
-		Min:           0,
-		MaxSet:        false,
-		Max:           0,
-		MinExclusive:  true,
-		MaxExclusive:  false,
-		MultipleOfSet: false,
-		MultipleOf:    nil,
-	}).Validate(float64(s)); err != nil {
 		return errors.Wrap(err, "float")
 	}
 	return nil
@@ -15855,6 +15834,27 @@ func (s MediaTypes) Validate() error {
 
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s Minimum) Validate() error {
+	if err := (validate.Float{}).Validate(float64(s)); err != nil {
+		return errors.Wrap(err, "float")
+	}
+	return nil
+}
+func (s MultipleOf) Validate() error {
+	if err := (validate.Float{
+		MinSet:        true,
+		Min:           0,
+		MaxSet:        false,
+		Max:           0,
+		MinExclusive:  true,
+		MaxExclusive:  false,
+		MultipleOfSet: false,
+		MultipleOf:    nil,
+	}).Validate(float64(s)); err != nil {
+		return errors.Wrap(err, "float")
 	}
 	return nil
 }
