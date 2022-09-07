@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -49,7 +50,37 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWrite
 		err error
 	)
 
-	response, err := s.h.ProbeLiveness(ctx)
+	var response string
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProbeLiveness",
+			OperationID:   "probeLiveness",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = string
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProbeLiveness(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.ProbeLiveness(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {

@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -67,7 +68,37 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWr
 		}
 	}()
 
-	response, err := s.h.AllRequestBodies(ctx, request)
+	var response AllRequestBodiesOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AllRequestBodies",
+			OperationID:   "allRequestBodies",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = AllRequestBodiesReq
+			Params   = struct{}
+			Response = AllRequestBodiesOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AllRequestBodies(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.AllRequestBodies(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -134,7 +165,37 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.Re
 		}
 	}()
 
-	response, err := s.h.AllRequestBodiesOptional(ctx, request)
+	var response AllRequestBodiesOptionalOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AllRequestBodiesOptional",
+			OperationID:   "allRequestBodiesOptional",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = AllRequestBodiesOptionalReq
+			Params   = struct{}
+			Response = AllRequestBodiesOptionalOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AllRequestBodiesOptional(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.AllRequestBodiesOptional(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -201,7 +262,37 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWri
 		}
 	}()
 
-	response, err := s.h.MaskContentType(ctx, request)
+	var response MaskResponse
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MaskContentType",
+			OperationID:   "maskContentType",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = MaskContentTypeReqWithContentType
+			Params   = struct{}
+			Response = MaskResponse
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MaskContentType(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.MaskContentType(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -268,7 +359,37 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, w http.Res
 		}
 	}()
 
-	response, err := s.h.MaskContentTypeOptional(ctx, request)
+	var response MaskResponse
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MaskContentTypeOptional",
+			OperationID:   "maskContentTypeOptional",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = MaskContentTypeOptionalReqWithContentType
+			Params   = struct{}
+			Response = MaskResponse
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MaskContentTypeOptional(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.MaskContentTypeOptional(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)

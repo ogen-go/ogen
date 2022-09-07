@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -69,7 +70,37 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 		}
 	}()
 
-	response, err := s.h.AddStickerToSet(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AddStickerToSet",
+			OperationID:   "addStickerToSet",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = AddStickerToSet
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AddStickerToSet(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.AddStickerToSet(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -144,7 +175,37 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 		}
 	}()
 
-	response, err := s.h.AnswerCallbackQuery(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AnswerCallbackQuery",
+			OperationID:   "answerCallbackQuery",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = AnswerCallbackQuery
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AnswerCallbackQuery(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.AnswerCallbackQuery(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -219,7 +280,37 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.AnswerInlineQuery(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AnswerInlineQuery",
+			OperationID:   "answerInlineQuery",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = AnswerInlineQuery
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AnswerInlineQuery(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.AnswerInlineQuery(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -294,7 +385,37 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 		}
 	}()
 
-	response, err := s.h.AnswerPreCheckoutQuery(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AnswerPreCheckoutQuery",
+			OperationID:   "answerPreCheckoutQuery",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = AnswerPreCheckoutQuery
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AnswerPreCheckoutQuery(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.AnswerPreCheckoutQuery(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -369,7 +490,37 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 		}
 	}()
 
-	response, err := s.h.AnswerShippingQuery(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AnswerShippingQuery",
+			OperationID:   "answerShippingQuery",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = AnswerShippingQuery
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AnswerShippingQuery(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.AnswerShippingQuery(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -444,7 +595,37 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 		}
 	}()
 
-	response, err := s.h.ApproveChatJoinRequest(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ApproveChatJoinRequest",
+			OperationID:   "approveChatJoinRequest",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = ApproveChatJoinRequest
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ApproveChatJoinRequest(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.ApproveChatJoinRequest(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -519,7 +700,37 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.BanChatMember(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "BanChatMember",
+			OperationID:   "banChatMember",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = BanChatMember
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.BanChatMember(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.BanChatMember(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -594,7 +805,37 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.BanChatSenderChat(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "BanChatSenderChat",
+			OperationID:   "banChatSenderChat",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = BanChatSenderChat
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.BanChatSenderChat(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.BanChatSenderChat(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -650,7 +891,37 @@ func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *ht
 		err error
 	)
 
-	response, err := s.h.Close(ctx)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "Close",
+			OperationID:   "close",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.Close(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.Close(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -725,7 +996,37 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 		}
 	}()
 
-	response, err := s.h.CopyMessage(ctx, request)
+	var response ResultMessageId
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CopyMessage",
+			OperationID:   "copyMessage",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = CopyMessage
+			Params   = struct{}
+			Response = ResultMessageId
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CopyMessage(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.CopyMessage(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -800,7 +1101,37 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 		}
 	}()
 
-	response, err := s.h.CreateChatInviteLink(ctx, request)
+	var response ResultChatInviteLink
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CreateChatInviteLink",
+			OperationID:   "createChatInviteLink",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = CreateChatInviteLink
+			Params   = struct{}
+			Response = ResultChatInviteLink
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CreateChatInviteLink(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.CreateChatInviteLink(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -875,7 +1206,37 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 		}
 	}()
 
-	response, err := s.h.CreateNewStickerSet(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CreateNewStickerSet",
+			OperationID:   "createNewStickerSet",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = CreateNewStickerSet
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CreateNewStickerSet(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.CreateNewStickerSet(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -950,7 +1311,37 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 		}
 	}()
 
-	response, err := s.h.DeclineChatJoinRequest(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "DeclineChatJoinRequest",
+			OperationID:   "declineChatJoinRequest",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = DeclineChatJoinRequest
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.DeclineChatJoinRequest(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.DeclineChatJoinRequest(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -1025,7 +1416,37 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 		}
 	}()
 
-	response, err := s.h.DeleteChatPhoto(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "DeleteChatPhoto",
+			OperationID:   "deleteChatPhoto",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = DeleteChatPhoto
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.DeleteChatPhoto(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.DeleteChatPhoto(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -1100,7 +1521,37 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 		}
 	}()
 
-	response, err := s.h.DeleteChatStickerSet(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "DeleteChatStickerSet",
+			OperationID:   "deleteChatStickerSet",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = DeleteChatStickerSet
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.DeleteChatStickerSet(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.DeleteChatStickerSet(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -1175,7 +1626,37 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.DeleteMessage(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "DeleteMessage",
+			OperationID:   "deleteMessage",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = DeleteMessage
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.DeleteMessage(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.DeleteMessage(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -1250,7 +1731,37 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 		}
 	}()
 
-	response, err := s.h.DeleteMyCommands(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "DeleteMyCommands",
+			OperationID:   "deleteMyCommands",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptDeleteMyCommands
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.DeleteMyCommands(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.DeleteMyCommands(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -1325,7 +1836,37 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 		}
 	}()
 
-	response, err := s.h.DeleteStickerFromSet(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "DeleteStickerFromSet",
+			OperationID:   "deleteStickerFromSet",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = DeleteStickerFromSet
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.DeleteStickerFromSet(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.DeleteStickerFromSet(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -1400,7 +1941,37 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.DeleteWebhook(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "DeleteWebhook",
+			OperationID:   "deleteWebhook",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptDeleteWebhook
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.DeleteWebhook(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.DeleteWebhook(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -1475,7 +2046,37 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.EditChatInviteLink(ctx, request)
+	var response ResultChatInviteLink
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EditChatInviteLink",
+			OperationID:   "editChatInviteLink",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = EditChatInviteLink
+			Params   = struct{}
+			Response = ResultChatInviteLink
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EditChatInviteLink(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.EditChatInviteLink(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -1550,7 +2151,37 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.EditMessageCaption(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EditMessageCaption",
+			OperationID:   "editMessageCaption",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = EditMessageCaption
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EditMessageCaption(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.EditMessageCaption(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -1625,7 +2256,37 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 		}
 	}()
 
-	response, err := s.h.EditMessageLiveLocation(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EditMessageLiveLocation",
+			OperationID:   "editMessageLiveLocation",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = EditMessageLiveLocation
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EditMessageLiveLocation(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.EditMessageLiveLocation(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -1700,7 +2361,37 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 		}
 	}()
 
-	response, err := s.h.EditMessageMedia(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EditMessageMedia",
+			OperationID:   "editMessageMedia",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = EditMessageMedia
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EditMessageMedia(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.EditMessageMedia(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -1775,7 +2466,37 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 		}
 	}()
 
-	response, err := s.h.EditMessageReplyMarkup(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EditMessageReplyMarkup",
+			OperationID:   "editMessageReplyMarkup",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = EditMessageReplyMarkup
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EditMessageReplyMarkup(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.EditMessageReplyMarkup(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -1850,7 +2571,37 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 		}
 	}()
 
-	response, err := s.h.EditMessageText(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EditMessageText",
+			OperationID:   "editMessageText",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = EditMessageText
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EditMessageText(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.EditMessageText(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -1925,7 +2676,37 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 		}
 	}()
 
-	response, err := s.h.ExportChatInviteLink(ctx, request)
+	var response ResultString
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ExportChatInviteLink",
+			OperationID:   "exportChatInviteLink",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = ExportChatInviteLink
+			Params   = struct{}
+			Response = ResultString
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ExportChatInviteLink(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.ExportChatInviteLink(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -2000,7 +2781,37 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 		}
 	}()
 
-	response, err := s.h.ForwardMessage(ctx, request)
+	var response ResultMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ForwardMessage",
+			OperationID:   "forwardMessage",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = ForwardMessage
+			Params   = struct{}
+			Response = ResultMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ForwardMessage(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.ForwardMessage(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -2075,7 +2886,37 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 		}
 	}()
 
-	response, err := s.h.GetChat(ctx, request)
+	var response ResultChat
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetChat",
+			OperationID:   "getChat",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = GetChat
+			Params   = struct{}
+			Response = ResultChat
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetChat(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.GetChat(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -2150,7 +2991,37 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 		}
 	}()
 
-	response, err := s.h.GetChatAdministrators(ctx, request)
+	var response ResultArrayOfChatMember
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetChatAdministrators",
+			OperationID:   "getChatAdministrators",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = GetChatAdministrators
+			Params   = struct{}
+			Response = ResultArrayOfChatMember
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetChatAdministrators(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.GetChatAdministrators(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -2225,7 +3096,37 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.GetChatMember(ctx, request)
+	var response ResultChatMember
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetChatMember",
+			OperationID:   "getChatMember",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = GetChatMember
+			Params   = struct{}
+			Response = ResultChatMember
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetChatMember(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.GetChatMember(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -2300,7 +3201,37 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.GetChatMemberCount(ctx, request)
+	var response ResultInt
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetChatMemberCount",
+			OperationID:   "getChatMemberCount",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = GetChatMemberCount
+			Params   = struct{}
+			Response = ResultInt
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetChatMemberCount(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.GetChatMemberCount(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -2375,7 +3306,37 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 		}
 	}()
 
-	response, err := s.h.GetFile(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetFile",
+			OperationID:   "getFile",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = GetFile
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetFile(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.GetFile(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -2450,7 +3411,37 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.GetGameHighScores(ctx, request)
+	var response ResultArrayOfGameHighScore
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetGameHighScores",
+			OperationID:   "getGameHighScores",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = GetGameHighScores
+			Params   = struct{}
+			Response = ResultArrayOfGameHighScore
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetGameHighScores(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.GetGameHighScores(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -2506,7 +3497,37 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 		err error
 	)
 
-	response, err := s.h.GetMe(ctx)
+	var response ResultUser
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetMe",
+			OperationID:   "getMe",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = ResultUser
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetMe(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetMe(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -2581,7 +3602,37 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.GetMyCommands(ctx, request)
+	var response ResultArrayOfBotCommand
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetMyCommands",
+			OperationID:   "getMyCommands",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptGetMyCommands
+			Params   = struct{}
+			Response = ResultArrayOfBotCommand
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetMyCommands(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.GetMyCommands(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -2656,7 +3707,37 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.GetStickerSet(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetStickerSet",
+			OperationID:   "getStickerSet",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = GetStickerSet
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetStickerSet(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.GetStickerSet(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -2731,7 +3812,37 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 		}
 	}()
 
-	response, err := s.h.GetUpdates(ctx, request)
+	var response ResultArrayOfUpdate
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetUpdates",
+			OperationID:   "getUpdates",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptGetUpdates
+			Params   = struct{}
+			Response = ResultArrayOfUpdate
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetUpdates(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.GetUpdates(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -2806,7 +3917,37 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 		}
 	}()
 
-	response, err := s.h.GetUserProfilePhotos(ctx, request)
+	var response ResultUserProfilePhotos
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetUserProfilePhotos",
+			OperationID:   "getUserProfilePhotos",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = GetUserProfilePhotos
+			Params   = struct{}
+			Response = ResultUserProfilePhotos
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetUserProfilePhotos(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.GetUserProfilePhotos(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -2862,7 +4003,37 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWrit
 		err error
 	)
 
-	response, err := s.h.GetWebhookInfo(ctx)
+	var response ResultWebhookInfo
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetWebhookInfo",
+			OperationID:   "getWebhookInfo",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = ResultWebhookInfo
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetWebhookInfo(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetWebhookInfo(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -2937,7 +4108,37 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 		}
 	}()
 
-	response, err := s.h.LeaveChat(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "LeaveChat",
+			OperationID:   "leaveChat",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = LeaveChat
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.LeaveChat(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.LeaveChat(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -2993,7 +4194,37 @@ func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *h
 		err error
 	)
 
-	response, err := s.h.LogOut(ctx)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "LogOut",
+			OperationID:   "logOut",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.LogOut(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.LogOut(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -3068,7 +4299,37 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 		}
 	}()
 
-	response, err := s.h.PinChatMessage(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PinChatMessage",
+			OperationID:   "pinChatMessage",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = PinChatMessage
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PinChatMessage(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.PinChatMessage(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -3143,7 +4404,37 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.PromoteChatMember(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PromoteChatMember",
+			OperationID:   "promoteChatMember",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = PromoteChatMember
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PromoteChatMember(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.PromoteChatMember(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -3218,7 +4509,37 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.RestrictChatMember(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "RestrictChatMember",
+			OperationID:   "restrictChatMember",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = RestrictChatMember
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.RestrictChatMember(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.RestrictChatMember(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -3293,7 +4614,37 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 		}
 	}()
 
-	response, err := s.h.RevokeChatInviteLink(ctx, request)
+	var response ResultChatInviteLink
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "RevokeChatInviteLink",
+			OperationID:   "revokeChatInviteLink",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = RevokeChatInviteLink
+			Params   = struct{}
+			Response = ResultChatInviteLink
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.RevokeChatInviteLink(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.RevokeChatInviteLink(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -3368,7 +4719,37 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.SendAnimation(ctx, request)
+	var response ResultMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendAnimation",
+			OperationID:   "sendAnimation",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendAnimation
+			Params   = struct{}
+			Response = ResultMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendAnimation(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendAnimation(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -3443,7 +4824,37 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 		}
 	}()
 
-	response, err := s.h.SendAudio(ctx, request)
+	var response ResultMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendAudio",
+			OperationID:   "sendAudio",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendAudio
+			Params   = struct{}
+			Response = ResultMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendAudio(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendAudio(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -3518,7 +4929,37 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 		}
 	}()
 
-	response, err := s.h.SendChatAction(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendChatAction",
+			OperationID:   "sendChatAction",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendChatAction
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendChatAction(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendChatAction(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -3593,7 +5034,37 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 		}
 	}()
 
-	response, err := s.h.SendContact(ctx, request)
+	var response ResultMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendContact",
+			OperationID:   "sendContact",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendContact
+			Params   = struct{}
+			Response = ResultMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendContact(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendContact(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -3668,7 +5139,37 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 		}
 	}()
 
-	response, err := s.h.SendDice(ctx, request)
+	var response ResultMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendDice",
+			OperationID:   "sendDice",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendDice
+			Params   = struct{}
+			Response = ResultMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendDice(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendDice(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -3743,7 +5244,37 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 		}
 	}()
 
-	response, err := s.h.SendDocument(ctx, request)
+	var response ResultMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendDocument",
+			OperationID:   "sendDocument",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendDocument
+			Params   = struct{}
+			Response = ResultMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendDocument(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendDocument(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -3818,7 +5349,37 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 		}
 	}()
 
-	response, err := s.h.SendGame(ctx, request)
+	var response ResultMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendGame",
+			OperationID:   "sendGame",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendGame
+			Params   = struct{}
+			Response = ResultMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendGame(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendGame(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -3893,7 +5454,37 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 		}
 	}()
 
-	response, err := s.h.SendInvoice(ctx, request)
+	var response ResultMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendInvoice",
+			OperationID:   "sendInvoice",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendInvoice
+			Params   = struct{}
+			Response = ResultMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendInvoice(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendInvoice(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -3968,7 +5559,37 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 		}
 	}()
 
-	response, err := s.h.SendLocation(ctx, request)
+	var response ResultMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendLocation",
+			OperationID:   "sendLocation",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendLocation
+			Params   = struct{}
+			Response = ResultMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendLocation(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendLocation(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -4043,7 +5664,37 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 		}
 	}()
 
-	response, err := s.h.SendMediaGroup(ctx, request)
+	var response ResultArrayOfMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendMediaGroup",
+			OperationID:   "sendMediaGroup",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendMediaGroup
+			Params   = struct{}
+			Response = ResultArrayOfMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendMediaGroup(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendMediaGroup(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -4118,7 +5769,37 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 		}
 	}()
 
-	response, err := s.h.SendMessage(ctx, request)
+	var response ResultMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendMessage",
+			OperationID:   "sendMessage",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendMessage
+			Params   = struct{}
+			Response = ResultMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendMessage(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendMessage(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -4193,7 +5874,37 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 		}
 	}()
 
-	response, err := s.h.SendPhoto(ctx, request)
+	var response ResultMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendPhoto",
+			OperationID:   "sendPhoto",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendPhoto
+			Params   = struct{}
+			Response = ResultMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendPhoto(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendPhoto(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -4268,7 +5979,37 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 		}
 	}()
 
-	response, err := s.h.SendPoll(ctx, request)
+	var response ResultMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendPoll",
+			OperationID:   "sendPoll",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendPoll
+			Params   = struct{}
+			Response = ResultMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendPoll(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendPoll(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -4343,7 +6084,37 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 		}
 	}()
 
-	response, err := s.h.SendSticker(ctx, request)
+	var response ResultMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendSticker",
+			OperationID:   "sendSticker",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendSticker
+			Params   = struct{}
+			Response = ResultMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendSticker(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendSticker(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -4418,7 +6189,37 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 		}
 	}()
 
-	response, err := s.h.SendVenue(ctx, request)
+	var response ResultMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendVenue",
+			OperationID:   "sendVenue",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendVenue
+			Params   = struct{}
+			Response = ResultMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendVenue(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendVenue(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -4493,7 +6294,37 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 		}
 	}()
 
-	response, err := s.h.SendVideo(ctx, request)
+	var response ResultMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendVideo",
+			OperationID:   "sendVideo",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendVideo
+			Params   = struct{}
+			Response = ResultMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendVideo(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendVideo(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -4568,7 +6399,37 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.SendVideoNote(ctx, request)
+	var response ResultMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendVideoNote",
+			OperationID:   "sendVideoNote",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendVideoNote
+			Params   = struct{}
+			Response = ResultMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendVideoNote(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendVideoNote(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -4643,7 +6504,37 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 		}
 	}()
 
-	response, err := s.h.SendVoice(ctx, request)
+	var response ResultMessage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SendVoice",
+			OperationID:   "sendVoice",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SendVoice
+			Params   = struct{}
+			Response = ResultMessage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SendVoice(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SendVoice(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -4718,7 +6609,37 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 		}
 	}()
 
-	response, err := s.h.SetChatAdministratorCustomTitle(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SetChatAdministratorCustomTitle",
+			OperationID:   "setChatAdministratorCustomTitle",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SetChatAdministratorCustomTitle
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SetChatAdministratorCustomTitle(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SetChatAdministratorCustomTitle(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -4793,7 +6714,37 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.SetChatDescription(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SetChatDescription",
+			OperationID:   "setChatDescription",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SetChatDescription
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SetChatDescription(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SetChatDescription(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -4868,7 +6819,37 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.SetChatPermissions(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SetChatPermissions",
+			OperationID:   "setChatPermissions",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SetChatPermissions
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SetChatPermissions(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SetChatPermissions(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -4943,7 +6924,37 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 		}
 	}()
 
-	response, err := s.h.SetChatPhoto(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SetChatPhoto",
+			OperationID:   "setChatPhoto",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SetChatPhoto
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SetChatPhoto(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SetChatPhoto(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -5018,7 +7029,37 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.SetChatStickerSet(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SetChatStickerSet",
+			OperationID:   "setChatStickerSet",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SetChatStickerSet
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SetChatStickerSet(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SetChatStickerSet(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -5093,7 +7134,37 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 		}
 	}()
 
-	response, err := s.h.SetChatTitle(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SetChatTitle",
+			OperationID:   "setChatTitle",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SetChatTitle
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SetChatTitle(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SetChatTitle(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -5168,7 +7239,37 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 		}
 	}()
 
-	response, err := s.h.SetGameScore(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SetGameScore",
+			OperationID:   "setGameScore",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SetGameScore
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SetGameScore(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SetGameScore(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -5243,7 +7344,37 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.SetMyCommands(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SetMyCommands",
+			OperationID:   "setMyCommands",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SetMyCommands
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SetMyCommands(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SetMyCommands(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -5318,7 +7449,37 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 		}
 	}()
 
-	response, err := s.h.SetPassportDataErrors(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SetPassportDataErrors",
+			OperationID:   "setPassportDataErrors",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SetPassportDataErrors
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SetPassportDataErrors(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SetPassportDataErrors(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -5393,7 +7554,37 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 		}
 	}()
 
-	response, err := s.h.SetStickerPositionInSet(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SetStickerPositionInSet",
+			OperationID:   "setStickerPositionInSet",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SetStickerPositionInSet
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SetStickerPositionInSet(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SetStickerPositionInSet(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -5468,7 +7659,37 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.SetStickerSetThumb(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SetStickerSetThumb",
+			OperationID:   "setStickerSetThumb",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SetStickerSetThumb
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SetStickerSetThumb(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SetStickerSetThumb(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -5543,7 +7764,37 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 		}
 	}()
 
-	response, err := s.h.SetWebhook(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SetWebhook",
+			OperationID:   "setWebhook",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SetWebhook
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SetWebhook(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SetWebhook(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -5618,7 +7869,37 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 		}
 	}()
 
-	response, err := s.h.StopMessageLiveLocation(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "StopMessageLiveLocation",
+			OperationID:   "stopMessageLiveLocation",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = StopMessageLiveLocation
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.StopMessageLiveLocation(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.StopMessageLiveLocation(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -5693,7 +7974,37 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 		}
 	}()
 
-	response, err := s.h.StopPoll(ctx, request)
+	var response ResultPoll
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "StopPoll",
+			OperationID:   "stopPoll",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = StopPoll
+			Params   = struct{}
+			Response = ResultPoll
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.StopPoll(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.StopPoll(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -5768,7 +8079,37 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 		}
 	}()
 
-	response, err := s.h.UnbanChatMember(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UnbanChatMember",
+			OperationID:   "unbanChatMember",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = UnbanChatMember
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UnbanChatMember(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.UnbanChatMember(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -5843,7 +8184,37 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 		}
 	}()
 
-	response, err := s.h.UnbanChatSenderChat(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UnbanChatSenderChat",
+			OperationID:   "unbanChatSenderChat",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = UnbanChatSenderChat
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UnbanChatSenderChat(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.UnbanChatSenderChat(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -5918,7 +8289,37 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 		}
 	}()
 
-	response, err := s.h.UnpinAllChatMessages(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UnpinAllChatMessages",
+			OperationID:   "unpinAllChatMessages",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = UnpinAllChatMessages
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UnpinAllChatMessages(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.UnpinAllChatMessages(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -5993,7 +8394,37 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 		}
 	}()
 
-	response, err := s.h.UnpinChatMessage(ctx, request)
+	var response Result
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UnpinChatMessage",
+			OperationID:   "unpinChatMessage",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = UnpinChatMessage
+			Params   = struct{}
+			Response = Result
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UnpinChatMessage(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.UnpinChatMessage(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -6068,7 +8499,37 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.UploadStickerFile(ctx, request)
+	var response ResultFile
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UploadStickerFile",
+			OperationID:   "uploadStickerFile",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = UploadStickerFile
+			Params   = struct{}
+			Response = ResultFile
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UploadStickerFile(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.UploadStickerFile(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {

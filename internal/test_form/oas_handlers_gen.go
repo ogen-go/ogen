@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -67,7 +68,37 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.TestFormURLEncoded(ctx, request)
+	var response TestFormURLEncodedOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TestFormURLEncoded",
+			OperationID:   "testFormURLEncoded",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = TestForm
+			Params   = struct{}
+			Response = TestFormURLEncodedOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TestFormURLEncoded(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestFormURLEncoded(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -134,7 +165,37 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.TestMultipart(ctx, request)
+	var response TestMultipartOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TestMultipart",
+			OperationID:   "testMultipart",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = TestForm
+			Params   = struct{}
+			Response = TestMultipartOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TestMultipart(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestMultipart(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -201,7 +262,37 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 		}
 	}()
 
-	response, err := s.h.TestMultipartUpload(ctx, request)
+	var response TestMultipartUploadOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TestMultipartUpload",
+			OperationID:   "testMultipartUpload",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = TestMultipartUploadReqForm
+			Params   = struct{}
+			Response = TestMultipartUploadOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TestMultipartUpload(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestMultipartUpload(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -268,7 +359,37 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 		}
 	}()
 
-	response, err := s.h.TestShareFormSchema(ctx, request)
+	var response TestShareFormSchemaOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TestShareFormSchema",
+			OperationID:   "testShareFormSchema",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = TestShareFormSchemaReq
+			Params   = struct{}
+			Response = TestShareFormSchemaOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TestShareFormSchema(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestShareFormSchema(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)

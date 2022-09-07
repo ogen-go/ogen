@@ -52,6 +52,7 @@ type config struct {
 	NotFound           http.HandlerFunc
 	MethodNotAllowed   func(w http.ResponseWriter, r *http.Request, allowed string)
 	ErrorHandler       ErrorHandler
+	Middleware         Middleware
 	MaxMultipartMemory int64
 }
 
@@ -66,6 +67,7 @@ func newConfig(opts ...Option) config {
 			w.WriteHeader(http.StatusMethodNotAllowed)
 		},
 		ErrorHandler:       ogenerrors.DefaultErrorHandler,
+		Middleware:         nil,
 		MaxMultipartMemory: 32 << 20, // 32 MB
 	}
 	for _, opt := range opts {
@@ -142,6 +144,20 @@ func WithErrorHandler(h ErrorHandler) Option {
 	return optionFunc(func(cfg *config) {
 		if h != nil {
 			cfg.ErrorHandler = h
+		}
+	})
+}
+
+// WithMiddleware specifies middlewares to use.
+func WithMiddleware(m ...Middleware) Option {
+	return optionFunc(func(cfg *config) {
+		switch len(m) {
+		case 0:
+			cfg.Middleware = nil
+		case 1:
+			cfg.Middleware = m[0]
+		default:
+			cfg.Middleware = chainMiddlewares(m...)
 		}
 	})
 }

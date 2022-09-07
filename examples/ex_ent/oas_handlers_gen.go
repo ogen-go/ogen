@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -67,7 +68,37 @@ func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r
 		}
 	}()
 
-	response, err := s.h.CreatePet(ctx, request)
+	var response CreatePetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CreatePet",
+			OperationID:   "createPet",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = CreatePetReq
+			Params   = struct{}
+			Response = CreatePetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CreatePet(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.CreatePet(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -144,7 +175,39 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 		}
 	}()
 
-	response, err := s.h.CreatePetCategories(ctx, request, params)
+	var response CreatePetCategoriesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CreatePetCategories",
+			OperationID:   "createPetCategories",
+			Body:          request,
+			Params: map[string]any{
+				"id": params.ID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = CreatePetCategoriesReq
+			Params   = CreatePetCategoriesParams
+			Response = CreatePetCategoriesRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CreatePetCategories(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.CreatePetCategories(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -221,7 +284,39 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 		}
 	}()
 
-	response, err := s.h.CreatePetFriends(ctx, request, params)
+	var response CreatePetFriendsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CreatePetFriends",
+			OperationID:   "createPetFriends",
+			Body:          request,
+			Params: map[string]any{
+				"id": params.ID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = CreatePetFriendsReq
+			Params   = CreatePetFriendsParams
+			Response = CreatePetFriendsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CreatePetFriends(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.CreatePetFriends(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -298,7 +393,39 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 		}
 	}()
 
-	response, err := s.h.CreatePetOwner(ctx, request, params)
+	var response CreatePetOwnerRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CreatePetOwner",
+			OperationID:   "createPetOwner",
+			Body:          request,
+			Params: map[string]any{
+				"id": params.ID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = CreatePetOwnerReq
+			Params   = CreatePetOwnerParams
+			Response = CreatePetOwnerRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CreatePetOwner(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.CreatePetOwner(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -360,7 +487,39 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.h.DeletePet(ctx, params)
+	var response DeletePetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "DeletePet",
+			OperationID:   "deletePet",
+			Body:          nil,
+			Params: map[string]any{
+				"id": params.ID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = DeletePetParams
+			Response = DeletePetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.DeletePet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.DeletePet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -422,7 +581,39 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.DeletePetOwner(ctx, params)
+	var response DeletePetOwnerRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "DeletePetOwner",
+			OperationID:   "deletePetOwner",
+			Body:          nil,
+			Params: map[string]any{
+				"id": params.ID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = DeletePetOwnerParams
+			Response = DeletePetOwnerRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.DeletePetOwner(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.DeletePetOwner(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -484,7 +675,40 @@ func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.h.ListPet(ctx, params)
+	var response ListPetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ListPet",
+			OperationID:   "listPet",
+			Body:          nil,
+			Params: map[string]any{
+				"page":         params.Page,
+				"itemsPerPage": params.ItemsPerPage,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListPetParams
+			Response = ListPetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ListPet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListPet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -546,7 +770,41 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.ListPetCategories(ctx, params)
+	var response ListPetCategoriesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ListPetCategories",
+			OperationID:   "listPetCategories",
+			Body:          nil,
+			Params: map[string]any{
+				"id":           params.ID,
+				"page":         params.Page,
+				"itemsPerPage": params.ItemsPerPage,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListPetCategoriesParams
+			Response = ListPetCategoriesRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ListPetCategories(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListPetCategories(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -608,7 +866,41 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.ListPetFriends(ctx, params)
+	var response ListPetFriendsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ListPetFriends",
+			OperationID:   "listPetFriends",
+			Body:          nil,
+			Params: map[string]any{
+				"id":           params.ID,
+				"page":         params.Page,
+				"itemsPerPage": params.ItemsPerPage,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListPetFriendsParams
+			Response = ListPetFriendsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ListPetFriends(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListPetFriends(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -670,7 +962,39 @@ func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.h.ReadPet(ctx, params)
+	var response ReadPetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReadPet",
+			OperationID:   "readPet",
+			Body:          nil,
+			Params: map[string]any{
+				"id": params.ID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadPetParams
+			Response = ReadPetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReadPet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadPet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -732,7 +1056,39 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter
 		return
 	}
 
-	response, err := s.h.ReadPetOwner(ctx, params)
+	var response ReadPetOwnerRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReadPetOwner",
+			OperationID:   "readPetOwner",
+			Body:          nil,
+			Params: map[string]any{
+				"id": params.ID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadPetOwnerParams
+			Response = ReadPetOwnerRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReadPetOwner(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadPetOwner(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -809,7 +1165,39 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 		}
 	}()
 
-	response, err := s.h.UpdatePet(ctx, request, params)
+	var response UpdatePetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UpdatePet",
+			OperationID:   "updatePet",
+			Body:          request,
+			Params: map[string]any{
+				"id": params.ID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = UpdatePetReq
+			Params   = UpdatePetParams
+			Response = UpdatePetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UpdatePet(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.UpdatePet(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)

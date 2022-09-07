@@ -3,6 +3,7 @@
 package techempower
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -62,7 +63,39 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.h.Caching(ctx, params)
+	var response WorldObjects
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "Caching",
+			OperationID:   "Caching",
+			Body:          nil,
+			Params: map[string]any{
+				"count": params.Count,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = CachingParams
+			Response = WorldObjects
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.Caching(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.Caching(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -110,7 +143,37 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 		err error
 	)
 
-	response, err := s.h.DB(ctx)
+	var response WorldObject
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "DB",
+			OperationID:   "DB",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = WorldObject
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.DB(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.DB(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -158,7 +221,37 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 		err error
 	)
 
-	response, err := s.h.JSON(ctx)
+	var response HelloWorld
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "JSON",
+			OperationID:   "json",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = HelloWorld
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.JSON(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.JSON(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -220,7 +313,39 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.h.Queries(ctx, params)
+	var response WorldObjects
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "Queries",
+			OperationID:   "Queries",
+			Body:          nil,
+			Params: map[string]any{
+				"queries": params.Queries,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = QueriesParams
+			Response = WorldObjects
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.Queries(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.Queries(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -282,7 +407,39 @@ func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.h.Updates(ctx, params)
+	var response WorldObjects
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "Updates",
+			OperationID:   "Updates",
+			Body:          nil,
+			Params: map[string]any{
+				"queries": params.Queries,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UpdatesParams
+			Response = WorldObjects
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.Updates(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.Updates(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)

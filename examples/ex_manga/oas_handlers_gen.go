@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -62,7 +63,39 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.h.GetBook(ctx, params)
+	var response GetBookRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetBook",
+			OperationID:   "getBook",
+			Body:          nil,
+			Params: map[string]any{
+				"book_id": params.BookID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GetBookParams
+			Response = GetBookRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetBook(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GetBook(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -124,7 +157,40 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.GetPageCoverImage(ctx, params)
+	var response GetPageCoverImageRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetPageCoverImage",
+			OperationID:   "getPageCoverImage",
+			Body:          nil,
+			Params: map[string]any{
+				"media_id": params.MediaID,
+				"format":   params.Format,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GetPageCoverImageParams
+			Response = GetPageCoverImageRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetPageCoverImage(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GetPageCoverImage(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -186,7 +252,41 @@ func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter
 		return
 	}
 
-	response, err := s.h.GetPageImage(ctx, params)
+	var response GetPageImageRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetPageImage",
+			OperationID:   "getPageImage",
+			Body:          nil,
+			Params: map[string]any{
+				"media_id": params.MediaID,
+				"page":     params.Page,
+				"format":   params.Format,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GetPageImageParams
+			Response = GetPageImageRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetPageImage(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GetPageImage(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -248,7 +348,41 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.GetPageThumbnailImage(ctx, params)
+	var response GetPageThumbnailImageRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetPageThumbnailImage",
+			OperationID:   "getPageThumbnailImage",
+			Body:          nil,
+			Params: map[string]any{
+				"media_id": params.MediaID,
+				"page":     params.Page,
+				"format":   params.Format,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GetPageThumbnailImageParams
+			Response = GetPageThumbnailImageRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetPageThumbnailImage(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GetPageThumbnailImage(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -310,7 +444,40 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.h.Search(ctx, params)
+	var response SearchRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "Search",
+			OperationID:   "search",
+			Body:          nil,
+			Params: map[string]any{
+				"query": params.Query,
+				"page":  params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = SearchParams
+			Response = SearchRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.Search(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.Search(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -372,7 +539,40 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 		return
 	}
 
-	response, err := s.h.SearchByTagID(ctx, params)
+	var response SearchByTagIDRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SearchByTagID",
+			OperationID:   "searchByTagID",
+			Body:          nil,
+			Params: map[string]any{
+				"tag_id": params.TagID,
+				"page":   params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = SearchByTagIDParams
+			Response = SearchByTagIDRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SearchByTagID(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.SearchByTagID(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)

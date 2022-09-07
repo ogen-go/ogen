@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -48,7 +49,37 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w
 		err error
 	)
 
-	response, err := s.h.AnyContentTypeBinaryStringSchema(ctx)
+	var response AnyContentTypeBinaryStringSchemaOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AnyContentTypeBinaryStringSchema",
+			OperationID:   "anyContentTypeBinaryStringSchema",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = AnyContentTypeBinaryStringSchemaOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AnyContentTypeBinaryStringSchema(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.AnyContentTypeBinaryStringSchema(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -96,7 +127,37 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 		err error
 	)
 
-	response, err := s.h.AnyContentTypeBinaryStringSchemaDefault(ctx)
+	var response AnyContentTypeBinaryStringSchemaDefaultDefStatusCode
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AnyContentTypeBinaryStringSchemaDefault",
+			OperationID:   "anyContentTypeBinaryStringSchemaDefault",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = AnyContentTypeBinaryStringSchemaDefaultDefStatusCode
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AnyContentTypeBinaryStringSchemaDefault(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.AnyContentTypeBinaryStringSchemaDefault(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -158,7 +219,39 @@ func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.h.Combined(ctx, params)
+	var response CombinedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "Combined",
+			OperationID:   "combined",
+			Body:          nil,
+			Params: map[string]any{
+				"type": params.Type,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = CombinedParams
+			Response = CombinedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.Combined(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.Combined(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -206,7 +299,37 @@ func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, 
 		err error
 	)
 
-	response, err := s.h.Headers200(ctx)
+	var response Headers200OK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "Headers200",
+			OperationID:   "headers200",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = Headers200OK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.Headers200(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.Headers200(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -268,7 +391,39 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.HeadersCombined(ctx, params)
+	var response HeadersCombinedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "HeadersCombined",
+			OperationID:   "headersCombined",
+			Body:          nil,
+			Params: map[string]any{
+				"type": params.Type,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = HeadersCombinedParams
+			Response = HeadersCombinedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.HeadersCombined(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.HeadersCombined(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -316,7 +471,37 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWrit
 		err error
 	)
 
-	response, err := s.h.HeadersDefault(ctx)
+	var response HeadersDefaultDef
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "HeadersDefault",
+			OperationID:   "headersDefault",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = HeadersDefaultDef
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.HeadersDefault(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.HeadersDefault(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -364,7 +549,37 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWrit
 		err error
 	)
 
-	response, err := s.h.HeadersPattern(ctx)
+	var response HeadersPattern4XX
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "HeadersPattern",
+			OperationID:   "headersPattern",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = HeadersPattern4XX
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.HeadersPattern(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.HeadersPattern(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -426,7 +641,39 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.IntersectPatternCode(ctx, params)
+	var response IntersectPatternCodeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IntersectPatternCode",
+			OperationID:   "intersectPatternCode",
+			Body:          nil,
+			Params: map[string]any{
+				"code": params.Code,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IntersectPatternCodeParams
+			Response = IntersectPatternCodeRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IntersectPatternCode(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IntersectPatternCode(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -474,7 +721,37 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.Re
 		err error
 	)
 
-	response, err := s.h.MultipleGenericResponses(ctx)
+	var response MultipleGenericResponsesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MultipleGenericResponses",
+			OperationID:   "multipleGenericResponses",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = MultipleGenericResponsesRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MultipleGenericResponses(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.MultipleGenericResponses(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -522,7 +799,37 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w ht
 		err error
 	)
 
-	response, err := s.h.OctetStreamBinaryStringSchema(ctx)
+	var response OctetStreamBinaryStringSchemaOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OctetStreamBinaryStringSchema",
+			OperationID:   "octetStreamBinaryStringSchema",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = OctetStreamBinaryStringSchemaOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OctetStreamBinaryStringSchema(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.OctetStreamBinaryStringSchema(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -570,7 +877,37 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.Resp
 		err error
 	)
 
-	response, err := s.h.OctetStreamEmptySchema(ctx)
+	var response OctetStreamEmptySchemaOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OctetStreamEmptySchema",
+			OperationID:   "octetStreamEmptySchema",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = OctetStreamEmptySchemaOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OctetStreamEmptySchema(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.OctetStreamEmptySchema(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -618,7 +955,37 @@ func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, w http
 		err error
 	)
 
-	response, err := s.h.TextPlainBinaryStringSchema(ctx)
+	var response TextPlainBinaryStringSchemaOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TextPlainBinaryStringSchema",
+			OperationID:   "textPlainBinaryStringSchema",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = TextPlainBinaryStringSchemaOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TextPlainBinaryStringSchema(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.TextPlainBinaryStringSchema(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)

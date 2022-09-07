@@ -76,6 +76,7 @@ type Server struct {
 	duration syncint64.Histogram
 }
 
+// NewServer creates new Server.
 func NewServer(h Handler, opts ...Option) (*Server, error) {
 	s := &Server{
 		h:   h,

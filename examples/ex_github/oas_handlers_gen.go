@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -62,7 +63,41 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 		return
 	}
 
-	response, err := s.h.ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+	var response ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg",
+			OperationID:   "actions/add-repo-access-to-self-hosted-runner-group-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":             params.Org,
+				"runner_group_id": params.RunnerGroupID,
+				"repository_id":   params.RepositoryID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams
+			Response = ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -124,7 +159,41 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 		return
 	}
 
-	response, err := s.h.ActionsAddSelectedRepoToOrgSecret(ctx, params)
+	var response ActionsAddSelectedRepoToOrgSecretRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsAddSelectedRepoToOrgSecret",
+			OperationID:   "actions/add-selected-repo-to-org-secret",
+			Body:          nil,
+			Params: map[string]any{
+				"org":           params.Org,
+				"secret_name":   params.SecretName,
+				"repository_id": params.RepositoryID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsAddSelectedRepoToOrgSecretParams
+			Response = ActionsAddSelectedRepoToOrgSecretRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsAddSelectedRepoToOrgSecret(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsAddSelectedRepoToOrgSecret(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -186,7 +255,41 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 		return
 	}
 
-	response, err := s.h.ActionsAddSelfHostedRunnerToGroupForOrg(ctx, params)
+	var response ActionsAddSelfHostedRunnerToGroupForOrgNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsAddSelfHostedRunnerToGroupForOrg",
+			OperationID:   "actions/add-self-hosted-runner-to-group-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":             params.Org,
+				"runner_group_id": params.RunnerGroupID,
+				"runner_id":       params.RunnerID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsAddSelfHostedRunnerToGroupForOrgParams
+			Response = ActionsAddSelfHostedRunnerToGroupForOrgNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsAddSelfHostedRunnerToGroupForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsAddSelfHostedRunnerToGroupForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -248,7 +351,41 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.R
 		return
 	}
 
-	response, err := s.h.ActionsApproveWorkflowRun(ctx, params)
+	var response ActionsApproveWorkflowRunRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsApproveWorkflowRun",
+			OperationID:   "actions/approve-workflow-run",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"run_id": params.RunID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsApproveWorkflowRunParams
+			Response = ActionsApproveWorkflowRunRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsApproveWorkflowRun(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsApproveWorkflowRun(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -310,7 +447,41 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 		return
 	}
 
-	response, err := s.h.ActionsCancelWorkflowRun(ctx, params)
+	var response ActionsCancelWorkflowRunAccepted
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsCancelWorkflowRun",
+			OperationID:   "actions/cancel-workflow-run",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"run_id": params.RunID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsCancelWorkflowRunParams
+			Response = ActionsCancelWorkflowRunAccepted
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsCancelWorkflowRun(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsCancelWorkflowRun(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -387,7 +558,41 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 		}
 	}()
 
-	response, err := s.h.ActionsCreateOrUpdateEnvironmentSecret(ctx, request, params)
+	var response ActionsCreateOrUpdateEnvironmentSecretRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsCreateOrUpdateEnvironmentSecret",
+			OperationID:   "actions/create-or-update-environment-secret",
+			Body:          request,
+			Params: map[string]any{
+				"repository_id":    params.RepositoryID,
+				"environment_name": params.EnvironmentName,
+				"secret_name":      params.SecretName,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ActionsCreateOrUpdateEnvironmentSecretReq
+			Params   = ActionsCreateOrUpdateEnvironmentSecretParams
+			Response = ActionsCreateOrUpdateEnvironmentSecretRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsCreateOrUpdateEnvironmentSecret(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsCreateOrUpdateEnvironmentSecret(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -464,7 +669,40 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 		}
 	}()
 
-	response, err := s.h.ActionsCreateOrUpdateOrgSecret(ctx, request, params)
+	var response ActionsCreateOrUpdateOrgSecretRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsCreateOrUpdateOrgSecret",
+			OperationID:   "actions/create-or-update-org-secret",
+			Body:          request,
+			Params: map[string]any{
+				"org":         params.Org,
+				"secret_name": params.SecretName,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ActionsCreateOrUpdateOrgSecretReq
+			Params   = ActionsCreateOrUpdateOrgSecretParams
+			Response = ActionsCreateOrUpdateOrgSecretRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsCreateOrUpdateOrgSecret(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsCreateOrUpdateOrgSecret(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -541,7 +779,41 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 		}
 	}()
 
-	response, err := s.h.ActionsCreateOrUpdateRepoSecret(ctx, request, params)
+	var response ActionsCreateOrUpdateRepoSecretRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsCreateOrUpdateRepoSecret",
+			OperationID:   "actions/create-or-update-repo-secret",
+			Body:          request,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"secret_name": params.SecretName,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ActionsCreateOrUpdateRepoSecretReq
+			Params   = ActionsCreateOrUpdateRepoSecretParams
+			Response = ActionsCreateOrUpdateRepoSecretRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsCreateOrUpdateRepoSecret(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsCreateOrUpdateRepoSecret(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -603,7 +875,39 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 		return
 	}
 
-	response, err := s.h.ActionsCreateRegistrationTokenForOrg(ctx, params)
+	var response AuthenticationToken
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsCreateRegistrationTokenForOrg",
+			OperationID:   "actions/create-registration-token-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsCreateRegistrationTokenForOrgParams
+			Response = AuthenticationToken
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsCreateRegistrationTokenForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsCreateRegistrationTokenForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -665,7 +969,40 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 		return
 	}
 
-	response, err := s.h.ActionsCreateRegistrationTokenForRepo(ctx, params)
+	var response AuthenticationToken
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsCreateRegistrationTokenForRepo",
+			OperationID:   "actions/create-registration-token-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsCreateRegistrationTokenForRepoParams
+			Response = AuthenticationToken
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsCreateRegistrationTokenForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsCreateRegistrationTokenForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -727,7 +1064,39 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 		return
 	}
 
-	response, err := s.h.ActionsCreateRemoveTokenForOrg(ctx, params)
+	var response AuthenticationToken
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsCreateRemoveTokenForOrg",
+			OperationID:   "actions/create-remove-token-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsCreateRemoveTokenForOrgParams
+			Response = AuthenticationToken
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsCreateRemoveTokenForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsCreateRemoveTokenForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -789,7 +1158,40 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 		return
 	}
 
-	response, err := s.h.ActionsCreateRemoveTokenForRepo(ctx, params)
+	var response AuthenticationToken
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsCreateRemoveTokenForRepo",
+			OperationID:   "actions/create-remove-token-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsCreateRemoveTokenForRepoParams
+			Response = AuthenticationToken
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsCreateRemoveTokenForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsCreateRemoveTokenForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -866,7 +1268,39 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 		}
 	}()
 
-	response, err := s.h.ActionsCreateSelfHostedRunnerGroupForOrg(ctx, request, params)
+	var response RunnerGroupsOrg
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsCreateSelfHostedRunnerGroupForOrg",
+			OperationID:   "actions/create-self-hosted-runner-group-for-org",
+			Body:          request,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ActionsCreateSelfHostedRunnerGroupForOrgReq
+			Params   = ActionsCreateSelfHostedRunnerGroupForOrgParams
+			Response = RunnerGroupsOrg
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsCreateSelfHostedRunnerGroupForOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsCreateSelfHostedRunnerGroupForOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -928,7 +1362,41 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.ActionsDeleteArtifact(ctx, params)
+	var response ActionsDeleteArtifactNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsDeleteArtifact",
+			OperationID:   "actions/delete-artifact",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"artifact_id": params.ArtifactID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsDeleteArtifactParams
+			Response = ActionsDeleteArtifactNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsDeleteArtifact(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsDeleteArtifact(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -990,7 +1458,41 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 		return
 	}
 
-	response, err := s.h.ActionsDeleteEnvironmentSecret(ctx, params)
+	var response ActionsDeleteEnvironmentSecretNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsDeleteEnvironmentSecret",
+			OperationID:   "actions/delete-environment-secret",
+			Body:          nil,
+			Params: map[string]any{
+				"repository_id":    params.RepositoryID,
+				"environment_name": params.EnvironmentName,
+				"secret_name":      params.SecretName,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsDeleteEnvironmentSecretParams
+			Response = ActionsDeleteEnvironmentSecretNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsDeleteEnvironmentSecret(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsDeleteEnvironmentSecret(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1052,7 +1554,40 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.ActionsDeleteOrgSecret(ctx, params)
+	var response ActionsDeleteOrgSecretNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsDeleteOrgSecret",
+			OperationID:   "actions/delete-org-secret",
+			Body:          nil,
+			Params: map[string]any{
+				"org":         params.Org,
+				"secret_name": params.SecretName,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsDeleteOrgSecretParams
+			Response = ActionsDeleteOrgSecretNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsDeleteOrgSecret(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsDeleteOrgSecret(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1114,7 +1649,41 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 		return
 	}
 
-	response, err := s.h.ActionsDeleteRepoSecret(ctx, params)
+	var response ActionsDeleteRepoSecretNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsDeleteRepoSecret",
+			OperationID:   "actions/delete-repo-secret",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"secret_name": params.SecretName,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsDeleteRepoSecretParams
+			Response = ActionsDeleteRepoSecretNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsDeleteRepoSecret(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsDeleteRepoSecret(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1176,7 +1745,40 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 		return
 	}
 
-	response, err := s.h.ActionsDeleteSelfHostedRunnerFromOrg(ctx, params)
+	var response ActionsDeleteSelfHostedRunnerFromOrgNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsDeleteSelfHostedRunnerFromOrg",
+			OperationID:   "actions/delete-self-hosted-runner-from-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":       params.Org,
+				"runner_id": params.RunnerID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsDeleteSelfHostedRunnerFromOrgParams
+			Response = ActionsDeleteSelfHostedRunnerFromOrgNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsDeleteSelfHostedRunnerFromOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsDeleteSelfHostedRunnerFromOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1238,7 +1840,41 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 		return
 	}
 
-	response, err := s.h.ActionsDeleteSelfHostedRunnerFromRepo(ctx, params)
+	var response ActionsDeleteSelfHostedRunnerFromRepoNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsDeleteSelfHostedRunnerFromRepo",
+			OperationID:   "actions/delete-self-hosted-runner-from-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":     params.Owner,
+				"repo":      params.Repo,
+				"runner_id": params.RunnerID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsDeleteSelfHostedRunnerFromRepoParams
+			Response = ActionsDeleteSelfHostedRunnerFromRepoNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsDeleteSelfHostedRunnerFromRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsDeleteSelfHostedRunnerFromRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1300,7 +1936,40 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 		return
 	}
 
-	response, err := s.h.ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx, params)
+	var response ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsDeleteSelfHostedRunnerGroupFromOrg",
+			OperationID:   "actions/delete-self-hosted-runner-group-from-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":             params.Org,
+				"runner_group_id": params.RunnerGroupID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsDeleteSelfHostedRunnerGroupFromOrgParams
+			Response = ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1362,7 +2031,41 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 		return
 	}
 
-	response, err := s.h.ActionsDeleteWorkflowRun(ctx, params)
+	var response ActionsDeleteWorkflowRunNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsDeleteWorkflowRun",
+			OperationID:   "actions/delete-workflow-run",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"run_id": params.RunID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsDeleteWorkflowRunParams
+			Response = ActionsDeleteWorkflowRunNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsDeleteWorkflowRun(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsDeleteWorkflowRun(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1424,7 +2127,41 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 		return
 	}
 
-	response, err := s.h.ActionsDeleteWorkflowRunLogs(ctx, params)
+	var response ActionsDeleteWorkflowRunLogsNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsDeleteWorkflowRunLogs",
+			OperationID:   "actions/delete-workflow-run-logs",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"run_id": params.RunID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsDeleteWorkflowRunLogsParams
+			Response = ActionsDeleteWorkflowRunLogsNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsDeleteWorkflowRunLogs(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsDeleteWorkflowRunLogs(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1486,7 +2223,40 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 		return
 	}
 
-	response, err := s.h.ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx, params)
+	var response ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsDisableSelectedRepositoryGithubActionsOrganization",
+			OperationID:   "actions/disable-selected-repository-github-actions-organization",
+			Body:          nil,
+			Params: map[string]any{
+				"org":           params.Org,
+				"repository_id": params.RepositoryID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsDisableSelectedRepositoryGithubActionsOrganizationParams
+			Response = ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1548,7 +2318,42 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 		return
 	}
 
-	response, err := s.h.ActionsDownloadArtifact(ctx, params)
+	var response ActionsDownloadArtifactFound
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsDownloadArtifact",
+			OperationID:   "actions/download-artifact",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":          params.Owner,
+				"repo":           params.Repo,
+				"artifact_id":    params.ArtifactID,
+				"archive_format": params.ArchiveFormat,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsDownloadArtifactParams
+			Response = ActionsDownloadArtifactFound
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsDownloadArtifact(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsDownloadArtifact(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1610,7 +2415,41 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 		return
 	}
 
-	response, err := s.h.ActionsDownloadJobLogsForWorkflowRun(ctx, params)
+	var response ActionsDownloadJobLogsForWorkflowRunFound
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsDownloadJobLogsForWorkflowRun",
+			OperationID:   "actions/download-job-logs-for-workflow-run",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"job_id": params.JobID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsDownloadJobLogsForWorkflowRunParams
+			Response = ActionsDownloadJobLogsForWorkflowRunFound
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsDownloadJobLogsForWorkflowRun(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsDownloadJobLogsForWorkflowRun(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1672,7 +2511,41 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 		return
 	}
 
-	response, err := s.h.ActionsDownloadWorkflowRunLogs(ctx, params)
+	var response ActionsDownloadWorkflowRunLogsFound
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsDownloadWorkflowRunLogs",
+			OperationID:   "actions/download-workflow-run-logs",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"run_id": params.RunID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsDownloadWorkflowRunLogsParams
+			Response = ActionsDownloadWorkflowRunLogsFound
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsDownloadWorkflowRunLogs(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsDownloadWorkflowRunLogs(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1734,7 +2607,40 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 		return
 	}
 
-	response, err := s.h.ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx, params)
+	var response ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsEnableSelectedRepositoryGithubActionsOrganization",
+			OperationID:   "actions/enable-selected-repository-github-actions-organization",
+			Body:          nil,
+			Params: map[string]any{
+				"org":           params.Org,
+				"repository_id": params.RepositoryID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsEnableSelectedRepositoryGithubActionsOrganizationParams
+			Response = ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1796,7 +2702,39 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 		return
 	}
 
-	response, err := s.h.ActionsGetAllowedActionsOrganization(ctx, params)
+	var response SelectedActions
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetAllowedActionsOrganization",
+			OperationID:   "actions/get-allowed-actions-organization",
+			Body:          nil,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetAllowedActionsOrganizationParams
+			Response = SelectedActions
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetAllowedActionsOrganization(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetAllowedActionsOrganization(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1858,7 +2796,40 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 		return
 	}
 
-	response, err := s.h.ActionsGetAllowedActionsRepository(ctx, params)
+	var response SelectedActions
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetAllowedActionsRepository",
+			OperationID:   "actions/get-allowed-actions-repository",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetAllowedActionsRepositoryParams
+			Response = SelectedActions
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetAllowedActionsRepository(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetAllowedActionsRepository(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1920,7 +2891,41 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 		return
 	}
 
-	response, err := s.h.ActionsGetArtifact(ctx, params)
+	var response Artifact
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetArtifact",
+			OperationID:   "actions/get-artifact",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"artifact_id": params.ArtifactID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetArtifactParams
+			Response = Artifact
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetArtifact(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetArtifact(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1982,7 +2987,40 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 		return
 	}
 
-	response, err := s.h.ActionsGetEnvironmentPublicKey(ctx, params)
+	var response ActionsPublicKey
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetEnvironmentPublicKey",
+			OperationID:   "actions/get-environment-public-key",
+			Body:          nil,
+			Params: map[string]any{
+				"repository_id":    params.RepositoryID,
+				"environment_name": params.EnvironmentName,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetEnvironmentPublicKeyParams
+			Response = ActionsPublicKey
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetEnvironmentPublicKey(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetEnvironmentPublicKey(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2044,7 +3082,41 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 		return
 	}
 
-	response, err := s.h.ActionsGetEnvironmentSecret(ctx, params)
+	var response ActionsSecret
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetEnvironmentSecret",
+			OperationID:   "actions/get-environment-secret",
+			Body:          nil,
+			Params: map[string]any{
+				"repository_id":    params.RepositoryID,
+				"environment_name": params.EnvironmentName,
+				"secret_name":      params.SecretName,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetEnvironmentSecretParams
+			Response = ActionsSecret
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetEnvironmentSecret(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetEnvironmentSecret(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2106,7 +3178,39 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 		return
 	}
 
-	response, err := s.h.ActionsGetGithubActionsPermissionsOrganization(ctx, params)
+	var response ActionsOrganizationPermissions
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetGithubActionsPermissionsOrganization",
+			OperationID:   "actions/get-github-actions-permissions-organization",
+			Body:          nil,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetGithubActionsPermissionsOrganizationParams
+			Response = ActionsOrganizationPermissions
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetGithubActionsPermissionsOrganization(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetGithubActionsPermissionsOrganization(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2168,7 +3272,40 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 		return
 	}
 
-	response, err := s.h.ActionsGetGithubActionsPermissionsRepository(ctx, params)
+	var response ActionsRepositoryPermissions
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetGithubActionsPermissionsRepository",
+			OperationID:   "actions/get-github-actions-permissions-repository",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetGithubActionsPermissionsRepositoryParams
+			Response = ActionsRepositoryPermissions
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetGithubActionsPermissionsRepository(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetGithubActionsPermissionsRepository(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2230,7 +3367,41 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 		return
 	}
 
-	response, err := s.h.ActionsGetJobForWorkflowRun(ctx, params)
+	var response Job
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetJobForWorkflowRun",
+			OperationID:   "actions/get-job-for-workflow-run",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"job_id": params.JobID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetJobForWorkflowRunParams
+			Response = Job
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetJobForWorkflowRun(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetJobForWorkflowRun(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2292,7 +3463,39 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.ActionsGetOrgPublicKey(ctx, params)
+	var response ActionsPublicKey
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetOrgPublicKey",
+			OperationID:   "actions/get-org-public-key",
+			Body:          nil,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetOrgPublicKeyParams
+			Response = ActionsPublicKey
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetOrgPublicKey(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetOrgPublicKey(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2354,7 +3557,40 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.ActionsGetOrgSecret(ctx, params)
+	var response OrganizationActionsSecret
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetOrgSecret",
+			OperationID:   "actions/get-org-secret",
+			Body:          nil,
+			Params: map[string]any{
+				"org":         params.Org,
+				"secret_name": params.SecretName,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetOrgSecretParams
+			Response = OrganizationActionsSecret
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetOrgSecret(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetOrgSecret(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2416,7 +3652,40 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 		return
 	}
 
-	response, err := s.h.ActionsGetRepoPublicKey(ctx, params)
+	var response ActionsPublicKey
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetRepoPublicKey",
+			OperationID:   "actions/get-repo-public-key",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetRepoPublicKeyParams
+			Response = ActionsPublicKey
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetRepoPublicKey(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetRepoPublicKey(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2478,7 +3747,41 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.ActionsGetRepoSecret(ctx, params)
+	var response ActionsSecret
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetRepoSecret",
+			OperationID:   "actions/get-repo-secret",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"secret_name": params.SecretName,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetRepoSecretParams
+			Response = ActionsSecret
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetRepoSecret(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetRepoSecret(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2540,7 +3843,41 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.Res
 		return
 	}
 
-	response, err := s.h.ActionsGetReviewsForRun(ctx, params)
+	var response []EnvironmentApprovals
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetReviewsForRun",
+			OperationID:   "actions/get-reviews-for-run",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"run_id": params.RunID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetReviewsForRunParams
+			Response = []EnvironmentApprovals
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetReviewsForRun(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetReviewsForRun(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2602,7 +3939,40 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 		return
 	}
 
-	response, err := s.h.ActionsGetSelfHostedRunnerForOrg(ctx, params)
+	var response Runner
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetSelfHostedRunnerForOrg",
+			OperationID:   "actions/get-self-hosted-runner-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":       params.Org,
+				"runner_id": params.RunnerID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetSelfHostedRunnerForOrgParams
+			Response = Runner
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetSelfHostedRunnerForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetSelfHostedRunnerForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2664,7 +4034,41 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 		return
 	}
 
-	response, err := s.h.ActionsGetSelfHostedRunnerForRepo(ctx, params)
+	var response Runner
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetSelfHostedRunnerForRepo",
+			OperationID:   "actions/get-self-hosted-runner-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":     params.Owner,
+				"repo":      params.Repo,
+				"runner_id": params.RunnerID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetSelfHostedRunnerForRepoParams
+			Response = Runner
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetSelfHostedRunnerForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetSelfHostedRunnerForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2726,7 +4130,40 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 		return
 	}
 
-	response, err := s.h.ActionsGetSelfHostedRunnerGroupForOrg(ctx, params)
+	var response RunnerGroupsOrg
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetSelfHostedRunnerGroupForOrg",
+			OperationID:   "actions/get-self-hosted-runner-group-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":             params.Org,
+				"runner_group_id": params.RunnerGroupID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetSelfHostedRunnerGroupForOrgParams
+			Response = RunnerGroupsOrg
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetSelfHostedRunnerGroupForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetSelfHostedRunnerGroupForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2788,7 +4225,41 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.ActionsGetWorkflowRun(ctx, params)
+	var response WorkflowRun
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetWorkflowRun",
+			OperationID:   "actions/get-workflow-run",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"run_id": params.RunID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetWorkflowRunParams
+			Response = WorkflowRun
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetWorkflowRun(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetWorkflowRun(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2850,7 +4321,41 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 		return
 	}
 
-	response, err := s.h.ActionsGetWorkflowRunUsage(ctx, params)
+	var response WorkflowRunUsage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsGetWorkflowRunUsage",
+			OperationID:   "actions/get-workflow-run-usage",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"run_id": params.RunID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsGetWorkflowRunUsageParams
+			Response = WorkflowRunUsage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsGetWorkflowRunUsage(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsGetWorkflowRunUsage(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2912,7 +4417,42 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 		return
 	}
 
-	response, err := s.h.ActionsListArtifactsForRepo(ctx, params)
+	var response ActionsListArtifactsForRepoOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsListArtifactsForRepo",
+			OperationID:   "actions/list-artifacts-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListArtifactsForRepoParams
+			Response = ActionsListArtifactsForRepoOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsListArtifactsForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListArtifactsForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2974,7 +4514,42 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 		return
 	}
 
-	response, err := s.h.ActionsListEnvironmentSecrets(ctx, params)
+	var response ActionsListEnvironmentSecretsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsListEnvironmentSecrets",
+			OperationID:   "actions/list-environment-secrets",
+			Body:          nil,
+			Params: map[string]any{
+				"repository_id":    params.RepositoryID,
+				"environment_name": params.EnvironmentName,
+				"per_page":         params.PerPage,
+				"page":             params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListEnvironmentSecretsParams
+			Response = ActionsListEnvironmentSecretsOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsListEnvironmentSecrets(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListEnvironmentSecrets(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3036,7 +4611,44 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 		return
 	}
 
-	response, err := s.h.ActionsListJobsForWorkflowRun(ctx, params)
+	var response ActionsListJobsForWorkflowRunOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsListJobsForWorkflowRun",
+			OperationID:   "actions/list-jobs-for-workflow-run",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"run_id":   params.RunID,
+				"filter":   params.Filter,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListJobsForWorkflowRunParams
+			Response = ActionsListJobsForWorkflowRunOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsListJobsForWorkflowRun(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListJobsForWorkflowRun(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3098,7 +4710,41 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.ActionsListOrgSecrets(ctx, params)
+	var response ActionsListOrgSecretsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsListOrgSecrets",
+			OperationID:   "actions/list-org-secrets",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListOrgSecretsParams
+			Response = ActionsListOrgSecretsOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsListOrgSecrets(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListOrgSecrets(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3160,7 +4806,42 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 		return
 	}
 
-	response, err := s.h.ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+	var response ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg",
+			OperationID:   "actions/list-repo-access-to-self-hosted-runner-group-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":             params.Org,
+				"runner_group_id": params.RunnerGroupID,
+				"page":            params.Page,
+				"per_page":        params.PerPage,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams
+			Response = ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3222,7 +4903,42 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.ActionsListRepoSecrets(ctx, params)
+	var response ActionsListRepoSecretsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsListRepoSecrets",
+			OperationID:   "actions/list-repo-secrets",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListRepoSecretsParams
+			Response = ActionsListRepoSecretsOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsListRepoSecrets(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListRepoSecrets(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3284,7 +5000,42 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 		return
 	}
 
-	response, err := s.h.ActionsListRepoWorkflows(ctx, params)
+	var response ActionsListRepoWorkflowsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsListRepoWorkflows",
+			OperationID:   "actions/list-repo-workflows",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListRepoWorkflowsParams
+			Response = ActionsListRepoWorkflowsOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsListRepoWorkflows(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListRepoWorkflows(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3346,7 +5097,39 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 		return
 	}
 
-	response, err := s.h.ActionsListRunnerApplicationsForOrg(ctx, params)
+	var response []RunnerApplication
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsListRunnerApplicationsForOrg",
+			OperationID:   "actions/list-runner-applications-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListRunnerApplicationsForOrgParams
+			Response = []RunnerApplication
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsListRunnerApplicationsForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListRunnerApplicationsForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3408,7 +5191,40 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 		return
 	}
 
-	response, err := s.h.ActionsListRunnerApplicationsForRepo(ctx, params)
+	var response []RunnerApplication
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsListRunnerApplicationsForRepo",
+			OperationID:   "actions/list-runner-applications-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListRunnerApplicationsForRepoParams
+			Response = []RunnerApplication
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsListRunnerApplicationsForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListRunnerApplicationsForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3470,7 +5286,42 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 		return
 	}
 
-	response, err := s.h.ActionsListSelectedReposForOrgSecret(ctx, params)
+	var response ActionsListSelectedReposForOrgSecretOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsListSelectedReposForOrgSecret",
+			OperationID:   "actions/list-selected-repos-for-org-secret",
+			Body:          nil,
+			Params: map[string]any{
+				"org":         params.Org,
+				"secret_name": params.SecretName,
+				"page":        params.Page,
+				"per_page":    params.PerPage,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListSelectedReposForOrgSecretParams
+			Response = ActionsListSelectedReposForOrgSecretOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsListSelectedReposForOrgSecret(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListSelectedReposForOrgSecret(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3532,7 +5383,41 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 		return
 	}
 
-	response, err := s.h.ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx, params)
+	var response ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization",
+			OperationID:   "actions/list-selected-repositories-enabled-github-actions-organization",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
+			Response = ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3594,7 +5479,41 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 		return
 	}
 
-	response, err := s.h.ActionsListSelfHostedRunnerGroupsForOrg(ctx, params)
+	var response ActionsListSelfHostedRunnerGroupsForOrgOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsListSelfHostedRunnerGroupsForOrg",
+			OperationID:   "actions/list-self-hosted-runner-groups-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListSelfHostedRunnerGroupsForOrgParams
+			Response = ActionsListSelfHostedRunnerGroupsForOrgOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsListSelfHostedRunnerGroupsForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListSelfHostedRunnerGroupsForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3656,7 +5575,41 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 		return
 	}
 
-	response, err := s.h.ActionsListSelfHostedRunnersForOrg(ctx, params)
+	var response ActionsListSelfHostedRunnersForOrgOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsListSelfHostedRunnersForOrg",
+			OperationID:   "actions/list-self-hosted-runners-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListSelfHostedRunnersForOrgParams
+			Response = ActionsListSelfHostedRunnersForOrgOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsListSelfHostedRunnersForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListSelfHostedRunnersForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3718,7 +5671,42 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 		return
 	}
 
-	response, err := s.h.ActionsListSelfHostedRunnersForRepo(ctx, params)
+	var response ActionsListSelfHostedRunnersForRepoOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsListSelfHostedRunnersForRepo",
+			OperationID:   "actions/list-self-hosted-runners-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListSelfHostedRunnersForRepoParams
+			Response = ActionsListSelfHostedRunnersForRepoOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsListSelfHostedRunnersForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListSelfHostedRunnersForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3780,7 +5768,42 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 		return
 	}
 
-	response, err := s.h.ActionsListSelfHostedRunnersInGroupForOrg(ctx, params)
+	var response ActionsListSelfHostedRunnersInGroupForOrgOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsListSelfHostedRunnersInGroupForOrg",
+			OperationID:   "actions/list-self-hosted-runners-in-group-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":             params.Org,
+				"runner_group_id": params.RunnerGroupID,
+				"per_page":        params.PerPage,
+				"page":            params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListSelfHostedRunnersInGroupForOrgParams
+			Response = ActionsListSelfHostedRunnersInGroupForOrgOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsListSelfHostedRunnersInGroupForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListSelfHostedRunnersInGroupForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3842,7 +5865,43 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 		return
 	}
 
-	response, err := s.h.ActionsListWorkflowRunArtifacts(ctx, params)
+	var response ActionsListWorkflowRunArtifactsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsListWorkflowRunArtifacts",
+			OperationID:   "actions/list-workflow-run-artifacts",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"run_id":   params.RunID,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListWorkflowRunArtifactsParams
+			Response = ActionsListWorkflowRunArtifactsOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsListWorkflowRunArtifacts(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListWorkflowRunArtifacts(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3904,7 +5963,47 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 		return
 	}
 
-	response, err := s.h.ActionsListWorkflowRunsForRepo(ctx, params)
+	var response ActionsListWorkflowRunsForRepoOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsListWorkflowRunsForRepo",
+			OperationID:   "actions/list-workflow-runs-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"actor":    params.Actor,
+				"branch":   params.Branch,
+				"event":    params.Event,
+				"status":   params.Status,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+				"created":  params.Created,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsListWorkflowRunsForRepoParams
+			Response = ActionsListWorkflowRunsForRepoOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsListWorkflowRunsForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsListWorkflowRunsForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3966,7 +6065,41 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.ActionsReRunWorkflow(ctx, params)
+	var response ActionsReRunWorkflowCreated
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsReRunWorkflow",
+			OperationID:   "actions/re-run-workflow",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"run_id": params.RunID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsReRunWorkflowParams
+			Response = ActionsReRunWorkflowCreated
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsReRunWorkflow(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsReRunWorkflow(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4028,7 +6161,41 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 		return
 	}
 
-	response, err := s.h.ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+	var response ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg",
+			OperationID:   "actions/remove-repo-access-to-self-hosted-runner-group-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":             params.Org,
+				"runner_group_id": params.RunnerGroupID,
+				"repository_id":   params.RepositoryID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams
+			Response = ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4090,7 +6257,41 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 		return
 	}
 
-	response, err := s.h.ActionsRemoveSelectedRepoFromOrgSecret(ctx, params)
+	var response ActionsRemoveSelectedRepoFromOrgSecretRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsRemoveSelectedRepoFromOrgSecret",
+			OperationID:   "actions/remove-selected-repo-from-org-secret",
+			Body:          nil,
+			Params: map[string]any{
+				"org":           params.Org,
+				"secret_name":   params.SecretName,
+				"repository_id": params.RepositoryID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsRemoveSelectedRepoFromOrgSecretParams
+			Response = ActionsRemoveSelectedRepoFromOrgSecretRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsRemoveSelectedRepoFromOrgSecret(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsRemoveSelectedRepoFromOrgSecret(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4152,7 +6353,41 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 		return
 	}
 
-	response, err := s.h.ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx, params)
+	var response ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsRemoveSelfHostedRunnerFromGroupForOrg",
+			OperationID:   "actions/remove-self-hosted-runner-from-group-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":             params.Org,
+				"runner_group_id": params.RunnerGroupID,
+				"runner_id":       params.RunnerID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsRemoveSelfHostedRunnerFromGroupForOrgParams
+			Response = ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4214,7 +6449,41 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.ActionsRetryWorkflow(ctx, params)
+	var response ActionsRetryWorkflowCreated
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsRetryWorkflow",
+			OperationID:   "actions/retry-workflow",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"run_id": params.RunID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActionsRetryWorkflowParams
+			Response = ActionsRetryWorkflowCreated
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsRetryWorkflow(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsRetryWorkflow(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4291,7 +6560,41 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 		}
 	}()
 
-	response, err := s.h.ActionsReviewPendingDeploymentsForRun(ctx, request, params)
+	var response []Deployment
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsReviewPendingDeploymentsForRun",
+			OperationID:   "actions/review-pending-deployments-for-run",
+			Body:          request,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"run_id": params.RunID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ActionsReviewPendingDeploymentsForRunReq
+			Params   = ActionsReviewPendingDeploymentsForRunParams
+			Response = []Deployment
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsReviewPendingDeploymentsForRun(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsReviewPendingDeploymentsForRun(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4368,7 +6671,39 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 		}
 	}()
 
-	response, err := s.h.ActionsSetAllowedActionsOrganization(ctx, request, params)
+	var response ActionsSetAllowedActionsOrganizationNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsSetAllowedActionsOrganization",
+			OperationID:   "actions/set-allowed-actions-organization",
+			Body:          request,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptSelectedActions
+			Params   = ActionsSetAllowedActionsOrganizationParams
+			Response = ActionsSetAllowedActionsOrganizationNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsSetAllowedActionsOrganization(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsSetAllowedActionsOrganization(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4445,7 +6780,40 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 		}
 	}()
 
-	response, err := s.h.ActionsSetAllowedActionsRepository(ctx, request, params)
+	var response ActionsSetAllowedActionsRepositoryNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsSetAllowedActionsRepository",
+			OperationID:   "actions/set-allowed-actions-repository",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptSelectedActions
+			Params   = ActionsSetAllowedActionsRepositoryParams
+			Response = ActionsSetAllowedActionsRepositoryNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsSetAllowedActionsRepository(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsSetAllowedActionsRepository(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4522,7 +6890,39 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 		}
 	}()
 
-	response, err := s.h.ActionsSetGithubActionsPermissionsOrganization(ctx, request, params)
+	var response ActionsSetGithubActionsPermissionsOrganizationNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsSetGithubActionsPermissionsOrganization",
+			OperationID:   "actions/set-github-actions-permissions-organization",
+			Body:          request,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ActionsSetGithubActionsPermissionsOrganizationReq
+			Params   = ActionsSetGithubActionsPermissionsOrganizationParams
+			Response = ActionsSetGithubActionsPermissionsOrganizationNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsSetGithubActionsPermissionsOrganization(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsSetGithubActionsPermissionsOrganization(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4599,7 +6999,40 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 		}
 	}()
 
-	response, err := s.h.ActionsSetGithubActionsPermissionsRepository(ctx, request, params)
+	var response ActionsSetGithubActionsPermissionsRepositoryNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsSetGithubActionsPermissionsRepository",
+			OperationID:   "actions/set-github-actions-permissions-repository",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ActionsSetGithubActionsPermissionsRepositoryReq
+			Params   = ActionsSetGithubActionsPermissionsRepositoryParams
+			Response = ActionsSetGithubActionsPermissionsRepositoryNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsSetGithubActionsPermissionsRepository(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsSetGithubActionsPermissionsRepository(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4676,7 +7109,40 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 		}
 	}()
 
-	response, err := s.h.ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx, request, params)
+	var response ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
+			OperationID:   "actions/set-repo-access-to-self-hosted-runner-group-in-org",
+			Body:          request,
+			Params: map[string]any{
+				"org":             params.Org,
+				"runner_group_id": params.RunnerGroupID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq
+			Params   = ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams
+			Response = ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4753,7 +7219,40 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 		}
 	}()
 
-	response, err := s.h.ActionsSetSelectedReposForOrgSecret(ctx, request, params)
+	var response ActionsSetSelectedReposForOrgSecretNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsSetSelectedReposForOrgSecret",
+			OperationID:   "actions/set-selected-repos-for-org-secret",
+			Body:          request,
+			Params: map[string]any{
+				"org":         params.Org,
+				"secret_name": params.SecretName,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ActionsSetSelectedReposForOrgSecretReq
+			Params   = ActionsSetSelectedReposForOrgSecretParams
+			Response = ActionsSetSelectedReposForOrgSecretNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsSetSelectedReposForOrgSecret(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsSetSelectedReposForOrgSecret(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4830,7 +7329,39 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 		}
 	}()
 
-	response, err := s.h.ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx, request, params)
+	var response ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
+			OperationID:   "actions/set-selected-repositories-enabled-github-actions-organization",
+			Body:          request,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq
+			Params   = ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams
+			Response = ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4907,7 +7438,40 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 		}
 	}()
 
-	response, err := s.h.ActionsSetSelfHostedRunnersInGroupForOrg(ctx, request, params)
+	var response ActionsSetSelfHostedRunnersInGroupForOrgNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsSetSelfHostedRunnersInGroupForOrg",
+			OperationID:   "actions/set-self-hosted-runners-in-group-for-org",
+			Body:          request,
+			Params: map[string]any{
+				"org":             params.Org,
+				"runner_group_id": params.RunnerGroupID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ActionsSetSelfHostedRunnersInGroupForOrgReq
+			Params   = ActionsSetSelfHostedRunnersInGroupForOrgParams
+			Response = ActionsSetSelfHostedRunnersInGroupForOrgNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsSetSelfHostedRunnersInGroupForOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsSetSelfHostedRunnersInGroupForOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4984,7 +7548,40 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 		}
 	}()
 
-	response, err := s.h.ActionsUpdateSelfHostedRunnerGroupForOrg(ctx, request, params)
+	var response RunnerGroupsOrg
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActionsUpdateSelfHostedRunnerGroupForOrg",
+			OperationID:   "actions/update-self-hosted-runner-group-for-org",
+			Body:          request,
+			Params: map[string]any{
+				"org":             params.Org,
+				"runner_group_id": params.RunnerGroupID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ActionsUpdateSelfHostedRunnerGroupForOrgReq
+			Params   = ActionsUpdateSelfHostedRunnerGroupForOrgParams
+			Response = RunnerGroupsOrg
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActionsUpdateSelfHostedRunnerGroupForOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActionsUpdateSelfHostedRunnerGroupForOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5046,7 +7643,40 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 		return
 	}
 
-	response, err := s.h.ActivityCheckRepoIsStarredByAuthenticatedUser(ctx, params)
+	var response ActivityCheckRepoIsStarredByAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityCheckRepoIsStarredByAuthenticatedUser",
+			OperationID:   "activity/check-repo-is-starred-by-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityCheckRepoIsStarredByAuthenticatedUserParams
+			Response = ActivityCheckRepoIsStarredByAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityCheckRepoIsStarredByAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityCheckRepoIsStarredByAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5108,7 +7738,40 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 		return
 	}
 
-	response, err := s.h.ActivityDeleteRepoSubscription(ctx, params)
+	var response ActivityDeleteRepoSubscriptionNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityDeleteRepoSubscription",
+			OperationID:   "activity/delete-repo-subscription",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityDeleteRepoSubscriptionParams
+			Response = ActivityDeleteRepoSubscriptionNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityDeleteRepoSubscription(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityDeleteRepoSubscription(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5170,7 +7833,39 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w
 		return
 	}
 
-	response, err := s.h.ActivityDeleteThreadSubscription(ctx, params)
+	var response ActivityDeleteThreadSubscriptionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityDeleteThreadSubscription",
+			OperationID:   "activity/delete-thread-subscription",
+			Body:          nil,
+			Params: map[string]any{
+				"thread_id": params.ThreadID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityDeleteThreadSubscriptionParams
+			Response = ActivityDeleteThreadSubscriptionRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityDeleteThreadSubscription(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityDeleteThreadSubscription(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5218,7 +7913,37 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, w http.ResponseWr
 		err error
 	)
 
-	response, err := s.h.ActivityGetFeeds(ctx)
+	var response Feed
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityGetFeeds",
+			OperationID:   "activity/get-feeds",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = Feed
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityGetFeeds(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityGetFeeds(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5280,7 +8005,40 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http
 		return
 	}
 
-	response, err := s.h.ActivityGetRepoSubscription(ctx, params)
+	var response ActivityGetRepoSubscriptionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityGetRepoSubscription",
+			OperationID:   "activity/get-repo-subscription",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityGetRepoSubscriptionParams
+			Response = ActivityGetRepoSubscriptionRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityGetRepoSubscription(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityGetRepoSubscription(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5342,7 +8100,39 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.ActivityGetThread(ctx, params)
+	var response ActivityGetThreadRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityGetThread",
+			OperationID:   "activity/get-thread",
+			Body:          nil,
+			Params: map[string]any{
+				"thread_id": params.ThreadID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityGetThreadParams
+			Response = ActivityGetThreadRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityGetThread(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityGetThread(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5404,7 +8194,39 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 		return
 	}
 
-	response, err := s.h.ActivityGetThreadSubscriptionForAuthenticatedUser(ctx, params)
+	var response ActivityGetThreadSubscriptionForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityGetThreadSubscriptionForAuthenticatedUser",
+			OperationID:   "activity/get-thread-subscription-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"thread_id": params.ThreadID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityGetThreadSubscriptionForAuthenticatedUserParams
+			Response = ActivityGetThreadSubscriptionForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityGetThreadSubscriptionForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityGetThreadSubscriptionForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5466,7 +8288,41 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 		return
 	}
 
-	response, err := s.h.ActivityListEventsForAuthenticatedUser(ctx, params)
+	var response []Event
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityListEventsForAuthenticatedUser",
+			OperationID:   "activity/list-events-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityListEventsForAuthenticatedUserParams
+			Response = []Event
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityListEventsForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityListEventsForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5528,7 +8384,44 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 		return
 	}
 
-	response, err := s.h.ActivityListNotificationsForAuthenticatedUser(ctx, params)
+	var response ActivityListNotificationsForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityListNotificationsForAuthenticatedUser",
+			OperationID:   "activity/list-notifications-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"all":           params.All,
+				"participating": params.Participating,
+				"since":         params.Since,
+				"before":        params.Before,
+				"per_page":      params.PerPage,
+				"page":          params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityListNotificationsForAuthenticatedUserParams
+			Response = ActivityListNotificationsForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityListNotificationsForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityListNotificationsForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5590,7 +8483,42 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 		return
 	}
 
-	response, err := s.h.ActivityListOrgEventsForAuthenticatedUser(ctx, params)
+	var response []Event
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityListOrgEventsForAuthenticatedUser",
+			OperationID:   "activity/list-org-events-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+				"org":      params.Org,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityListOrgEventsForAuthenticatedUserParams
+			Response = []Event
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityListOrgEventsForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityListOrgEventsForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5652,7 +8580,40 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.Re
 		return
 	}
 
-	response, err := s.h.ActivityListPublicEvents(ctx, params)
+	var response ActivityListPublicEventsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityListPublicEvents",
+			OperationID:   "activity/list-public-events",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityListPublicEventsParams
+			Response = ActivityListPublicEventsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityListPublicEvents(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityListPublicEvents(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5714,7 +8675,42 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 		return
 	}
 
-	response, err := s.h.ActivityListPublicEventsForRepoNetwork(ctx, params)
+	var response ActivityListPublicEventsForRepoNetworkRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityListPublicEventsForRepoNetwork",
+			OperationID:   "activity/list-public-events-for-repo-network",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityListPublicEventsForRepoNetworkParams
+			Response = ActivityListPublicEventsForRepoNetworkRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityListPublicEventsForRepoNetwork(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityListPublicEventsForRepoNetwork(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5776,7 +8772,41 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w 
 		return
 	}
 
-	response, err := s.h.ActivityListPublicEventsForUser(ctx, params)
+	var response []Event
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityListPublicEventsForUser",
+			OperationID:   "activity/list-public-events-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityListPublicEventsForUserParams
+			Response = []Event
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityListPublicEventsForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityListPublicEventsForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5838,7 +8868,41 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http
 		return
 	}
 
-	response, err := s.h.ActivityListPublicOrgEvents(ctx, params)
+	var response []Event
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityListPublicOrgEvents",
+			OperationID:   "activity/list-public-org-events",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityListPublicOrgEventsParams
+			Response = []Event
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityListPublicOrgEvents(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityListPublicOrgEvents(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5900,7 +8964,41 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 		return
 	}
 
-	response, err := s.h.ActivityListReceivedEventsForUser(ctx, params)
+	var response []Event
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityListReceivedEventsForUser",
+			OperationID:   "activity/list-received-events-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityListReceivedEventsForUserParams
+			Response = []Event
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityListReceivedEventsForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityListReceivedEventsForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5962,7 +9060,41 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 		return
 	}
 
-	response, err := s.h.ActivityListReceivedPublicEventsForUser(ctx, params)
+	var response []Event
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityListReceivedPublicEventsForUser",
+			OperationID:   "activity/list-received-public-events-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityListReceivedPublicEventsForUserParams
+			Response = []Event
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityListReceivedPublicEventsForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityListReceivedPublicEventsForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6024,7 +9156,42 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.ActivityListRepoEvents(ctx, params)
+	var response []Event
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityListRepoEvents",
+			OperationID:   "activity/list-repo-events",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityListRepoEventsParams
+			Response = []Event
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityListRepoEvents(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityListRepoEvents(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6086,7 +9253,46 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 		return
 	}
 
-	response, err := s.h.ActivityListRepoNotificationsForAuthenticatedUser(ctx, params)
+	var response ActivityListRepoNotificationsForAuthenticatedUserOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityListRepoNotificationsForAuthenticatedUser",
+			OperationID:   "activity/list-repo-notifications-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":         params.Owner,
+				"repo":          params.Repo,
+				"all":           params.All,
+				"participating": params.Participating,
+				"since":         params.Since,
+				"before":        params.Before,
+				"per_page":      params.PerPage,
+				"page":          params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityListRepoNotificationsForAuthenticatedUserParams
+			Response = ActivityListRepoNotificationsForAuthenticatedUserOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityListRepoNotificationsForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityListRepoNotificationsForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6148,7 +9354,42 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 		return
 	}
 
-	response, err := s.h.ActivityListReposStarredByAuthenticatedUser(ctx, params)
+	var response ActivityListReposStarredByAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityListReposStarredByAuthenticatedUser",
+			OperationID:   "activity/list-repos-starred-by-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"sort":      params.Sort,
+				"direction": params.Direction,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityListReposStarredByAuthenticatedUserParams
+			Response = ActivityListReposStarredByAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityListReposStarredByAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityListReposStarredByAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6210,7 +9451,41 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 		return
 	}
 
-	response, err := s.h.ActivityListReposWatchedByUser(ctx, params)
+	var response ActivityListReposWatchedByUserOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityListReposWatchedByUser",
+			OperationID:   "activity/list-repos-watched-by-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityListReposWatchedByUserParams
+			Response = ActivityListReposWatchedByUserOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityListReposWatchedByUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityListReposWatchedByUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6272,7 +9547,40 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 		return
 	}
 
-	response, err := s.h.ActivityListWatchedReposForAuthenticatedUser(ctx, params)
+	var response ActivityListWatchedReposForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityListWatchedReposForAuthenticatedUser",
+			OperationID:   "activity/list-watched-repos-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityListWatchedReposForAuthenticatedUserParams
+			Response = ActivityListWatchedReposForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityListWatchedReposForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityListWatchedReposForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6334,7 +9642,42 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 		return
 	}
 
-	response, err := s.h.ActivityListWatchersForRepo(ctx, params)
+	var response ActivityListWatchersForRepoOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityListWatchersForRepo",
+			OperationID:   "activity/list-watchers-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityListWatchersForRepoParams
+			Response = ActivityListWatchersForRepoOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityListWatchersForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityListWatchersForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6401,7 +9744,37 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w 
 		}
 	}()
 
-	response, err := s.h.ActivityMarkNotificationsAsRead(ctx, request)
+	var response ActivityMarkNotificationsAsReadRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityMarkNotificationsAsRead",
+			OperationID:   "activity/mark-notifications-as-read",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptActivityMarkNotificationsAsReadReq
+			Params   = struct{}
+			Response = ActivityMarkNotificationsAsReadRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityMarkNotificationsAsRead(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityMarkNotificationsAsRead(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6478,7 +9851,40 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 		}
 	}()
 
-	response, err := s.h.ActivityMarkRepoNotificationsAsRead(ctx, request, params)
+	var response ActivityMarkRepoNotificationsAsReadRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityMarkRepoNotificationsAsRead",
+			OperationID:   "activity/mark-repo-notifications-as-read",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptActivityMarkRepoNotificationsAsReadReq
+			Params   = ActivityMarkRepoNotificationsAsReadParams
+			Response = ActivityMarkRepoNotificationsAsReadRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityMarkRepoNotificationsAsRead(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityMarkRepoNotificationsAsRead(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6540,7 +9946,39 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.Re
 		return
 	}
 
-	response, err := s.h.ActivityMarkThreadAsRead(ctx, params)
+	var response ActivityMarkThreadAsReadRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityMarkThreadAsRead",
+			OperationID:   "activity/mark-thread-as-read",
+			Body:          nil,
+			Params: map[string]any{
+				"thread_id": params.ThreadID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityMarkThreadAsReadParams
+			Response = ActivityMarkThreadAsReadRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityMarkThreadAsRead(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityMarkThreadAsRead(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6617,7 +10055,40 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 		}
 	}()
 
-	response, err := s.h.ActivitySetRepoSubscription(ctx, request, params)
+	var response RepositorySubscription
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivitySetRepoSubscription",
+			OperationID:   "activity/set-repo-subscription",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptActivitySetRepoSubscriptionReq
+			Params   = ActivitySetRepoSubscriptionParams
+			Response = RepositorySubscription
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivitySetRepoSubscription(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivitySetRepoSubscription(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6694,7 +10165,39 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 		}
 	}()
 
-	response, err := s.h.ActivitySetThreadSubscription(ctx, request, params)
+	var response ActivitySetThreadSubscriptionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivitySetThreadSubscription",
+			OperationID:   "activity/set-thread-subscription",
+			Body:          request,
+			Params: map[string]any{
+				"thread_id": params.ThreadID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptActivitySetThreadSubscriptionReq
+			Params   = ActivitySetThreadSubscriptionParams
+			Response = ActivitySetThreadSubscriptionRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivitySetThreadSubscription(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivitySetThreadSubscription(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6756,7 +10259,40 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 		return
 	}
 
-	response, err := s.h.ActivityStarRepoForAuthenticatedUser(ctx, params)
+	var response ActivityStarRepoForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityStarRepoForAuthenticatedUser",
+			OperationID:   "activity/star-repo-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityStarRepoForAuthenticatedUserParams
+			Response = ActivityStarRepoForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityStarRepoForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityStarRepoForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6818,7 +10354,40 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 		return
 	}
 
-	response, err := s.h.ActivityUnstarRepoForAuthenticatedUser(ctx, params)
+	var response ActivityUnstarRepoForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ActivityUnstarRepoForAuthenticatedUser",
+			OperationID:   "activity/unstar-repo-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ActivityUnstarRepoForAuthenticatedUserParams
+			Response = ActivityUnstarRepoForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ActivityUnstarRepoForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ActivityUnstarRepoForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6880,7 +10449,40 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.R
 		return
 	}
 
-	response, err := s.h.AppsAddRepoToInstallation(ctx, params)
+	var response AppsAddRepoToInstallationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsAddRepoToInstallation",
+			OperationID:   "apps/add-repo-to-installation",
+			Body:          nil,
+			Params: map[string]any{
+				"installation_id": params.InstallationID,
+				"repository_id":   params.RepositoryID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsAddRepoToInstallationParams
+			Response = AppsAddRepoToInstallationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsAddRepoToInstallation(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsAddRepoToInstallation(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6957,7 +10559,39 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 		}
 	}()
 
-	response, err := s.h.AppsCheckToken(ctx, request, params)
+	var response AppsCheckTokenRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsCheckToken",
+			OperationID:   "apps/check-token",
+			Body:          request,
+			Params: map[string]any{
+				"client_id": params.ClientID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = AppsCheckTokenReq
+			Params   = AppsCheckTokenParams
+			Response = AppsCheckTokenRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsCheckToken(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsCheckToken(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7034,7 +10668,41 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 		}
 	}()
 
-	response, err := s.h.AppsCreateContentAttachment(ctx, request, params)
+	var response AppsCreateContentAttachmentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsCreateContentAttachment",
+			OperationID:   "apps/create-content-attachment",
+			Body:          request,
+			Params: map[string]any{
+				"owner":                params.Owner,
+				"repo":                 params.Repo,
+				"content_reference_id": params.ContentReferenceID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = AppsCreateContentAttachmentReq
+			Params   = AppsCreateContentAttachmentParams
+			Response = AppsCreateContentAttachmentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsCreateContentAttachment(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsCreateContentAttachment(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7111,7 +10779,39 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.Resp
 		}
 	}()
 
-	response, err := s.h.AppsCreateFromManifest(ctx, request, params)
+	var response AppsCreateFromManifestRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsCreateFromManifest",
+			OperationID:   "apps/create-from-manifest",
+			Body:          request,
+			Params: map[string]any{
+				"code": params.Code,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = *AppsCreateFromManifestReq
+			Params   = AppsCreateFromManifestParams
+			Response = AppsCreateFromManifestRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsCreateFromManifest(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsCreateFromManifest(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7188,7 +10888,39 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 		}
 	}()
 
-	response, err := s.h.AppsCreateInstallationAccessToken(ctx, request, params)
+	var response AppsCreateInstallationAccessTokenRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsCreateInstallationAccessToken",
+			OperationID:   "apps/create-installation-access-token",
+			Body:          request,
+			Params: map[string]any{
+				"installation_id": params.InstallationID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptAppsCreateInstallationAccessTokenReq
+			Params   = AppsCreateInstallationAccessTokenParams
+			Response = AppsCreateInstallationAccessTokenRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsCreateInstallationAccessToken(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsCreateInstallationAccessToken(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7265,7 +10997,39 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 		}
 	}()
 
-	response, err := s.h.AppsDeleteAuthorization(ctx, request, params)
+	var response AppsDeleteAuthorizationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsDeleteAuthorization",
+			OperationID:   "apps/delete-authorization",
+			Body:          request,
+			Params: map[string]any{
+				"client_id": params.ClientID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = AppsDeleteAuthorizationReq
+			Params   = AppsDeleteAuthorizationParams
+			Response = AppsDeleteAuthorizationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsDeleteAuthorization(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsDeleteAuthorization(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7327,7 +11091,39 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.AppsDeleteInstallation(ctx, params)
+	var response AppsDeleteInstallationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsDeleteInstallation",
+			OperationID:   "apps/delete-installation",
+			Body:          nil,
+			Params: map[string]any{
+				"installation_id": params.InstallationID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsDeleteInstallationParams
+			Response = AppsDeleteInstallationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsDeleteInstallation(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsDeleteInstallation(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7404,7 +11200,39 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 		}
 	}()
 
-	response, err := s.h.AppsDeleteToken(ctx, request, params)
+	var response AppsDeleteTokenRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsDeleteToken",
+			OperationID:   "apps/delete-token",
+			Body:          request,
+			Params: map[string]any{
+				"client_id": params.ClientID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = AppsDeleteTokenReq
+			Params   = AppsDeleteTokenParams
+			Response = AppsDeleteTokenRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsDeleteToken(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsDeleteToken(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7452,7 +11280,37 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, w http.Respon
 		err error
 	)
 
-	response, err := s.h.AppsGetAuthenticated(ctx)
+	var response Integration
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsGetAuthenticated",
+			OperationID:   "apps/get-authenticated",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = Integration
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsGetAuthenticated(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.AppsGetAuthenticated(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7514,7 +11372,39 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWrite
 		return
 	}
 
-	response, err := s.h.AppsGetBySlug(ctx, params)
+	var response AppsGetBySlugRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsGetBySlug",
+			OperationID:   "apps/get-by-slug",
+			Body:          nil,
+			Params: map[string]any{
+				"app_slug": params.AppSlug,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsGetBySlugParams
+			Response = AppsGetBySlugRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsGetBySlug(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsGetBySlug(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7576,7 +11466,39 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 		return
 	}
 
-	response, err := s.h.AppsGetSubscriptionPlanForAccount(ctx, params)
+	var response AppsGetSubscriptionPlanForAccountRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsGetSubscriptionPlanForAccount",
+			OperationID:   "apps/get-subscription-plan-for-account",
+			Body:          nil,
+			Params: map[string]any{
+				"account_id": params.AccountID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsGetSubscriptionPlanForAccountParams
+			Response = AppsGetSubscriptionPlanForAccountRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsGetSubscriptionPlanForAccount(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsGetSubscriptionPlanForAccount(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7638,7 +11560,39 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 		return
 	}
 
-	response, err := s.h.AppsGetSubscriptionPlanForAccountStubbed(ctx, params)
+	var response AppsGetSubscriptionPlanForAccountStubbedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsGetSubscriptionPlanForAccountStubbed",
+			OperationID:   "apps/get-subscription-plan-for-account-stubbed",
+			Body:          nil,
+			Params: map[string]any{
+				"account_id": params.AccountID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsGetSubscriptionPlanForAccountStubbedParams
+			Response = AppsGetSubscriptionPlanForAccountStubbedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsGetSubscriptionPlanForAccountStubbed(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsGetSubscriptionPlanForAccountStubbed(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7686,7 +11640,37 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, w http.
 		err error
 	)
 
-	response, err := s.h.AppsGetWebhookConfigForApp(ctx)
+	var response WebhookConfig
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsGetWebhookConfigForApp",
+			OperationID:   "apps/get-webhook-config-for-app",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = WebhookConfig
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsGetWebhookConfigForApp(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.AppsGetWebhookConfigForApp(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7748,7 +11732,39 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.AppsGetWebhookDelivery(ctx, params)
+	var response AppsGetWebhookDeliveryRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsGetWebhookDelivery",
+			OperationID:   "apps/get-webhook-delivery",
+			Body:          nil,
+			Params: map[string]any{
+				"delivery_id": params.DeliveryID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsGetWebhookDeliveryParams
+			Response = AppsGetWebhookDeliveryRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsGetWebhookDelivery(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsGetWebhookDelivery(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7810,7 +11826,43 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.Res
 		return
 	}
 
-	response, err := s.h.AppsListAccountsForPlan(ctx, params)
+	var response AppsListAccountsForPlanRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsListAccountsForPlan",
+			OperationID:   "apps/list-accounts-for-plan",
+			Body:          nil,
+			Params: map[string]any{
+				"plan_id":   params.PlanID,
+				"sort":      params.Sort,
+				"direction": params.Direction,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsListAccountsForPlanParams
+			Response = AppsListAccountsForPlanRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsListAccountsForPlan(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsListAccountsForPlan(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7872,7 +11924,43 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w h
 		return
 	}
 
-	response, err := s.h.AppsListAccountsForPlanStubbed(ctx, params)
+	var response AppsListAccountsForPlanStubbedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsListAccountsForPlanStubbed",
+			OperationID:   "apps/list-accounts-for-plan-stubbed",
+			Body:          nil,
+			Params: map[string]any{
+				"plan_id":   params.PlanID,
+				"sort":      params.Sort,
+				"direction": params.Direction,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsListAccountsForPlanStubbedParams
+			Response = AppsListAccountsForPlanStubbedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsListAccountsForPlanStubbed(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsListAccountsForPlanStubbed(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7934,7 +12022,41 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 		return
 	}
 
-	response, err := s.h.AppsListInstallationReposForAuthenticatedUser(ctx, params)
+	var response AppsListInstallationReposForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsListInstallationReposForAuthenticatedUser",
+			OperationID:   "apps/list-installation-repos-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"installation_id": params.InstallationID,
+				"per_page":        params.PerPage,
+				"page":            params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsListInstallationReposForAuthenticatedUserParams
+			Response = AppsListInstallationReposForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsListInstallationReposForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsListInstallationReposForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7996,7 +12118,40 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWrite
 		return
 	}
 
-	response, err := s.h.AppsListPlans(ctx, params)
+	var response AppsListPlansRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsListPlans",
+			OperationID:   "apps/list-plans",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsListPlansParams
+			Response = AppsListPlansRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsListPlans(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsListPlans(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8058,7 +12213,40 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.AppsListPlansStubbed(ctx, params)
+	var response AppsListPlansStubbedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsListPlansStubbed",
+			OperationID:   "apps/list-plans-stubbed",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsListPlansStubbedParams
+			Response = AppsListPlansStubbedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsListPlansStubbed(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsListPlansStubbed(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8120,7 +12308,40 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 		return
 	}
 
-	response, err := s.h.AppsListReposAccessibleToInstallation(ctx, params)
+	var response AppsListReposAccessibleToInstallationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsListReposAccessibleToInstallation",
+			OperationID:   "apps/list-repos-accessible-to-installation",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsListReposAccessibleToInstallationParams
+			Response = AppsListReposAccessibleToInstallationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsListReposAccessibleToInstallation(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsListReposAccessibleToInstallation(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8182,7 +12403,40 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 		return
 	}
 
-	response, err := s.h.AppsListSubscriptionsForAuthenticatedUser(ctx, params)
+	var response AppsListSubscriptionsForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsListSubscriptionsForAuthenticatedUser",
+			OperationID:   "apps/list-subscriptions-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsListSubscriptionsForAuthenticatedUserParams
+			Response = AppsListSubscriptionsForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsListSubscriptionsForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsListSubscriptionsForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8244,7 +12498,40 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 		return
 	}
 
-	response, err := s.h.AppsListSubscriptionsForAuthenticatedUserStubbed(ctx, params)
+	var response AppsListSubscriptionsForAuthenticatedUserStubbedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsListSubscriptionsForAuthenticatedUserStubbed",
+			OperationID:   "apps/list-subscriptions-for-authenticated-user-stubbed",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsListSubscriptionsForAuthenticatedUserStubbedParams
+			Response = AppsListSubscriptionsForAuthenticatedUserStubbedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsListSubscriptionsForAuthenticatedUserStubbed(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsListSubscriptionsForAuthenticatedUserStubbed(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8306,7 +12593,40 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.R
 		return
 	}
 
-	response, err := s.h.AppsListWebhookDeliveries(ctx, params)
+	var response AppsListWebhookDeliveriesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsListWebhookDeliveries",
+			OperationID:   "apps/list-webhook-deliveries",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"cursor":   params.Cursor,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsListWebhookDeliveriesParams
+			Response = AppsListWebhookDeliveriesRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsListWebhookDeliveries(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsListWebhookDeliveries(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8368,7 +12688,39 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w htt
 		return
 	}
 
-	response, err := s.h.AppsRedeliverWebhookDelivery(ctx, params)
+	var response AppsRedeliverWebhookDeliveryRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsRedeliverWebhookDelivery",
+			OperationID:   "apps/redeliver-webhook-delivery",
+			Body:          nil,
+			Params: map[string]any{
+				"delivery_id": params.DeliveryID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsRedeliverWebhookDeliveryParams
+			Response = AppsRedeliverWebhookDeliveryRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsRedeliverWebhookDelivery(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsRedeliverWebhookDelivery(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8430,7 +12782,40 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w h
 		return
 	}
 
-	response, err := s.h.AppsRemoveRepoFromInstallation(ctx, params)
+	var response AppsRemoveRepoFromInstallationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsRemoveRepoFromInstallation",
+			OperationID:   "apps/remove-repo-from-installation",
+			Body:          nil,
+			Params: map[string]any{
+				"installation_id": params.InstallationID,
+				"repository_id":   params.RepositoryID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsRemoveRepoFromInstallationParams
+			Response = AppsRemoveRepoFromInstallationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsRemoveRepoFromInstallation(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsRemoveRepoFromInstallation(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8507,7 +12892,39 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 		}
 	}()
 
-	response, err := s.h.AppsResetToken(ctx, request, params)
+	var response AppsResetTokenRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsResetToken",
+			OperationID:   "apps/reset-token",
+			Body:          request,
+			Params: map[string]any{
+				"client_id": params.ClientID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = AppsResetTokenReq
+			Params   = AppsResetTokenParams
+			Response = AppsResetTokenRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsResetToken(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsResetToken(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8555,7 +12972,37 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 		err error
 	)
 
-	response, err := s.h.AppsRevokeInstallationAccessToken(ctx)
+	var response AppsRevokeInstallationAccessTokenNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsRevokeInstallationAccessToken",
+			OperationID:   "apps/revoke-installation-access-token",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = AppsRevokeInstallationAccessTokenNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsRevokeInstallationAccessToken(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.AppsRevokeInstallationAccessToken(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8632,7 +13079,39 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 		}
 	}()
 
-	response, err := s.h.AppsScopeToken(ctx, request, params)
+	var response AppsScopeTokenRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsScopeToken",
+			OperationID:   "apps/scope-token",
+			Body:          request,
+			Params: map[string]any{
+				"client_id": params.ClientID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = AppsScopeTokenReq
+			Params   = AppsScopeTokenParams
+			Response = AppsScopeTokenRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsScopeToken(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsScopeToken(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8694,7 +13173,39 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.Res
 		return
 	}
 
-	response, err := s.h.AppsSuspendInstallation(ctx, params)
+	var response AppsSuspendInstallationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsSuspendInstallation",
+			OperationID:   "apps/suspend-installation",
+			Body:          nil,
+			Params: map[string]any{
+				"installation_id": params.InstallationID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsSuspendInstallationParams
+			Response = AppsSuspendInstallationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsSuspendInstallation(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsSuspendInstallation(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8756,7 +13267,39 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.R
 		return
 	}
 
-	response, err := s.h.AppsUnsuspendInstallation(ctx, params)
+	var response AppsUnsuspendInstallationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsUnsuspendInstallation",
+			OperationID:   "apps/unsuspend-installation",
+			Body:          nil,
+			Params: map[string]any{
+				"installation_id": params.InstallationID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = AppsUnsuspendInstallationParams
+			Response = AppsUnsuspendInstallationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsUnsuspendInstallation(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.AppsUnsuspendInstallation(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8823,7 +13366,37 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 		}
 	}()
 
-	response, err := s.h.AppsUpdateWebhookConfigForApp(ctx, request)
+	var response WebhookConfig
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AppsUpdateWebhookConfigForApp",
+			OperationID:   "apps/update-webhook-config-for-app",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptAppsUpdateWebhookConfigForAppReq
+			Params   = struct{}
+			Response = WebhookConfig
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AppsUpdateWebhookConfigForApp(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.AppsUpdateWebhookConfigForApp(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8885,7 +13458,39 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 		return
 	}
 
-	response, err := s.h.BillingGetGithubActionsBillingGhe(ctx, params)
+	var response ActionsBillingUsage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "BillingGetGithubActionsBillingGhe",
+			OperationID:   "billing/get-github-actions-billing-ghe",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = BillingGetGithubActionsBillingGheParams
+			Response = ActionsBillingUsage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.BillingGetGithubActionsBillingGhe(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.BillingGetGithubActionsBillingGhe(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8947,7 +13552,39 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 		return
 	}
 
-	response, err := s.h.BillingGetGithubActionsBillingOrg(ctx, params)
+	var response ActionsBillingUsage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "BillingGetGithubActionsBillingOrg",
+			OperationID:   "billing/get-github-actions-billing-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = BillingGetGithubActionsBillingOrgParams
+			Response = ActionsBillingUsage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.BillingGetGithubActionsBillingOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.BillingGetGithubActionsBillingOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9009,7 +13646,39 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 		return
 	}
 
-	response, err := s.h.BillingGetGithubActionsBillingUser(ctx, params)
+	var response ActionsBillingUsage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "BillingGetGithubActionsBillingUser",
+			OperationID:   "billing/get-github-actions-billing-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = BillingGetGithubActionsBillingUserParams
+			Response = ActionsBillingUsage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.BillingGetGithubActionsBillingUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.BillingGetGithubActionsBillingUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9071,7 +13740,39 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 		return
 	}
 
-	response, err := s.h.BillingGetGithubPackagesBillingGhe(ctx, params)
+	var response PackagesBillingUsage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "BillingGetGithubPackagesBillingGhe",
+			OperationID:   "billing/get-github-packages-billing-ghe",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = BillingGetGithubPackagesBillingGheParams
+			Response = PackagesBillingUsage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.BillingGetGithubPackagesBillingGhe(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.BillingGetGithubPackagesBillingGhe(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9133,7 +13834,39 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 		return
 	}
 
-	response, err := s.h.BillingGetGithubPackagesBillingOrg(ctx, params)
+	var response PackagesBillingUsage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "BillingGetGithubPackagesBillingOrg",
+			OperationID:   "billing/get-github-packages-billing-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = BillingGetGithubPackagesBillingOrgParams
+			Response = PackagesBillingUsage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.BillingGetGithubPackagesBillingOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.BillingGetGithubPackagesBillingOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9195,7 +13928,39 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 		return
 	}
 
-	response, err := s.h.BillingGetGithubPackagesBillingUser(ctx, params)
+	var response PackagesBillingUsage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "BillingGetGithubPackagesBillingUser",
+			OperationID:   "billing/get-github-packages-billing-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = BillingGetGithubPackagesBillingUserParams
+			Response = PackagesBillingUsage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.BillingGetGithubPackagesBillingUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.BillingGetGithubPackagesBillingUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9257,7 +14022,39 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 		return
 	}
 
-	response, err := s.h.BillingGetSharedStorageBillingGhe(ctx, params)
+	var response CombinedBillingUsage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "BillingGetSharedStorageBillingGhe",
+			OperationID:   "billing/get-shared-storage-billing-ghe",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = BillingGetSharedStorageBillingGheParams
+			Response = CombinedBillingUsage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.BillingGetSharedStorageBillingGhe(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.BillingGetSharedStorageBillingGhe(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9319,7 +14116,39 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 		return
 	}
 
-	response, err := s.h.BillingGetSharedStorageBillingOrg(ctx, params)
+	var response CombinedBillingUsage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "BillingGetSharedStorageBillingOrg",
+			OperationID:   "billing/get-shared-storage-billing-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = BillingGetSharedStorageBillingOrgParams
+			Response = CombinedBillingUsage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.BillingGetSharedStorageBillingOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.BillingGetSharedStorageBillingOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9381,7 +14210,39 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 		return
 	}
 
-	response, err := s.h.BillingGetSharedStorageBillingUser(ctx, params)
+	var response CombinedBillingUsage
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "BillingGetSharedStorageBillingUser",
+			OperationID:   "billing/get-shared-storage-billing-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = BillingGetSharedStorageBillingUserParams
+			Response = CombinedBillingUsage
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.BillingGetSharedStorageBillingUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.BillingGetSharedStorageBillingUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9458,7 +14319,40 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.ChecksCreateSuite(ctx, request, params)
+	var response ChecksCreateSuiteRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ChecksCreateSuite",
+			OperationID:   "checks/create-suite",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ChecksCreateSuiteReq
+			Params   = ChecksCreateSuiteParams
+			Response = ChecksCreateSuiteRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ChecksCreateSuite(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ChecksCreateSuite(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9520,7 +14414,41 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.h.ChecksGet(ctx, params)
+	var response CheckRun
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ChecksGet",
+			OperationID:   "checks/get",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"check_run_id": params.CheckRunID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ChecksGetParams
+			Response = CheckRun
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ChecksGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ChecksGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9582,7 +14510,41 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.ChecksGetSuite(ctx, params)
+	var response CheckSuite
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ChecksGetSuite",
+			OperationID:   "checks/get-suite",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":          params.Owner,
+				"repo":           params.Repo,
+				"check_suite_id": params.CheckSuiteID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ChecksGetSuiteParams
+			Response = CheckSuite
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ChecksGetSuite(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ChecksGetSuite(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9644,7 +14606,43 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.ChecksListAnnotations(ctx, params)
+	var response ChecksListAnnotationsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ChecksListAnnotations",
+			OperationID:   "checks/list-annotations",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"check_run_id": params.CheckRunID,
+				"per_page":     params.PerPage,
+				"page":         params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ChecksListAnnotationsParams
+			Response = ChecksListAnnotationsOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ChecksListAnnotations(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ChecksListAnnotations(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9706,7 +14704,47 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.ChecksListForRef(ctx, params)
+	var response ChecksListForRefOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ChecksListForRef",
+			OperationID:   "checks/list-for-ref",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"ref":        params.Ref,
+				"check_name": params.CheckName,
+				"status":     params.Status,
+				"filter":     params.Filter,
+				"per_page":   params.PerPage,
+				"page":       params.Page,
+				"app_id":     params.AppID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ChecksListForRefParams
+			Response = ChecksListForRefOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ChecksListForRef(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ChecksListForRef(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9768,7 +14806,46 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 		return
 	}
 
-	response, err := s.h.ChecksListForSuite(ctx, params)
+	var response ChecksListForSuiteOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ChecksListForSuite",
+			OperationID:   "checks/list-for-suite",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":          params.Owner,
+				"repo":           params.Repo,
+				"check_suite_id": params.CheckSuiteID,
+				"check_name":     params.CheckName,
+				"status":         params.Status,
+				"filter":         params.Filter,
+				"per_page":       params.PerPage,
+				"page":           params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ChecksListForSuiteParams
+			Response = ChecksListForSuiteOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ChecksListForSuite(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ChecksListForSuite(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9830,7 +14907,45 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.ChecksListSuitesForRef(ctx, params)
+	var response ChecksListSuitesForRefOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ChecksListSuitesForRef",
+			OperationID:   "checks/list-suites-for-ref",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"ref":        params.Ref,
+				"app_id":     params.AppID,
+				"check_name": params.CheckName,
+				"per_page":   params.PerPage,
+				"page":       params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ChecksListSuitesForRefParams
+			Response = ChecksListSuitesForRefOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ChecksListSuitesForRef(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ChecksListSuitesForRef(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9892,7 +15007,41 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.ChecksRerequestSuite(ctx, params)
+	var response ChecksRerequestSuiteCreated
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ChecksRerequestSuite",
+			OperationID:   "checks/rerequest-suite",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":          params.Owner,
+				"repo":           params.Repo,
+				"check_suite_id": params.CheckSuiteID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ChecksRerequestSuiteParams
+			Response = ChecksRerequestSuiteCreated
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ChecksRerequestSuite(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ChecksRerequestSuite(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9969,7 +15118,40 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 		}
 	}()
 
-	response, err := s.h.ChecksSetSuitesPreferences(ctx, request, params)
+	var response CheckSuitePreference
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ChecksSetSuitesPreferences",
+			OperationID:   "checks/set-suites-preferences",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ChecksSetSuitesPreferencesReq
+			Params   = ChecksSetSuitesPreferencesParams
+			Response = CheckSuitePreference
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ChecksSetSuitesPreferences(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ChecksSetSuitesPreferences(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10031,7 +15213,42 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.
 		return
 	}
 
-	response, err := s.h.CodeScanningDeleteAnalysis(ctx, params)
+	var response CodeScanningDeleteAnalysisRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CodeScanningDeleteAnalysis",
+			OperationID:   "code-scanning/delete-analysis",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":          params.Owner,
+				"repo":           params.Repo,
+				"analysis_id":    params.AnalysisID,
+				"confirm_delete": params.ConfirmDelete,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = CodeScanningDeleteAnalysisParams
+			Response = CodeScanningDeleteAnalysisRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CodeScanningDeleteAnalysis(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.CodeScanningDeleteAnalysis(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10093,7 +15310,41 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.CodeScanningGetAlert(ctx, params)
+	var response CodeScanningGetAlertRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CodeScanningGetAlert",
+			OperationID:   "code-scanning/get-alert",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"alert_number": params.AlertNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = CodeScanningGetAlertParams
+			Response = CodeScanningGetAlertRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CodeScanningGetAlert(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.CodeScanningGetAlert(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10155,7 +15406,41 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.Res
 		return
 	}
 
-	response, err := s.h.CodeScanningGetAnalysis(ctx, params)
+	var response CodeScanningGetAnalysisRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CodeScanningGetAnalysis",
+			OperationID:   "code-scanning/get-analysis",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"analysis_id": params.AnalysisID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = CodeScanningGetAnalysisParams
+			Response = CodeScanningGetAnalysisRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CodeScanningGetAnalysis(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.CodeScanningGetAnalysis(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10217,7 +15502,41 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.CodeScanningGetSarif(ctx, params)
+	var response CodeScanningGetSarifRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CodeScanningGetSarif",
+			OperationID:   "code-scanning/get-sarif",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"sarif_id": params.SarifID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = CodeScanningGetSarifParams
+			Response = CodeScanningGetSarifRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CodeScanningGetSarif(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.CodeScanningGetSarif(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10279,7 +15598,44 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w h
 		return
 	}
 
-	response, err := s.h.CodeScanningListAlertInstances(ctx, params)
+	var response CodeScanningListAlertInstancesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CodeScanningListAlertInstances",
+			OperationID:   "code-scanning/list-alert-instances",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"alert_number": params.AlertNumber,
+				"page":         params.Page,
+				"per_page":     params.PerPage,
+				"ref":          params.Ref,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = CodeScanningListAlertInstancesParams
+			Response = CodeScanningListAlertInstancesRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CodeScanningListAlertInstances(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.CodeScanningListAlertInstances(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10341,7 +15697,46 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w ht
 		return
 	}
 
-	response, err := s.h.CodeScanningListAlertsForRepo(ctx, params)
+	var response CodeScanningListAlertsForRepoRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CodeScanningListAlertsForRepo",
+			OperationID:   "code-scanning/list-alerts-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":     params.Owner,
+				"repo":      params.Repo,
+				"tool_name": params.ToolName,
+				"tool_guid": params.ToolGUID,
+				"page":      params.Page,
+				"per_page":  params.PerPage,
+				"ref":       params.Ref,
+				"state":     params.State,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = CodeScanningListAlertsForRepoParams
+			Response = CodeScanningListAlertsForRepoRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CodeScanningListAlertsForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.CodeScanningListAlertsForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10403,7 +15798,46 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w h
 		return
 	}
 
-	response, err := s.h.CodeScanningListRecentAnalyses(ctx, params)
+	var response CodeScanningListRecentAnalysesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CodeScanningListRecentAnalyses",
+			OperationID:   "code-scanning/list-recent-analyses",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":     params.Owner,
+				"repo":      params.Repo,
+				"tool_name": params.ToolName,
+				"tool_guid": params.ToolGUID,
+				"page":      params.Page,
+				"per_page":  params.PerPage,
+				"ref":       params.Ref,
+				"sarif_id":  params.SarifID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = CodeScanningListRecentAnalysesParams
+			Response = CodeScanningListRecentAnalysesRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CodeScanningListRecentAnalyses(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.CodeScanningListRecentAnalyses(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10480,7 +15914,41 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 		}
 	}()
 
-	response, err := s.h.CodeScanningUpdateAlert(ctx, request, params)
+	var response CodeScanningUpdateAlertRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CodeScanningUpdateAlert",
+			OperationID:   "code-scanning/update-alert",
+			Body:          request,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"alert_number": params.AlertNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = CodeScanningUpdateAlertReq
+			Params   = CodeScanningUpdateAlertParams
+			Response = CodeScanningUpdateAlertRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CodeScanningUpdateAlert(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.CodeScanningUpdateAlert(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10557,7 +16025,40 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 		}
 	}()
 
-	response, err := s.h.CodeScanningUploadSarif(ctx, request, params)
+	var response CodeScanningUploadSarifRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CodeScanningUploadSarif",
+			OperationID:   "code-scanning/upload-sarif",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = CodeScanningUploadSarifReq
+			Params   = CodeScanningUploadSarifParams
+			Response = CodeScanningUploadSarifRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CodeScanningUploadSarif(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.CodeScanningUploadSarif(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10605,7 +16106,37 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string,
 		err error
 	)
 
-	response, err := s.h.CodesOfConductGetAllCodesOfConduct(ctx)
+	var response CodesOfConductGetAllCodesOfConductRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CodesOfConductGetAllCodesOfConduct",
+			OperationID:   "codes-of-conduct/get-all-codes-of-conduct",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = CodesOfConductGetAllCodesOfConductRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CodesOfConductGetAllCodesOfConduct(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.CodesOfConductGetAllCodesOfConduct(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10667,7 +16198,39 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w htt
 		return
 	}
 
-	response, err := s.h.CodesOfConductGetConductCode(ctx, params)
+	var response CodesOfConductGetConductCodeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CodesOfConductGetConductCode",
+			OperationID:   "codes-of-conduct/get-conduct-code",
+			Body:          nil,
+			Params: map[string]any{
+				"key": params.Key,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = CodesOfConductGetConductCodeParams
+			Response = CodesOfConductGetConductCodeRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CodesOfConductGetConductCode(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.CodesOfConductGetConductCode(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10715,7 +16278,37 @@ func (s *Server) handleEmojisGetRequest(args [0]string, w http.ResponseWriter, r
 		err error
 	)
 
-	response, err := s.h.EmojisGet(ctx)
+	var response EmojisGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EmojisGet",
+			OperationID:   "emojis/get",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = EmojisGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EmojisGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.EmojisGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10777,7 +16370,41 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+	var response EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			OperationID:   "enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise":      params.Enterprise,
+				"runner_group_id": params.RunnerGroupID,
+				"org_id":          params.OrgID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
+			Response = EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10839,7 +16466,41 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx, params)
+	var response EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise",
+			OperationID:   "enterprise-admin/add-self-hosted-runner-to-group-for-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise":      params.Enterprise,
+				"runner_group_id": params.RunnerGroupID,
+				"runner_id":       params.RunnerID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams
+			Response = EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10901,7 +16562,39 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx, params)
+	var response AuthenticationToken
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminCreateRegistrationTokenForEnterprise",
+			OperationID:   "enterprise-admin/create-registration-token-for-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminCreateRegistrationTokenForEnterpriseParams
+			Response = AuthenticationToken
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10963,7 +16656,39 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminCreateRemoveTokenForEnterprise(ctx, params)
+	var response AuthenticationToken
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminCreateRemoveTokenForEnterprise",
+			OperationID:   "enterprise-admin/create-remove-token-for-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminCreateRemoveTokenForEnterpriseParams
+			Response = AuthenticationToken
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminCreateRemoveTokenForEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminCreateRemoveTokenForEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11040,7 +16765,39 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 		}
 	}()
 
-	response, err := s.h.EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
+	var response RunnerGroupsEnterprise
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
+			OperationID:   "enterprise-admin/create-self-hosted-runner-group-for-enterprise",
+			Body:          request,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq
+			Params   = EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams
+			Response = RunnerGroupsEnterprise
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11102,7 +16859,40 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminDeleteScimGroupFromEnterprise(ctx, params)
+	var response EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminDeleteScimGroupFromEnterprise",
+			OperationID:   "enterprise-admin/delete-scim-group-from-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise":    params.Enterprise,
+				"scim_group_id": params.ScimGroupID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminDeleteScimGroupFromEnterpriseParams
+			Response = EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminDeleteScimGroupFromEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminDeleteScimGroupFromEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11164,7 +16954,40 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx, params)
+	var response EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise",
+			OperationID:   "enterprise-admin/delete-self-hosted-runner-from-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+				"runner_id":  params.RunnerID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams
+			Response = EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11226,7 +17049,40 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx, params)
+	var response EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise",
+			OperationID:   "enterprise-admin/delete-self-hosted-runner-group-from-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise":      params.Enterprise,
+				"runner_group_id": params.RunnerGroupID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams
+			Response = EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11288,7 +17144,40 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminDeleteUserFromEnterprise(ctx, params)
+	var response EnterpriseAdminDeleteUserFromEnterpriseNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminDeleteUserFromEnterprise",
+			OperationID:   "enterprise-admin/delete-user-from-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise":   params.Enterprise,
+				"scim_user_id": params.ScimUserID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminDeleteUserFromEnterpriseParams
+			Response = EnterpriseAdminDeleteUserFromEnterpriseNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminDeleteUserFromEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminDeleteUserFromEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11350,7 +17239,40 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx, params)
+	var response EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise",
+			OperationID:   "enterprise-admin/disable-selected-organization-github-actions-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+				"org_id":     params.OrgID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams
+			Response = EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11412,7 +17334,40 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx, params)
+	var response EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise",
+			OperationID:   "enterprise-admin/enable-selected-organization-github-actions-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+				"org_id":     params.OrgID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams
+			Response = EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11474,7 +17429,39 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminGetAllowedActionsEnterprise(ctx, params)
+	var response SelectedActions
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminGetAllowedActionsEnterprise",
+			OperationID:   "enterprise-admin/get-allowed-actions-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminGetAllowedActionsEnterpriseParams
+			Response = SelectedActions
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminGetAllowedActionsEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminGetAllowedActionsEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11536,7 +17523,46 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminGetAuditLog(ctx, params)
+	var response []AuditLogEvent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminGetAuditLog",
+			OperationID:   "enterprise-admin/get-audit-log",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+				"phrase":     params.Phrase,
+				"include":    params.Include,
+				"after":      params.After,
+				"before":     params.Before,
+				"order":      params.Order,
+				"page":       params.Page,
+				"per_page":   params.PerPage,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminGetAuditLogParams
+			Response = []AuditLogEvent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminGetAuditLog(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminGetAuditLog(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11598,7 +17624,39 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx, params)
+	var response ActionsEnterprisePermissions
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminGetGithubActionsPermissionsEnterprise",
+			OperationID:   "enterprise-admin/get-github-actions-permissions-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams
+			Response = ActionsEnterprisePermissions
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11660,7 +17718,41 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx, params)
+	var response ScimEnterpriseGroup
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup",
+			OperationID:   "enterprise-admin/get-provisioning-information-for-enterprise-group",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise":         params.Enterprise,
+				"scim_group_id":      params.ScimGroupID,
+				"excludedAttributes": params.ExcludedAttributes,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams
+			Response = ScimEnterpriseGroup
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11722,7 +17814,40 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx, params)
+	var response ScimEnterpriseUser
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminGetProvisioningInformationForEnterpriseUser",
+			OperationID:   "enterprise-admin/get-provisioning-information-for-enterprise-user",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise":   params.Enterprise,
+				"scim_user_id": params.ScimUserID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams
+			Response = ScimEnterpriseUser
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11784,7 +17909,40 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx, params)
+	var response Runner
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminGetSelfHostedRunnerForEnterprise",
+			OperationID:   "enterprise-admin/get-self-hosted-runner-for-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+				"runner_id":  params.RunnerID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams
+			Response = Runner
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11846,7 +18004,40 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx, params)
+	var response RunnerGroupsEnterprise
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise",
+			OperationID:   "enterprise-admin/get-self-hosted-runner-group-for-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise":      params.Enterprise,
+				"runner_group_id": params.RunnerGroupID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams
+			Response = RunnerGroupsEnterprise
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11908,7 +18099,42 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+	var response EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			OperationID:   "enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise":      params.Enterprise,
+				"runner_group_id": params.RunnerGroupID,
+				"per_page":        params.PerPage,
+				"page":            params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
+			Response = EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11970,7 +18196,43 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminListProvisionedGroupsEnterprise(ctx, params)
+	var response ScimGroupListEnterprise
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminListProvisionedGroupsEnterprise",
+			OperationID:   "enterprise-admin/list-provisioned-groups-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise":         params.Enterprise,
+				"startIndex":         params.StartIndex,
+				"count":              params.Count,
+				"filter":             params.Filter,
+				"excludedAttributes": params.ExcludedAttributes,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminListProvisionedGroupsEnterpriseParams
+			Response = ScimGroupListEnterprise
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminListProvisionedGroupsEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminListProvisionedGroupsEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12032,7 +18294,42 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx, params)
+	var response ScimUserListEnterprise
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminListProvisionedIdentitiesEnterprise",
+			OperationID:   "enterprise-admin/list-provisioned-identities-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+				"startIndex": params.StartIndex,
+				"count":      params.Count,
+				"filter":     params.Filter,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminListProvisionedIdentitiesEnterpriseParams
+			Response = ScimUserListEnterprise
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12094,7 +18391,39 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminListRunnerApplicationsForEnterprise(ctx, params)
+	var response []RunnerApplication
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminListRunnerApplicationsForEnterprise",
+			OperationID:   "enterprise-admin/list-runner-applications-for-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminListRunnerApplicationsForEnterpriseParams
+			Response = []RunnerApplication
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminListRunnerApplicationsForEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminListRunnerApplicationsForEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12156,7 +18485,41 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, params)
+	var response EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise",
+			OperationID:   "enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+				"per_page":   params.PerPage,
+				"page":       params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams
+			Response = EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12218,7 +18581,41 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx, params)
+	var response EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise",
+			OperationID:   "enterprise-admin/list-self-hosted-runner-groups-for-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+				"per_page":   params.PerPage,
+				"page":       params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams
+			Response = EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12280,7 +18677,41 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx, params)
+	var response EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminListSelfHostedRunnersForEnterprise",
+			OperationID:   "enterprise-admin/list-self-hosted-runners-for-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+				"per_page":   params.PerPage,
+				"page":       params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminListSelfHostedRunnersForEnterpriseParams
+			Response = EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12342,7 +18773,42 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx, params)
+	var response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise",
+			OperationID:   "enterprise-admin/list-self-hosted-runners-in-group-for-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise":      params.Enterprise,
+				"runner_group_id": params.RunnerGroupID,
+				"per_page":        params.PerPage,
+				"page":            params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams
+			Response = EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12419,7 +18885,39 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 		}
 	}()
 
-	response, err := s.h.EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx, request, params)
+	var response ScimEnterpriseGroup
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminProvisionAndInviteEnterpriseGroup",
+			OperationID:   "enterprise-admin/provision-and-invite-enterprise-group",
+			Body:          request,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = EnterpriseAdminProvisionAndInviteEnterpriseGroupReq
+			Params   = EnterpriseAdminProvisionAndInviteEnterpriseGroupParams
+			Response = ScimEnterpriseGroup
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12496,7 +18994,39 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 		}
 	}()
 
-	response, err := s.h.EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx, request, params)
+	var response ScimEnterpriseUser
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminProvisionAndInviteEnterpriseUser",
+			OperationID:   "enterprise-admin/provision-and-invite-enterprise-user",
+			Body:          request,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = EnterpriseAdminProvisionAndInviteEnterpriseUserReq
+			Params   = EnterpriseAdminProvisionAndInviteEnterpriseUserParams
+			Response = ScimEnterpriseUser
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12558,7 +19088,41 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+	var response EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			OperationID:   "enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise":      params.Enterprise,
+				"runner_group_id": params.RunnerGroupID,
+				"org_id":          params.OrgID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
+			Response = EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12620,7 +19184,41 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 		return
 	}
 
-	response, err := s.h.EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx, params)
+	var response EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise",
+			OperationID:   "enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise",
+			Body:          nil,
+			Params: map[string]any{
+				"enterprise":      params.Enterprise,
+				"runner_group_id": params.RunnerGroupID,
+				"runner_id":       params.RunnerID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams
+			Response = EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12697,7 +19295,39 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 		}
 	}()
 
-	response, err := s.h.EnterpriseAdminSetAllowedActionsEnterprise(ctx, request, params)
+	var response EnterpriseAdminSetAllowedActionsEnterpriseNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminSetAllowedActionsEnterprise",
+			OperationID:   "enterprise-admin/set-allowed-actions-enterprise",
+			Body:          request,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = SelectedActions
+			Params   = EnterpriseAdminSetAllowedActionsEnterpriseParams
+			Response = EnterpriseAdminSetAllowedActionsEnterpriseNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminSetAllowedActionsEnterprise(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminSetAllowedActionsEnterprise(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12774,7 +19404,39 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 		}
 	}()
 
-	response, err := s.h.EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx, request, params)
+	var response EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminSetGithubActionsPermissionsEnterprise",
+			OperationID:   "enterprise-admin/set-github-actions-permissions-enterprise",
+			Body:          request,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq
+			Params   = EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams
+			Response = EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12851,7 +19513,40 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 		}
 	}()
 
-	response, err := s.h.EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx, request, params)
+	var response ScimEnterpriseGroup
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
+			OperationID:   "enterprise-admin/set-information-for-provisioned-enterprise-group",
+			Body:          request,
+			Params: map[string]any{
+				"enterprise":    params.Enterprise,
+				"scim_group_id": params.ScimGroupID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq
+			Params   = EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams
+			Response = ScimEnterpriseGroup
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12928,7 +19623,40 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 		}
 	}()
 
-	response, err := s.h.EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx, request, params)
+	var response ScimEnterpriseUser
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
+			OperationID:   "enterprise-admin/set-information-for-provisioned-enterprise-user",
+			Body:          request,
+			Params: map[string]any{
+				"enterprise":   params.Enterprise,
+				"scim_user_id": params.ScimUserID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq
+			Params   = EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams
+			Response = ScimEnterpriseUser
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13005,7 +19733,40 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 		}
 	}()
 
-	response, err := s.h.EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, request, params)
+	var response EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			OperationID:   "enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise",
+			Body:          request,
+			Params: map[string]any{
+				"enterprise":      params.Enterprise,
+				"runner_group_id": params.RunnerGroupID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq
+			Params   = EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
+			Response = EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13082,7 +19843,39 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 		}
 	}()
 
-	response, err := s.h.EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, request, params)
+	var response EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
+			OperationID:   "enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise",
+			Body:          request,
+			Params: map[string]any{
+				"enterprise": params.Enterprise,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
+			Params   = EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams
+			Response = EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13159,7 +19952,40 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 		}
 	}()
 
-	response, err := s.h.EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx, request, params)
+	var response EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
+			OperationID:   "enterprise-admin/set-self-hosted-runners-in-group-for-enterprise",
+			Body:          request,
+			Params: map[string]any{
+				"enterprise":      params.Enterprise,
+				"runner_group_id": params.RunnerGroupID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq
+			Params   = EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams
+			Response = EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13236,7 +20062,40 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 		}
 	}()
 
-	response, err := s.h.EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx, request, params)
+	var response ScimEnterpriseGroup
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminUpdateAttributeForEnterpriseGroup",
+			OperationID:   "enterprise-admin/update-attribute-for-enterprise-group",
+			Body:          request,
+			Params: map[string]any{
+				"enterprise":    params.Enterprise,
+				"scim_group_id": params.ScimGroupID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = EnterpriseAdminUpdateAttributeForEnterpriseGroupReq
+			Params   = EnterpriseAdminUpdateAttributeForEnterpriseGroupParams
+			Response = ScimEnterpriseGroup
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13313,7 +20172,40 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 		}
 	}()
 
-	response, err := s.h.EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx, request, params)
+	var response ScimEnterpriseUser
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminUpdateAttributeForEnterpriseUser",
+			OperationID:   "enterprise-admin/update-attribute-for-enterprise-user",
+			Body:          request,
+			Params: map[string]any{
+				"enterprise":   params.Enterprise,
+				"scim_user_id": params.ScimUserID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = EnterpriseAdminUpdateAttributeForEnterpriseUserReq
+			Params   = EnterpriseAdminUpdateAttributeForEnterpriseUserParams
+			Response = ScimEnterpriseUser
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13390,7 +20282,40 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 		}
 	}()
 
-	response, err := s.h.EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
+	var response RunnerGroupsEnterprise
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
+			OperationID:   "enterprise-admin/update-self-hosted-runner-group-for-enterprise",
+			Body:          request,
+			Params: map[string]any{
+				"enterprise":      params.Enterprise,
+				"runner_group_id": params.RunnerGroupID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq
+			Params   = EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams
+			Response = RunnerGroupsEnterprise
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13452,7 +20377,39 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.GistsCheckIsStarred(ctx, params)
+	var response GistsCheckIsStarredRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsCheckIsStarred",
+			OperationID:   "gists/check-is-starred",
+			Body:          nil,
+			Params: map[string]any{
+				"gist_id": params.GistID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GistsCheckIsStarredParams
+			Response = GistsCheckIsStarredRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsCheckIsStarred(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsCheckIsStarred(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13519,7 +20476,37 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 		}
 	}()
 
-	response, err := s.h.GistsCreate(ctx, request)
+	var response GistsCreateRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsCreate",
+			OperationID:   "gists/create",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = GistsCreateReq
+			Params   = struct{}
+			Response = GistsCreateRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsCreate(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.GistsCreate(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13596,7 +20583,39 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.GistsCreateComment(ctx, request, params)
+	var response GistsCreateCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsCreateComment",
+			OperationID:   "gists/create-comment",
+			Body:          request,
+			Params: map[string]any{
+				"gist_id": params.GistID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = GistsCreateCommentReq
+			Params   = GistsCreateCommentParams
+			Response = GistsCreateCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsCreateComment(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsCreateComment(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13658,7 +20677,39 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.h.GistsDelete(ctx, params)
+	var response GistsDeleteRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsDelete",
+			OperationID:   "gists/delete",
+			Body:          nil,
+			Params: map[string]any{
+				"gist_id": params.GistID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GistsDeleteParams
+			Response = GistsDeleteRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsDelete(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsDelete(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13720,7 +20771,40 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.Response
 		return
 	}
 
-	response, err := s.h.GistsDeleteComment(ctx, params)
+	var response GistsDeleteCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsDeleteComment",
+			OperationID:   "gists/delete-comment",
+			Body:          nil,
+			Params: map[string]any{
+				"gist_id":    params.GistID,
+				"comment_id": params.CommentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GistsDeleteCommentParams
+			Response = GistsDeleteCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsDeleteComment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsDeleteComment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13782,7 +20866,39 @@ func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.h.GistsFork(ctx, params)
+	var response GistsForkRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsFork",
+			OperationID:   "gists/fork",
+			Body:          nil,
+			Params: map[string]any{
+				"gist_id": params.GistID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GistsForkParams
+			Response = GistsForkRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsFork(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsFork(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13844,7 +20960,39 @@ func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.h.GistsGet(ctx, params)
+	var response GistsGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsGet",
+			OperationID:   "gists/get",
+			Body:          nil,
+			Params: map[string]any{
+				"gist_id": params.GistID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GistsGetParams
+			Response = GistsGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13906,7 +21054,40 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.GistsGetComment(ctx, params)
+	var response GistsGetCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsGetComment",
+			OperationID:   "gists/get-comment",
+			Body:          nil,
+			Params: map[string]any{
+				"gist_id":    params.GistID,
+				"comment_id": params.CommentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GistsGetCommentParams
+			Response = GistsGetCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsGetComment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsGetComment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13968,7 +21149,40 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.GistsGetRevision(ctx, params)
+	var response GistsGetRevisionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsGetRevision",
+			OperationID:   "gists/get-revision",
+			Body:          nil,
+			Params: map[string]any{
+				"gist_id": params.GistID,
+				"sha":     params.Sha,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GistsGetRevisionParams
+			Response = GistsGetRevisionRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsGetRevision(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsGetRevision(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14030,7 +21244,41 @@ func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.h.GistsList(ctx, params)
+	var response GistsListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsList",
+			OperationID:   "gists/list",
+			Body:          nil,
+			Params: map[string]any{
+				"since":    params.Since,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GistsListParams
+			Response = GistsListRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14092,7 +21340,41 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.GistsListComments(ctx, params)
+	var response GistsListCommentsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsListComments",
+			OperationID:   "gists/list-comments",
+			Body:          nil,
+			Params: map[string]any{
+				"gist_id":  params.GistID,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GistsListCommentsParams
+			Response = GistsListCommentsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsListComments(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsListComments(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14154,7 +21436,41 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.GistsListCommits(ctx, params)
+	var response GistsListCommitsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsListCommits",
+			OperationID:   "gists/list-commits",
+			Body:          nil,
+			Params: map[string]any{
+				"gist_id":  params.GistID,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GistsListCommitsParams
+			Response = GistsListCommitsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsListCommits(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsListCommits(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14216,7 +21532,42 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.GistsListForUser(ctx, params)
+	var response GistsListForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsListForUser",
+			OperationID:   "gists/list-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+				"since":    params.Since,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GistsListForUserParams
+			Response = GistsListForUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsListForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsListForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14278,7 +21629,41 @@ func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.GistsListForks(ctx, params)
+	var response GistsListForksRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsListForks",
+			OperationID:   "gists/list-forks",
+			Body:          nil,
+			Params: map[string]any{
+				"gist_id":  params.GistID,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GistsListForksParams
+			Response = GistsListForksRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsListForks(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsListForks(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14340,7 +21725,41 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.GistsListPublic(ctx, params)
+	var response GistsListPublicRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsListPublic",
+			OperationID:   "gists/list-public",
+			Body:          nil,
+			Params: map[string]any{
+				"since":    params.Since,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GistsListPublicParams
+			Response = GistsListPublicRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsListPublic(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsListPublic(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14402,7 +21821,41 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.GistsListStarred(ctx, params)
+	var response GistsListStarredRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsListStarred",
+			OperationID:   "gists/list-starred",
+			Body:          nil,
+			Params: map[string]any{
+				"since":    params.Since,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GistsListStarredParams
+			Response = GistsListStarredRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsListStarred(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsListStarred(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14464,7 +21917,39 @@ func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.h.GistsStar(ctx, params)
+	var response GistsStarRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsStar",
+			OperationID:   "gists/star",
+			Body:          nil,
+			Params: map[string]any{
+				"gist_id": params.GistID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GistsStarParams
+			Response = GistsStarRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsStar(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsStar(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14526,7 +22011,39 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.h.GistsUnstar(ctx, params)
+	var response GistsUnstarRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsUnstar",
+			OperationID:   "gists/unstar",
+			Body:          nil,
+			Params: map[string]any{
+				"gist_id": params.GistID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GistsUnstarParams
+			Response = GistsUnstarRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsUnstar(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsUnstar(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14603,7 +22120,40 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.GistsUpdateComment(ctx, request, params)
+	var response GistsUpdateCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GistsUpdateComment",
+			OperationID:   "gists/update-comment",
+			Body:          request,
+			Params: map[string]any{
+				"gist_id":    params.GistID,
+				"comment_id": params.CommentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = GistsUpdateCommentReq
+			Params   = GistsUpdateCommentParams
+			Response = GistsUpdateCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GistsUpdateComment(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.GistsUpdateComment(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14680,7 +22230,40 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.GitCreateBlob(ctx, request, params)
+	var response GitCreateBlobRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GitCreateBlob",
+			OperationID:   "git/create-blob",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = GitCreateBlobReq
+			Params   = GitCreateBlobParams
+			Response = GitCreateBlobRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GitCreateBlob(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.GitCreateBlob(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14757,7 +22340,40 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 		}
 	}()
 
-	response, err := s.h.GitCreateCommit(ctx, request, params)
+	var response GitCreateCommitRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GitCreateCommit",
+			OperationID:   "git/create-commit",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = GitCreateCommitReq
+			Params   = GitCreateCommitParams
+			Response = GitCreateCommitRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GitCreateCommit(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.GitCreateCommit(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14834,7 +22450,40 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 		}
 	}()
 
-	response, err := s.h.GitCreateRef(ctx, request, params)
+	var response GitCreateRefRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GitCreateRef",
+			OperationID:   "git/create-ref",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = GitCreateRefReq
+			Params   = GitCreateRefParams
+			Response = GitCreateRefRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GitCreateRef(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.GitCreateRef(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14911,7 +22560,40 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 		}
 	}()
 
-	response, err := s.h.GitCreateTag(ctx, request, params)
+	var response GitCreateTagRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GitCreateTag",
+			OperationID:   "git/create-tag",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = GitCreateTagReq
+			Params   = GitCreateTagParams
+			Response = GitCreateTagRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GitCreateTag(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.GitCreateTag(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14988,7 +22670,40 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.GitCreateTree(ctx, request, params)
+	var response GitCreateTreeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GitCreateTree",
+			OperationID:   "git/create-tree",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = GitCreateTreeReq
+			Params   = GitCreateTreeParams
+			Response = GitCreateTreeRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GitCreateTree(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.GitCreateTree(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15050,7 +22765,41 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter
 		return
 	}
 
-	response, err := s.h.GitDeleteRef(ctx, params)
+	var response GitDeleteRefRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GitDeleteRef",
+			OperationID:   "git/delete-ref",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"ref":   params.Ref,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GitDeleteRefParams
+			Response = GitDeleteRefRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GitDeleteRef(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GitDeleteRef(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15112,7 +22861,41 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.h.GitGetBlob(ctx, params)
+	var response GitGetBlobRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GitGetBlob",
+			OperationID:   "git/get-blob",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"file_sha": params.FileSha,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GitGetBlobParams
+			Response = GitGetBlobRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GitGetBlob(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GitGetBlob(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15174,7 +22957,41 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter
 		return
 	}
 
-	response, err := s.h.GitGetCommit(ctx, params)
+	var response GitGetCommitRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GitGetCommit",
+			OperationID:   "git/get-commit",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"commit_sha": params.CommitSha,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GitGetCommitParams
+			Response = GitGetCommitRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GitGetCommit(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GitGetCommit(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15236,7 +23053,41 @@ func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.h.GitGetRef(ctx, params)
+	var response GitGetRefRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GitGetRef",
+			OperationID:   "git/get-ref",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"ref":   params.Ref,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GitGetRefParams
+			Response = GitGetRefRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GitGetRef(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GitGetRef(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15298,7 +23149,41 @@ func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.h.GitGetTag(ctx, params)
+	var response GitGetTagRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GitGetTag",
+			OperationID:   "git/get-tag",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":   params.Owner,
+				"repo":    params.Repo,
+				"tag_sha": params.TagSha,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GitGetTagParams
+			Response = GitGetTagRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GitGetTag(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GitGetTag(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15360,7 +23245,42 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.h.GitGetTree(ctx, params)
+	var response GitGetTreeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GitGetTree",
+			OperationID:   "git/get-tree",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":     params.Owner,
+				"repo":      params.Repo,
+				"tree_sha":  params.TreeSha,
+				"recursive": params.Recursive,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GitGetTreeParams
+			Response = GitGetTreeRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GitGetTree(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GitGetTree(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15422,7 +23342,43 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.GitListMatchingRefs(ctx, params)
+	var response GitListMatchingRefsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GitListMatchingRefs",
+			OperationID:   "git/list-matching-refs",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"ref":      params.Ref,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GitListMatchingRefsParams
+			Response = GitListMatchingRefsOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GitListMatchingRefs(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GitListMatchingRefs(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15499,7 +23455,41 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 		}
 	}()
 
-	response, err := s.h.GitUpdateRef(ctx, request, params)
+	var response GitUpdateRefRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GitUpdateRef",
+			OperationID:   "git/update-ref",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"ref":   params.Ref,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = GitUpdateRefReq
+			Params   = GitUpdateRefParams
+			Response = GitUpdateRefRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GitUpdateRef(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.GitUpdateRef(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15547,7 +23537,37 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, w http.Re
 		err error
 	)
 
-	response, err := s.h.GitignoreGetAllTemplates(ctx)
+	var response GitignoreGetAllTemplatesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GitignoreGetAllTemplates",
+			OperationID:   "gitignore/get-all-templates",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GitignoreGetAllTemplatesRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GitignoreGetAllTemplates(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GitignoreGetAllTemplates(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15609,7 +23629,39 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.GitignoreGetTemplate(ctx, params)
+	var response GitignoreGetTemplateRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GitignoreGetTemplate",
+			OperationID:   "gitignore/get-template",
+			Body:          nil,
+			Params: map[string]any{
+				"name": params.Name,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GitignoreGetTemplateParams
+			Response = GitignoreGetTemplateRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GitignoreGetTemplate(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GitignoreGetTemplate(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15657,7 +23709,37 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 		err error
 	)
 
-	response, err := s.h.InteractionsRemoveRestrictionsForAuthenticatedUser(ctx)
+	var response InteractionsRemoveRestrictionsForAuthenticatedUserNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "InteractionsRemoveRestrictionsForAuthenticatedUser",
+			OperationID:   "interactions/remove-restrictions-for-authenticated-user",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = InteractionsRemoveRestrictionsForAuthenticatedUserNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.InteractionsRemoveRestrictionsForAuthenticatedUser(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.InteractionsRemoveRestrictionsForAuthenticatedUser(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15719,7 +23801,39 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 		return
 	}
 
-	response, err := s.h.InteractionsRemoveRestrictionsForOrg(ctx, params)
+	var response InteractionsRemoveRestrictionsForOrgNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "InteractionsRemoveRestrictionsForOrg",
+			OperationID:   "interactions/remove-restrictions-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = InteractionsRemoveRestrictionsForOrgParams
+			Response = InteractionsRemoveRestrictionsForOrgNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.InteractionsRemoveRestrictionsForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.InteractionsRemoveRestrictionsForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15781,7 +23895,40 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 		return
 	}
 
-	response, err := s.h.InteractionsRemoveRestrictionsForRepo(ctx, params)
+	var response InteractionsRemoveRestrictionsForRepoRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "InteractionsRemoveRestrictionsForRepo",
+			OperationID:   "interactions/remove-restrictions-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = InteractionsRemoveRestrictionsForRepoParams
+			Response = InteractionsRemoveRestrictionsForRepoRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.InteractionsRemoveRestrictionsForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.InteractionsRemoveRestrictionsForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15848,7 +23995,37 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 		}
 	}()
 
-	response, err := s.h.InteractionsSetRestrictionsForAuthenticatedUser(ctx, request)
+	var response InteractionsSetRestrictionsForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "InteractionsSetRestrictionsForAuthenticatedUser",
+			OperationID:   "interactions/set-restrictions-for-authenticated-user",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = InteractionLimit
+			Params   = struct{}
+			Response = InteractionsSetRestrictionsForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.InteractionsSetRestrictionsForAuthenticatedUser(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.InteractionsSetRestrictionsForAuthenticatedUser(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15925,7 +24102,39 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 		}
 	}()
 
-	response, err := s.h.InteractionsSetRestrictionsForOrg(ctx, request, params)
+	var response InteractionsSetRestrictionsForOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "InteractionsSetRestrictionsForOrg",
+			OperationID:   "interactions/set-restrictions-for-org",
+			Body:          request,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = InteractionLimit
+			Params   = InteractionsSetRestrictionsForOrgParams
+			Response = InteractionsSetRestrictionsForOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.InteractionsSetRestrictionsForOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.InteractionsSetRestrictionsForOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16002,7 +24211,40 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 		}
 	}()
 
-	response, err := s.h.InteractionsSetRestrictionsForRepo(ctx, request, params)
+	var response InteractionsSetRestrictionsForRepoRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "InteractionsSetRestrictionsForRepo",
+			OperationID:   "interactions/set-restrictions-for-repo",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = InteractionLimit
+			Params   = InteractionsSetRestrictionsForRepoParams
+			Response = InteractionsSetRestrictionsForRepoRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.InteractionsSetRestrictionsForRepo(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.InteractionsSetRestrictionsForRepo(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16079,7 +24321,41 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.IssuesAddAssignees(ctx, request, params)
+	var response IssueSimple
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesAddAssignees",
+			OperationID:   "issues/add-assignees",
+			Body:          request,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"issue_number": params.IssueNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptIssuesAddAssigneesReq
+			Params   = IssuesAddAssigneesParams
+			Response = IssueSimple
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesAddAssignees(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesAddAssignees(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16141,7 +24417,41 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w htt
 		return
 	}
 
-	response, err := s.h.IssuesCheckUserCanBeAssigned(ctx, params)
+	var response IssuesCheckUserCanBeAssignedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesCheckUserCanBeAssigned",
+			OperationID:   "issues/check-user-can-be-assigned",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"assignee": params.Assignee,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesCheckUserCanBeAssignedParams
+			Response = IssuesCheckUserCanBeAssignedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesCheckUserCanBeAssigned(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesCheckUserCanBeAssigned(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16218,7 +24528,40 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 		}
 	}()
 
-	response, err := s.h.IssuesCreate(ctx, request, params)
+	var response IssuesCreateRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesCreate",
+			OperationID:   "issues/create",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = IssuesCreateReq
+			Params   = IssuesCreateParams
+			Response = IssuesCreateRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesCreate(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesCreate(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16295,7 +24638,41 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 		}
 	}()
 
-	response, err := s.h.IssuesCreateComment(ctx, request, params)
+	var response IssuesCreateCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesCreateComment",
+			OperationID:   "issues/create-comment",
+			Body:          request,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"issue_number": params.IssueNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = IssuesCreateCommentReq
+			Params   = IssuesCreateCommentParams
+			Response = IssuesCreateCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesCreateComment(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesCreateComment(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16372,7 +24749,40 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.IssuesCreateLabel(ctx, request, params)
+	var response IssuesCreateLabelRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesCreateLabel",
+			OperationID:   "issues/create-label",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = IssuesCreateLabelReq
+			Params   = IssuesCreateLabelParams
+			Response = IssuesCreateLabelRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesCreateLabel(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesCreateLabel(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16449,7 +24859,40 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 		}
 	}()
 
-	response, err := s.h.IssuesCreateMilestone(ctx, request, params)
+	var response IssuesCreateMilestoneRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesCreateMilestone",
+			OperationID:   "issues/create-milestone",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = IssuesCreateMilestoneReq
+			Params   = IssuesCreateMilestoneParams
+			Response = IssuesCreateMilestoneRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesCreateMilestone(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesCreateMilestone(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16511,7 +24954,41 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.IssuesDeleteComment(ctx, params)
+	var response IssuesDeleteCommentNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesDeleteComment",
+			OperationID:   "issues/delete-comment",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"comment_id": params.CommentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesDeleteCommentParams
+			Response = IssuesDeleteCommentNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesDeleteComment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesDeleteComment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16573,7 +25050,41 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.IssuesDeleteLabel(ctx, params)
+	var response IssuesDeleteLabelNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesDeleteLabel",
+			OperationID:   "issues/delete-label",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"name":  params.Name,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesDeleteLabelParams
+			Response = IssuesDeleteLabelNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesDeleteLabel(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesDeleteLabel(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16635,7 +25146,41 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.IssuesDeleteMilestone(ctx, params)
+	var response IssuesDeleteMilestoneRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesDeleteMilestone",
+			OperationID:   "issues/delete-milestone",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":            params.Owner,
+				"repo":             params.Repo,
+				"milestone_number": params.MilestoneNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesDeleteMilestoneParams
+			Response = IssuesDeleteMilestoneRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesDeleteMilestone(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesDeleteMilestone(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16697,7 +25242,41 @@ func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.h.IssuesGet(ctx, params)
+	var response IssuesGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesGet",
+			OperationID:   "issues/get",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"issue_number": params.IssueNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesGetParams
+			Response = IssuesGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16759,7 +25338,41 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.IssuesGetComment(ctx, params)
+	var response IssuesGetCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesGetComment",
+			OperationID:   "issues/get-comment",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"comment_id": params.CommentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesGetCommentParams
+			Response = IssuesGetCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesGetComment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesGetComment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16821,7 +25434,41 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.IssuesGetEvent(ctx, params)
+	var response IssuesGetEventRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesGetEvent",
+			OperationID:   "issues/get-event",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"event_id": params.EventID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesGetEventParams
+			Response = IssuesGetEventRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesGetEvent(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesGetEvent(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16883,7 +25530,41 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.IssuesGetLabel(ctx, params)
+	var response IssuesGetLabelRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesGetLabel",
+			OperationID:   "issues/get-label",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"name":  params.Name,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesGetLabelParams
+			Response = IssuesGetLabelRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesGetLabel(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesGetLabel(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16945,7 +25626,41 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.Response
 		return
 	}
 
-	response, err := s.h.IssuesGetMilestone(ctx, params)
+	var response IssuesGetMilestoneRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesGetMilestone",
+			OperationID:   "issues/get-milestone",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":            params.Owner,
+				"repo":             params.Repo,
+				"milestone_number": params.MilestoneNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesGetMilestoneParams
+			Response = IssuesGetMilestoneRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesGetMilestone(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesGetMilestone(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17007,7 +25722,50 @@ func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.h.IssuesList(ctx, params)
+	var response IssuesListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesList",
+			OperationID:   "issues/list",
+			Body:          nil,
+			Params: map[string]any{
+				"filter":    params.Filter,
+				"state":     params.State,
+				"labels":    params.Labels,
+				"sort":      params.Sort,
+				"direction": params.Direction,
+				"since":     params.Since,
+				"collab":    params.Collab,
+				"orgs":      params.Orgs,
+				"owned":     params.Owned,
+				"pulls":     params.Pulls,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesListParams
+			Response = IssuesListRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17069,7 +25827,42 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.IssuesListAssignees(ctx, params)
+	var response IssuesListAssigneesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesListAssignees",
+			OperationID:   "issues/list-assignees",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesListAssigneesParams
+			Response = IssuesListAssigneesRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesListAssignees(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesListAssignees(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17131,7 +25924,44 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.Response
 		return
 	}
 
-	response, err := s.h.IssuesListComments(ctx, params)
+	var response IssuesListCommentsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesListComments",
+			OperationID:   "issues/list-comments",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"issue_number": params.IssueNumber,
+				"since":        params.Since,
+				"per_page":     params.PerPage,
+				"page":         params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesListCommentsParams
+			Response = IssuesListCommentsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesListComments(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesListComments(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17193,7 +26023,45 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.R
 		return
 	}
 
-	response, err := s.h.IssuesListCommentsForRepo(ctx, params)
+	var response IssuesListCommentsForRepoRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesListCommentsForRepo",
+			OperationID:   "issues/list-comments-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":     params.Owner,
+				"repo":      params.Repo,
+				"sort":      params.Sort,
+				"direction": params.Direction,
+				"since":     params.Since,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesListCommentsForRepoParams
+			Response = IssuesListCommentsForRepoRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesListCommentsForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesListCommentsForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17255,7 +26123,42 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.Res
 		return
 	}
 
-	response, err := s.h.IssuesListEventsForRepo(ctx, params)
+	var response IssuesListEventsForRepoRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesListEventsForRepo",
+			OperationID:   "issues/list-events-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesListEventsForRepoParams
+			Response = IssuesListEventsForRepoRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesListEventsForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesListEventsForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17317,7 +26220,46 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w h
 		return
 	}
 
-	response, err := s.h.IssuesListForAuthenticatedUser(ctx, params)
+	var response IssuesListForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesListForAuthenticatedUser",
+			OperationID:   "issues/list-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"filter":    params.Filter,
+				"state":     params.State,
+				"labels":    params.Labels,
+				"sort":      params.Sort,
+				"direction": params.Direction,
+				"since":     params.Since,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesListForAuthenticatedUserParams
+			Response = IssuesListForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesListForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesListForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17379,7 +26321,47 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.IssuesListForOrg(ctx, params)
+	var response IssuesListForOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesListForOrg",
+			OperationID:   "issues/list-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":       params.Org,
+				"filter":    params.Filter,
+				"state":     params.State,
+				"labels":    params.Labels,
+				"sort":      params.Sort,
+				"direction": params.Direction,
+				"since":     params.Since,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesListForOrgParams
+			Response = IssuesListForOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesListForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesListForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17441,7 +26423,51 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.IssuesListForRepo(ctx, params)
+	var response IssuesListForRepoRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesListForRepo",
+			OperationID:   "issues/list-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":     params.Owner,
+				"repo":      params.Repo,
+				"milestone": params.Milestone,
+				"state":     params.State,
+				"assignee":  params.Assignee,
+				"creator":   params.Creator,
+				"mentioned": params.Mentioned,
+				"labels":    params.Labels,
+				"sort":      params.Sort,
+				"direction": params.Direction,
+				"since":     params.Since,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesListForRepoParams
+			Response = IssuesListForRepoRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesListForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesListForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17503,7 +26529,43 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 		return
 	}
 
-	response, err := s.h.IssuesListLabelsForMilestone(ctx, params)
+	var response IssuesListLabelsForMilestoneOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesListLabelsForMilestone",
+			OperationID:   "issues/list-labels-for-milestone",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":            params.Owner,
+				"repo":             params.Repo,
+				"milestone_number": params.MilestoneNumber,
+				"per_page":         params.PerPage,
+				"page":             params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesListLabelsForMilestoneParams
+			Response = IssuesListLabelsForMilestoneOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesListLabelsForMilestone(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesListLabelsForMilestone(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17565,7 +26627,42 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.Res
 		return
 	}
 
-	response, err := s.h.IssuesListLabelsForRepo(ctx, params)
+	var response IssuesListLabelsForRepoRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesListLabelsForRepo",
+			OperationID:   "issues/list-labels-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesListLabelsForRepoParams
+			Response = IssuesListLabelsForRepoRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesListLabelsForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesListLabelsForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17627,7 +26724,43 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.Res
 		return
 	}
 
-	response, err := s.h.IssuesListLabelsOnIssue(ctx, params)
+	var response IssuesListLabelsOnIssueRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesListLabelsOnIssue",
+			OperationID:   "issues/list-labels-on-issue",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"issue_number": params.IssueNumber,
+				"per_page":     params.PerPage,
+				"page":         params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesListLabelsOnIssueParams
+			Response = IssuesListLabelsOnIssueRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesListLabelsOnIssue(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesListLabelsOnIssue(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17689,7 +26822,45 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.IssuesListMilestones(ctx, params)
+	var response IssuesListMilestonesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesListMilestones",
+			OperationID:   "issues/list-milestones",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":     params.Owner,
+				"repo":      params.Repo,
+				"state":     params.State,
+				"sort":      params.Sort,
+				"direction": params.Direction,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesListMilestonesParams
+			Response = IssuesListMilestonesRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesListMilestones(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesListMilestones(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17766,7 +26937,41 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 		}
 	}()
 
-	response, err := s.h.IssuesLock(ctx, request, params)
+	var response IssuesLockRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesLock",
+			OperationID:   "issues/lock",
+			Body:          request,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"issue_number": params.IssueNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptNilIssuesLockReq
+			Params   = IssuesLockParams
+			Response = IssuesLockRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesLock(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesLock(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17828,7 +27033,41 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.IssuesRemoveAllLabels(ctx, params)
+	var response IssuesRemoveAllLabelsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesRemoveAllLabels",
+			OperationID:   "issues/remove-all-labels",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"issue_number": params.IssueNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesRemoveAllLabelsParams
+			Response = IssuesRemoveAllLabelsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesRemoveAllLabels(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesRemoveAllLabels(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17905,7 +27144,41 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 		}
 	}()
 
-	response, err := s.h.IssuesRemoveAssignees(ctx, request, params)
+	var response IssueSimple
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesRemoveAssignees",
+			OperationID:   "issues/remove-assignees",
+			Body:          request,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"issue_number": params.IssueNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptIssuesRemoveAssigneesReq
+			Params   = IssuesRemoveAssigneesParams
+			Response = IssueSimple
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesRemoveAssignees(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesRemoveAssignees(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17967,7 +27240,42 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.IssuesRemoveLabel(ctx, params)
+	var response IssuesRemoveLabelRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesRemoveLabel",
+			OperationID:   "issues/remove-label",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"issue_number": params.IssueNumber,
+				"name":         params.Name,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesRemoveLabelParams
+			Response = IssuesRemoveLabelRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesRemoveLabel(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesRemoveLabel(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18029,7 +27337,41 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter
 		return
 	}
 
-	response, err := s.h.IssuesUnlock(ctx, params)
+	var response IssuesUnlockRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesUnlock",
+			OperationID:   "issues/unlock",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"issue_number": params.IssueNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = IssuesUnlockParams
+			Response = IssuesUnlockRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesUnlock(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesUnlock(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18106,7 +27448,41 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 		}
 	}()
 
-	response, err := s.h.IssuesUpdate(ctx, request, params)
+	var response IssuesUpdateRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesUpdate",
+			OperationID:   "issues/update",
+			Body:          request,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"issue_number": params.IssueNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptIssuesUpdateReq
+			Params   = IssuesUpdateParams
+			Response = IssuesUpdateRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesUpdate(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesUpdate(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18183,7 +27559,41 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 		}
 	}()
 
-	response, err := s.h.IssuesUpdateComment(ctx, request, params)
+	var response IssuesUpdateCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesUpdateComment",
+			OperationID:   "issues/update-comment",
+			Body:          request,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"comment_id": params.CommentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = IssuesUpdateCommentReq
+			Params   = IssuesUpdateCommentParams
+			Response = IssuesUpdateCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesUpdateComment(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesUpdateComment(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18260,7 +27670,41 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.IssuesUpdateLabel(ctx, request, params)
+	var response Label
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesUpdateLabel",
+			OperationID:   "issues/update-label",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"name":  params.Name,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptIssuesUpdateLabelReq
+			Params   = IssuesUpdateLabelParams
+			Response = Label
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesUpdateLabel(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesUpdateLabel(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18337,7 +27781,41 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 		}
 	}()
 
-	response, err := s.h.IssuesUpdateMilestone(ctx, request, params)
+	var response Milestone
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "IssuesUpdateMilestone",
+			OperationID:   "issues/update-milestone",
+			Body:          request,
+			Params: map[string]any{
+				"owner":            params.Owner,
+				"repo":             params.Repo,
+				"milestone_number": params.MilestoneNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptIssuesUpdateMilestoneReq
+			Params   = IssuesUpdateMilestoneParams
+			Response = Milestone
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.IssuesUpdateMilestone(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.IssuesUpdateMilestone(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18399,7 +27877,39 @@ func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.h.LicensesGet(ctx, params)
+	var response LicensesGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "LicensesGet",
+			OperationID:   "licenses/get",
+			Body:          nil,
+			Params: map[string]any{
+				"license": params.License,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = LicensesGetParams
+			Response = LicensesGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.LicensesGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.LicensesGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18461,7 +27971,41 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.
 		return
 	}
 
-	response, err := s.h.LicensesGetAllCommonlyUsed(ctx, params)
+	var response LicensesGetAllCommonlyUsedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "LicensesGetAllCommonlyUsed",
+			OperationID:   "licenses/get-all-commonly-used",
+			Body:          nil,
+			Params: map[string]any{
+				"featured": params.Featured,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = LicensesGetAllCommonlyUsedParams
+			Response = LicensesGetAllCommonlyUsedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.LicensesGetAllCommonlyUsed(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.LicensesGetAllCommonlyUsed(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18523,7 +28067,40 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 		return
 	}
 
-	response, err := s.h.LicensesGetForRepo(ctx, params)
+	var response LicenseContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "LicensesGetForRepo",
+			OperationID:   "licenses/get-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = LicensesGetForRepoParams
+			Response = LicenseContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.LicensesGetForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.LicensesGetForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18571,7 +28148,37 @@ func (s *Server) handleMetaGetRequest(args [0]string, w http.ResponseWriter, r *
 		err error
 	)
 
-	response, err := s.h.MetaGet(ctx)
+	var response MetaGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MetaGet",
+			OperationID:   "meta/get",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = MetaGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MetaGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.MetaGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18619,7 +28226,37 @@ func (s *Server) handleMetaGetZenRequest(args [0]string, w http.ResponseWriter, 
 		err error
 	)
 
-	response, err := s.h.MetaGetZen(ctx)
+	var response MetaGetZenOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MetaGetZen",
+			OperationID:   "meta/get-zen",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = MetaGetZenOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MetaGetZen(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.MetaGetZen(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18667,7 +28304,37 @@ func (s *Server) handleMetaRootRequest(args [0]string, w http.ResponseWriter, r 
 		err error
 	)
 
-	response, err := s.h.MetaRoot(ctx)
+	var response MetaRootOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MetaRoot",
+			OperationID:   "meta/root",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = MetaRootOK
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MetaRoot(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.MetaRoot(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18729,7 +28396,40 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.MigrationsCancelImport(ctx, params)
+	var response MigrationsCancelImportNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsCancelImport",
+			OperationID:   "migrations/cancel-import",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MigrationsCancelImportParams
+			Response = MigrationsCancelImportNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsCancelImport(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsCancelImport(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18791,7 +28491,39 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 		return
 	}
 
-	response, err := s.h.MigrationsDeleteArchiveForAuthenticatedUser(ctx, params)
+	var response MigrationsDeleteArchiveForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsDeleteArchiveForAuthenticatedUser",
+			OperationID:   "migrations/delete-archive-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"migration_id": params.MigrationID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MigrationsDeleteArchiveForAuthenticatedUserParams
+			Response = MigrationsDeleteArchiveForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsDeleteArchiveForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsDeleteArchiveForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18853,7 +28585,40 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w ht
 		return
 	}
 
-	response, err := s.h.MigrationsDeleteArchiveForOrg(ctx, params)
+	var response MigrationsDeleteArchiveForOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsDeleteArchiveForOrg",
+			OperationID:   "migrations/delete-archive-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":          params.Org,
+				"migration_id": params.MigrationID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MigrationsDeleteArchiveForOrgParams
+			Response = MigrationsDeleteArchiveForOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsDeleteArchiveForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsDeleteArchiveForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18915,7 +28680,40 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w 
 		return
 	}
 
-	response, err := s.h.MigrationsDownloadArchiveForOrg(ctx, params)
+	var response MigrationsDownloadArchiveForOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsDownloadArchiveForOrg",
+			OperationID:   "migrations/download-archive-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":          params.Org,
+				"migration_id": params.MigrationID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MigrationsDownloadArchiveForOrgParams
+			Response = MigrationsDownloadArchiveForOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsDownloadArchiveForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsDownloadArchiveForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18977,7 +28775,39 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 		return
 	}
 
-	response, err := s.h.MigrationsGetArchiveForAuthenticatedUser(ctx, params)
+	var response MigrationsGetArchiveForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsGetArchiveForAuthenticatedUser",
+			OperationID:   "migrations/get-archive-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"migration_id": params.MigrationID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MigrationsGetArchiveForAuthenticatedUserParams
+			Response = MigrationsGetArchiveForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsGetArchiveForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsGetArchiveForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19039,7 +28869,41 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.
 		return
 	}
 
-	response, err := s.h.MigrationsGetCommitAuthors(ctx, params)
+	var response MigrationsGetCommitAuthorsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsGetCommitAuthors",
+			OperationID:   "migrations/get-commit-authors",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"since": params.Since,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MigrationsGetCommitAuthorsParams
+			Response = MigrationsGetCommitAuthorsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsGetCommitAuthors(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsGetCommitAuthors(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19101,7 +28965,40 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.R
 		return
 	}
 
-	response, err := s.h.MigrationsGetImportStatus(ctx, params)
+	var response MigrationsGetImportStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsGetImportStatus",
+			OperationID:   "migrations/get-import-status",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MigrationsGetImportStatusParams
+			Response = MigrationsGetImportStatusRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsGetImportStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsGetImportStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19163,7 +29060,40 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.Res
 		return
 	}
 
-	response, err := s.h.MigrationsGetLargeFiles(ctx, params)
+	var response []PorterLargeFile
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsGetLargeFiles",
+			OperationID:   "migrations/get-large-files",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MigrationsGetLargeFilesParams
+			Response = []PorterLargeFile
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsGetLargeFiles(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsGetLargeFiles(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19225,7 +29155,40 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 		return
 	}
 
-	response, err := s.h.MigrationsGetStatusForAuthenticatedUser(ctx, params)
+	var response MigrationsGetStatusForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsGetStatusForAuthenticatedUser",
+			OperationID:   "migrations/get-status-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"migration_id": params.MigrationID,
+				"exclude":      params.Exclude,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MigrationsGetStatusForAuthenticatedUserParams
+			Response = MigrationsGetStatusForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsGetStatusForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsGetStatusForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19287,7 +29250,41 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.R
 		return
 	}
 
-	response, err := s.h.MigrationsGetStatusForOrg(ctx, params)
+	var response MigrationsGetStatusForOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsGetStatusForOrg",
+			OperationID:   "migrations/get-status-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":          params.Org,
+				"migration_id": params.MigrationID,
+				"exclude":      params.Exclude,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MigrationsGetStatusForOrgParams
+			Response = MigrationsGetStatusForOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsGetStatusForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsGetStatusForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19349,7 +29346,40 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 		return
 	}
 
-	response, err := s.h.MigrationsListForAuthenticatedUser(ctx, params)
+	var response MigrationsListForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsListForAuthenticatedUser",
+			OperationID:   "migrations/list-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MigrationsListForAuthenticatedUserParams
+			Response = MigrationsListForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsListForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsListForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19411,7 +29441,42 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.MigrationsListForOrg(ctx, params)
+	var response MigrationsListForOrgOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsListForOrg",
+			OperationID:   "migrations/list-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+				"exclude":  params.Exclude,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MigrationsListForOrgParams
+			Response = MigrationsListForOrgOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsListForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsListForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19473,7 +29538,42 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.R
 		return
 	}
 
-	response, err := s.h.MigrationsListReposForOrg(ctx, params)
+	var response MigrationsListReposForOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsListReposForOrg",
+			OperationID:   "migrations/list-repos-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":          params.Org,
+				"migration_id": params.MigrationID,
+				"per_page":     params.PerPage,
+				"page":         params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MigrationsListReposForOrgParams
+			Response = MigrationsListReposForOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsListReposForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsListReposForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19535,7 +29635,41 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.
 		return
 	}
 
-	response, err := s.h.MigrationsListReposForUser(ctx, params)
+	var response MigrationsListReposForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsListReposForUser",
+			OperationID:   "migrations/list-repos-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"migration_id": params.MigrationID,
+				"per_page":     params.PerPage,
+				"page":         params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MigrationsListReposForUserParams
+			Response = MigrationsListReposForUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsListReposForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsListReposForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19612,7 +29746,41 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 		}
 	}()
 
-	response, err := s.h.MigrationsMapCommitAuthor(ctx, request, params)
+	var response MigrationsMapCommitAuthorRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsMapCommitAuthor",
+			OperationID:   "migrations/map-commit-author",
+			Body:          request,
+			Params: map[string]any{
+				"owner":     params.Owner,
+				"repo":      params.Repo,
+				"author_id": params.AuthorID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptMigrationsMapCommitAuthorReq
+			Params   = MigrationsMapCommitAuthorParams
+			Response = MigrationsMapCommitAuthorRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsMapCommitAuthor(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsMapCommitAuthor(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19689,7 +29857,40 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 		}
 	}()
 
-	response, err := s.h.MigrationsSetLfsPreference(ctx, request, params)
+	var response MigrationsSetLfsPreferenceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsSetLfsPreference",
+			OperationID:   "migrations/set-lfs-preference",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = MigrationsSetLfsPreferenceReq
+			Params   = MigrationsSetLfsPreferenceParams
+			Response = MigrationsSetLfsPreferenceRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsSetLfsPreference(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsSetLfsPreference(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19756,7 +29957,37 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 		}
 	}()
 
-	response, err := s.h.MigrationsStartForAuthenticatedUser(ctx, request)
+	var response MigrationsStartForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsStartForAuthenticatedUser",
+			OperationID:   "migrations/start-for-authenticated-user",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = MigrationsStartForAuthenticatedUserReq
+			Params   = struct{}
+			Response = MigrationsStartForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsStartForAuthenticatedUser(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsStartForAuthenticatedUser(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19833,7 +30064,39 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 		}
 	}()
 
-	response, err := s.h.MigrationsStartForOrg(ctx, request, params)
+	var response MigrationsStartForOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsStartForOrg",
+			OperationID:   "migrations/start-for-org",
+			Body:          request,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = MigrationsStartForOrgReq
+			Params   = MigrationsStartForOrgParams
+			Response = MigrationsStartForOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsStartForOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsStartForOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19910,7 +30173,40 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 		}
 	}()
 
-	response, err := s.h.MigrationsStartImport(ctx, request, params)
+	var response MigrationsStartImportRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsStartImport",
+			OperationID:   "migrations/start-import",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = MigrationsStartImportReq
+			Params   = MigrationsStartImportParams
+			Response = MigrationsStartImportRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsStartImport(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsStartImport(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19972,7 +30268,40 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 		return
 	}
 
-	response, err := s.h.MigrationsUnlockRepoForAuthenticatedUser(ctx, params)
+	var response MigrationsUnlockRepoForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsUnlockRepoForAuthenticatedUser",
+			OperationID:   "migrations/unlock-repo-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"migration_id": params.MigrationID,
+				"repo_name":    params.RepoName,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MigrationsUnlockRepoForAuthenticatedUserParams
+			Response = MigrationsUnlockRepoForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsUnlockRepoForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsUnlockRepoForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20034,7 +30363,41 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.
 		return
 	}
 
-	response, err := s.h.MigrationsUnlockRepoForOrg(ctx, params)
+	var response MigrationsUnlockRepoForOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsUnlockRepoForOrg",
+			OperationID:   "migrations/unlock-repo-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":          params.Org,
+				"migration_id": params.MigrationID,
+				"repo_name":    params.RepoName,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MigrationsUnlockRepoForOrgParams
+			Response = MigrationsUnlockRepoForOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsUnlockRepoForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsUnlockRepoForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20111,7 +30474,40 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 		}
 	}()
 
-	response, err := s.h.MigrationsUpdateImport(ctx, request, params)
+	var response Import
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MigrationsUpdateImport",
+			OperationID:   "migrations/update-import",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptNilMigrationsUpdateImportReq
+			Params   = MigrationsUpdateImportParams
+			Response = Import
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MigrationsUpdateImport(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.MigrationsUpdateImport(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20178,7 +30574,37 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 		}
 	}()
 
-	response, err := s.h.OAuthAuthorizationsCreateAuthorization(ctx, request)
+	var response OAuthAuthorizationsCreateAuthorizationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OAuthAuthorizationsCreateAuthorization",
+			OperationID:   "oauth-authorizations/create-authorization",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptOAuthAuthorizationsCreateAuthorizationReq
+			Params   = struct{}
+			Response = OAuthAuthorizationsCreateAuthorizationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OAuthAuthorizationsCreateAuthorization(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.OAuthAuthorizationsCreateAuthorization(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20240,7 +30666,39 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 		return
 	}
 
-	response, err := s.h.OAuthAuthorizationsDeleteAuthorization(ctx, params)
+	var response OAuthAuthorizationsDeleteAuthorizationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OAuthAuthorizationsDeleteAuthorization",
+			OperationID:   "oauth-authorizations/delete-authorization",
+			Body:          nil,
+			Params: map[string]any{
+				"authorization_id": params.AuthorizationID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OAuthAuthorizationsDeleteAuthorizationParams
+			Response = OAuthAuthorizationsDeleteAuthorizationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OAuthAuthorizationsDeleteAuthorization(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OAuthAuthorizationsDeleteAuthorization(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20302,7 +30760,39 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w h
 		return
 	}
 
-	response, err := s.h.OAuthAuthorizationsDeleteGrant(ctx, params)
+	var response OAuthAuthorizationsDeleteGrantRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OAuthAuthorizationsDeleteGrant",
+			OperationID:   "oauth-authorizations/delete-grant",
+			Body:          nil,
+			Params: map[string]any{
+				"grant_id": params.GrantID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OAuthAuthorizationsDeleteGrantParams
+			Response = OAuthAuthorizationsDeleteGrantRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OAuthAuthorizationsDeleteGrant(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OAuthAuthorizationsDeleteGrant(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20364,7 +30854,39 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 		return
 	}
 
-	response, err := s.h.OAuthAuthorizationsGetAuthorization(ctx, params)
+	var response OAuthAuthorizationsGetAuthorizationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OAuthAuthorizationsGetAuthorization",
+			OperationID:   "oauth-authorizations/get-authorization",
+			Body:          nil,
+			Params: map[string]any{
+				"authorization_id": params.AuthorizationID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OAuthAuthorizationsGetAuthorizationParams
+			Response = OAuthAuthorizationsGetAuthorizationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OAuthAuthorizationsGetAuthorization(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OAuthAuthorizationsGetAuthorization(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20426,7 +30948,39 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http
 		return
 	}
 
-	response, err := s.h.OAuthAuthorizationsGetGrant(ctx, params)
+	var response OAuthAuthorizationsGetGrantRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OAuthAuthorizationsGetGrant",
+			OperationID:   "oauth-authorizations/get-grant",
+			Body:          nil,
+			Params: map[string]any{
+				"grant_id": params.GrantID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OAuthAuthorizationsGetGrantParams
+			Response = OAuthAuthorizationsGetGrantRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OAuthAuthorizationsGetGrant(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OAuthAuthorizationsGetGrant(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20503,7 +31057,39 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 		}
 	}()
 
-	response, err := s.h.OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx, request, params)
+	var response OAuthAuthorizationsGetOrCreateAuthorizationForAppRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OAuthAuthorizationsGetOrCreateAuthorizationForApp",
+			OperationID:   "oauth-authorizations/get-or-create-authorization-for-app",
+			Body:          request,
+			Params: map[string]any{
+				"client_id": params.ClientID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OAuthAuthorizationsGetOrCreateAuthorizationForAppReq
+			Params   = OAuthAuthorizationsGetOrCreateAuthorizationForAppParams
+			Response = OAuthAuthorizationsGetOrCreateAuthorizationForAppRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20580,7 +31166,40 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 		}
 	}()
 
-	response, err := s.h.OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx, request, params)
+	var response OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
+			OperationID:   "oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint",
+			Body:          request,
+			Params: map[string]any{
+				"client_id":   params.ClientID,
+				"fingerprint": params.Fingerprint,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq
+			Params   = OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams
+			Response = OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20642,7 +31261,41 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 		return
 	}
 
-	response, err := s.h.OAuthAuthorizationsListAuthorizations(ctx, params)
+	var response OAuthAuthorizationsListAuthorizationsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OAuthAuthorizationsListAuthorizations",
+			OperationID:   "oauth-authorizations/list-authorizations",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+				"client_id": params.ClientID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OAuthAuthorizationsListAuthorizationsParams
+			Response = OAuthAuthorizationsListAuthorizationsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OAuthAuthorizationsListAuthorizations(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OAuthAuthorizationsListAuthorizations(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20704,7 +31357,41 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w ht
 		return
 	}
 
-	response, err := s.h.OAuthAuthorizationsListGrants(ctx, params)
+	var response OAuthAuthorizationsListGrantsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OAuthAuthorizationsListGrants",
+			OperationID:   "oauth-authorizations/list-grants",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+				"client_id": params.ClientID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OAuthAuthorizationsListGrantsParams
+			Response = OAuthAuthorizationsListGrantsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OAuthAuthorizationsListGrants(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OAuthAuthorizationsListGrants(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20781,7 +31468,39 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 		}
 	}()
 
-	response, err := s.h.OAuthAuthorizationsUpdateAuthorization(ctx, request, params)
+	var response OAuthAuthorizationsUpdateAuthorizationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OAuthAuthorizationsUpdateAuthorization",
+			OperationID:   "oauth-authorizations/update-authorization",
+			Body:          request,
+			Params: map[string]any{
+				"authorization_id": params.AuthorizationID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptOAuthAuthorizationsUpdateAuthorizationReq
+			Params   = OAuthAuthorizationsUpdateAuthorizationParams
+			Response = OAuthAuthorizationsUpdateAuthorizationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OAuthAuthorizationsUpdateAuthorization(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.OAuthAuthorizationsUpdateAuthorization(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20843,7 +31562,40 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWrite
 		return
 	}
 
-	response, err := s.h.OrgsBlockUser(ctx, params)
+	var response OrgsBlockUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsBlockUser",
+			OperationID:   "orgs/block-user",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsBlockUserParams
+			Response = OrgsBlockUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsBlockUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsBlockUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20905,7 +31657,40 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.OrgsCancelInvitation(ctx, params)
+	var response OrgsCancelInvitationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsCancelInvitation",
+			OperationID:   "orgs/cancel-invitation",
+			Body:          nil,
+			Params: map[string]any{
+				"org":           params.Org,
+				"invitation_id": params.InvitationID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsCancelInvitationParams
+			Response = OrgsCancelInvitationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsCancelInvitation(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsCancelInvitation(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20967,7 +31752,40 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.OrgsCheckBlockedUser(ctx, params)
+	var response OrgsCheckBlockedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsCheckBlockedUser",
+			OperationID:   "orgs/check-blocked-user",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsCheckBlockedUserParams
+			Response = OrgsCheckBlockedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsCheckBlockedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsCheckBlockedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21029,7 +31847,40 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.
 		return
 	}
 
-	response, err := s.h.OrgsCheckMembershipForUser(ctx, params)
+	var response OrgsCheckMembershipForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsCheckMembershipForUser",
+			OperationID:   "orgs/check-membership-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsCheckMembershipForUserParams
+			Response = OrgsCheckMembershipForUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsCheckMembershipForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsCheckMembershipForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21091,7 +31942,40 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w
 		return
 	}
 
-	response, err := s.h.OrgsCheckPublicMembershipForUser(ctx, params)
+	var response OrgsCheckPublicMembershipForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsCheckPublicMembershipForUser",
+			OperationID:   "orgs/check-public-membership-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsCheckPublicMembershipForUserParams
+			Response = OrgsCheckPublicMembershipForUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsCheckPublicMembershipForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsCheckPublicMembershipForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21153,7 +32037,40 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 		return
 	}
 
-	response, err := s.h.OrgsConvertMemberToOutsideCollaborator(ctx, params)
+	var response OrgsConvertMemberToOutsideCollaboratorRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsConvertMemberToOutsideCollaborator",
+			OperationID:   "orgs/convert-member-to-outside-collaborator",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsConvertMemberToOutsideCollaboratorParams
+			Response = OrgsConvertMemberToOutsideCollaboratorRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsConvertMemberToOutsideCollaborator(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsConvertMemberToOutsideCollaborator(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21230,7 +32147,39 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 		}
 	}()
 
-	response, err := s.h.OrgsCreateInvitation(ctx, request, params)
+	var response OrgsCreateInvitationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsCreateInvitation",
+			OperationID:   "orgs/create-invitation",
+			Body:          request,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptOrgsCreateInvitationReq
+			Params   = OrgsCreateInvitationParams
+			Response = OrgsCreateInvitationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsCreateInvitation(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsCreateInvitation(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21307,7 +32256,39 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.OrgsCreateWebhook(ctx, request, params)
+	var response OrgsCreateWebhookRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsCreateWebhook",
+			OperationID:   "orgs/create-webhook",
+			Body:          request,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OrgsCreateWebhookReq
+			Params   = OrgsCreateWebhookParams
+			Response = OrgsCreateWebhookRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsCreateWebhook(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsCreateWebhook(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21369,7 +32350,40 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.OrgsDeleteWebhook(ctx, params)
+	var response OrgsDeleteWebhookRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsDeleteWebhook",
+			OperationID:   "orgs/delete-webhook",
+			Body:          nil,
+			Params: map[string]any{
+				"org":     params.Org,
+				"hook_id": params.HookID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsDeleteWebhookParams
+			Response = OrgsDeleteWebhookRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsDeleteWebhook(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsDeleteWebhook(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21431,7 +32445,39 @@ func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.h.OrgsGet(ctx, params)
+	var response OrgsGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsGet",
+			OperationID:   "orgs/get",
+			Body:          nil,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsGetParams
+			Response = OrgsGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21493,7 +32539,46 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.OrgsGetAuditLog(ctx, params)
+	var response []AuditLogEvent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsGetAuditLog",
+			OperationID:   "orgs/get-audit-log",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"phrase":   params.Phrase,
+				"include":  params.Include,
+				"after":    params.After,
+				"before":   params.Before,
+				"order":    params.Order,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsGetAuditLogParams
+			Response = []AuditLogEvent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsGetAuditLog(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsGetAuditLog(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21555,7 +32640,39 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 		return
 	}
 
-	response, err := s.h.OrgsGetMembershipForAuthenticatedUser(ctx, params)
+	var response OrgsGetMembershipForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsGetMembershipForAuthenticatedUser",
+			OperationID:   "orgs/get-membership-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsGetMembershipForAuthenticatedUserParams
+			Response = OrgsGetMembershipForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsGetMembershipForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsGetMembershipForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21617,7 +32734,40 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.Re
 		return
 	}
 
-	response, err := s.h.OrgsGetMembershipForUser(ctx, params)
+	var response OrgsGetMembershipForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsGetMembershipForUser",
+			OperationID:   "orgs/get-membership-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsGetMembershipForUserParams
+			Response = OrgsGetMembershipForUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsGetMembershipForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsGetMembershipForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21679,7 +32829,40 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.OrgsGetWebhook(ctx, params)
+	var response OrgsGetWebhookRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsGetWebhook",
+			OperationID:   "orgs/get-webhook",
+			Body:          nil,
+			Params: map[string]any{
+				"org":     params.Org,
+				"hook_id": params.HookID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsGetWebhookParams
+			Response = OrgsGetWebhookRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsGetWebhook(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsGetWebhook(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21741,7 +32924,40 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 		return
 	}
 
-	response, err := s.h.OrgsGetWebhookConfigForOrg(ctx, params)
+	var response WebhookConfig
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsGetWebhookConfigForOrg",
+			OperationID:   "orgs/get-webhook-config-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":     params.Org,
+				"hook_id": params.HookID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsGetWebhookConfigForOrgParams
+			Response = WebhookConfig
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsGetWebhookConfigForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsGetWebhookConfigForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21803,7 +33019,41 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.OrgsGetWebhookDelivery(ctx, params)
+	var response OrgsGetWebhookDeliveryRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsGetWebhookDelivery",
+			OperationID:   "orgs/get-webhook-delivery",
+			Body:          nil,
+			Params: map[string]any{
+				"org":         params.Org,
+				"hook_id":     params.HookID,
+				"delivery_id": params.DeliveryID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsGetWebhookDeliveryParams
+			Response = OrgsGetWebhookDeliveryRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsGetWebhookDelivery(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsGetWebhookDelivery(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21865,7 +33115,40 @@ func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.h.OrgsList(ctx, params)
+	var response OrgsListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsList",
+			OperationID:   "orgs/list",
+			Body:          nil,
+			Params: map[string]any{
+				"since":    params.Since,
+				"per_page": params.PerPage,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsListParams
+			Response = OrgsListRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21927,7 +33210,39 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.OrgsListBlockedUsers(ctx, params)
+	var response OrgsListBlockedUsersRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsListBlockedUsers",
+			OperationID:   "orgs/list-blocked-users",
+			Body:          nil,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsListBlockedUsersParams
+			Response = OrgsListBlockedUsersRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsListBlockedUsers(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsListBlockedUsers(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21989,7 +33304,41 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.R
 		return
 	}
 
-	response, err := s.h.OrgsListFailedInvitations(ctx, params)
+	var response OrgsListFailedInvitationsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsListFailedInvitations",
+			OperationID:   "orgs/list-failed-invitations",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsListFailedInvitationsParams
+			Response = OrgsListFailedInvitationsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsListFailedInvitations(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsListFailedInvitations(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22051,7 +33400,40 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w htt
 		return
 	}
 
-	response, err := s.h.OrgsListForAuthenticatedUser(ctx, params)
+	var response OrgsListForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsListForAuthenticatedUser",
+			OperationID:   "orgs/list-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsListForAuthenticatedUserParams
+			Response = OrgsListForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsListForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsListForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22113,7 +33495,41 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.OrgsListForUser(ctx, params)
+	var response OrgsListForUserOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsListForUser",
+			OperationID:   "orgs/list-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsListForUserParams
+			Response = OrgsListForUserOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsListForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsListForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22175,7 +33591,42 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.Res
 		return
 	}
 
-	response, err := s.h.OrgsListInvitationTeams(ctx, params)
+	var response OrgsListInvitationTeamsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsListInvitationTeams",
+			OperationID:   "orgs/list-invitation-teams",
+			Body:          nil,
+			Params: map[string]any{
+				"org":           params.Org,
+				"invitation_id": params.InvitationID,
+				"per_page":      params.PerPage,
+				"page":          params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsListInvitationTeamsParams
+			Response = OrgsListInvitationTeamsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsListInvitationTeams(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsListInvitationTeams(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22237,7 +33688,43 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.OrgsListMembers(ctx, params)
+	var response OrgsListMembersRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsListMembers",
+			OperationID:   "orgs/list-members",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"filter":   params.Filter,
+				"role":     params.Role,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsListMembersParams
+			Response = OrgsListMembersRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsListMembers(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsListMembers(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22299,7 +33786,41 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 		return
 	}
 
-	response, err := s.h.OrgsListMembershipsForAuthenticatedUser(ctx, params)
+	var response OrgsListMembershipsForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsListMembershipsForAuthenticatedUser",
+			OperationID:   "orgs/list-memberships-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"state":    params.State,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsListMembershipsForAuthenticatedUserParams
+			Response = OrgsListMembershipsForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsListMembershipsForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsListMembershipsForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22361,7 +33882,42 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 		return
 	}
 
-	response, err := s.h.OrgsListOutsideCollaborators(ctx, params)
+	var response OrgsListOutsideCollaboratorsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsListOutsideCollaborators",
+			OperationID:   "orgs/list-outside-collaborators",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"filter":   params.Filter,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsListOutsideCollaboratorsParams
+			Response = OrgsListOutsideCollaboratorsOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsListOutsideCollaborators(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsListOutsideCollaborators(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22423,7 +33979,41 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.
 		return
 	}
 
-	response, err := s.h.OrgsListPendingInvitations(ctx, params)
+	var response OrgsListPendingInvitationsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsListPendingInvitations",
+			OperationID:   "orgs/list-pending-invitations",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsListPendingInvitationsParams
+			Response = OrgsListPendingInvitationsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsListPendingInvitations(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsListPendingInvitations(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22485,7 +34075,41 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.OrgsListPublicMembers(ctx, params)
+	var response OrgsListPublicMembersOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsListPublicMembers",
+			OperationID:   "orgs/list-public-members",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsListPublicMembersParams
+			Response = OrgsListPublicMembersOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsListPublicMembers(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsListPublicMembers(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22547,7 +34171,39 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w ht
 		return
 	}
 
-	response, err := s.h.OrgsListSamlSSOAuthorizations(ctx, params)
+	var response []CredentialAuthorization
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsListSamlSSOAuthorizations",
+			OperationID:   "orgs/list-saml-sso-authorizations",
+			Body:          nil,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsListSamlSSOAuthorizationsParams
+			Response = []CredentialAuthorization
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsListSamlSSOAuthorizations(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsListSamlSSOAuthorizations(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22609,7 +34265,42 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.R
 		return
 	}
 
-	response, err := s.h.OrgsListWebhookDeliveries(ctx, params)
+	var response OrgsListWebhookDeliveriesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsListWebhookDeliveries",
+			OperationID:   "orgs/list-webhook-deliveries",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"hook_id":  params.HookID,
+				"per_page": params.PerPage,
+				"cursor":   params.Cursor,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsListWebhookDeliveriesParams
+			Response = OrgsListWebhookDeliveriesRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsListWebhookDeliveries(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsListWebhookDeliveries(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22671,7 +34362,41 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.OrgsListWebhooks(ctx, params)
+	var response OrgsListWebhooksRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsListWebhooks",
+			OperationID:   "orgs/list-webhooks",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsListWebhooksParams
+			Response = OrgsListWebhooksRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsListWebhooks(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsListWebhooks(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22733,7 +34458,40 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.OrgsPingWebhook(ctx, params)
+	var response OrgsPingWebhookRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsPingWebhook",
+			OperationID:   "orgs/ping-webhook",
+			Body:          nil,
+			Params: map[string]any{
+				"org":     params.Org,
+				"hook_id": params.HookID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsPingWebhookParams
+			Response = OrgsPingWebhookRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsPingWebhook(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsPingWebhook(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22795,7 +34553,41 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w htt
 		return
 	}
 
-	response, err := s.h.OrgsRedeliverWebhookDelivery(ctx, params)
+	var response OrgsRedeliverWebhookDeliveryRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsRedeliverWebhookDelivery",
+			OperationID:   "orgs/redeliver-webhook-delivery",
+			Body:          nil,
+			Params: map[string]any{
+				"org":         params.Org,
+				"hook_id":     params.HookID,
+				"delivery_id": params.DeliveryID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsRedeliverWebhookDeliveryParams
+			Response = OrgsRedeliverWebhookDeliveryRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsRedeliverWebhookDelivery(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsRedeliverWebhookDelivery(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22857,7 +34649,40 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.OrgsRemoveMember(ctx, params)
+	var response OrgsRemoveMemberRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsRemoveMember",
+			OperationID:   "orgs/remove-member",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsRemoveMemberParams
+			Response = OrgsRemoveMemberRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsRemoveMember(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsRemoveMember(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22919,7 +34744,40 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http
 		return
 	}
 
-	response, err := s.h.OrgsRemoveMembershipForUser(ctx, params)
+	var response OrgsRemoveMembershipForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsRemoveMembershipForUser",
+			OperationID:   "orgs/remove-membership-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsRemoveMembershipForUserParams
+			Response = OrgsRemoveMembershipForUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsRemoveMembershipForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsRemoveMembershipForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22981,7 +34839,40 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w ht
 		return
 	}
 
-	response, err := s.h.OrgsRemoveOutsideCollaborator(ctx, params)
+	var response OrgsRemoveOutsideCollaboratorRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsRemoveOutsideCollaborator",
+			OperationID:   "orgs/remove-outside-collaborator",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsRemoveOutsideCollaboratorParams
+			Response = OrgsRemoveOutsideCollaboratorRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsRemoveOutsideCollaborator(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsRemoveOutsideCollaborator(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23043,7 +34934,40 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 		return
 	}
 
-	response, err := s.h.OrgsRemovePublicMembershipForAuthenticatedUser(ctx, params)
+	var response OrgsRemovePublicMembershipForAuthenticatedUserNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsRemovePublicMembershipForAuthenticatedUser",
+			OperationID:   "orgs/remove-public-membership-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsRemovePublicMembershipForAuthenticatedUserParams
+			Response = OrgsRemovePublicMembershipForAuthenticatedUserNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsRemovePublicMembershipForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsRemovePublicMembershipForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23105,7 +35029,40 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w h
 		return
 	}
 
-	response, err := s.h.OrgsRemoveSamlSSOAuthorization(ctx, params)
+	var response OrgsRemoveSamlSSOAuthorizationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsRemoveSamlSSOAuthorization",
+			OperationID:   "orgs/remove-saml-sso-authorization",
+			Body:          nil,
+			Params: map[string]any{
+				"org":           params.Org,
+				"credential_id": params.CredentialID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsRemoveSamlSSOAuthorizationParams
+			Response = OrgsRemoveSamlSSOAuthorizationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsRemoveSamlSSOAuthorization(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsRemoveSamlSSOAuthorization(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23182,7 +35139,40 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 		}
 	}()
 
-	response, err := s.h.OrgsSetMembershipForUser(ctx, request, params)
+	var response OrgsSetMembershipForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsSetMembershipForUser",
+			OperationID:   "orgs/set-membership-for-user",
+			Body:          request,
+			Params: map[string]any{
+				"org":      params.Org,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptOrgsSetMembershipForUserReq
+			Params   = OrgsSetMembershipForUserParams
+			Response = OrgsSetMembershipForUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsSetMembershipForUser(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsSetMembershipForUser(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23244,7 +35234,40 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 		return
 	}
 
-	response, err := s.h.OrgsSetPublicMembershipForAuthenticatedUser(ctx, params)
+	var response OrgsSetPublicMembershipForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsSetPublicMembershipForAuthenticatedUser",
+			OperationID:   "orgs/set-public-membership-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsSetPublicMembershipForAuthenticatedUserParams
+			Response = OrgsSetPublicMembershipForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsSetPublicMembershipForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsSetPublicMembershipForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23306,7 +35329,40 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.OrgsUnblockUser(ctx, params)
+	var response OrgsUnblockUserNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsUnblockUser",
+			OperationID:   "orgs/unblock-user",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrgsUnblockUserParams
+			Response = OrgsUnblockUserNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsUnblockUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsUnblockUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23383,7 +35439,39 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 		}
 	}()
 
-	response, err := s.h.OrgsUpdateMembershipForAuthenticatedUser(ctx, request, params)
+	var response OrgsUpdateMembershipForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsUpdateMembershipForAuthenticatedUser",
+			OperationID:   "orgs/update-membership-for-authenticated-user",
+			Body:          request,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OrgsUpdateMembershipForAuthenticatedUserReq
+			Params   = OrgsUpdateMembershipForAuthenticatedUserParams
+			Response = OrgsUpdateMembershipForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsUpdateMembershipForAuthenticatedUser(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsUpdateMembershipForAuthenticatedUser(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23460,7 +35548,40 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.OrgsUpdateWebhook(ctx, request, params)
+	var response OrgsUpdateWebhookRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsUpdateWebhook",
+			OperationID:   "orgs/update-webhook",
+			Body:          request,
+			Params: map[string]any{
+				"org":     params.Org,
+				"hook_id": params.HookID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptOrgsUpdateWebhookReq
+			Params   = OrgsUpdateWebhookParams
+			Response = OrgsUpdateWebhookRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsUpdateWebhook(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsUpdateWebhook(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23537,7 +35658,40 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 		}
 	}()
 
-	response, err := s.h.OrgsUpdateWebhookConfigForOrg(ctx, request, params)
+	var response WebhookConfig
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrgsUpdateWebhookConfigForOrg",
+			OperationID:   "orgs/update-webhook-config-for-org",
+			Body:          request,
+			Params: map[string]any{
+				"org":     params.Org,
+				"hook_id": params.HookID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptOrgsUpdateWebhookConfigForOrgReq
+			Params   = OrgsUpdateWebhookConfigForOrgParams
+			Response = WebhookConfig
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrgsUpdateWebhookConfigForOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrgsUpdateWebhookConfigForOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23599,7 +35753,40 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 		return
 	}
 
-	response, err := s.h.PackagesDeletePackageForAuthenticatedUser(ctx, params)
+	var response PackagesDeletePackageForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesDeletePackageForAuthenticatedUser",
+			OperationID:   "packages/delete-package-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type": params.PackageType,
+				"package_name": params.PackageName,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesDeletePackageForAuthenticatedUserParams
+			Response = PackagesDeletePackageForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesDeletePackageForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesDeletePackageForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23661,7 +35848,41 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http
 		return
 	}
 
-	response, err := s.h.PackagesDeletePackageForOrg(ctx, params)
+	var response PackagesDeletePackageForOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesDeletePackageForOrg",
+			OperationID:   "packages/delete-package-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type": params.PackageType,
+				"package_name": params.PackageName,
+				"org":          params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesDeletePackageForOrgParams
+			Response = PackagesDeletePackageForOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesDeletePackageForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesDeletePackageForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23723,7 +35944,41 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w htt
 		return
 	}
 
-	response, err := s.h.PackagesDeletePackageForUser(ctx, params)
+	var response PackagesDeletePackageForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesDeletePackageForUser",
+			OperationID:   "packages/delete-package-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type": params.PackageType,
+				"package_name": params.PackageName,
+				"username":     params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesDeletePackageForUserParams
+			Response = PackagesDeletePackageForUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesDeletePackageForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesDeletePackageForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23785,7 +36040,41 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 		return
 	}
 
-	response, err := s.h.PackagesDeletePackageVersionForAuthenticatedUser(ctx, params)
+	var response PackagesDeletePackageVersionForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesDeletePackageVersionForAuthenticatedUser",
+			OperationID:   "packages/delete-package-version-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type":       params.PackageType,
+				"package_name":       params.PackageName,
+				"package_version_id": params.PackageVersionID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesDeletePackageVersionForAuthenticatedUserParams
+			Response = PackagesDeletePackageVersionForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesDeletePackageVersionForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesDeletePackageVersionForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23847,7 +36136,42 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 		return
 	}
 
-	response, err := s.h.PackagesDeletePackageVersionForOrg(ctx, params)
+	var response PackagesDeletePackageVersionForOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesDeletePackageVersionForOrg",
+			OperationID:   "packages/delete-package-version-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type":       params.PackageType,
+				"package_name":       params.PackageName,
+				"org":                params.Org,
+				"package_version_id": params.PackageVersionID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesDeletePackageVersionForOrgParams
+			Response = PackagesDeletePackageVersionForOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesDeletePackageVersionForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesDeletePackageVersionForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23909,7 +36233,42 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 		return
 	}
 
-	response, err := s.h.PackagesDeletePackageVersionForUser(ctx, params)
+	var response PackagesDeletePackageVersionForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesDeletePackageVersionForUser",
+			OperationID:   "packages/delete-package-version-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type":       params.PackageType,
+				"package_name":       params.PackageName,
+				"username":           params.Username,
+				"package_version_id": params.PackageVersionID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesDeletePackageVersionForUserParams
+			Response = PackagesDeletePackageVersionForUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesDeletePackageVersionForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesDeletePackageVersionForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23971,7 +36330,43 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 		return
 	}
 
-	response, err := s.h.PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx, params)
+	var response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser",
+			OperationID:   "packages/get-all-package-versions-for-package-owned-by-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type": params.PackageType,
+				"package_name": params.PackageName,
+				"page":         params.Page,
+				"per_page":     params.PerPage,
+				"state":        params.State,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
+			Response = PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24033,7 +36428,44 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 		return
 	}
 
-	response, err := s.h.PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx, params)
+	var response PackagesGetAllPackageVersionsForPackageOwnedByOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesGetAllPackageVersionsForPackageOwnedByOrg",
+			OperationID:   "packages/get-all-package-versions-for-package-owned-by-org",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type": params.PackageType,
+				"package_name": params.PackageName,
+				"org":          params.Org,
+				"page":         params.Page,
+				"per_page":     params.PerPage,
+				"state":        params.State,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesGetAllPackageVersionsForPackageOwnedByOrgParams
+			Response = PackagesGetAllPackageVersionsForPackageOwnedByOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24095,7 +36527,41 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 		return
 	}
 
-	response, err := s.h.PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx, params)
+	var response PackagesGetAllPackageVersionsForPackageOwnedByUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesGetAllPackageVersionsForPackageOwnedByUser",
+			OperationID:   "packages/get-all-package-versions-for-package-owned-by-user",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type": params.PackageType,
+				"package_name": params.PackageName,
+				"username":     params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesGetAllPackageVersionsForPackageOwnedByUserParams
+			Response = PackagesGetAllPackageVersionsForPackageOwnedByUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24157,7 +36623,40 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 		return
 	}
 
-	response, err := s.h.PackagesGetPackageForAuthenticatedUser(ctx, params)
+	var response Package
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesGetPackageForAuthenticatedUser",
+			OperationID:   "packages/get-package-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type": params.PackageType,
+				"package_name": params.PackageName,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesGetPackageForAuthenticatedUserParams
+			Response = Package
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesGetPackageForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesGetPackageForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24219,7 +36718,41 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 		return
 	}
 
-	response, err := s.h.PackagesGetPackageForOrganization(ctx, params)
+	var response Package
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesGetPackageForOrganization",
+			OperationID:   "packages/get-package-for-organization",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type": params.PackageType,
+				"package_name": params.PackageName,
+				"org":          params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesGetPackageForOrganizationParams
+			Response = Package
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesGetPackageForOrganization(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesGetPackageForOrganization(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24281,7 +36814,41 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 		return
 	}
 
-	response, err := s.h.PackagesGetPackageForUser(ctx, params)
+	var response Package
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesGetPackageForUser",
+			OperationID:   "packages/get-package-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type": params.PackageType,
+				"package_name": params.PackageName,
+				"username":     params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesGetPackageForUserParams
+			Response = Package
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesGetPackageForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesGetPackageForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24343,7 +36910,41 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 		return
 	}
 
-	response, err := s.h.PackagesGetPackageVersionForAuthenticatedUser(ctx, params)
+	var response PackageVersion
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesGetPackageVersionForAuthenticatedUser",
+			OperationID:   "packages/get-package-version-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type":       params.PackageType,
+				"package_name":       params.PackageName,
+				"package_version_id": params.PackageVersionID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesGetPackageVersionForAuthenticatedUserParams
+			Response = PackageVersion
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesGetPackageVersionForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesGetPackageVersionForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24405,7 +37006,42 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 		return
 	}
 
-	response, err := s.h.PackagesGetPackageVersionForOrganization(ctx, params)
+	var response PackageVersion
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesGetPackageVersionForOrganization",
+			OperationID:   "packages/get-package-version-for-organization",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type":       params.PackageType,
+				"package_name":       params.PackageName,
+				"org":                params.Org,
+				"package_version_id": params.PackageVersionID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesGetPackageVersionForOrganizationParams
+			Response = PackageVersion
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesGetPackageVersionForOrganization(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesGetPackageVersionForOrganization(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24467,7 +37103,42 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 		return
 	}
 
-	response, err := s.h.PackagesGetPackageVersionForUser(ctx, params)
+	var response PackageVersion
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesGetPackageVersionForUser",
+			OperationID:   "packages/get-package-version-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type":       params.PackageType,
+				"package_name":       params.PackageName,
+				"package_version_id": params.PackageVersionID,
+				"username":           params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesGetPackageVersionForUserParams
+			Response = PackageVersion
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesGetPackageVersionForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesGetPackageVersionForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24529,7 +37200,40 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 		return
 	}
 
-	response, err := s.h.PackagesListPackagesForAuthenticatedUser(ctx, params)
+	var response []Package
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesListPackagesForAuthenticatedUser",
+			OperationID:   "packages/list-packages-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type": params.PackageType,
+				"visibility":   params.Visibility,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesListPackagesForAuthenticatedUserParams
+			Response = []Package
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesListPackagesForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesListPackagesForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24591,7 +37295,41 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 		return
 	}
 
-	response, err := s.h.PackagesListPackagesForOrganization(ctx, params)
+	var response PackagesListPackagesForOrganizationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesListPackagesForOrganization",
+			OperationID:   "packages/list-packages-for-organization",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type": params.PackageType,
+				"org":          params.Org,
+				"visibility":   params.Visibility,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesListPackagesForOrganizationParams
+			Response = PackagesListPackagesForOrganizationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesListPackagesForOrganization(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesListPackagesForOrganization(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24653,7 +37391,41 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http
 		return
 	}
 
-	response, err := s.h.PackagesListPackagesForUser(ctx, params)
+	var response PackagesListPackagesForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesListPackagesForUser",
+			OperationID:   "packages/list-packages-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type": params.PackageType,
+				"visibility":   params.Visibility,
+				"username":     params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesListPackagesForUserParams
+			Response = PackagesListPackagesForUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesListPackagesForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesListPackagesForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24715,7 +37487,41 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 		return
 	}
 
-	response, err := s.h.PackagesRestorePackageForAuthenticatedUser(ctx, params)
+	var response PackagesRestorePackageForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesRestorePackageForAuthenticatedUser",
+			OperationID:   "packages/restore-package-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type": params.PackageType,
+				"package_name": params.PackageName,
+				"token":        params.Token,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesRestorePackageForAuthenticatedUserParams
+			Response = PackagesRestorePackageForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesRestorePackageForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesRestorePackageForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24777,7 +37583,42 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w htt
 		return
 	}
 
-	response, err := s.h.PackagesRestorePackageForOrg(ctx, params)
+	var response PackagesRestorePackageForOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesRestorePackageForOrg",
+			OperationID:   "packages/restore-package-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type": params.PackageType,
+				"package_name": params.PackageName,
+				"org":          params.Org,
+				"token":        params.Token,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesRestorePackageForOrgParams
+			Response = PackagesRestorePackageForOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesRestorePackageForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesRestorePackageForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24839,7 +37680,42 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w ht
 		return
 	}
 
-	response, err := s.h.PackagesRestorePackageForUser(ctx, params)
+	var response PackagesRestorePackageForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesRestorePackageForUser",
+			OperationID:   "packages/restore-package-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type": params.PackageType,
+				"package_name": params.PackageName,
+				"username":     params.Username,
+				"token":        params.Token,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesRestorePackageForUserParams
+			Response = PackagesRestorePackageForUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesRestorePackageForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesRestorePackageForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24901,7 +37777,41 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 		return
 	}
 
-	response, err := s.h.PackagesRestorePackageVersionForAuthenticatedUser(ctx, params)
+	var response PackagesRestorePackageVersionForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesRestorePackageVersionForAuthenticatedUser",
+			OperationID:   "packages/restore-package-version-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type":       params.PackageType,
+				"package_name":       params.PackageName,
+				"package_version_id": params.PackageVersionID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesRestorePackageVersionForAuthenticatedUserParams
+			Response = PackagesRestorePackageVersionForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesRestorePackageVersionForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesRestorePackageVersionForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24963,7 +37873,42 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 		return
 	}
 
-	response, err := s.h.PackagesRestorePackageVersionForOrg(ctx, params)
+	var response PackagesRestorePackageVersionForOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesRestorePackageVersionForOrg",
+			OperationID:   "packages/restore-package-version-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type":       params.PackageType,
+				"package_name":       params.PackageName,
+				"org":                params.Org,
+				"package_version_id": params.PackageVersionID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesRestorePackageVersionForOrgParams
+			Response = PackagesRestorePackageVersionForOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesRestorePackageVersionForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesRestorePackageVersionForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25025,7 +37970,42 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 		return
 	}
 
-	response, err := s.h.PackagesRestorePackageVersionForUser(ctx, params)
+	var response PackagesRestorePackageVersionForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PackagesRestorePackageVersionForUser",
+			OperationID:   "packages/restore-package-version-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"package_type":       params.PackageType,
+				"package_name":       params.PackageName,
+				"username":           params.Username,
+				"package_version_id": params.PackageVersionID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PackagesRestorePackageVersionForUserParams
+			Response = PackagesRestorePackageVersionForUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PackagesRestorePackageVersionForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PackagesRestorePackageVersionForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25102,7 +38082,40 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 		}
 	}()
 
-	response, err := s.h.ProjectsAddCollaborator(ctx, request, params)
+	var response ProjectsAddCollaboratorRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsAddCollaborator",
+			OperationID:   "projects/add-collaborator",
+			Body:          request,
+			Params: map[string]any{
+				"project_id": params.ProjectID,
+				"username":   params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptNilProjectsAddCollaboratorReq
+			Params   = ProjectsAddCollaboratorParams
+			Response = ProjectsAddCollaboratorRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsAddCollaborator(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsAddCollaborator(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25179,7 +38192,39 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 		}
 	}()
 
-	response, err := s.h.ProjectsCreateColumn(ctx, request, params)
+	var response ProjectsCreateColumnRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsCreateColumn",
+			OperationID:   "projects/create-column",
+			Body:          request,
+			Params: map[string]any{
+				"project_id": params.ProjectID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ProjectsCreateColumnReq
+			Params   = ProjectsCreateColumnParams
+			Response = ProjectsCreateColumnRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsCreateColumn(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsCreateColumn(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25246,7 +38291,37 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 		}
 	}()
 
-	response, err := s.h.ProjectsCreateForAuthenticatedUser(ctx, request)
+	var response ProjectsCreateForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsCreateForAuthenticatedUser",
+			OperationID:   "projects/create-for-authenticated-user",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = ProjectsCreateForAuthenticatedUserReq
+			Params   = struct{}
+			Response = ProjectsCreateForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsCreateForAuthenticatedUser(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsCreateForAuthenticatedUser(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25323,7 +38398,39 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 		}
 	}()
 
-	response, err := s.h.ProjectsCreateForOrg(ctx, request, params)
+	var response ProjectsCreateForOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsCreateForOrg",
+			OperationID:   "projects/create-for-org",
+			Body:          request,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ProjectsCreateForOrgReq
+			Params   = ProjectsCreateForOrgParams
+			Response = ProjectsCreateForOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsCreateForOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsCreateForOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25400,7 +38507,40 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 		}
 	}()
 
-	response, err := s.h.ProjectsCreateForRepo(ctx, request, params)
+	var response ProjectsCreateForRepoRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsCreateForRepo",
+			OperationID:   "projects/create-for-repo",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ProjectsCreateForRepoReq
+			Params   = ProjectsCreateForRepoParams
+			Response = ProjectsCreateForRepoRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsCreateForRepo(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsCreateForRepo(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25462,7 +38602,39 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.ProjectsDelete(ctx, params)
+	var response ProjectsDeleteRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsDelete",
+			OperationID:   "projects/delete",
+			Body:          nil,
+			Params: map[string]any{
+				"project_id": params.ProjectID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ProjectsDeleteParams
+			Response = ProjectsDeleteRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsDelete(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsDelete(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25524,7 +38696,39 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.Response
 		return
 	}
 
-	response, err := s.h.ProjectsDeleteCard(ctx, params)
+	var response ProjectsDeleteCardRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsDeleteCard",
+			OperationID:   "projects/delete-card",
+			Body:          nil,
+			Params: map[string]any{
+				"card_id": params.CardID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ProjectsDeleteCardParams
+			Response = ProjectsDeleteCardRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsDeleteCard(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsDeleteCard(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25586,7 +38790,39 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.ProjectsDeleteColumn(ctx, params)
+	var response ProjectsDeleteColumnRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsDeleteColumn",
+			OperationID:   "projects/delete-column",
+			Body:          nil,
+			Params: map[string]any{
+				"column_id": params.ColumnID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ProjectsDeleteColumnParams
+			Response = ProjectsDeleteColumnRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsDeleteColumn(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsDeleteColumn(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25648,7 +38884,39 @@ func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.h.ProjectsGet(ctx, params)
+	var response ProjectsGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsGet",
+			OperationID:   "projects/get",
+			Body:          nil,
+			Params: map[string]any{
+				"project_id": params.ProjectID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ProjectsGetParams
+			Response = ProjectsGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25710,7 +38978,39 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.ProjectsGetCard(ctx, params)
+	var response ProjectsGetCardRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsGetCard",
+			OperationID:   "projects/get-card",
+			Body:          nil,
+			Params: map[string]any{
+				"card_id": params.CardID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ProjectsGetCardParams
+			Response = ProjectsGetCardRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsGetCard(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsGetCard(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25772,7 +39072,39 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.ProjectsGetColumn(ctx, params)
+	var response ProjectsGetColumnRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsGetColumn",
+			OperationID:   "projects/get-column",
+			Body:          nil,
+			Params: map[string]any{
+				"column_id": params.ColumnID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ProjectsGetColumnParams
+			Response = ProjectsGetColumnRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsGetColumn(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsGetColumn(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25834,7 +39166,40 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w htt
 		return
 	}
 
-	response, err := s.h.ProjectsGetPermissionForUser(ctx, params)
+	var response ProjectsGetPermissionForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsGetPermissionForUser",
+			OperationID:   "projects/get-permission-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"project_id": params.ProjectID,
+				"username":   params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ProjectsGetPermissionForUserParams
+			Response = ProjectsGetPermissionForUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsGetPermissionForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsGetPermissionForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25896,7 +39261,42 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.ProjectsListCards(ctx, params)
+	var response ProjectsListCardsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsListCards",
+			OperationID:   "projects/list-cards",
+			Body:          nil,
+			Params: map[string]any{
+				"column_id":      params.ColumnID,
+				"archived_state": params.ArchivedState,
+				"per_page":       params.PerPage,
+				"page":           params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ProjectsListCardsParams
+			Response = ProjectsListCardsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsListCards(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsListCards(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25958,7 +39358,42 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.R
 		return
 	}
 
-	response, err := s.h.ProjectsListCollaborators(ctx, params)
+	var response ProjectsListCollaboratorsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsListCollaborators",
+			OperationID:   "projects/list-collaborators",
+			Body:          nil,
+			Params: map[string]any{
+				"project_id":  params.ProjectID,
+				"affiliation": params.Affiliation,
+				"per_page":    params.PerPage,
+				"page":        params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ProjectsListCollaboratorsParams
+			Response = ProjectsListCollaboratorsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsListCollaborators(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsListCollaborators(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26020,7 +39455,41 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.ProjectsListColumns(ctx, params)
+	var response ProjectsListColumnsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsListColumns",
+			OperationID:   "projects/list-columns",
+			Body:          nil,
+			Params: map[string]any{
+				"project_id": params.ProjectID,
+				"per_page":   params.PerPage,
+				"page":       params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ProjectsListColumnsParams
+			Response = ProjectsListColumnsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsListColumns(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsListColumns(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26082,7 +39551,42 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.Response
 		return
 	}
 
-	response, err := s.h.ProjectsListForOrg(ctx, params)
+	var response ProjectsListForOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsListForOrg",
+			OperationID:   "projects/list-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"state":    params.State,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ProjectsListForOrgParams
+			Response = ProjectsListForOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsListForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsListForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26144,7 +39648,43 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.ProjectsListForRepo(ctx, params)
+	var response ProjectsListForRepoRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsListForRepo",
+			OperationID:   "projects/list-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"state":    params.State,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ProjectsListForRepoParams
+			Response = ProjectsListForRepoRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsListForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsListForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26206,7 +39746,42 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.ProjectsListForUser(ctx, params)
+	var response ProjectsListForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsListForUser",
+			OperationID:   "projects/list-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+				"state":    params.State,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ProjectsListForUserParams
+			Response = ProjectsListForUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsListForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsListForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26283,7 +39858,39 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 		}
 	}()
 
-	response, err := s.h.ProjectsMoveCard(ctx, request, params)
+	var response ProjectsMoveCardRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsMoveCard",
+			OperationID:   "projects/move-card",
+			Body:          request,
+			Params: map[string]any{
+				"card_id": params.CardID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ProjectsMoveCardReq
+			Params   = ProjectsMoveCardParams
+			Response = ProjectsMoveCardRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsMoveCard(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsMoveCard(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26360,7 +39967,39 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.ProjectsMoveColumn(ctx, request, params)
+	var response ProjectsMoveColumnRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsMoveColumn",
+			OperationID:   "projects/move-column",
+			Body:          request,
+			Params: map[string]any{
+				"column_id": params.ColumnID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ProjectsMoveColumnReq
+			Params   = ProjectsMoveColumnParams
+			Response = ProjectsMoveColumnRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsMoveColumn(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsMoveColumn(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26422,7 +40061,40 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.
 		return
 	}
 
-	response, err := s.h.ProjectsRemoveCollaborator(ctx, params)
+	var response ProjectsRemoveCollaboratorRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsRemoveCollaborator",
+			OperationID:   "projects/remove-collaborator",
+			Body:          nil,
+			Params: map[string]any{
+				"project_id": params.ProjectID,
+				"username":   params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ProjectsRemoveCollaboratorParams
+			Response = ProjectsRemoveCollaboratorRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsRemoveCollaborator(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsRemoveCollaborator(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26499,7 +40171,39 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 		}
 	}()
 
-	response, err := s.h.ProjectsUpdate(ctx, request, params)
+	var response ProjectsUpdateRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsUpdate",
+			OperationID:   "projects/update",
+			Body:          request,
+			Params: map[string]any{
+				"project_id": params.ProjectID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptProjectsUpdateReq
+			Params   = ProjectsUpdateParams
+			Response = ProjectsUpdateRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsUpdate(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsUpdate(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26576,7 +40280,39 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.ProjectsUpdateCard(ctx, request, params)
+	var response ProjectsUpdateCardRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsUpdateCard",
+			OperationID:   "projects/update-card",
+			Body:          request,
+			Params: map[string]any{
+				"card_id": params.CardID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptProjectsUpdateCardReq
+			Params   = ProjectsUpdateCardParams
+			Response = ProjectsUpdateCardRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsUpdateCard(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsUpdateCard(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26653,7 +40389,39 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 		}
 	}()
 
-	response, err := s.h.ProjectsUpdateColumn(ctx, request, params)
+	var response ProjectsUpdateColumnRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ProjectsUpdateColumn",
+			OperationID:   "projects/update-column",
+			Body:          request,
+			Params: map[string]any{
+				"column_id": params.ColumnID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ProjectsUpdateColumnReq
+			Params   = ProjectsUpdateColumnParams
+			Response = ProjectsUpdateColumnRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ProjectsUpdateColumn(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ProjectsUpdateColumn(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26715,7 +40483,41 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.Response
 		return
 	}
 
-	response, err := s.h.PullsCheckIfMerged(ctx, params)
+	var response PullsCheckIfMergedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsCheckIfMerged",
+			OperationID:   "pulls/check-if-merged",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PullsCheckIfMergedParams
+			Response = PullsCheckIfMergedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsCheckIfMerged(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsCheckIfMerged(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26792,7 +40594,40 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 		}
 	}()
 
-	response, err := s.h.PullsCreate(ctx, request, params)
+	var response PullsCreateRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsCreate",
+			OperationID:   "pulls/create",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = PullsCreateReq
+			Params   = PullsCreateParams
+			Response = PullsCreateRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsCreate(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsCreate(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26869,7 +40704,42 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 		}
 	}()
 
-	response, err := s.h.PullsCreateReplyForReviewComment(ctx, request, params)
+	var response PullsCreateReplyForReviewCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsCreateReplyForReviewComment",
+			OperationID:   "pulls/create-reply-for-review-comment",
+			Body:          request,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+				"comment_id":  params.CommentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = PullsCreateReplyForReviewCommentReq
+			Params   = PullsCreateReplyForReviewCommentParams
+			Response = PullsCreateReplyForReviewCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsCreateReplyForReviewComment(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsCreateReplyForReviewComment(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26946,7 +40816,41 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.PullsCreateReview(ctx, request, params)
+	var response PullsCreateReviewRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsCreateReview",
+			OperationID:   "pulls/create-review",
+			Body:          request,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptPullsCreateReviewReq
+			Params   = PullsCreateReviewParams
+			Response = PullsCreateReviewRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsCreateReview(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsCreateReview(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27023,7 +40927,41 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 		}
 	}()
 
-	response, err := s.h.PullsCreateReviewComment(ctx, request, params)
+	var response PullsCreateReviewCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsCreateReviewComment",
+			OperationID:   "pulls/create-review-comment",
+			Body:          request,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = PullsCreateReviewCommentReq
+			Params   = PullsCreateReviewCommentParams
+			Response = PullsCreateReviewCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsCreateReviewComment(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsCreateReviewComment(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27085,7 +41023,42 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.Re
 		return
 	}
 
-	response, err := s.h.PullsDeletePendingReview(ctx, params)
+	var response PullsDeletePendingReviewRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsDeletePendingReview",
+			OperationID:   "pulls/delete-pending-review",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+				"review_id":   params.ReviewID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PullsDeletePendingReviewParams
+			Response = PullsDeletePendingReviewRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsDeletePendingReview(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsDeletePendingReview(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27147,7 +41120,41 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.Re
 		return
 	}
 
-	response, err := s.h.PullsDeleteReviewComment(ctx, params)
+	var response PullsDeleteReviewCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsDeleteReviewComment",
+			OperationID:   "pulls/delete-review-comment",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"comment_id": params.CommentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PullsDeleteReviewCommentParams
+			Response = PullsDeleteReviewCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsDeleteReviewComment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsDeleteReviewComment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27224,7 +41231,42 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.PullsDismissReview(ctx, request, params)
+	var response PullsDismissReviewRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsDismissReview",
+			OperationID:   "pulls/dismiss-review",
+			Body:          request,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+				"review_id":   params.ReviewID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = PullsDismissReviewReq
+			Params   = PullsDismissReviewParams
+			Response = PullsDismissReviewRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsDismissReview(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsDismissReview(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27286,7 +41328,41 @@ func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.h.PullsGet(ctx, params)
+	var response PullsGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsGet",
+			OperationID:   "pulls/get",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PullsGetParams
+			Response = PullsGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27348,7 +41424,42 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.PullsGetReview(ctx, params)
+	var response PullsGetReviewRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsGetReview",
+			OperationID:   "pulls/get-review",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+				"review_id":   params.ReviewID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PullsGetReviewParams
+			Response = PullsGetReviewRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsGetReview(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsGetReview(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27410,7 +41521,41 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.PullsGetReviewComment(ctx, params)
+	var response PullsGetReviewCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsGetReviewComment",
+			OperationID:   "pulls/get-review-comment",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"comment_id": params.CommentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PullsGetReviewCommentParams
+			Response = PullsGetReviewCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsGetReviewComment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsGetReviewComment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27472,7 +41617,47 @@ func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.h.PullsList(ctx, params)
+	var response PullsListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsList",
+			OperationID:   "pulls/list",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":     params.Owner,
+				"repo":      params.Repo,
+				"state":     params.State,
+				"head":      params.Head,
+				"base":      params.Base,
+				"sort":      params.Sort,
+				"direction": params.Direction,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PullsListParams
+			Response = PullsListRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27534,7 +41719,44 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.
 		return
 	}
 
-	response, err := s.h.PullsListCommentsForReview(ctx, params)
+	var response PullsListCommentsForReviewRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsListCommentsForReview",
+			OperationID:   "pulls/list-comments-for-review",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+				"review_id":   params.ReviewID,
+				"per_page":    params.PerPage,
+				"page":        params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PullsListCommentsForReviewParams
+			Response = PullsListCommentsForReviewRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsListCommentsForReview(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsListCommentsForReview(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27596,7 +41818,43 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.PullsListCommits(ctx, params)
+	var response PullsListCommitsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsListCommits",
+			OperationID:   "pulls/list-commits",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+				"per_page":    params.PerPage,
+				"page":        params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PullsListCommitsParams
+			Response = PullsListCommitsOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsListCommits(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsListCommits(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27658,7 +41916,43 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.PullsListFiles(ctx, params)
+	var response PullsListFilesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsListFiles",
+			OperationID:   "pulls/list-files",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+				"per_page":    params.PerPage,
+				"page":        params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PullsListFilesParams
+			Response = PullsListFilesRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsListFiles(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsListFiles(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27720,7 +42014,43 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 		return
 	}
 
-	response, err := s.h.PullsListRequestedReviewers(ctx, params)
+	var response PullRequestReviewRequestHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsListRequestedReviewers",
+			OperationID:   "pulls/list-requested-reviewers",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+				"per_page":    params.PerPage,
+				"page":        params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PullsListRequestedReviewersParams
+			Response = PullRequestReviewRequestHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsListRequestedReviewers(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsListRequestedReviewers(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27782,7 +42112,46 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 		return
 	}
 
-	response, err := s.h.PullsListReviewComments(ctx, params)
+	var response PullsListReviewCommentsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsListReviewComments",
+			OperationID:   "pulls/list-review-comments",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+				"sort":        params.Sort,
+				"direction":   params.Direction,
+				"since":       params.Since,
+				"per_page":    params.PerPage,
+				"page":        params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PullsListReviewCommentsParams
+			Response = PullsListReviewCommentsOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsListReviewComments(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsListReviewComments(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27844,7 +42213,45 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 		return
 	}
 
-	response, err := s.h.PullsListReviewCommentsForRepo(ctx, params)
+	var response PullsListReviewCommentsForRepoOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsListReviewCommentsForRepo",
+			OperationID:   "pulls/list-review-comments-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":     params.Owner,
+				"repo":      params.Repo,
+				"sort":      params.Sort,
+				"direction": params.Direction,
+				"since":     params.Since,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PullsListReviewCommentsForRepoParams
+			Response = PullsListReviewCommentsForRepoOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsListReviewCommentsForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsListReviewCommentsForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27906,7 +42313,43 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.PullsListReviews(ctx, params)
+	var response PullsListReviewsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsListReviews",
+			OperationID:   "pulls/list-reviews",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+				"per_page":    params.PerPage,
+				"page":        params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PullsListReviewsParams
+			Response = PullsListReviewsOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsListReviews(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsListReviews(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27983,7 +42426,41 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 		}
 	}()
 
-	response, err := s.h.PullsMerge(ctx, request, params)
+	var response PullsMergeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsMerge",
+			OperationID:   "pulls/merge",
+			Body:          request,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptNilPullsMergeReq
+			Params   = PullsMergeParams
+			Response = PullsMergeRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsMerge(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsMerge(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28060,7 +42537,41 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 		}
 	}()
 
-	response, err := s.h.PullsRemoveRequestedReviewers(ctx, request, params)
+	var response PullsRemoveRequestedReviewersRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsRemoveRequestedReviewers",
+			OperationID:   "pulls/remove-requested-reviewers",
+			Body:          request,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = PullsRemoveRequestedReviewersReq
+			Params   = PullsRemoveRequestedReviewersParams
+			Response = PullsRemoveRequestedReviewersRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsRemoveRequestedReviewers(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsRemoveRequestedReviewers(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28137,7 +42648,42 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.PullsSubmitReview(ctx, request, params)
+	var response PullsSubmitReviewRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsSubmitReview",
+			OperationID:   "pulls/submit-review",
+			Body:          request,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+				"review_id":   params.ReviewID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = PullsSubmitReviewReq
+			Params   = PullsSubmitReviewParams
+			Response = PullsSubmitReviewRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsSubmitReview(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsSubmitReview(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28214,7 +42760,41 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 		}
 	}()
 
-	response, err := s.h.PullsUpdate(ctx, request, params)
+	var response PullsUpdateRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsUpdate",
+			OperationID:   "pulls/update",
+			Body:          request,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptPullsUpdateReq
+			Params   = PullsUpdateParams
+			Response = PullsUpdateRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsUpdate(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsUpdate(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28291,7 +42871,41 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.PullsUpdateBranch(ctx, request, params)
+	var response PullsUpdateBranchRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsUpdateBranch",
+			OperationID:   "pulls/update-branch",
+			Body:          request,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptNilPullsUpdateBranchReq
+			Params   = PullsUpdateBranchParams
+			Response = PullsUpdateBranchRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsUpdateBranch(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsUpdateBranch(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28368,7 +42982,42 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.PullsUpdateReview(ctx, request, params)
+	var response PullsUpdateReviewRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsUpdateReview",
+			OperationID:   "pulls/update-review",
+			Body:          request,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"pull_number": params.PullNumber,
+				"review_id":   params.ReviewID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = PullsUpdateReviewReq
+			Params   = PullsUpdateReviewParams
+			Response = PullsUpdateReviewRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsUpdateReview(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsUpdateReview(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28445,7 +43094,41 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 		}
 	}()
 
-	response, err := s.h.PullsUpdateReviewComment(ctx, request, params)
+	var response PullRequestReviewComment
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PullsUpdateReviewComment",
+			OperationID:   "pulls/update-review-comment",
+			Body:          request,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"comment_id": params.CommentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = PullsUpdateReviewCommentReq
+			Params   = PullsUpdateReviewCommentParams
+			Response = PullRequestReviewComment
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PullsUpdateReviewComment(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.PullsUpdateReviewComment(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28493,7 +43176,37 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, w http.ResponseWriter
 		err error
 	)
 
-	response, err := s.h.RateLimitGet(ctx)
+	var response RateLimitGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "RateLimitGet",
+			OperationID:   "rate-limit/get",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = RateLimitGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.RateLimitGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.RateLimitGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28570,7 +43283,41 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 		}
 	}()
 
-	response, err := s.h.ReactionsCreateForCommitComment(ctx, request, params)
+	var response ReactionsCreateForCommitCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsCreateForCommitComment",
+			OperationID:   "reactions/create-for-commit-comment",
+			Body:          request,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"comment_id": params.CommentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReactionsCreateForCommitCommentReq
+			Params   = ReactionsCreateForCommitCommentParams
+			Response = ReactionsCreateForCommitCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsCreateForCommitComment(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsCreateForCommitComment(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28647,7 +43394,41 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 		}
 	}()
 
-	response, err := s.h.ReactionsCreateForIssue(ctx, request, params)
+	var response ReactionsCreateForIssueRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsCreateForIssue",
+			OperationID:   "reactions/create-for-issue",
+			Body:          request,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"issue_number": params.IssueNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReactionsCreateForIssueReq
+			Params   = ReactionsCreateForIssueParams
+			Response = ReactionsCreateForIssueRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsCreateForIssue(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsCreateForIssue(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28724,7 +43505,41 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 		}
 	}()
 
-	response, err := s.h.ReactionsCreateForIssueComment(ctx, request, params)
+	var response ReactionsCreateForIssueCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsCreateForIssueComment",
+			OperationID:   "reactions/create-for-issue-comment",
+			Body:          request,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"comment_id": params.CommentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReactionsCreateForIssueCommentReq
+			Params   = ReactionsCreateForIssueCommentParams
+			Response = ReactionsCreateForIssueCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsCreateForIssueComment(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsCreateForIssueComment(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28801,7 +43616,41 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 		}
 	}()
 
-	response, err := s.h.ReactionsCreateForPullRequestReviewComment(ctx, request, params)
+	var response ReactionsCreateForPullRequestReviewCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsCreateForPullRequestReviewComment",
+			OperationID:   "reactions/create-for-pull-request-review-comment",
+			Body:          request,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"comment_id": params.CommentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReactionsCreateForPullRequestReviewCommentReq
+			Params   = ReactionsCreateForPullRequestReviewCommentParams
+			Response = ReactionsCreateForPullRequestReviewCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsCreateForPullRequestReviewComment(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsCreateForPullRequestReviewComment(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28878,7 +43727,41 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 		}
 	}()
 
-	response, err := s.h.ReactionsCreateForRelease(ctx, request, params)
+	var response ReactionsCreateForReleaseRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsCreateForRelease",
+			OperationID:   "reactions/create-for-release",
+			Body:          request,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"release_id": params.ReleaseID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReactionsCreateForReleaseReq
+			Params   = ReactionsCreateForReleaseParams
+			Response = ReactionsCreateForReleaseRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsCreateForRelease(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsCreateForRelease(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28955,7 +43838,42 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 		}
 	}()
 
-	response, err := s.h.ReactionsCreateForTeamDiscussionCommentInOrg(ctx, request, params)
+	var response ReactionsCreateForTeamDiscussionCommentInOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsCreateForTeamDiscussionCommentInOrg",
+			OperationID:   "reactions/create-for-team-discussion-comment-in-org",
+			Body:          request,
+			Params: map[string]any{
+				"org":               params.Org,
+				"team_slug":         params.TeamSlug,
+				"discussion_number": params.DiscussionNumber,
+				"comment_number":    params.CommentNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReactionsCreateForTeamDiscussionCommentInOrgReq
+			Params   = ReactionsCreateForTeamDiscussionCommentInOrgParams
+			Response = ReactionsCreateForTeamDiscussionCommentInOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsCreateForTeamDiscussionCommentInOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsCreateForTeamDiscussionCommentInOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29032,7 +43950,41 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 		}
 	}()
 
-	response, err := s.h.ReactionsCreateForTeamDiscussionCommentLegacy(ctx, request, params)
+	var response Reaction
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsCreateForTeamDiscussionCommentLegacy",
+			OperationID:   "reactions/create-for-team-discussion-comment-legacy",
+			Body:          request,
+			Params: map[string]any{
+				"team_id":           params.TeamID,
+				"discussion_number": params.DiscussionNumber,
+				"comment_number":    params.CommentNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReactionsCreateForTeamDiscussionCommentLegacyReq
+			Params   = ReactionsCreateForTeamDiscussionCommentLegacyParams
+			Response = Reaction
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsCreateForTeamDiscussionCommentLegacy(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsCreateForTeamDiscussionCommentLegacy(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29109,7 +44061,41 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 		}
 	}()
 
-	response, err := s.h.ReactionsCreateForTeamDiscussionInOrg(ctx, request, params)
+	var response ReactionsCreateForTeamDiscussionInOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsCreateForTeamDiscussionInOrg",
+			OperationID:   "reactions/create-for-team-discussion-in-org",
+			Body:          request,
+			Params: map[string]any{
+				"org":               params.Org,
+				"team_slug":         params.TeamSlug,
+				"discussion_number": params.DiscussionNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReactionsCreateForTeamDiscussionInOrgReq
+			Params   = ReactionsCreateForTeamDiscussionInOrgParams
+			Response = ReactionsCreateForTeamDiscussionInOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsCreateForTeamDiscussionInOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsCreateForTeamDiscussionInOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29186,7 +44172,40 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 		}
 	}()
 
-	response, err := s.h.ReactionsCreateForTeamDiscussionLegacy(ctx, request, params)
+	var response Reaction
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsCreateForTeamDiscussionLegacy",
+			OperationID:   "reactions/create-for-team-discussion-legacy",
+			Body:          request,
+			Params: map[string]any{
+				"team_id":           params.TeamID,
+				"discussion_number": params.DiscussionNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReactionsCreateForTeamDiscussionLegacyReq
+			Params   = ReactionsCreateForTeamDiscussionLegacyParams
+			Response = Reaction
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsCreateForTeamDiscussionLegacy(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsCreateForTeamDiscussionLegacy(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29248,7 +44267,42 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 		return
 	}
 
-	response, err := s.h.ReactionsDeleteForCommitComment(ctx, params)
+	var response ReactionsDeleteForCommitCommentNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsDeleteForCommitComment",
+			OperationID:   "reactions/delete-for-commit-comment",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"comment_id":  params.CommentID,
+				"reaction_id": params.ReactionID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReactionsDeleteForCommitCommentParams
+			Response = ReactionsDeleteForCommitCommentNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsDeleteForCommitComment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsDeleteForCommitComment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29310,7 +44364,42 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 		return
 	}
 
-	response, err := s.h.ReactionsDeleteForIssue(ctx, params)
+	var response ReactionsDeleteForIssueNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsDeleteForIssue",
+			OperationID:   "reactions/delete-for-issue",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"issue_number": params.IssueNumber,
+				"reaction_id":  params.ReactionID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReactionsDeleteForIssueParams
+			Response = ReactionsDeleteForIssueNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsDeleteForIssue(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsDeleteForIssue(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29372,7 +44461,42 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 		return
 	}
 
-	response, err := s.h.ReactionsDeleteForIssueComment(ctx, params)
+	var response ReactionsDeleteForIssueCommentNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsDeleteForIssueComment",
+			OperationID:   "reactions/delete-for-issue-comment",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"comment_id":  params.CommentID,
+				"reaction_id": params.ReactionID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReactionsDeleteForIssueCommentParams
+			Response = ReactionsDeleteForIssueCommentNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsDeleteForIssueComment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsDeleteForIssueComment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29434,7 +44558,42 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 		return
 	}
 
-	response, err := s.h.ReactionsDeleteForPullRequestComment(ctx, params)
+	var response ReactionsDeleteForPullRequestCommentNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsDeleteForPullRequestComment",
+			OperationID:   "reactions/delete-for-pull-request-comment",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"comment_id":  params.CommentID,
+				"reaction_id": params.ReactionID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReactionsDeleteForPullRequestCommentParams
+			Response = ReactionsDeleteForPullRequestCommentNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsDeleteForPullRequestComment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsDeleteForPullRequestComment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29496,7 +44655,42 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 		return
 	}
 
-	response, err := s.h.ReactionsDeleteForTeamDiscussion(ctx, params)
+	var response ReactionsDeleteForTeamDiscussionNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsDeleteForTeamDiscussion",
+			OperationID:   "reactions/delete-for-team-discussion",
+			Body:          nil,
+			Params: map[string]any{
+				"org":               params.Org,
+				"team_slug":         params.TeamSlug,
+				"discussion_number": params.DiscussionNumber,
+				"reaction_id":       params.ReactionID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReactionsDeleteForTeamDiscussionParams
+			Response = ReactionsDeleteForTeamDiscussionNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsDeleteForTeamDiscussion(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsDeleteForTeamDiscussion(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29558,7 +44752,43 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 		return
 	}
 
-	response, err := s.h.ReactionsDeleteForTeamDiscussionComment(ctx, params)
+	var response ReactionsDeleteForTeamDiscussionCommentNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsDeleteForTeamDiscussionComment",
+			OperationID:   "reactions/delete-for-team-discussion-comment",
+			Body:          nil,
+			Params: map[string]any{
+				"org":               params.Org,
+				"team_slug":         params.TeamSlug,
+				"discussion_number": params.DiscussionNumber,
+				"comment_number":    params.CommentNumber,
+				"reaction_id":       params.ReactionID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReactionsDeleteForTeamDiscussionCommentParams
+			Response = ReactionsDeleteForTeamDiscussionCommentNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsDeleteForTeamDiscussionComment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsDeleteForTeamDiscussionComment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29620,7 +44850,39 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.ReactionsDeleteLegacy(ctx, params)
+	var response ReactionsDeleteLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsDeleteLegacy",
+			OperationID:   "reactions/delete-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"reaction_id": params.ReactionID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReactionsDeleteLegacyParams
+			Response = ReactionsDeleteLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsDeleteLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsDeleteLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29682,7 +44944,44 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w ht
 		return
 	}
 
-	response, err := s.h.ReactionsListForCommitComment(ctx, params)
+	var response ReactionsListForCommitCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsListForCommitComment",
+			OperationID:   "reactions/list-for-commit-comment",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"comment_id": params.CommentID,
+				"content":    params.Content,
+				"per_page":   params.PerPage,
+				"page":       params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReactionsListForCommitCommentParams
+			Response = ReactionsListForCommitCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsListForCommitComment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsListForCommitComment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29744,7 +45043,44 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.ReactionsListForIssue(ctx, params)
+	var response ReactionsListForIssueRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsListForIssue",
+			OperationID:   "reactions/list-for-issue",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"issue_number": params.IssueNumber,
+				"content":      params.Content,
+				"per_page":     params.PerPage,
+				"page":         params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReactionsListForIssueParams
+			Response = ReactionsListForIssueRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsListForIssue(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsListForIssue(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29806,7 +45142,44 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w htt
 		return
 	}
 
-	response, err := s.h.ReactionsListForIssueComment(ctx, params)
+	var response ReactionsListForIssueCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsListForIssueComment",
+			OperationID:   "reactions/list-for-issue-comment",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"comment_id": params.CommentID,
+				"content":    params.Content,
+				"per_page":   params.PerPage,
+				"page":       params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReactionsListForIssueCommentParams
+			Response = ReactionsListForIssueCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsListForIssueComment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsListForIssueComment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29868,7 +45241,44 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 		return
 	}
 
-	response, err := s.h.ReactionsListForPullRequestReviewComment(ctx, params)
+	var response ReactionsListForPullRequestReviewCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsListForPullRequestReviewComment",
+			OperationID:   "reactions/list-for-pull-request-review-comment",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"comment_id": params.CommentID,
+				"content":    params.Content,
+				"per_page":   params.PerPage,
+				"page":       params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReactionsListForPullRequestReviewCommentParams
+			Response = ReactionsListForPullRequestReviewCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsListForPullRequestReviewComment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsListForPullRequestReviewComment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29930,7 +45340,45 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 		return
 	}
 
-	response, err := s.h.ReactionsListForTeamDiscussionCommentInOrg(ctx, params)
+	var response ReactionsListForTeamDiscussionCommentInOrgOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsListForTeamDiscussionCommentInOrg",
+			OperationID:   "reactions/list-for-team-discussion-comment-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":               params.Org,
+				"team_slug":         params.TeamSlug,
+				"discussion_number": params.DiscussionNumber,
+				"comment_number":    params.CommentNumber,
+				"content":           params.Content,
+				"per_page":          params.PerPage,
+				"page":              params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReactionsListForTeamDiscussionCommentInOrgParams
+			Response = ReactionsListForTeamDiscussionCommentInOrgOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsListForTeamDiscussionCommentInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsListForTeamDiscussionCommentInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29992,7 +45440,44 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 		return
 	}
 
-	response, err := s.h.ReactionsListForTeamDiscussionCommentLegacy(ctx, params)
+	var response ReactionsListForTeamDiscussionCommentLegacyOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsListForTeamDiscussionCommentLegacy",
+			OperationID:   "reactions/list-for-team-discussion-comment-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":           params.TeamID,
+				"discussion_number": params.DiscussionNumber,
+				"comment_number":    params.CommentNumber,
+				"content":           params.Content,
+				"per_page":          params.PerPage,
+				"page":              params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReactionsListForTeamDiscussionCommentLegacyParams
+			Response = ReactionsListForTeamDiscussionCommentLegacyOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsListForTeamDiscussionCommentLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsListForTeamDiscussionCommentLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -30054,7 +45539,44 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 		return
 	}
 
-	response, err := s.h.ReactionsListForTeamDiscussionInOrg(ctx, params)
+	var response ReactionsListForTeamDiscussionInOrgOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsListForTeamDiscussionInOrg",
+			OperationID:   "reactions/list-for-team-discussion-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":               params.Org,
+				"team_slug":         params.TeamSlug,
+				"discussion_number": params.DiscussionNumber,
+				"content":           params.Content,
+				"per_page":          params.PerPage,
+				"page":              params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReactionsListForTeamDiscussionInOrgParams
+			Response = ReactionsListForTeamDiscussionInOrgOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsListForTeamDiscussionInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsListForTeamDiscussionInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -30116,7 +45638,43 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 		return
 	}
 
-	response, err := s.h.ReactionsListForTeamDiscussionLegacy(ctx, params)
+	var response ReactionsListForTeamDiscussionLegacyOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReactionsListForTeamDiscussionLegacy",
+			OperationID:   "reactions/list-for-team-discussion-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":           params.TeamID,
+				"discussion_number": params.DiscussionNumber,
+				"content":           params.Content,
+				"per_page":          params.PerPage,
+				"page":              params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReactionsListForTeamDiscussionLegacyParams
+			Response = ReactionsListForTeamDiscussionLegacyOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReactionsListForTeamDiscussionLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReactionsListForTeamDiscussionLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -30178,7 +45736,39 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.ReposAcceptInvitation(ctx, params)
+	var response ReposAcceptInvitationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposAcceptInvitation",
+			OperationID:   "repos/accept-invitation",
+			Body:          nil,
+			Params: map[string]any{
+				"invitation_id": params.InvitationID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposAcceptInvitationParams
+			Response = ReposAcceptInvitationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposAcceptInvitation(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposAcceptInvitation(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -30255,7 +45845,41 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 		}
 	}()
 
-	response, err := s.h.ReposAddAppAccessRestrictions(ctx, request, params)
+	var response ReposAddAppAccessRestrictionsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposAddAppAccessRestrictions",
+			OperationID:   "repos/add-app-access-restrictions",
+			Body:          request,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposAddAppAccessRestrictionsReq
+			Params   = ReposAddAppAccessRestrictionsParams
+			Response = ReposAddAppAccessRestrictionsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposAddAppAccessRestrictions(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposAddAppAccessRestrictions(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -30332,7 +45956,41 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 		}
 	}()
 
-	response, err := s.h.ReposAddCollaborator(ctx, request, params)
+	var response ReposAddCollaboratorRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposAddCollaborator",
+			OperationID:   "repos/add-collaborator",
+			Body:          request,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposAddCollaboratorReq
+			Params   = ReposAddCollaboratorParams
+			Response = ReposAddCollaboratorRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposAddCollaborator(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposAddCollaborator(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -30409,7 +46067,41 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 		}
 	}()
 
-	response, err := s.h.ReposAddStatusCheckContexts(ctx, request, params)
+	var response ReposAddStatusCheckContextsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposAddStatusCheckContexts",
+			OperationID:   "repos/add-status-check-contexts",
+			Body:          request,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposAddStatusCheckContextsReq
+			Params   = ReposAddStatusCheckContextsParams
+			Response = ReposAddStatusCheckContextsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposAddStatusCheckContexts(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposAddStatusCheckContexts(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -30486,7 +46178,41 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 		}
 	}()
 
-	response, err := s.h.ReposAddTeamAccessRestrictions(ctx, request, params)
+	var response ReposAddTeamAccessRestrictionsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposAddTeamAccessRestrictions",
+			OperationID:   "repos/add-team-access-restrictions",
+			Body:          request,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposAddTeamAccessRestrictionsReq
+			Params   = ReposAddTeamAccessRestrictionsParams
+			Response = ReposAddTeamAccessRestrictionsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposAddTeamAccessRestrictions(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposAddTeamAccessRestrictions(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -30563,7 +46289,41 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 		}
 	}()
 
-	response, err := s.h.ReposAddUserAccessRestrictions(ctx, request, params)
+	var response ReposAddUserAccessRestrictionsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposAddUserAccessRestrictions",
+			OperationID:   "repos/add-user-access-restrictions",
+			Body:          request,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposAddUserAccessRestrictionsReq
+			Params   = ReposAddUserAccessRestrictionsParams
+			Response = ReposAddUserAccessRestrictionsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposAddUserAccessRestrictions(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposAddUserAccessRestrictions(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -30625,7 +46385,41 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.ReposCheckCollaborator(ctx, params)
+	var response ReposCheckCollaboratorRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCheckCollaborator",
+			OperationID:   "repos/check-collaborator",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposCheckCollaboratorParams
+			Response = ReposCheckCollaboratorRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCheckCollaborator(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCheckCollaborator(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -30687,7 +46481,40 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w ht
 		return
 	}
 
-	response, err := s.h.ReposCheckVulnerabilityAlerts(ctx, params)
+	var response ReposCheckVulnerabilityAlertsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCheckVulnerabilityAlerts",
+			OperationID:   "repos/check-vulnerability-alerts",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposCheckVulnerabilityAlertsParams
+			Response = ReposCheckVulnerabilityAlertsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCheckVulnerabilityAlerts(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCheckVulnerabilityAlerts(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -30749,7 +46576,43 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.ReposCompareCommits(ctx, params)
+	var response ReposCompareCommitsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCompareCommits",
+			OperationID:   "repos/compare-commits",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"page":     params.Page,
+				"per_page": params.PerPage,
+				"basehead": params.Basehead,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposCompareCommitsParams
+			Response = ReposCompareCommitsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCompareCommits(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCompareCommits(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -30826,7 +46689,40 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 		}
 	}()
 
-	response, err := s.h.ReposCreateAutolink(ctx, request, params)
+	var response ReposCreateAutolinkRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCreateAutolink",
+			OperationID:   "repos/create-autolink",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposCreateAutolinkReq
+			Params   = ReposCreateAutolinkParams
+			Response = ReposCreateAutolinkRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCreateAutolink(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCreateAutolink(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -30903,7 +46799,41 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 		}
 	}()
 
-	response, err := s.h.ReposCreateCommitComment(ctx, request, params)
+	var response ReposCreateCommitCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCreateCommitComment",
+			OperationID:   "repos/create-commit-comment",
+			Body:          request,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"commit_sha": params.CommitSha,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposCreateCommitCommentReq
+			Params   = ReposCreateCommitCommentParams
+			Response = ReposCreateCommitCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCreateCommitComment(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCreateCommitComment(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -30965,7 +46895,41 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 		return
 	}
 
-	response, err := s.h.ReposCreateCommitSignatureProtection(ctx, params)
+	var response ReposCreateCommitSignatureProtectionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCreateCommitSignatureProtection",
+			OperationID:   "repos/create-commit-signature-protection",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposCreateCommitSignatureProtectionParams
+			Response = ReposCreateCommitSignatureProtectionRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCreateCommitSignatureProtection(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCreateCommitSignatureProtection(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -31042,7 +47006,41 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 		}
 	}()
 
-	response, err := s.h.ReposCreateCommitStatus(ctx, request, params)
+	var response StatusHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCreateCommitStatus",
+			OperationID:   "repos/create-commit-status",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"sha":   params.Sha,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposCreateCommitStatusReq
+			Params   = ReposCreateCommitStatusParams
+			Response = StatusHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCreateCommitStatus(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCreateCommitStatus(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -31119,7 +47117,40 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 		}
 	}()
 
-	response, err := s.h.ReposCreateDeployKey(ctx, request, params)
+	var response ReposCreateDeployKeyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCreateDeployKey",
+			OperationID:   "repos/create-deploy-key",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposCreateDeployKeyReq
+			Params   = ReposCreateDeployKeyParams
+			Response = ReposCreateDeployKeyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCreateDeployKey(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCreateDeployKey(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -31196,7 +47227,40 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 		}
 	}()
 
-	response, err := s.h.ReposCreateDeployment(ctx, request, params)
+	var response ReposCreateDeploymentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCreateDeployment",
+			OperationID:   "repos/create-deployment",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposCreateDeploymentReq
+			Params   = ReposCreateDeploymentParams
+			Response = ReposCreateDeploymentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCreateDeployment(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCreateDeployment(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -31273,7 +47337,41 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 		}
 	}()
 
-	response, err := s.h.ReposCreateDeploymentStatus(ctx, request, params)
+	var response ReposCreateDeploymentStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCreateDeploymentStatus",
+			OperationID:   "repos/create-deployment-status",
+			Body:          request,
+			Params: map[string]any{
+				"owner":         params.Owner,
+				"repo":          params.Repo,
+				"deployment_id": params.DeploymentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposCreateDeploymentStatusReq
+			Params   = ReposCreateDeploymentStatusParams
+			Response = ReposCreateDeploymentStatusRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCreateDeploymentStatus(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCreateDeploymentStatus(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -31350,7 +47448,40 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 		}
 	}()
 
-	response, err := s.h.ReposCreateDispatchEvent(ctx, request, params)
+	var response ReposCreateDispatchEventRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCreateDispatchEvent",
+			OperationID:   "repos/create-dispatch-event",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposCreateDispatchEventReq
+			Params   = ReposCreateDispatchEventParams
+			Response = ReposCreateDispatchEventRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCreateDispatchEvent(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCreateDispatchEvent(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -31417,7 +47548,37 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 		}
 	}()
 
-	response, err := s.h.ReposCreateForAuthenticatedUser(ctx, request)
+	var response ReposCreateForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCreateForAuthenticatedUser",
+			OperationID:   "repos/create-for-authenticated-user",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = ReposCreateForAuthenticatedUserReq
+			Params   = struct{}
+			Response = ReposCreateForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCreateForAuthenticatedUser(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCreateForAuthenticatedUser(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -31494,7 +47655,40 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 		}
 	}()
 
-	response, err := s.h.ReposCreateFork(ctx, request, params)
+	var response ReposCreateForkRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCreateFork",
+			OperationID:   "repos/create-fork",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptNilReposCreateForkReq
+			Params   = ReposCreateForkParams
+			Response = ReposCreateForkRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCreateFork(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCreateFork(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -31571,7 +47765,39 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 		}
 	}()
 
-	response, err := s.h.ReposCreateInOrg(ctx, request, params)
+	var response ReposCreateInOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCreateInOrg",
+			OperationID:   "repos/create-in-org",
+			Body:          request,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposCreateInOrgReq
+			Params   = ReposCreateInOrgParams
+			Response = ReposCreateInOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCreateInOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCreateInOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -31648,7 +47874,41 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 		}
 	}()
 
-	response, err := s.h.ReposCreateOrUpdateFileContents(ctx, request, params)
+	var response ReposCreateOrUpdateFileContentsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCreateOrUpdateFileContents",
+			OperationID:   "repos/create-or-update-file-contents",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"path":  params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposCreateOrUpdateFileContentsReq
+			Params   = ReposCreateOrUpdateFileContentsParams
+			Response = ReposCreateOrUpdateFileContentsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCreateOrUpdateFileContents(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCreateOrUpdateFileContents(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -31725,7 +47985,40 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 		}
 	}()
 
-	response, err := s.h.ReposCreatePagesSite(ctx, request, params)
+	var response ReposCreatePagesSiteRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCreatePagesSite",
+			OperationID:   "repos/create-pages-site",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = NilReposCreatePagesSiteReq
+			Params   = ReposCreatePagesSiteParams
+			Response = ReposCreatePagesSiteRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCreatePagesSite(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCreatePagesSite(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -31802,7 +48095,40 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.ReposCreateRelease(ctx, request, params)
+	var response ReposCreateReleaseRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCreateRelease",
+			OperationID:   "repos/create-release",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposCreateReleaseReq
+			Params   = ReposCreateReleaseParams
+			Response = ReposCreateReleaseRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCreateRelease(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCreateRelease(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -31879,7 +48205,40 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 		}
 	}()
 
-	response, err := s.h.ReposCreateUsingTemplate(ctx, request, params)
+	var response RepositoryHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCreateUsingTemplate",
+			OperationID:   "repos/create-using-template",
+			Body:          request,
+			Params: map[string]any{
+				"template_owner": params.TemplateOwner,
+				"template_repo":  params.TemplateRepo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposCreateUsingTemplateReq
+			Params   = ReposCreateUsingTemplateParams
+			Response = RepositoryHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCreateUsingTemplate(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCreateUsingTemplate(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -31956,7 +48315,40 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.ReposCreateWebhook(ctx, request, params)
+	var response ReposCreateWebhookRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposCreateWebhook",
+			OperationID:   "repos/create-webhook",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptNilReposCreateWebhookReq
+			Params   = ReposCreateWebhookParams
+			Response = ReposCreateWebhookRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposCreateWebhook(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposCreateWebhook(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -32018,7 +48410,39 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.ReposDeclineInvitation(ctx, params)
+	var response ReposDeclineInvitationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDeclineInvitation",
+			OperationID:   "repos/decline-invitation",
+			Body:          nil,
+			Params: map[string]any{
+				"invitation_id": params.InvitationID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDeclineInvitationParams
+			Response = ReposDeclineInvitationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDeclineInvitation(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDeclineInvitation(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -32080,7 +48504,40 @@ func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.h.ReposDelete(ctx, params)
+	var response ReposDeleteRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDelete",
+			OperationID:   "repos/delete",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDeleteParams
+			Response = ReposDeleteRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDelete(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDelete(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -32142,7 +48599,41 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 		return
 	}
 
-	response, err := s.h.ReposDeleteAccessRestrictions(ctx, params)
+	var response ReposDeleteAccessRestrictionsNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDeleteAccessRestrictions",
+			OperationID:   "repos/delete-access-restrictions",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDeleteAccessRestrictionsParams
+			Response = ReposDeleteAccessRestrictionsNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDeleteAccessRestrictions(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDeleteAccessRestrictions(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -32204,7 +48695,41 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w
 		return
 	}
 
-	response, err := s.h.ReposDeleteAdminBranchProtection(ctx, params)
+	var response ReposDeleteAdminBranchProtectionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDeleteAdminBranchProtection",
+			OperationID:   "repos/delete-admin-branch-protection",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDeleteAdminBranchProtectionParams
+			Response = ReposDeleteAdminBranchProtectionRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDeleteAdminBranchProtection(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDeleteAdminBranchProtection(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -32266,7 +48791,41 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 		return
 	}
 
-	response, err := s.h.ReposDeleteAnEnvironment(ctx, params)
+	var response ReposDeleteAnEnvironmentNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDeleteAnEnvironment",
+			OperationID:   "repos/delete-an-environment",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":            params.Owner,
+				"repo":             params.Repo,
+				"environment_name": params.EnvironmentName,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDeleteAnEnvironmentParams
+			Response = ReposDeleteAnEnvironmentNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDeleteAnEnvironment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDeleteAnEnvironment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -32328,7 +48887,41 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.ReposDeleteAutolink(ctx, params)
+	var response ReposDeleteAutolinkRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDeleteAutolink",
+			OperationID:   "repos/delete-autolink",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"autolink_id": params.AutolinkID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDeleteAutolinkParams
+			Response = ReposDeleteAutolinkRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDeleteAutolink(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDeleteAutolink(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -32390,7 +48983,41 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http
 		return
 	}
 
-	response, err := s.h.ReposDeleteBranchProtection(ctx, params)
+	var response ReposDeleteBranchProtectionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDeleteBranchProtection",
+			OperationID:   "repos/delete-branch-protection",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDeleteBranchProtectionParams
+			Response = ReposDeleteBranchProtectionRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDeleteBranchProtection(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDeleteBranchProtection(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -32452,7 +49079,41 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.Re
 		return
 	}
 
-	response, err := s.h.ReposDeleteCommitComment(ctx, params)
+	var response ReposDeleteCommitCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDeleteCommitComment",
+			OperationID:   "repos/delete-commit-comment",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"comment_id": params.CommentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDeleteCommitCommentParams
+			Response = ReposDeleteCommitCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDeleteCommitComment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDeleteCommitComment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -32514,7 +49175,41 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 		return
 	}
 
-	response, err := s.h.ReposDeleteCommitSignatureProtection(ctx, params)
+	var response ReposDeleteCommitSignatureProtectionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDeleteCommitSignatureProtection",
+			OperationID:   "repos/delete-commit-signature-protection",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDeleteCommitSignatureProtectionParams
+			Response = ReposDeleteCommitSignatureProtectionRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDeleteCommitSignatureProtection(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDeleteCommitSignatureProtection(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -32576,7 +49271,41 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.ReposDeleteDeployKey(ctx, params)
+	var response ReposDeleteDeployKeyNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDeleteDeployKey",
+			OperationID:   "repos/delete-deploy-key",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"key_id": params.KeyID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDeleteDeployKeyParams
+			Response = ReposDeleteDeployKeyNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDeleteDeployKey(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDeleteDeployKey(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -32638,7 +49367,41 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.ReposDeleteDeployment(ctx, params)
+	var response ReposDeleteDeploymentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDeleteDeployment",
+			OperationID:   "repos/delete-deployment",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":         params.Owner,
+				"repo":          params.Repo,
+				"deployment_id": params.DeploymentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDeleteDeploymentParams
+			Response = ReposDeleteDeploymentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDeleteDeployment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDeleteDeployment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -32715,7 +49478,41 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 		}
 	}()
 
-	response, err := s.h.ReposDeleteFile(ctx, request, params)
+	var response ReposDeleteFileRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDeleteFile",
+			OperationID:   "repos/delete-file",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"path":  params.Path,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposDeleteFileReq
+			Params   = ReposDeleteFileParams
+			Response = ReposDeleteFileRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDeleteFile(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDeleteFile(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -32777,7 +49574,41 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.ReposDeleteInvitation(ctx, params)
+	var response ReposDeleteInvitationNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDeleteInvitation",
+			OperationID:   "repos/delete-invitation",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":         params.Owner,
+				"repo":          params.Repo,
+				"invitation_id": params.InvitationID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDeleteInvitationParams
+			Response = ReposDeleteInvitationNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDeleteInvitation(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDeleteInvitation(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -32839,7 +49670,40 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.ReposDeletePagesSite(ctx, params)
+	var response ReposDeletePagesSiteRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDeletePagesSite",
+			OperationID:   "repos/delete-pages-site",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDeletePagesSiteParams
+			Response = ReposDeletePagesSiteRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDeletePagesSite(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDeletePagesSite(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -32901,7 +49765,41 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 		return
 	}
 
-	response, err := s.h.ReposDeletePullRequestReviewProtection(ctx, params)
+	var response ReposDeletePullRequestReviewProtectionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDeletePullRequestReviewProtection",
+			OperationID:   "repos/delete-pull-request-review-protection",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDeletePullRequestReviewProtectionParams
+			Response = ReposDeletePullRequestReviewProtectionRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDeletePullRequestReviewProtection(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDeletePullRequestReviewProtection(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -32963,7 +49861,41 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 		return
 	}
 
-	response, err := s.h.ReposDeleteRelease(ctx, params)
+	var response ReposDeleteReleaseNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDeleteRelease",
+			OperationID:   "repos/delete-release",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"release_id": params.ReleaseID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDeleteReleaseParams
+			Response = ReposDeleteReleaseNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDeleteRelease(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDeleteRelease(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -33025,7 +49957,41 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 		return
 	}
 
-	response, err := s.h.ReposDeleteReleaseAsset(ctx, params)
+	var response ReposDeleteReleaseAssetNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDeleteReleaseAsset",
+			OperationID:   "repos/delete-release-asset",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"asset_id": params.AssetID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDeleteReleaseAssetParams
+			Response = ReposDeleteReleaseAssetNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDeleteReleaseAsset(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDeleteReleaseAsset(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -33087,7 +50053,41 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.Response
 		return
 	}
 
-	response, err := s.h.ReposDeleteWebhook(ctx, params)
+	var response ReposDeleteWebhookRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDeleteWebhook",
+			OperationID:   "repos/delete-webhook",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":   params.Owner,
+				"repo":    params.Repo,
+				"hook_id": params.HookID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDeleteWebhookParams
+			Response = ReposDeleteWebhookRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDeleteWebhook(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDeleteWebhook(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -33149,7 +50149,40 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 		return
 	}
 
-	response, err := s.h.ReposDisableAutomatedSecurityFixes(ctx, params)
+	var response ReposDisableAutomatedSecurityFixesNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDisableAutomatedSecurityFixes",
+			OperationID:   "repos/disable-automated-security-fixes",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDisableAutomatedSecurityFixesParams
+			Response = ReposDisableAutomatedSecurityFixesNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDisableAutomatedSecurityFixes(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDisableAutomatedSecurityFixes(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -33211,7 +50244,40 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.ReposDisableLfsForRepo(ctx, params)
+	var response ReposDisableLfsForRepoNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDisableLfsForRepo",
+			OperationID:   "repos/disable-lfs-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDisableLfsForRepoParams
+			Response = ReposDisableLfsForRepoNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDisableLfsForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDisableLfsForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -33273,7 +50339,40 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 		return
 	}
 
-	response, err := s.h.ReposDisableVulnerabilityAlerts(ctx, params)
+	var response ReposDisableVulnerabilityAlertsNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDisableVulnerabilityAlerts",
+			OperationID:   "repos/disable-vulnerability-alerts",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDisableVulnerabilityAlertsParams
+			Response = ReposDisableVulnerabilityAlertsNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDisableVulnerabilityAlerts(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDisableVulnerabilityAlerts(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -33335,7 +50434,41 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 		return
 	}
 
-	response, err := s.h.ReposDownloadTarballArchive(ctx, params)
+	var response ReposDownloadTarballArchiveFound
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDownloadTarballArchive",
+			OperationID:   "repos/download-tarball-archive",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"ref":   params.Ref,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDownloadTarballArchiveParams
+			Response = ReposDownloadTarballArchiveFound
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDownloadTarballArchive(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDownloadTarballArchive(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -33397,7 +50530,41 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 		return
 	}
 
-	response, err := s.h.ReposDownloadZipballArchive(ctx, params)
+	var response ReposDownloadZipballArchiveFound
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposDownloadZipballArchive",
+			OperationID:   "repos/download-zipball-archive",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"ref":   params.Ref,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposDownloadZipballArchiveParams
+			Response = ReposDownloadZipballArchiveFound
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposDownloadZipballArchive(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposDownloadZipballArchive(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -33459,7 +50626,40 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 		return
 	}
 
-	response, err := s.h.ReposEnableAutomatedSecurityFixes(ctx, params)
+	var response ReposEnableAutomatedSecurityFixesNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposEnableAutomatedSecurityFixes",
+			OperationID:   "repos/enable-automated-security-fixes",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposEnableAutomatedSecurityFixesParams
+			Response = ReposEnableAutomatedSecurityFixesNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposEnableAutomatedSecurityFixes(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposEnableAutomatedSecurityFixes(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -33521,7 +50721,40 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.ReposEnableLfsForRepo(ctx, params)
+	var response ReposEnableLfsForRepoRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposEnableLfsForRepo",
+			OperationID:   "repos/enable-lfs-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposEnableLfsForRepoParams
+			Response = ReposEnableLfsForRepoRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposEnableLfsForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposEnableLfsForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -33583,7 +50816,40 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 		return
 	}
 
-	response, err := s.h.ReposEnableVulnerabilityAlerts(ctx, params)
+	var response ReposEnableVulnerabilityAlertsNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposEnableVulnerabilityAlerts",
+			OperationID:   "repos/enable-vulnerability-alerts",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposEnableVulnerabilityAlertsParams
+			Response = ReposEnableVulnerabilityAlertsNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposEnableVulnerabilityAlerts(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposEnableVulnerabilityAlerts(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -33645,7 +50911,40 @@ func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.h.ReposGet(ctx, params)
+	var response ReposGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGet",
+			OperationID:   "repos/get",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetParams
+			Response = ReposGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -33707,7 +51006,41 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.
 		return
 	}
 
-	response, err := s.h.ReposGetAccessRestrictions(ctx, params)
+	var response ReposGetAccessRestrictionsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetAccessRestrictions",
+			OperationID:   "repos/get-access-restrictions",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetAccessRestrictionsParams
+			Response = ReposGetAccessRestrictionsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetAccessRestrictions(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetAccessRestrictions(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -33769,7 +51102,41 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 		return
 	}
 
-	response, err := s.h.ReposGetAdminBranchProtection(ctx, params)
+	var response ProtectedBranchAdminEnforced
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetAdminBranchProtection",
+			OperationID:   "repos/get-admin-branch-protection",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetAdminBranchProtectionParams
+			Response = ProtectedBranchAdminEnforced
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetAdminBranchProtection(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetAdminBranchProtection(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -33831,7 +51198,41 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w h
 		return
 	}
 
-	response, err := s.h.ReposGetAllStatusCheckContexts(ctx, params)
+	var response ReposGetAllStatusCheckContextsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetAllStatusCheckContexts",
+			OperationID:   "repos/get-all-status-check-contexts",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetAllStatusCheckContextsParams
+			Response = ReposGetAllStatusCheckContextsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetAllStatusCheckContexts(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetAllStatusCheckContexts(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -33893,7 +51294,42 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.ReposGetAllTopics(ctx, params)
+	var response ReposGetAllTopicsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetAllTopics",
+			OperationID:   "repos/get-all-topics",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"page":     params.Page,
+				"per_page": params.PerPage,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetAllTopicsParams
+			Response = ReposGetAllTopicsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetAllTopics(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetAllTopics(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -33955,7 +51391,41 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 		return
 	}
 
-	response, err := s.h.ReposGetAppsWithAccessToProtectedBranch(ctx, params)
+	var response ReposGetAppsWithAccessToProtectedBranchRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetAppsWithAccessToProtectedBranch",
+			OperationID:   "repos/get-apps-with-access-to-protected-branch",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetAppsWithAccessToProtectedBranchParams
+			Response = ReposGetAppsWithAccessToProtectedBranchRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetAppsWithAccessToProtectedBranch(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetAppsWithAccessToProtectedBranch(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -34017,7 +51487,41 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.ReposGetAutolink(ctx, params)
+	var response ReposGetAutolinkRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetAutolink",
+			OperationID:   "repos/get-autolink",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"autolink_id": params.AutolinkID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetAutolinkParams
+			Response = ReposGetAutolinkRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetAutolink(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetAutolink(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -34079,7 +51583,41 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.ReposGetBranch(ctx, params)
+	var response ReposGetBranchRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetBranch",
+			OperationID:   "repos/get-branch",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetBranchParams
+			Response = ReposGetBranchRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetBranch(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetBranch(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -34141,7 +51679,41 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.Re
 		return
 	}
 
-	response, err := s.h.ReposGetBranchProtection(ctx, params)
+	var response ReposGetBranchProtectionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetBranchProtection",
+			OperationID:   "repos/get-branch-protection",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetBranchProtectionParams
+			Response = ReposGetBranchProtectionRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetBranchProtection(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetBranchProtection(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -34203,7 +51775,41 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.ReposGetClones(ctx, params)
+	var response ReposGetClonesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetClones",
+			OperationID:   "repos/get-clones",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"per":   params.Per,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetClonesParams
+			Response = ReposGetClonesRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetClones(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetClones(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -34265,7 +51871,40 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.
 		return
 	}
 
-	response, err := s.h.ReposGetCodeFrequencyStats(ctx, params)
+	var response ReposGetCodeFrequencyStatsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetCodeFrequencyStats",
+			OperationID:   "repos/get-code-frequency-stats",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetCodeFrequencyStatsParams
+			Response = ReposGetCodeFrequencyStatsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetCodeFrequencyStats(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetCodeFrequencyStats(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -34327,7 +51966,41 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 		return
 	}
 
-	response, err := s.h.ReposGetCollaboratorPermissionLevel(ctx, params)
+	var response ReposGetCollaboratorPermissionLevelRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetCollaboratorPermissionLevel",
+			OperationID:   "repos/get-collaborator-permission-level",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetCollaboratorPermissionLevelParams
+			Response = ReposGetCollaboratorPermissionLevelRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetCollaboratorPermissionLevel(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetCollaboratorPermissionLevel(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -34389,7 +52062,43 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w htt
 		return
 	}
 
-	response, err := s.h.ReposGetCombinedStatusForRef(ctx, params)
+	var response ReposGetCombinedStatusForRefRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetCombinedStatusForRef",
+			OperationID:   "repos/get-combined-status-for-ref",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"ref":      params.Ref,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetCombinedStatusForRefParams
+			Response = ReposGetCombinedStatusForRefRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetCombinedStatusForRef(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetCombinedStatusForRef(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -34451,7 +52160,43 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.ReposGetCommit(ctx, params)
+	var response ReposGetCommitRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetCommit",
+			OperationID:   "repos/get-commit",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"page":     params.Page,
+				"per_page": params.PerPage,
+				"ref":      params.Ref,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetCommitParams
+			Response = ReposGetCommitRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetCommit(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetCommit(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -34513,7 +52258,40 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http
 		return
 	}
 
-	response, err := s.h.ReposGetCommitActivityStats(ctx, params)
+	var response ReposGetCommitActivityStatsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetCommitActivityStats",
+			OperationID:   "repos/get-commit-activity-stats",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetCommitActivityStatsParams
+			Response = ReposGetCommitActivityStatsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetCommitActivityStats(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetCommitActivityStats(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -34575,7 +52353,41 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.ReposGetCommitComment(ctx, params)
+	var response ReposGetCommitCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetCommitComment",
+			OperationID:   "repos/get-commit-comment",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"comment_id": params.CommentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetCommitCommentParams
+			Response = ReposGetCommitCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetCommitComment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetCommitComment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -34637,7 +52449,41 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 		return
 	}
 
-	response, err := s.h.ReposGetCommitSignatureProtection(ctx, params)
+	var response ReposGetCommitSignatureProtectionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetCommitSignatureProtection",
+			OperationID:   "repos/get-commit-signature-protection",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetCommitSignatureProtectionParams
+			Response = ReposGetCommitSignatureProtectionRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetCommitSignatureProtection(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetCommitSignatureProtection(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -34699,7 +52545,40 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 		return
 	}
 
-	response, err := s.h.ReposGetCommunityProfileMetrics(ctx, params)
+	var response CommunityProfile
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetCommunityProfileMetrics",
+			OperationID:   "repos/get-community-profile-metrics",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetCommunityProfileMetricsParams
+			Response = CommunityProfile
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetCommunityProfileMetrics(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetCommunityProfileMetrics(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -34761,7 +52640,40 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.R
 		return
 	}
 
-	response, err := s.h.ReposGetContributorsStats(ctx, params)
+	var response ReposGetContributorsStatsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetContributorsStats",
+			OperationID:   "repos/get-contributors-stats",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetContributorsStatsParams
+			Response = ReposGetContributorsStatsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetContributorsStats(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetContributorsStats(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -34823,7 +52735,41 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.ReposGetDeployKey(ctx, params)
+	var response ReposGetDeployKeyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetDeployKey",
+			OperationID:   "repos/get-deploy-key",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"key_id": params.KeyID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetDeployKeyParams
+			Response = ReposGetDeployKeyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetDeployKey(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetDeployKey(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -34885,7 +52831,41 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.Response
 		return
 	}
 
-	response, err := s.h.ReposGetDeployment(ctx, params)
+	var response ReposGetDeploymentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetDeployment",
+			OperationID:   "repos/get-deployment",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":         params.Owner,
+				"repo":          params.Repo,
+				"deployment_id": params.DeploymentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetDeploymentParams
+			Response = ReposGetDeploymentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetDeployment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetDeployment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -34947,7 +52927,42 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.Re
 		return
 	}
 
-	response, err := s.h.ReposGetDeploymentStatus(ctx, params)
+	var response ReposGetDeploymentStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetDeploymentStatus",
+			OperationID:   "repos/get-deployment-status",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":         params.Owner,
+				"repo":          params.Repo,
+				"deployment_id": params.DeploymentID,
+				"status_id":     params.StatusID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetDeploymentStatusParams
+			Response = ReposGetDeploymentStatusRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetDeploymentStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetDeploymentStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -35009,7 +53024,40 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 		return
 	}
 
-	response, err := s.h.ReposGetLatestPagesBuild(ctx, params)
+	var response PageBuild
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetLatestPagesBuild",
+			OperationID:   "repos/get-latest-pages-build",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetLatestPagesBuildParams
+			Response = PageBuild
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetLatestPagesBuild(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetLatestPagesBuild(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -35071,7 +53119,40 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.ReposGetLatestRelease(ctx, params)
+	var response Release
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetLatestRelease",
+			OperationID:   "repos/get-latest-release",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetLatestReleaseParams
+			Response = Release
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetLatestRelease(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetLatestRelease(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -35133,7 +53214,40 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWrite
 		return
 	}
 
-	response, err := s.h.ReposGetPages(ctx, params)
+	var response ReposGetPagesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetPages",
+			OperationID:   "repos/get-pages",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetPagesParams
+			Response = ReposGetPagesRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetPages(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetPages(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -35195,7 +53309,41 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 		return
 	}
 
-	response, err := s.h.ReposGetPagesBuild(ctx, params)
+	var response PageBuild
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetPagesBuild",
+			OperationID:   "repos/get-pages-build",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"build_id": params.BuildID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetPagesBuildParams
+			Response = PageBuild
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetPagesBuild(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetPagesBuild(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -35257,7 +53405,40 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.Re
 		return
 	}
 
-	response, err := s.h.ReposGetPagesHealthCheck(ctx, params)
+	var response ReposGetPagesHealthCheckRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetPagesHealthCheck",
+			OperationID:   "repos/get-pages-health-check",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetPagesHealthCheckParams
+			Response = ReposGetPagesHealthCheckRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetPagesHealthCheck(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetPagesHealthCheck(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -35319,7 +53500,40 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.
 		return
 	}
 
-	response, err := s.h.ReposGetParticipationStats(ctx, params)
+	var response ReposGetParticipationStatsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetParticipationStats",
+			OperationID:   "repos/get-participation-stats",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetParticipationStatsParams
+			Response = ReposGetParticipationStatsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetParticipationStats(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetParticipationStats(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -35381,7 +53595,41 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 		return
 	}
 
-	response, err := s.h.ReposGetPullRequestReviewProtection(ctx, params)
+	var response ProtectedBranchPullRequestReview
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetPullRequestReviewProtection",
+			OperationID:   "repos/get-pull-request-review-protection",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetPullRequestReviewProtectionParams
+			Response = ProtectedBranchPullRequestReview
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetPullRequestReviewProtection(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetPullRequestReviewProtection(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -35443,7 +53691,40 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.ReposGetPunchCardStats(ctx, params)
+	var response ReposGetPunchCardStatsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetPunchCardStats",
+			OperationID:   "repos/get-punch-card-stats",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetPunchCardStatsParams
+			Response = ReposGetPunchCardStatsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetPunchCardStats(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetPunchCardStats(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -35505,7 +53786,41 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.ReposGetReadme(ctx, params)
+	var response ReposGetReadmeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetReadme",
+			OperationID:   "repos/get-readme",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"ref":   params.Ref,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetReadmeParams
+			Response = ReposGetReadmeRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetReadme(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetReadme(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -35567,7 +53882,42 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.R
 		return
 	}
 
-	response, err := s.h.ReposGetReadmeInDirectory(ctx, params)
+	var response ReposGetReadmeInDirectoryRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetReadmeInDirectory",
+			OperationID:   "repos/get-readme-in-directory",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"dir":   params.Dir,
+				"ref":   params.Ref,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetReadmeInDirectoryParams
+			Response = ReposGetReadmeInDirectoryRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetReadmeInDirectory(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetReadmeInDirectory(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -35629,7 +53979,41 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.ReposGetRelease(ctx, params)
+	var response ReposGetReleaseRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetRelease",
+			OperationID:   "repos/get-release",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"release_id": params.ReleaseID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetReleaseParams
+			Response = ReposGetReleaseRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetRelease(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetRelease(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -35691,7 +54075,41 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.ReposGetReleaseAsset(ctx, params)
+	var response ReposGetReleaseAssetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetReleaseAsset",
+			OperationID:   "repos/get-release-asset",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"asset_id": params.AssetID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetReleaseAssetParams
+			Response = ReposGetReleaseAssetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetReleaseAsset(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetReleaseAsset(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -35753,7 +54171,41 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.ReposGetReleaseByTag(ctx, params)
+	var response ReposGetReleaseByTagRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetReleaseByTag",
+			OperationID:   "repos/get-release-by-tag",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"tag":   params.Tag,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetReleaseByTagParams
+			Response = ReposGetReleaseByTagRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetReleaseByTag(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetReleaseByTag(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -35815,7 +54267,41 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w h
 		return
 	}
 
-	response, err := s.h.ReposGetStatusChecksProtection(ctx, params)
+	var response ReposGetStatusChecksProtectionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetStatusChecksProtection",
+			OperationID:   "repos/get-status-checks-protection",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetStatusChecksProtectionParams
+			Response = ReposGetStatusChecksProtectionRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetStatusChecksProtection(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetStatusChecksProtection(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -35877,7 +54363,41 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 		return
 	}
 
-	response, err := s.h.ReposGetTeamsWithAccessToProtectedBranch(ctx, params)
+	var response ReposGetTeamsWithAccessToProtectedBranchRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetTeamsWithAccessToProtectedBranch",
+			OperationID:   "repos/get-teams-with-access-to-protected-branch",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetTeamsWithAccessToProtectedBranchParams
+			Response = ReposGetTeamsWithAccessToProtectedBranchRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetTeamsWithAccessToProtectedBranch(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetTeamsWithAccessToProtectedBranch(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -35939,7 +54459,40 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.ReposGetTopPaths(ctx, params)
+	var response ReposGetTopPathsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetTopPaths",
+			OperationID:   "repos/get-top-paths",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetTopPathsParams
+			Response = ReposGetTopPathsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetTopPaths(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetTopPaths(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -36001,7 +54554,40 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.ReposGetTopReferrers(ctx, params)
+	var response ReposGetTopReferrersRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetTopReferrers",
+			OperationID:   "repos/get-top-referrers",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetTopReferrersParams
+			Response = ReposGetTopReferrersRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetTopReferrers(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetTopReferrers(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -36063,7 +54649,41 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 		return
 	}
 
-	response, err := s.h.ReposGetUsersWithAccessToProtectedBranch(ctx, params)
+	var response ReposGetUsersWithAccessToProtectedBranchRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetUsersWithAccessToProtectedBranch",
+			OperationID:   "repos/get-users-with-access-to-protected-branch",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetUsersWithAccessToProtectedBranchParams
+			Response = ReposGetUsersWithAccessToProtectedBranchRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetUsersWithAccessToProtectedBranch(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetUsersWithAccessToProtectedBranch(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -36125,7 +54745,41 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWrite
 		return
 	}
 
-	response, err := s.h.ReposGetViews(ctx, params)
+	var response ReposGetViewsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetViews",
+			OperationID:   "repos/get-views",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"per":   params.Per,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetViewsParams
+			Response = ReposGetViewsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetViews(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetViews(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -36187,7 +54841,41 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.ReposGetWebhook(ctx, params)
+	var response ReposGetWebhookRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetWebhook",
+			OperationID:   "repos/get-webhook",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":   params.Owner,
+				"repo":    params.Repo,
+				"hook_id": params.HookID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetWebhookParams
+			Response = ReposGetWebhookRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetWebhook(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetWebhook(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -36249,7 +54937,41 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 		return
 	}
 
-	response, err := s.h.ReposGetWebhookConfigForRepo(ctx, params)
+	var response WebhookConfig
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetWebhookConfigForRepo",
+			OperationID:   "repos/get-webhook-config-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":   params.Owner,
+				"repo":    params.Repo,
+				"hook_id": params.HookID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetWebhookConfigForRepoParams
+			Response = WebhookConfig
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetWebhookConfigForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetWebhookConfigForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -36311,7 +55033,42 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.Res
 		return
 	}
 
-	response, err := s.h.ReposGetWebhookDelivery(ctx, params)
+	var response ReposGetWebhookDeliveryRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposGetWebhookDelivery",
+			OperationID:   "repos/get-webhook-delivery",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"hook_id":     params.HookID,
+				"delivery_id": params.DeliveryID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposGetWebhookDeliveryParams
+			Response = ReposGetWebhookDeliveryRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposGetWebhookDelivery(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposGetWebhookDelivery(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -36373,7 +55130,41 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.Response
 		return
 	}
 
-	response, err := s.h.ReposListAutolinks(ctx, params)
+	var response []Autolink
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListAutolinks",
+			OperationID:   "repos/list-autolinks",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+				"page":  params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListAutolinksParams
+			Response = []Autolink
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListAutolinks(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListAutolinks(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -36435,7 +55226,43 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.ReposListBranches(ctx, params)
+	var response ReposListBranchesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListBranches",
+			OperationID:   "repos/list-branches",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":     params.Owner,
+				"repo":      params.Repo,
+				"protected": params.Protected,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListBranchesParams
+			Response = ReposListBranchesRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListBranches(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListBranches(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -36497,7 +55324,41 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w h
 		return
 	}
 
-	response, err := s.h.ReposListBranchesForHeadCommit(ctx, params)
+	var response ReposListBranchesForHeadCommitRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListBranchesForHeadCommit",
+			OperationID:   "repos/list-branches-for-head-commit",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"commit_sha": params.CommitSha,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListBranchesForHeadCommitParams
+			Response = ReposListBranchesForHeadCommitRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListBranchesForHeadCommit(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListBranchesForHeadCommit(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -36559,7 +55420,43 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.ReposListCollaborators(ctx, params)
+	var response ReposListCollaboratorsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListCollaborators",
+			OperationID:   "repos/list-collaborators",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"affiliation": params.Affiliation,
+				"per_page":    params.PerPage,
+				"page":        params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListCollaboratorsParams
+			Response = ReposListCollaboratorsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListCollaborators(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListCollaborators(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -36621,7 +55518,43 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 		return
 	}
 
-	response, err := s.h.ReposListCommentsForCommit(ctx, params)
+	var response ReposListCommentsForCommitOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListCommentsForCommit",
+			OperationID:   "repos/list-comments-for-commit",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"commit_sha": params.CommitSha,
+				"per_page":   params.PerPage,
+				"page":       params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListCommentsForCommitParams
+			Response = ReposListCommentsForCommitOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListCommentsForCommit(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListCommentsForCommit(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -36683,7 +55616,42 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 		return
 	}
 
-	response, err := s.h.ReposListCommitCommentsForRepo(ctx, params)
+	var response ReposListCommitCommentsForRepoOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListCommitCommentsForRepo",
+			OperationID:   "repos/list-commit-comments-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListCommitCommentsForRepoParams
+			Response = ReposListCommitCommentsForRepoOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListCommitCommentsForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListCommitCommentsForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -36745,7 +55713,43 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w ht
 		return
 	}
 
-	response, err := s.h.ReposListCommitStatusesForRef(ctx, params)
+	var response ReposListCommitStatusesForRefRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListCommitStatusesForRef",
+			OperationID:   "repos/list-commit-statuses-for-ref",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"ref":      params.Ref,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListCommitStatusesForRefParams
+			Response = ReposListCommitStatusesForRefRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListCommitStatusesForRef(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListCommitStatusesForRef(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -36807,7 +55811,47 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.ReposListCommits(ctx, params)
+	var response ReposListCommitsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListCommits",
+			OperationID:   "repos/list-commits",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"sha":      params.Sha,
+				"path":     params.Path,
+				"author":   params.Author,
+				"since":    params.Since,
+				"until":    params.Until,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListCommitsParams
+			Response = ReposListCommitsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListCommits(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListCommits(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -36869,7 +55913,43 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.ReposListContributors(ctx, params)
+	var response ReposListContributorsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListContributors",
+			OperationID:   "repos/list-contributors",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"anon":     params.Anon,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListContributorsParams
+			Response = ReposListContributorsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListContributors(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListContributors(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -36931,7 +56011,42 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.ReposListDeployKeys(ctx, params)
+	var response ReposListDeployKeysOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListDeployKeys",
+			OperationID:   "repos/list-deploy-keys",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListDeployKeysParams
+			Response = ReposListDeployKeysOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListDeployKeys(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListDeployKeys(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -36993,7 +56108,43 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http
 		return
 	}
 
-	response, err := s.h.ReposListDeploymentStatuses(ctx, params)
+	var response ReposListDeploymentStatusesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListDeploymentStatuses",
+			OperationID:   "repos/list-deployment-statuses",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":         params.Owner,
+				"repo":          params.Repo,
+				"deployment_id": params.DeploymentID,
+				"per_page":      params.PerPage,
+				"page":          params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListDeploymentStatusesParams
+			Response = ReposListDeploymentStatusesRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListDeploymentStatuses(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListDeploymentStatuses(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -37055,7 +56206,46 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.ReposListDeployments(ctx, params)
+	var response ReposListDeploymentsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListDeployments",
+			OperationID:   "repos/list-deployments",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"sha":         params.Sha,
+				"ref":         params.Ref,
+				"task":        params.Task,
+				"environment": params.Environment,
+				"per_page":    params.PerPage,
+				"page":        params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListDeploymentsParams
+			Response = ReposListDeploymentsOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListDeployments(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListDeployments(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -37117,7 +56307,47 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w ht
 		return
 	}
 
-	response, err := s.h.ReposListForAuthenticatedUser(ctx, params)
+	var response ReposListForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListForAuthenticatedUser",
+			OperationID:   "repos/list-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"visibility":  params.Visibility,
+				"affiliation": params.Affiliation,
+				"type":        params.Type,
+				"sort":        params.Sort,
+				"direction":   params.Direction,
+				"per_page":    params.PerPage,
+				"page":        params.Page,
+				"since":       params.Since,
+				"before":      params.Before,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListForAuthenticatedUserParams
+			Response = ReposListForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -37179,7 +56409,44 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.ReposListForOrg(ctx, params)
+	var response ReposListForOrgOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListForOrg",
+			OperationID:   "repos/list-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":       params.Org,
+				"type":      params.Type,
+				"sort":      params.Sort,
+				"direction": params.Direction,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListForOrgParams
+			Response = ReposListForOrgOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -37241,7 +56508,44 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.ReposListForUser(ctx, params)
+	var response ReposListForUserOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListForUser",
+			OperationID:   "repos/list-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username":  params.Username,
+				"type":      params.Type,
+				"sort":      params.Sort,
+				"direction": params.Direction,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListForUserParams
+			Response = ReposListForUserOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -37303,7 +56607,43 @@ func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.ReposListForks(ctx, params)
+	var response ReposListForksRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListForks",
+			OperationID:   "repos/list-forks",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"sort":     params.Sort,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListForksParams
+			Response = ReposListForksRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListForks(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListForks(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -37365,7 +56705,42 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.ReposListInvitations(ctx, params)
+	var response ReposListInvitationsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListInvitations",
+			OperationID:   "repos/list-invitations",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListInvitationsParams
+			Response = ReposListInvitationsOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListInvitations(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListInvitations(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -37427,7 +56802,40 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 		return
 	}
 
-	response, err := s.h.ReposListInvitationsForAuthenticatedUser(ctx, params)
+	var response ReposListInvitationsForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListInvitationsForAuthenticatedUser",
+			OperationID:   "repos/list-invitations-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListInvitationsForAuthenticatedUserParams
+			Response = ReposListInvitationsForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListInvitationsForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListInvitationsForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -37489,7 +56897,40 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.Response
 		return
 	}
 
-	response, err := s.h.ReposListLanguages(ctx, params)
+	var response Language
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListLanguages",
+			OperationID:   "repos/list-languages",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListLanguagesParams
+			Response = Language
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListLanguages(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListLanguages(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -37551,7 +56992,42 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.ReposListPagesBuilds(ctx, params)
+	var response ReposListPagesBuildsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListPagesBuilds",
+			OperationID:   "repos/list-pages-builds",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListPagesBuildsParams
+			Response = ReposListPagesBuildsOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListPagesBuilds(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListPagesBuilds(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -37613,7 +57089,39 @@ func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.ReposListPublic(ctx, params)
+	var response ReposListPublicRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListPublic",
+			OperationID:   "repos/list-public",
+			Body:          nil,
+			Params: map[string]any{
+				"since": params.Since,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListPublicParams
+			Response = ReposListPublicRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListPublic(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListPublic(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -37675,7 +57183,43 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 		return
 	}
 
-	response, err := s.h.ReposListPullRequestsAssociatedWithCommit(ctx, params)
+	var response ReposListPullRequestsAssociatedWithCommitOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListPullRequestsAssociatedWithCommit",
+			OperationID:   "repos/list-pull-requests-associated-with-commit",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"commit_sha": params.CommitSha,
+				"per_page":   params.PerPage,
+				"page":       params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListPullRequestsAssociatedWithCommitParams
+			Response = ReposListPullRequestsAssociatedWithCommitOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListPullRequestsAssociatedWithCommit(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListPullRequestsAssociatedWithCommit(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -37737,7 +57281,43 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.ReposListReleaseAssets(ctx, params)
+	var response ReposListReleaseAssetsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListReleaseAssets",
+			OperationID:   "repos/list-release-assets",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"release_id": params.ReleaseID,
+				"per_page":   params.PerPage,
+				"page":       params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListReleaseAssetsParams
+			Response = ReposListReleaseAssetsOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListReleaseAssets(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListReleaseAssets(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -37799,7 +57379,42 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.ReposListReleases(ctx, params)
+	var response ReposListReleasesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListReleases",
+			OperationID:   "repos/list-releases",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListReleasesParams
+			Response = ReposListReleasesRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListReleases(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListReleases(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -37861,7 +57476,42 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 		return
 	}
 
-	response, err := s.h.ReposListTags(ctx, params)
+	var response ReposListTagsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListTags",
+			OperationID:   "repos/list-tags",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListTagsParams
+			Response = ReposListTagsOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListTags(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListTags(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -37923,7 +57573,42 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.ReposListTeams(ctx, params)
+	var response ReposListTeamsOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListTeams",
+			OperationID:   "repos/list-teams",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListTeamsParams
+			Response = ReposListTeamsOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListTeams(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListTeams(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -37985,7 +57670,43 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.
 		return
 	}
 
-	response, err := s.h.ReposListWebhookDeliveries(ctx, params)
+	var response ReposListWebhookDeliveriesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListWebhookDeliveries",
+			OperationID:   "repos/list-webhook-deliveries",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"hook_id":  params.HookID,
+				"per_page": params.PerPage,
+				"cursor":   params.Cursor,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListWebhookDeliveriesParams
+			Response = ReposListWebhookDeliveriesRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListWebhookDeliveries(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListWebhookDeliveries(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -38047,7 +57768,42 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.ReposListWebhooks(ctx, params)
+	var response ReposListWebhooksRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposListWebhooks",
+			OperationID:   "repos/list-webhooks",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposListWebhooksParams
+			Response = ReposListWebhooksRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposListWebhooks(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposListWebhooks(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -38124,7 +57880,40 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 		}
 	}()
 
-	response, err := s.h.ReposMerge(ctx, request, params)
+	var response ReposMergeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposMerge",
+			OperationID:   "repos/merge",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposMergeReq
+			Params   = ReposMergeParams
+			Response = ReposMergeRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposMerge(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposMerge(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -38201,7 +57990,40 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.ReposMergeUpstream(ctx, request, params)
+	var response ReposMergeUpstreamRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposMergeUpstream",
+			OperationID:   "repos/merge-upstream",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposMergeUpstreamReq
+			Params   = ReposMergeUpstreamParams
+			Response = ReposMergeUpstreamRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposMergeUpstream(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposMergeUpstream(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -38263,7 +58085,41 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.ReposPingWebhook(ctx, params)
+	var response ReposPingWebhookRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposPingWebhook",
+			OperationID:   "repos/ping-webhook",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":   params.Owner,
+				"repo":    params.Repo,
+				"hook_id": params.HookID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposPingWebhookParams
+			Response = ReposPingWebhookRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposPingWebhook(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposPingWebhook(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -38325,7 +58181,42 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w ht
 		return
 	}
 
-	response, err := s.h.ReposRedeliverWebhookDelivery(ctx, params)
+	var response ReposRedeliverWebhookDeliveryRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposRedeliverWebhookDelivery",
+			OperationID:   "repos/redeliver-webhook-delivery",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"hook_id":     params.HookID,
+				"delivery_id": params.DeliveryID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposRedeliverWebhookDeliveryParams
+			Response = ReposRedeliverWebhookDeliveryRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposRedeliverWebhookDelivery(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposRedeliverWebhookDelivery(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -38402,7 +58293,41 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 		}
 	}()
 
-	response, err := s.h.ReposRemoveAppAccessRestrictions(ctx, request, params)
+	var response ReposRemoveAppAccessRestrictionsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposRemoveAppAccessRestrictions",
+			OperationID:   "repos/remove-app-access-restrictions",
+			Body:          request,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposRemoveAppAccessRestrictionsReq
+			Params   = ReposRemoveAppAccessRestrictionsParams
+			Response = ReposRemoveAppAccessRestrictionsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposRemoveAppAccessRestrictions(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposRemoveAppAccessRestrictions(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -38464,7 +58389,41 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 		return
 	}
 
-	response, err := s.h.ReposRemoveCollaborator(ctx, params)
+	var response ReposRemoveCollaboratorNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposRemoveCollaborator",
+			OperationID:   "repos/remove-collaborator",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposRemoveCollaboratorParams
+			Response = ReposRemoveCollaboratorNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposRemoveCollaborator(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposRemoveCollaborator(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -38541,7 +58500,41 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 		}
 	}()
 
-	response, err := s.h.ReposRemoveStatusCheckContexts(ctx, request, params)
+	var response ReposRemoveStatusCheckContextsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposRemoveStatusCheckContexts",
+			OperationID:   "repos/remove-status-check-contexts",
+			Body:          request,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposRemoveStatusCheckContextsReq
+			Params   = ReposRemoveStatusCheckContextsParams
+			Response = ReposRemoveStatusCheckContextsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposRemoveStatusCheckContexts(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposRemoveStatusCheckContexts(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -38603,7 +58596,41 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 		return
 	}
 
-	response, err := s.h.ReposRemoveStatusCheckProtection(ctx, params)
+	var response ReposRemoveStatusCheckProtectionNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposRemoveStatusCheckProtection",
+			OperationID:   "repos/remove-status-check-protection",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposRemoveStatusCheckProtectionParams
+			Response = ReposRemoveStatusCheckProtectionNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposRemoveStatusCheckProtection(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposRemoveStatusCheckProtection(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -38680,7 +58707,41 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 		}
 	}()
 
-	response, err := s.h.ReposRemoveTeamAccessRestrictions(ctx, request, params)
+	var response ReposRemoveTeamAccessRestrictionsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposRemoveTeamAccessRestrictions",
+			OperationID:   "repos/remove-team-access-restrictions",
+			Body:          request,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposRemoveTeamAccessRestrictionsReq
+			Params   = ReposRemoveTeamAccessRestrictionsParams
+			Response = ReposRemoveTeamAccessRestrictionsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposRemoveTeamAccessRestrictions(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposRemoveTeamAccessRestrictions(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -38757,7 +58818,41 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 		}
 	}()
 
-	response, err := s.h.ReposRemoveUserAccessRestrictions(ctx, request, params)
+	var response ReposRemoveUserAccessRestrictionsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposRemoveUserAccessRestrictions",
+			OperationID:   "repos/remove-user-access-restrictions",
+			Body:          request,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposRemoveUserAccessRestrictionsReq
+			Params   = ReposRemoveUserAccessRestrictionsParams
+			Response = ReposRemoveUserAccessRestrictionsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposRemoveUserAccessRestrictions(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposRemoveUserAccessRestrictions(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -38834,7 +58929,41 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.ReposRenameBranch(ctx, request, params)
+	var response ReposRenameBranchRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposRenameBranch",
+			OperationID:   "repos/rename-branch",
+			Body:          request,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposRenameBranchReq
+			Params   = ReposRenameBranchParams
+			Response = ReposRenameBranchRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposRenameBranch(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposRenameBranch(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -38911,7 +59040,40 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 		}
 	}()
 
-	response, err := s.h.ReposReplaceAllTopics(ctx, request, params)
+	var response ReposReplaceAllTopicsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposReplaceAllTopics",
+			OperationID:   "repos/replace-all-topics",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposReplaceAllTopicsReq
+			Params   = ReposReplaceAllTopicsParams
+			Response = ReposReplaceAllTopicsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposReplaceAllTopics(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposReplaceAllTopics(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -38973,7 +59135,40 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.ReposRequestPagesBuild(ctx, params)
+	var response PageBuildStatus
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposRequestPagesBuild",
+			OperationID:   "repos/request-pages-build",
+			Body:          nil,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposRequestPagesBuildParams
+			Response = PageBuildStatus
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposRequestPagesBuild(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposRequestPagesBuild(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -39035,7 +59230,41 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 		return
 	}
 
-	response, err := s.h.ReposSetAdminBranchProtection(ctx, params)
+	var response ProtectedBranchAdminEnforced
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposSetAdminBranchProtection",
+			OperationID:   "repos/set-admin-branch-protection",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposSetAdminBranchProtectionParams
+			Response = ProtectedBranchAdminEnforced
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposSetAdminBranchProtection(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposSetAdminBranchProtection(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -39112,7 +59341,41 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 		}
 	}()
 
-	response, err := s.h.ReposSetAppAccessRestrictions(ctx, request, params)
+	var response ReposSetAppAccessRestrictionsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposSetAppAccessRestrictions",
+			OperationID:   "repos/set-app-access-restrictions",
+			Body:          request,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposSetAppAccessRestrictionsReq
+			Params   = ReposSetAppAccessRestrictionsParams
+			Response = ReposSetAppAccessRestrictionsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposSetAppAccessRestrictions(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposSetAppAccessRestrictions(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -39189,7 +59452,41 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 		}
 	}()
 
-	response, err := s.h.ReposSetStatusCheckContexts(ctx, request, params)
+	var response ReposSetStatusCheckContextsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposSetStatusCheckContexts",
+			OperationID:   "repos/set-status-check-contexts",
+			Body:          request,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposSetStatusCheckContextsReq
+			Params   = ReposSetStatusCheckContextsParams
+			Response = ReposSetStatusCheckContextsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposSetStatusCheckContexts(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposSetStatusCheckContexts(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -39266,7 +59563,41 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 		}
 	}()
 
-	response, err := s.h.ReposSetTeamAccessRestrictions(ctx, request, params)
+	var response ReposSetTeamAccessRestrictionsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposSetTeamAccessRestrictions",
+			OperationID:   "repos/set-team-access-restrictions",
+			Body:          request,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposSetTeamAccessRestrictionsReq
+			Params   = ReposSetTeamAccessRestrictionsParams
+			Response = ReposSetTeamAccessRestrictionsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposSetTeamAccessRestrictions(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposSetTeamAccessRestrictions(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -39343,7 +59674,41 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 		}
 	}()
 
-	response, err := s.h.ReposSetUserAccessRestrictions(ctx, request, params)
+	var response ReposSetUserAccessRestrictionsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposSetUserAccessRestrictions",
+			OperationID:   "repos/set-user-access-restrictions",
+			Body:          request,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposSetUserAccessRestrictionsReq
+			Params   = ReposSetUserAccessRestrictionsParams
+			Response = ReposSetUserAccessRestrictionsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposSetUserAccessRestrictions(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposSetUserAccessRestrictions(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -39405,7 +59770,41 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.ReposTestPushWebhook(ctx, params)
+	var response ReposTestPushWebhookRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposTestPushWebhook",
+			OperationID:   "repos/test-push-webhook",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":   params.Owner,
+				"repo":    params.Repo,
+				"hook_id": params.HookID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReposTestPushWebhookParams
+			Response = ReposTestPushWebhookRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposTestPushWebhook(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposTestPushWebhook(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -39482,7 +59881,40 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.ReposTransfer(ctx, request, params)
+	var response MinimalRepository
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposTransfer",
+			OperationID:   "repos/transfer",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposTransferReq
+			Params   = ReposTransferParams
+			Response = MinimalRepository
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposTransfer(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposTransfer(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -39559,7 +59991,40 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 		}
 	}()
 
-	response, err := s.h.ReposUpdate(ctx, request, params)
+	var response ReposUpdateRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposUpdate",
+			OperationID:   "repos/update",
+			Body:          request,
+			Params: map[string]any{
+				"owner": params.Owner,
+				"repo":  params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposUpdateReq
+			Params   = ReposUpdateParams
+			Response = ReposUpdateRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposUpdate(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposUpdate(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -39636,7 +60101,41 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 		}
 	}()
 
-	response, err := s.h.ReposUpdateBranchProtection(ctx, request, params)
+	var response ReposUpdateBranchProtectionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposUpdateBranchProtection",
+			OperationID:   "repos/update-branch-protection",
+			Body:          request,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposUpdateBranchProtectionReq
+			Params   = ReposUpdateBranchProtectionParams
+			Response = ReposUpdateBranchProtectionRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposUpdateBranchProtection(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposUpdateBranchProtection(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -39713,7 +60212,41 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 		}
 	}()
 
-	response, err := s.h.ReposUpdateCommitComment(ctx, request, params)
+	var response ReposUpdateCommitCommentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposUpdateCommitComment",
+			OperationID:   "repos/update-commit-comment",
+			Body:          request,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"comment_id": params.CommentID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = ReposUpdateCommitCommentReq
+			Params   = ReposUpdateCommitCommentParams
+			Response = ReposUpdateCommitCommentRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposUpdateCommitComment(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposUpdateCommitComment(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -39790,7 +60323,41 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 		}
 	}()
 
-	response, err := s.h.ReposUpdateInvitation(ctx, request, params)
+	var response RepositoryInvitation
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposUpdateInvitation",
+			OperationID:   "repos/update-invitation",
+			Body:          request,
+			Params: map[string]any{
+				"owner":         params.Owner,
+				"repo":          params.Repo,
+				"invitation_id": params.InvitationID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposUpdateInvitationReq
+			Params   = ReposUpdateInvitationParams
+			Response = RepositoryInvitation
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposUpdateInvitation(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposUpdateInvitation(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -39867,7 +60434,41 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 		}
 	}()
 
-	response, err := s.h.ReposUpdatePullRequestReviewProtection(ctx, request, params)
+	var response ReposUpdatePullRequestReviewProtectionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposUpdatePullRequestReviewProtection",
+			OperationID:   "repos/update-pull-request-review-protection",
+			Body:          request,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposUpdatePullRequestReviewProtectionReq
+			Params   = ReposUpdatePullRequestReviewProtectionParams
+			Response = ReposUpdatePullRequestReviewProtectionRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposUpdatePullRequestReviewProtection(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposUpdatePullRequestReviewProtection(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -39944,7 +60545,41 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.ReposUpdateRelease(ctx, request, params)
+	var response ReposUpdateReleaseRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposUpdateRelease",
+			OperationID:   "repos/update-release",
+			Body:          request,
+			Params: map[string]any{
+				"owner":      params.Owner,
+				"repo":       params.Repo,
+				"release_id": params.ReleaseID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposUpdateReleaseReq
+			Params   = ReposUpdateReleaseParams
+			Response = ReposUpdateReleaseRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposUpdateRelease(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposUpdateRelease(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -40021,7 +60656,41 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 		}
 	}()
 
-	response, err := s.h.ReposUpdateReleaseAsset(ctx, request, params)
+	var response ReleaseAsset
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposUpdateReleaseAsset",
+			OperationID:   "repos/update-release-asset",
+			Body:          request,
+			Params: map[string]any{
+				"owner":    params.Owner,
+				"repo":     params.Repo,
+				"asset_id": params.AssetID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposUpdateReleaseAssetReq
+			Params   = ReposUpdateReleaseAssetParams
+			Response = ReleaseAsset
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposUpdateReleaseAsset(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposUpdateReleaseAsset(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -40098,7 +60767,41 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 		}
 	}()
 
-	response, err := s.h.ReposUpdateStatusCheckProtection(ctx, request, params)
+	var response ReposUpdateStatusCheckProtectionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposUpdateStatusCheckProtection",
+			OperationID:   "repos/update-status-check-protection",
+			Body:          request,
+			Params: map[string]any{
+				"owner":  params.Owner,
+				"repo":   params.Repo,
+				"branch": params.Branch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposUpdateStatusCheckProtectionReq
+			Params   = ReposUpdateStatusCheckProtectionParams
+			Response = ReposUpdateStatusCheckProtectionRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposUpdateStatusCheckProtection(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposUpdateStatusCheckProtection(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -40175,7 +60878,41 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.ReposUpdateWebhook(ctx, request, params)
+	var response ReposUpdateWebhookRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposUpdateWebhook",
+			OperationID:   "repos/update-webhook",
+			Body:          request,
+			Params: map[string]any{
+				"owner":   params.Owner,
+				"repo":    params.Repo,
+				"hook_id": params.HookID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposUpdateWebhookReq
+			Params   = ReposUpdateWebhookParams
+			Response = ReposUpdateWebhookRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposUpdateWebhook(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposUpdateWebhook(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -40252,7 +60989,41 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 		}
 	}()
 
-	response, err := s.h.ReposUpdateWebhookConfigForRepo(ctx, request, params)
+	var response WebhookConfig
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ReposUpdateWebhookConfigForRepo",
+			OperationID:   "repos/update-webhook-config-for-repo",
+			Body:          request,
+			Params: map[string]any{
+				"owner":   params.Owner,
+				"repo":    params.Repo,
+				"hook_id": params.HookID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptReposUpdateWebhookConfigForRepoReq
+			Params   = ReposUpdateWebhookConfigForRepoParams
+			Response = WebhookConfig
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ReposUpdateWebhookConfigForRepo(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReposUpdateWebhookConfigForRepo(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -40314,7 +61085,40 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.ScimDeleteUserFromOrg(ctx, params)
+	var response ScimDeleteUserFromOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "ScimDeleteUserFromOrg",
+			OperationID:   "scim/delete-user-from-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":          params.Org,
+				"scim_user_id": params.ScimUserID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ScimDeleteUserFromOrgParams
+			Response = ScimDeleteUserFromOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.ScimDeleteUserFromOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ScimDeleteUserFromOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -40376,7 +61180,43 @@ func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.h.SearchCode(ctx, params)
+	var response SearchCodeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SearchCode",
+			OperationID:   "search/code",
+			Body:          nil,
+			Params: map[string]any{
+				"q":        params.Q,
+				"sort":     params.Sort,
+				"order":    params.Order,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = SearchCodeParams
+			Response = SearchCodeRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SearchCode(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.SearchCode(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -40438,7 +61278,43 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWrite
 		return
 	}
 
-	response, err := s.h.SearchCommits(ctx, params)
+	var response SearchCommitsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SearchCommits",
+			OperationID:   "search/commits",
+			Body:          nil,
+			Params: map[string]any{
+				"q":        params.Q,
+				"sort":     params.Sort,
+				"order":    params.Order,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = SearchCommitsParams
+			Response = SearchCommitsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SearchCommits(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.SearchCommits(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -40500,7 +61376,43 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http
 		return
 	}
 
-	response, err := s.h.SearchIssuesAndPullRequests(ctx, params)
+	var response SearchIssuesAndPullRequestsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SearchIssuesAndPullRequests",
+			OperationID:   "search/issues-and-pull-requests",
+			Body:          nil,
+			Params: map[string]any{
+				"q":        params.Q,
+				"sort":     params.Sort,
+				"order":    params.Order,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = SearchIssuesAndPullRequestsParams
+			Response = SearchIssuesAndPullRequestsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SearchIssuesAndPullRequests(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.SearchIssuesAndPullRequests(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -40562,7 +61474,44 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter
 		return
 	}
 
-	response, err := s.h.SearchLabels(ctx, params)
+	var response SearchLabelsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SearchLabels",
+			OperationID:   "search/labels",
+			Body:          nil,
+			Params: map[string]any{
+				"repository_id": params.RepositoryID,
+				"q":             params.Q,
+				"sort":          params.Sort,
+				"order":         params.Order,
+				"per_page":      params.PerPage,
+				"page":          params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = SearchLabelsParams
+			Response = SearchLabelsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SearchLabels(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.SearchLabels(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -40624,7 +61573,43 @@ func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.h.SearchRepos(ctx, params)
+	var response SearchReposRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SearchRepos",
+			OperationID:   "search/repos",
+			Body:          nil,
+			Params: map[string]any{
+				"q":        params.Q,
+				"sort":     params.Sort,
+				"order":    params.Order,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = SearchReposParams
+			Response = SearchReposRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SearchRepos(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.SearchRepos(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -40686,7 +61671,41 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter
 		return
 	}
 
-	response, err := s.h.SearchTopics(ctx, params)
+	var response SearchTopicsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SearchTopics",
+			OperationID:   "search/topics",
+			Body:          nil,
+			Params: map[string]any{
+				"q":        params.Q,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = SearchTopicsParams
+			Response = SearchTopicsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SearchTopics(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.SearchTopics(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -40748,7 +61767,43 @@ func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.h.SearchUsers(ctx, params)
+	var response SearchUsersRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SearchUsers",
+			OperationID:   "search/users",
+			Body:          nil,
+			Params: map[string]any{
+				"q":        params.Q,
+				"sort":     params.Sort,
+				"order":    params.Order,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = SearchUsersParams
+			Response = SearchUsersRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SearchUsers(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.SearchUsers(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -40810,7 +61865,41 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.SecretScanningGetAlert(ctx, params)
+	var response SecretScanningGetAlertRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SecretScanningGetAlert",
+			OperationID:   "secret-scanning/get-alert",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"alert_number": params.AlertNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = SecretScanningGetAlertParams
+			Response = SecretScanningGetAlertRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SecretScanningGetAlert(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.SecretScanningGetAlert(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -40872,7 +61961,43 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w h
 		return
 	}
 
-	response, err := s.h.SecretScanningListAlertsForOrg(ctx, params)
+	var response SecretScanningListAlertsForOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SecretScanningListAlertsForOrg",
+			OperationID:   "secret-scanning/list-alerts-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":         params.Org,
+				"state":       params.State,
+				"secret_type": params.SecretType,
+				"page":        params.Page,
+				"per_page":    params.PerPage,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = SecretScanningListAlertsForOrgParams
+			Response = SecretScanningListAlertsForOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SecretScanningListAlertsForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.SecretScanningListAlertsForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -40934,7 +62059,44 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w 
 		return
 	}
 
-	response, err := s.h.SecretScanningListAlertsForRepo(ctx, params)
+	var response SecretScanningListAlertsForRepoRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SecretScanningListAlertsForRepo",
+			OperationID:   "secret-scanning/list-alerts-for-repo",
+			Body:          nil,
+			Params: map[string]any{
+				"owner":       params.Owner,
+				"repo":        params.Repo,
+				"state":       params.State,
+				"secret_type": params.SecretType,
+				"page":        params.Page,
+				"per_page":    params.PerPage,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = SecretScanningListAlertsForRepoParams
+			Response = SecretScanningListAlertsForRepoRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SecretScanningListAlertsForRepo(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.SecretScanningListAlertsForRepo(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -41011,7 +62173,41 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 		}
 	}()
 
-	response, err := s.h.SecretScanningUpdateAlert(ctx, request, params)
+	var response SecretScanningUpdateAlertRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SecretScanningUpdateAlert",
+			OperationID:   "secret-scanning/update-alert",
+			Body:          request,
+			Params: map[string]any{
+				"owner":        params.Owner,
+				"repo":         params.Repo,
+				"alert_number": params.AlertNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = SecretScanningUpdateAlertReq
+			Params   = SecretScanningUpdateAlertParams
+			Response = SecretScanningUpdateAlertRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SecretScanningUpdateAlert(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.SecretScanningUpdateAlert(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -41073,7 +62269,40 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.TeamsAddMemberLegacy(ctx, params)
+	var response TeamsAddMemberLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsAddMemberLegacy",
+			OperationID:   "teams/add-member-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":  params.TeamID,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsAddMemberLegacyParams
+			Response = TeamsAddMemberLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsAddMemberLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsAddMemberLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -41150,7 +62379,41 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 		}
 	}()
 
-	response, err := s.h.TeamsAddOrUpdateMembershipForUserInOrg(ctx, request, params)
+	var response TeamsAddOrUpdateMembershipForUserInOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsAddOrUpdateMembershipForUserInOrg",
+			OperationID:   "teams/add-or-update-membership-for-user-in-org",
+			Body:          request,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+				"username":  params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptTeamsAddOrUpdateMembershipForUserInOrgReq
+			Params   = TeamsAddOrUpdateMembershipForUserInOrgParams
+			Response = TeamsAddOrUpdateMembershipForUserInOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsAddOrUpdateMembershipForUserInOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsAddOrUpdateMembershipForUserInOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -41227,7 +62490,40 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 		}
 	}()
 
-	response, err := s.h.TeamsAddOrUpdateMembershipForUserLegacy(ctx, request, params)
+	var response TeamsAddOrUpdateMembershipForUserLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsAddOrUpdateMembershipForUserLegacy",
+			OperationID:   "teams/add-or-update-membership-for-user-legacy",
+			Body:          request,
+			Params: map[string]any{
+				"team_id":  params.TeamID,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptTeamsAddOrUpdateMembershipForUserLegacyReq
+			Params   = TeamsAddOrUpdateMembershipForUserLegacyParams
+			Response = TeamsAddOrUpdateMembershipForUserLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsAddOrUpdateMembershipForUserLegacy(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsAddOrUpdateMembershipForUserLegacy(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -41304,7 +62600,41 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 		}
 	}()
 
-	response, err := s.h.TeamsAddOrUpdateProjectPermissionsInOrg(ctx, request, params)
+	var response TeamsAddOrUpdateProjectPermissionsInOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsAddOrUpdateProjectPermissionsInOrg",
+			OperationID:   "teams/add-or-update-project-permissions-in-org",
+			Body:          request,
+			Params: map[string]any{
+				"org":        params.Org,
+				"team_slug":  params.TeamSlug,
+				"project_id": params.ProjectID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq
+			Params   = TeamsAddOrUpdateProjectPermissionsInOrgParams
+			Response = TeamsAddOrUpdateProjectPermissionsInOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsAddOrUpdateProjectPermissionsInOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsAddOrUpdateProjectPermissionsInOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -41381,7 +62711,40 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 		}
 	}()
 
-	response, err := s.h.TeamsAddOrUpdateProjectPermissionsLegacy(ctx, request, params)
+	var response TeamsAddOrUpdateProjectPermissionsLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsAddOrUpdateProjectPermissionsLegacy",
+			OperationID:   "teams/add-or-update-project-permissions-legacy",
+			Body:          request,
+			Params: map[string]any{
+				"team_id":    params.TeamID,
+				"project_id": params.ProjectID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptTeamsAddOrUpdateProjectPermissionsLegacyReq
+			Params   = TeamsAddOrUpdateProjectPermissionsLegacyParams
+			Response = TeamsAddOrUpdateProjectPermissionsLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsAddOrUpdateProjectPermissionsLegacy(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsAddOrUpdateProjectPermissionsLegacy(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -41458,7 +62821,42 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 		}
 	}()
 
-	response, err := s.h.TeamsAddOrUpdateRepoPermissionsInOrg(ctx, request, params)
+	var response TeamsAddOrUpdateRepoPermissionsInOrgNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsAddOrUpdateRepoPermissionsInOrg",
+			OperationID:   "teams/add-or-update-repo-permissions-in-org",
+			Body:          request,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+				"owner":     params.Owner,
+				"repo":      params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptTeamsAddOrUpdateRepoPermissionsInOrgReq
+			Params   = TeamsAddOrUpdateRepoPermissionsInOrgParams
+			Response = TeamsAddOrUpdateRepoPermissionsInOrgNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsAddOrUpdateRepoPermissionsInOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsAddOrUpdateRepoPermissionsInOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -41535,7 +62933,41 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 		}
 	}()
 
-	response, err := s.h.TeamsAddOrUpdateRepoPermissionsLegacy(ctx, request, params)
+	var response TeamsAddOrUpdateRepoPermissionsLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsAddOrUpdateRepoPermissionsLegacy",
+			OperationID:   "teams/add-or-update-repo-permissions-legacy",
+			Body:          request,
+			Params: map[string]any{
+				"team_id": params.TeamID,
+				"owner":   params.Owner,
+				"repo":    params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptTeamsAddOrUpdateRepoPermissionsLegacyReq
+			Params   = TeamsAddOrUpdateRepoPermissionsLegacyParams
+			Response = TeamsAddOrUpdateRepoPermissionsLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsAddOrUpdateRepoPermissionsLegacy(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsAddOrUpdateRepoPermissionsLegacy(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -41597,7 +63029,41 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 		return
 	}
 
-	response, err := s.h.TeamsCheckPermissionsForProjectInOrg(ctx, params)
+	var response TeamsCheckPermissionsForProjectInOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsCheckPermissionsForProjectInOrg",
+			OperationID:   "teams/check-permissions-for-project-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":        params.Org,
+				"team_slug":  params.TeamSlug,
+				"project_id": params.ProjectID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsCheckPermissionsForProjectInOrgParams
+			Response = TeamsCheckPermissionsForProjectInOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsCheckPermissionsForProjectInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsCheckPermissionsForProjectInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -41659,7 +63125,40 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 		return
 	}
 
-	response, err := s.h.TeamsCheckPermissionsForProjectLegacy(ctx, params)
+	var response TeamsCheckPermissionsForProjectLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsCheckPermissionsForProjectLegacy",
+			OperationID:   "teams/check-permissions-for-project-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":    params.TeamID,
+				"project_id": params.ProjectID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsCheckPermissionsForProjectLegacyParams
+			Response = TeamsCheckPermissionsForProjectLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsCheckPermissionsForProjectLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsCheckPermissionsForProjectLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -41721,7 +63220,42 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 		return
 	}
 
-	response, err := s.h.TeamsCheckPermissionsForRepoInOrg(ctx, params)
+	var response TeamsCheckPermissionsForRepoInOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsCheckPermissionsForRepoInOrg",
+			OperationID:   "teams/check-permissions-for-repo-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+				"owner":     params.Owner,
+				"repo":      params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsCheckPermissionsForRepoInOrgParams
+			Response = TeamsCheckPermissionsForRepoInOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsCheckPermissionsForRepoInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsCheckPermissionsForRepoInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -41783,7 +63317,41 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 		return
 	}
 
-	response, err := s.h.TeamsCheckPermissionsForRepoLegacy(ctx, params)
+	var response TeamsCheckPermissionsForRepoLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsCheckPermissionsForRepoLegacy",
+			OperationID:   "teams/check-permissions-for-repo-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id": params.TeamID,
+				"owner":   params.Owner,
+				"repo":    params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsCheckPermissionsForRepoLegacyParams
+			Response = TeamsCheckPermissionsForRepoLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsCheckPermissionsForRepoLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsCheckPermissionsForRepoLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -41860,7 +63428,39 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 		}
 	}()
 
-	response, err := s.h.TeamsCreate(ctx, request, params)
+	var response TeamsCreateRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsCreate",
+			OperationID:   "teams/create",
+			Body:          request,
+			Params: map[string]any{
+				"org": params.Org,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = TeamsCreateReq
+			Params   = TeamsCreateParams
+			Response = TeamsCreateRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsCreate(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsCreate(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -41937,7 +63537,41 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 		}
 	}()
 
-	response, err := s.h.TeamsCreateDiscussionCommentInOrg(ctx, request, params)
+	var response TeamDiscussionComment
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsCreateDiscussionCommentInOrg",
+			OperationID:   "teams/create-discussion-comment-in-org",
+			Body:          request,
+			Params: map[string]any{
+				"org":               params.Org,
+				"team_slug":         params.TeamSlug,
+				"discussion_number": params.DiscussionNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = TeamsCreateDiscussionCommentInOrgReq
+			Params   = TeamsCreateDiscussionCommentInOrgParams
+			Response = TeamDiscussionComment
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsCreateDiscussionCommentInOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsCreateDiscussionCommentInOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -42014,7 +63648,40 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 		}
 	}()
 
-	response, err := s.h.TeamsCreateDiscussionCommentLegacy(ctx, request, params)
+	var response TeamDiscussionComment
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsCreateDiscussionCommentLegacy",
+			OperationID:   "teams/create-discussion-comment-legacy",
+			Body:          request,
+			Params: map[string]any{
+				"team_id":           params.TeamID,
+				"discussion_number": params.DiscussionNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = TeamsCreateDiscussionCommentLegacyReq
+			Params   = TeamsCreateDiscussionCommentLegacyParams
+			Response = TeamDiscussionComment
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsCreateDiscussionCommentLegacy(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsCreateDiscussionCommentLegacy(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -42091,7 +63758,40 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 		}
 	}()
 
-	response, err := s.h.TeamsCreateDiscussionInOrg(ctx, request, params)
+	var response TeamDiscussion
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsCreateDiscussionInOrg",
+			OperationID:   "teams/create-discussion-in-org",
+			Body:          request,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = TeamsCreateDiscussionInOrgReq
+			Params   = TeamsCreateDiscussionInOrgParams
+			Response = TeamDiscussion
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsCreateDiscussionInOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsCreateDiscussionInOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -42168,7 +63868,39 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 		}
 	}()
 
-	response, err := s.h.TeamsCreateDiscussionLegacy(ctx, request, params)
+	var response TeamDiscussion
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsCreateDiscussionLegacy",
+			OperationID:   "teams/create-discussion-legacy",
+			Body:          request,
+			Params: map[string]any{
+				"team_id": params.TeamID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = TeamsCreateDiscussionLegacyReq
+			Params   = TeamsCreateDiscussionLegacyParams
+			Response = TeamDiscussion
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsCreateDiscussionLegacy(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsCreateDiscussionLegacy(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -42245,7 +63977,40 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 		}
 	}()
 
-	response, err := s.h.TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx, request, params)
+	var response GroupMapping
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
+			OperationID:   "teams/create-or-update-idp-group-connections-in-org",
+			Body:          request,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq
+			Params   = TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams
+			Response = GroupMapping
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -42322,7 +64087,39 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 		}
 	}()
 
-	response, err := s.h.TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx, request, params)
+	var response TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
+			OperationID:   "teams/create-or-update-idp-group-connections-legacy",
+			Body:          request,
+			Params: map[string]any{
+				"team_id": params.TeamID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq
+			Params   = TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams
+			Response = TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -42384,7 +64181,42 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 		return
 	}
 
-	response, err := s.h.TeamsDeleteDiscussionCommentInOrg(ctx, params)
+	var response TeamsDeleteDiscussionCommentInOrgNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsDeleteDiscussionCommentInOrg",
+			OperationID:   "teams/delete-discussion-comment-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":               params.Org,
+				"team_slug":         params.TeamSlug,
+				"discussion_number": params.DiscussionNumber,
+				"comment_number":    params.CommentNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsDeleteDiscussionCommentInOrgParams
+			Response = TeamsDeleteDiscussionCommentInOrgNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsDeleteDiscussionCommentInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsDeleteDiscussionCommentInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -42446,7 +64278,41 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 		return
 	}
 
-	response, err := s.h.TeamsDeleteDiscussionCommentLegacy(ctx, params)
+	var response TeamsDeleteDiscussionCommentLegacyNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsDeleteDiscussionCommentLegacy",
+			OperationID:   "teams/delete-discussion-comment-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":           params.TeamID,
+				"discussion_number": params.DiscussionNumber,
+				"comment_number":    params.CommentNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsDeleteDiscussionCommentLegacyParams
+			Response = TeamsDeleteDiscussionCommentLegacyNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsDeleteDiscussionCommentLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsDeleteDiscussionCommentLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -42508,7 +64374,41 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 		return
 	}
 
-	response, err := s.h.TeamsDeleteDiscussionInOrg(ctx, params)
+	var response TeamsDeleteDiscussionInOrgNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsDeleteDiscussionInOrg",
+			OperationID:   "teams/delete-discussion-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":               params.Org,
+				"team_slug":         params.TeamSlug,
+				"discussion_number": params.DiscussionNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsDeleteDiscussionInOrgParams
+			Response = TeamsDeleteDiscussionInOrgNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsDeleteDiscussionInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsDeleteDiscussionInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -42570,7 +64470,40 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 		return
 	}
 
-	response, err := s.h.TeamsDeleteDiscussionLegacy(ctx, params)
+	var response TeamsDeleteDiscussionLegacyNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsDeleteDiscussionLegacy",
+			OperationID:   "teams/delete-discussion-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":           params.TeamID,
+				"discussion_number": params.DiscussionNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsDeleteDiscussionLegacyParams
+			Response = TeamsDeleteDiscussionLegacyNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsDeleteDiscussionLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsDeleteDiscussionLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -42632,7 +64565,40 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.TeamsDeleteInOrg(ctx, params)
+	var response TeamsDeleteInOrgNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsDeleteInOrg",
+			OperationID:   "teams/delete-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsDeleteInOrgParams
+			Response = TeamsDeleteInOrgNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsDeleteInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsDeleteInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -42694,7 +64660,39 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.TeamsDeleteLegacy(ctx, params)
+	var response TeamsDeleteLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsDeleteLegacy",
+			OperationID:   "teams/delete-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id": params.TeamID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsDeleteLegacyParams
+			Response = TeamsDeleteLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsDeleteLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsDeleteLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -42756,7 +64754,40 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.TeamsGetByName(ctx, params)
+	var response TeamsGetByNameRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsGetByName",
+			OperationID:   "teams/get-by-name",
+			Body:          nil,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsGetByNameParams
+			Response = TeamsGetByNameRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsGetByName(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsGetByName(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -42818,7 +64849,42 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 		return
 	}
 
-	response, err := s.h.TeamsGetDiscussionCommentInOrg(ctx, params)
+	var response TeamDiscussionComment
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsGetDiscussionCommentInOrg",
+			OperationID:   "teams/get-discussion-comment-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":               params.Org,
+				"team_slug":         params.TeamSlug,
+				"discussion_number": params.DiscussionNumber,
+				"comment_number":    params.CommentNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsGetDiscussionCommentInOrgParams
+			Response = TeamDiscussionComment
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsGetDiscussionCommentInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsGetDiscussionCommentInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -42880,7 +64946,41 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 		return
 	}
 
-	response, err := s.h.TeamsGetDiscussionCommentLegacy(ctx, params)
+	var response TeamDiscussionComment
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsGetDiscussionCommentLegacy",
+			OperationID:   "teams/get-discussion-comment-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":           params.TeamID,
+				"discussion_number": params.DiscussionNumber,
+				"comment_number":    params.CommentNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsGetDiscussionCommentLegacyParams
+			Response = TeamDiscussionComment
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsGetDiscussionCommentLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsGetDiscussionCommentLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -42942,7 +65042,41 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 		return
 	}
 
-	response, err := s.h.TeamsGetDiscussionInOrg(ctx, params)
+	var response TeamDiscussion
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsGetDiscussionInOrg",
+			OperationID:   "teams/get-discussion-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":               params.Org,
+				"team_slug":         params.TeamSlug,
+				"discussion_number": params.DiscussionNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsGetDiscussionInOrgParams
+			Response = TeamDiscussion
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsGetDiscussionInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsGetDiscussionInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -43004,7 +65138,40 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 		return
 	}
 
-	response, err := s.h.TeamsGetDiscussionLegacy(ctx, params)
+	var response TeamDiscussion
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsGetDiscussionLegacy",
+			OperationID:   "teams/get-discussion-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":           params.TeamID,
+				"discussion_number": params.DiscussionNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsGetDiscussionLegacyParams
+			Response = TeamDiscussion
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsGetDiscussionLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsGetDiscussionLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -43066,7 +65233,39 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.TeamsGetLegacy(ctx, params)
+	var response TeamsGetLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsGetLegacy",
+			OperationID:   "teams/get-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id": params.TeamID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsGetLegacyParams
+			Response = TeamsGetLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsGetLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsGetLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -43128,7 +65327,40 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.TeamsGetMemberLegacy(ctx, params)
+	var response TeamsGetMemberLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsGetMemberLegacy",
+			OperationID:   "teams/get-member-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":  params.TeamID,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsGetMemberLegacyParams
+			Response = TeamsGetMemberLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsGetMemberLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsGetMemberLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -43190,7 +65422,41 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w h
 		return
 	}
 
-	response, err := s.h.TeamsGetMembershipForUserInOrg(ctx, params)
+	var response TeamsGetMembershipForUserInOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsGetMembershipForUserInOrg",
+			OperationID:   "teams/get-membership-for-user-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+				"username":  params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsGetMembershipForUserInOrgParams
+			Response = TeamsGetMembershipForUserInOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsGetMembershipForUserInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsGetMembershipForUserInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -43252,7 +65518,40 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w 
 		return
 	}
 
-	response, err := s.h.TeamsGetMembershipForUserLegacy(ctx, params)
+	var response TeamsGetMembershipForUserLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsGetMembershipForUserLegacy",
+			OperationID:   "teams/get-membership-for-user-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":  params.TeamID,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsGetMembershipForUserLegacyParams
+			Response = TeamsGetMembershipForUserLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsGetMembershipForUserLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsGetMembershipForUserLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -43314,7 +65613,41 @@ func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.h.TeamsList(ctx, params)
+	var response TeamsListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsList",
+			OperationID:   "teams/list",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListParams
+			Response = TeamsListRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -43376,7 +65709,42 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.TeamsListChildInOrg(ctx, params)
+	var response TeamsListChildInOrgOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListChildInOrg",
+			OperationID:   "teams/list-child-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListChildInOrgParams
+			Response = TeamsListChildInOrgOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListChildInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListChildInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -43438,7 +65806,41 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.TeamsListChildLegacy(ctx, params)
+	var response TeamsListChildLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListChildLegacy",
+			OperationID:   "teams/list-child-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":  params.TeamID,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListChildLegacyParams
+			Response = TeamsListChildLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListChildLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListChildLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -43500,7 +65902,44 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 		return
 	}
 
-	response, err := s.h.TeamsListDiscussionCommentsInOrg(ctx, params)
+	var response TeamsListDiscussionCommentsInOrgOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListDiscussionCommentsInOrg",
+			OperationID:   "teams/list-discussion-comments-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":               params.Org,
+				"team_slug":         params.TeamSlug,
+				"discussion_number": params.DiscussionNumber,
+				"direction":         params.Direction,
+				"per_page":          params.PerPage,
+				"page":              params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListDiscussionCommentsInOrgParams
+			Response = TeamsListDiscussionCommentsInOrgOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListDiscussionCommentsInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListDiscussionCommentsInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -43562,7 +66001,43 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 		return
 	}
 
-	response, err := s.h.TeamsListDiscussionCommentsLegacy(ctx, params)
+	var response TeamsListDiscussionCommentsLegacyOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListDiscussionCommentsLegacy",
+			OperationID:   "teams/list-discussion-comments-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":           params.TeamID,
+				"discussion_number": params.DiscussionNumber,
+				"direction":         params.Direction,
+				"per_page":          params.PerPage,
+				"page":              params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListDiscussionCommentsLegacyParams
+			Response = TeamsListDiscussionCommentsLegacyOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListDiscussionCommentsLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListDiscussionCommentsLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -43624,7 +66099,44 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 		return
 	}
 
-	response, err := s.h.TeamsListDiscussionsInOrg(ctx, params)
+	var response TeamsListDiscussionsInOrgOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListDiscussionsInOrg",
+			OperationID:   "teams/list-discussions-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+				"direction": params.Direction,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+				"pinned":    params.Pinned,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListDiscussionsInOrgParams
+			Response = TeamsListDiscussionsInOrgOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListDiscussionsInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListDiscussionsInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -43686,7 +66198,42 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 		return
 	}
 
-	response, err := s.h.TeamsListDiscussionsLegacy(ctx, params)
+	var response TeamsListDiscussionsLegacyOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListDiscussionsLegacy",
+			OperationID:   "teams/list-discussions-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":   params.TeamID,
+				"direction": params.Direction,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListDiscussionsLegacyParams
+			Response = TeamsListDiscussionsLegacyOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListDiscussionsLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListDiscussionsLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -43748,7 +66295,40 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w ht
 		return
 	}
 
-	response, err := s.h.TeamsListForAuthenticatedUser(ctx, params)
+	var response TeamsListForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListForAuthenticatedUser",
+			OperationID:   "teams/list-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListForAuthenticatedUserParams
+			Response = TeamsListForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -43810,7 +66390,39 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http
 		return
 	}
 
-	response, err := s.h.TeamsListIdpGroupsForLegacy(ctx, params)
+	var response TeamsListIdpGroupsForLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListIdpGroupsForLegacy",
+			OperationID:   "teams/list-idp-groups-for-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id": params.TeamID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListIdpGroupsForLegacyParams
+			Response = TeamsListIdpGroupsForLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListIdpGroupsForLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListIdpGroupsForLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -43872,7 +66484,41 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 		return
 	}
 
-	response, err := s.h.TeamsListIdpGroupsForOrg(ctx, params)
+	var response GroupMappingHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListIdpGroupsForOrg",
+			OperationID:   "teams/list-idp-groups-for-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":      params.Org,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListIdpGroupsForOrgParams
+			Response = GroupMappingHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListIdpGroupsForOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListIdpGroupsForOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -43934,7 +66580,40 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 		return
 	}
 
-	response, err := s.h.TeamsListIdpGroupsInOrg(ctx, params)
+	var response GroupMapping
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListIdpGroupsInOrg",
+			OperationID:   "teams/list-idp-groups-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListIdpGroupsInOrgParams
+			Response = GroupMapping
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListIdpGroupsInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListIdpGroupsInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -43996,7 +66675,43 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.TeamsListMembersInOrg(ctx, params)
+	var response TeamsListMembersInOrgOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListMembersInOrg",
+			OperationID:   "teams/list-members-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+				"role":      params.Role,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListMembersInOrgParams
+			Response = TeamsListMembersInOrgOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListMembersInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListMembersInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -44058,7 +66773,42 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.TeamsListMembersLegacy(ctx, params)
+	var response TeamsListMembersLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListMembersLegacy",
+			OperationID:   "teams/list-members-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":  params.TeamID,
+				"role":     params.Role,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListMembersLegacyParams
+			Response = TeamsListMembersLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListMembersLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListMembersLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -44120,7 +66870,42 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 		return
 	}
 
-	response, err := s.h.TeamsListPendingInvitationsInOrg(ctx, params)
+	var response TeamsListPendingInvitationsInOrgOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListPendingInvitationsInOrg",
+			OperationID:   "teams/list-pending-invitations-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListPendingInvitationsInOrgParams
+			Response = TeamsListPendingInvitationsInOrgOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListPendingInvitationsInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListPendingInvitationsInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -44182,7 +66967,41 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 		return
 	}
 
-	response, err := s.h.TeamsListPendingInvitationsLegacy(ctx, params)
+	var response TeamsListPendingInvitationsLegacyOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListPendingInvitationsLegacy",
+			OperationID:   "teams/list-pending-invitations-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":  params.TeamID,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListPendingInvitationsLegacyParams
+			Response = TeamsListPendingInvitationsLegacyOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListPendingInvitationsLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListPendingInvitationsLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -44244,7 +67063,42 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.TeamsListProjectsInOrg(ctx, params)
+	var response TeamsListProjectsInOrgOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListProjectsInOrg",
+			OperationID:   "teams/list-projects-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListProjectsInOrgParams
+			Response = TeamsListProjectsInOrgOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListProjectsInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListProjectsInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -44306,7 +67160,41 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.Res
 		return
 	}
 
-	response, err := s.h.TeamsListProjectsLegacy(ctx, params)
+	var response TeamsListProjectsLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListProjectsLegacy",
+			OperationID:   "teams/list-projects-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":  params.TeamID,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListProjectsLegacyParams
+			Response = TeamsListProjectsLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListProjectsLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListProjectsLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -44368,7 +67256,42 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.TeamsListReposInOrg(ctx, params)
+	var response TeamsListReposInOrgOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListReposInOrg",
+			OperationID:   "teams/list-repos-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+				"per_page":  params.PerPage,
+				"page":      params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListReposInOrgParams
+			Response = TeamsListReposInOrgOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListReposInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListReposInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -44430,7 +67353,41 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.TeamsListReposLegacy(ctx, params)
+	var response TeamsListReposLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsListReposLegacy",
+			OperationID:   "teams/list-repos-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":  params.TeamID,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsListReposLegacyParams
+			Response = TeamsListReposLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsListReposLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsListReposLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -44492,7 +67449,40 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.Res
 		return
 	}
 
-	response, err := s.h.TeamsRemoveMemberLegacy(ctx, params)
+	var response TeamsRemoveMemberLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsRemoveMemberLegacy",
+			OperationID:   "teams/remove-member-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":  params.TeamID,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsRemoveMemberLegacyParams
+			Response = TeamsRemoveMemberLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsRemoveMemberLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsRemoveMemberLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -44554,7 +67544,41 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 		return
 	}
 
-	response, err := s.h.TeamsRemoveMembershipForUserInOrg(ctx, params)
+	var response TeamsRemoveMembershipForUserInOrgRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsRemoveMembershipForUserInOrg",
+			OperationID:   "teams/remove-membership-for-user-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+				"username":  params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsRemoveMembershipForUserInOrgParams
+			Response = TeamsRemoveMembershipForUserInOrgRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsRemoveMembershipForUserInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsRemoveMembershipForUserInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -44616,7 +67640,40 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 		return
 	}
 
-	response, err := s.h.TeamsRemoveMembershipForUserLegacy(ctx, params)
+	var response TeamsRemoveMembershipForUserLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsRemoveMembershipForUserLegacy",
+			OperationID:   "teams/remove-membership-for-user-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":  params.TeamID,
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsRemoveMembershipForUserLegacyParams
+			Response = TeamsRemoveMembershipForUserLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsRemoveMembershipForUserLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsRemoveMembershipForUserLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -44678,7 +67735,41 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 		return
 	}
 
-	response, err := s.h.TeamsRemoveProjectInOrg(ctx, params)
+	var response TeamsRemoveProjectInOrgNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsRemoveProjectInOrg",
+			OperationID:   "teams/remove-project-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":        params.Org,
+				"team_slug":  params.TeamSlug,
+				"project_id": params.ProjectID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsRemoveProjectInOrgParams
+			Response = TeamsRemoveProjectInOrgNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsRemoveProjectInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsRemoveProjectInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -44740,7 +67831,40 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.Re
 		return
 	}
 
-	response, err := s.h.TeamsRemoveProjectLegacy(ctx, params)
+	var response TeamsRemoveProjectLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsRemoveProjectLegacy",
+			OperationID:   "teams/remove-project-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id":    params.TeamID,
+				"project_id": params.ProjectID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsRemoveProjectLegacyParams
+			Response = TeamsRemoveProjectLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsRemoveProjectLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsRemoveProjectLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -44802,7 +67926,42 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.TeamsRemoveRepoInOrg(ctx, params)
+	var response TeamsRemoveRepoInOrgNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsRemoveRepoInOrg",
+			OperationID:   "teams/remove-repo-in-org",
+			Body:          nil,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+				"owner":     params.Owner,
+				"repo":      params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsRemoveRepoInOrgParams
+			Response = TeamsRemoveRepoInOrgNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsRemoveRepoInOrg(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsRemoveRepoInOrg(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -44864,7 +68023,41 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.TeamsRemoveRepoLegacy(ctx, params)
+	var response TeamsRemoveRepoLegacyNoContent
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsRemoveRepoLegacy",
+			OperationID:   "teams/remove-repo-legacy",
+			Body:          nil,
+			Params: map[string]any{
+				"team_id": params.TeamID,
+				"owner":   params.Owner,
+				"repo":    params.Repo,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TeamsRemoveRepoLegacyParams
+			Response = TeamsRemoveRepoLegacyNoContent
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsRemoveRepoLegacy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsRemoveRepoLegacy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -44941,7 +68134,42 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 		}
 	}()
 
-	response, err := s.h.TeamsUpdateDiscussionCommentInOrg(ctx, request, params)
+	var response TeamDiscussionComment
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsUpdateDiscussionCommentInOrg",
+			OperationID:   "teams/update-discussion-comment-in-org",
+			Body:          request,
+			Params: map[string]any{
+				"org":               params.Org,
+				"team_slug":         params.TeamSlug,
+				"discussion_number": params.DiscussionNumber,
+				"comment_number":    params.CommentNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = TeamsUpdateDiscussionCommentInOrgReq
+			Params   = TeamsUpdateDiscussionCommentInOrgParams
+			Response = TeamDiscussionComment
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsUpdateDiscussionCommentInOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsUpdateDiscussionCommentInOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -45018,7 +68246,41 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 		}
 	}()
 
-	response, err := s.h.TeamsUpdateDiscussionCommentLegacy(ctx, request, params)
+	var response TeamDiscussionComment
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsUpdateDiscussionCommentLegacy",
+			OperationID:   "teams/update-discussion-comment-legacy",
+			Body:          request,
+			Params: map[string]any{
+				"team_id":           params.TeamID,
+				"discussion_number": params.DiscussionNumber,
+				"comment_number":    params.CommentNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = TeamsUpdateDiscussionCommentLegacyReq
+			Params   = TeamsUpdateDiscussionCommentLegacyParams
+			Response = TeamDiscussionComment
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsUpdateDiscussionCommentLegacy(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsUpdateDiscussionCommentLegacy(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -45095,7 +68357,41 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 		}
 	}()
 
-	response, err := s.h.TeamsUpdateDiscussionInOrg(ctx, request, params)
+	var response TeamDiscussion
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsUpdateDiscussionInOrg",
+			OperationID:   "teams/update-discussion-in-org",
+			Body:          request,
+			Params: map[string]any{
+				"org":               params.Org,
+				"team_slug":         params.TeamSlug,
+				"discussion_number": params.DiscussionNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptTeamsUpdateDiscussionInOrgReq
+			Params   = TeamsUpdateDiscussionInOrgParams
+			Response = TeamDiscussion
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsUpdateDiscussionInOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsUpdateDiscussionInOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -45172,7 +68468,40 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 		}
 	}()
 
-	response, err := s.h.TeamsUpdateDiscussionLegacy(ctx, request, params)
+	var response TeamDiscussion
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsUpdateDiscussionLegacy",
+			OperationID:   "teams/update-discussion-legacy",
+			Body:          request,
+			Params: map[string]any{
+				"team_id":           params.TeamID,
+				"discussion_number": params.DiscussionNumber,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptTeamsUpdateDiscussionLegacyReq
+			Params   = TeamsUpdateDiscussionLegacyParams
+			Response = TeamDiscussion
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsUpdateDiscussionLegacy(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsUpdateDiscussionLegacy(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -45249,7 +68578,40 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 		}
 	}()
 
-	response, err := s.h.TeamsUpdateInOrg(ctx, request, params)
+	var response TeamFull
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsUpdateInOrg",
+			OperationID:   "teams/update-in-org",
+			Body:          request,
+			Params: map[string]any{
+				"org":       params.Org,
+				"team_slug": params.TeamSlug,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptTeamsUpdateInOrgReq
+			Params   = TeamsUpdateInOrgParams
+			Response = TeamFull
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsUpdateInOrg(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsUpdateInOrg(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -45326,7 +68688,39 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.TeamsUpdateLegacy(ctx, request, params)
+	var response TeamsUpdateLegacyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "TeamsUpdateLegacy",
+			OperationID:   "teams/update-legacy",
+			Body:          request,
+			Params: map[string]any{
+				"team_id": params.TeamID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = TeamsUpdateLegacyReq
+			Params   = TeamsUpdateLegacyParams
+			Response = TeamsUpdateLegacyRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.TeamsUpdateLegacy(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.TeamsUpdateLegacy(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -45393,7 +68787,37 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w ht
 		}
 	}()
 
-	response, err := s.h.UsersAddEmailForAuthenticated(ctx, request)
+	var response UsersAddEmailForAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersAddEmailForAuthenticated",
+			OperationID:   "users/add-email-for-authenticated",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptUsersAddEmailForAuthenticatedReq
+			Params   = struct{}
+			Response = UsersAddEmailForAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersAddEmailForAuthenticated(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.UsersAddEmailForAuthenticated(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -45455,7 +68879,39 @@ func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.h.UsersBlock(ctx, params)
+	var response UsersBlockRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersBlock",
+			OperationID:   "users/block",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersBlockParams
+			Response = UsersBlockRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersBlock(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersBlock(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -45517,7 +68973,39 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.UsersCheckBlocked(ctx, params)
+	var response UsersCheckBlockedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersCheckBlocked",
+			OperationID:   "users/check-blocked",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersCheckBlockedParams
+			Response = UsersCheckBlockedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersCheckBlocked(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersCheckBlocked(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -45579,7 +69067,40 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.
 		return
 	}
 
-	response, err := s.h.UsersCheckFollowingForUser(ctx, params)
+	var response UsersCheckFollowingForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersCheckFollowingForUser",
+			OperationID:   "users/check-following-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username":    params.Username,
+				"target_user": params.TargetUser,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersCheckFollowingForUserParams
+			Response = UsersCheckFollowingForUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersCheckFollowingForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersCheckFollowingForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -45641,7 +69162,39 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 		return
 	}
 
-	response, err := s.h.UsersCheckPersonIsFollowedByAuthenticated(ctx, params)
+	var response UsersCheckPersonIsFollowedByAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersCheckPersonIsFollowedByAuthenticated",
+			OperationID:   "users/check-person-is-followed-by-authenticated",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersCheckPersonIsFollowedByAuthenticatedParams
+			Response = UsersCheckPersonIsFollowedByAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersCheckPersonIsFollowedByAuthenticated(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersCheckPersonIsFollowedByAuthenticated(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -45708,7 +69261,37 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 		}
 	}()
 
-	response, err := s.h.UsersCreateGpgKeyForAuthenticated(ctx, request)
+	var response UsersCreateGpgKeyForAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersCreateGpgKeyForAuthenticated",
+			OperationID:   "users/create-gpg-key-for-authenticated",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = UsersCreateGpgKeyForAuthenticatedReq
+			Params   = struct{}
+			Response = UsersCreateGpgKeyForAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersCreateGpgKeyForAuthenticated(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.UsersCreateGpgKeyForAuthenticated(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -45775,7 +69358,37 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 		}
 	}()
 
-	response, err := s.h.UsersCreatePublicSSHKeyForAuthenticated(ctx, request)
+	var response UsersCreatePublicSSHKeyForAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersCreatePublicSSHKeyForAuthenticated",
+			OperationID:   "users/create-public-ssh-key-for-authenticated",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = UsersCreatePublicSSHKeyForAuthenticatedReq
+			Params   = struct{}
+			Response = UsersCreatePublicSSHKeyForAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersCreatePublicSSHKeyForAuthenticated(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.UsersCreatePublicSSHKeyForAuthenticated(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -45842,7 +69455,37 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w
 		}
 	}()
 
-	response, err := s.h.UsersDeleteEmailForAuthenticated(ctx, request)
+	var response UsersDeleteEmailForAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersDeleteEmailForAuthenticated",
+			OperationID:   "users/delete-email-for-authenticated",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptUsersDeleteEmailForAuthenticatedReq
+			Params   = struct{}
+			Response = UsersDeleteEmailForAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersDeleteEmailForAuthenticated(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.UsersDeleteEmailForAuthenticated(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -45904,7 +69547,39 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 		return
 	}
 
-	response, err := s.h.UsersDeleteGpgKeyForAuthenticated(ctx, params)
+	var response UsersDeleteGpgKeyForAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersDeleteGpgKeyForAuthenticated",
+			OperationID:   "users/delete-gpg-key-for-authenticated",
+			Body:          nil,
+			Params: map[string]any{
+				"gpg_key_id": params.GpgKeyID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersDeleteGpgKeyForAuthenticatedParams
+			Response = UsersDeleteGpgKeyForAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersDeleteGpgKeyForAuthenticated(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersDeleteGpgKeyForAuthenticated(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -45966,7 +69641,39 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 		return
 	}
 
-	response, err := s.h.UsersDeletePublicSSHKeyForAuthenticated(ctx, params)
+	var response UsersDeletePublicSSHKeyForAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersDeletePublicSSHKeyForAuthenticated",
+			OperationID:   "users/delete-public-ssh-key-for-authenticated",
+			Body:          nil,
+			Params: map[string]any{
+				"key_id": params.KeyID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersDeletePublicSSHKeyForAuthenticatedParams
+			Response = UsersDeletePublicSSHKeyForAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersDeletePublicSSHKeyForAuthenticated(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersDeletePublicSSHKeyForAuthenticated(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -46028,7 +69735,39 @@ func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.h.UsersFollow(ctx, params)
+	var response UsersFollowRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersFollow",
+			OperationID:   "users/follow",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersFollowParams
+			Response = UsersFollowRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersFollow(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersFollow(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -46076,7 +69815,37 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, w http.Respo
 		err error
 	)
 
-	response, err := s.h.UsersGetAuthenticated(ctx)
+	var response UsersGetAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersGetAuthenticated",
+			OperationID:   "users/get-authenticated",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = UsersGetAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersGetAuthenticated(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.UsersGetAuthenticated(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -46138,7 +69907,39 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.Response
 		return
 	}
 
-	response, err := s.h.UsersGetByUsername(ctx, params)
+	var response UsersGetByUsernameRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersGetByUsername",
+			OperationID:   "users/get-by-username",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersGetByUsernameParams
+			Response = UsersGetByUsernameRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersGetByUsername(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersGetByUsername(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -46200,7 +70001,41 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.UsersGetContextForUser(ctx, params)
+	var response UsersGetContextForUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersGetContextForUser",
+			OperationID:   "users/get-context-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username":     params.Username,
+				"subject_type": params.SubjectType,
+				"subject_id":   params.SubjectID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersGetContextForUserParams
+			Response = UsersGetContextForUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersGetContextForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersGetContextForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -46262,7 +70097,39 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w h
 		return
 	}
 
-	response, err := s.h.UsersGetGpgKeyForAuthenticated(ctx, params)
+	var response UsersGetGpgKeyForAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersGetGpgKeyForAuthenticated",
+			OperationID:   "users/get-gpg-key-for-authenticated",
+			Body:          nil,
+			Params: map[string]any{
+				"gpg_key_id": params.GpgKeyID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersGetGpgKeyForAuthenticatedParams
+			Response = UsersGetGpgKeyForAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersGetGpgKeyForAuthenticated(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersGetGpgKeyForAuthenticated(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -46324,7 +70191,39 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 		return
 	}
 
-	response, err := s.h.UsersGetPublicSSHKeyForAuthenticated(ctx, params)
+	var response UsersGetPublicSSHKeyForAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersGetPublicSSHKeyForAuthenticated",
+			OperationID:   "users/get-public-ssh-key-for-authenticated",
+			Body:          nil,
+			Params: map[string]any{
+				"key_id": params.KeyID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersGetPublicSSHKeyForAuthenticatedParams
+			Response = UsersGetPublicSSHKeyForAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersGetPublicSSHKeyForAuthenticated(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersGetPublicSSHKeyForAuthenticated(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -46386,7 +70285,40 @@ func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.h.UsersList(ctx, params)
+	var response UsersListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersList",
+			OperationID:   "users/list",
+			Body:          nil,
+			Params: map[string]any{
+				"since":    params.Since,
+				"per_page": params.PerPage,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersListParams
+			Response = UsersListRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -46434,7 +70366,37 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, w 
 		err error
 	)
 
-	response, err := s.h.UsersListBlockedByAuthenticated(ctx)
+	var response UsersListBlockedByAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersListBlockedByAuthenticated",
+			OperationID:   "users/list-blocked-by-authenticated",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = UsersListBlockedByAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersListBlockedByAuthenticated(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.UsersListBlockedByAuthenticated(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -46496,7 +70458,40 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w 
 		return
 	}
 
-	response, err := s.h.UsersListEmailsForAuthenticated(ctx, params)
+	var response UsersListEmailsForAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersListEmailsForAuthenticated",
+			OperationID:   "users/list-emails-for-authenticated",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersListEmailsForAuthenticatedParams
+			Response = UsersListEmailsForAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersListEmailsForAuthenticated(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersListEmailsForAuthenticated(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -46558,7 +70553,40 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w
 		return
 	}
 
-	response, err := s.h.UsersListFollowedByAuthenticated(ctx, params)
+	var response UsersListFollowedByAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersListFollowedByAuthenticated",
+			OperationID:   "users/list-followed-by-authenticated",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersListFollowedByAuthenticatedParams
+			Response = UsersListFollowedByAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersListFollowedByAuthenticated(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersListFollowedByAuthenticated(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -46620,7 +70648,40 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 		return
 	}
 
-	response, err := s.h.UsersListFollowersForAuthenticatedUser(ctx, params)
+	var response UsersListFollowersForAuthenticatedUserRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersListFollowersForAuthenticatedUser",
+			OperationID:   "users/list-followers-for-authenticated-user",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersListFollowersForAuthenticatedUserParams
+			Response = UsersListFollowersForAuthenticatedUserRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersListFollowersForAuthenticatedUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersListFollowersForAuthenticatedUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -46682,7 +70743,41 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 		return
 	}
 
-	response, err := s.h.UsersListFollowersForUser(ctx, params)
+	var response UsersListFollowersForUserOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersListFollowersForUser",
+			OperationID:   "users/list-followers-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersListFollowersForUserParams
+			Response = UsersListFollowersForUserOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersListFollowersForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersListFollowersForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -46744,7 +70839,41 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 		return
 	}
 
-	response, err := s.h.UsersListFollowingForUser(ctx, params)
+	var response UsersListFollowingForUserOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersListFollowingForUser",
+			OperationID:   "users/list-following-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersListFollowingForUserParams
+			Response = UsersListFollowingForUserOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersListFollowingForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersListFollowingForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -46806,7 +70935,40 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w
 		return
 	}
 
-	response, err := s.h.UsersListGpgKeysForAuthenticated(ctx, params)
+	var response UsersListGpgKeysForAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersListGpgKeysForAuthenticated",
+			OperationID:   "users/list-gpg-keys-for-authenticated",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersListGpgKeysForAuthenticatedParams
+			Response = UsersListGpgKeysForAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersListGpgKeysForAuthenticated(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersListGpgKeysForAuthenticated(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -46868,7 +71030,41 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 		return
 	}
 
-	response, err := s.h.UsersListGpgKeysForUser(ctx, params)
+	var response UsersListGpgKeysForUserOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersListGpgKeysForUser",
+			OperationID:   "users/list-gpg-keys-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersListGpgKeysForUserParams
+			Response = UsersListGpgKeysForUserOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersListGpgKeysForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersListGpgKeysForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -46930,7 +71126,40 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 		return
 	}
 
-	response, err := s.h.UsersListPublicEmailsForAuthenticated(ctx, params)
+	var response UsersListPublicEmailsForAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersListPublicEmailsForAuthenticated",
+			OperationID:   "users/list-public-emails-for-authenticated",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersListPublicEmailsForAuthenticatedParams
+			Response = UsersListPublicEmailsForAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersListPublicEmailsForAuthenticated(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersListPublicEmailsForAuthenticated(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -46992,7 +71221,41 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 		return
 	}
 
-	response, err := s.h.UsersListPublicKeysForUser(ctx, params)
+	var response UsersListPublicKeysForUserOKHeaders
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersListPublicKeysForUser",
+			OperationID:   "users/list-public-keys-for-user",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersListPublicKeysForUserParams
+			Response = UsersListPublicKeysForUserOKHeaders
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersListPublicKeysForUser(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersListPublicKeysForUser(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -47054,7 +71317,40 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 		return
 	}
 
-	response, err := s.h.UsersListPublicSSHKeysForAuthenticated(ctx, params)
+	var response UsersListPublicSSHKeysForAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersListPublicSSHKeysForAuthenticated",
+			OperationID:   "users/list-public-ssh-keys-for-authenticated",
+			Body:          nil,
+			Params: map[string]any{
+				"per_page": params.PerPage,
+				"page":     params.Page,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersListPublicSSHKeysForAuthenticatedParams
+			Response = UsersListPublicSSHKeysForAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersListPublicSSHKeysForAuthenticated(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersListPublicSSHKeysForAuthenticated(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -47121,7 +71417,37 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 		}
 	}()
 
-	response, err := s.h.UsersSetPrimaryEmailVisibilityForAuthenticated(ctx, request)
+	var response UsersSetPrimaryEmailVisibilityForAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersSetPrimaryEmailVisibilityForAuthenticated",
+			OperationID:   "users/set-primary-email-visibility-for-authenticated",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = UsersSetPrimaryEmailVisibilityForAuthenticatedReq
+			Params   = struct{}
+			Response = UsersSetPrimaryEmailVisibilityForAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersSetPrimaryEmailVisibilityForAuthenticated(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.UsersSetPrimaryEmailVisibilityForAuthenticated(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -47183,7 +71509,39 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter
 		return
 	}
 
-	response, err := s.h.UsersUnblock(ctx, params)
+	var response UsersUnblockRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersUnblock",
+			OperationID:   "users/unblock",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersUnblockParams
+			Response = UsersUnblockRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersUnblock(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersUnblock(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -47245,7 +71603,39 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWrite
 		return
 	}
 
-	response, err := s.h.UsersUnfollow(ctx, params)
+	var response UsersUnfollowRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersUnfollow",
+			OperationID:   "users/unfollow",
+			Body:          nil,
+			Params: map[string]any{
+				"username": params.Username,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = UsersUnfollowParams
+			Response = UsersUnfollowRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersUnfollow(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.UsersUnfollow(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -47312,7 +71702,37 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.Re
 		}
 	}()
 
-	response, err := s.h.UsersUpdateAuthenticated(ctx, request)
+	var response UsersUpdateAuthenticatedRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UsersUpdateAuthenticated",
+			OperationID:   "users/update-authenticated",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptUsersUpdateAuthenticatedReq
+			Params   = struct{}
+			Response = UsersUpdateAuthenticatedRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UsersUpdateAuthenticated(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.UsersUpdateAuthenticated(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)

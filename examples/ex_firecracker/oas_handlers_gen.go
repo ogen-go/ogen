@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -67,7 +68,37 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 		}
 	}()
 
-	response, err := s.h.CreateSnapshot(ctx, request)
+	var response CreateSnapshotRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CreateSnapshot",
+			OperationID:   "createSnapshot",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SnapshotCreateParams
+			Params   = struct{}
+			Response = CreateSnapshotRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CreateSnapshot(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.CreateSnapshot(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -134,7 +165,37 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 		}
 	}()
 
-	response, err := s.h.CreateSyncAction(ctx, request)
+	var response CreateSyncActionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "CreateSyncAction",
+			OperationID:   "createSyncAction",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = InstanceActionInfo
+			Params   = struct{}
+			Response = CreateSyncActionRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.CreateSyncAction(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.CreateSyncAction(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -182,7 +243,37 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.Respo
 		err error
 	)
 
-	response, err := s.h.DescribeBalloonConfig(ctx)
+	var response DescribeBalloonConfigRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "DescribeBalloonConfig",
+			OperationID:   "describeBalloonConfig",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = DescribeBalloonConfigRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.DescribeBalloonConfig(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.DescribeBalloonConfig(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -230,7 +321,37 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.Respon
 		err error
 	)
 
-	response, err := s.h.DescribeBalloonStats(ctx)
+	var response DescribeBalloonStatsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "DescribeBalloonStats",
+			OperationID:   "describeBalloonStats",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = DescribeBalloonStatsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.DescribeBalloonStats(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.DescribeBalloonStats(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -278,7 +399,37 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWr
 		err error
 	)
 
-	response, err := s.h.DescribeInstance(ctx)
+	var response DescribeInstanceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "DescribeInstance",
+			OperationID:   "describeInstance",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = DescribeInstanceRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.DescribeInstance(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.DescribeInstance(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -326,7 +477,37 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseW
 		err error
 	)
 
-	response, err := s.h.GetExportVmConfig(ctx)
+	var response GetExportVmConfigRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetExportVmConfig",
+			OperationID:   "getExportVmConfig",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetExportVmConfigRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetExportVmConfig(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetExportVmConfig(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -374,7 +555,37 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.Res
 		err error
 	)
 
-	response, err := s.h.GetMachineConfiguration(ctx)
+	var response GetMachineConfigurationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "GetMachineConfiguration",
+			OperationID:   "getMachineConfiguration",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetMachineConfigurationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.GetMachineConfiguration(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetMachineConfiguration(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -441,7 +652,37 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 		}
 	}()
 
-	response, err := s.h.LoadSnapshot(ctx, request)
+	var response LoadSnapshotRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "LoadSnapshot",
+			OperationID:   "loadSnapshot",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SnapshotLoadParams
+			Params   = struct{}
+			Response = LoadSnapshotRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.LoadSnapshot(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.LoadSnapshot(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -506,7 +747,37 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.MmdsConfigPut(ctx, request)
+	var response MmdsConfigPutRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MmdsConfigPut",
+			OperationID:   "",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = MmdsConfig
+			Params   = struct{}
+			Response = MmdsConfigPutRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MmdsConfigPut(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.MmdsConfigPut(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -552,7 +823,37 @@ func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *
 		err error
 	)
 
-	response, err := s.h.MmdsGet(ctx)
+	var response MmdsGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MmdsGet",
+			OperationID:   "",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = MmdsGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MmdsGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.MmdsGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -617,7 +918,37 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 		}
 	}()
 
-	response, err := s.h.MmdsPatch(ctx, request)
+	var response MmdsPatchRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MmdsPatch",
+			OperationID:   "",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = *MmdsPatchReq
+			Params   = struct{}
+			Response = MmdsPatchRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MmdsPatch(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.MmdsPatch(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -682,7 +1013,37 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 		}
 	}()
 
-	response, err := s.h.MmdsPut(ctx, request)
+	var response MmdsPutRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MmdsPut",
+			OperationID:   "",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = *MmdsPutReq
+			Params   = struct{}
+			Response = MmdsPutRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MmdsPut(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.MmdsPut(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -749,7 +1110,37 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 		}
 	}()
 
-	response, err := s.h.PatchBalloon(ctx, request)
+	var response PatchBalloonRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PatchBalloon",
+			OperationID:   "patchBalloon",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = BalloonUpdate
+			Params   = struct{}
+			Response = PatchBalloonRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PatchBalloon(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.PatchBalloon(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -816,7 +1207,37 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 		}
 	}()
 
-	response, err := s.h.PatchBalloonStatsInterval(ctx, request)
+	var response PatchBalloonStatsIntervalRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PatchBalloonStatsInterval",
+			OperationID:   "patchBalloonStatsInterval",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = BalloonStatsUpdate
+			Params   = struct{}
+			Response = PatchBalloonStatsIntervalRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PatchBalloonStatsInterval(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.PatchBalloonStatsInterval(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -893,7 +1314,39 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 		}
 	}()
 
-	response, err := s.h.PatchGuestDriveByID(ctx, request, params)
+	var response PatchGuestDriveByIDRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PatchGuestDriveByID",
+			OperationID:   "patchGuestDriveByID",
+			Body:          request,
+			Params: map[string]any{
+				"drive_id": params.DriveID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = PartialDrive
+			Params   = PatchGuestDriveByIDParams
+			Response = PatchGuestDriveByIDRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PatchGuestDriveByID(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.PatchGuestDriveByID(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -970,7 +1423,39 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 		}
 	}()
 
-	response, err := s.h.PatchGuestNetworkInterfaceByID(ctx, request, params)
+	var response PatchGuestNetworkInterfaceByIDRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PatchGuestNetworkInterfaceByID",
+			OperationID:   "patchGuestNetworkInterfaceByID",
+			Body:          request,
+			Params: map[string]any{
+				"iface_id": params.IfaceID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = PartialNetworkInterface
+			Params   = PatchGuestNetworkInterfaceByIDParams
+			Response = PatchGuestNetworkInterfaceByIDRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PatchGuestNetworkInterfaceByID(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.PatchGuestNetworkInterfaceByID(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1037,7 +1522,37 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 		}
 	}()
 
-	response, err := s.h.PatchMachineConfiguration(ctx, request)
+	var response PatchMachineConfigurationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PatchMachineConfiguration",
+			OperationID:   "patchMachineConfiguration",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptMachineConfiguration
+			Params   = struct{}
+			Response = PatchMachineConfigurationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PatchMachineConfiguration(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.PatchMachineConfiguration(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1104,7 +1619,37 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 		}
 	}()
 
-	response, err := s.h.PatchVm(ctx, request)
+	var response PatchVmRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PatchVm",
+			OperationID:   "patchVm",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = VM
+			Params   = struct{}
+			Response = PatchVmRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PatchVm(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.PatchVm(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1171,7 +1716,37 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 		}
 	}()
 
-	response, err := s.h.PutBalloon(ctx, request)
+	var response PutBalloonRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PutBalloon",
+			OperationID:   "putBalloon",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = Balloon
+			Params   = struct{}
+			Response = PutBalloonRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PutBalloon(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.PutBalloon(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1238,7 +1813,37 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 		}
 	}()
 
-	response, err := s.h.PutGuestBootSource(ctx, request)
+	var response PutGuestBootSourceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PutGuestBootSource",
+			OperationID:   "putGuestBootSource",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = BootSource
+			Params   = struct{}
+			Response = PutGuestBootSourceRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PutGuestBootSource(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.PutGuestBootSource(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1315,7 +1920,39 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.PutGuestDriveByID(ctx, request, params)
+	var response PutGuestDriveByIDRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PutGuestDriveByID",
+			OperationID:   "putGuestDriveByID",
+			Body:          request,
+			Params: map[string]any{
+				"drive_id": params.DriveID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = Drive
+			Params   = PutGuestDriveByIDParams
+			Response = PutGuestDriveByIDRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PutGuestDriveByID(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.PutGuestDriveByID(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1392,7 +2029,39 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 		}
 	}()
 
-	response, err := s.h.PutGuestNetworkInterfaceByID(ctx, request, params)
+	var response PutGuestNetworkInterfaceByIDRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PutGuestNetworkInterfaceByID",
+			OperationID:   "putGuestNetworkInterfaceByID",
+			Body:          request,
+			Params: map[string]any{
+				"iface_id": params.IfaceID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = NetworkInterface
+			Params   = PutGuestNetworkInterfaceByIDParams
+			Response = PutGuestNetworkInterfaceByIDRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PutGuestNetworkInterfaceByID(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.PutGuestNetworkInterfaceByID(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1459,7 +2128,37 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.PutGuestVsock(ctx, request)
+	var response PutGuestVsockRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PutGuestVsock",
+			OperationID:   "putGuestVsock",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = Vsock
+			Params   = struct{}
+			Response = PutGuestVsockRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PutGuestVsock(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.PutGuestVsock(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1526,7 +2225,37 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 		}
 	}()
 
-	response, err := s.h.PutLogger(ctx, request)
+	var response PutLoggerRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PutLogger",
+			OperationID:   "putLogger",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = Logger
+			Params   = struct{}
+			Response = PutLoggerRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PutLogger(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.PutLogger(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1593,7 +2322,37 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 		}
 	}()
 
-	response, err := s.h.PutMachineConfiguration(ctx, request)
+	var response PutMachineConfigurationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PutMachineConfiguration",
+			OperationID:   "putMachineConfiguration",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptMachineConfiguration
+			Params   = struct{}
+			Response = PutMachineConfigurationRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PutMachineConfiguration(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.PutMachineConfiguration(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1660,7 +2419,37 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 		}
 	}()
 
-	response, err := s.h.PutMetrics(ctx, request)
+	var response PutMetricsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PutMetrics",
+			OperationID:   "putMetrics",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = Metrics
+			Params   = struct{}
+			Response = PutMetricsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PutMetrics(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.PutMetrics(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)

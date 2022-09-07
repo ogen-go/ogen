@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -67,7 +68,37 @@ func (s *Server) handleAddPetRequest(args [0]string, w http.ResponseWriter, r *h
 		}
 	}()
 
-	response, err := s.h.AddPet(ctx, request)
+	var response AddPetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "AddPet",
+			OperationID:   "addPet",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = NewPet
+			Params   = struct{}
+			Response = AddPetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.AddPet(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.AddPet(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -129,7 +160,39 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.h.DeletePet(ctx, params)
+	var response DeletePetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "DeletePet",
+			OperationID:   "deletePet",
+			Body:          nil,
+			Params: map[string]any{
+				"id": params.ID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = DeletePetParams
+			Response = DeletePetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.DeletePet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.DeletePet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -191,7 +254,39 @@ func (s *Server) handleFindPetByIDRequest(args [1]string, w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.h.FindPetByID(ctx, params)
+	var response FindPetByIDRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "FindPetByID",
+			OperationID:   "find pet by id",
+			Body:          nil,
+			Params: map[string]any{
+				"id": params.ID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = FindPetByIDParams
+			Response = FindPetByIDRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.FindPetByID(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.FindPetByID(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -253,7 +348,40 @@ func (s *Server) handleFindPetsRequest(args [0]string, w http.ResponseWriter, r 
 		return
 	}
 
-	response, err := s.h.FindPets(ctx, params)
+	var response FindPetsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "FindPets",
+			OperationID:   "findPets",
+			Body:          nil,
+			Params: map[string]any{
+				"tags":  params.Tags,
+				"limit": params.Limit,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = FindPetsParams
+			Response = FindPetsRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.FindPets(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.FindPets(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)

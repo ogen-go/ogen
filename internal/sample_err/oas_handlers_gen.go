@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -69,7 +70,37 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 		}
 	}()
 
-	response, err := s.h.DataCreate(ctx, request)
+	var response Data
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "DataCreate",
+			OperationID:   "dataCreate",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptData
+			Params   = struct{}
+			Response = Data
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.DataCreate(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.DataCreate(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {
@@ -125,7 +156,37 @@ func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *
 		err error
 	)
 
-	response, err := s.h.DataGet(ctx)
+	var response Data
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "DataGet",
+			OperationID:   "dataGet",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = Data
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.DataGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.DataGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {

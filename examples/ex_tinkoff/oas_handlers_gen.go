@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -60,7 +61,37 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.MarketBondsGet(ctx)
+	var response MarketBondsGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MarketBondsGet",
+			OperationID:   "",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = MarketBondsGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MarketBondsGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.MarketBondsGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -131,7 +162,42 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.MarketCandlesGet(ctx, params)
+	var response MarketCandlesGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MarketCandlesGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"figi":     params.Figi,
+				"from":     params.From,
+				"to":       params.To,
+				"interval": params.Interval,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MarketCandlesGetParams
+			Response = MarketCandlesGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MarketCandlesGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MarketCandlesGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -192,7 +258,37 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.MarketCurrenciesGet(ctx)
+	var response MarketCurrenciesGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MarketCurrenciesGet",
+			OperationID:   "",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = MarketCurrenciesGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MarketCurrenciesGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.MarketCurrenciesGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -253,7 +349,37 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 		return
 	}
 
-	response, err := s.h.MarketEtfsGet(ctx)
+	var response MarketEtfsGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MarketEtfsGet",
+			OperationID:   "",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = MarketEtfsGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MarketEtfsGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.MarketEtfsGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -324,7 +450,40 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 		return
 	}
 
-	response, err := s.h.MarketOrderbookGet(ctx, params)
+	var response MarketOrderbookGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MarketOrderbookGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"figi":  params.Figi,
+				"depth": params.Depth,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MarketOrderbookGetParams
+			Response = MarketOrderbookGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MarketOrderbookGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MarketOrderbookGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -395,7 +554,39 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.MarketSearchByFigiGet(ctx, params)
+	var response MarketSearchByFigiGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MarketSearchByFigiGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"figi": params.Figi,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MarketSearchByFigiGetParams
+			Response = MarketSearchByFigiGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MarketSearchByFigiGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MarketSearchByFigiGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -466,7 +657,39 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 		return
 	}
 
-	response, err := s.h.MarketSearchByTickerGet(ctx, params)
+	var response MarketSearchByTickerGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MarketSearchByTickerGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"ticker": params.Ticker,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = MarketSearchByTickerGetParams
+			Response = MarketSearchByTickerGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MarketSearchByTickerGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.MarketSearchByTickerGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -527,7 +750,37 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.MarketStocksGet(ctx)
+	var response MarketStocksGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "MarketStocksGet",
+			OperationID:   "",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = MarketStocksGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.MarketStocksGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.MarketStocksGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -598,7 +851,42 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 		return
 	}
 
-	response, err := s.h.OperationsGet(ctx, params)
+	var response OperationsGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OperationsGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"from":            params.From,
+				"to":              params.To,
+				"figi":            params.Figi,
+				"brokerAccountId": params.BrokerAccountId,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OperationsGetParams
+			Response = OperationsGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OperationsGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OperationsGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -669,7 +957,40 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.OrdersCancelPost(ctx, params)
+	var response OrdersCancelPostRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrdersCancelPost",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"orderId":         params.OrderId,
+				"brokerAccountId": params.BrokerAccountId,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrdersCancelPostParams
+			Response = OrdersCancelPostRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrdersCancelPost(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrdersCancelPost(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -740,7 +1061,39 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.h.OrdersGet(ctx, params)
+	var response OrdersGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrdersGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"brokerAccountId": params.BrokerAccountId,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = OrdersGetParams
+			Response = OrdersGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrdersGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrdersGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -826,7 +1179,40 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 		}
 	}()
 
-	response, err := s.h.OrdersLimitOrderPost(ctx, request, params)
+	var response OrdersLimitOrderPostRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrdersLimitOrderPost",
+			OperationID:   "",
+			Body:          request,
+			Params: map[string]any{
+				"figi":            params.Figi,
+				"brokerAccountId": params.BrokerAccountId,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = LimitOrderRequest
+			Params   = OrdersLimitOrderPostParams
+			Response = OrdersLimitOrderPostRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrdersLimitOrderPost(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrdersLimitOrderPost(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -912,7 +1298,40 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 		}
 	}()
 
-	response, err := s.h.OrdersMarketOrderPost(ctx, request, params)
+	var response OrdersMarketOrderPostRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "OrdersMarketOrderPost",
+			OperationID:   "",
+			Body:          request,
+			Params: map[string]any{
+				"figi":            params.Figi,
+				"brokerAccountId": params.BrokerAccountId,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = MarketOrderRequest
+			Params   = OrdersMarketOrderPostParams
+			Response = OrdersMarketOrderPostRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.OrdersMarketOrderPost(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.OrdersMarketOrderPost(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -983,7 +1402,39 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.PortfolioCurrenciesGet(ctx, params)
+	var response PortfolioCurrenciesGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PortfolioCurrenciesGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"brokerAccountId": params.BrokerAccountId,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PortfolioCurrenciesGetParams
+			Response = PortfolioCurrenciesGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PortfolioCurrenciesGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PortfolioCurrenciesGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1054,7 +1505,39 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 		return
 	}
 
-	response, err := s.h.PortfolioGet(ctx, params)
+	var response PortfolioGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "PortfolioGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"brokerAccountId": params.BrokerAccountId,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PortfolioGetParams
+			Response = PortfolioGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.PortfolioGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PortfolioGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1125,7 +1608,39 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.SandboxClearPost(ctx, params)
+	var response SandboxClearPostRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SandboxClearPost",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"brokerAccountId": params.BrokerAccountId,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = SandboxClearPostParams
+			Response = SandboxClearPostRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SandboxClearPost(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.SandboxClearPost(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1211,7 +1726,39 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 		}
 	}()
 
-	response, err := s.h.SandboxCurrenciesBalancePost(ctx, request, params)
+	var response SandboxCurrenciesBalancePostRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SandboxCurrenciesBalancePost",
+			OperationID:   "",
+			Body:          request,
+			Params: map[string]any{
+				"brokerAccountId": params.BrokerAccountId,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = SandboxSetCurrencyBalanceRequest
+			Params   = SandboxCurrenciesBalancePostParams
+			Response = SandboxCurrenciesBalancePostRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SandboxCurrenciesBalancePost(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.SandboxCurrenciesBalancePost(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1297,7 +1844,39 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 		}
 	}()
 
-	response, err := s.h.SandboxPositionsBalancePost(ctx, request, params)
+	var response SandboxPositionsBalancePostRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SandboxPositionsBalancePost",
+			OperationID:   "",
+			Body:          request,
+			Params: map[string]any{
+				"brokerAccountId": params.BrokerAccountId,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = SandboxSetPositionBalanceRequest
+			Params   = SandboxPositionsBalancePostParams
+			Response = SandboxPositionsBalancePostRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SandboxPositionsBalancePost(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.SandboxPositionsBalancePost(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1373,7 +1952,37 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 		}
 	}()
 
-	response, err := s.h.SandboxRegisterPost(ctx, request)
+	var response SandboxRegisterPostRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SandboxRegisterPost",
+			OperationID:   "",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptSandboxRegisterRequest
+			Params   = struct{}
+			Response = SandboxRegisterPostRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SandboxRegisterPost(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SandboxRegisterPost(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1444,7 +2053,39 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.SandboxRemovePost(ctx, params)
+	var response SandboxRemovePostRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "SandboxRemovePost",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"brokerAccountId": params.BrokerAccountId,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = SandboxRemovePostParams
+			Response = SandboxRemovePostRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			params,
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.SandboxRemovePost(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.SandboxRemovePost(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1505,7 +2146,37 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.UserAccountsGet(ctx)
+	var response UserAccountsGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context:       ctx,
+			OperationName: "UserAccountsGet",
+			OperationID:   "",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = UserAccountsGetRes
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			struct{}{},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.UserAccountsGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.UserAccountsGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
