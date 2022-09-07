@@ -137,21 +137,21 @@ func (w *writer) Generate(templateName, fileName string, cfg TemplateConfig) (re
 		return errors.Wrapf(err, "execute template %q for %q", templateName, fileName)
 	}
 
-	b := w.buf.Bytes()
+	generated := w.buf.Bytes()
 	defer func() {
 		if rerr != nil {
-			_ = os.WriteFile(fileName+".dump", b, 0o600)
+			_ = os.WriteFile(fileName+".dump", generated, 0o600)
 		}
 	}()
 
-	b, err := imports.Process(fileName, b, nil)
+	formatted, err := imports.Process(fileName, generated, nil)
 	if err != nil {
 		return &ErrGoFormat{
 			err: err,
 		}
 	}
 
-	if err := w.fs.WriteFile(fileName, b); err != nil {
+	if err := w.fs.WriteFile(fileName, formatted); err != nil {
 		return errors.Wrapf(err, "write %q", fileName)
 	}
 	w.wrote[fileName] = true
