@@ -92,7 +92,41 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	}()
 	{{- end }}
 
-	response, err := s.h.{{$op.Name}}(ctx{{ if $op.Request }}, request{{ end }}{{if $op.Params}}, params {{ end }})
+	var response {{ $op.Responses.Type.Go }}
+	if m := s.cfg.Middleware; m != nil {
+		mreq := MiddlewareRequest{
+			Context: ctx,
+			OperationName: {{ quote $op.Name }},
+			OperationID: {{ quote $op.Spec.OperationID }},
+			Body: {{- if $op.Request }}request{{- else }}nil{{- end }},
+			Params: map[string]any{
+				{{- range $param := $op.Params }}
+				{{ quote $param.Spec.Name }}: params.{{ $param.Name }},
+				{{- end }}
+			},
+			Raw: r,
+		}
+
+		type (
+			Request = {{ if $op.Request }}{{ $op.Request.Type.Go }}{{ else }}struct{}{{ end }}
+			Params = {{ if $op.Params }}{{ $op.Name }}Params{{ else }}struct{}{{ end }}
+			Response = {{ $op.Responses.Type.Go }}
+		)
+		response, err = hookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			{{ if $op.Params }}params{{ else }}struct{}{}{{ end }},
+			mreq,
+			func(ctx context.Context, params Params, request Request) (Response, error) {
+				return s.h.{{ $op.Name }}(ctx{{ if $op.Request }}, request{{ end }}{{ if $op.Params }}, params{{ end }})
+			},
+		)
+	} else {
+		response, err = s.h.{{ $op.Name }}(ctx{{ if $op.Request }}, request{{ end }}{{ if $op.Params }}, params{{ end }})
+	}
 	if err != nil {
 		{{- /* It is not secure to expose internal error to client, but better than nothing. */ -}}
 		recordError("Internal", err)
