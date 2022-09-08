@@ -94,7 +94,7 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 
 	var response {{ $op.Responses.Type.Go }}
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context: ctx,
 			OperationName: {{ quote $op.Name }},
 			OperationID: {{ quote $op.Spec.OperationID }},
@@ -112,7 +112,7 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 			Params = {{ if $op.Params }}{{ $op.Name }}Params{{ else }}struct{}{{ end }}
 			Response = {{ $op.Responses.Type.Go }}
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
