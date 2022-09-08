@@ -11,6 +11,7 @@ import (
 	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/xmaps"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -344,14 +345,10 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 	for _, s := range sum.SumOf {
 		k := s.Name
 		f := uniq[k]
-		v := sumVariant{
-			Name: k,
-		}
-		for fieldName := range f {
-			v.Unique = append(v.Unique, fieldName)
-		}
-		sort.Strings(v.Unique)
-		variants = append(variants, v)
+		variants = append(variants, sumVariant{
+			Name:   k,
+			Unique: xmaps.SortedKeys(f),
+		})
 	}
 	sort.SliceStable(variants, func(i, j int) bool {
 		a := variants[i]

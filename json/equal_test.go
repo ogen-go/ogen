@@ -2,11 +2,12 @@ package json
 
 import (
 	"fmt"
-	"sort"
 	"testing"
 
 	"github.com/go-faster/jx"
 	"github.com/stretchr/testify/require"
+
+	"github.com/ogen-go/ogen/internal/xmaps"
 )
 
 func TestEqual(t *testing.T) {
@@ -86,12 +87,7 @@ func TestEqual(t *testing.T) {
 	}
 
 	sortedIter := func(cb func(k string, tts []testCase)) {
-		var keys []string
-		for k := range tests {
-			keys = append(keys, k)
-		}
-		sort.Strings(keys)
-		for _, k := range keys {
+		for _, k := range xmaps.SortedKeys(tests) {
 			cb(k, tests[k])
 		}
 	}

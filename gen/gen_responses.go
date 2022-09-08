@@ -9,6 +9,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/xmaps"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -335,13 +336,7 @@ func injectHeaderFields(headers map[string]*ir.Parameter, t *ir.Type) {
 		panic(fmt.Sprintf("expected struct, got %q", t.Kind))
 	}
 
-	keys := make([]string, 0, len(headers))
-	for k := range headers {
-		keys = append(keys, k)
-	}
-
-	sort.Strings(keys)
-	for _, key := range keys {
+	for _, key := range xmaps.SortedKeys(headers) {
 		h := headers[key]
 		t.Fields = append(t.Fields, &ir.Field{
 			Name: h.Name,
