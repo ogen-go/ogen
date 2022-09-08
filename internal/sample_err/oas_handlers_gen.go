@@ -13,6 +13,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -72,7 +73,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 
 	var response Data
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DataCreate",
 			OperationID:   "dataCreate",
@@ -86,7 +87,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 			Params   = struct{}
 			Response = Data
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -158,7 +159,7 @@ func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *
 
 	var response Data
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DataGet",
 			OperationID:   "dataGet",
@@ -172,7 +173,7 @@ func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *
 			Params   = struct{}
 			Response = Data
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,

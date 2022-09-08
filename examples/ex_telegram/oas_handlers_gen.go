@@ -13,6 +13,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -72,7 +73,7 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "AddStickerToSet",
 			OperationID:   "addStickerToSet",
@@ -86,7 +87,7 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -177,7 +178,7 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "AnswerCallbackQuery",
 			OperationID:   "answerCallbackQuery",
@@ -191,7 +192,7 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -282,7 +283,7 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "AnswerInlineQuery",
 			OperationID:   "answerInlineQuery",
@@ -296,7 +297,7 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -387,7 +388,7 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "AnswerPreCheckoutQuery",
 			OperationID:   "answerPreCheckoutQuery",
@@ -401,7 +402,7 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -492,7 +493,7 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "AnswerShippingQuery",
 			OperationID:   "answerShippingQuery",
@@ -506,7 +507,7 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -597,7 +598,7 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ApproveChatJoinRequest",
 			OperationID:   "approveChatJoinRequest",
@@ -611,7 +612,7 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -702,7 +703,7 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "BanChatMember",
 			OperationID:   "banChatMember",
@@ -716,7 +717,7 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -807,7 +808,7 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "BanChatSenderChat",
 			OperationID:   "banChatSenderChat",
@@ -821,7 +822,7 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -893,7 +894,7 @@ func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *ht
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "Close",
 			OperationID:   "close",
@@ -907,7 +908,7 @@ func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *ht
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -998,7 +999,7 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 
 	var response ResultMessageId
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "CopyMessage",
 			OperationID:   "copyMessage",
@@ -1012,7 +1013,7 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 			Params   = struct{}
 			Response = ResultMessageId
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1103,7 +1104,7 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 
 	var response ResultChatInviteLink
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "CreateChatInviteLink",
 			OperationID:   "createChatInviteLink",
@@ -1117,7 +1118,7 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 			Params   = struct{}
 			Response = ResultChatInviteLink
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1208,7 +1209,7 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "CreateNewStickerSet",
 			OperationID:   "createNewStickerSet",
@@ -1222,7 +1223,7 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1313,7 +1314,7 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DeclineChatJoinRequest",
 			OperationID:   "declineChatJoinRequest",
@@ -1327,7 +1328,7 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1418,7 +1419,7 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DeleteChatPhoto",
 			OperationID:   "deleteChatPhoto",
@@ -1432,7 +1433,7 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1523,7 +1524,7 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DeleteChatStickerSet",
 			OperationID:   "deleteChatStickerSet",
@@ -1537,7 +1538,7 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1628,7 +1629,7 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DeleteMessage",
 			OperationID:   "deleteMessage",
@@ -1642,7 +1643,7 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1733,7 +1734,7 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DeleteMyCommands",
 			OperationID:   "deleteMyCommands",
@@ -1747,7 +1748,7 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1838,7 +1839,7 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DeleteStickerFromSet",
 			OperationID:   "deleteStickerFromSet",
@@ -1852,7 +1853,7 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1943,7 +1944,7 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DeleteWebhook",
 			OperationID:   "deleteWebhook",
@@ -1957,7 +1958,7 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2048,7 +2049,7 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 
 	var response ResultChatInviteLink
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "EditChatInviteLink",
 			OperationID:   "editChatInviteLink",
@@ -2062,7 +2063,7 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 			Params   = struct{}
 			Response = ResultChatInviteLink
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2153,7 +2154,7 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "EditMessageCaption",
 			OperationID:   "editMessageCaption",
@@ -2167,7 +2168,7 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2258,7 +2259,7 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "EditMessageLiveLocation",
 			OperationID:   "editMessageLiveLocation",
@@ -2272,7 +2273,7 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2363,7 +2364,7 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "EditMessageMedia",
 			OperationID:   "editMessageMedia",
@@ -2377,7 +2378,7 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2468,7 +2469,7 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "EditMessageReplyMarkup",
 			OperationID:   "editMessageReplyMarkup",
@@ -2482,7 +2483,7 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2573,7 +2574,7 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "EditMessageText",
 			OperationID:   "editMessageText",
@@ -2587,7 +2588,7 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2678,7 +2679,7 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 
 	var response ResultString
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ExportChatInviteLink",
 			OperationID:   "exportChatInviteLink",
@@ -2692,7 +2693,7 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 			Params   = struct{}
 			Response = ResultString
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2783,7 +2784,7 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 
 	var response ResultMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ForwardMessage",
 			OperationID:   "forwardMessage",
@@ -2797,7 +2798,7 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 			Params   = struct{}
 			Response = ResultMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2888,7 +2889,7 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 
 	var response ResultChat
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetChat",
 			OperationID:   "getChat",
@@ -2902,7 +2903,7 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 			Params   = struct{}
 			Response = ResultChat
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2993,7 +2994,7 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 
 	var response ResultArrayOfChatMember
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetChatAdministrators",
 			OperationID:   "getChatAdministrators",
@@ -3007,7 +3008,7 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 			Params   = struct{}
 			Response = ResultArrayOfChatMember
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3098,7 +3099,7 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 
 	var response ResultChatMember
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetChatMember",
 			OperationID:   "getChatMember",
@@ -3112,7 +3113,7 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 			Params   = struct{}
 			Response = ResultChatMember
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3203,7 +3204,7 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 
 	var response ResultInt
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetChatMemberCount",
 			OperationID:   "getChatMemberCount",
@@ -3217,7 +3218,7 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 			Params   = struct{}
 			Response = ResultInt
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3308,7 +3309,7 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetFile",
 			OperationID:   "getFile",
@@ -3322,7 +3323,7 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3413,7 +3414,7 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 
 	var response ResultArrayOfGameHighScore
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetGameHighScores",
 			OperationID:   "getGameHighScores",
@@ -3427,7 +3428,7 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 			Params   = struct{}
 			Response = ResultArrayOfGameHighScore
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3499,7 +3500,7 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 
 	var response ResultUser
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetMe",
 			OperationID:   "getMe",
@@ -3513,7 +3514,7 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 			Params   = struct{}
 			Response = ResultUser
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3604,7 +3605,7 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 
 	var response ResultArrayOfBotCommand
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetMyCommands",
 			OperationID:   "getMyCommands",
@@ -3618,7 +3619,7 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 			Params   = struct{}
 			Response = ResultArrayOfBotCommand
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3709,7 +3710,7 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetStickerSet",
 			OperationID:   "getStickerSet",
@@ -3723,7 +3724,7 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3814,7 +3815,7 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 
 	var response ResultArrayOfUpdate
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetUpdates",
 			OperationID:   "getUpdates",
@@ -3828,7 +3829,7 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 			Params   = struct{}
 			Response = ResultArrayOfUpdate
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3919,7 +3920,7 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 
 	var response ResultUserProfilePhotos
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetUserProfilePhotos",
 			OperationID:   "getUserProfilePhotos",
@@ -3933,7 +3934,7 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 			Params   = struct{}
 			Response = ResultUserProfilePhotos
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4005,7 +4006,7 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWrit
 
 	var response ResultWebhookInfo
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetWebhookInfo",
 			OperationID:   "getWebhookInfo",
@@ -4019,7 +4020,7 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWrit
 			Params   = struct{}
 			Response = ResultWebhookInfo
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4110,7 +4111,7 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "LeaveChat",
 			OperationID:   "leaveChat",
@@ -4124,7 +4125,7 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4196,7 +4197,7 @@ func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *h
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "LogOut",
 			OperationID:   "logOut",
@@ -4210,7 +4211,7 @@ func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *h
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4301,7 +4302,7 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PinChatMessage",
 			OperationID:   "pinChatMessage",
@@ -4315,7 +4316,7 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4406,7 +4407,7 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PromoteChatMember",
 			OperationID:   "promoteChatMember",
@@ -4420,7 +4421,7 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4511,7 +4512,7 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "RestrictChatMember",
 			OperationID:   "restrictChatMember",
@@ -4525,7 +4526,7 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4616,7 +4617,7 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 
 	var response ResultChatInviteLink
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "RevokeChatInviteLink",
 			OperationID:   "revokeChatInviteLink",
@@ -4630,7 +4631,7 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 			Params   = struct{}
 			Response = ResultChatInviteLink
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4721,7 +4722,7 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 
 	var response ResultMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendAnimation",
 			OperationID:   "sendAnimation",
@@ -4735,7 +4736,7 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 			Params   = struct{}
 			Response = ResultMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4826,7 +4827,7 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 
 	var response ResultMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendAudio",
 			OperationID:   "sendAudio",
@@ -4840,7 +4841,7 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 			Params   = struct{}
 			Response = ResultMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4931,7 +4932,7 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendChatAction",
 			OperationID:   "sendChatAction",
@@ -4945,7 +4946,7 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5036,7 +5037,7 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 
 	var response ResultMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendContact",
 			OperationID:   "sendContact",
@@ -5050,7 +5051,7 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 			Params   = struct{}
 			Response = ResultMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5141,7 +5142,7 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 
 	var response ResultMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendDice",
 			OperationID:   "sendDice",
@@ -5155,7 +5156,7 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 			Params   = struct{}
 			Response = ResultMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5246,7 +5247,7 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 
 	var response ResultMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendDocument",
 			OperationID:   "sendDocument",
@@ -5260,7 +5261,7 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 			Params   = struct{}
 			Response = ResultMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5351,7 +5352,7 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 
 	var response ResultMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendGame",
 			OperationID:   "sendGame",
@@ -5365,7 +5366,7 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 			Params   = struct{}
 			Response = ResultMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5456,7 +5457,7 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 
 	var response ResultMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendInvoice",
 			OperationID:   "sendInvoice",
@@ -5470,7 +5471,7 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 			Params   = struct{}
 			Response = ResultMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5561,7 +5562,7 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 
 	var response ResultMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendLocation",
 			OperationID:   "sendLocation",
@@ -5575,7 +5576,7 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 			Params   = struct{}
 			Response = ResultMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5666,7 +5667,7 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 
 	var response ResultArrayOfMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendMediaGroup",
 			OperationID:   "sendMediaGroup",
@@ -5680,7 +5681,7 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 			Params   = struct{}
 			Response = ResultArrayOfMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5771,7 +5772,7 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 
 	var response ResultMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendMessage",
 			OperationID:   "sendMessage",
@@ -5785,7 +5786,7 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 			Params   = struct{}
 			Response = ResultMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5876,7 +5877,7 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 
 	var response ResultMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendPhoto",
 			OperationID:   "sendPhoto",
@@ -5890,7 +5891,7 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 			Params   = struct{}
 			Response = ResultMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5981,7 +5982,7 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 
 	var response ResultMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendPoll",
 			OperationID:   "sendPoll",
@@ -5995,7 +5996,7 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 			Params   = struct{}
 			Response = ResultMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6086,7 +6087,7 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 
 	var response ResultMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendSticker",
 			OperationID:   "sendSticker",
@@ -6100,7 +6101,7 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 			Params   = struct{}
 			Response = ResultMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6191,7 +6192,7 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 
 	var response ResultMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendVenue",
 			OperationID:   "sendVenue",
@@ -6205,7 +6206,7 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 			Params   = struct{}
 			Response = ResultMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6296,7 +6297,7 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 
 	var response ResultMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendVideo",
 			OperationID:   "sendVideo",
@@ -6310,7 +6311,7 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 			Params   = struct{}
 			Response = ResultMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6401,7 +6402,7 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 
 	var response ResultMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendVideoNote",
 			OperationID:   "sendVideoNote",
@@ -6415,7 +6416,7 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 			Params   = struct{}
 			Response = ResultMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6506,7 +6507,7 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 
 	var response ResultMessage
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SendVoice",
 			OperationID:   "sendVoice",
@@ -6520,7 +6521,7 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 			Params   = struct{}
 			Response = ResultMessage
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6611,7 +6612,7 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SetChatAdministratorCustomTitle",
 			OperationID:   "setChatAdministratorCustomTitle",
@@ -6625,7 +6626,7 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6716,7 +6717,7 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SetChatDescription",
 			OperationID:   "setChatDescription",
@@ -6730,7 +6731,7 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6821,7 +6822,7 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SetChatPermissions",
 			OperationID:   "setChatPermissions",
@@ -6835,7 +6836,7 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6926,7 +6927,7 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SetChatPhoto",
 			OperationID:   "setChatPhoto",
@@ -6940,7 +6941,7 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7031,7 +7032,7 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SetChatStickerSet",
 			OperationID:   "setChatStickerSet",
@@ -7045,7 +7046,7 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7136,7 +7137,7 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SetChatTitle",
 			OperationID:   "setChatTitle",
@@ -7150,7 +7151,7 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7241,7 +7242,7 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SetGameScore",
 			OperationID:   "setGameScore",
@@ -7255,7 +7256,7 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7346,7 +7347,7 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SetMyCommands",
 			OperationID:   "setMyCommands",
@@ -7360,7 +7361,7 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7451,7 +7452,7 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SetPassportDataErrors",
 			OperationID:   "setPassportDataErrors",
@@ -7465,7 +7466,7 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7556,7 +7557,7 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SetStickerPositionInSet",
 			OperationID:   "setStickerPositionInSet",
@@ -7570,7 +7571,7 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7661,7 +7662,7 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SetStickerSetThumb",
 			OperationID:   "setStickerSetThumb",
@@ -7675,7 +7676,7 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7766,7 +7767,7 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SetWebhook",
 			OperationID:   "setWebhook",
@@ -7780,7 +7781,7 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7871,7 +7872,7 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "StopMessageLiveLocation",
 			OperationID:   "stopMessageLiveLocation",
@@ -7885,7 +7886,7 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7976,7 +7977,7 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 
 	var response ResultPoll
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "StopPoll",
 			OperationID:   "stopPoll",
@@ -7990,7 +7991,7 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 			Params   = struct{}
 			Response = ResultPoll
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -8081,7 +8082,7 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "UnbanChatMember",
 			OperationID:   "unbanChatMember",
@@ -8095,7 +8096,7 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -8186,7 +8187,7 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "UnbanChatSenderChat",
 			OperationID:   "unbanChatSenderChat",
@@ -8200,7 +8201,7 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -8291,7 +8292,7 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "UnpinAllChatMessages",
 			OperationID:   "unpinAllChatMessages",
@@ -8305,7 +8306,7 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -8396,7 +8397,7 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 
 	var response Result
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "UnpinChatMessage",
 			OperationID:   "unpinChatMessage",
@@ -8410,7 +8411,7 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 			Params   = struct{}
 			Response = Result
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -8501,7 +8502,7 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 
 	var response ResultFile
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "UploadStickerFile",
 			OperationID:   "uploadStickerFile",
@@ -8515,7 +8516,7 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 			Params   = struct{}
 			Response = ResultFile
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,

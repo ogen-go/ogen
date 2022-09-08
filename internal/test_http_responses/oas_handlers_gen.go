@@ -11,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -51,7 +52,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w
 
 	var response AnyContentTypeBinaryStringSchemaOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "AnyContentTypeBinaryStringSchema",
 			OperationID:   "anyContentTypeBinaryStringSchema",
@@ -65,7 +66,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w
 			Params   = struct{}
 			Response = AnyContentTypeBinaryStringSchemaOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -129,7 +130,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 
 	var response AnyContentTypeBinaryStringSchemaDefaultDefStatusCode
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "AnyContentTypeBinaryStringSchemaDefault",
 			OperationID:   "anyContentTypeBinaryStringSchemaDefault",
@@ -143,7 +144,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 			Params   = struct{}
 			Response = AnyContentTypeBinaryStringSchemaDefaultDefStatusCode
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -221,7 +222,7 @@ func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r 
 
 	var response CombinedRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "Combined",
 			OperationID:   "combined",
@@ -237,7 +238,7 @@ func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r 
 			Params   = CombinedParams
 			Response = CombinedRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -301,7 +302,7 @@ func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, 
 
 	var response Headers200OK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "Headers200",
 			OperationID:   "headers200",
@@ -315,7 +316,7 @@ func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, 
 			Params   = struct{}
 			Response = Headers200OK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -393,7 +394,7 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWri
 
 	var response HeadersCombinedRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "HeadersCombined",
 			OperationID:   "headersCombined",
@@ -409,7 +410,7 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWri
 			Params   = HeadersCombinedParams
 			Response = HeadersCombinedRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -473,7 +474,7 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWrit
 
 	var response HeadersDefaultDef
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "HeadersDefault",
 			OperationID:   "headersDefault",
@@ -487,7 +488,7 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWrit
 			Params   = struct{}
 			Response = HeadersDefaultDef
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -551,7 +552,7 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWrit
 
 	var response HeadersPattern4XX
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "HeadersPattern",
 			OperationID:   "headersPattern",
@@ -565,7 +566,7 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWrit
 			Params   = struct{}
 			Response = HeadersPattern4XX
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -643,7 +644,7 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.Respon
 
 	var response IntersectPatternCodeRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "IntersectPatternCode",
 			OperationID:   "intersectPatternCode",
@@ -659,7 +660,7 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.Respon
 			Params   = IntersectPatternCodeParams
 			Response = IntersectPatternCodeRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -723,7 +724,7 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.Re
 
 	var response MultipleGenericResponsesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "MultipleGenericResponses",
 			OperationID:   "multipleGenericResponses",
@@ -737,7 +738,7 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.Re
 			Params   = struct{}
 			Response = MultipleGenericResponsesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -801,7 +802,7 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w ht
 
 	var response OctetStreamBinaryStringSchemaOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "OctetStreamBinaryStringSchema",
 			OperationID:   "octetStreamBinaryStringSchema",
@@ -815,7 +816,7 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w ht
 			Params   = struct{}
 			Response = OctetStreamBinaryStringSchemaOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -879,7 +880,7 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.Resp
 
 	var response OctetStreamEmptySchemaOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "OctetStreamEmptySchema",
 			OperationID:   "octetStreamEmptySchema",
@@ -893,7 +894,7 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.Resp
 			Params   = struct{}
 			Response = OctetStreamEmptySchemaOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -957,7 +958,7 @@ func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, w http
 
 	var response TextPlainBinaryStringSchemaOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "TextPlainBinaryStringSchema",
 			OperationID:   "textPlainBinaryStringSchema",
@@ -971,7 +972,7 @@ func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, w http
 			Params   = struct{}
 			Response = TextPlainBinaryStringSchemaOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,

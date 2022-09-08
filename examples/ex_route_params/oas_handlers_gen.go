@@ -11,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -65,7 +66,7 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 
 	var response string
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DataGet",
 			OperationID:   "dataGet",
@@ -82,7 +83,7 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 			Params   = DataGetParams
 			Response = string
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -146,7 +147,7 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, 
 
 	var response string
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DataGetAny",
 			OperationID:   "dataGetAny",
@@ -160,7 +161,7 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, 
 			Params   = struct{}
 			Response = string
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -238,7 +239,7 @@ func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r
 
 	var response string
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DataGetID",
 			OperationID:   "dataGetID",
@@ -254,7 +255,7 @@ func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r
 			Params   = DataGetIDParams
 			Response = string
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,

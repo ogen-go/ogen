@@ -11,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -70,7 +71,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 
 	var response TestFormURLEncodedOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "TestFormURLEncoded",
 			OperationID:   "testFormURLEncoded",
@@ -84,7 +85,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 			Params   = struct{}
 			Response = TestFormURLEncodedOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -167,7 +168,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 
 	var response TestMultipartOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "TestMultipart",
 			OperationID:   "testMultipart",
@@ -181,7 +182,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 			Params   = struct{}
 			Response = TestMultipartOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -264,7 +265,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 
 	var response TestMultipartUploadOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "TestMultipartUpload",
 			OperationID:   "testMultipartUpload",
@@ -278,7 +279,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 			Params   = struct{}
 			Response = TestMultipartUploadOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -361,7 +362,7 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 
 	var response TestShareFormSchemaOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "TestShareFormSchema",
 			OperationID:   "testShareFormSchema",
@@ -375,7 +376,7 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 			Params   = struct{}
 			Response = TestShareFormSchemaOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,

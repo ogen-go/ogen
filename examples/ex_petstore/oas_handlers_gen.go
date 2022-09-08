@@ -11,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -51,7 +52,7 @@ func (s *Server) handleCreatePetsRequest(args [0]string, w http.ResponseWriter, 
 
 	var response CreatePetsRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "CreatePets",
 			OperationID:   "createPets",
@@ -65,7 +66,7 @@ func (s *Server) handleCreatePetsRequest(args [0]string, w http.ResponseWriter, 
 			Params   = struct{}
 			Response = CreatePetsRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -143,7 +144,7 @@ func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r 
 
 	var response ListPetsRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListPets",
 			OperationID:   "listPets",
@@ -159,7 +160,7 @@ func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r 
 			Params   = ListPetsParams
 			Response = ListPetsRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -237,7 +238,7 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, w http.ResponseWriter,
 
 	var response ShowPetByIdRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ShowPetById",
 			OperationID:   "showPetById",
@@ -253,7 +254,7 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, w http.ResponseWriter,
 			Params   = ShowPetByIdParams
 			Response = ShowPetByIdRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,

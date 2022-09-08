@@ -11,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -65,7 +66,7 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 
 	var response GetBookRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetBook",
 			OperationID:   "getBook",
@@ -81,7 +82,7 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 			Params   = GetBookParams
 			Response = GetBookRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -159,7 +160,7 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseW
 
 	var response GetPageCoverImageRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetPageCoverImage",
 			OperationID:   "getPageCoverImage",
@@ -176,7 +177,7 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseW
 			Params   = GetPageCoverImageParams
 			Response = GetPageCoverImageRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -254,7 +255,7 @@ func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter
 
 	var response GetPageImageRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetPageImage",
 			OperationID:   "getPageImage",
@@ -272,7 +273,7 @@ func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter
 			Params   = GetPageImageParams
 			Response = GetPageImageRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -350,7 +351,7 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.Respo
 
 	var response GetPageThumbnailImageRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetPageThumbnailImage",
 			OperationID:   "getPageThumbnailImage",
@@ -368,7 +369,7 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.Respo
 			Params   = GetPageThumbnailImageParams
 			Response = GetPageThumbnailImageRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -446,7 +447,7 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 
 	var response SearchRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "Search",
 			OperationID:   "search",
@@ -463,7 +464,7 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 			Params   = SearchParams
 			Response = SearchRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -541,7 +542,7 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 
 	var response SearchByTagIDRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SearchByTagID",
 			OperationID:   "searchByTagID",
@@ -558,7 +559,7 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 			Params   = SearchByTagIDParams
 			Response = SearchByTagIDRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,

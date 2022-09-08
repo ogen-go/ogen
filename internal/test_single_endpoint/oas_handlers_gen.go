@@ -13,6 +13,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/otelogen"
 )
 
@@ -52,7 +53,7 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWrite
 
 	var response string
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ProbeLiveness",
 			OperationID:   "probeLiveness",
@@ -66,7 +67,7 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWrite
 			Params   = struct{}
 			Response = string
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,

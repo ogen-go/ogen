@@ -11,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -66,7 +67,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWrit
 
 	var response GetAPIVersionsRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetAPIVersions",
 			OperationID:   "getAPIVersions",
@@ -80,7 +81,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWrit
 			Params   = struct{}
 			Response = GetAPIVersionsRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -159,7 +160,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w
 
 	var response GetAdmissionregistrationAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetAdmissionregistrationAPIGroup",
 			OperationID:   "getAdmissionregistrationAPIGroup",
@@ -173,7 +174,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w
 			Params   = struct{}
 			Response = GetAdmissionregistrationAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -252,7 +253,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 
 	var response GetAdmissionregistrationV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetAdmissionregistrationV1APIResources",
 			OperationID:   "getAdmissionregistrationV1APIResources",
@@ -266,7 +267,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 			Params   = struct{}
 			Response = GetAdmissionregistrationV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -345,7 +346,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.Re
 
 	var response GetApiextensionsAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetApiextensionsAPIGroup",
 			OperationID:   "getApiextensionsAPIGroup",
@@ -359,7 +360,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.Re
 			Params   = struct{}
 			Response = GetApiextensionsAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -438,7 +439,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w h
 
 	var response GetApiextensionsV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetApiextensionsV1APIResources",
 			OperationID:   "getApiextensionsV1APIResources",
@@ -452,7 +453,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w h
 			Params   = struct{}
 			Response = GetApiextensionsV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -531,7 +532,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.
 
 	var response GetApiregistrationAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetApiregistrationAPIGroup",
 			OperationID:   "getApiregistrationAPIGroup",
@@ -545,7 +546,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.
 			Params   = struct{}
 			Response = GetApiregistrationAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -624,7 +625,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w
 
 	var response GetApiregistrationV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetApiregistrationV1APIResources",
 			OperationID:   "getApiregistrationV1APIResources",
@@ -638,7 +639,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w
 			Params   = struct{}
 			Response = GetApiregistrationV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -717,7 +718,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWri
 
 	var response GetAppsAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetAppsAPIGroup",
 			OperationID:   "getAppsAPIGroup",
@@ -731,7 +732,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWri
 			Params   = struct{}
 			Response = GetAppsAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -810,7 +811,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.Respo
 
 	var response GetAppsV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetAppsV1APIResources",
 			OperationID:   "getAppsV1APIResources",
@@ -824,7 +825,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.Respo
 			Params   = struct{}
 			Response = GetAppsV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -903,7 +904,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.R
 
 	var response GetAuthenticationAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetAuthenticationAPIGroup",
 			OperationID:   "getAuthenticationAPIGroup",
@@ -917,7 +918,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.R
 			Params   = struct{}
 			Response = GetAuthenticationAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -996,7 +997,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w 
 
 	var response GetAuthenticationV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetAuthenticationV1APIResources",
 			OperationID:   "getAuthenticationV1APIResources",
@@ -1010,7 +1011,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w 
 			Params   = struct{}
 			Response = GetAuthenticationV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1089,7 +1090,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.Re
 
 	var response GetAuthorizationAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetAuthorizationAPIGroup",
 			OperationID:   "getAuthorizationAPIGroup",
@@ -1103,7 +1104,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.Re
 			Params   = struct{}
 			Response = GetAuthorizationAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1182,7 +1183,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w h
 
 	var response GetAuthorizationV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetAuthorizationV1APIResources",
 			OperationID:   "getAuthorizationV1APIResources",
@@ -1196,7 +1197,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w h
 			Params   = struct{}
 			Response = GetAuthorizationV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1275,7 +1276,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.Resp
 
 	var response GetAutoscalingAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetAutoscalingAPIGroup",
 			OperationID:   "getAutoscalingAPIGroup",
@@ -1289,7 +1290,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.Resp
 			Params   = struct{}
 			Response = GetAutoscalingAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1368,7 +1369,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w htt
 
 	var response GetAutoscalingV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetAutoscalingV1APIResources",
 			OperationID:   "getAutoscalingV1APIResources",
@@ -1382,7 +1383,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w htt
 			Params   = struct{}
 			Response = GetAutoscalingV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1461,7 +1462,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 
 	var response GetAutoscalingV2beta1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetAutoscalingV2beta1APIResources",
 			OperationID:   "getAutoscalingV2beta1APIResources",
@@ -1475,7 +1476,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 			Params   = struct{}
 			Response = GetAutoscalingV2beta1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1554,7 +1555,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 
 	var response GetAutoscalingV2beta2APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetAutoscalingV2beta2APIResources",
 			OperationID:   "getAutoscalingV2beta2APIResources",
@@ -1568,7 +1569,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 			Params   = struct{}
 			Response = GetAutoscalingV2beta2APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1647,7 +1648,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWr
 
 	var response GetBatchAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetBatchAPIGroup",
 			OperationID:   "getBatchAPIGroup",
@@ -1661,7 +1662,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWr
 			Params   = struct{}
 			Response = GetBatchAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1740,7 +1741,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.Resp
 
 	var response GetBatchV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetBatchV1APIResources",
 			OperationID:   "getBatchV1APIResources",
@@ -1754,7 +1755,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.Resp
 			Params   = struct{}
 			Response = GetBatchV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1833,7 +1834,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http
 
 	var response GetBatchV1beta1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetBatchV1beta1APIResources",
 			OperationID:   "getBatchV1beta1APIResources",
@@ -1847,7 +1848,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http
 			Params   = struct{}
 			Response = GetBatchV1beta1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1926,7 +1927,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.Res
 
 	var response GetCertificatesAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetCertificatesAPIGroup",
 			OperationID:   "getCertificatesAPIGroup",
@@ -1940,7 +1941,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.Res
 			Params   = struct{}
 			Response = GetCertificatesAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2019,7 +2020,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w ht
 
 	var response GetCertificatesV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetCertificatesV1APIResources",
 			OperationID:   "getCertificatesV1APIResources",
@@ -2033,7 +2034,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w ht
 			Params   = struct{}
 			Response = GetCertificatesV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2112,7 +2113,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWrit
 
 	var response GetCodeVersionRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetCodeVersion",
 			OperationID:   "getCodeVersion",
@@ -2126,7 +2127,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWrit
 			Params   = struct{}
 			Response = GetCodeVersionRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2205,7 +2206,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.Res
 
 	var response GetCoordinationAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetCoordinationAPIGroup",
 			OperationID:   "getCoordinationAPIGroup",
@@ -2219,7 +2220,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.Res
 			Params   = struct{}
 			Response = GetCoordinationAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2298,7 +2299,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w ht
 
 	var response GetCoordinationV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetCoordinationV1APIResources",
 			OperationID:   "getCoordinationV1APIResources",
@@ -2312,7 +2313,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w ht
 			Params   = struct{}
 			Response = GetCoordinationV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2391,7 +2392,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.Response
 
 	var response GetCoreAPIVersionsRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetCoreAPIVersions",
 			OperationID:   "getCoreAPIVersions",
@@ -2405,7 +2406,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.Response
 			Params   = struct{}
 			Response = GetCoreAPIVersionsRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2484,7 +2485,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.Respo
 
 	var response GetCoreV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetCoreV1APIResources",
 			OperationID:   "getCoreV1APIResources",
@@ -2498,7 +2499,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.Respo
 			Params   = struct{}
 			Response = GetCoreV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2577,7 +2578,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.Respon
 
 	var response GetDiscoveryAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetDiscoveryAPIGroup",
 			OperationID:   "getDiscoveryAPIGroup",
@@ -2591,7 +2592,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.Respon
 			Params   = struct{}
 			Response = GetDiscoveryAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2670,7 +2671,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.
 
 	var response GetDiscoveryV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetDiscoveryV1APIResources",
 			OperationID:   "getDiscoveryV1APIResources",
@@ -2684,7 +2685,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.
 			Params   = struct{}
 			Response = GetDiscoveryV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2763,7 +2764,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w 
 
 	var response GetDiscoveryV1beta1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetDiscoveryV1beta1APIResources",
 			OperationID:   "getDiscoveryV1beta1APIResources",
@@ -2777,7 +2778,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w 
 			Params   = struct{}
 			Response = GetDiscoveryV1beta1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2856,7 +2857,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseW
 
 	var response GetEventsAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetEventsAPIGroup",
 			OperationID:   "getEventsAPIGroup",
@@ -2870,7 +2871,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseW
 			Params   = struct{}
 			Response = GetEventsAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2949,7 +2950,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.Res
 
 	var response GetEventsV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetEventsV1APIResources",
 			OperationID:   "getEventsV1APIResources",
@@ -2963,7 +2964,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.Res
 			Params   = struct{}
 			Response = GetEventsV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3042,7 +3043,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w htt
 
 	var response GetEventsV1beta1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetEventsV1beta1APIResources",
 			OperationID:   "getEventsV1beta1APIResources",
@@ -3056,7 +3057,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w htt
 			Params   = struct{}
 			Response = GetEventsV1beta1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3135,7 +3136,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w 
 
 	var response GetFlowcontrolApiserverAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetFlowcontrolApiserverAPIGroup",
 			OperationID:   "getFlowcontrolApiserverAPIGroup",
@@ -3149,7 +3150,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w 
 			Params   = struct{}
 			Response = GetFlowcontrolApiserverAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3228,7 +3229,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 
 	var response GetFlowcontrolApiserverV1beta1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetFlowcontrolApiserverV1beta1APIResources",
 			OperationID:   "getFlowcontrolApiserverV1beta1APIResources",
@@ -3242,7 +3243,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 			Params   = struct{}
 			Response = GetFlowcontrolApiserverV1beta1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3321,7 +3322,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 
 	var response GetFlowcontrolApiserverV1beta2APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetFlowcontrolApiserverV1beta2APIResources",
 			OperationID:   "getFlowcontrolApiserverV1beta2APIResources",
@@ -3335,7 +3336,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 			Params   = struct{}
 			Response = GetFlowcontrolApiserverV1beta2APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3414,7 +3415,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w htt
 
 	var response GetInternalApiserverAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetInternalApiserverAPIGroup",
 			OperationID:   "getInternalApiserverAPIGroup",
@@ -3428,7 +3429,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w htt
 			Params   = struct{}
 			Response = GetInternalApiserverAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3507,7 +3508,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 
 	var response GetInternalApiserverV1alpha1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetInternalApiserverV1alpha1APIResources",
 			OperationID:   "getInternalApiserverV1alpha1APIResources",
@@ -3521,7 +3522,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 			Params   = struct{}
 			Response = GetInternalApiserverV1alpha1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3600,7 +3601,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.Respo
 
 	var response GetNetworkingAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetNetworkingAPIGroup",
 			OperationID:   "getNetworkingAPIGroup",
@@ -3614,7 +3615,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.Respo
 			Params   = struct{}
 			Response = GetNetworkingAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3693,7 +3694,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http
 
 	var response GetNetworkingV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetNetworkingV1APIResources",
 			OperationID:   "getNetworkingV1APIResources",
@@ -3707,7 +3708,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http
 			Params   = struct{}
 			Response = GetNetworkingV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3786,7 +3787,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWri
 
 	var response GetNodeAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetNodeAPIGroup",
 			OperationID:   "getNodeAPIGroup",
@@ -3800,7 +3801,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWri
 			Params   = struct{}
 			Response = GetNodeAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3879,7 +3880,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.Respo
 
 	var response GetNodeV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetNodeV1APIResources",
 			OperationID:   "getNodeV1APIResources",
@@ -3893,7 +3894,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.Respo
 			Params   = struct{}
 			Response = GetNodeV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -3972,7 +3973,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http
 
 	var response GetNodeV1alpha1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetNodeV1alpha1APIResources",
 			OperationID:   "getNodeV1alpha1APIResources",
@@ -3986,7 +3987,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http
 			Params   = struct{}
 			Response = GetNodeV1alpha1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4065,7 +4066,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.
 
 	var response GetNodeV1beta1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetNodeV1beta1APIResources",
 			OperationID:   "getNodeV1beta1APIResources",
@@ -4079,7 +4080,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.
 			Params   = struct{}
 			Response = GetNodeV1beta1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4158,7 +4159,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseW
 
 	var response GetPolicyAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetPolicyAPIGroup",
 			OperationID:   "getPolicyAPIGroup",
@@ -4172,7 +4173,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseW
 			Params   = struct{}
 			Response = GetPolicyAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4251,7 +4252,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.Res
 
 	var response GetPolicyV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetPolicyV1APIResources",
 			OperationID:   "getPolicyV1APIResources",
@@ -4265,7 +4266,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.Res
 			Params   = struct{}
 			Response = GetPolicyV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4344,7 +4345,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w htt
 
 	var response GetPolicyV1beta1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetPolicyV1beta1APIResources",
 			OperationID:   "getPolicyV1beta1APIResources",
@@ -4358,7 +4359,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w htt
 			Params   = struct{}
 			Response = GetPolicyV1beta1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4437,7 +4438,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w htt
 
 	var response GetRbacAuthorizationAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetRbacAuthorizationAPIGroup",
 			OperationID:   "getRbacAuthorizationAPIGroup",
@@ -4451,7 +4452,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w htt
 			Params   = struct{}
 			Response = GetRbacAuthorizationAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4530,7 +4531,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 
 	var response GetRbacAuthorizationV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetRbacAuthorizationV1APIResources",
 			OperationID:   "getRbacAuthorizationV1APIResources",
@@ -4544,7 +4545,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 			Params   = struct{}
 			Response = GetRbacAuthorizationV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4623,7 +4624,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.Respo
 
 	var response GetSchedulingAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetSchedulingAPIGroup",
 			OperationID:   "getSchedulingAPIGroup",
@@ -4637,7 +4638,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.Respo
 			Params   = struct{}
 			Response = GetSchedulingAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4716,7 +4717,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http
 
 	var response GetSchedulingV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetSchedulingV1APIResources",
 			OperationID:   "getSchedulingV1APIResources",
@@ -4730,7 +4731,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http
 			Params   = struct{}
 			Response = GetSchedulingV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4809,7 +4810,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 
 	var response GetServiceAccountIssuerOpenIDConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetServiceAccountIssuerOpenIDConfiguration",
 			OperationID:   "getServiceAccountIssuerOpenIDConfiguration",
@@ -4823,7 +4824,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 			Params   = struct{}
 			Response = GetServiceAccountIssuerOpenIDConfigurationRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4902,7 +4903,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.Response
 
 	var response GetStorageAPIGroupRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetStorageAPIGroup",
 			OperationID:   "getStorageAPIGroup",
@@ -4916,7 +4917,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.Response
 			Params   = struct{}
 			Response = GetStorageAPIGroupRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -4995,7 +4996,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.Re
 
 	var response GetStorageV1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetStorageV1APIResources",
 			OperationID:   "getStorageV1APIResources",
@@ -5009,7 +5010,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.Re
 			Params   = struct{}
 			Response = GetStorageV1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5088,7 +5089,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w h
 
 	var response GetStorageV1alpha1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetStorageV1alpha1APIResources",
 			OperationID:   "getStorageV1alpha1APIResources",
@@ -5102,7 +5103,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w h
 			Params   = struct{}
 			Response = GetStorageV1alpha1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5181,7 +5182,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w ht
 
 	var response GetStorageV1beta1APIResourcesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetStorageV1beta1APIResources",
 			OperationID:   "getStorageV1beta1APIResources",
@@ -5195,7 +5196,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w ht
 			Params   = struct{}
 			Response = GetStorageV1beta1APIResourcesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5284,7 +5285,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 
 	var response ListAdmissionregistrationV1MutatingWebhookConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAdmissionregistrationV1MutatingWebhookConfiguration",
 			OperationID:   "listAdmissionregistrationV1MutatingWebhookConfiguration",
@@ -5309,7 +5310,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 			Params   = ListAdmissionregistrationV1MutatingWebhookConfigurationParams
 			Response = ListAdmissionregistrationV1MutatingWebhookConfigurationRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5398,7 +5399,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 
 	var response ListAdmissionregistrationV1ValidatingWebhookConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAdmissionregistrationV1ValidatingWebhookConfiguration",
 			OperationID:   "listAdmissionregistrationV1ValidatingWebhookConfiguration",
@@ -5423,7 +5424,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 			Params   = ListAdmissionregistrationV1ValidatingWebhookConfigurationParams
 			Response = ListAdmissionregistrationV1ValidatingWebhookConfigurationRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5512,7 +5513,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 
 	var response ListApiextensionsV1CustomResourceDefinitionRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListApiextensionsV1CustomResourceDefinition",
 			OperationID:   "listApiextensionsV1CustomResourceDefinition",
@@ -5537,7 +5538,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 			Params   = ListApiextensionsV1CustomResourceDefinitionParams
 			Response = ListApiextensionsV1CustomResourceDefinitionRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5626,7 +5627,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 
 	var response ListApiregistrationV1APIServiceRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListApiregistrationV1APIService",
 			OperationID:   "listApiregistrationV1APIService",
@@ -5651,7 +5652,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 			Params   = ListApiregistrationV1APIServiceParams
 			Response = ListApiregistrationV1APIServiceRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5740,7 +5741,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 
 	var response ListAppsV1ControllerRevisionForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAppsV1ControllerRevisionForAllNamespaces",
 			OperationID:   "listAppsV1ControllerRevisionForAllNamespaces",
@@ -5765,7 +5766,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 			Params   = ListAppsV1ControllerRevisionForAllNamespacesParams
 			Response = ListAppsV1ControllerRevisionForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5854,7 +5855,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 
 	var response ListAppsV1DaemonSetForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAppsV1DaemonSetForAllNamespaces",
 			OperationID:   "listAppsV1DaemonSetForAllNamespaces",
@@ -5879,7 +5880,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 			Params   = ListAppsV1DaemonSetForAllNamespacesParams
 			Response = ListAppsV1DaemonSetForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -5968,7 +5969,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 
 	var response ListAppsV1DeploymentForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAppsV1DeploymentForAllNamespaces",
 			OperationID:   "listAppsV1DeploymentForAllNamespaces",
@@ -5993,7 +5994,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 			Params   = ListAppsV1DeploymentForAllNamespacesParams
 			Response = ListAppsV1DeploymentForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6082,7 +6083,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 
 	var response ListAppsV1NamespacedControllerRevisionRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAppsV1NamespacedControllerRevision",
 			OperationID:   "listAppsV1NamespacedControllerRevision",
@@ -6108,7 +6109,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 			Params   = ListAppsV1NamespacedControllerRevisionParams
 			Response = ListAppsV1NamespacedControllerRevisionRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6197,7 +6198,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 
 	var response ListAppsV1NamespacedDaemonSetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAppsV1NamespacedDaemonSet",
 			OperationID:   "listAppsV1NamespacedDaemonSet",
@@ -6223,7 +6224,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 			Params   = ListAppsV1NamespacedDaemonSetParams
 			Response = ListAppsV1NamespacedDaemonSetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6312,7 +6313,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 
 	var response ListAppsV1NamespacedDeploymentRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAppsV1NamespacedDeployment",
 			OperationID:   "listAppsV1NamespacedDeployment",
@@ -6338,7 +6339,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 			Params   = ListAppsV1NamespacedDeploymentParams
 			Response = ListAppsV1NamespacedDeploymentRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6427,7 +6428,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 
 	var response ListAppsV1NamespacedReplicaSetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAppsV1NamespacedReplicaSet",
 			OperationID:   "listAppsV1NamespacedReplicaSet",
@@ -6453,7 +6454,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 			Params   = ListAppsV1NamespacedReplicaSetParams
 			Response = ListAppsV1NamespacedReplicaSetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6542,7 +6543,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 
 	var response ListAppsV1NamespacedStatefulSetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAppsV1NamespacedStatefulSet",
 			OperationID:   "listAppsV1NamespacedStatefulSet",
@@ -6568,7 +6569,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 			Params   = ListAppsV1NamespacedStatefulSetParams
 			Response = ListAppsV1NamespacedStatefulSetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6657,7 +6658,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 
 	var response ListAppsV1ReplicaSetForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAppsV1ReplicaSetForAllNamespaces",
 			OperationID:   "listAppsV1ReplicaSetForAllNamespaces",
@@ -6682,7 +6683,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 			Params   = ListAppsV1ReplicaSetForAllNamespacesParams
 			Response = ListAppsV1ReplicaSetForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6771,7 +6772,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 
 	var response ListAppsV1StatefulSetForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAppsV1StatefulSetForAllNamespaces",
 			OperationID:   "listAppsV1StatefulSetForAllNamespaces",
@@ -6796,7 +6797,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 			Params   = ListAppsV1StatefulSetForAllNamespacesParams
 			Response = ListAppsV1StatefulSetForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6885,7 +6886,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 
 	var response ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
 			OperationID:   "listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
@@ -6910,7 +6911,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 			Params   = ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams
 			Response = ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -6999,7 +7000,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 
 	var response ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "listAutoscalingV1NamespacedHorizontalPodAutoscaler",
@@ -7025,7 +7026,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			Params   = ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams
 			Response = ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7114,7 +7115,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 
 	var response ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
 			OperationID:   "listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
@@ -7139,7 +7140,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 			Params   = ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams
 			Response = ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7228,7 +7229,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 
 	var response ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
@@ -7254,7 +7255,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			Params   = ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams
 			Response = ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7343,7 +7344,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 
 	var response ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
 			OperationID:   "listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
@@ -7368,7 +7369,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 			Params   = ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams
 			Response = ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7457,7 +7458,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 
 	var response ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			OperationID:   "listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
@@ -7483,7 +7484,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			Params   = ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams
 			Response = ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7572,7 +7573,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 
 	var response ListBatchV1CronJobForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListBatchV1CronJobForAllNamespaces",
 			OperationID:   "listBatchV1CronJobForAllNamespaces",
@@ -7597,7 +7598,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 			Params   = ListBatchV1CronJobForAllNamespacesParams
 			Response = ListBatchV1CronJobForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7686,7 +7687,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 
 	var response ListBatchV1JobForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListBatchV1JobForAllNamespaces",
 			OperationID:   "listBatchV1JobForAllNamespaces",
@@ -7711,7 +7712,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 			Params   = ListBatchV1JobForAllNamespacesParams
 			Response = ListBatchV1JobForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7800,7 +7801,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 
 	var response ListBatchV1NamespacedCronJobRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListBatchV1NamespacedCronJob",
 			OperationID:   "listBatchV1NamespacedCronJob",
@@ -7826,7 +7827,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 			Params   = ListBatchV1NamespacedCronJobParams
 			Response = ListBatchV1NamespacedCronJobRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -7915,7 +7916,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 
 	var response ListBatchV1NamespacedJobRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListBatchV1NamespacedJob",
 			OperationID:   "listBatchV1NamespacedJob",
@@ -7941,7 +7942,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 			Params   = ListBatchV1NamespacedJobParams
 			Response = ListBatchV1NamespacedJobRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -8030,7 +8031,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 
 	var response ListBatchV1beta1CronJobForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListBatchV1beta1CronJobForAllNamespaces",
 			OperationID:   "listBatchV1beta1CronJobForAllNamespaces",
@@ -8055,7 +8056,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 			Params   = ListBatchV1beta1CronJobForAllNamespacesParams
 			Response = ListBatchV1beta1CronJobForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -8144,7 +8145,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 
 	var response ListBatchV1beta1NamespacedCronJobRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListBatchV1beta1NamespacedCronJob",
 			OperationID:   "listBatchV1beta1NamespacedCronJob",
@@ -8170,7 +8171,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 			Params   = ListBatchV1beta1NamespacedCronJobParams
 			Response = ListBatchV1beta1NamespacedCronJobRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -8259,7 +8260,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 
 	var response ListCertificatesV1CertificateSigningRequestRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCertificatesV1CertificateSigningRequest",
 			OperationID:   "listCertificatesV1CertificateSigningRequest",
@@ -8284,7 +8285,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 			Params   = ListCertificatesV1CertificateSigningRequestParams
 			Response = ListCertificatesV1CertificateSigningRequestRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -8373,7 +8374,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 
 	var response ListCoordinationV1LeaseForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoordinationV1LeaseForAllNamespaces",
 			OperationID:   "listCoordinationV1LeaseForAllNamespaces",
@@ -8398,7 +8399,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 			Params   = ListCoordinationV1LeaseForAllNamespacesParams
 			Response = ListCoordinationV1LeaseForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -8487,7 +8488,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 
 	var response ListCoordinationV1NamespacedLeaseRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoordinationV1NamespacedLease",
 			OperationID:   "listCoordinationV1NamespacedLease",
@@ -8513,7 +8514,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 			Params   = ListCoordinationV1NamespacedLeaseParams
 			Response = ListCoordinationV1NamespacedLeaseRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -8602,7 +8603,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 
 	var response ListCoreV1ComponentStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1ComponentStatus",
 			OperationID:   "listCoreV1ComponentStatus",
@@ -8627,7 +8628,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 			Params   = ListCoreV1ComponentStatusParams
 			Response = ListCoreV1ComponentStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -8716,7 +8717,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 
 	var response ListCoreV1ConfigMapForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1ConfigMapForAllNamespaces",
 			OperationID:   "listCoreV1ConfigMapForAllNamespaces",
@@ -8741,7 +8742,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 			Params   = ListCoreV1ConfigMapForAllNamespacesParams
 			Response = ListCoreV1ConfigMapForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -8830,7 +8831,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 
 	var response ListCoreV1EndpointsForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1EndpointsForAllNamespaces",
 			OperationID:   "listCoreV1EndpointsForAllNamespaces",
@@ -8855,7 +8856,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 			Params   = ListCoreV1EndpointsForAllNamespacesParams
 			Response = ListCoreV1EndpointsForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -8944,7 +8945,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 
 	var response ListCoreV1EventForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1EventForAllNamespaces",
 			OperationID:   "listCoreV1EventForAllNamespaces",
@@ -8969,7 +8970,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 			Params   = ListCoreV1EventForAllNamespacesParams
 			Response = ListCoreV1EventForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -9058,7 +9059,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 
 	var response ListCoreV1LimitRangeForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1LimitRangeForAllNamespaces",
 			OperationID:   "listCoreV1LimitRangeForAllNamespaces",
@@ -9083,7 +9084,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 			Params   = ListCoreV1LimitRangeForAllNamespacesParams
 			Response = ListCoreV1LimitRangeForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -9172,7 +9173,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 
 	var response ListCoreV1NamespaceRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1Namespace",
 			OperationID:   "listCoreV1Namespace",
@@ -9197,7 +9198,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 			Params   = ListCoreV1NamespaceParams
 			Response = ListCoreV1NamespaceRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -9286,7 +9287,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 
 	var response ListCoreV1NamespacedConfigMapRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedConfigMap",
 			OperationID:   "listCoreV1NamespacedConfigMap",
@@ -9312,7 +9313,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 			Params   = ListCoreV1NamespacedConfigMapParams
 			Response = ListCoreV1NamespacedConfigMapRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -9401,7 +9402,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 
 	var response ListCoreV1NamespacedEndpointsRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedEndpoints",
 			OperationID:   "listCoreV1NamespacedEndpoints",
@@ -9427,7 +9428,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 			Params   = ListCoreV1NamespacedEndpointsParams
 			Response = ListCoreV1NamespacedEndpointsRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -9516,7 +9517,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 
 	var response ListCoreV1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedEvent",
 			OperationID:   "listCoreV1NamespacedEvent",
@@ -9542,7 +9543,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 			Params   = ListCoreV1NamespacedEventParams
 			Response = ListCoreV1NamespacedEventRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -9631,7 +9632,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 
 	var response ListCoreV1NamespacedLimitRangeRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedLimitRange",
 			OperationID:   "listCoreV1NamespacedLimitRange",
@@ -9657,7 +9658,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 			Params   = ListCoreV1NamespacedLimitRangeParams
 			Response = ListCoreV1NamespacedLimitRangeRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -9746,7 +9747,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 
 	var response ListCoreV1NamespacedPersistentVolumeClaimRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedPersistentVolumeClaim",
 			OperationID:   "listCoreV1NamespacedPersistentVolumeClaim",
@@ -9772,7 +9773,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 			Params   = ListCoreV1NamespacedPersistentVolumeClaimParams
 			Response = ListCoreV1NamespacedPersistentVolumeClaimRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -9861,7 +9862,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 
 	var response ListCoreV1NamespacedPodRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedPod",
 			OperationID:   "listCoreV1NamespacedPod",
@@ -9887,7 +9888,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 			Params   = ListCoreV1NamespacedPodParams
 			Response = ListCoreV1NamespacedPodRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -9976,7 +9977,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 
 	var response ListCoreV1NamespacedPodTemplateRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedPodTemplate",
 			OperationID:   "listCoreV1NamespacedPodTemplate",
@@ -10002,7 +10003,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 			Params   = ListCoreV1NamespacedPodTemplateParams
 			Response = ListCoreV1NamespacedPodTemplateRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -10091,7 +10092,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 
 	var response ListCoreV1NamespacedReplicationControllerRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedReplicationController",
 			OperationID:   "listCoreV1NamespacedReplicationController",
@@ -10117,7 +10118,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 			Params   = ListCoreV1NamespacedReplicationControllerParams
 			Response = ListCoreV1NamespacedReplicationControllerRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -10206,7 +10207,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 
 	var response ListCoreV1NamespacedResourceQuotaRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedResourceQuota",
 			OperationID:   "listCoreV1NamespacedResourceQuota",
@@ -10232,7 +10233,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 			Params   = ListCoreV1NamespacedResourceQuotaParams
 			Response = ListCoreV1NamespacedResourceQuotaRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -10321,7 +10322,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 
 	var response ListCoreV1NamespacedSecretRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedSecret",
 			OperationID:   "listCoreV1NamespacedSecret",
@@ -10347,7 +10348,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 			Params   = ListCoreV1NamespacedSecretParams
 			Response = ListCoreV1NamespacedSecretRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -10436,7 +10437,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 
 	var response ListCoreV1NamespacedServiceRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedService",
 			OperationID:   "listCoreV1NamespacedService",
@@ -10462,7 +10463,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 			Params   = ListCoreV1NamespacedServiceParams
 			Response = ListCoreV1NamespacedServiceRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -10551,7 +10552,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 
 	var response ListCoreV1NamespacedServiceAccountRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1NamespacedServiceAccount",
 			OperationID:   "listCoreV1NamespacedServiceAccount",
@@ -10577,7 +10578,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 			Params   = ListCoreV1NamespacedServiceAccountParams
 			Response = ListCoreV1NamespacedServiceAccountRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -10666,7 +10667,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 
 	var response ListCoreV1NodeRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1Node",
 			OperationID:   "listCoreV1Node",
@@ -10691,7 +10692,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 			Params   = ListCoreV1NodeParams
 			Response = ListCoreV1NodeRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -10780,7 +10781,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 
 	var response ListCoreV1PersistentVolumeRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1PersistentVolume",
 			OperationID:   "listCoreV1PersistentVolume",
@@ -10805,7 +10806,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 			Params   = ListCoreV1PersistentVolumeParams
 			Response = ListCoreV1PersistentVolumeRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -10894,7 +10895,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 
 	var response ListCoreV1PersistentVolumeClaimForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1PersistentVolumeClaimForAllNamespaces",
 			OperationID:   "listCoreV1PersistentVolumeClaimForAllNamespaces",
@@ -10919,7 +10920,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 			Params   = ListCoreV1PersistentVolumeClaimForAllNamespacesParams
 			Response = ListCoreV1PersistentVolumeClaimForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -11008,7 +11009,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 
 	var response ListCoreV1PodForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1PodForAllNamespaces",
 			OperationID:   "listCoreV1PodForAllNamespaces",
@@ -11033,7 +11034,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 			Params   = ListCoreV1PodForAllNamespacesParams
 			Response = ListCoreV1PodForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -11122,7 +11123,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 
 	var response ListCoreV1PodTemplateForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1PodTemplateForAllNamespaces",
 			OperationID:   "listCoreV1PodTemplateForAllNamespaces",
@@ -11147,7 +11148,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 			Params   = ListCoreV1PodTemplateForAllNamespacesParams
 			Response = ListCoreV1PodTemplateForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -11236,7 +11237,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 
 	var response ListCoreV1ReplicationControllerForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1ReplicationControllerForAllNamespaces",
 			OperationID:   "listCoreV1ReplicationControllerForAllNamespaces",
@@ -11261,7 +11262,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 			Params   = ListCoreV1ReplicationControllerForAllNamespacesParams
 			Response = ListCoreV1ReplicationControllerForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -11350,7 +11351,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 
 	var response ListCoreV1ResourceQuotaForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1ResourceQuotaForAllNamespaces",
 			OperationID:   "listCoreV1ResourceQuotaForAllNamespaces",
@@ -11375,7 +11376,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 			Params   = ListCoreV1ResourceQuotaForAllNamespacesParams
 			Response = ListCoreV1ResourceQuotaForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -11464,7 +11465,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 
 	var response ListCoreV1SecretForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1SecretForAllNamespaces",
 			OperationID:   "listCoreV1SecretForAllNamespaces",
@@ -11489,7 +11490,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 			Params   = ListCoreV1SecretForAllNamespacesParams
 			Response = ListCoreV1SecretForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -11578,7 +11579,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 
 	var response ListCoreV1ServiceAccountForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1ServiceAccountForAllNamespaces",
 			OperationID:   "listCoreV1ServiceAccountForAllNamespaces",
@@ -11603,7 +11604,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 			Params   = ListCoreV1ServiceAccountForAllNamespacesParams
 			Response = ListCoreV1ServiceAccountForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -11692,7 +11693,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 
 	var response ListCoreV1ServiceForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListCoreV1ServiceForAllNamespaces",
 			OperationID:   "listCoreV1ServiceForAllNamespaces",
@@ -11717,7 +11718,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 			Params   = ListCoreV1ServiceForAllNamespacesParams
 			Response = ListCoreV1ServiceForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -11806,7 +11807,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 
 	var response ListDiscoveryV1EndpointSliceForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListDiscoveryV1EndpointSliceForAllNamespaces",
 			OperationID:   "listDiscoveryV1EndpointSliceForAllNamespaces",
@@ -11831,7 +11832,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 			Params   = ListDiscoveryV1EndpointSliceForAllNamespacesParams
 			Response = ListDiscoveryV1EndpointSliceForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -11920,7 +11921,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 
 	var response ListDiscoveryV1NamespacedEndpointSliceRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListDiscoveryV1NamespacedEndpointSlice",
 			OperationID:   "listDiscoveryV1NamespacedEndpointSlice",
@@ -11946,7 +11947,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 			Params   = ListDiscoveryV1NamespacedEndpointSliceParams
 			Response = ListDiscoveryV1NamespacedEndpointSliceRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -12035,7 +12036,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 
 	var response ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListDiscoveryV1beta1EndpointSliceForAllNamespaces",
 			OperationID:   "listDiscoveryV1beta1EndpointSliceForAllNamespaces",
@@ -12060,7 +12061,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 			Params   = ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams
 			Response = ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -12149,7 +12150,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 
 	var response ListDiscoveryV1beta1NamespacedEndpointSliceRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListDiscoveryV1beta1NamespacedEndpointSlice",
 			OperationID:   "listDiscoveryV1beta1NamespacedEndpointSlice",
@@ -12175,7 +12176,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			Params   = ListDiscoveryV1beta1NamespacedEndpointSliceParams
 			Response = ListDiscoveryV1beta1NamespacedEndpointSliceRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -12264,7 +12265,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 
 	var response ListEventsV1EventForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListEventsV1EventForAllNamespaces",
 			OperationID:   "listEventsV1EventForAllNamespaces",
@@ -12289,7 +12290,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 			Params   = ListEventsV1EventForAllNamespacesParams
 			Response = ListEventsV1EventForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -12378,7 +12379,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 
 	var response ListEventsV1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListEventsV1NamespacedEvent",
 			OperationID:   "listEventsV1NamespacedEvent",
@@ -12404,7 +12405,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 			Params   = ListEventsV1NamespacedEventParams
 			Response = ListEventsV1NamespacedEventRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -12493,7 +12494,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 
 	var response ListEventsV1beta1EventForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListEventsV1beta1EventForAllNamespaces",
 			OperationID:   "listEventsV1beta1EventForAllNamespaces",
@@ -12518,7 +12519,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 			Params   = ListEventsV1beta1EventForAllNamespacesParams
 			Response = ListEventsV1beta1EventForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -12607,7 +12608,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 
 	var response ListEventsV1beta1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListEventsV1beta1NamespacedEvent",
 			OperationID:   "listEventsV1beta1NamespacedEvent",
@@ -12633,7 +12634,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 			Params   = ListEventsV1beta1NamespacedEventParams
 			Response = ListEventsV1beta1NamespacedEventRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -12722,7 +12723,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 
 	var response ListFlowcontrolApiserverV1beta1FlowSchemaRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListFlowcontrolApiserverV1beta1FlowSchema",
 			OperationID:   "listFlowcontrolApiserverV1beta1FlowSchema",
@@ -12747,7 +12748,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 			Params   = ListFlowcontrolApiserverV1beta1FlowSchemaParams
 			Response = ListFlowcontrolApiserverV1beta1FlowSchemaRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -12836,7 +12837,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 
 	var response ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			OperationID:   "listFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
@@ -12861,7 +12862,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			Params   = ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams
 			Response = ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -12950,7 +12951,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 
 	var response ListFlowcontrolApiserverV1beta2FlowSchemaRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListFlowcontrolApiserverV1beta2FlowSchema",
 			OperationID:   "listFlowcontrolApiserverV1beta2FlowSchema",
@@ -12975,7 +12976,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 			Params   = ListFlowcontrolApiserverV1beta2FlowSchemaParams
 			Response = ListFlowcontrolApiserverV1beta2FlowSchemaRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -13064,7 +13065,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 
 	var response ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			OperationID:   "listFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
@@ -13089,7 +13090,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			Params   = ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams
 			Response = ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -13178,7 +13179,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 
 	var response ListInternalApiserverV1alpha1StorageVersionRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListInternalApiserverV1alpha1StorageVersion",
 			OperationID:   "listInternalApiserverV1alpha1StorageVersion",
@@ -13203,7 +13204,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 			Params   = ListInternalApiserverV1alpha1StorageVersionParams
 			Response = ListInternalApiserverV1alpha1StorageVersionRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -13292,7 +13293,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 
 	var response ListNetworkingV1IngressClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListNetworkingV1IngressClass",
 			OperationID:   "listNetworkingV1IngressClass",
@@ -13317,7 +13318,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 			Params   = ListNetworkingV1IngressClassParams
 			Response = ListNetworkingV1IngressClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -13406,7 +13407,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 
 	var response ListNetworkingV1IngressForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListNetworkingV1IngressForAllNamespaces",
 			OperationID:   "listNetworkingV1IngressForAllNamespaces",
@@ -13431,7 +13432,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 			Params   = ListNetworkingV1IngressForAllNamespacesParams
 			Response = ListNetworkingV1IngressForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -13520,7 +13521,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 
 	var response ListNetworkingV1NamespacedIngressRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListNetworkingV1NamespacedIngress",
 			OperationID:   "listNetworkingV1NamespacedIngress",
@@ -13546,7 +13547,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 			Params   = ListNetworkingV1NamespacedIngressParams
 			Response = ListNetworkingV1NamespacedIngressRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -13635,7 +13636,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 
 	var response ListNetworkingV1NamespacedNetworkPolicyRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListNetworkingV1NamespacedNetworkPolicy",
 			OperationID:   "listNetworkingV1NamespacedNetworkPolicy",
@@ -13661,7 +13662,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 			Params   = ListNetworkingV1NamespacedNetworkPolicyParams
 			Response = ListNetworkingV1NamespacedNetworkPolicyRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -13750,7 +13751,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 
 	var response ListNetworkingV1NetworkPolicyForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListNetworkingV1NetworkPolicyForAllNamespaces",
 			OperationID:   "listNetworkingV1NetworkPolicyForAllNamespaces",
@@ -13775,7 +13776,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 			Params   = ListNetworkingV1NetworkPolicyForAllNamespacesParams
 			Response = ListNetworkingV1NetworkPolicyForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -13864,7 +13865,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 
 	var response ListNodeV1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListNodeV1RuntimeClass",
 			OperationID:   "listNodeV1RuntimeClass",
@@ -13889,7 +13890,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 			Params   = ListNodeV1RuntimeClassParams
 			Response = ListNodeV1RuntimeClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -13978,7 +13979,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 
 	var response ListNodeV1alpha1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListNodeV1alpha1RuntimeClass",
 			OperationID:   "listNodeV1alpha1RuntimeClass",
@@ -14003,7 +14004,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 			Params   = ListNodeV1alpha1RuntimeClassParams
 			Response = ListNodeV1alpha1RuntimeClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -14092,7 +14093,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 
 	var response ListNodeV1beta1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListNodeV1beta1RuntimeClass",
 			OperationID:   "listNodeV1beta1RuntimeClass",
@@ -14117,7 +14118,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 			Params   = ListNodeV1beta1RuntimeClassParams
 			Response = ListNodeV1beta1RuntimeClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -14206,7 +14207,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 
 	var response ListPolicyV1NamespacedPodDisruptionBudgetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListPolicyV1NamespacedPodDisruptionBudget",
 			OperationID:   "listPolicyV1NamespacedPodDisruptionBudget",
@@ -14232,7 +14233,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 			Params   = ListPolicyV1NamespacedPodDisruptionBudgetParams
 			Response = ListPolicyV1NamespacedPodDisruptionBudgetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -14321,7 +14322,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 
 	var response ListPolicyV1PodDisruptionBudgetForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListPolicyV1PodDisruptionBudgetForAllNamespaces",
 			OperationID:   "listPolicyV1PodDisruptionBudgetForAllNamespaces",
@@ -14346,7 +14347,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 			Params   = ListPolicyV1PodDisruptionBudgetForAllNamespacesParams
 			Response = ListPolicyV1PodDisruptionBudgetForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -14435,7 +14436,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 
 	var response ListPolicyV1beta1NamespacedPodDisruptionBudgetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListPolicyV1beta1NamespacedPodDisruptionBudget",
 			OperationID:   "listPolicyV1beta1NamespacedPodDisruptionBudget",
@@ -14461,7 +14462,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			Params   = ListPolicyV1beta1NamespacedPodDisruptionBudgetParams
 			Response = ListPolicyV1beta1NamespacedPodDisruptionBudgetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -14550,7 +14551,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 
 	var response ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
 			OperationID:   "listPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
@@ -14575,7 +14576,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 			Params   = ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams
 			Response = ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -14664,7 +14665,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 
 	var response ListPolicyV1beta1PodSecurityPolicyRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListPolicyV1beta1PodSecurityPolicy",
 			OperationID:   "listPolicyV1beta1PodSecurityPolicy",
@@ -14689,7 +14690,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 			Params   = ListPolicyV1beta1PodSecurityPolicyParams
 			Response = ListPolicyV1beta1PodSecurityPolicyRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -14778,7 +14779,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 
 	var response ListRbacAuthorizationV1ClusterRoleRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListRbacAuthorizationV1ClusterRole",
 			OperationID:   "listRbacAuthorizationV1ClusterRole",
@@ -14803,7 +14804,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 			Params   = ListRbacAuthorizationV1ClusterRoleParams
 			Response = ListRbacAuthorizationV1ClusterRoleRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -14892,7 +14893,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 
 	var response ListRbacAuthorizationV1ClusterRoleBindingRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListRbacAuthorizationV1ClusterRoleBinding",
 			OperationID:   "listRbacAuthorizationV1ClusterRoleBinding",
@@ -14917,7 +14918,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 			Params   = ListRbacAuthorizationV1ClusterRoleBindingParams
 			Response = ListRbacAuthorizationV1ClusterRoleBindingRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -15006,7 +15007,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 
 	var response ListRbacAuthorizationV1NamespacedRoleRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListRbacAuthorizationV1NamespacedRole",
 			OperationID:   "listRbacAuthorizationV1NamespacedRole",
@@ -15032,7 +15033,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 			Params   = ListRbacAuthorizationV1NamespacedRoleParams
 			Response = ListRbacAuthorizationV1NamespacedRoleRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -15121,7 +15122,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 
 	var response ListRbacAuthorizationV1NamespacedRoleBindingRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListRbacAuthorizationV1NamespacedRoleBinding",
 			OperationID:   "listRbacAuthorizationV1NamespacedRoleBinding",
@@ -15147,7 +15148,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			Params   = ListRbacAuthorizationV1NamespacedRoleBindingParams
 			Response = ListRbacAuthorizationV1NamespacedRoleBindingRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -15236,7 +15237,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 
 	var response ListRbacAuthorizationV1RoleBindingForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListRbacAuthorizationV1RoleBindingForAllNamespaces",
 			OperationID:   "listRbacAuthorizationV1RoleBindingForAllNamespaces",
@@ -15261,7 +15262,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 			Params   = ListRbacAuthorizationV1RoleBindingForAllNamespacesParams
 			Response = ListRbacAuthorizationV1RoleBindingForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -15350,7 +15351,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 
 	var response ListRbacAuthorizationV1RoleForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListRbacAuthorizationV1RoleForAllNamespaces",
 			OperationID:   "listRbacAuthorizationV1RoleForAllNamespaces",
@@ -15375,7 +15376,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 			Params   = ListRbacAuthorizationV1RoleForAllNamespacesParams
 			Response = ListRbacAuthorizationV1RoleForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -15464,7 +15465,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 
 	var response ListSchedulingV1PriorityClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListSchedulingV1PriorityClass",
 			OperationID:   "listSchedulingV1PriorityClass",
@@ -15489,7 +15490,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 			Params   = ListSchedulingV1PriorityClassParams
 			Response = ListSchedulingV1PriorityClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -15578,7 +15579,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 
 	var response ListStorageV1CSIDriverRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListStorageV1CSIDriver",
 			OperationID:   "listStorageV1CSIDriver",
@@ -15603,7 +15604,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 			Params   = ListStorageV1CSIDriverParams
 			Response = ListStorageV1CSIDriverRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -15692,7 +15693,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 
 	var response ListStorageV1CSINodeRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListStorageV1CSINode",
 			OperationID:   "listStorageV1CSINode",
@@ -15717,7 +15718,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 			Params   = ListStorageV1CSINodeParams
 			Response = ListStorageV1CSINodeRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -15806,7 +15807,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 
 	var response ListStorageV1StorageClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListStorageV1StorageClass",
 			OperationID:   "listStorageV1StorageClass",
@@ -15831,7 +15832,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 			Params   = ListStorageV1StorageClassParams
 			Response = ListStorageV1StorageClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -15920,7 +15921,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 
 	var response ListStorageV1VolumeAttachmentRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListStorageV1VolumeAttachment",
 			OperationID:   "listStorageV1VolumeAttachment",
@@ -15945,7 +15946,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 			Params   = ListStorageV1VolumeAttachmentParams
 			Response = ListStorageV1VolumeAttachmentRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -16034,7 +16035,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 
 	var response ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces",
 			OperationID:   "listStorageV1alpha1CSIStorageCapacityForAllNamespaces",
@@ -16059,7 +16060,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 			Params   = ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams
 			Response = ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -16148,7 +16149,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 
 	var response ListStorageV1alpha1NamespacedCSIStorageCapacityRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListStorageV1alpha1NamespacedCSIStorageCapacity",
 			OperationID:   "listStorageV1alpha1NamespacedCSIStorageCapacity",
@@ -16174,7 +16175,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			Params   = ListStorageV1alpha1NamespacedCSIStorageCapacityParams
 			Response = ListStorageV1alpha1NamespacedCSIStorageCapacityRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -16263,7 +16264,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 
 	var response ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListStorageV1beta1CSIStorageCapacityForAllNamespaces",
 			OperationID:   "listStorageV1beta1CSIStorageCapacityForAllNamespaces",
@@ -16288,7 +16289,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 			Params   = ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams
 			Response = ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -16377,7 +16378,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 
 	var response ListStorageV1beta1NamespacedCSIStorageCapacityRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListStorageV1beta1NamespacedCSIStorageCapacity",
 			OperationID:   "listStorageV1beta1NamespacedCSIStorageCapacity",
@@ -16403,7 +16404,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			Params   = ListStorageV1beta1NamespacedCSIStorageCapacityParams
 			Response = ListStorageV1beta1NamespacedCSIStorageCapacityRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -16492,7 +16493,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 
 	var response LogFileHandlerUnauthorized
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "LogFileHandler",
 			OperationID:   "logFileHandler",
@@ -16508,7 +16509,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 			Params   = LogFileHandlerParams
 			Response = LogFileHandlerUnauthorized
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -16587,7 +16588,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 
 	var response LogFileListHandlerUnauthorized
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "LogFileListHandler",
 			OperationID:   "logFileListHandler",
@@ -16601,7 +16602,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 			Params   = struct{}
 			Response = LogFileListHandlerUnauthorized
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -16690,7 +16691,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 
 	var response ReadAdmissionregistrationV1MutatingWebhookConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAdmissionregistrationV1MutatingWebhookConfiguration",
 			OperationID:   "readAdmissionregistrationV1MutatingWebhookConfiguration",
@@ -16707,7 +16708,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 			Params   = ReadAdmissionregistrationV1MutatingWebhookConfigurationParams
 			Response = ReadAdmissionregistrationV1MutatingWebhookConfigurationRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -16796,7 +16797,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 
 	var response ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAdmissionregistrationV1ValidatingWebhookConfiguration",
 			OperationID:   "readAdmissionregistrationV1ValidatingWebhookConfiguration",
@@ -16813,7 +16814,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 			Params   = ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams
 			Response = ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -16902,7 +16903,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 
 	var response ReadApiextensionsV1CustomResourceDefinitionRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadApiextensionsV1CustomResourceDefinition",
 			OperationID:   "readApiextensionsV1CustomResourceDefinition",
@@ -16919,7 +16920,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 			Params   = ReadApiextensionsV1CustomResourceDefinitionParams
 			Response = ReadApiextensionsV1CustomResourceDefinitionRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -17008,7 +17009,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 
 	var response ReadApiextensionsV1CustomResourceDefinitionStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadApiextensionsV1CustomResourceDefinitionStatus",
 			OperationID:   "readApiextensionsV1CustomResourceDefinitionStatus",
@@ -17025,7 +17026,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 			Params   = ReadApiextensionsV1CustomResourceDefinitionStatusParams
 			Response = ReadApiextensionsV1CustomResourceDefinitionStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -17114,7 +17115,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 
 	var response ReadApiregistrationV1APIServiceRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadApiregistrationV1APIService",
 			OperationID:   "readApiregistrationV1APIService",
@@ -17131,7 +17132,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 			Params   = ReadApiregistrationV1APIServiceParams
 			Response = ReadApiregistrationV1APIServiceRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -17220,7 +17221,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 
 	var response ReadApiregistrationV1APIServiceStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadApiregistrationV1APIServiceStatus",
 			OperationID:   "readApiregistrationV1APIServiceStatus",
@@ -17237,7 +17238,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 			Params   = ReadApiregistrationV1APIServiceStatusParams
 			Response = ReadApiregistrationV1APIServiceStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -17326,7 +17327,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 
 	var response ReadAppsV1NamespacedControllerRevisionRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedControllerRevision",
 			OperationID:   "readAppsV1NamespacedControllerRevision",
@@ -17344,7 +17345,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 			Params   = ReadAppsV1NamespacedControllerRevisionParams
 			Response = ReadAppsV1NamespacedControllerRevisionRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -17433,7 +17434,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 
 	var response ReadAppsV1NamespacedDaemonSetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedDaemonSet",
 			OperationID:   "readAppsV1NamespacedDaemonSet",
@@ -17451,7 +17452,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 			Params   = ReadAppsV1NamespacedDaemonSetParams
 			Response = ReadAppsV1NamespacedDaemonSetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -17540,7 +17541,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 
 	var response ReadAppsV1NamespacedDaemonSetStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedDaemonSetStatus",
 			OperationID:   "readAppsV1NamespacedDaemonSetStatus",
@@ -17558,7 +17559,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 			Params   = ReadAppsV1NamespacedDaemonSetStatusParams
 			Response = ReadAppsV1NamespacedDaemonSetStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -17647,7 +17648,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 
 	var response ReadAppsV1NamespacedDeploymentRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedDeployment",
 			OperationID:   "readAppsV1NamespacedDeployment",
@@ -17665,7 +17666,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 			Params   = ReadAppsV1NamespacedDeploymentParams
 			Response = ReadAppsV1NamespacedDeploymentRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -17754,7 +17755,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 
 	var response ReadAppsV1NamespacedDeploymentScaleRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedDeploymentScale",
 			OperationID:   "readAppsV1NamespacedDeploymentScale",
@@ -17772,7 +17773,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 			Params   = ReadAppsV1NamespacedDeploymentScaleParams
 			Response = ReadAppsV1NamespacedDeploymentScaleRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -17861,7 +17862,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 
 	var response ReadAppsV1NamespacedDeploymentStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedDeploymentStatus",
 			OperationID:   "readAppsV1NamespacedDeploymentStatus",
@@ -17879,7 +17880,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 			Params   = ReadAppsV1NamespacedDeploymentStatusParams
 			Response = ReadAppsV1NamespacedDeploymentStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -17968,7 +17969,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 
 	var response ReadAppsV1NamespacedReplicaSetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedReplicaSet",
 			OperationID:   "readAppsV1NamespacedReplicaSet",
@@ -17986,7 +17987,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 			Params   = ReadAppsV1NamespacedReplicaSetParams
 			Response = ReadAppsV1NamespacedReplicaSetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -18075,7 +18076,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 
 	var response ReadAppsV1NamespacedReplicaSetScaleRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedReplicaSetScale",
 			OperationID:   "readAppsV1NamespacedReplicaSetScale",
@@ -18093,7 +18094,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 			Params   = ReadAppsV1NamespacedReplicaSetScaleParams
 			Response = ReadAppsV1NamespacedReplicaSetScaleRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -18182,7 +18183,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 
 	var response ReadAppsV1NamespacedReplicaSetStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedReplicaSetStatus",
 			OperationID:   "readAppsV1NamespacedReplicaSetStatus",
@@ -18200,7 +18201,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 			Params   = ReadAppsV1NamespacedReplicaSetStatusParams
 			Response = ReadAppsV1NamespacedReplicaSetStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -18289,7 +18290,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 
 	var response ReadAppsV1NamespacedStatefulSetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedStatefulSet",
 			OperationID:   "readAppsV1NamespacedStatefulSet",
@@ -18307,7 +18308,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 			Params   = ReadAppsV1NamespacedStatefulSetParams
 			Response = ReadAppsV1NamespacedStatefulSetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -18396,7 +18397,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 
 	var response ReadAppsV1NamespacedStatefulSetScaleRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedStatefulSetScale",
 			OperationID:   "readAppsV1NamespacedStatefulSetScale",
@@ -18414,7 +18415,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 			Params   = ReadAppsV1NamespacedStatefulSetScaleParams
 			Response = ReadAppsV1NamespacedStatefulSetScaleRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -18503,7 +18504,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 
 	var response ReadAppsV1NamespacedStatefulSetStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAppsV1NamespacedStatefulSetStatus",
 			OperationID:   "readAppsV1NamespacedStatefulSetStatus",
@@ -18521,7 +18522,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 			Params   = ReadAppsV1NamespacedStatefulSetStatusParams
 			Response = ReadAppsV1NamespacedStatefulSetStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -18610,7 +18611,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 
 	var response ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "readAutoscalingV1NamespacedHorizontalPodAutoscaler",
@@ -18628,7 +18629,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			Params   = ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams
 			Response = ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -18717,7 +18718,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 
 	var response ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
 			OperationID:   "readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
@@ -18735,7 +18736,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 			Params   = ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams
 			Response = ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -18824,7 +18825,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 
 	var response ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
@@ -18842,7 +18843,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			Params   = ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams
 			Response = ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -18931,7 +18932,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 
 	var response ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
 			OperationID:   "readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
@@ -18949,7 +18950,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 			Params   = ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams
 			Response = ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -19038,7 +19039,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 
 	var response ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			OperationID:   "readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
@@ -19056,7 +19057,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			Params   = ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams
 			Response = ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -19145,7 +19146,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 
 	var response ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
 			OperationID:   "readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
@@ -19163,7 +19164,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 			Params   = ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams
 			Response = ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -19252,7 +19253,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 
 	var response ReadBatchV1NamespacedCronJobRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadBatchV1NamespacedCronJob",
 			OperationID:   "readBatchV1NamespacedCronJob",
@@ -19270,7 +19271,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 			Params   = ReadBatchV1NamespacedCronJobParams
 			Response = ReadBatchV1NamespacedCronJobRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -19359,7 +19360,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 
 	var response ReadBatchV1NamespacedCronJobStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadBatchV1NamespacedCronJobStatus",
 			OperationID:   "readBatchV1NamespacedCronJobStatus",
@@ -19377,7 +19378,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 			Params   = ReadBatchV1NamespacedCronJobStatusParams
 			Response = ReadBatchV1NamespacedCronJobStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -19466,7 +19467,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 
 	var response ReadBatchV1NamespacedJobRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadBatchV1NamespacedJob",
 			OperationID:   "readBatchV1NamespacedJob",
@@ -19484,7 +19485,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 			Params   = ReadBatchV1NamespacedJobParams
 			Response = ReadBatchV1NamespacedJobRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -19573,7 +19574,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 
 	var response ReadBatchV1NamespacedJobStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadBatchV1NamespacedJobStatus",
 			OperationID:   "readBatchV1NamespacedJobStatus",
@@ -19591,7 +19592,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 			Params   = ReadBatchV1NamespacedJobStatusParams
 			Response = ReadBatchV1NamespacedJobStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -19680,7 +19681,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 
 	var response ReadBatchV1beta1NamespacedCronJobRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadBatchV1beta1NamespacedCronJob",
 			OperationID:   "readBatchV1beta1NamespacedCronJob",
@@ -19698,7 +19699,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 			Params   = ReadBatchV1beta1NamespacedCronJobParams
 			Response = ReadBatchV1beta1NamespacedCronJobRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -19787,7 +19788,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 
 	var response ReadBatchV1beta1NamespacedCronJobStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadBatchV1beta1NamespacedCronJobStatus",
 			OperationID:   "readBatchV1beta1NamespacedCronJobStatus",
@@ -19805,7 +19806,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 			Params   = ReadBatchV1beta1NamespacedCronJobStatusParams
 			Response = ReadBatchV1beta1NamespacedCronJobStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -19894,7 +19895,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 
 	var response ReadCertificatesV1CertificateSigningRequestRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCertificatesV1CertificateSigningRequest",
 			OperationID:   "readCertificatesV1CertificateSigningRequest",
@@ -19911,7 +19912,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 			Params   = ReadCertificatesV1CertificateSigningRequestParams
 			Response = ReadCertificatesV1CertificateSigningRequestRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -20000,7 +20001,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 
 	var response ReadCertificatesV1CertificateSigningRequestApprovalRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCertificatesV1CertificateSigningRequestApproval",
 			OperationID:   "readCertificatesV1CertificateSigningRequestApproval",
@@ -20017,7 +20018,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 			Params   = ReadCertificatesV1CertificateSigningRequestApprovalParams
 			Response = ReadCertificatesV1CertificateSigningRequestApprovalRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -20106,7 +20107,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 
 	var response ReadCertificatesV1CertificateSigningRequestStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCertificatesV1CertificateSigningRequestStatus",
 			OperationID:   "readCertificatesV1CertificateSigningRequestStatus",
@@ -20123,7 +20124,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 			Params   = ReadCertificatesV1CertificateSigningRequestStatusParams
 			Response = ReadCertificatesV1CertificateSigningRequestStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -20212,7 +20213,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 
 	var response ReadCoordinationV1NamespacedLeaseRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoordinationV1NamespacedLease",
 			OperationID:   "readCoordinationV1NamespacedLease",
@@ -20230,7 +20231,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 			Params   = ReadCoordinationV1NamespacedLeaseParams
 			Response = ReadCoordinationV1NamespacedLeaseRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -20319,7 +20320,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 
 	var response ReadCoreV1ComponentStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1ComponentStatus",
 			OperationID:   "readCoreV1ComponentStatus",
@@ -20336,7 +20337,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 			Params   = ReadCoreV1ComponentStatusParams
 			Response = ReadCoreV1ComponentStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -20425,7 +20426,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 
 	var response ReadCoreV1NamespaceRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1Namespace",
 			OperationID:   "readCoreV1Namespace",
@@ -20442,7 +20443,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 			Params   = ReadCoreV1NamespaceParams
 			Response = ReadCoreV1NamespaceRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -20531,7 +20532,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 
 	var response ReadCoreV1NamespaceStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespaceStatus",
 			OperationID:   "readCoreV1NamespaceStatus",
@@ -20548,7 +20549,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 			Params   = ReadCoreV1NamespaceStatusParams
 			Response = ReadCoreV1NamespaceStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -20637,7 +20638,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 
 	var response ReadCoreV1NamespacedConfigMapRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedConfigMap",
 			OperationID:   "readCoreV1NamespacedConfigMap",
@@ -20655,7 +20656,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 			Params   = ReadCoreV1NamespacedConfigMapParams
 			Response = ReadCoreV1NamespacedConfigMapRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -20744,7 +20745,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 
 	var response ReadCoreV1NamespacedEndpointsRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedEndpoints",
 			OperationID:   "readCoreV1NamespacedEndpoints",
@@ -20762,7 +20763,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 			Params   = ReadCoreV1NamespacedEndpointsParams
 			Response = ReadCoreV1NamespacedEndpointsRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -20851,7 +20852,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 
 	var response ReadCoreV1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedEvent",
 			OperationID:   "readCoreV1NamespacedEvent",
@@ -20869,7 +20870,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 			Params   = ReadCoreV1NamespacedEventParams
 			Response = ReadCoreV1NamespacedEventRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -20958,7 +20959,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 
 	var response ReadCoreV1NamespacedLimitRangeRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedLimitRange",
 			OperationID:   "readCoreV1NamespacedLimitRange",
@@ -20976,7 +20977,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 			Params   = ReadCoreV1NamespacedLimitRangeParams
 			Response = ReadCoreV1NamespacedLimitRangeRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -21065,7 +21066,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 
 	var response ReadCoreV1NamespacedPersistentVolumeClaimRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedPersistentVolumeClaim",
 			OperationID:   "readCoreV1NamespacedPersistentVolumeClaim",
@@ -21083,7 +21084,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 			Params   = ReadCoreV1NamespacedPersistentVolumeClaimParams
 			Response = ReadCoreV1NamespacedPersistentVolumeClaimRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -21172,7 +21173,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 
 	var response ReadCoreV1NamespacedPersistentVolumeClaimStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedPersistentVolumeClaimStatus",
 			OperationID:   "readCoreV1NamespacedPersistentVolumeClaimStatus",
@@ -21190,7 +21191,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 			Params   = ReadCoreV1NamespacedPersistentVolumeClaimStatusParams
 			Response = ReadCoreV1NamespacedPersistentVolumeClaimStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -21279,7 +21280,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 
 	var response ReadCoreV1NamespacedPodRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedPod",
 			OperationID:   "readCoreV1NamespacedPod",
@@ -21297,7 +21298,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 			Params   = ReadCoreV1NamespacedPodParams
 			Response = ReadCoreV1NamespacedPodRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -21386,7 +21387,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 
 	var response ReadCoreV1NamespacedPodEphemeralcontainersRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedPodEphemeralcontainers",
 			OperationID:   "readCoreV1NamespacedPodEphemeralcontainers",
@@ -21404,7 +21405,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 			Params   = ReadCoreV1NamespacedPodEphemeralcontainersParams
 			Response = ReadCoreV1NamespacedPodEphemeralcontainersRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -21493,7 +21494,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 
 	var response ReadCoreV1NamespacedPodLogRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedPodLog",
 			OperationID:   "readCoreV1NamespacedPodLog",
@@ -21519,7 +21520,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 			Params   = ReadCoreV1NamespacedPodLogParams
 			Response = ReadCoreV1NamespacedPodLogRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -21608,7 +21609,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 
 	var response ReadCoreV1NamespacedPodStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedPodStatus",
 			OperationID:   "readCoreV1NamespacedPodStatus",
@@ -21626,7 +21627,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 			Params   = ReadCoreV1NamespacedPodStatusParams
 			Response = ReadCoreV1NamespacedPodStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -21715,7 +21716,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 
 	var response ReadCoreV1NamespacedPodTemplateRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedPodTemplate",
 			OperationID:   "readCoreV1NamespacedPodTemplate",
@@ -21733,7 +21734,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 			Params   = ReadCoreV1NamespacedPodTemplateParams
 			Response = ReadCoreV1NamespacedPodTemplateRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -21822,7 +21823,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 
 	var response ReadCoreV1NamespacedReplicationControllerRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedReplicationController",
 			OperationID:   "readCoreV1NamespacedReplicationController",
@@ -21840,7 +21841,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 			Params   = ReadCoreV1NamespacedReplicationControllerParams
 			Response = ReadCoreV1NamespacedReplicationControllerRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -21929,7 +21930,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 
 	var response ReadCoreV1NamespacedReplicationControllerScaleRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedReplicationControllerScale",
 			OperationID:   "readCoreV1NamespacedReplicationControllerScale",
@@ -21947,7 +21948,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 			Params   = ReadCoreV1NamespacedReplicationControllerScaleParams
 			Response = ReadCoreV1NamespacedReplicationControllerScaleRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -22036,7 +22037,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 
 	var response ReadCoreV1NamespacedReplicationControllerStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedReplicationControllerStatus",
 			OperationID:   "readCoreV1NamespacedReplicationControllerStatus",
@@ -22054,7 +22055,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 			Params   = ReadCoreV1NamespacedReplicationControllerStatusParams
 			Response = ReadCoreV1NamespacedReplicationControllerStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -22143,7 +22144,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 
 	var response ReadCoreV1NamespacedResourceQuotaRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedResourceQuota",
 			OperationID:   "readCoreV1NamespacedResourceQuota",
@@ -22161,7 +22162,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 			Params   = ReadCoreV1NamespacedResourceQuotaParams
 			Response = ReadCoreV1NamespacedResourceQuotaRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -22250,7 +22251,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 
 	var response ReadCoreV1NamespacedResourceQuotaStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedResourceQuotaStatus",
 			OperationID:   "readCoreV1NamespacedResourceQuotaStatus",
@@ -22268,7 +22269,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 			Params   = ReadCoreV1NamespacedResourceQuotaStatusParams
 			Response = ReadCoreV1NamespacedResourceQuotaStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -22357,7 +22358,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 
 	var response ReadCoreV1NamespacedSecretRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedSecret",
 			OperationID:   "readCoreV1NamespacedSecret",
@@ -22375,7 +22376,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 			Params   = ReadCoreV1NamespacedSecretParams
 			Response = ReadCoreV1NamespacedSecretRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -22464,7 +22465,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 
 	var response ReadCoreV1NamespacedServiceRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedService",
 			OperationID:   "readCoreV1NamespacedService",
@@ -22482,7 +22483,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 			Params   = ReadCoreV1NamespacedServiceParams
 			Response = ReadCoreV1NamespacedServiceRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -22571,7 +22572,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 
 	var response ReadCoreV1NamespacedServiceAccountRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedServiceAccount",
 			OperationID:   "readCoreV1NamespacedServiceAccount",
@@ -22589,7 +22590,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 			Params   = ReadCoreV1NamespacedServiceAccountParams
 			Response = ReadCoreV1NamespacedServiceAccountRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -22678,7 +22679,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 
 	var response ReadCoreV1NamespacedServiceStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NamespacedServiceStatus",
 			OperationID:   "readCoreV1NamespacedServiceStatus",
@@ -22696,7 +22697,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 			Params   = ReadCoreV1NamespacedServiceStatusParams
 			Response = ReadCoreV1NamespacedServiceStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -22785,7 +22786,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 
 	var response ReadCoreV1NodeRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1Node",
 			OperationID:   "readCoreV1Node",
@@ -22802,7 +22803,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 			Params   = ReadCoreV1NodeParams
 			Response = ReadCoreV1NodeRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -22891,7 +22892,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 
 	var response ReadCoreV1NodeStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1NodeStatus",
 			OperationID:   "readCoreV1NodeStatus",
@@ -22908,7 +22909,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 			Params   = ReadCoreV1NodeStatusParams
 			Response = ReadCoreV1NodeStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -22997,7 +22998,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 
 	var response ReadCoreV1PersistentVolumeRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1PersistentVolume",
 			OperationID:   "readCoreV1PersistentVolume",
@@ -23014,7 +23015,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 			Params   = ReadCoreV1PersistentVolumeParams
 			Response = ReadCoreV1PersistentVolumeRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -23103,7 +23104,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 
 	var response ReadCoreV1PersistentVolumeStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadCoreV1PersistentVolumeStatus",
 			OperationID:   "readCoreV1PersistentVolumeStatus",
@@ -23120,7 +23121,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 			Params   = ReadCoreV1PersistentVolumeStatusParams
 			Response = ReadCoreV1PersistentVolumeStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -23209,7 +23210,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 
 	var response ReadDiscoveryV1NamespacedEndpointSliceRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadDiscoveryV1NamespacedEndpointSlice",
 			OperationID:   "readDiscoveryV1NamespacedEndpointSlice",
@@ -23227,7 +23228,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 			Params   = ReadDiscoveryV1NamespacedEndpointSliceParams
 			Response = ReadDiscoveryV1NamespacedEndpointSliceRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -23316,7 +23317,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 
 	var response ReadDiscoveryV1beta1NamespacedEndpointSliceRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadDiscoveryV1beta1NamespacedEndpointSlice",
 			OperationID:   "readDiscoveryV1beta1NamespacedEndpointSlice",
@@ -23334,7 +23335,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			Params   = ReadDiscoveryV1beta1NamespacedEndpointSliceParams
 			Response = ReadDiscoveryV1beta1NamespacedEndpointSliceRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -23423,7 +23424,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 
 	var response ReadEventsV1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadEventsV1NamespacedEvent",
 			OperationID:   "readEventsV1NamespacedEvent",
@@ -23441,7 +23442,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 			Params   = ReadEventsV1NamespacedEventParams
 			Response = ReadEventsV1NamespacedEventRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -23530,7 +23531,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 
 	var response ReadEventsV1beta1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadEventsV1beta1NamespacedEvent",
 			OperationID:   "readEventsV1beta1NamespacedEvent",
@@ -23548,7 +23549,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 			Params   = ReadEventsV1beta1NamespacedEventParams
 			Response = ReadEventsV1beta1NamespacedEventRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -23637,7 +23638,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 
 	var response ReadFlowcontrolApiserverV1beta1FlowSchemaRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadFlowcontrolApiserverV1beta1FlowSchema",
 			OperationID:   "readFlowcontrolApiserverV1beta1FlowSchema",
@@ -23654,7 +23655,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 			Params   = ReadFlowcontrolApiserverV1beta1FlowSchemaParams
 			Response = ReadFlowcontrolApiserverV1beta1FlowSchemaRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -23743,7 +23744,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 
 	var response ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus",
 			OperationID:   "readFlowcontrolApiserverV1beta1FlowSchemaStatus",
@@ -23760,7 +23761,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 			Params   = ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams
 			Response = ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -23849,7 +23850,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 
 	var response ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			OperationID:   "readFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
@@ -23866,7 +23867,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			Params   = ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams
 			Response = ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -23955,7 +23956,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 
 	var response ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
 			OperationID:   "readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
@@ -23972,7 +23973,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			Params   = ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams
 			Response = ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -24061,7 +24062,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 
 	var response ReadFlowcontrolApiserverV1beta2FlowSchemaRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadFlowcontrolApiserverV1beta2FlowSchema",
 			OperationID:   "readFlowcontrolApiserverV1beta2FlowSchema",
@@ -24078,7 +24079,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 			Params   = ReadFlowcontrolApiserverV1beta2FlowSchemaParams
 			Response = ReadFlowcontrolApiserverV1beta2FlowSchemaRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -24167,7 +24168,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 
 	var response ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus",
 			OperationID:   "readFlowcontrolApiserverV1beta2FlowSchemaStatus",
@@ -24184,7 +24185,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 			Params   = ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams
 			Response = ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -24273,7 +24274,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 
 	var response ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			OperationID:   "readFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
@@ -24290,7 +24291,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			Params   = ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams
 			Response = ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -24379,7 +24380,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 
 	var response ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
 			OperationID:   "readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
@@ -24396,7 +24397,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			Params   = ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams
 			Response = ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -24485,7 +24486,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 
 	var response ReadInternalApiserverV1alpha1StorageVersionRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadInternalApiserverV1alpha1StorageVersion",
 			OperationID:   "readInternalApiserverV1alpha1StorageVersion",
@@ -24502,7 +24503,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 			Params   = ReadInternalApiserverV1alpha1StorageVersionParams
 			Response = ReadInternalApiserverV1alpha1StorageVersionRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -24591,7 +24592,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 
 	var response ReadInternalApiserverV1alpha1StorageVersionStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadInternalApiserverV1alpha1StorageVersionStatus",
 			OperationID:   "readInternalApiserverV1alpha1StorageVersionStatus",
@@ -24608,7 +24609,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 			Params   = ReadInternalApiserverV1alpha1StorageVersionStatusParams
 			Response = ReadInternalApiserverV1alpha1StorageVersionStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -24697,7 +24698,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 
 	var response ReadNetworkingV1IngressClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadNetworkingV1IngressClass",
 			OperationID:   "readNetworkingV1IngressClass",
@@ -24714,7 +24715,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 			Params   = ReadNetworkingV1IngressClassParams
 			Response = ReadNetworkingV1IngressClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -24803,7 +24804,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 
 	var response ReadNetworkingV1NamespacedIngressRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadNetworkingV1NamespacedIngress",
 			OperationID:   "readNetworkingV1NamespacedIngress",
@@ -24821,7 +24822,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 			Params   = ReadNetworkingV1NamespacedIngressParams
 			Response = ReadNetworkingV1NamespacedIngressRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -24910,7 +24911,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 
 	var response ReadNetworkingV1NamespacedIngressStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadNetworkingV1NamespacedIngressStatus",
 			OperationID:   "readNetworkingV1NamespacedIngressStatus",
@@ -24928,7 +24929,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 			Params   = ReadNetworkingV1NamespacedIngressStatusParams
 			Response = ReadNetworkingV1NamespacedIngressStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -25017,7 +25018,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 
 	var response ReadNetworkingV1NamespacedNetworkPolicyRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadNetworkingV1NamespacedNetworkPolicy",
 			OperationID:   "readNetworkingV1NamespacedNetworkPolicy",
@@ -25035,7 +25036,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 			Params   = ReadNetworkingV1NamespacedNetworkPolicyParams
 			Response = ReadNetworkingV1NamespacedNetworkPolicyRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -25124,7 +25125,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 
 	var response ReadNodeV1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadNodeV1RuntimeClass",
 			OperationID:   "readNodeV1RuntimeClass",
@@ -25141,7 +25142,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 			Params   = ReadNodeV1RuntimeClassParams
 			Response = ReadNodeV1RuntimeClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -25230,7 +25231,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 
 	var response ReadNodeV1alpha1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadNodeV1alpha1RuntimeClass",
 			OperationID:   "readNodeV1alpha1RuntimeClass",
@@ -25247,7 +25248,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 			Params   = ReadNodeV1alpha1RuntimeClassParams
 			Response = ReadNodeV1alpha1RuntimeClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -25336,7 +25337,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 
 	var response ReadNodeV1beta1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadNodeV1beta1RuntimeClass",
 			OperationID:   "readNodeV1beta1RuntimeClass",
@@ -25353,7 +25354,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 			Params   = ReadNodeV1beta1RuntimeClassParams
 			Response = ReadNodeV1beta1RuntimeClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -25442,7 +25443,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 
 	var response ReadPolicyV1NamespacedPodDisruptionBudgetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadPolicyV1NamespacedPodDisruptionBudget",
 			OperationID:   "readPolicyV1NamespacedPodDisruptionBudget",
@@ -25460,7 +25461,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 			Params   = ReadPolicyV1NamespacedPodDisruptionBudgetParams
 			Response = ReadPolicyV1NamespacedPodDisruptionBudgetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -25549,7 +25550,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 
 	var response ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadPolicyV1NamespacedPodDisruptionBudgetStatus",
 			OperationID:   "readPolicyV1NamespacedPodDisruptionBudgetStatus",
@@ -25567,7 +25568,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 			Params   = ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams
 			Response = ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -25656,7 +25657,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 
 	var response ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadPolicyV1beta1NamespacedPodDisruptionBudget",
 			OperationID:   "readPolicyV1beta1NamespacedPodDisruptionBudget",
@@ -25674,7 +25675,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			Params   = ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams
 			Response = ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -25763,7 +25764,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 
 	var response ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
 			OperationID:   "readPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
@@ -25781,7 +25782,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 			Params   = ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams
 			Response = ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -25870,7 +25871,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 
 	var response ReadPolicyV1beta1PodSecurityPolicyRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadPolicyV1beta1PodSecurityPolicy",
 			OperationID:   "readPolicyV1beta1PodSecurityPolicy",
@@ -25887,7 +25888,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 			Params   = ReadPolicyV1beta1PodSecurityPolicyParams
 			Response = ReadPolicyV1beta1PodSecurityPolicyRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -25976,7 +25977,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 
 	var response ReadRbacAuthorizationV1ClusterRoleRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadRbacAuthorizationV1ClusterRole",
 			OperationID:   "readRbacAuthorizationV1ClusterRole",
@@ -25993,7 +25994,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 			Params   = ReadRbacAuthorizationV1ClusterRoleParams
 			Response = ReadRbacAuthorizationV1ClusterRoleRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -26082,7 +26083,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 
 	var response ReadRbacAuthorizationV1ClusterRoleBindingRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadRbacAuthorizationV1ClusterRoleBinding",
 			OperationID:   "readRbacAuthorizationV1ClusterRoleBinding",
@@ -26099,7 +26100,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 			Params   = ReadRbacAuthorizationV1ClusterRoleBindingParams
 			Response = ReadRbacAuthorizationV1ClusterRoleBindingRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -26188,7 +26189,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 
 	var response ReadRbacAuthorizationV1NamespacedRoleRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadRbacAuthorizationV1NamespacedRole",
 			OperationID:   "readRbacAuthorizationV1NamespacedRole",
@@ -26206,7 +26207,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 			Params   = ReadRbacAuthorizationV1NamespacedRoleParams
 			Response = ReadRbacAuthorizationV1NamespacedRoleRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -26295,7 +26296,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 
 	var response ReadRbacAuthorizationV1NamespacedRoleBindingRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadRbacAuthorizationV1NamespacedRoleBinding",
 			OperationID:   "readRbacAuthorizationV1NamespacedRoleBinding",
@@ -26313,7 +26314,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			Params   = ReadRbacAuthorizationV1NamespacedRoleBindingParams
 			Response = ReadRbacAuthorizationV1NamespacedRoleBindingRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -26402,7 +26403,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 
 	var response ReadSchedulingV1PriorityClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadSchedulingV1PriorityClass",
 			OperationID:   "readSchedulingV1PriorityClass",
@@ -26419,7 +26420,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 			Params   = ReadSchedulingV1PriorityClassParams
 			Response = ReadSchedulingV1PriorityClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -26508,7 +26509,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 
 	var response ReadStorageV1CSIDriverRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadStorageV1CSIDriver",
 			OperationID:   "readStorageV1CSIDriver",
@@ -26525,7 +26526,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 			Params   = ReadStorageV1CSIDriverParams
 			Response = ReadStorageV1CSIDriverRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -26614,7 +26615,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 
 	var response ReadStorageV1CSINodeRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadStorageV1CSINode",
 			OperationID:   "readStorageV1CSINode",
@@ -26631,7 +26632,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 			Params   = ReadStorageV1CSINodeParams
 			Response = ReadStorageV1CSINodeRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -26720,7 +26721,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 
 	var response ReadStorageV1StorageClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadStorageV1StorageClass",
 			OperationID:   "readStorageV1StorageClass",
@@ -26737,7 +26738,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 			Params   = ReadStorageV1StorageClassParams
 			Response = ReadStorageV1StorageClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -26826,7 +26827,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 
 	var response ReadStorageV1VolumeAttachmentRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadStorageV1VolumeAttachment",
 			OperationID:   "readStorageV1VolumeAttachment",
@@ -26843,7 +26844,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 			Params   = ReadStorageV1VolumeAttachmentParams
 			Response = ReadStorageV1VolumeAttachmentRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -26932,7 +26933,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 
 	var response ReadStorageV1VolumeAttachmentStatusRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadStorageV1VolumeAttachmentStatus",
 			OperationID:   "readStorageV1VolumeAttachmentStatus",
@@ -26949,7 +26950,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 			Params   = ReadStorageV1VolumeAttachmentStatusParams
 			Response = ReadStorageV1VolumeAttachmentStatusRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -27038,7 +27039,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 
 	var response ReadStorageV1alpha1NamespacedCSIStorageCapacityRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadStorageV1alpha1NamespacedCSIStorageCapacity",
 			OperationID:   "readStorageV1alpha1NamespacedCSIStorageCapacity",
@@ -27056,7 +27057,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			Params   = ReadStorageV1alpha1NamespacedCSIStorageCapacityParams
 			Response = ReadStorageV1alpha1NamespacedCSIStorageCapacityRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -27145,7 +27146,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 
 	var response ReadStorageV1beta1NamespacedCSIStorageCapacityRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadStorageV1beta1NamespacedCSIStorageCapacity",
 			OperationID:   "readStorageV1beta1NamespacedCSIStorageCapacity",
@@ -27163,7 +27164,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			Params   = ReadStorageV1beta1NamespacedCSIStorageCapacityParams
 			Response = ReadStorageV1beta1NamespacedCSIStorageCapacityRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -27252,7 +27253,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 
 	var response WatchAdmissionregistrationV1MutatingWebhookConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAdmissionregistrationV1MutatingWebhookConfiguration",
 			OperationID:   "watchAdmissionregistrationV1MutatingWebhookConfiguration",
@@ -27278,7 +27279,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 			Params   = WatchAdmissionregistrationV1MutatingWebhookConfigurationParams
 			Response = WatchAdmissionregistrationV1MutatingWebhookConfigurationRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -27367,7 +27368,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 
 	var response WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAdmissionregistrationV1MutatingWebhookConfigurationList",
 			OperationID:   "watchAdmissionregistrationV1MutatingWebhookConfigurationList",
@@ -27392,7 +27393,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 			Params   = WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams
 			Response = WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -27481,7 +27482,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 
 	var response WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAdmissionregistrationV1ValidatingWebhookConfiguration",
 			OperationID:   "watchAdmissionregistrationV1ValidatingWebhookConfiguration",
@@ -27507,7 +27508,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			Params   = WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams
 			Response = WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -27596,7 +27597,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 
 	var response WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList",
 			OperationID:   "watchAdmissionregistrationV1ValidatingWebhookConfigurationList",
@@ -27621,7 +27622,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			Params   = WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams
 			Response = WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -27710,7 +27711,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 
 	var response WatchApiextensionsV1CustomResourceDefinitionRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchApiextensionsV1CustomResourceDefinition",
 			OperationID:   "watchApiextensionsV1CustomResourceDefinition",
@@ -27736,7 +27737,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 			Params   = WatchApiextensionsV1CustomResourceDefinitionParams
 			Response = WatchApiextensionsV1CustomResourceDefinitionRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -27825,7 +27826,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 
 	var response WatchApiextensionsV1CustomResourceDefinitionListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchApiextensionsV1CustomResourceDefinitionList",
 			OperationID:   "watchApiextensionsV1CustomResourceDefinitionList",
@@ -27850,7 +27851,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 			Params   = WatchApiextensionsV1CustomResourceDefinitionListParams
 			Response = WatchApiextensionsV1CustomResourceDefinitionListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -27939,7 +27940,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 
 	var response WatchApiregistrationV1APIServiceRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchApiregistrationV1APIService",
 			OperationID:   "watchApiregistrationV1APIService",
@@ -27965,7 +27966,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 			Params   = WatchApiregistrationV1APIServiceParams
 			Response = WatchApiregistrationV1APIServiceRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -28054,7 +28055,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 
 	var response WatchApiregistrationV1APIServiceListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchApiregistrationV1APIServiceList",
 			OperationID:   "watchApiregistrationV1APIServiceList",
@@ -28079,7 +28080,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 			Params   = WatchApiregistrationV1APIServiceListParams
 			Response = WatchApiregistrationV1APIServiceListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -28168,7 +28169,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 
 	var response WatchAppsV1ControllerRevisionListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAppsV1ControllerRevisionListForAllNamespaces",
 			OperationID:   "watchAppsV1ControllerRevisionListForAllNamespaces",
@@ -28193,7 +28194,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 			Params   = WatchAppsV1ControllerRevisionListForAllNamespacesParams
 			Response = WatchAppsV1ControllerRevisionListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -28282,7 +28283,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 
 	var response WatchAppsV1DaemonSetListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAppsV1DaemonSetListForAllNamespaces",
 			OperationID:   "watchAppsV1DaemonSetListForAllNamespaces",
@@ -28307,7 +28308,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 			Params   = WatchAppsV1DaemonSetListForAllNamespacesParams
 			Response = WatchAppsV1DaemonSetListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -28396,7 +28397,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 
 	var response WatchAppsV1DeploymentListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAppsV1DeploymentListForAllNamespaces",
 			OperationID:   "watchAppsV1DeploymentListForAllNamespaces",
@@ -28421,7 +28422,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 			Params   = WatchAppsV1DeploymentListForAllNamespacesParams
 			Response = WatchAppsV1DeploymentListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -28510,7 +28511,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 
 	var response WatchAppsV1NamespacedControllerRevisionRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedControllerRevision",
 			OperationID:   "watchAppsV1NamespacedControllerRevision",
@@ -28537,7 +28538,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 			Params   = WatchAppsV1NamespacedControllerRevisionParams
 			Response = WatchAppsV1NamespacedControllerRevisionRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -28626,7 +28627,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 
 	var response WatchAppsV1NamespacedControllerRevisionListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedControllerRevisionList",
 			OperationID:   "watchAppsV1NamespacedControllerRevisionList",
@@ -28652,7 +28653,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 			Params   = WatchAppsV1NamespacedControllerRevisionListParams
 			Response = WatchAppsV1NamespacedControllerRevisionListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -28741,7 +28742,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 
 	var response WatchAppsV1NamespacedDaemonSetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedDaemonSet",
 			OperationID:   "watchAppsV1NamespacedDaemonSet",
@@ -28768,7 +28769,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 			Params   = WatchAppsV1NamespacedDaemonSetParams
 			Response = WatchAppsV1NamespacedDaemonSetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -28857,7 +28858,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 
 	var response WatchAppsV1NamespacedDaemonSetListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedDaemonSetList",
 			OperationID:   "watchAppsV1NamespacedDaemonSetList",
@@ -28883,7 +28884,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 			Params   = WatchAppsV1NamespacedDaemonSetListParams
 			Response = WatchAppsV1NamespacedDaemonSetListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -28972,7 +28973,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 
 	var response WatchAppsV1NamespacedDeploymentRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedDeployment",
 			OperationID:   "watchAppsV1NamespacedDeployment",
@@ -28999,7 +29000,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 			Params   = WatchAppsV1NamespacedDeploymentParams
 			Response = WatchAppsV1NamespacedDeploymentRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -29088,7 +29089,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 
 	var response WatchAppsV1NamespacedDeploymentListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedDeploymentList",
 			OperationID:   "watchAppsV1NamespacedDeploymentList",
@@ -29114,7 +29115,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 			Params   = WatchAppsV1NamespacedDeploymentListParams
 			Response = WatchAppsV1NamespacedDeploymentListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -29203,7 +29204,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 
 	var response WatchAppsV1NamespacedReplicaSetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedReplicaSet",
 			OperationID:   "watchAppsV1NamespacedReplicaSet",
@@ -29230,7 +29231,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 			Params   = WatchAppsV1NamespacedReplicaSetParams
 			Response = WatchAppsV1NamespacedReplicaSetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -29319,7 +29320,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 
 	var response WatchAppsV1NamespacedReplicaSetListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedReplicaSetList",
 			OperationID:   "watchAppsV1NamespacedReplicaSetList",
@@ -29345,7 +29346,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 			Params   = WatchAppsV1NamespacedReplicaSetListParams
 			Response = WatchAppsV1NamespacedReplicaSetListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -29434,7 +29435,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 
 	var response WatchAppsV1NamespacedStatefulSetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedStatefulSet",
 			OperationID:   "watchAppsV1NamespacedStatefulSet",
@@ -29461,7 +29462,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 			Params   = WatchAppsV1NamespacedStatefulSetParams
 			Response = WatchAppsV1NamespacedStatefulSetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -29550,7 +29551,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 
 	var response WatchAppsV1NamespacedStatefulSetListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAppsV1NamespacedStatefulSetList",
 			OperationID:   "watchAppsV1NamespacedStatefulSetList",
@@ -29576,7 +29577,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 			Params   = WatchAppsV1NamespacedStatefulSetListParams
 			Response = WatchAppsV1NamespacedStatefulSetListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -29665,7 +29666,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 
 	var response WatchAppsV1ReplicaSetListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAppsV1ReplicaSetListForAllNamespaces",
 			OperationID:   "watchAppsV1ReplicaSetListForAllNamespaces",
@@ -29690,7 +29691,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 			Params   = WatchAppsV1ReplicaSetListForAllNamespacesParams
 			Response = WatchAppsV1ReplicaSetListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -29779,7 +29780,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 
 	var response WatchAppsV1StatefulSetListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAppsV1StatefulSetListForAllNamespaces",
 			OperationID:   "watchAppsV1StatefulSetListForAllNamespaces",
@@ -29804,7 +29805,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 			Params   = WatchAppsV1StatefulSetListForAllNamespacesParams
 			Response = WatchAppsV1StatefulSetListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -29893,7 +29894,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 
 	var response WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
 			OperationID:   "watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
@@ -29918,7 +29919,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 			Params   = WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams
 			Response = WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -30007,7 +30008,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 
 	var response WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "watchAutoscalingV1NamespacedHorizontalPodAutoscaler",
@@ -30034,7 +30035,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 			Params   = WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams
 			Response = WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -30123,7 +30124,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 
 	var response WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
 			OperationID:   "watchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
@@ -30149,7 +30150,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 			Params   = WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams
 			Response = WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -30238,7 +30239,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 
 	var response WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
 			OperationID:   "watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
@@ -30263,7 +30264,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 			Params   = WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams
 			Response = WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -30352,7 +30353,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 
 	var response WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 			OperationID:   "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
@@ -30379,7 +30380,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 			Params   = WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams
 			Response = WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -30468,7 +30469,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 
 	var response WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
 			OperationID:   "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
@@ -30494,7 +30495,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 			Params   = WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams
 			Response = WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -30583,7 +30584,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 
 	var response WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
 			OperationID:   "watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
@@ -30608,7 +30609,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 			Params   = WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams
 			Response = WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -30697,7 +30698,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 
 	var response WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 			OperationID:   "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
@@ -30724,7 +30725,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 			Params   = WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams
 			Response = WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -30813,7 +30814,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 
 	var response WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
 			OperationID:   "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
@@ -30839,7 +30840,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 			Params   = WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams
 			Response = WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -30928,7 +30929,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 
 	var response WatchBatchV1CronJobListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchBatchV1CronJobListForAllNamespaces",
 			OperationID:   "watchBatchV1CronJobListForAllNamespaces",
@@ -30953,7 +30954,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 			Params   = WatchBatchV1CronJobListForAllNamespacesParams
 			Response = WatchBatchV1CronJobListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -31042,7 +31043,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 
 	var response WatchBatchV1JobListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchBatchV1JobListForAllNamespaces",
 			OperationID:   "watchBatchV1JobListForAllNamespaces",
@@ -31067,7 +31068,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 			Params   = WatchBatchV1JobListForAllNamespacesParams
 			Response = WatchBatchV1JobListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -31156,7 +31157,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 
 	var response WatchBatchV1NamespacedCronJobRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchBatchV1NamespacedCronJob",
 			OperationID:   "watchBatchV1NamespacedCronJob",
@@ -31183,7 +31184,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 			Params   = WatchBatchV1NamespacedCronJobParams
 			Response = WatchBatchV1NamespacedCronJobRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -31272,7 +31273,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 
 	var response WatchBatchV1NamespacedCronJobListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchBatchV1NamespacedCronJobList",
 			OperationID:   "watchBatchV1NamespacedCronJobList",
@@ -31298,7 +31299,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 			Params   = WatchBatchV1NamespacedCronJobListParams
 			Response = WatchBatchV1NamespacedCronJobListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -31387,7 +31388,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 
 	var response WatchBatchV1NamespacedJobRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchBatchV1NamespacedJob",
 			OperationID:   "watchBatchV1NamespacedJob",
@@ -31414,7 +31415,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 			Params   = WatchBatchV1NamespacedJobParams
 			Response = WatchBatchV1NamespacedJobRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -31503,7 +31504,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 
 	var response WatchBatchV1NamespacedJobListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchBatchV1NamespacedJobList",
 			OperationID:   "watchBatchV1NamespacedJobList",
@@ -31529,7 +31530,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 			Params   = WatchBatchV1NamespacedJobListParams
 			Response = WatchBatchV1NamespacedJobListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -31618,7 +31619,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 
 	var response WatchBatchV1beta1CronJobListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchBatchV1beta1CronJobListForAllNamespaces",
 			OperationID:   "watchBatchV1beta1CronJobListForAllNamespaces",
@@ -31643,7 +31644,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 			Params   = WatchBatchV1beta1CronJobListForAllNamespacesParams
 			Response = WatchBatchV1beta1CronJobListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -31732,7 +31733,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 
 	var response WatchBatchV1beta1NamespacedCronJobRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchBatchV1beta1NamespacedCronJob",
 			OperationID:   "watchBatchV1beta1NamespacedCronJob",
@@ -31759,7 +31760,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 			Params   = WatchBatchV1beta1NamespacedCronJobParams
 			Response = WatchBatchV1beta1NamespacedCronJobRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -31848,7 +31849,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 
 	var response WatchBatchV1beta1NamespacedCronJobListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchBatchV1beta1NamespacedCronJobList",
 			OperationID:   "watchBatchV1beta1NamespacedCronJobList",
@@ -31874,7 +31875,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 			Params   = WatchBatchV1beta1NamespacedCronJobListParams
 			Response = WatchBatchV1beta1NamespacedCronJobListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -31963,7 +31964,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 
 	var response WatchCertificatesV1CertificateSigningRequestRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCertificatesV1CertificateSigningRequest",
 			OperationID:   "watchCertificatesV1CertificateSigningRequest",
@@ -31989,7 +31990,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 			Params   = WatchCertificatesV1CertificateSigningRequestParams
 			Response = WatchCertificatesV1CertificateSigningRequestRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -32078,7 +32079,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 
 	var response WatchCertificatesV1CertificateSigningRequestListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCertificatesV1CertificateSigningRequestList",
 			OperationID:   "watchCertificatesV1CertificateSigningRequestList",
@@ -32103,7 +32104,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 			Params   = WatchCertificatesV1CertificateSigningRequestListParams
 			Response = WatchCertificatesV1CertificateSigningRequestListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -32192,7 +32193,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 
 	var response WatchCoordinationV1LeaseListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoordinationV1LeaseListForAllNamespaces",
 			OperationID:   "watchCoordinationV1LeaseListForAllNamespaces",
@@ -32217,7 +32218,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 			Params   = WatchCoordinationV1LeaseListForAllNamespacesParams
 			Response = WatchCoordinationV1LeaseListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -32306,7 +32307,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 
 	var response WatchCoordinationV1NamespacedLeaseRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoordinationV1NamespacedLease",
 			OperationID:   "watchCoordinationV1NamespacedLease",
@@ -32333,7 +32334,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 			Params   = WatchCoordinationV1NamespacedLeaseParams
 			Response = WatchCoordinationV1NamespacedLeaseRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -32422,7 +32423,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 
 	var response WatchCoordinationV1NamespacedLeaseListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoordinationV1NamespacedLeaseList",
 			OperationID:   "watchCoordinationV1NamespacedLeaseList",
@@ -32448,7 +32449,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 			Params   = WatchCoordinationV1NamespacedLeaseListParams
 			Response = WatchCoordinationV1NamespacedLeaseListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -32537,7 +32538,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 
 	var response WatchCoreV1ConfigMapListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1ConfigMapListForAllNamespaces",
 			OperationID:   "watchCoreV1ConfigMapListForAllNamespaces",
@@ -32562,7 +32563,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 			Params   = WatchCoreV1ConfigMapListForAllNamespacesParams
 			Response = WatchCoreV1ConfigMapListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -32651,7 +32652,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 
 	var response WatchCoreV1EndpointsListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1EndpointsListForAllNamespaces",
 			OperationID:   "watchCoreV1EndpointsListForAllNamespaces",
@@ -32676,7 +32677,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 			Params   = WatchCoreV1EndpointsListForAllNamespacesParams
 			Response = WatchCoreV1EndpointsListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -32765,7 +32766,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 
 	var response WatchCoreV1EventListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1EventListForAllNamespaces",
 			OperationID:   "watchCoreV1EventListForAllNamespaces",
@@ -32790,7 +32791,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 			Params   = WatchCoreV1EventListForAllNamespacesParams
 			Response = WatchCoreV1EventListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -32879,7 +32880,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 
 	var response WatchCoreV1LimitRangeListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1LimitRangeListForAllNamespaces",
 			OperationID:   "watchCoreV1LimitRangeListForAllNamespaces",
@@ -32904,7 +32905,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 			Params   = WatchCoreV1LimitRangeListForAllNamespacesParams
 			Response = WatchCoreV1LimitRangeListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -32993,7 +32994,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 
 	var response WatchCoreV1NamespaceRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1Namespace",
 			OperationID:   "watchCoreV1Namespace",
@@ -33019,7 +33020,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 			Params   = WatchCoreV1NamespaceParams
 			Response = WatchCoreV1NamespaceRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -33108,7 +33109,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 
 	var response WatchCoreV1NamespaceListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespaceList",
 			OperationID:   "watchCoreV1NamespaceList",
@@ -33133,7 +33134,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 			Params   = WatchCoreV1NamespaceListParams
 			Response = WatchCoreV1NamespaceListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -33222,7 +33223,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 
 	var response WatchCoreV1NamespacedConfigMapRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedConfigMap",
 			OperationID:   "watchCoreV1NamespacedConfigMap",
@@ -33249,7 +33250,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 			Params   = WatchCoreV1NamespacedConfigMapParams
 			Response = WatchCoreV1NamespacedConfigMapRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -33338,7 +33339,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 
 	var response WatchCoreV1NamespacedConfigMapListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedConfigMapList",
 			OperationID:   "watchCoreV1NamespacedConfigMapList",
@@ -33364,7 +33365,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 			Params   = WatchCoreV1NamespacedConfigMapListParams
 			Response = WatchCoreV1NamespacedConfigMapListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -33453,7 +33454,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 
 	var response WatchCoreV1NamespacedEndpointsRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedEndpoints",
 			OperationID:   "watchCoreV1NamespacedEndpoints",
@@ -33480,7 +33481,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 			Params   = WatchCoreV1NamespacedEndpointsParams
 			Response = WatchCoreV1NamespacedEndpointsRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -33569,7 +33570,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 
 	var response WatchCoreV1NamespacedEndpointsListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedEndpointsList",
 			OperationID:   "watchCoreV1NamespacedEndpointsList",
@@ -33595,7 +33596,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 			Params   = WatchCoreV1NamespacedEndpointsListParams
 			Response = WatchCoreV1NamespacedEndpointsListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -33684,7 +33685,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 
 	var response WatchCoreV1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedEvent",
 			OperationID:   "watchCoreV1NamespacedEvent",
@@ -33711,7 +33712,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 			Params   = WatchCoreV1NamespacedEventParams
 			Response = WatchCoreV1NamespacedEventRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -33800,7 +33801,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 
 	var response WatchCoreV1NamespacedEventListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedEventList",
 			OperationID:   "watchCoreV1NamespacedEventList",
@@ -33826,7 +33827,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 			Params   = WatchCoreV1NamespacedEventListParams
 			Response = WatchCoreV1NamespacedEventListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -33915,7 +33916,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 
 	var response WatchCoreV1NamespacedLimitRangeRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedLimitRange",
 			OperationID:   "watchCoreV1NamespacedLimitRange",
@@ -33942,7 +33943,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 			Params   = WatchCoreV1NamespacedLimitRangeParams
 			Response = WatchCoreV1NamespacedLimitRangeRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -34031,7 +34032,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 
 	var response WatchCoreV1NamespacedLimitRangeListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedLimitRangeList",
 			OperationID:   "watchCoreV1NamespacedLimitRangeList",
@@ -34057,7 +34058,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 			Params   = WatchCoreV1NamespacedLimitRangeListParams
 			Response = WatchCoreV1NamespacedLimitRangeListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -34146,7 +34147,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 
 	var response WatchCoreV1NamespacedPersistentVolumeClaimRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedPersistentVolumeClaim",
 			OperationID:   "watchCoreV1NamespacedPersistentVolumeClaim",
@@ -34173,7 +34174,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 			Params   = WatchCoreV1NamespacedPersistentVolumeClaimParams
 			Response = WatchCoreV1NamespacedPersistentVolumeClaimRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -34262,7 +34263,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 
 	var response WatchCoreV1NamespacedPersistentVolumeClaimListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedPersistentVolumeClaimList",
 			OperationID:   "watchCoreV1NamespacedPersistentVolumeClaimList",
@@ -34288,7 +34289,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 			Params   = WatchCoreV1NamespacedPersistentVolumeClaimListParams
 			Response = WatchCoreV1NamespacedPersistentVolumeClaimListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -34377,7 +34378,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 
 	var response WatchCoreV1NamespacedPodRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedPod",
 			OperationID:   "watchCoreV1NamespacedPod",
@@ -34404,7 +34405,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 			Params   = WatchCoreV1NamespacedPodParams
 			Response = WatchCoreV1NamespacedPodRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -34493,7 +34494,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 
 	var response WatchCoreV1NamespacedPodListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedPodList",
 			OperationID:   "watchCoreV1NamespacedPodList",
@@ -34519,7 +34520,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 			Params   = WatchCoreV1NamespacedPodListParams
 			Response = WatchCoreV1NamespacedPodListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -34608,7 +34609,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 
 	var response WatchCoreV1NamespacedPodTemplateRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedPodTemplate",
 			OperationID:   "watchCoreV1NamespacedPodTemplate",
@@ -34635,7 +34636,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 			Params   = WatchCoreV1NamespacedPodTemplateParams
 			Response = WatchCoreV1NamespacedPodTemplateRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -34724,7 +34725,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 
 	var response WatchCoreV1NamespacedPodTemplateListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedPodTemplateList",
 			OperationID:   "watchCoreV1NamespacedPodTemplateList",
@@ -34750,7 +34751,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 			Params   = WatchCoreV1NamespacedPodTemplateListParams
 			Response = WatchCoreV1NamespacedPodTemplateListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -34839,7 +34840,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 
 	var response WatchCoreV1NamespacedReplicationControllerRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedReplicationController",
 			OperationID:   "watchCoreV1NamespacedReplicationController",
@@ -34866,7 +34867,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 			Params   = WatchCoreV1NamespacedReplicationControllerParams
 			Response = WatchCoreV1NamespacedReplicationControllerRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -34955,7 +34956,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 
 	var response WatchCoreV1NamespacedReplicationControllerListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedReplicationControllerList",
 			OperationID:   "watchCoreV1NamespacedReplicationControllerList",
@@ -34981,7 +34982,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 			Params   = WatchCoreV1NamespacedReplicationControllerListParams
 			Response = WatchCoreV1NamespacedReplicationControllerListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -35070,7 +35071,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 
 	var response WatchCoreV1NamespacedResourceQuotaRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedResourceQuota",
 			OperationID:   "watchCoreV1NamespacedResourceQuota",
@@ -35097,7 +35098,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 			Params   = WatchCoreV1NamespacedResourceQuotaParams
 			Response = WatchCoreV1NamespacedResourceQuotaRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -35186,7 +35187,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 
 	var response WatchCoreV1NamespacedResourceQuotaListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedResourceQuotaList",
 			OperationID:   "watchCoreV1NamespacedResourceQuotaList",
@@ -35212,7 +35213,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 			Params   = WatchCoreV1NamespacedResourceQuotaListParams
 			Response = WatchCoreV1NamespacedResourceQuotaListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -35301,7 +35302,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 
 	var response WatchCoreV1NamespacedSecretRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedSecret",
 			OperationID:   "watchCoreV1NamespacedSecret",
@@ -35328,7 +35329,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 			Params   = WatchCoreV1NamespacedSecretParams
 			Response = WatchCoreV1NamespacedSecretRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -35417,7 +35418,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 
 	var response WatchCoreV1NamespacedSecretListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedSecretList",
 			OperationID:   "watchCoreV1NamespacedSecretList",
@@ -35443,7 +35444,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 			Params   = WatchCoreV1NamespacedSecretListParams
 			Response = WatchCoreV1NamespacedSecretListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -35532,7 +35533,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 
 	var response WatchCoreV1NamespacedServiceRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedService",
 			OperationID:   "watchCoreV1NamespacedService",
@@ -35559,7 +35560,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 			Params   = WatchCoreV1NamespacedServiceParams
 			Response = WatchCoreV1NamespacedServiceRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -35648,7 +35649,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 
 	var response WatchCoreV1NamespacedServiceAccountRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedServiceAccount",
 			OperationID:   "watchCoreV1NamespacedServiceAccount",
@@ -35675,7 +35676,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 			Params   = WatchCoreV1NamespacedServiceAccountParams
 			Response = WatchCoreV1NamespacedServiceAccountRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -35764,7 +35765,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 
 	var response WatchCoreV1NamespacedServiceAccountListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedServiceAccountList",
 			OperationID:   "watchCoreV1NamespacedServiceAccountList",
@@ -35790,7 +35791,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 			Params   = WatchCoreV1NamespacedServiceAccountListParams
 			Response = WatchCoreV1NamespacedServiceAccountListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -35879,7 +35880,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 
 	var response WatchCoreV1NamespacedServiceListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NamespacedServiceList",
 			OperationID:   "watchCoreV1NamespacedServiceList",
@@ -35905,7 +35906,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 			Params   = WatchCoreV1NamespacedServiceListParams
 			Response = WatchCoreV1NamespacedServiceListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -35994,7 +35995,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 
 	var response WatchCoreV1NodeRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1Node",
 			OperationID:   "watchCoreV1Node",
@@ -36020,7 +36021,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 			Params   = WatchCoreV1NodeParams
 			Response = WatchCoreV1NodeRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -36109,7 +36110,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 
 	var response WatchCoreV1NodeListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1NodeList",
 			OperationID:   "watchCoreV1NodeList",
@@ -36134,7 +36135,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 			Params   = WatchCoreV1NodeListParams
 			Response = WatchCoreV1NodeListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -36223,7 +36224,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 
 	var response WatchCoreV1PersistentVolumeRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1PersistentVolume",
 			OperationID:   "watchCoreV1PersistentVolume",
@@ -36249,7 +36250,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 			Params   = WatchCoreV1PersistentVolumeParams
 			Response = WatchCoreV1PersistentVolumeRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -36338,7 +36339,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 
 	var response WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1PersistentVolumeClaimListForAllNamespaces",
 			OperationID:   "watchCoreV1PersistentVolumeClaimListForAllNamespaces",
@@ -36363,7 +36364,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 			Params   = WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams
 			Response = WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -36452,7 +36453,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 
 	var response WatchCoreV1PersistentVolumeListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1PersistentVolumeList",
 			OperationID:   "watchCoreV1PersistentVolumeList",
@@ -36477,7 +36478,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 			Params   = WatchCoreV1PersistentVolumeListParams
 			Response = WatchCoreV1PersistentVolumeListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -36566,7 +36567,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 
 	var response WatchCoreV1PodListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1PodListForAllNamespaces",
 			OperationID:   "watchCoreV1PodListForAllNamespaces",
@@ -36591,7 +36592,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 			Params   = WatchCoreV1PodListForAllNamespacesParams
 			Response = WatchCoreV1PodListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -36680,7 +36681,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 
 	var response WatchCoreV1PodTemplateListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1PodTemplateListForAllNamespaces",
 			OperationID:   "watchCoreV1PodTemplateListForAllNamespaces",
@@ -36705,7 +36706,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 			Params   = WatchCoreV1PodTemplateListForAllNamespacesParams
 			Response = WatchCoreV1PodTemplateListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -36794,7 +36795,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 
 	var response WatchCoreV1ReplicationControllerListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1ReplicationControllerListForAllNamespaces",
 			OperationID:   "watchCoreV1ReplicationControllerListForAllNamespaces",
@@ -36819,7 +36820,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 			Params   = WatchCoreV1ReplicationControllerListForAllNamespacesParams
 			Response = WatchCoreV1ReplicationControllerListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -36908,7 +36909,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 
 	var response WatchCoreV1ResourceQuotaListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1ResourceQuotaListForAllNamespaces",
 			OperationID:   "watchCoreV1ResourceQuotaListForAllNamespaces",
@@ -36933,7 +36934,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 			Params   = WatchCoreV1ResourceQuotaListForAllNamespacesParams
 			Response = WatchCoreV1ResourceQuotaListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -37022,7 +37023,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 
 	var response WatchCoreV1SecretListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1SecretListForAllNamespaces",
 			OperationID:   "watchCoreV1SecretListForAllNamespaces",
@@ -37047,7 +37048,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 			Params   = WatchCoreV1SecretListForAllNamespacesParams
 			Response = WatchCoreV1SecretListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -37136,7 +37137,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 
 	var response WatchCoreV1ServiceAccountListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1ServiceAccountListForAllNamespaces",
 			OperationID:   "watchCoreV1ServiceAccountListForAllNamespaces",
@@ -37161,7 +37162,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 			Params   = WatchCoreV1ServiceAccountListForAllNamespacesParams
 			Response = WatchCoreV1ServiceAccountListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -37250,7 +37251,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 
 	var response WatchCoreV1ServiceListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchCoreV1ServiceListForAllNamespaces",
 			OperationID:   "watchCoreV1ServiceListForAllNamespaces",
@@ -37275,7 +37276,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 			Params   = WatchCoreV1ServiceListForAllNamespacesParams
 			Response = WatchCoreV1ServiceListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -37364,7 +37365,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 
 	var response WatchDiscoveryV1EndpointSliceListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchDiscoveryV1EndpointSliceListForAllNamespaces",
 			OperationID:   "watchDiscoveryV1EndpointSliceListForAllNamespaces",
@@ -37389,7 +37390,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 			Params   = WatchDiscoveryV1EndpointSliceListForAllNamespacesParams
 			Response = WatchDiscoveryV1EndpointSliceListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -37478,7 +37479,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 
 	var response WatchDiscoveryV1NamespacedEndpointSliceRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchDiscoveryV1NamespacedEndpointSlice",
 			OperationID:   "watchDiscoveryV1NamespacedEndpointSlice",
@@ -37505,7 +37506,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 			Params   = WatchDiscoveryV1NamespacedEndpointSliceParams
 			Response = WatchDiscoveryV1NamespacedEndpointSliceRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -37594,7 +37595,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 
 	var response WatchDiscoveryV1NamespacedEndpointSliceListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchDiscoveryV1NamespacedEndpointSliceList",
 			OperationID:   "watchDiscoveryV1NamespacedEndpointSliceList",
@@ -37620,7 +37621,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 			Params   = WatchDiscoveryV1NamespacedEndpointSliceListParams
 			Response = WatchDiscoveryV1NamespacedEndpointSliceListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -37709,7 +37710,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 
 	var response WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
 			OperationID:   "watchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
@@ -37734,7 +37735,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 			Params   = WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams
 			Response = WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -37823,7 +37824,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 
 	var response WatchDiscoveryV1beta1NamespacedEndpointSliceRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchDiscoveryV1beta1NamespacedEndpointSlice",
 			OperationID:   "watchDiscoveryV1beta1NamespacedEndpointSlice",
@@ -37850,7 +37851,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 			Params   = WatchDiscoveryV1beta1NamespacedEndpointSliceParams
 			Response = WatchDiscoveryV1beta1NamespacedEndpointSliceRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -37939,7 +37940,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 
 	var response WatchDiscoveryV1beta1NamespacedEndpointSliceListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchDiscoveryV1beta1NamespacedEndpointSliceList",
 			OperationID:   "watchDiscoveryV1beta1NamespacedEndpointSliceList",
@@ -37965,7 +37966,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 			Params   = WatchDiscoveryV1beta1NamespacedEndpointSliceListParams
 			Response = WatchDiscoveryV1beta1NamespacedEndpointSliceListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -38054,7 +38055,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 
 	var response WatchEventsV1EventListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchEventsV1EventListForAllNamespaces",
 			OperationID:   "watchEventsV1EventListForAllNamespaces",
@@ -38079,7 +38080,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 			Params   = WatchEventsV1EventListForAllNamespacesParams
 			Response = WatchEventsV1EventListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -38168,7 +38169,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 
 	var response WatchEventsV1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchEventsV1NamespacedEvent",
 			OperationID:   "watchEventsV1NamespacedEvent",
@@ -38195,7 +38196,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 			Params   = WatchEventsV1NamespacedEventParams
 			Response = WatchEventsV1NamespacedEventRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -38284,7 +38285,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 
 	var response WatchEventsV1NamespacedEventListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchEventsV1NamespacedEventList",
 			OperationID:   "watchEventsV1NamespacedEventList",
@@ -38310,7 +38311,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 			Params   = WatchEventsV1NamespacedEventListParams
 			Response = WatchEventsV1NamespacedEventListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -38399,7 +38400,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 
 	var response WatchEventsV1beta1EventListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchEventsV1beta1EventListForAllNamespaces",
 			OperationID:   "watchEventsV1beta1EventListForAllNamespaces",
@@ -38424,7 +38425,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 			Params   = WatchEventsV1beta1EventListForAllNamespacesParams
 			Response = WatchEventsV1beta1EventListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -38513,7 +38514,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 
 	var response WatchEventsV1beta1NamespacedEventRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchEventsV1beta1NamespacedEvent",
 			OperationID:   "watchEventsV1beta1NamespacedEvent",
@@ -38540,7 +38541,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 			Params   = WatchEventsV1beta1NamespacedEventParams
 			Response = WatchEventsV1beta1NamespacedEventRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -38629,7 +38630,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 
 	var response WatchEventsV1beta1NamespacedEventListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchEventsV1beta1NamespacedEventList",
 			OperationID:   "watchEventsV1beta1NamespacedEventList",
@@ -38655,7 +38656,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 			Params   = WatchEventsV1beta1NamespacedEventListParams
 			Response = WatchEventsV1beta1NamespacedEventListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -38744,7 +38745,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 
 	var response WatchFlowcontrolApiserverV1beta1FlowSchemaRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchFlowcontrolApiserverV1beta1FlowSchema",
 			OperationID:   "watchFlowcontrolApiserverV1beta1FlowSchema",
@@ -38770,7 +38771,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 			Params   = WatchFlowcontrolApiserverV1beta1FlowSchemaParams
 			Response = WatchFlowcontrolApiserverV1beta1FlowSchemaRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -38859,7 +38860,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 
 	var response WatchFlowcontrolApiserverV1beta1FlowSchemaListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchFlowcontrolApiserverV1beta1FlowSchemaList",
 			OperationID:   "watchFlowcontrolApiserverV1beta1FlowSchemaList",
@@ -38884,7 +38885,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 			Params   = WatchFlowcontrolApiserverV1beta1FlowSchemaListParams
 			Response = WatchFlowcontrolApiserverV1beta1FlowSchemaListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -38973,7 +38974,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 
 	var response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 			OperationID:   "watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
@@ -38999,7 +39000,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			Params   = WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams
 			Response = WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -39088,7 +39089,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 
 	var response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
 			OperationID:   "watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
@@ -39113,7 +39114,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			Params   = WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams
 			Response = WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -39202,7 +39203,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 
 	var response WatchFlowcontrolApiserverV1beta2FlowSchemaRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchFlowcontrolApiserverV1beta2FlowSchema",
 			OperationID:   "watchFlowcontrolApiserverV1beta2FlowSchema",
@@ -39228,7 +39229,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 			Params   = WatchFlowcontrolApiserverV1beta2FlowSchemaParams
 			Response = WatchFlowcontrolApiserverV1beta2FlowSchemaRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -39317,7 +39318,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 
 	var response WatchFlowcontrolApiserverV1beta2FlowSchemaListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchFlowcontrolApiserverV1beta2FlowSchemaList",
 			OperationID:   "watchFlowcontrolApiserverV1beta2FlowSchemaList",
@@ -39342,7 +39343,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 			Params   = WatchFlowcontrolApiserverV1beta2FlowSchemaListParams
 			Response = WatchFlowcontrolApiserverV1beta2FlowSchemaListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -39431,7 +39432,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 
 	var response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 			OperationID:   "watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
@@ -39457,7 +39458,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			Params   = WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams
 			Response = WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -39546,7 +39547,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 
 	var response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
 			OperationID:   "watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
@@ -39571,7 +39572,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			Params   = WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams
 			Response = WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -39660,7 +39661,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 
 	var response WatchInternalApiserverV1alpha1StorageVersionRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchInternalApiserverV1alpha1StorageVersion",
 			OperationID:   "watchInternalApiserverV1alpha1StorageVersion",
@@ -39686,7 +39687,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 			Params   = WatchInternalApiserverV1alpha1StorageVersionParams
 			Response = WatchInternalApiserverV1alpha1StorageVersionRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -39775,7 +39776,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 
 	var response WatchInternalApiserverV1alpha1StorageVersionListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchInternalApiserverV1alpha1StorageVersionList",
 			OperationID:   "watchInternalApiserverV1alpha1StorageVersionList",
@@ -39800,7 +39801,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 			Params   = WatchInternalApiserverV1alpha1StorageVersionListParams
 			Response = WatchInternalApiserverV1alpha1StorageVersionListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -39889,7 +39890,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 
 	var response WatchNetworkingV1IngressClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchNetworkingV1IngressClass",
 			OperationID:   "watchNetworkingV1IngressClass",
@@ -39915,7 +39916,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 			Params   = WatchNetworkingV1IngressClassParams
 			Response = WatchNetworkingV1IngressClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -40004,7 +40005,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 
 	var response WatchNetworkingV1IngressClassListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchNetworkingV1IngressClassList",
 			OperationID:   "watchNetworkingV1IngressClassList",
@@ -40029,7 +40030,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 			Params   = WatchNetworkingV1IngressClassListParams
 			Response = WatchNetworkingV1IngressClassListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -40118,7 +40119,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 
 	var response WatchNetworkingV1IngressListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchNetworkingV1IngressListForAllNamespaces",
 			OperationID:   "watchNetworkingV1IngressListForAllNamespaces",
@@ -40143,7 +40144,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 			Params   = WatchNetworkingV1IngressListForAllNamespacesParams
 			Response = WatchNetworkingV1IngressListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -40232,7 +40233,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 
 	var response WatchNetworkingV1NamespacedIngressRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchNetworkingV1NamespacedIngress",
 			OperationID:   "watchNetworkingV1NamespacedIngress",
@@ -40259,7 +40260,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 			Params   = WatchNetworkingV1NamespacedIngressParams
 			Response = WatchNetworkingV1NamespacedIngressRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -40348,7 +40349,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 
 	var response WatchNetworkingV1NamespacedIngressListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchNetworkingV1NamespacedIngressList",
 			OperationID:   "watchNetworkingV1NamespacedIngressList",
@@ -40374,7 +40375,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 			Params   = WatchNetworkingV1NamespacedIngressListParams
 			Response = WatchNetworkingV1NamespacedIngressListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -40463,7 +40464,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 
 	var response WatchNetworkingV1NamespacedNetworkPolicyRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchNetworkingV1NamespacedNetworkPolicy",
 			OperationID:   "watchNetworkingV1NamespacedNetworkPolicy",
@@ -40490,7 +40491,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 			Params   = WatchNetworkingV1NamespacedNetworkPolicyParams
 			Response = WatchNetworkingV1NamespacedNetworkPolicyRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -40579,7 +40580,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 
 	var response WatchNetworkingV1NamespacedNetworkPolicyListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchNetworkingV1NamespacedNetworkPolicyList",
 			OperationID:   "watchNetworkingV1NamespacedNetworkPolicyList",
@@ -40605,7 +40606,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 			Params   = WatchNetworkingV1NamespacedNetworkPolicyListParams
 			Response = WatchNetworkingV1NamespacedNetworkPolicyListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -40694,7 +40695,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 
 	var response WatchNetworkingV1NetworkPolicyListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchNetworkingV1NetworkPolicyListForAllNamespaces",
 			OperationID:   "watchNetworkingV1NetworkPolicyListForAllNamespaces",
@@ -40719,7 +40720,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 			Params   = WatchNetworkingV1NetworkPolicyListForAllNamespacesParams
 			Response = WatchNetworkingV1NetworkPolicyListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -40808,7 +40809,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 
 	var response WatchNodeV1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchNodeV1RuntimeClass",
 			OperationID:   "watchNodeV1RuntimeClass",
@@ -40834,7 +40835,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 			Params   = WatchNodeV1RuntimeClassParams
 			Response = WatchNodeV1RuntimeClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -40923,7 +40924,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 
 	var response WatchNodeV1RuntimeClassListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchNodeV1RuntimeClassList",
 			OperationID:   "watchNodeV1RuntimeClassList",
@@ -40948,7 +40949,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 			Params   = WatchNodeV1RuntimeClassListParams
 			Response = WatchNodeV1RuntimeClassListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -41037,7 +41038,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 
 	var response WatchNodeV1alpha1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchNodeV1alpha1RuntimeClass",
 			OperationID:   "watchNodeV1alpha1RuntimeClass",
@@ -41063,7 +41064,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 			Params   = WatchNodeV1alpha1RuntimeClassParams
 			Response = WatchNodeV1alpha1RuntimeClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -41152,7 +41153,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 
 	var response WatchNodeV1alpha1RuntimeClassListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchNodeV1alpha1RuntimeClassList",
 			OperationID:   "watchNodeV1alpha1RuntimeClassList",
@@ -41177,7 +41178,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 			Params   = WatchNodeV1alpha1RuntimeClassListParams
 			Response = WatchNodeV1alpha1RuntimeClassListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -41266,7 +41267,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 
 	var response WatchNodeV1beta1RuntimeClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchNodeV1beta1RuntimeClass",
 			OperationID:   "watchNodeV1beta1RuntimeClass",
@@ -41292,7 +41293,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 			Params   = WatchNodeV1beta1RuntimeClassParams
 			Response = WatchNodeV1beta1RuntimeClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -41381,7 +41382,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 
 	var response WatchNodeV1beta1RuntimeClassListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchNodeV1beta1RuntimeClassList",
 			OperationID:   "watchNodeV1beta1RuntimeClassList",
@@ -41406,7 +41407,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 			Params   = WatchNodeV1beta1RuntimeClassListParams
 			Response = WatchNodeV1beta1RuntimeClassListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -41495,7 +41496,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 
 	var response WatchPolicyV1NamespacedPodDisruptionBudgetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchPolicyV1NamespacedPodDisruptionBudget",
 			OperationID:   "watchPolicyV1NamespacedPodDisruptionBudget",
@@ -41522,7 +41523,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 			Params   = WatchPolicyV1NamespacedPodDisruptionBudgetParams
 			Response = WatchPolicyV1NamespacedPodDisruptionBudgetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -41611,7 +41612,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 
 	var response WatchPolicyV1NamespacedPodDisruptionBudgetListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchPolicyV1NamespacedPodDisruptionBudgetList",
 			OperationID:   "watchPolicyV1NamespacedPodDisruptionBudgetList",
@@ -41637,7 +41638,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 			Params   = WatchPolicyV1NamespacedPodDisruptionBudgetListParams
 			Response = WatchPolicyV1NamespacedPodDisruptionBudgetListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -41726,7 +41727,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 
 	var response WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces",
 			OperationID:   "watchPolicyV1PodDisruptionBudgetListForAllNamespaces",
@@ -41751,7 +41752,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 			Params   = WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams
 			Response = WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -41840,7 +41841,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 
 	var response WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchPolicyV1beta1NamespacedPodDisruptionBudget",
 			OperationID:   "watchPolicyV1beta1NamespacedPodDisruptionBudget",
@@ -41867,7 +41868,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 			Params   = WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams
 			Response = WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -41956,7 +41957,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 
 	var response WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList",
 			OperationID:   "watchPolicyV1beta1NamespacedPodDisruptionBudgetList",
@@ -41982,7 +41983,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 			Params   = WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams
 			Response = WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -42071,7 +42072,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 
 	var response WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
 			OperationID:   "watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
@@ -42096,7 +42097,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 			Params   = WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams
 			Response = WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -42185,7 +42186,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 
 	var response WatchPolicyV1beta1PodSecurityPolicyRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchPolicyV1beta1PodSecurityPolicy",
 			OperationID:   "watchPolicyV1beta1PodSecurityPolicy",
@@ -42211,7 +42212,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 			Params   = WatchPolicyV1beta1PodSecurityPolicyParams
 			Response = WatchPolicyV1beta1PodSecurityPolicyRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -42300,7 +42301,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 
 	var response WatchPolicyV1beta1PodSecurityPolicyListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchPolicyV1beta1PodSecurityPolicyList",
 			OperationID:   "watchPolicyV1beta1PodSecurityPolicyList",
@@ -42325,7 +42326,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 			Params   = WatchPolicyV1beta1PodSecurityPolicyListParams
 			Response = WatchPolicyV1beta1PodSecurityPolicyListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -42414,7 +42415,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 
 	var response WatchRbacAuthorizationV1ClusterRoleRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1ClusterRole",
 			OperationID:   "watchRbacAuthorizationV1ClusterRole",
@@ -42440,7 +42441,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 			Params   = WatchRbacAuthorizationV1ClusterRoleParams
 			Response = WatchRbacAuthorizationV1ClusterRoleRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -42529,7 +42530,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 
 	var response WatchRbacAuthorizationV1ClusterRoleBindingRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1ClusterRoleBinding",
 			OperationID:   "watchRbacAuthorizationV1ClusterRoleBinding",
@@ -42555,7 +42556,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 			Params   = WatchRbacAuthorizationV1ClusterRoleBindingParams
 			Response = WatchRbacAuthorizationV1ClusterRoleBindingRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -42644,7 +42645,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 
 	var response WatchRbacAuthorizationV1ClusterRoleBindingListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1ClusterRoleBindingList",
 			OperationID:   "watchRbacAuthorizationV1ClusterRoleBindingList",
@@ -42669,7 +42670,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 			Params   = WatchRbacAuthorizationV1ClusterRoleBindingListParams
 			Response = WatchRbacAuthorizationV1ClusterRoleBindingListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -42758,7 +42759,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 
 	var response WatchRbacAuthorizationV1ClusterRoleListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1ClusterRoleList",
 			OperationID:   "watchRbacAuthorizationV1ClusterRoleList",
@@ -42783,7 +42784,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 			Params   = WatchRbacAuthorizationV1ClusterRoleListParams
 			Response = WatchRbacAuthorizationV1ClusterRoleListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -42872,7 +42873,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 
 	var response WatchRbacAuthorizationV1NamespacedRoleRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1NamespacedRole",
 			OperationID:   "watchRbacAuthorizationV1NamespacedRole",
@@ -42899,7 +42900,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 			Params   = WatchRbacAuthorizationV1NamespacedRoleParams
 			Response = WatchRbacAuthorizationV1NamespacedRoleRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -42988,7 +42989,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 
 	var response WatchRbacAuthorizationV1NamespacedRoleBindingRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1NamespacedRoleBinding",
 			OperationID:   "watchRbacAuthorizationV1NamespacedRoleBinding",
@@ -43015,7 +43016,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 			Params   = WatchRbacAuthorizationV1NamespacedRoleBindingParams
 			Response = WatchRbacAuthorizationV1NamespacedRoleBindingRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -43104,7 +43105,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 
 	var response WatchRbacAuthorizationV1NamespacedRoleBindingListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1NamespacedRoleBindingList",
 			OperationID:   "watchRbacAuthorizationV1NamespacedRoleBindingList",
@@ -43130,7 +43131,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 			Params   = WatchRbacAuthorizationV1NamespacedRoleBindingListParams
 			Response = WatchRbacAuthorizationV1NamespacedRoleBindingListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -43219,7 +43220,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 
 	var response WatchRbacAuthorizationV1NamespacedRoleListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1NamespacedRoleList",
 			OperationID:   "watchRbacAuthorizationV1NamespacedRoleList",
@@ -43245,7 +43246,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 			Params   = WatchRbacAuthorizationV1NamespacedRoleListParams
 			Response = WatchRbacAuthorizationV1NamespacedRoleListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -43334,7 +43335,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 
 	var response WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces",
 			OperationID:   "watchRbacAuthorizationV1RoleBindingListForAllNamespaces",
@@ -43359,7 +43360,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 			Params   = WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams
 			Response = WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -43448,7 +43449,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 
 	var response WatchRbacAuthorizationV1RoleListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchRbacAuthorizationV1RoleListForAllNamespaces",
 			OperationID:   "watchRbacAuthorizationV1RoleListForAllNamespaces",
@@ -43473,7 +43474,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 			Params   = WatchRbacAuthorizationV1RoleListForAllNamespacesParams
 			Response = WatchRbacAuthorizationV1RoleListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -43562,7 +43563,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 
 	var response WatchSchedulingV1PriorityClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchSchedulingV1PriorityClass",
 			OperationID:   "watchSchedulingV1PriorityClass",
@@ -43588,7 +43589,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 			Params   = WatchSchedulingV1PriorityClassParams
 			Response = WatchSchedulingV1PriorityClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -43677,7 +43678,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 
 	var response WatchSchedulingV1PriorityClassListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchSchedulingV1PriorityClassList",
 			OperationID:   "watchSchedulingV1PriorityClassList",
@@ -43702,7 +43703,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 			Params   = WatchSchedulingV1PriorityClassListParams
 			Response = WatchSchedulingV1PriorityClassListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -43791,7 +43792,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 
 	var response WatchStorageV1CSIDriverRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchStorageV1CSIDriver",
 			OperationID:   "watchStorageV1CSIDriver",
@@ -43817,7 +43818,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 			Params   = WatchStorageV1CSIDriverParams
 			Response = WatchStorageV1CSIDriverRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -43906,7 +43907,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 
 	var response WatchStorageV1CSIDriverListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchStorageV1CSIDriverList",
 			OperationID:   "watchStorageV1CSIDriverList",
@@ -43931,7 +43932,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 			Params   = WatchStorageV1CSIDriverListParams
 			Response = WatchStorageV1CSIDriverListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -44020,7 +44021,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 
 	var response WatchStorageV1CSINodeRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchStorageV1CSINode",
 			OperationID:   "watchStorageV1CSINode",
@@ -44046,7 +44047,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 			Params   = WatchStorageV1CSINodeParams
 			Response = WatchStorageV1CSINodeRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -44135,7 +44136,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 
 	var response WatchStorageV1CSINodeListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchStorageV1CSINodeList",
 			OperationID:   "watchStorageV1CSINodeList",
@@ -44160,7 +44161,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 			Params   = WatchStorageV1CSINodeListParams
 			Response = WatchStorageV1CSINodeListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -44249,7 +44250,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 
 	var response WatchStorageV1StorageClassRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchStorageV1StorageClass",
 			OperationID:   "watchStorageV1StorageClass",
@@ -44275,7 +44276,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 			Params   = WatchStorageV1StorageClassParams
 			Response = WatchStorageV1StorageClassRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -44364,7 +44365,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 
 	var response WatchStorageV1StorageClassListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchStorageV1StorageClassList",
 			OperationID:   "watchStorageV1StorageClassList",
@@ -44389,7 +44390,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 			Params   = WatchStorageV1StorageClassListParams
 			Response = WatchStorageV1StorageClassListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -44478,7 +44479,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 
 	var response WatchStorageV1VolumeAttachmentRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchStorageV1VolumeAttachment",
 			OperationID:   "watchStorageV1VolumeAttachment",
@@ -44504,7 +44505,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 			Params   = WatchStorageV1VolumeAttachmentParams
 			Response = WatchStorageV1VolumeAttachmentRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -44593,7 +44594,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 
 	var response WatchStorageV1VolumeAttachmentListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchStorageV1VolumeAttachmentList",
 			OperationID:   "watchStorageV1VolumeAttachmentList",
@@ -44618,7 +44619,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 			Params   = WatchStorageV1VolumeAttachmentListParams
 			Response = WatchStorageV1VolumeAttachmentListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -44707,7 +44708,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 
 	var response WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
 			OperationID:   "watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
@@ -44732,7 +44733,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 			Params   = WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams
 			Response = WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -44821,7 +44822,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 
 	var response WatchStorageV1alpha1NamespacedCSIStorageCapacityRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchStorageV1alpha1NamespacedCSIStorageCapacity",
 			OperationID:   "watchStorageV1alpha1NamespacedCSIStorageCapacity",
@@ -44848,7 +44849,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 			Params   = WatchStorageV1alpha1NamespacedCSIStorageCapacityParams
 			Response = WatchStorageV1alpha1NamespacedCSIStorageCapacityRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -44937,7 +44938,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 
 	var response WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchStorageV1alpha1NamespacedCSIStorageCapacityList",
 			OperationID:   "watchStorageV1alpha1NamespacedCSIStorageCapacityList",
@@ -44963,7 +44964,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 			Params   = WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams
 			Response = WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -45052,7 +45053,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 
 	var response WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
 			OperationID:   "watchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
@@ -45077,7 +45078,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 			Params   = WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams
 			Response = WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -45166,7 +45167,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 
 	var response WatchStorageV1beta1NamespacedCSIStorageCapacityRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchStorageV1beta1NamespacedCSIStorageCapacity",
 			OperationID:   "watchStorageV1beta1NamespacedCSIStorageCapacity",
@@ -45193,7 +45194,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 			Params   = WatchStorageV1beta1NamespacedCSIStorageCapacityParams
 			Response = WatchStorageV1beta1NamespacedCSIStorageCapacityRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -45282,7 +45283,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 
 	var response WatchStorageV1beta1NamespacedCSIStorageCapacityListRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "WatchStorageV1beta1NamespacedCSIStorageCapacityList",
 			OperationID:   "watchStorageV1beta1NamespacedCSIStorageCapacityList",
@@ -45308,7 +45309,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 			Params   = WatchStorageV1beta1NamespacedCSIStorageCapacityListParams
 			Response = WatchStorageV1beta1NamespacedCSIStorageCapacityListRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,

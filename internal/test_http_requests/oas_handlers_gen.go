@@ -11,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -70,7 +71,7 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWr
 
 	var response AllRequestBodiesOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "AllRequestBodies",
 			OperationID:   "allRequestBodies",
@@ -84,7 +85,7 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWr
 			Params   = struct{}
 			Response = AllRequestBodiesOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -167,7 +168,7 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.Re
 
 	var response AllRequestBodiesOptionalOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "AllRequestBodiesOptional",
 			OperationID:   "allRequestBodiesOptional",
@@ -181,7 +182,7 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.Re
 			Params   = struct{}
 			Response = AllRequestBodiesOptionalOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -264,7 +265,7 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWri
 
 	var response MaskResponse
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "MaskContentType",
 			OperationID:   "maskContentType",
@@ -278,7 +279,7 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWri
 			Params   = struct{}
 			Response = MaskResponse
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -361,7 +362,7 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, w http.Res
 
 	var response MaskResponse
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "MaskContentTypeOptional",
 			OperationID:   "maskContentTypeOptional",
@@ -375,7 +376,7 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, w http.Res
 			Params   = struct{}
 			Response = MaskResponse
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,

@@ -10,6 +10,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -131,7 +132,7 @@ func WithMiddleware(m ...Middleware) Option {
 		case 1:
 			cfg.Middleware = m[0]
 		default:
-			cfg.Middleware = chainMiddlewares(m...)
+			cfg.Middleware = middleware.ChainMiddlewares(m...)
 		}
 	})
 }

@@ -11,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 )
 
@@ -63,7 +64,7 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 
 	var response MarketBondsGetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "MarketBondsGet",
 			OperationID:   "",
@@ -77,7 +78,7 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 			Params   = struct{}
 			Response = MarketBondsGetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -164,7 +165,7 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 
 	var response MarketCandlesGetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "MarketCandlesGet",
 			OperationID:   "",
@@ -183,7 +184,7 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 			Params   = MarketCandlesGetParams
 			Response = MarketCandlesGetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -260,7 +261,7 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 
 	var response MarketCurrenciesGetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "MarketCurrenciesGet",
 			OperationID:   "",
@@ -274,7 +275,7 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 			Params   = struct{}
 			Response = MarketCurrenciesGetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -351,7 +352,7 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 
 	var response MarketEtfsGetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "MarketEtfsGet",
 			OperationID:   "",
@@ -365,7 +366,7 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 			Params   = struct{}
 			Response = MarketEtfsGetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -452,7 +453,7 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 
 	var response MarketOrderbookGetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "MarketOrderbookGet",
 			OperationID:   "",
@@ -469,7 +470,7 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 			Params   = MarketOrderbookGetParams
 			Response = MarketOrderbookGetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -556,7 +557,7 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 
 	var response MarketSearchByFigiGetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "MarketSearchByFigiGet",
 			OperationID:   "",
@@ -572,7 +573,7 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 			Params   = MarketSearchByFigiGetParams
 			Response = MarketSearchByFigiGetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -659,7 +660,7 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 
 	var response MarketSearchByTickerGetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "MarketSearchByTickerGet",
 			OperationID:   "",
@@ -675,7 +676,7 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 			Params   = MarketSearchByTickerGetParams
 			Response = MarketSearchByTickerGetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -752,7 +753,7 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 
 	var response MarketStocksGetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "MarketStocksGet",
 			OperationID:   "",
@@ -766,7 +767,7 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 			Params   = struct{}
 			Response = MarketStocksGetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -853,7 +854,7 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 
 	var response OperationsGetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "OperationsGet",
 			OperationID:   "",
@@ -872,7 +873,7 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 			Params   = OperationsGetParams
 			Response = OperationsGetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -959,7 +960,7 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 
 	var response OrdersCancelPostRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "OrdersCancelPost",
 			OperationID:   "",
@@ -976,7 +977,7 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 			Params   = OrdersCancelPostParams
 			Response = OrdersCancelPostRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1063,7 +1064,7 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 
 	var response OrdersGetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "OrdersGet",
 			OperationID:   "",
@@ -1079,7 +1080,7 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 			Params   = OrdersGetParams
 			Response = OrdersGetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1181,7 +1182,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 
 	var response OrdersLimitOrderPostRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "OrdersLimitOrderPost",
 			OperationID:   "",
@@ -1198,7 +1199,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 			Params   = OrdersLimitOrderPostParams
 			Response = OrdersLimitOrderPostRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1300,7 +1301,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 
 	var response OrdersMarketOrderPostRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "OrdersMarketOrderPost",
 			OperationID:   "",
@@ -1317,7 +1318,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 			Params   = OrdersMarketOrderPostParams
 			Response = OrdersMarketOrderPostRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1404,7 +1405,7 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 
 	var response PortfolioCurrenciesGetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PortfolioCurrenciesGet",
 			OperationID:   "",
@@ -1420,7 +1421,7 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 			Params   = PortfolioCurrenciesGetParams
 			Response = PortfolioCurrenciesGetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1507,7 +1508,7 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 
 	var response PortfolioGetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PortfolioGet",
 			OperationID:   "",
@@ -1523,7 +1524,7 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 			Params   = PortfolioGetParams
 			Response = PortfolioGetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1610,7 +1611,7 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 
 	var response SandboxClearPostRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SandboxClearPost",
 			OperationID:   "",
@@ -1626,7 +1627,7 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 			Params   = SandboxClearPostParams
 			Response = SandboxClearPostRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1728,7 +1729,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 
 	var response SandboxCurrenciesBalancePostRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SandboxCurrenciesBalancePost",
 			OperationID:   "",
@@ -1744,7 +1745,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 			Params   = SandboxCurrenciesBalancePostParams
 			Response = SandboxCurrenciesBalancePostRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1846,7 +1847,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 
 	var response SandboxPositionsBalancePostRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SandboxPositionsBalancePost",
 			OperationID:   "",
@@ -1862,7 +1863,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 			Params   = SandboxPositionsBalancePostParams
 			Response = SandboxPositionsBalancePostRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1954,7 +1955,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 
 	var response SandboxRegisterPostRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SandboxRegisterPost",
 			OperationID:   "",
@@ -1968,7 +1969,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 			Params   = struct{}
 			Response = SandboxRegisterPostRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2055,7 +2056,7 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 
 	var response SandboxRemovePostRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SandboxRemovePost",
 			OperationID:   "",
@@ -2071,7 +2072,7 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 			Params   = SandboxRemovePostParams
 			Response = SandboxRemovePostRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2148,7 +2149,7 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 
 	var response UserAccountsGetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "UserAccountsGet",
 			OperationID:   "",
@@ -2162,7 +2163,7 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 			Params   = struct{}
 			Response = UserAccountsGetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,

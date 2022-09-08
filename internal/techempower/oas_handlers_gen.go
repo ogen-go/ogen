@@ -11,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -65,7 +66,7 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 
 	var response WorldObjects
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "Caching",
 			OperationID:   "Caching",
@@ -81,7 +82,7 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 			Params   = CachingParams
 			Response = WorldObjects
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -145,7 +146,7 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 
 	var response WorldObject
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DB",
 			OperationID:   "DB",
@@ -159,7 +160,7 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 			Params   = struct{}
 			Response = WorldObject
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -223,7 +224,7 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 
 	var response HelloWorld
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "JSON",
 			OperationID:   "json",
@@ -237,7 +238,7 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 			Params   = struct{}
 			Response = HelloWorld
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -315,7 +316,7 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 
 	var response WorldObjects
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "Queries",
 			OperationID:   "Queries",
@@ -331,7 +332,7 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 			Params   = QueriesParams
 			Response = WorldObjects
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -409,7 +410,7 @@ func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *
 
 	var response WorldObjects
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "Updates",
 			OperationID:   "Updates",
@@ -425,7 +426,7 @@ func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *
 			Params   = UpdatesParams
 			Response = WorldObjects
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,

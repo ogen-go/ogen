@@ -10,6 +10,8 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
+
+	"github.com/ogen-go/ogen/middleware"
 )
 
 // HandleFooGetRequest handles GET /foo operation.
@@ -46,7 +48,7 @@ func (s *Server) handleFooGetRequest(args [0]string, w http.ResponseWriter, r *h
 
 	var response string
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "FooGet",
 			OperationID:   "",
@@ -60,7 +62,7 @@ func (s *Server) handleFooGetRequest(args [0]string, w http.ResponseWriter, r *h
 			Params   = struct{}
 			Response = string
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,

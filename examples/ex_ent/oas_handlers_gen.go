@@ -11,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -70,7 +71,7 @@ func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r
 
 	var response CreatePetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "CreatePet",
 			OperationID:   "createPet",
@@ -84,7 +85,7 @@ func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r
 			Params   = struct{}
 			Response = CreatePetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -177,7 +178,7 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 
 	var response CreatePetCategoriesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "CreatePetCategories",
 			OperationID:   "createPetCategories",
@@ -193,7 +194,7 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 			Params   = CreatePetCategoriesParams
 			Response = CreatePetCategoriesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -286,7 +287,7 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 
 	var response CreatePetFriendsRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "CreatePetFriends",
 			OperationID:   "createPetFriends",
@@ -302,7 +303,7 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 			Params   = CreatePetFriendsParams
 			Response = CreatePetFriendsRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -395,7 +396,7 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 
 	var response CreatePetOwnerRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "CreatePetOwner",
 			OperationID:   "createPetOwner",
@@ -411,7 +412,7 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 			Params   = CreatePetOwnerParams
 			Response = CreatePetOwnerRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -489,7 +490,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 
 	var response DeletePetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DeletePet",
 			OperationID:   "deletePet",
@@ -505,7 +506,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 			Params   = DeletePetParams
 			Response = DeletePetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -583,7 +584,7 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWrit
 
 	var response DeletePetOwnerRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DeletePetOwner",
 			OperationID:   "deletePetOwner",
@@ -599,7 +600,7 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWrit
 			Params   = DeletePetOwnerParams
 			Response = DeletePetOwnerRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -677,7 +678,7 @@ func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *
 
 	var response ListPetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListPet",
 			OperationID:   "listPet",
@@ -694,7 +695,7 @@ func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *
 			Params   = ListPetParams
 			Response = ListPetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -772,7 +773,7 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseW
 
 	var response ListPetCategoriesRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListPetCategories",
 			OperationID:   "listPetCategories",
@@ -790,7 +791,7 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseW
 			Params   = ListPetCategoriesParams
 			Response = ListPetCategoriesRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -868,7 +869,7 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWrit
 
 	var response ListPetFriendsRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ListPetFriends",
 			OperationID:   "listPetFriends",
@@ -886,7 +887,7 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWrit
 			Params   = ListPetFriendsParams
 			Response = ListPetFriendsRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -964,7 +965,7 @@ func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *
 
 	var response ReadPetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadPet",
 			OperationID:   "readPet",
@@ -980,7 +981,7 @@ func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *
 			Params   = ReadPetParams
 			Response = ReadPetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1058,7 +1059,7 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter
 
 	var response ReadPetOwnerRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReadPetOwner",
 			OperationID:   "readPetOwner",
@@ -1074,7 +1075,7 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter
 			Params   = ReadPetOwnerParams
 			Response = ReadPetOwnerRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1167,7 +1168,7 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 
 	var response UpdatePetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "UpdatePet",
 			OperationID:   "updatePet",
@@ -1183,7 +1184,7 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 			Params   = UpdatePetParams
 			Response = UpdatePetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,

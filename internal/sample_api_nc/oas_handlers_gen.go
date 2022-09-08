@@ -11,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -65,7 +66,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 
 	var response string
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DataGetFormat",
 			OperationID:   "dataGetFormat",
@@ -85,7 +86,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 			Params   = DataGetFormatParams
 			Response = string
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -178,7 +179,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 
 	var response int32
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DefaultTest",
 			OperationID:   "defaultTest",
@@ -194,7 +195,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 			Params   = DefaultTestParams
 			Response = int32
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -258,7 +259,7 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 
 	var response ErrorStatusCode
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ErrorGet",
 			OperationID:   "errorGet",
@@ -272,7 +273,7 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 			Params   = struct{}
 			Response = ErrorStatusCode
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -350,7 +351,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 
 	var response FoobarGetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "FoobarGet",
 			OperationID:   "foobarGet",
@@ -367,7 +368,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 			Params   = FoobarGetParams
 			Response = FoobarGetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -450,7 +451,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 
 	var response FoobarPostRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "FoobarPost",
 			OperationID:   "foobarPost",
@@ -464,7 +465,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 			Params   = struct{}
 			Response = FoobarPostRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -526,7 +527,7 @@ func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r
 
 	var response FoobarPutDef
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "FoobarPut",
 			OperationID:   "",
@@ -540,7 +541,7 @@ func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r
 			Params   = struct{}
 			Response = FoobarPutDef
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -618,7 +619,7 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 
 	var response Hash
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetHeader",
 			OperationID:   "getHeader",
@@ -634,7 +635,7 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 			Params   = GetHeaderParams
 			Response = Hash
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -698,7 +699,7 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.
 
 	var response NoAdditionalPropertiesTest
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "NoAdditionalPropertiesTest",
 			OperationID:   "noAdditionalPropertiesTest",
@@ -712,7 +713,7 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.
 			Params   = struct{}
 			Response = NoAdditionalPropertiesTest
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -776,7 +777,7 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 
 	var response NilIntStatusCode
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "NullableDefaultResponse",
 			OperationID:   "nullableDefaultResponse",
@@ -790,7 +791,7 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 			Params   = struct{}
 			Response = NilIntStatusCode
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -873,7 +874,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 
 	var response OneofBugOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "OneofBug",
 			OperationID:   "oneofBug",
@@ -887,7 +888,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 			Params   = struct{}
 			Response = OneofBugOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -949,7 +950,7 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.Resp
 
 	var response PatternRecursiveMap
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PatternRecursiveMapGet",
 			OperationID:   "",
@@ -963,7 +964,7 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.Resp
 			Params   = struct{}
 			Response = PatternRecursiveMap
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1046,7 +1047,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 
 	var response Pet
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PetCreate",
 			OperationID:   "petCreate",
@@ -1060,7 +1061,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 			Params   = struct{}
 			Response = Pet
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1138,7 +1139,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 
 	var response []string
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PetFriendsNamesByID",
 			OperationID:   "petFriendsNamesByID",
@@ -1154,7 +1155,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 			Params   = PetFriendsNamesByIDParams
 			Response = []string
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1232,7 +1233,7 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 
 	var response PetGetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PetGet",
 			OperationID:   "petGet",
@@ -1251,7 +1252,7 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 			Params   = PetGetParams
 			Response = PetGetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1329,7 +1330,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 
 	var response PetGetAvatarByIDRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PetGetAvatarByID",
 			OperationID:   "petGetAvatarByID",
@@ -1345,7 +1346,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 			Params   = PetGetAvatarByIDParams
 			Response = PetGetAvatarByIDRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1423,7 +1424,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 
 	var response PetGetAvatarByNameRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PetGetAvatarByName",
 			OperationID:   "petGetAvatarByName",
@@ -1439,7 +1440,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 			Params   = PetGetAvatarByNameParams
 			Response = PetGetAvatarByNameRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1517,7 +1518,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 
 	var response Pet
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PetGetByName",
 			OperationID:   "petGetByName",
@@ -1533,7 +1534,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 			Params   = PetGetByNameParams
 			Response = Pet
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1611,7 +1612,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 
 	var response string
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PetNameByID",
 			OperationID:   "petNameByID",
@@ -1627,7 +1628,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 			Params   = PetNameByIDParams
 			Response = string
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1708,7 +1709,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 
 	var response PetUpdateNameAliasPostDef
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PetUpdateNameAliasPost",
 			OperationID:   "",
@@ -1722,7 +1723,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 			Params   = struct{}
 			Response = PetUpdateNameAliasPostDef
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1803,7 +1804,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 
 	var response PetUpdateNamePostDef
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PetUpdateNamePost",
 			OperationID:   "",
@@ -1817,7 +1818,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 			Params   = struct{}
 			Response = PetUpdateNamePostDef
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1910,7 +1911,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 
 	var response PetUploadAvatarByIDRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PetUploadAvatarByID",
 			OperationID:   "petUploadAvatarByID",
@@ -1926,7 +1927,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 			Params   = PetUploadAvatarByIDParams
 			Response = PetUploadAvatarByIDRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1988,7 +1989,7 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseW
 
 	var response RecursiveArray
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "RecursiveArrayGet",
 			OperationID:   "",
@@ -2002,7 +2003,7 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseW
 			Params   = struct{}
 			Response = RecursiveArray
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2064,7 +2065,7 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 
 	var response RecursiveMap
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "RecursiveMapGet",
 			OperationID:   "",
@@ -2078,7 +2079,7 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 			Params   = struct{}
 			Response = RecursiveMap
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2157,7 +2158,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 
 	var response string
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SecurityTest",
 			OperationID:   "securityTest",
@@ -2171,7 +2172,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 			Params   = struct{}
 			Response = string
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2233,7 +2234,7 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWri
 
 	var response StringIntMap
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "StringIntMapGet",
 			OperationID:   "",
@@ -2247,7 +2248,7 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWri
 			Params   = struct{}
 			Response = StringIntMap
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2325,7 +2326,7 @@ func (s *Server) handleTestContentParameterRequest(args [0]string, w http.Respon
 
 	var response string
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "TestContentParameter",
 			OperationID:   "testContentParameter",
@@ -2341,7 +2342,7 @@ func (s *Server) handleTestContentParameterRequest(args [0]string, w http.Respon
 			Params   = TestContentParameterParams
 			Response = string
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2424,7 +2425,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 
 	var response TestFloatValidationOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "TestFloatValidation",
 			OperationID:   "testFloatValidation",
@@ -2438,7 +2439,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 			Params   = struct{}
 			Response = TestFloatValidationOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2502,7 +2503,7 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, w http.Response
 
 	var response TestNullableOneofsRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "TestNullableOneofs",
 			OperationID:   "testNullableOneofs",
@@ -2516,7 +2517,7 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, w http.Response
 			Params   = struct{}
 			Response = TestNullableOneofsRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2594,7 +2595,7 @@ func (s *Server) handleTestObjectQueryParameterRequest(args [0]string, w http.Re
 
 	var response TestObjectQueryParameterOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "TestObjectQueryParameter",
 			OperationID:   "testObjectQueryParameter",
@@ -2611,7 +2612,7 @@ func (s *Server) handleTestObjectQueryParameterRequest(args [0]string, w http.Re
 			Params   = TestObjectQueryParameterParams
 			Response = TestObjectQueryParameterOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,

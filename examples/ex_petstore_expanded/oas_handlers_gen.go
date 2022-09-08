@@ -11,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -70,7 +71,7 @@ func (s *Server) handleAddPetRequest(args [0]string, w http.ResponseWriter, r *h
 
 	var response AddPetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "AddPet",
 			OperationID:   "addPet",
@@ -84,7 +85,7 @@ func (s *Server) handleAddPetRequest(args [0]string, w http.ResponseWriter, r *h
 			Params   = struct{}
 			Response = AddPetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -162,7 +163,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 
 	var response DeletePetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DeletePet",
 			OperationID:   "deletePet",
@@ -178,7 +179,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 			Params   = DeletePetParams
 			Response = DeletePetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -256,7 +257,7 @@ func (s *Server) handleFindPetByIDRequest(args [1]string, w http.ResponseWriter,
 
 	var response FindPetByIDRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "FindPetByID",
 			OperationID:   "find pet by id",
@@ -272,7 +273,7 @@ func (s *Server) handleFindPetByIDRequest(args [1]string, w http.ResponseWriter,
 			Params   = FindPetByIDParams
 			Response = FindPetByIDRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -350,7 +351,7 @@ func (s *Server) handleFindPetsRequest(args [0]string, w http.ResponseWriter, r 
 
 	var response FindPetsRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "FindPets",
 			OperationID:   "findPets",
@@ -367,7 +368,7 @@ func (s *Server) handleFindPetsRequest(args [0]string, w http.ResponseWriter, r 
 			Params   = FindPetsParams
 			Response = FindPetsRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,

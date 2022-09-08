@@ -11,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -70,7 +71,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 
 	var response NullableStringsOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "NullableStrings",
 			OperationID:   "nullableStrings",
@@ -84,7 +85,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 			Params   = struct{}
 			Response = NullableStringsOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -167,7 +168,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 
 	var response ObjectsWithConflictingArrayPropertyOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ObjectsWithConflictingArrayProperty",
 			OperationID:   "objectsWithConflictingArrayProperty",
@@ -181,7 +182,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 			Params   = struct{}
 			Response = ObjectsWithConflictingArrayPropertyOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -264,7 +265,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 
 	var response ObjectsWithConflictingPropertiesOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ObjectsWithConflictingProperties",
 			OperationID:   "objectsWithConflictingProperties",
@@ -278,7 +279,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 			Params   = struct{}
 			Response = ObjectsWithConflictingPropertiesOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -361,7 +362,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 
 	var response ReferencedAllofOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReferencedAllof",
 			OperationID:   "referencedAllof",
@@ -375,7 +376,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 			Params   = struct{}
 			Response = ReferencedAllofOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -458,7 +459,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 
 	var response ReferencedAllofOptionalOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "ReferencedAllofOptional",
 			OperationID:   "referencedAllofOptional",
@@ -472,7 +473,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 			Params   = struct{}
 			Response = ReferencedAllofOptionalOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -555,7 +556,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 
 	var response SimpleIntegerOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SimpleInteger",
 			OperationID:   "simpleInteger",
@@ -569,7 +570,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 			Params   = struct{}
 			Response = SimpleIntegerOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -652,7 +653,7 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 
 	var response SimpleObjectsOK
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "SimpleObjects",
 			OperationID:   "simpleObjects",
@@ -666,7 +667,7 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 			Params   = struct{}
 			Response = SimpleObjectsOK
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,

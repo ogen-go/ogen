@@ -11,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -70,7 +71,7 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 
 	var response CreateSnapshotRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "CreateSnapshot",
 			OperationID:   "createSnapshot",
@@ -84,7 +85,7 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 			Params   = struct{}
 			Response = CreateSnapshotRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -167,7 +168,7 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 
 	var response CreateSyncActionRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "CreateSyncAction",
 			OperationID:   "createSyncAction",
@@ -181,7 +182,7 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 			Params   = struct{}
 			Response = CreateSyncActionRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -245,7 +246,7 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.Respo
 
 	var response DescribeBalloonConfigRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DescribeBalloonConfig",
 			OperationID:   "describeBalloonConfig",
@@ -259,7 +260,7 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.Respo
 			Params   = struct{}
 			Response = DescribeBalloonConfigRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -323,7 +324,7 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.Respon
 
 	var response DescribeBalloonStatsRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DescribeBalloonStats",
 			OperationID:   "describeBalloonStats",
@@ -337,7 +338,7 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.Respon
 			Params   = struct{}
 			Response = DescribeBalloonStatsRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -401,7 +402,7 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWr
 
 	var response DescribeInstanceRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "DescribeInstance",
 			OperationID:   "describeInstance",
@@ -415,7 +416,7 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWr
 			Params   = struct{}
 			Response = DescribeInstanceRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -479,7 +480,7 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseW
 
 	var response GetExportVmConfigRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetExportVmConfig",
 			OperationID:   "getExportVmConfig",
@@ -493,7 +494,7 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseW
 			Params   = struct{}
 			Response = GetExportVmConfigRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -557,7 +558,7 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.Res
 
 	var response GetMachineConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "GetMachineConfiguration",
 			OperationID:   "getMachineConfiguration",
@@ -571,7 +572,7 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.Res
 			Params   = struct{}
 			Response = GetMachineConfigurationRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -654,7 +655,7 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 
 	var response LoadSnapshotRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "LoadSnapshot",
 			OperationID:   "loadSnapshot",
@@ -668,7 +669,7 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 			Params   = struct{}
 			Response = LoadSnapshotRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -749,7 +750,7 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 
 	var response MmdsConfigPutRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "MmdsConfigPut",
 			OperationID:   "",
@@ -763,7 +764,7 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 			Params   = struct{}
 			Response = MmdsConfigPutRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -825,7 +826,7 @@ func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *
 
 	var response MmdsGetRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "MmdsGet",
 			OperationID:   "",
@@ -839,7 +840,7 @@ func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *
 			Params   = struct{}
 			Response = MmdsGetRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -920,7 +921,7 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 
 	var response MmdsPatchRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "MmdsPatch",
 			OperationID:   "",
@@ -934,7 +935,7 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 			Params   = struct{}
 			Response = MmdsPatchRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1015,7 +1016,7 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 
 	var response MmdsPutRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "MmdsPut",
 			OperationID:   "",
@@ -1029,7 +1030,7 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 			Params   = struct{}
 			Response = MmdsPutRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1112,7 +1113,7 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 
 	var response PatchBalloonRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PatchBalloon",
 			OperationID:   "patchBalloon",
@@ -1126,7 +1127,7 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 			Params   = struct{}
 			Response = PatchBalloonRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1209,7 +1210,7 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 
 	var response PatchBalloonStatsIntervalRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PatchBalloonStatsInterval",
 			OperationID:   "patchBalloonStatsInterval",
@@ -1223,7 +1224,7 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 			Params   = struct{}
 			Response = PatchBalloonStatsIntervalRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1316,7 +1317,7 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 
 	var response PatchGuestDriveByIDRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PatchGuestDriveByID",
 			OperationID:   "patchGuestDriveByID",
@@ -1332,7 +1333,7 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 			Params   = PatchGuestDriveByIDParams
 			Response = PatchGuestDriveByIDRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1425,7 +1426,7 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 
 	var response PatchGuestNetworkInterfaceByIDRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PatchGuestNetworkInterfaceByID",
 			OperationID:   "patchGuestNetworkInterfaceByID",
@@ -1441,7 +1442,7 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 			Params   = PatchGuestNetworkInterfaceByIDParams
 			Response = PatchGuestNetworkInterfaceByIDRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1524,7 +1525,7 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 
 	var response PatchMachineConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PatchMachineConfiguration",
 			OperationID:   "patchMachineConfiguration",
@@ -1538,7 +1539,7 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 			Params   = struct{}
 			Response = PatchMachineConfigurationRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1621,7 +1622,7 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 
 	var response PatchVmRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PatchVm",
 			OperationID:   "patchVm",
@@ -1635,7 +1636,7 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 			Params   = struct{}
 			Response = PatchVmRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1718,7 +1719,7 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 
 	var response PutBalloonRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PutBalloon",
 			OperationID:   "putBalloon",
@@ -1732,7 +1733,7 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 			Params   = struct{}
 			Response = PutBalloonRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1815,7 +1816,7 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 
 	var response PutGuestBootSourceRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PutGuestBootSource",
 			OperationID:   "putGuestBootSource",
@@ -1829,7 +1830,7 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 			Params   = struct{}
 			Response = PutGuestBootSourceRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -1922,7 +1923,7 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 
 	var response PutGuestDriveByIDRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PutGuestDriveByID",
 			OperationID:   "putGuestDriveByID",
@@ -1938,7 +1939,7 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 			Params   = PutGuestDriveByIDParams
 			Response = PutGuestDriveByIDRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2031,7 +2032,7 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 
 	var response PutGuestNetworkInterfaceByIDRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PutGuestNetworkInterfaceByID",
 			OperationID:   "putGuestNetworkInterfaceByID",
@@ -2047,7 +2048,7 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 			Params   = PutGuestNetworkInterfaceByIDParams
 			Response = PutGuestNetworkInterfaceByIDRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2130,7 +2131,7 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 
 	var response PutGuestVsockRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PutGuestVsock",
 			OperationID:   "putGuestVsock",
@@ -2144,7 +2145,7 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 			Params   = struct{}
 			Response = PutGuestVsockRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2227,7 +2228,7 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 
 	var response PutLoggerRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PutLogger",
 			OperationID:   "putLogger",
@@ -2241,7 +2242,7 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 			Params   = struct{}
 			Response = PutLoggerRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2324,7 +2325,7 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 
 	var response PutMachineConfigurationRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PutMachineConfiguration",
 			OperationID:   "putMachineConfiguration",
@@ -2338,7 +2339,7 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 			Params   = struct{}
 			Response = PutMachineConfigurationRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
@@ -2421,7 +2422,7 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 
 	var response PutMetricsRes
 	if m := s.cfg.Middleware; m != nil {
-		mreq := MiddlewareRequest{
+		mreq := middleware.Request{
 			Context:       ctx,
 			OperationName: "PutMetrics",
 			OperationID:   "putMetrics",
@@ -2435,7 +2436,7 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 			Params   = struct{}
 			Response = PutMetricsRes
 		)
-		response, err = hookMiddleware[
+		response, err = middleware.HookMiddleware[
 			Request,
 			Params,
 			Response,
