@@ -2,14 +2,13 @@
 package parser
 
 import (
-	"sort"
-
 	"github.com/go-faster/errors"
 	yaml "github.com/go-faster/yamlx"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/location"
+	"github.com/ogen-go/ogen/internal/xmaps"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
@@ -128,14 +127,9 @@ func (p *parser) parsePathItems() error {
 		paths = map[string]struct{}{}
 
 		pathsLoc = p.rootLoc.Field("paths")
-		keys     = make([]string, 0, len(p.spec.Paths))
 	)
-	for k := range p.spec.Paths {
-		keys = append(keys, k)
-	}
-	sort.Strings(keys)
 
-	for _, path := range keys {
+	for _, path := range xmaps.SortedKeys(p.spec.Paths) {
 		item := p.spec.Paths[path]
 		if err := func() error {
 			id, err := pathID(path)

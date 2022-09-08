@@ -5,13 +5,13 @@ import (
 	"fmt"
 	"os"
 	"regexp"
-	"sort"
 	"text/template"
 
 	"github.com/go-faster/errors"
 	"golang.org/x/tools/imports"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/xmaps"
 )
 
 type TemplateConfig struct {
@@ -34,7 +34,7 @@ func (t TemplateConfig) SkipTest(typ *ir.Type) bool {
 	return t.skipTestRegex != nil && t.skipTestRegex.MatchString(typ.Name)
 }
 
-func (t TemplateConfig) collectStrings(cb func(typ *ir.Type) []string) (r []string) {
+func (t TemplateConfig) collectStrings(cb func(typ *ir.Type) []string) []string {
 	var (
 		add  func(typ *ir.Type)
 		m    = map[string]struct{}{}
@@ -81,11 +81,7 @@ func (t TemplateConfig) collectStrings(cb func(typ *ir.Type) []string) (r []stri
 		return nil
 	})
 
-	for exp := range m {
-		r = append(r, exp)
-	}
-	sort.Strings(r)
-	return r
+	return xmaps.SortedKeys(m)
 }
 
 // RegexStrings returns slice of all unique regex validators.

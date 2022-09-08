@@ -3,6 +3,8 @@ package ir
 import (
 	"fmt"
 	"sort"
+
+	"github.com/ogen-go/ogen/internal/xmaps"
 )
 
 func (t *Type) CanHaveMethods() bool {
@@ -54,12 +56,7 @@ func (t *Type) Methods() []string {
 		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
 	}
 
-	var result []string
-	for m := range ms {
-		result = append(result, m)
-	}
-	sort.Strings(result)
-	return result
+	return xmaps.SortedKeys(ms)
 }
 
 func (t *Type) ListImplementations() []*Type {

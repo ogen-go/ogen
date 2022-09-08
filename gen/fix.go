@@ -2,43 +2,44 @@ package gen
 
 import (
 	"reflect"
-	"sort"
 
 	"github.com/go-faster/errors"
+	"golang.org/x/exp/maps"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/xmaps"
 )
 
 // Example:
-// ...
-// responses:
-//   200:
-//     contents:
-//       application/json:
-//         ref: #/components/schemas/Foo
-//   202:
-//     contents:
-//       application/json:
-//         ref: #/components/schemas/Foo
+//
+//	responses:
+//		200:
+//		  contents:
+//		    application/json:
+//		      ref: #/components/schemas/Foo
+//		202:
+//		  contents:
+//		    application/json:
+//		      ref: #/components/schemas/Foo
 //
 // This response refers to the same schema for different
 // status codes, and it will cause a collision:
 //
-// func encodeResponse(resp FooResponse) {
-//     switch resp.(type) {
-//	   case *Foo:
-//     case *Foo:
-//     }
-// }
+//	func encodeResponse(resp FooResponse) {
+//	    switch resp.(type) {
+//		case *Foo:
+//	    case *Foo:
+//	    }
+//	}
 //
 // To prevent collision we wrap referenced schema with aliases
 // and use them instead.
 //
-// type FooResponseOK Foo
-// func(*FooResponseOK) FooResponse() {}
+//	type FooResponseOK Foo
+//	func(*FooResponseOK) FooResponse() {}
 //
-// type FooResponseAccepted Foo
-// func(*FooResponseAccepted) FooResponse() {}
+//	type FooResponseAccepted Foo
+//	func(*FooResponseAccepted) FooResponse() {}
 //
 // Referring to the same schema in different content types
 // also can cause a collision and it will be fixed in the same way.
@@ -52,19 +53,14 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 	// (in case of referenced responses), we copy the response.
 	op.Responses = cloneResponse(op.Responses)
 
-	var statusCodes []int
-	for code := range op.Responses.StatusCode {
-		statusCodes = append(statusCodes, code)
-	}
-	sort.Ints(statusCodes)
-
+	statusCodes := xmaps.SortedKeys(op.Responses.StatusCode)
 	type candidate struct {
 		renameTo string
 		encoding ir.Encoding
 		typ      *ir.Type
 
 		replaceNoc bool
-		replaceCT  string
+		replaceCT  ir.ContentType
 		response   *ir.Response
 	}
 
@@ -101,30 +97,22 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 			}
 
 			var (
-				lcontents []string
-				rcontents []string
+				lcontents = xmaps.SortedKeys(lresp.Contents)
+				rcontents = xmaps.SortedKeys(rresp.Contents)
 			)
-			for ct := range lresp.Contents {
-				lcontents = append(lcontents, string(ct))
-			}
-			for ct := range rresp.Contents {
-				rcontents = append(rcontents, string(ct))
-			}
-			sort.Strings(lcontents)
-			sort.Strings(rcontents)
 			for _, lct := range lcontents {
 				for _, rct := range rcontents {
 					if lcode == rcode && lct == rct {
 						continue
 					}
-					lmedia, rmedia := lresp.Contents[ir.ContentType(lct)], rresp.Contents[ir.ContentType(rct)]
+					lmedia, rmedia := lresp.Contents[lct], rresp.Contents[rct]
 					ltype, rtype := lmedia.Type, rmedia.Type
 					if reflect.DeepEqual(ltype, rtype) {
-						lname, err := pascal(op.Name, lct, statusText(lcode))
+						lname, err := pascal(op.Name, string(lct), statusText(lcode))
 						if err != nil {
 							return errors.Wrap(err, "lname")
 						}
-						rname, err := pascal(op.Name, rct, statusText(rcode))
+						rname, err := pascal(op.Name, string(rct), statusText(rcode))
 						if err != nil {
 							return errors.Wrap(err, "rname")
 						}
@@ -162,7 +150,7 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 			continue
 		}
 
-		candidate.response.Contents[ir.ContentType(candidate.replaceCT)] = ir.Media{
+		candidate.response.Contents[candidate.replaceCT] = ir.Media{
 			Encoding: candidate.encoding,
 			Type:     alias,
 		}
@@ -179,7 +167,7 @@ func cloneResponse(r *ir.Responses) *ir.Responses {
 
 		return &ir.Response{
 			NoContent:      r.NoContent,
-			Contents:       cloneContents(r.Contents),
+			Contents:       maps.Clone(r.Contents),
 			Headers:        r.Headers,
 			WithStatusCode: r.WithStatusCode,
 			WithHeaders:    r.WithHeaders,
@@ -215,34 +203,31 @@ func fixEqualRequests(ctx *genctx, op *ir.Operation) error {
 
 	type candidate struct {
 		renameTo string
-		ctype    string
+		ctype    ir.ContentType
 		encoding ir.Encoding
 		t        *ir.Type
 	}
-	var candidates []candidate
-
-	var contents []string
-	for ct := range op.Request.Contents {
-		contents = append(contents, string(ct))
-	}
-	sort.Strings(contents)
+	var (
+		candidates []candidate
+		contents   = xmaps.SortedKeys(op.Request.Contents)
+	)
 
 	for _, lcontent := range contents {
-		lmedia := op.Request.Contents[ir.ContentType(lcontent)]
+		lmedia := op.Request.Contents[lcontent]
 		ltype := lmedia.Type
 		for _, rcontent := range contents {
 			if lcontent == rcontent {
 				continue
 			}
 
-			rmedia := op.Request.Contents[ir.ContentType(rcontent)]
+			rmedia := op.Request.Contents[rcontent]
 			rtype := rmedia.Type
 			if reflect.DeepEqual(ltype, rtype) {
-				lname, err := pascal(op.Name, lcontent)
+				lname, err := pascal(op.Name, string(lcontent))
 				if err != nil {
 					return errors.Wrap(err, "lname")
 				}
-				rname, err := pascal(op.Name, rcontent)
+				rname, err := pascal(op.Name, string(rcontent))
 				if err != nil {
 					return errors.Wrap(err, "rname")
 				}
@@ -270,7 +255,7 @@ func fixEqualRequests(ctx *genctx, op *ir.Operation) error {
 		// g.saveType(alias)
 		ctx.local.types[alias.Name] = alias
 
-		op.Request.Contents[ir.ContentType(candidate.ctype)] = ir.Media{
+		op.Request.Contents[candidate.ctype] = ir.Media{
 			Encoding: candidate.encoding,
 			Type:     alias,
 		}
@@ -282,19 +267,7 @@ func fixEqualRequests(ctx *genctx, op *ir.Operation) error {
 func cloneRequest(r *ir.Request) *ir.Request {
 	return &ir.Request{
 		Type:     r.Type,
-		Contents: cloneContents(r.Contents),
+		Contents: maps.Clone(r.Contents),
 		Spec:     r.Spec,
 	}
-}
-
-func cloneContents(c map[ir.ContentType]ir.Media) map[ir.ContentType]ir.Media {
-	if c == nil {
-		return nil
-	}
-
-	result := make(map[ir.ContentType]ir.Media, len(c))
-	for ct, m := range c {
-		result[ct] = m
-	}
-	return result
 }

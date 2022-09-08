@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"mime"
 	"path"
-	"sort"
 
 	"github.com/go-faster/errors"
 	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/xmaps"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -189,14 +189,10 @@ func (g *Generator) generateContents(
 		result = make(map[ir.ContentType]ir.Media, len(contents))
 		names  = make(map[ir.ContentType]string, len(contents))
 
-		keys        = make([]string, 0, len(contents))
+		keys        = xmaps.SortedKeys(contents)
 		unsupported []string
 		lastErr     error
 	)
-	for k := range contents {
-		keys = append(keys, k)
-	}
-	sort.Strings(keys)
 
 	for _, contentType := range keys {
 		media := contents[contentType]
