@@ -7,7 +7,6 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
-	"strconv"
 	"strings"
 	"testing"
 
@@ -41,7 +40,7 @@ func Logging(logger *zap.Logger) middleware.Middleware {
 	}
 }
 
-func ModifyRequestBody(logger *zap.Logger) middleware.Middleware {
+func ModifyRequest(logger *zap.Logger) middleware.Middleware {
 	return func(
 		req middleware.Request,
 		next func(req middleware.Request) (middleware.Response, error),
@@ -49,14 +48,14 @@ func ModifyRequestBody(logger *zap.Logger) middleware.Middleware {
 		switch body := req.Body.(type) {
 		case api.PetUploadAvatarByIDReq:
 			if v, ok := req.Params["petID"].(int64); ok {
-				logger.Info("Modifying request body", zap.Int64("petID", v))
-				prefix := strconv.FormatInt(v, 10)
+				logger.Info("Modifying request", zap.Int64("petID", v))
 				req.Body = api.PetUploadAvatarByIDReq{
-					Data: io.MultiReader(strings.NewReader(prefix), body.Data),
+					Data: io.MultiReader(strings.NewReader("prefix"), body.Data),
 				}
+				req.Params["petID"] = v + 1
 			}
 		default:
-			logger.Info("Skipping request body modification")
+			logger.Info("Skipping request modification")
 		}
 		return next(req)
 	}
@@ -79,9 +78,15 @@ func (s *testMiddleware) PetUploadAvatarByID(
 		}, nil
 	}
 
+	if expected := petExistingID + 1; params.PetID != expected {
+		return &api.ErrorStatusCode{
+			StatusCode: http.StatusBadRequest,
+			Response:   api.Error{Message: fmt.Sprintf("expected %d, got %d", expected, params.PetID)},
+		}, nil
+	}
+
 	// check that prefix was added.
-	id := strconv.FormatInt(params.PetID, 10)
-	expected := append([]byte(id), petAvatar...)
+	expected := append([]byte("prefix"), petAvatar...)
 	if !bytes.Equal(avatar, expected) {
 		return &api.ErrorStatusCode{
 			StatusCode: http.StatusBadRequest,
@@ -107,7 +112,7 @@ func TestMiddleware(t *testing.T) {
 	h, err := api.NewServer(handler, handler,
 		api.WithMiddleware(
 			Logging(logger.Named("logger")),
-			ModifyRequestBody(logger.Named("modify")),
+			ModifyRequest(logger.Named("modify")),
 		),
 	)
 	a.NoError(err)
