@@ -1,6 +1,15 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}
 {{ define "parameter_decoder" }}
 {{ if $.Params }}
+func unpack{{ $.Name }}Params(packed map[string]any) (params {{ $.Name }}Params) {
+	{{- range $p := $.Params }}
+	if v, ok := packed[{{ quote $p.Spec.Name }}]; ok {
+		params.{{ $p.Name }}, _ = v.({{ $p.Type.Go }})
+	}
+	{{- end }}
+	return params
+}
+
 func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, r *http.Request) (params {{ $.Name }}Params, _ error) {
 	{{- if $.HasQueryParams }}
 		q := uri.NewQueryDecoder(r.URL.Query())

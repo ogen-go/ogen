@@ -118,9 +118,9 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 			Response,
 		](
 			m,
-			{{ if $op.Params }}params{{ else }}struct{}{}{{ end }},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			{{ if $op.Params }}unpack{{ $op.Name }}Params{{ else }}nil{{ end }},
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.{{ $op.Name }}(ctx{{ if $op.Request }}, request{{ end }}{{ if $op.Params }}, params{{ end }})
 			},
 		)

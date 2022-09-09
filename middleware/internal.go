@@ -7,13 +7,17 @@ import "context"
 // NB: this is an internal func, not intended for public use.
 func HookMiddleware[RequestType, ParamsType, ResponseType any](
 	m Middleware,
-	params ParamsType,
 	req Request,
-	cb func(context.Context, ParamsType, RequestType) (ResponseType, error),
+	unpack func(map[string]any) ParamsType,
+	cb func(context.Context, RequestType, ParamsType) (ResponseType, error),
 ) (r ResponseType, err error) {
 	next := func(req Request) (Response, error) {
 		request := req.Body.(RequestType)
-		response, err := cb(req.Context, params, request)
+		var params ParamsType
+		if unpack != nil {
+			params = unpack(req.Params)
+		}
+		response, err := cb(req.Context, request, params)
 		if err != nil {
 			return Response{}, err
 		}
