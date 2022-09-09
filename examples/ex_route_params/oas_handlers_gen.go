@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -10,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -62,7 +64,40 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 		return
 	}
 
-	response, err := s.h.DataGet(ctx, params)
+	var response string
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "DataGet",
+			OperationID:   "dataGet",
+			Body:          nil,
+			Params: map[string]any{
+				"id":  params.ID,
+				"key": params.Key,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = DataGetParams
+			Response = string
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackDataGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.DataGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.DataGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -110,7 +145,37 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, 
 		err error
 	)
 
-	response, err := s.h.DataGetAny(ctx)
+	var response string
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "DataGetAny",
+			OperationID:   "dataGetAny",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = string
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.DataGetAny(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.DataGetAny(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -172,7 +237,39 @@ func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.h.DataGetID(ctx, params)
+	var response string
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "DataGetID",
+			OperationID:   "dataGetID",
+			Body:          nil,
+			Params: map[string]any{
+				"id": params.ID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = DataGetIDParams
+			Response = string
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackDataGetIDParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.DataGetID(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.DataGetID(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)

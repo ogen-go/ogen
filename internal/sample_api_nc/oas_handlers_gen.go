@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -10,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -62,7 +64,43 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 		return
 	}
 
-	response, err := s.h.DataGetFormat(ctx, params)
+	var response string
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "DataGetFormat",
+			OperationID:   "dataGetFormat",
+			Body:          nil,
+			Params: map[string]any{
+				"id":  params.ID,
+				"foo": params.Foo,
+				"bar": params.Bar,
+				"baz": params.Baz,
+				"kek": params.Kek,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = DataGetFormatParams
+			Response = string
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackDataGetFormatParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.DataGetFormat(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.DataGetFormat(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -139,7 +177,39 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 		}
 	}()
 
-	response, err := s.h.DefaultTest(ctx, request, params)
+	var response int32
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "DefaultTest",
+			OperationID:   "defaultTest",
+			Body:          request,
+			Params: map[string]any{
+				"default": params.Default,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = DefaultTest
+			Params   = DefaultTestParams
+			Response = int32
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackDefaultTestParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.DefaultTest(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.DefaultTest(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -187,7 +257,37 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 		err error
 	)
 
-	response, err := s.h.ErrorGet(ctx)
+	var response ErrorStatusCode
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ErrorGet",
+			OperationID:   "errorGet",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = ErrorStatusCode
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ErrorGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.ErrorGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -249,7 +349,40 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.h.FoobarGet(ctx, params)
+	var response FoobarGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "FoobarGet",
+			OperationID:   "foobarGet",
+			Body:          nil,
+			Params: map[string]any{
+				"inlinedParam": params.InlinedParam,
+				"skip":         params.Skip,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = FoobarGetParams
+			Response = FoobarGetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackFoobarGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.FoobarGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.FoobarGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -316,7 +449,37 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 		}
 	}()
 
-	response, err := s.h.FoobarPost(ctx, request)
+	var response FoobarPostRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "FoobarPost",
+			OperationID:   "foobarPost",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptPet
+			Params   = struct{}
+			Response = FoobarPostRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.FoobarPost(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.FoobarPost(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -362,7 +525,37 @@ func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r
 		err error
 	)
 
-	response, err := s.h.FoobarPut(ctx)
+	var response FoobarPutDef
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "FoobarPut",
+			OperationID:   "",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = FoobarPutDef
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.FoobarPut(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.FoobarPut(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -424,7 +617,39 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 		return
 	}
 
-	response, err := s.h.GetHeader(ctx, params)
+	var response Hash
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetHeader",
+			OperationID:   "getHeader",
+			Body:          nil,
+			Params: map[string]any{
+				"x-auth-token": params.XAuthToken,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = GetHeaderParams
+			Response = Hash
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackGetHeaderParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetHeader(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.GetHeader(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -472,7 +697,37 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.
 		err error
 	)
 
-	response, err := s.h.NoAdditionalPropertiesTest(ctx)
+	var response NoAdditionalPropertiesTest
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "NoAdditionalPropertiesTest",
+			OperationID:   "noAdditionalPropertiesTest",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = NoAdditionalPropertiesTest
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.NoAdditionalPropertiesTest(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.NoAdditionalPropertiesTest(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -520,7 +775,37 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 		err error
 	)
 
-	response, err := s.h.NullableDefaultResponse(ctx)
+	var response NilIntStatusCode
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "NullableDefaultResponse",
+			OperationID:   "nullableDefaultResponse",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = NilIntStatusCode
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.NullableDefaultResponse(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.NullableDefaultResponse(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -587,7 +872,37 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 		}
 	}()
 
-	response, err := s.h.OneofBug(ctx, request)
+	var response OneofBugOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "OneofBug",
+			OperationID:   "oneofBug",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OneOfBugs
+			Params   = struct{}
+			Response = OneofBugOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.OneofBug(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.OneofBug(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -633,7 +948,37 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.Resp
 		err error
 	)
 
-	response, err := s.h.PatternRecursiveMapGet(ctx)
+	var response PatternRecursiveMap
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "PatternRecursiveMapGet",
+			OperationID:   "",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = PatternRecursiveMap
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.PatternRecursiveMapGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.PatternRecursiveMapGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -700,7 +1045,37 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 		}
 	}()
 
-	response, err := s.h.PetCreate(ctx, request)
+	var response Pet
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "PetCreate",
+			OperationID:   "petCreate",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptPet
+			Params   = struct{}
+			Response = Pet
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.PetCreate(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.PetCreate(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -762,7 +1137,39 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.PetFriendsNamesByID(ctx, params)
+	var response []string
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "PetFriendsNamesByID",
+			OperationID:   "petFriendsNamesByID",
+			Body:          nil,
+			Params: map[string]any{
+				"id": params.ID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PetFriendsNamesByIDParams
+			Response = []string
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackPetFriendsNamesByIDParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.PetFriendsNamesByID(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PetFriendsNamesByID(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -824,7 +1231,42 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 		return
 	}
 
-	response, err := s.h.PetGet(ctx, params)
+	var response PetGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "PetGet",
+			OperationID:   "petGet",
+			Body:          nil,
+			Params: map[string]any{
+				"petID":   params.PetID,
+				"x-tags":  params.XTags,
+				"x-scope": params.XScope,
+				"token":   params.Token,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PetGetParams
+			Response = PetGetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackPetGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.PetGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PetGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -886,7 +1328,39 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.PetGetAvatarByID(ctx, params)
+	var response PetGetAvatarByIDRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "PetGetAvatarByID",
+			OperationID:   "petGetAvatarByID",
+			Body:          nil,
+			Params: map[string]any{
+				"petID": params.PetID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PetGetAvatarByIDParams
+			Response = PetGetAvatarByIDRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackPetGetAvatarByIDParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.PetGetAvatarByID(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PetGetAvatarByID(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -948,7 +1422,39 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 		return
 	}
 
-	response, err := s.h.PetGetAvatarByName(ctx, params)
+	var response PetGetAvatarByNameRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "PetGetAvatarByName",
+			OperationID:   "petGetAvatarByName",
+			Body:          nil,
+			Params: map[string]any{
+				"name": params.Name,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PetGetAvatarByNameParams
+			Response = PetGetAvatarByNameRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackPetGetAvatarByNameParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.PetGetAvatarByName(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PetGetAvatarByName(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1010,7 +1516,39 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 		return
 	}
 
-	response, err := s.h.PetGetByName(ctx, params)
+	var response Pet
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "PetGetByName",
+			OperationID:   "petGetByName",
+			Body:          nil,
+			Params: map[string]any{
+				"name": params.Name,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PetGetByNameParams
+			Response = Pet
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackPetGetByNameParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.PetGetByName(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PetGetByName(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1072,7 +1610,39 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 		return
 	}
 
-	response, err := s.h.PetNameByID(ctx, params)
+	var response string
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "PetNameByID",
+			OperationID:   "petNameByID",
+			Body:          nil,
+			Params: map[string]any{
+				"id": params.ID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = PetNameByIDParams
+			Response = string
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackPetNameByIDParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.PetNameByID(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.PetNameByID(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1137,7 +1707,37 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 		}
 	}()
 
-	response, err := s.h.PetUpdateNameAliasPost(ctx, request)
+	var response PetUpdateNameAliasPostDef
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "PetUpdateNameAliasPost",
+			OperationID:   "",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptPetName
+			Params   = struct{}
+			Response = PetUpdateNameAliasPostDef
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.PetUpdateNameAliasPost(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.PetUpdateNameAliasPost(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1202,7 +1802,37 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.PetUpdateNamePost(ctx, request)
+	var response PetUpdateNamePostDef
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "PetUpdateNamePost",
+			OperationID:   "",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptString
+			Params   = struct{}
+			Response = PetUpdateNamePostDef
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.PetUpdateNamePost(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.PetUpdateNamePost(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1279,7 +1909,39 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 		}
 	}()
 
-	response, err := s.h.PetUploadAvatarByID(ctx, request, params)
+	var response PetUploadAvatarByIDRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "PetUploadAvatarByID",
+			OperationID:   "petUploadAvatarByID",
+			Body:          request,
+			Params: map[string]any{
+				"petID": params.PetID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = PetUploadAvatarByIDReq
+			Params   = PetUploadAvatarByIDParams
+			Response = PetUploadAvatarByIDRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackPetUploadAvatarByIDParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.PetUploadAvatarByID(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.PetUploadAvatarByID(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1325,7 +1987,37 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseW
 		err error
 	)
 
-	response, err := s.h.RecursiveArrayGet(ctx)
+	var response RecursiveArray
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "RecursiveArrayGet",
+			OperationID:   "",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = RecursiveArray
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.RecursiveArrayGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.RecursiveArrayGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1371,7 +2063,37 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 		err error
 	)
 
-	response, err := s.h.RecursiveMapGet(ctx)
+	var response RecursiveMap
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "RecursiveMapGet",
+			OperationID:   "",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = RecursiveMap
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.RecursiveMapGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.RecursiveMapGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1434,7 +2156,37 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 		return
 	}
 
-	response, err := s.h.SecurityTest(ctx)
+	var response string
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "SecurityTest",
+			OperationID:   "securityTest",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = string
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.SecurityTest(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.SecurityTest(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1480,7 +2232,37 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWri
 		err error
 	)
 
-	response, err := s.h.StringIntMapGet(ctx)
+	var response StringIntMap
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "StringIntMapGet",
+			OperationID:   "",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = StringIntMap
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.StringIntMapGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.StringIntMapGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1542,7 +2324,39 @@ func (s *Server) handleTestContentParameterRequest(args [0]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.TestContentParameter(ctx, params)
+	var response string
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestContentParameter",
+			OperationID:   "testContentParameter",
+			Body:          nil,
+			Params: map[string]any{
+				"param": params.Param,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TestContentParameterParams
+			Response = string
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackTestContentParameterParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestContentParameter(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TestContentParameter(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1609,7 +2423,37 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 		}
 	}()
 
-	response, err := s.h.TestFloatValidation(ctx, request)
+	var response TestFloatValidationOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestFloatValidation",
+			OperationID:   "testFloatValidation",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = TestFloatValidation
+			Params   = struct{}
+			Response = TestFloatValidationOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestFloatValidation(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestFloatValidation(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1657,7 +2501,37 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, w http.Response
 		err error
 	)
 
-	response, err := s.h.TestNullableOneofs(ctx)
+	var response TestNullableOneofsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestNullableOneofs",
+			OperationID:   "testNullableOneofs",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = TestNullableOneofsRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestNullableOneofs(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.TestNullableOneofs(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1719,7 +2593,40 @@ func (s *Server) handleTestObjectQueryParameterRequest(args [0]string, w http.Re
 		return
 	}
 
-	response, err := s.h.TestObjectQueryParameter(ctx, params)
+	var response TestObjectQueryParameterOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestObjectQueryParameter",
+			OperationID:   "testObjectQueryParameter",
+			Body:          nil,
+			Params: map[string]any{
+				"formObject": params.FormObject,
+				"deepObject": params.DeepObject,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = TestObjectQueryParameterParams
+			Response = TestObjectQueryParameterOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackTestObjectQueryParameterParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestObjectQueryParameter(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.TestObjectQueryParameter(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)

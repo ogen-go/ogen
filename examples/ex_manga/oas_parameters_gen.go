@@ -17,6 +17,13 @@ type GetBookParams struct {
 	BookID int
 }
 
+func unpackGetBookParams(packed map[string]any) (params GetBookParams) {
+	if v, ok := packed["book_id"]; ok {
+		params.BookID, _ = v.(int)
+	}
+	return params
+}
+
 func decodeGetBookParams(args [1]string, r *http.Request) (params GetBookParams, _ error) {
 	// Decode path: book_id.
 	{
@@ -74,6 +81,16 @@ type GetPageCoverImageParams struct {
 	MediaID int
 	// Image format.
 	Format string
+}
+
+func unpackGetPageCoverImageParams(packed map[string]any) (params GetPageCoverImageParams) {
+	if v, ok := packed["media_id"]; ok {
+		params.MediaID, _ = v.(int)
+	}
+	if v, ok := packed["format"]; ok {
+		params.Format, _ = v.(string)
+	}
+	return params
 }
 
 func decodeGetPageCoverImageParams(args [2]string, r *http.Request) (params GetPageCoverImageParams, _ error) {
@@ -171,6 +188,19 @@ type GetPageImageParams struct {
 	Page int
 	// Image format.
 	Format string
+}
+
+func unpackGetPageImageParams(packed map[string]any) (params GetPageImageParams) {
+	if v, ok := packed["media_id"]; ok {
+		params.MediaID, _ = v.(int)
+	}
+	if v, ok := packed["page"]; ok {
+		params.Page, _ = v.(int)
+	}
+	if v, ok := packed["format"]; ok {
+		params.Format, _ = v.(string)
+	}
+	return params
 }
 
 func decodeGetPageImageParams(args [3]string, r *http.Request) (params GetPageImageParams, _ error) {
@@ -316,6 +346,19 @@ type GetPageThumbnailImageParams struct {
 	Page int
 	// Image format.
 	Format string
+}
+
+func unpackGetPageThumbnailImageParams(packed map[string]any) (params GetPageThumbnailImageParams) {
+	if v, ok := packed["media_id"]; ok {
+		params.MediaID, _ = v.(int)
+	}
+	if v, ok := packed["page"]; ok {
+		params.Page, _ = v.(int)
+	}
+	if v, ok := packed["format"]; ok {
+		params.Format, _ = v.(string)
+	}
+	return params
 }
 
 func decodeGetPageThumbnailImageParams(args [3]string, r *http.Request) (params GetPageThumbnailImageParams, _ error) {
@@ -469,6 +512,16 @@ type SearchParams struct {
 	Page OptInt
 }
 
+func unpackSearchParams(packed map[string]any) (params SearchParams) {
+	if v, ok := packed["query"]; ok {
+		params.Query, _ = v.(string)
+	}
+	if v, ok := packed["page"]; ok {
+		params.Page, _ = v.(OptInt)
+	}
+	return params
+}
+
 func decodeSearchParams(args [0]string, r *http.Request) (params SearchParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: query.
@@ -542,6 +595,16 @@ type SearchByTagIDParams struct {
 	TagID int
 	// Number of result page.
 	Page OptInt
+}
+
+func unpackSearchByTagIDParams(packed map[string]any) (params SearchByTagIDParams) {
+	if v, ok := packed["tag_id"]; ok {
+		params.TagID, _ = v.(int)
+	}
+	if v, ok := packed["page"]; ok {
+		params.Page, _ = v.(OptInt)
+	}
+	return params
 }
 
 func decodeSearchByTagIDParams(args [0]string, r *http.Request) (params SearchByTagIDParams, _ error) {

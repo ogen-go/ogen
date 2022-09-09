@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -10,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -63,7 +65,37 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.GetAPIVersions(ctx)
+	var response GetAPIVersionsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetAPIVersions",
+			OperationID:   "getAPIVersions",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetAPIVersionsRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetAPIVersions(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetAPIVersions(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -126,7 +158,37 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w
 		return
 	}
 
-	response, err := s.h.GetAdmissionregistrationAPIGroup(ctx)
+	var response GetAdmissionregistrationAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetAdmissionregistrationAPIGroup",
+			OperationID:   "getAdmissionregistrationAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetAdmissionregistrationAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetAdmissionregistrationAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetAdmissionregistrationAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -189,7 +251,37 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 		return
 	}
 
-	response, err := s.h.GetAdmissionregistrationV1APIResources(ctx)
+	var response GetAdmissionregistrationV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetAdmissionregistrationV1APIResources",
+			OperationID:   "getAdmissionregistrationV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetAdmissionregistrationV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetAdmissionregistrationV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetAdmissionregistrationV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -252,7 +344,37 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.Re
 		return
 	}
 
-	response, err := s.h.GetApiextensionsAPIGroup(ctx)
+	var response GetApiextensionsAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetApiextensionsAPIGroup",
+			OperationID:   "getApiextensionsAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetApiextensionsAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetApiextensionsAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetApiextensionsAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -315,7 +437,37 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w h
 		return
 	}
 
-	response, err := s.h.GetApiextensionsV1APIResources(ctx)
+	var response GetApiextensionsV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetApiextensionsV1APIResources",
+			OperationID:   "getApiextensionsV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetApiextensionsV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetApiextensionsV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetApiextensionsV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -378,7 +530,37 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.
 		return
 	}
 
-	response, err := s.h.GetApiregistrationAPIGroup(ctx)
+	var response GetApiregistrationAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetApiregistrationAPIGroup",
+			OperationID:   "getApiregistrationAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetApiregistrationAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetApiregistrationAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetApiregistrationAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -441,7 +623,37 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w
 		return
 	}
 
-	response, err := s.h.GetApiregistrationV1APIResources(ctx)
+	var response GetApiregistrationV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetApiregistrationV1APIResources",
+			OperationID:   "getApiregistrationV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetApiregistrationV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetApiregistrationV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetApiregistrationV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -504,7 +716,37 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.GetAppsAPIGroup(ctx)
+	var response GetAppsAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetAppsAPIGroup",
+			OperationID:   "getAppsAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetAppsAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetAppsAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetAppsAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -567,7 +809,37 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.GetAppsV1APIResources(ctx)
+	var response GetAppsV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetAppsV1APIResources",
+			OperationID:   "getAppsV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetAppsV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetAppsV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetAppsV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -630,7 +902,37 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.R
 		return
 	}
 
-	response, err := s.h.GetAuthenticationAPIGroup(ctx)
+	var response GetAuthenticationAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetAuthenticationAPIGroup",
+			OperationID:   "getAuthenticationAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetAuthenticationAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetAuthenticationAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetAuthenticationAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -693,7 +995,37 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w 
 		return
 	}
 
-	response, err := s.h.GetAuthenticationV1APIResources(ctx)
+	var response GetAuthenticationV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetAuthenticationV1APIResources",
+			OperationID:   "getAuthenticationV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetAuthenticationV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetAuthenticationV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetAuthenticationV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -756,7 +1088,37 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.Re
 		return
 	}
 
-	response, err := s.h.GetAuthorizationAPIGroup(ctx)
+	var response GetAuthorizationAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetAuthorizationAPIGroup",
+			OperationID:   "getAuthorizationAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetAuthorizationAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetAuthorizationAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetAuthorizationAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -819,7 +1181,37 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w h
 		return
 	}
 
-	response, err := s.h.GetAuthorizationV1APIResources(ctx)
+	var response GetAuthorizationV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetAuthorizationV1APIResources",
+			OperationID:   "getAuthorizationV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetAuthorizationV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetAuthorizationV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetAuthorizationV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -882,7 +1274,37 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.GetAutoscalingAPIGroup(ctx)
+	var response GetAutoscalingAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetAutoscalingAPIGroup",
+			OperationID:   "getAutoscalingAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetAutoscalingAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetAutoscalingAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetAutoscalingAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -945,7 +1367,37 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w htt
 		return
 	}
 
-	response, err := s.h.GetAutoscalingV1APIResources(ctx)
+	var response GetAutoscalingV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetAutoscalingV1APIResources",
+			OperationID:   "getAutoscalingV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetAutoscalingV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetAutoscalingV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetAutoscalingV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1008,7 +1460,37 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 		return
 	}
 
-	response, err := s.h.GetAutoscalingV2beta1APIResources(ctx)
+	var response GetAutoscalingV2beta1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetAutoscalingV2beta1APIResources",
+			OperationID:   "getAutoscalingV2beta1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetAutoscalingV2beta1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetAutoscalingV2beta1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetAutoscalingV2beta1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1071,7 +1553,37 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 		return
 	}
 
-	response, err := s.h.GetAutoscalingV2beta2APIResources(ctx)
+	var response GetAutoscalingV2beta2APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetAutoscalingV2beta2APIResources",
+			OperationID:   "getAutoscalingV2beta2APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetAutoscalingV2beta2APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetAutoscalingV2beta2APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetAutoscalingV2beta2APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1134,7 +1646,37 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWr
 		return
 	}
 
-	response, err := s.h.GetBatchAPIGroup(ctx)
+	var response GetBatchAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetBatchAPIGroup",
+			OperationID:   "getBatchAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetBatchAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetBatchAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetBatchAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1197,7 +1739,37 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.GetBatchV1APIResources(ctx)
+	var response GetBatchV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetBatchV1APIResources",
+			OperationID:   "getBatchV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetBatchV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetBatchV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetBatchV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1260,7 +1832,37 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http
 		return
 	}
 
-	response, err := s.h.GetBatchV1beta1APIResources(ctx)
+	var response GetBatchV1beta1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetBatchV1beta1APIResources",
+			OperationID:   "getBatchV1beta1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetBatchV1beta1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetBatchV1beta1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetBatchV1beta1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1323,7 +1925,37 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.Res
 		return
 	}
 
-	response, err := s.h.GetCertificatesAPIGroup(ctx)
+	var response GetCertificatesAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetCertificatesAPIGroup",
+			OperationID:   "getCertificatesAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetCertificatesAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetCertificatesAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetCertificatesAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1386,7 +2018,37 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w ht
 		return
 	}
 
-	response, err := s.h.GetCertificatesV1APIResources(ctx)
+	var response GetCertificatesV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetCertificatesV1APIResources",
+			OperationID:   "getCertificatesV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetCertificatesV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetCertificatesV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetCertificatesV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1449,7 +2111,37 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.GetCodeVersion(ctx)
+	var response GetCodeVersionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetCodeVersion",
+			OperationID:   "getCodeVersion",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetCodeVersionRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetCodeVersion(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetCodeVersion(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1512,7 +2204,37 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.Res
 		return
 	}
 
-	response, err := s.h.GetCoordinationAPIGroup(ctx)
+	var response GetCoordinationAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetCoordinationAPIGroup",
+			OperationID:   "getCoordinationAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetCoordinationAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetCoordinationAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetCoordinationAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1575,7 +2297,37 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w ht
 		return
 	}
 
-	response, err := s.h.GetCoordinationV1APIResources(ctx)
+	var response GetCoordinationV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetCoordinationV1APIResources",
+			OperationID:   "getCoordinationV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetCoordinationV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetCoordinationV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetCoordinationV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1638,7 +2390,37 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.Response
 		return
 	}
 
-	response, err := s.h.GetCoreAPIVersions(ctx)
+	var response GetCoreAPIVersionsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetCoreAPIVersions",
+			OperationID:   "getCoreAPIVersions",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetCoreAPIVersionsRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetCoreAPIVersions(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetCoreAPIVersions(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1701,7 +2483,37 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.GetCoreV1APIResources(ctx)
+	var response GetCoreV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetCoreV1APIResources",
+			OperationID:   "getCoreV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetCoreV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetCoreV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetCoreV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1764,7 +2576,37 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.GetDiscoveryAPIGroup(ctx)
+	var response GetDiscoveryAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetDiscoveryAPIGroup",
+			OperationID:   "getDiscoveryAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetDiscoveryAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetDiscoveryAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetDiscoveryAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1827,7 +2669,37 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.
 		return
 	}
 
-	response, err := s.h.GetDiscoveryV1APIResources(ctx)
+	var response GetDiscoveryV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetDiscoveryV1APIResources",
+			OperationID:   "getDiscoveryV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetDiscoveryV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetDiscoveryV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetDiscoveryV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1890,7 +2762,37 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w 
 		return
 	}
 
-	response, err := s.h.GetDiscoveryV1beta1APIResources(ctx)
+	var response GetDiscoveryV1beta1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetDiscoveryV1beta1APIResources",
+			OperationID:   "getDiscoveryV1beta1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetDiscoveryV1beta1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetDiscoveryV1beta1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetDiscoveryV1beta1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -1953,7 +2855,37 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.GetEventsAPIGroup(ctx)
+	var response GetEventsAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetEventsAPIGroup",
+			OperationID:   "getEventsAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetEventsAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetEventsAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetEventsAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2016,7 +2948,37 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.Res
 		return
 	}
 
-	response, err := s.h.GetEventsV1APIResources(ctx)
+	var response GetEventsV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetEventsV1APIResources",
+			OperationID:   "getEventsV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetEventsV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetEventsV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetEventsV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2079,7 +3041,37 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w htt
 		return
 	}
 
-	response, err := s.h.GetEventsV1beta1APIResources(ctx)
+	var response GetEventsV1beta1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetEventsV1beta1APIResources",
+			OperationID:   "getEventsV1beta1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetEventsV1beta1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetEventsV1beta1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetEventsV1beta1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2142,7 +3134,37 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w 
 		return
 	}
 
-	response, err := s.h.GetFlowcontrolApiserverAPIGroup(ctx)
+	var response GetFlowcontrolApiserverAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetFlowcontrolApiserverAPIGroup",
+			OperationID:   "getFlowcontrolApiserverAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetFlowcontrolApiserverAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetFlowcontrolApiserverAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetFlowcontrolApiserverAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2205,7 +3227,37 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 		return
 	}
 
-	response, err := s.h.GetFlowcontrolApiserverV1beta1APIResources(ctx)
+	var response GetFlowcontrolApiserverV1beta1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetFlowcontrolApiserverV1beta1APIResources",
+			OperationID:   "getFlowcontrolApiserverV1beta1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetFlowcontrolApiserverV1beta1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetFlowcontrolApiserverV1beta1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetFlowcontrolApiserverV1beta1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2268,7 +3320,37 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 		return
 	}
 
-	response, err := s.h.GetFlowcontrolApiserverV1beta2APIResources(ctx)
+	var response GetFlowcontrolApiserverV1beta2APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetFlowcontrolApiserverV1beta2APIResources",
+			OperationID:   "getFlowcontrolApiserverV1beta2APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetFlowcontrolApiserverV1beta2APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetFlowcontrolApiserverV1beta2APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetFlowcontrolApiserverV1beta2APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2331,7 +3413,37 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w htt
 		return
 	}
 
-	response, err := s.h.GetInternalApiserverAPIGroup(ctx)
+	var response GetInternalApiserverAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetInternalApiserverAPIGroup",
+			OperationID:   "getInternalApiserverAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetInternalApiserverAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetInternalApiserverAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetInternalApiserverAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2394,7 +3506,37 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 		return
 	}
 
-	response, err := s.h.GetInternalApiserverV1alpha1APIResources(ctx)
+	var response GetInternalApiserverV1alpha1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetInternalApiserverV1alpha1APIResources",
+			OperationID:   "getInternalApiserverV1alpha1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetInternalApiserverV1alpha1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetInternalApiserverV1alpha1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetInternalApiserverV1alpha1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2457,7 +3599,37 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.GetNetworkingAPIGroup(ctx)
+	var response GetNetworkingAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetNetworkingAPIGroup",
+			OperationID:   "getNetworkingAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetNetworkingAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetNetworkingAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetNetworkingAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2520,7 +3692,37 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http
 		return
 	}
 
-	response, err := s.h.GetNetworkingV1APIResources(ctx)
+	var response GetNetworkingV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetNetworkingV1APIResources",
+			OperationID:   "getNetworkingV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetNetworkingV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetNetworkingV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetNetworkingV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2583,7 +3785,37 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.GetNodeAPIGroup(ctx)
+	var response GetNodeAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetNodeAPIGroup",
+			OperationID:   "getNodeAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetNodeAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetNodeAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetNodeAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2646,7 +3878,37 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.GetNodeV1APIResources(ctx)
+	var response GetNodeV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetNodeV1APIResources",
+			OperationID:   "getNodeV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetNodeV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetNodeV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetNodeV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2709,7 +3971,37 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http
 		return
 	}
 
-	response, err := s.h.GetNodeV1alpha1APIResources(ctx)
+	var response GetNodeV1alpha1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetNodeV1alpha1APIResources",
+			OperationID:   "getNodeV1alpha1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetNodeV1alpha1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetNodeV1alpha1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetNodeV1alpha1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2772,7 +4064,37 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.
 		return
 	}
 
-	response, err := s.h.GetNodeV1beta1APIResources(ctx)
+	var response GetNodeV1beta1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetNodeV1beta1APIResources",
+			OperationID:   "getNodeV1beta1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetNodeV1beta1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetNodeV1beta1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetNodeV1beta1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2835,7 +4157,37 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseW
 		return
 	}
 
-	response, err := s.h.GetPolicyAPIGroup(ctx)
+	var response GetPolicyAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetPolicyAPIGroup",
+			OperationID:   "getPolicyAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetPolicyAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetPolicyAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetPolicyAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2898,7 +4250,37 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.Res
 		return
 	}
 
-	response, err := s.h.GetPolicyV1APIResources(ctx)
+	var response GetPolicyV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetPolicyV1APIResources",
+			OperationID:   "getPolicyV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetPolicyV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetPolicyV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetPolicyV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -2961,7 +4343,37 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w htt
 		return
 	}
 
-	response, err := s.h.GetPolicyV1beta1APIResources(ctx)
+	var response GetPolicyV1beta1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetPolicyV1beta1APIResources",
+			OperationID:   "getPolicyV1beta1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetPolicyV1beta1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetPolicyV1beta1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetPolicyV1beta1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3024,7 +4436,37 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w htt
 		return
 	}
 
-	response, err := s.h.GetRbacAuthorizationAPIGroup(ctx)
+	var response GetRbacAuthorizationAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetRbacAuthorizationAPIGroup",
+			OperationID:   "getRbacAuthorizationAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetRbacAuthorizationAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetRbacAuthorizationAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetRbacAuthorizationAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3087,7 +4529,37 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 		return
 	}
 
-	response, err := s.h.GetRbacAuthorizationV1APIResources(ctx)
+	var response GetRbacAuthorizationV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetRbacAuthorizationV1APIResources",
+			OperationID:   "getRbacAuthorizationV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetRbacAuthorizationV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetRbacAuthorizationV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetRbacAuthorizationV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3150,7 +4622,37 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.GetSchedulingAPIGroup(ctx)
+	var response GetSchedulingAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetSchedulingAPIGroup",
+			OperationID:   "getSchedulingAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetSchedulingAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetSchedulingAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetSchedulingAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3213,7 +4715,37 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http
 		return
 	}
 
-	response, err := s.h.GetSchedulingV1APIResources(ctx)
+	var response GetSchedulingV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetSchedulingV1APIResources",
+			OperationID:   "getSchedulingV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetSchedulingV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetSchedulingV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetSchedulingV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3276,7 +4808,37 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 		return
 	}
 
-	response, err := s.h.GetServiceAccountIssuerOpenIDConfiguration(ctx)
+	var response GetServiceAccountIssuerOpenIDConfigurationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetServiceAccountIssuerOpenIDConfiguration",
+			OperationID:   "getServiceAccountIssuerOpenIDConfiguration",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetServiceAccountIssuerOpenIDConfigurationRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetServiceAccountIssuerOpenIDConfiguration(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetServiceAccountIssuerOpenIDConfiguration(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3339,7 +4901,37 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.Response
 		return
 	}
 
-	response, err := s.h.GetStorageAPIGroup(ctx)
+	var response GetStorageAPIGroupRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetStorageAPIGroup",
+			OperationID:   "getStorageAPIGroup",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetStorageAPIGroupRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetStorageAPIGroup(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetStorageAPIGroup(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3402,7 +4994,37 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.Re
 		return
 	}
 
-	response, err := s.h.GetStorageV1APIResources(ctx)
+	var response GetStorageV1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetStorageV1APIResources",
+			OperationID:   "getStorageV1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetStorageV1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetStorageV1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetStorageV1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3465,7 +5087,37 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w h
 		return
 	}
 
-	response, err := s.h.GetStorageV1alpha1APIResources(ctx)
+	var response GetStorageV1alpha1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetStorageV1alpha1APIResources",
+			OperationID:   "getStorageV1alpha1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetStorageV1alpha1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetStorageV1alpha1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetStorageV1alpha1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3528,7 +5180,37 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w ht
 		return
 	}
 
-	response, err := s.h.GetStorageV1beta1APIResources(ctx)
+	var response GetStorageV1beta1APIResourcesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "GetStorageV1beta1APIResources",
+			OperationID:   "getStorageV1beta1APIResources",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = GetStorageV1beta1APIResourcesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.GetStorageV1beta1APIResources(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.GetStorageV1beta1APIResources(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3601,7 +5283,48 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 		return
 	}
 
-	response, err := s.h.ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
+	var response ListAdmissionregistrationV1MutatingWebhookConfigurationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAdmissionregistrationV1MutatingWebhookConfiguration",
+			OperationID:   "listAdmissionregistrationV1MutatingWebhookConfiguration",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAdmissionregistrationV1MutatingWebhookConfigurationParams
+			Response = ListAdmissionregistrationV1MutatingWebhookConfigurationRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAdmissionregistrationV1MutatingWebhookConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3674,7 +5397,48 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 		return
 	}
 
-	response, err := s.h.ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
+	var response ListAdmissionregistrationV1ValidatingWebhookConfigurationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAdmissionregistrationV1ValidatingWebhookConfiguration",
+			OperationID:   "listAdmissionregistrationV1ValidatingWebhookConfiguration",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAdmissionregistrationV1ValidatingWebhookConfigurationParams
+			Response = ListAdmissionregistrationV1ValidatingWebhookConfigurationRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAdmissionregistrationV1ValidatingWebhookConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3747,7 +5511,48 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 		return
 	}
 
-	response, err := s.h.ListApiextensionsV1CustomResourceDefinition(ctx, params)
+	var response ListApiextensionsV1CustomResourceDefinitionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListApiextensionsV1CustomResourceDefinition",
+			OperationID:   "listApiextensionsV1CustomResourceDefinition",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListApiextensionsV1CustomResourceDefinitionParams
+			Response = ListApiextensionsV1CustomResourceDefinitionRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListApiextensionsV1CustomResourceDefinitionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListApiextensionsV1CustomResourceDefinition(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListApiextensionsV1CustomResourceDefinition(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3820,7 +5625,48 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 		return
 	}
 
-	response, err := s.h.ListApiregistrationV1APIService(ctx, params)
+	var response ListApiregistrationV1APIServiceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListApiregistrationV1APIService",
+			OperationID:   "listApiregistrationV1APIService",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListApiregistrationV1APIServiceParams
+			Response = ListApiregistrationV1APIServiceRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListApiregistrationV1APIServiceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListApiregistrationV1APIService(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListApiregistrationV1APIService(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3893,7 +5739,48 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 		return
 	}
 
-	response, err := s.h.ListAppsV1ControllerRevisionForAllNamespaces(ctx, params)
+	var response ListAppsV1ControllerRevisionForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAppsV1ControllerRevisionForAllNamespaces",
+			OperationID:   "listAppsV1ControllerRevisionForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAppsV1ControllerRevisionForAllNamespacesParams
+			Response = ListAppsV1ControllerRevisionForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAppsV1ControllerRevisionForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAppsV1ControllerRevisionForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAppsV1ControllerRevisionForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -3966,7 +5853,48 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 		return
 	}
 
-	response, err := s.h.ListAppsV1DaemonSetForAllNamespaces(ctx, params)
+	var response ListAppsV1DaemonSetForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAppsV1DaemonSetForAllNamespaces",
+			OperationID:   "listAppsV1DaemonSetForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAppsV1DaemonSetForAllNamespacesParams
+			Response = ListAppsV1DaemonSetForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAppsV1DaemonSetForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAppsV1DaemonSetForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAppsV1DaemonSetForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4039,7 +5967,48 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 		return
 	}
 
-	response, err := s.h.ListAppsV1DeploymentForAllNamespaces(ctx, params)
+	var response ListAppsV1DeploymentForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAppsV1DeploymentForAllNamespaces",
+			OperationID:   "listAppsV1DeploymentForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAppsV1DeploymentForAllNamespacesParams
+			Response = ListAppsV1DeploymentForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAppsV1DeploymentForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAppsV1DeploymentForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAppsV1DeploymentForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4112,7 +6081,49 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 		return
 	}
 
-	response, err := s.h.ListAppsV1NamespacedControllerRevision(ctx, params)
+	var response ListAppsV1NamespacedControllerRevisionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAppsV1NamespacedControllerRevision",
+			OperationID:   "listAppsV1NamespacedControllerRevision",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAppsV1NamespacedControllerRevisionParams
+			Response = ListAppsV1NamespacedControllerRevisionRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAppsV1NamespacedControllerRevisionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAppsV1NamespacedControllerRevision(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAppsV1NamespacedControllerRevision(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4185,7 +6196,49 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 		return
 	}
 
-	response, err := s.h.ListAppsV1NamespacedDaemonSet(ctx, params)
+	var response ListAppsV1NamespacedDaemonSetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAppsV1NamespacedDaemonSet",
+			OperationID:   "listAppsV1NamespacedDaemonSet",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAppsV1NamespacedDaemonSetParams
+			Response = ListAppsV1NamespacedDaemonSetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAppsV1NamespacedDaemonSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAppsV1NamespacedDaemonSet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAppsV1NamespacedDaemonSet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4258,7 +6311,49 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 		return
 	}
 
-	response, err := s.h.ListAppsV1NamespacedDeployment(ctx, params)
+	var response ListAppsV1NamespacedDeploymentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAppsV1NamespacedDeployment",
+			OperationID:   "listAppsV1NamespacedDeployment",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAppsV1NamespacedDeploymentParams
+			Response = ListAppsV1NamespacedDeploymentRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAppsV1NamespacedDeploymentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAppsV1NamespacedDeployment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAppsV1NamespacedDeployment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4331,7 +6426,49 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 		return
 	}
 
-	response, err := s.h.ListAppsV1NamespacedReplicaSet(ctx, params)
+	var response ListAppsV1NamespacedReplicaSetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAppsV1NamespacedReplicaSet",
+			OperationID:   "listAppsV1NamespacedReplicaSet",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAppsV1NamespacedReplicaSetParams
+			Response = ListAppsV1NamespacedReplicaSetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAppsV1NamespacedReplicaSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAppsV1NamespacedReplicaSet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAppsV1NamespacedReplicaSet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4404,7 +6541,49 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 		return
 	}
 
-	response, err := s.h.ListAppsV1NamespacedStatefulSet(ctx, params)
+	var response ListAppsV1NamespacedStatefulSetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAppsV1NamespacedStatefulSet",
+			OperationID:   "listAppsV1NamespacedStatefulSet",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAppsV1NamespacedStatefulSetParams
+			Response = ListAppsV1NamespacedStatefulSetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAppsV1NamespacedStatefulSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAppsV1NamespacedStatefulSet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAppsV1NamespacedStatefulSet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4477,7 +6656,48 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 		return
 	}
 
-	response, err := s.h.ListAppsV1ReplicaSetForAllNamespaces(ctx, params)
+	var response ListAppsV1ReplicaSetForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAppsV1ReplicaSetForAllNamespaces",
+			OperationID:   "listAppsV1ReplicaSetForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAppsV1ReplicaSetForAllNamespacesParams
+			Response = ListAppsV1ReplicaSetForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAppsV1ReplicaSetForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAppsV1ReplicaSetForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAppsV1ReplicaSetForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4550,7 +6770,48 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 		return
 	}
 
-	response, err := s.h.ListAppsV1StatefulSetForAllNamespaces(ctx, params)
+	var response ListAppsV1StatefulSetForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAppsV1StatefulSetForAllNamespaces",
+			OperationID:   "listAppsV1StatefulSetForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAppsV1StatefulSetForAllNamespacesParams
+			Response = ListAppsV1StatefulSetForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAppsV1StatefulSetForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAppsV1StatefulSetForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAppsV1StatefulSetForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4623,7 +6884,48 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 		return
 	}
 
-	response, err := s.h.ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx, params)
+	var response ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
+			OperationID:   "listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams
+			Response = ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4696,7 +6998,49 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 		return
 	}
 
-	response, err := s.h.ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
+	var response ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			OperationID:   "listAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams
+			Response = ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAutoscalingV1NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4769,7 +7113,48 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 		return
 	}
 
-	response, err := s.h.ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx, params)
+	var response ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
+			OperationID:   "listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams
+			Response = ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4842,7 +7227,49 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 		return
 	}
 
-	response, err := s.h.ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
+	var response ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			OperationID:   "listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams
+			Response = ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4915,7 +7342,48 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 		return
 	}
 
-	response, err := s.h.ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx, params)
+	var response ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
+			OperationID:   "listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams
+			Response = ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -4988,7 +7456,49 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 		return
 	}
 
-	response, err := s.h.ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
+	var response ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			OperationID:   "listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams
+			Response = ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5061,7 +7571,48 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 		return
 	}
 
-	response, err := s.h.ListBatchV1CronJobForAllNamespaces(ctx, params)
+	var response ListBatchV1CronJobForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListBatchV1CronJobForAllNamespaces",
+			OperationID:   "listBatchV1CronJobForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListBatchV1CronJobForAllNamespacesParams
+			Response = ListBatchV1CronJobForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListBatchV1CronJobForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListBatchV1CronJobForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListBatchV1CronJobForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5134,7 +7685,48 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 		return
 	}
 
-	response, err := s.h.ListBatchV1JobForAllNamespaces(ctx, params)
+	var response ListBatchV1JobForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListBatchV1JobForAllNamespaces",
+			OperationID:   "listBatchV1JobForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListBatchV1JobForAllNamespacesParams
+			Response = ListBatchV1JobForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListBatchV1JobForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListBatchV1JobForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListBatchV1JobForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5207,7 +7799,49 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 		return
 	}
 
-	response, err := s.h.ListBatchV1NamespacedCronJob(ctx, params)
+	var response ListBatchV1NamespacedCronJobRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListBatchV1NamespacedCronJob",
+			OperationID:   "listBatchV1NamespacedCronJob",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListBatchV1NamespacedCronJobParams
+			Response = ListBatchV1NamespacedCronJobRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListBatchV1NamespacedCronJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListBatchV1NamespacedCronJob(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListBatchV1NamespacedCronJob(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5280,7 +7914,49 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 		return
 	}
 
-	response, err := s.h.ListBatchV1NamespacedJob(ctx, params)
+	var response ListBatchV1NamespacedJobRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListBatchV1NamespacedJob",
+			OperationID:   "listBatchV1NamespacedJob",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListBatchV1NamespacedJobParams
+			Response = ListBatchV1NamespacedJobRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListBatchV1NamespacedJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListBatchV1NamespacedJob(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListBatchV1NamespacedJob(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5353,7 +8029,48 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 		return
 	}
 
-	response, err := s.h.ListBatchV1beta1CronJobForAllNamespaces(ctx, params)
+	var response ListBatchV1beta1CronJobForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListBatchV1beta1CronJobForAllNamespaces",
+			OperationID:   "listBatchV1beta1CronJobForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListBatchV1beta1CronJobForAllNamespacesParams
+			Response = ListBatchV1beta1CronJobForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListBatchV1beta1CronJobForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListBatchV1beta1CronJobForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListBatchV1beta1CronJobForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5426,7 +8143,49 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 		return
 	}
 
-	response, err := s.h.ListBatchV1beta1NamespacedCronJob(ctx, params)
+	var response ListBatchV1beta1NamespacedCronJobRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListBatchV1beta1NamespacedCronJob",
+			OperationID:   "listBatchV1beta1NamespacedCronJob",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListBatchV1beta1NamespacedCronJobParams
+			Response = ListBatchV1beta1NamespacedCronJobRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListBatchV1beta1NamespacedCronJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListBatchV1beta1NamespacedCronJob(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListBatchV1beta1NamespacedCronJob(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5499,7 +8258,48 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 		return
 	}
 
-	response, err := s.h.ListCertificatesV1CertificateSigningRequest(ctx, params)
+	var response ListCertificatesV1CertificateSigningRequestRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCertificatesV1CertificateSigningRequest",
+			OperationID:   "listCertificatesV1CertificateSigningRequest",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCertificatesV1CertificateSigningRequestParams
+			Response = ListCertificatesV1CertificateSigningRequestRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCertificatesV1CertificateSigningRequestParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCertificatesV1CertificateSigningRequest(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCertificatesV1CertificateSigningRequest(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5572,7 +8372,48 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 		return
 	}
 
-	response, err := s.h.ListCoordinationV1LeaseForAllNamespaces(ctx, params)
+	var response ListCoordinationV1LeaseForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoordinationV1LeaseForAllNamespaces",
+			OperationID:   "listCoordinationV1LeaseForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoordinationV1LeaseForAllNamespacesParams
+			Response = ListCoordinationV1LeaseForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoordinationV1LeaseForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoordinationV1LeaseForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoordinationV1LeaseForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5645,7 +8486,49 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 		return
 	}
 
-	response, err := s.h.ListCoordinationV1NamespacedLease(ctx, params)
+	var response ListCoordinationV1NamespacedLeaseRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoordinationV1NamespacedLease",
+			OperationID:   "listCoordinationV1NamespacedLease",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoordinationV1NamespacedLeaseParams
+			Response = ListCoordinationV1NamespacedLeaseRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoordinationV1NamespacedLeaseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoordinationV1NamespacedLease(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoordinationV1NamespacedLease(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5718,7 +8601,48 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 		return
 	}
 
-	response, err := s.h.ListCoreV1ComponentStatus(ctx, params)
+	var response ListCoreV1ComponentStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1ComponentStatus",
+			OperationID:   "listCoreV1ComponentStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1ComponentStatusParams
+			Response = ListCoreV1ComponentStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1ComponentStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1ComponentStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1ComponentStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5791,7 +8715,48 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 		return
 	}
 
-	response, err := s.h.ListCoreV1ConfigMapForAllNamespaces(ctx, params)
+	var response ListCoreV1ConfigMapForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1ConfigMapForAllNamespaces",
+			OperationID:   "listCoreV1ConfigMapForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1ConfigMapForAllNamespacesParams
+			Response = ListCoreV1ConfigMapForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1ConfigMapForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1ConfigMapForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1ConfigMapForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5864,7 +8829,48 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 		return
 	}
 
-	response, err := s.h.ListCoreV1EndpointsForAllNamespaces(ctx, params)
+	var response ListCoreV1EndpointsForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1EndpointsForAllNamespaces",
+			OperationID:   "listCoreV1EndpointsForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1EndpointsForAllNamespacesParams
+			Response = ListCoreV1EndpointsForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1EndpointsForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1EndpointsForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1EndpointsForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -5937,7 +8943,48 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 		return
 	}
 
-	response, err := s.h.ListCoreV1EventForAllNamespaces(ctx, params)
+	var response ListCoreV1EventForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1EventForAllNamespaces",
+			OperationID:   "listCoreV1EventForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1EventForAllNamespacesParams
+			Response = ListCoreV1EventForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1EventForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1EventForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1EventForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6010,7 +9057,48 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 		return
 	}
 
-	response, err := s.h.ListCoreV1LimitRangeForAllNamespaces(ctx, params)
+	var response ListCoreV1LimitRangeForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1LimitRangeForAllNamespaces",
+			OperationID:   "listCoreV1LimitRangeForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1LimitRangeForAllNamespacesParams
+			Response = ListCoreV1LimitRangeForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1LimitRangeForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1LimitRangeForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1LimitRangeForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6083,7 +9171,48 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.ListCoreV1Namespace(ctx, params)
+	var response ListCoreV1NamespaceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1Namespace",
+			OperationID:   "listCoreV1Namespace",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1NamespaceParams
+			Response = ListCoreV1NamespaceRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1NamespaceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1Namespace(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1Namespace(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6156,7 +9285,49 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 		return
 	}
 
-	response, err := s.h.ListCoreV1NamespacedConfigMap(ctx, params)
+	var response ListCoreV1NamespacedConfigMapRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1NamespacedConfigMap",
+			OperationID:   "listCoreV1NamespacedConfigMap",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1NamespacedConfigMapParams
+			Response = ListCoreV1NamespacedConfigMapRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1NamespacedConfigMapParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1NamespacedConfigMap(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1NamespacedConfigMap(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6229,7 +9400,49 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 		return
 	}
 
-	response, err := s.h.ListCoreV1NamespacedEndpoints(ctx, params)
+	var response ListCoreV1NamespacedEndpointsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1NamespacedEndpoints",
+			OperationID:   "listCoreV1NamespacedEndpoints",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1NamespacedEndpointsParams
+			Response = ListCoreV1NamespacedEndpointsRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1NamespacedEndpointsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1NamespacedEndpoints(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1NamespacedEndpoints(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6302,7 +9515,49 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 		return
 	}
 
-	response, err := s.h.ListCoreV1NamespacedEvent(ctx, params)
+	var response ListCoreV1NamespacedEventRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1NamespacedEvent",
+			OperationID:   "listCoreV1NamespacedEvent",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1NamespacedEventParams
+			Response = ListCoreV1NamespacedEventRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1NamespacedEvent(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1NamespacedEvent(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6375,7 +9630,49 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 		return
 	}
 
-	response, err := s.h.ListCoreV1NamespacedLimitRange(ctx, params)
+	var response ListCoreV1NamespacedLimitRangeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1NamespacedLimitRange",
+			OperationID:   "listCoreV1NamespacedLimitRange",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1NamespacedLimitRangeParams
+			Response = ListCoreV1NamespacedLimitRangeRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1NamespacedLimitRangeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1NamespacedLimitRange(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1NamespacedLimitRange(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6448,7 +9745,49 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 		return
 	}
 
-	response, err := s.h.ListCoreV1NamespacedPersistentVolumeClaim(ctx, params)
+	var response ListCoreV1NamespacedPersistentVolumeClaimRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1NamespacedPersistentVolumeClaim",
+			OperationID:   "listCoreV1NamespacedPersistentVolumeClaim",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1NamespacedPersistentVolumeClaimParams
+			Response = ListCoreV1NamespacedPersistentVolumeClaimRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1NamespacedPersistentVolumeClaimParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1NamespacedPersistentVolumeClaim(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1NamespacedPersistentVolumeClaim(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6521,7 +9860,49 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 		return
 	}
 
-	response, err := s.h.ListCoreV1NamespacedPod(ctx, params)
+	var response ListCoreV1NamespacedPodRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1NamespacedPod",
+			OperationID:   "listCoreV1NamespacedPod",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1NamespacedPodParams
+			Response = ListCoreV1NamespacedPodRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1NamespacedPodParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1NamespacedPod(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1NamespacedPod(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6594,7 +9975,49 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 		return
 	}
 
-	response, err := s.h.ListCoreV1NamespacedPodTemplate(ctx, params)
+	var response ListCoreV1NamespacedPodTemplateRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1NamespacedPodTemplate",
+			OperationID:   "listCoreV1NamespacedPodTemplate",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1NamespacedPodTemplateParams
+			Response = ListCoreV1NamespacedPodTemplateRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1NamespacedPodTemplateParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1NamespacedPodTemplate(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1NamespacedPodTemplate(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6667,7 +10090,49 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 		return
 	}
 
-	response, err := s.h.ListCoreV1NamespacedReplicationController(ctx, params)
+	var response ListCoreV1NamespacedReplicationControllerRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1NamespacedReplicationController",
+			OperationID:   "listCoreV1NamespacedReplicationController",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1NamespacedReplicationControllerParams
+			Response = ListCoreV1NamespacedReplicationControllerRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1NamespacedReplicationControllerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1NamespacedReplicationController(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1NamespacedReplicationController(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6740,7 +10205,49 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 		return
 	}
 
-	response, err := s.h.ListCoreV1NamespacedResourceQuota(ctx, params)
+	var response ListCoreV1NamespacedResourceQuotaRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1NamespacedResourceQuota",
+			OperationID:   "listCoreV1NamespacedResourceQuota",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1NamespacedResourceQuotaParams
+			Response = ListCoreV1NamespacedResourceQuotaRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1NamespacedResourceQuotaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1NamespacedResourceQuota(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1NamespacedResourceQuota(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6813,7 +10320,49 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 		return
 	}
 
-	response, err := s.h.ListCoreV1NamespacedSecret(ctx, params)
+	var response ListCoreV1NamespacedSecretRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1NamespacedSecret",
+			OperationID:   "listCoreV1NamespacedSecret",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1NamespacedSecretParams
+			Response = ListCoreV1NamespacedSecretRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1NamespacedSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1NamespacedSecret(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1NamespacedSecret(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6886,7 +10435,49 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 		return
 	}
 
-	response, err := s.h.ListCoreV1NamespacedService(ctx, params)
+	var response ListCoreV1NamespacedServiceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1NamespacedService",
+			OperationID:   "listCoreV1NamespacedService",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1NamespacedServiceParams
+			Response = ListCoreV1NamespacedServiceRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1NamespacedServiceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1NamespacedService(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1NamespacedService(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -6959,7 +10550,49 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 		return
 	}
 
-	response, err := s.h.ListCoreV1NamespacedServiceAccount(ctx, params)
+	var response ListCoreV1NamespacedServiceAccountRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1NamespacedServiceAccount",
+			OperationID:   "listCoreV1NamespacedServiceAccount",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1NamespacedServiceAccountParams
+			Response = ListCoreV1NamespacedServiceAccountRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1NamespacedServiceAccountParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1NamespacedServiceAccount(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1NamespacedServiceAccount(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7032,7 +10665,48 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.ListCoreV1Node(ctx, params)
+	var response ListCoreV1NodeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1Node",
+			OperationID:   "listCoreV1Node",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1NodeParams
+			Response = ListCoreV1NodeRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1NodeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1Node(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1Node(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7105,7 +10779,48 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 		return
 	}
 
-	response, err := s.h.ListCoreV1PersistentVolume(ctx, params)
+	var response ListCoreV1PersistentVolumeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1PersistentVolume",
+			OperationID:   "listCoreV1PersistentVolume",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1PersistentVolumeParams
+			Response = ListCoreV1PersistentVolumeRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1PersistentVolumeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1PersistentVolume(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1PersistentVolume(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7178,7 +10893,48 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 		return
 	}
 
-	response, err := s.h.ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx, params)
+	var response ListCoreV1PersistentVolumeClaimForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1PersistentVolumeClaimForAllNamespaces",
+			OperationID:   "listCoreV1PersistentVolumeClaimForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1PersistentVolumeClaimForAllNamespacesParams
+			Response = ListCoreV1PersistentVolumeClaimForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1PersistentVolumeClaimForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7251,7 +11007,48 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 		return
 	}
 
-	response, err := s.h.ListCoreV1PodForAllNamespaces(ctx, params)
+	var response ListCoreV1PodForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1PodForAllNamespaces",
+			OperationID:   "listCoreV1PodForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1PodForAllNamespacesParams
+			Response = ListCoreV1PodForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1PodForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1PodForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1PodForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7324,7 +11121,48 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 		return
 	}
 
-	response, err := s.h.ListCoreV1PodTemplateForAllNamespaces(ctx, params)
+	var response ListCoreV1PodTemplateForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1PodTemplateForAllNamespaces",
+			OperationID:   "listCoreV1PodTemplateForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1PodTemplateForAllNamespacesParams
+			Response = ListCoreV1PodTemplateForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1PodTemplateForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1PodTemplateForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1PodTemplateForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7397,7 +11235,48 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 		return
 	}
 
-	response, err := s.h.ListCoreV1ReplicationControllerForAllNamespaces(ctx, params)
+	var response ListCoreV1ReplicationControllerForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1ReplicationControllerForAllNamespaces",
+			OperationID:   "listCoreV1ReplicationControllerForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1ReplicationControllerForAllNamespacesParams
+			Response = ListCoreV1ReplicationControllerForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1ReplicationControllerForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1ReplicationControllerForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1ReplicationControllerForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7470,7 +11349,48 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 		return
 	}
 
-	response, err := s.h.ListCoreV1ResourceQuotaForAllNamespaces(ctx, params)
+	var response ListCoreV1ResourceQuotaForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1ResourceQuotaForAllNamespaces",
+			OperationID:   "listCoreV1ResourceQuotaForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1ResourceQuotaForAllNamespacesParams
+			Response = ListCoreV1ResourceQuotaForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1ResourceQuotaForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1ResourceQuotaForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1ResourceQuotaForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7543,7 +11463,48 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 		return
 	}
 
-	response, err := s.h.ListCoreV1SecretForAllNamespaces(ctx, params)
+	var response ListCoreV1SecretForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1SecretForAllNamespaces",
+			OperationID:   "listCoreV1SecretForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1SecretForAllNamespacesParams
+			Response = ListCoreV1SecretForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1SecretForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1SecretForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1SecretForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7616,7 +11577,48 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 		return
 	}
 
-	response, err := s.h.ListCoreV1ServiceAccountForAllNamespaces(ctx, params)
+	var response ListCoreV1ServiceAccountForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1ServiceAccountForAllNamespaces",
+			OperationID:   "listCoreV1ServiceAccountForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1ServiceAccountForAllNamespacesParams
+			Response = ListCoreV1ServiceAccountForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1ServiceAccountForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1ServiceAccountForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1ServiceAccountForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7689,7 +11691,48 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 		return
 	}
 
-	response, err := s.h.ListCoreV1ServiceForAllNamespaces(ctx, params)
+	var response ListCoreV1ServiceForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListCoreV1ServiceForAllNamespaces",
+			OperationID:   "listCoreV1ServiceForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListCoreV1ServiceForAllNamespacesParams
+			Response = ListCoreV1ServiceForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListCoreV1ServiceForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListCoreV1ServiceForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListCoreV1ServiceForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7762,7 +11805,48 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 		return
 	}
 
-	response, err := s.h.ListDiscoveryV1EndpointSliceForAllNamespaces(ctx, params)
+	var response ListDiscoveryV1EndpointSliceForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListDiscoveryV1EndpointSliceForAllNamespaces",
+			OperationID:   "listDiscoveryV1EndpointSliceForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListDiscoveryV1EndpointSliceForAllNamespacesParams
+			Response = ListDiscoveryV1EndpointSliceForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListDiscoveryV1EndpointSliceForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListDiscoveryV1EndpointSliceForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListDiscoveryV1EndpointSliceForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7835,7 +11919,49 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 		return
 	}
 
-	response, err := s.h.ListDiscoveryV1NamespacedEndpointSlice(ctx, params)
+	var response ListDiscoveryV1NamespacedEndpointSliceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListDiscoveryV1NamespacedEndpointSlice",
+			OperationID:   "listDiscoveryV1NamespacedEndpointSlice",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListDiscoveryV1NamespacedEndpointSliceParams
+			Response = ListDiscoveryV1NamespacedEndpointSliceRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListDiscoveryV1NamespacedEndpointSliceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListDiscoveryV1NamespacedEndpointSlice(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListDiscoveryV1NamespacedEndpointSlice(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7908,7 +12034,48 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 		return
 	}
 
-	response, err := s.h.ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx, params)
+	var response ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListDiscoveryV1beta1EndpointSliceForAllNamespaces",
+			OperationID:   "listDiscoveryV1beta1EndpointSliceForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams
+			Response = ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListDiscoveryV1beta1EndpointSliceForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -7981,7 +12148,49 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 		return
 	}
 
-	response, err := s.h.ListDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
+	var response ListDiscoveryV1beta1NamespacedEndpointSliceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListDiscoveryV1beta1NamespacedEndpointSlice",
+			OperationID:   "listDiscoveryV1beta1NamespacedEndpointSlice",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListDiscoveryV1beta1NamespacedEndpointSliceParams
+			Response = ListDiscoveryV1beta1NamespacedEndpointSliceRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListDiscoveryV1beta1NamespacedEndpointSliceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8054,7 +12263,48 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 		return
 	}
 
-	response, err := s.h.ListEventsV1EventForAllNamespaces(ctx, params)
+	var response ListEventsV1EventForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListEventsV1EventForAllNamespaces",
+			OperationID:   "listEventsV1EventForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListEventsV1EventForAllNamespacesParams
+			Response = ListEventsV1EventForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListEventsV1EventForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListEventsV1EventForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListEventsV1EventForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8127,7 +12377,49 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 		return
 	}
 
-	response, err := s.h.ListEventsV1NamespacedEvent(ctx, params)
+	var response ListEventsV1NamespacedEventRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListEventsV1NamespacedEvent",
+			OperationID:   "listEventsV1NamespacedEvent",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListEventsV1NamespacedEventParams
+			Response = ListEventsV1NamespacedEventRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListEventsV1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListEventsV1NamespacedEvent(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListEventsV1NamespacedEvent(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8200,7 +12492,48 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 		return
 	}
 
-	response, err := s.h.ListEventsV1beta1EventForAllNamespaces(ctx, params)
+	var response ListEventsV1beta1EventForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListEventsV1beta1EventForAllNamespaces",
+			OperationID:   "listEventsV1beta1EventForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListEventsV1beta1EventForAllNamespacesParams
+			Response = ListEventsV1beta1EventForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListEventsV1beta1EventForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListEventsV1beta1EventForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListEventsV1beta1EventForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8273,7 +12606,49 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 		return
 	}
 
-	response, err := s.h.ListEventsV1beta1NamespacedEvent(ctx, params)
+	var response ListEventsV1beta1NamespacedEventRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListEventsV1beta1NamespacedEvent",
+			OperationID:   "listEventsV1beta1NamespacedEvent",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListEventsV1beta1NamespacedEventParams
+			Response = ListEventsV1beta1NamespacedEventRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListEventsV1beta1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListEventsV1beta1NamespacedEvent(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListEventsV1beta1NamespacedEvent(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8346,7 +12721,48 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 		return
 	}
 
-	response, err := s.h.ListFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
+	var response ListFlowcontrolApiserverV1beta1FlowSchemaRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListFlowcontrolApiserverV1beta1FlowSchema",
+			OperationID:   "listFlowcontrolApiserverV1beta1FlowSchema",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListFlowcontrolApiserverV1beta1FlowSchemaParams
+			Response = ListFlowcontrolApiserverV1beta1FlowSchemaRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListFlowcontrolApiserverV1beta1FlowSchemaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8419,7 +12835,48 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		return
 	}
 
-	response, err := s.h.ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
+	var response ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			OperationID:   "listFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams
+			Response = ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8492,7 +12949,48 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 		return
 	}
 
-	response, err := s.h.ListFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
+	var response ListFlowcontrolApiserverV1beta2FlowSchemaRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListFlowcontrolApiserverV1beta2FlowSchema",
+			OperationID:   "listFlowcontrolApiserverV1beta2FlowSchema",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListFlowcontrolApiserverV1beta2FlowSchemaParams
+			Response = ListFlowcontrolApiserverV1beta2FlowSchemaRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListFlowcontrolApiserverV1beta2FlowSchemaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8565,7 +13063,48 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		return
 	}
 
-	response, err := s.h.ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
+	var response ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			OperationID:   "listFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams
+			Response = ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8638,7 +13177,48 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 		return
 	}
 
-	response, err := s.h.ListInternalApiserverV1alpha1StorageVersion(ctx, params)
+	var response ListInternalApiserverV1alpha1StorageVersionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListInternalApiserverV1alpha1StorageVersion",
+			OperationID:   "listInternalApiserverV1alpha1StorageVersion",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListInternalApiserverV1alpha1StorageVersionParams
+			Response = ListInternalApiserverV1alpha1StorageVersionRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListInternalApiserverV1alpha1StorageVersionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListInternalApiserverV1alpha1StorageVersion(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListInternalApiserverV1alpha1StorageVersion(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8711,7 +13291,48 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 		return
 	}
 
-	response, err := s.h.ListNetworkingV1IngressClass(ctx, params)
+	var response ListNetworkingV1IngressClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListNetworkingV1IngressClass",
+			OperationID:   "listNetworkingV1IngressClass",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListNetworkingV1IngressClassParams
+			Response = ListNetworkingV1IngressClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListNetworkingV1IngressClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListNetworkingV1IngressClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListNetworkingV1IngressClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8784,7 +13405,48 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 		return
 	}
 
-	response, err := s.h.ListNetworkingV1IngressForAllNamespaces(ctx, params)
+	var response ListNetworkingV1IngressForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListNetworkingV1IngressForAllNamespaces",
+			OperationID:   "listNetworkingV1IngressForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListNetworkingV1IngressForAllNamespacesParams
+			Response = ListNetworkingV1IngressForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListNetworkingV1IngressForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListNetworkingV1IngressForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListNetworkingV1IngressForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8857,7 +13519,49 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 		return
 	}
 
-	response, err := s.h.ListNetworkingV1NamespacedIngress(ctx, params)
+	var response ListNetworkingV1NamespacedIngressRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListNetworkingV1NamespacedIngress",
+			OperationID:   "listNetworkingV1NamespacedIngress",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListNetworkingV1NamespacedIngressParams
+			Response = ListNetworkingV1NamespacedIngressRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListNetworkingV1NamespacedIngressParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListNetworkingV1NamespacedIngress(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListNetworkingV1NamespacedIngress(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -8930,7 +13634,49 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 		return
 	}
 
-	response, err := s.h.ListNetworkingV1NamespacedNetworkPolicy(ctx, params)
+	var response ListNetworkingV1NamespacedNetworkPolicyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListNetworkingV1NamespacedNetworkPolicy",
+			OperationID:   "listNetworkingV1NamespacedNetworkPolicy",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListNetworkingV1NamespacedNetworkPolicyParams
+			Response = ListNetworkingV1NamespacedNetworkPolicyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListNetworkingV1NamespacedNetworkPolicyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListNetworkingV1NamespacedNetworkPolicy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListNetworkingV1NamespacedNetworkPolicy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9003,7 +13749,48 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 		return
 	}
 
-	response, err := s.h.ListNetworkingV1NetworkPolicyForAllNamespaces(ctx, params)
+	var response ListNetworkingV1NetworkPolicyForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListNetworkingV1NetworkPolicyForAllNamespaces",
+			OperationID:   "listNetworkingV1NetworkPolicyForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListNetworkingV1NetworkPolicyForAllNamespacesParams
+			Response = ListNetworkingV1NetworkPolicyForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListNetworkingV1NetworkPolicyForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListNetworkingV1NetworkPolicyForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListNetworkingV1NetworkPolicyForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9076,7 +13863,48 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.ListNodeV1RuntimeClass(ctx, params)
+	var response ListNodeV1RuntimeClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListNodeV1RuntimeClass",
+			OperationID:   "listNodeV1RuntimeClass",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListNodeV1RuntimeClassParams
+			Response = ListNodeV1RuntimeClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListNodeV1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListNodeV1RuntimeClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListNodeV1RuntimeClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9149,7 +13977,48 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 		return
 	}
 
-	response, err := s.h.ListNodeV1alpha1RuntimeClass(ctx, params)
+	var response ListNodeV1alpha1RuntimeClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListNodeV1alpha1RuntimeClass",
+			OperationID:   "listNodeV1alpha1RuntimeClass",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListNodeV1alpha1RuntimeClassParams
+			Response = ListNodeV1alpha1RuntimeClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListNodeV1alpha1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListNodeV1alpha1RuntimeClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListNodeV1alpha1RuntimeClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9222,7 +14091,48 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 		return
 	}
 
-	response, err := s.h.ListNodeV1beta1RuntimeClass(ctx, params)
+	var response ListNodeV1beta1RuntimeClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListNodeV1beta1RuntimeClass",
+			OperationID:   "listNodeV1beta1RuntimeClass",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListNodeV1beta1RuntimeClassParams
+			Response = ListNodeV1beta1RuntimeClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListNodeV1beta1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListNodeV1beta1RuntimeClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListNodeV1beta1RuntimeClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9295,7 +14205,49 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 		return
 	}
 
-	response, err := s.h.ListPolicyV1NamespacedPodDisruptionBudget(ctx, params)
+	var response ListPolicyV1NamespacedPodDisruptionBudgetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListPolicyV1NamespacedPodDisruptionBudget",
+			OperationID:   "listPolicyV1NamespacedPodDisruptionBudget",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListPolicyV1NamespacedPodDisruptionBudgetParams
+			Response = ListPolicyV1NamespacedPodDisruptionBudgetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListPolicyV1NamespacedPodDisruptionBudgetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListPolicyV1NamespacedPodDisruptionBudget(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListPolicyV1NamespacedPodDisruptionBudget(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9368,7 +14320,48 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 		return
 	}
 
-	response, err := s.h.ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx, params)
+	var response ListPolicyV1PodDisruptionBudgetForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListPolicyV1PodDisruptionBudgetForAllNamespaces",
+			OperationID:   "listPolicyV1PodDisruptionBudgetForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListPolicyV1PodDisruptionBudgetForAllNamespacesParams
+			Response = ListPolicyV1PodDisruptionBudgetForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListPolicyV1PodDisruptionBudgetForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9441,7 +14434,49 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 		return
 	}
 
-	response, err := s.h.ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
+	var response ListPolicyV1beta1NamespacedPodDisruptionBudgetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListPolicyV1beta1NamespacedPodDisruptionBudget",
+			OperationID:   "listPolicyV1beta1NamespacedPodDisruptionBudget",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListPolicyV1beta1NamespacedPodDisruptionBudgetParams
+			Response = ListPolicyV1beta1NamespacedPodDisruptionBudgetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListPolicyV1beta1NamespacedPodDisruptionBudgetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9514,7 +14549,48 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 		return
 	}
 
-	response, err := s.h.ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx, params)
+	var response ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
+			OperationID:   "listPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams
+			Response = ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9587,7 +14663,48 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 		return
 	}
 
-	response, err := s.h.ListPolicyV1beta1PodSecurityPolicy(ctx, params)
+	var response ListPolicyV1beta1PodSecurityPolicyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListPolicyV1beta1PodSecurityPolicy",
+			OperationID:   "listPolicyV1beta1PodSecurityPolicy",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListPolicyV1beta1PodSecurityPolicyParams
+			Response = ListPolicyV1beta1PodSecurityPolicyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListPolicyV1beta1PodSecurityPolicyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListPolicyV1beta1PodSecurityPolicy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListPolicyV1beta1PodSecurityPolicy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9660,7 +14777,48 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 		return
 	}
 
-	response, err := s.h.ListRbacAuthorizationV1ClusterRole(ctx, params)
+	var response ListRbacAuthorizationV1ClusterRoleRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListRbacAuthorizationV1ClusterRole",
+			OperationID:   "listRbacAuthorizationV1ClusterRole",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListRbacAuthorizationV1ClusterRoleParams
+			Response = ListRbacAuthorizationV1ClusterRoleRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListRbacAuthorizationV1ClusterRoleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListRbacAuthorizationV1ClusterRole(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListRbacAuthorizationV1ClusterRole(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9733,7 +14891,48 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 		return
 	}
 
-	response, err := s.h.ListRbacAuthorizationV1ClusterRoleBinding(ctx, params)
+	var response ListRbacAuthorizationV1ClusterRoleBindingRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListRbacAuthorizationV1ClusterRoleBinding",
+			OperationID:   "listRbacAuthorizationV1ClusterRoleBinding",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListRbacAuthorizationV1ClusterRoleBindingParams
+			Response = ListRbacAuthorizationV1ClusterRoleBindingRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListRbacAuthorizationV1ClusterRoleBindingParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListRbacAuthorizationV1ClusterRoleBinding(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListRbacAuthorizationV1ClusterRoleBinding(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9806,7 +15005,49 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 		return
 	}
 
-	response, err := s.h.ListRbacAuthorizationV1NamespacedRole(ctx, params)
+	var response ListRbacAuthorizationV1NamespacedRoleRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListRbacAuthorizationV1NamespacedRole",
+			OperationID:   "listRbacAuthorizationV1NamespacedRole",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListRbacAuthorizationV1NamespacedRoleParams
+			Response = ListRbacAuthorizationV1NamespacedRoleRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListRbacAuthorizationV1NamespacedRoleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListRbacAuthorizationV1NamespacedRole(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListRbacAuthorizationV1NamespacedRole(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9879,7 +15120,49 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 		return
 	}
 
-	response, err := s.h.ListRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
+	var response ListRbacAuthorizationV1NamespacedRoleBindingRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListRbacAuthorizationV1NamespacedRoleBinding",
+			OperationID:   "listRbacAuthorizationV1NamespacedRoleBinding",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListRbacAuthorizationV1NamespacedRoleBindingParams
+			Response = ListRbacAuthorizationV1NamespacedRoleBindingRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListRbacAuthorizationV1NamespacedRoleBindingParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -9952,7 +15235,48 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 		return
 	}
 
-	response, err := s.h.ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx, params)
+	var response ListRbacAuthorizationV1RoleBindingForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListRbacAuthorizationV1RoleBindingForAllNamespaces",
+			OperationID:   "listRbacAuthorizationV1RoleBindingForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListRbacAuthorizationV1RoleBindingForAllNamespacesParams
+			Response = ListRbacAuthorizationV1RoleBindingForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListRbacAuthorizationV1RoleBindingForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10025,7 +15349,48 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 		return
 	}
 
-	response, err := s.h.ListRbacAuthorizationV1RoleForAllNamespaces(ctx, params)
+	var response ListRbacAuthorizationV1RoleForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListRbacAuthorizationV1RoleForAllNamespaces",
+			OperationID:   "listRbacAuthorizationV1RoleForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListRbacAuthorizationV1RoleForAllNamespacesParams
+			Response = ListRbacAuthorizationV1RoleForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListRbacAuthorizationV1RoleForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListRbacAuthorizationV1RoleForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListRbacAuthorizationV1RoleForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10098,7 +15463,48 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 		return
 	}
 
-	response, err := s.h.ListSchedulingV1PriorityClass(ctx, params)
+	var response ListSchedulingV1PriorityClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListSchedulingV1PriorityClass",
+			OperationID:   "listSchedulingV1PriorityClass",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListSchedulingV1PriorityClassParams
+			Response = ListSchedulingV1PriorityClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListSchedulingV1PriorityClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListSchedulingV1PriorityClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListSchedulingV1PriorityClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10171,7 +15577,48 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.ListStorageV1CSIDriver(ctx, params)
+	var response ListStorageV1CSIDriverRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListStorageV1CSIDriver",
+			OperationID:   "listStorageV1CSIDriver",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListStorageV1CSIDriverParams
+			Response = ListStorageV1CSIDriverRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListStorageV1CSIDriverParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListStorageV1CSIDriver(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListStorageV1CSIDriver(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10244,7 +15691,48 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.ListStorageV1CSINode(ctx, params)
+	var response ListStorageV1CSINodeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListStorageV1CSINode",
+			OperationID:   "listStorageV1CSINode",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListStorageV1CSINodeParams
+			Response = ListStorageV1CSINodeRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListStorageV1CSINodeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListStorageV1CSINode(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListStorageV1CSINode(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10317,7 +15805,48 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 		return
 	}
 
-	response, err := s.h.ListStorageV1StorageClass(ctx, params)
+	var response ListStorageV1StorageClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListStorageV1StorageClass",
+			OperationID:   "listStorageV1StorageClass",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListStorageV1StorageClassParams
+			Response = ListStorageV1StorageClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListStorageV1StorageClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListStorageV1StorageClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListStorageV1StorageClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10390,7 +15919,48 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 		return
 	}
 
-	response, err := s.h.ListStorageV1VolumeAttachment(ctx, params)
+	var response ListStorageV1VolumeAttachmentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListStorageV1VolumeAttachment",
+			OperationID:   "listStorageV1VolumeAttachment",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListStorageV1VolumeAttachmentParams
+			Response = ListStorageV1VolumeAttachmentRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListStorageV1VolumeAttachmentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListStorageV1VolumeAttachment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListStorageV1VolumeAttachment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10463,7 +16033,48 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 		return
 	}
 
-	response, err := s.h.ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx, params)
+	var response ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces",
+			OperationID:   "listStorageV1alpha1CSIStorageCapacityForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams
+			Response = ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10536,7 +16147,49 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 		return
 	}
 
-	response, err := s.h.ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
+	var response ListStorageV1alpha1NamespacedCSIStorageCapacityRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListStorageV1alpha1NamespacedCSIStorageCapacity",
+			OperationID:   "listStorageV1alpha1NamespacedCSIStorageCapacity",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListStorageV1alpha1NamespacedCSIStorageCapacityParams
+			Response = ListStorageV1alpha1NamespacedCSIStorageCapacityRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListStorageV1alpha1NamespacedCSIStorageCapacityParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10609,7 +16262,48 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 		return
 	}
 
-	response, err := s.h.ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx, params)
+	var response ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListStorageV1beta1CSIStorageCapacityForAllNamespaces",
+			OperationID:   "listStorageV1beta1CSIStorageCapacityForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams
+			Response = ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListStorageV1beta1CSIStorageCapacityForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10682,7 +16376,49 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 		return
 	}
 
-	response, err := s.h.ListStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
+	var response ListStorageV1beta1NamespacedCSIStorageCapacityRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ListStorageV1beta1NamespacedCSIStorageCapacity",
+			OperationID:   "listStorageV1beta1NamespacedCSIStorageCapacity",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ListStorageV1beta1NamespacedCSIStorageCapacityParams
+			Response = ListStorageV1beta1NamespacedCSIStorageCapacityRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackListStorageV1beta1NamespacedCSIStorageCapacityParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ListStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ListStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10755,7 +16491,39 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.LogFileHandler(ctx, params)
+	var response LogFileHandlerUnauthorized
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "LogFileHandler",
+			OperationID:   "logFileHandler",
+			Body:          nil,
+			Params: map[string]any{
+				"logpath": params.Logpath,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = LogFileHandlerParams
+			Response = LogFileHandlerUnauthorized
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackLogFileHandlerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.LogFileHandler(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.LogFileHandler(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10818,7 +16586,37 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 		return
 	}
 
-	response, err := s.h.LogFileListHandler(ctx)
+	var response LogFileListHandlerUnauthorized
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "LogFileListHandler",
+			OperationID:   "logFileListHandler",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = LogFileListHandlerUnauthorized
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.LogFileListHandler(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.LogFileListHandler(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10891,7 +16689,40 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 		return
 	}
 
-	response, err := s.h.ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
+	var response ReadAdmissionregistrationV1MutatingWebhookConfigurationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAdmissionregistrationV1MutatingWebhookConfiguration",
+			OperationID:   "readAdmissionregistrationV1MutatingWebhookConfiguration",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAdmissionregistrationV1MutatingWebhookConfigurationParams
+			Response = ReadAdmissionregistrationV1MutatingWebhookConfigurationRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAdmissionregistrationV1MutatingWebhookConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -10964,7 +16795,40 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 		return
 	}
 
-	response, err := s.h.ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
+	var response ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAdmissionregistrationV1ValidatingWebhookConfiguration",
+			OperationID:   "readAdmissionregistrationV1ValidatingWebhookConfiguration",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams
+			Response = ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAdmissionregistrationV1ValidatingWebhookConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11037,7 +16901,40 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 		return
 	}
 
-	response, err := s.h.ReadApiextensionsV1CustomResourceDefinition(ctx, params)
+	var response ReadApiextensionsV1CustomResourceDefinitionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadApiextensionsV1CustomResourceDefinition",
+			OperationID:   "readApiextensionsV1CustomResourceDefinition",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadApiextensionsV1CustomResourceDefinitionParams
+			Response = ReadApiextensionsV1CustomResourceDefinitionRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadApiextensionsV1CustomResourceDefinitionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadApiextensionsV1CustomResourceDefinition(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadApiextensionsV1CustomResourceDefinition(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11110,7 +17007,40 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 		return
 	}
 
-	response, err := s.h.ReadApiextensionsV1CustomResourceDefinitionStatus(ctx, params)
+	var response ReadApiextensionsV1CustomResourceDefinitionStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadApiextensionsV1CustomResourceDefinitionStatus",
+			OperationID:   "readApiextensionsV1CustomResourceDefinitionStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadApiextensionsV1CustomResourceDefinitionStatusParams
+			Response = ReadApiextensionsV1CustomResourceDefinitionStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadApiextensionsV1CustomResourceDefinitionStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadApiextensionsV1CustomResourceDefinitionStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadApiextensionsV1CustomResourceDefinitionStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11183,7 +17113,40 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 		return
 	}
 
-	response, err := s.h.ReadApiregistrationV1APIService(ctx, params)
+	var response ReadApiregistrationV1APIServiceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadApiregistrationV1APIService",
+			OperationID:   "readApiregistrationV1APIService",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadApiregistrationV1APIServiceParams
+			Response = ReadApiregistrationV1APIServiceRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadApiregistrationV1APIServiceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadApiregistrationV1APIService(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadApiregistrationV1APIService(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11256,7 +17219,40 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 		return
 	}
 
-	response, err := s.h.ReadApiregistrationV1APIServiceStatus(ctx, params)
+	var response ReadApiregistrationV1APIServiceStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadApiregistrationV1APIServiceStatus",
+			OperationID:   "readApiregistrationV1APIServiceStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadApiregistrationV1APIServiceStatusParams
+			Response = ReadApiregistrationV1APIServiceStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadApiregistrationV1APIServiceStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadApiregistrationV1APIServiceStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadApiregistrationV1APIServiceStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11329,7 +17325,41 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 		return
 	}
 
-	response, err := s.h.ReadAppsV1NamespacedControllerRevision(ctx, params)
+	var response ReadAppsV1NamespacedControllerRevisionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAppsV1NamespacedControllerRevision",
+			OperationID:   "readAppsV1NamespacedControllerRevision",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAppsV1NamespacedControllerRevisionParams
+			Response = ReadAppsV1NamespacedControllerRevisionRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAppsV1NamespacedControllerRevisionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAppsV1NamespacedControllerRevision(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAppsV1NamespacedControllerRevision(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11402,7 +17432,41 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 		return
 	}
 
-	response, err := s.h.ReadAppsV1NamespacedDaemonSet(ctx, params)
+	var response ReadAppsV1NamespacedDaemonSetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAppsV1NamespacedDaemonSet",
+			OperationID:   "readAppsV1NamespacedDaemonSet",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAppsV1NamespacedDaemonSetParams
+			Response = ReadAppsV1NamespacedDaemonSetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAppsV1NamespacedDaemonSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAppsV1NamespacedDaemonSet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAppsV1NamespacedDaemonSet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11475,7 +17539,41 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 		return
 	}
 
-	response, err := s.h.ReadAppsV1NamespacedDaemonSetStatus(ctx, params)
+	var response ReadAppsV1NamespacedDaemonSetStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAppsV1NamespacedDaemonSetStatus",
+			OperationID:   "readAppsV1NamespacedDaemonSetStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAppsV1NamespacedDaemonSetStatusParams
+			Response = ReadAppsV1NamespacedDaemonSetStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAppsV1NamespacedDaemonSetStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAppsV1NamespacedDaemonSetStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAppsV1NamespacedDaemonSetStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11548,7 +17646,41 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 		return
 	}
 
-	response, err := s.h.ReadAppsV1NamespacedDeployment(ctx, params)
+	var response ReadAppsV1NamespacedDeploymentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAppsV1NamespacedDeployment",
+			OperationID:   "readAppsV1NamespacedDeployment",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAppsV1NamespacedDeploymentParams
+			Response = ReadAppsV1NamespacedDeploymentRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAppsV1NamespacedDeploymentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAppsV1NamespacedDeployment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAppsV1NamespacedDeployment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11621,7 +17753,41 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 		return
 	}
 
-	response, err := s.h.ReadAppsV1NamespacedDeploymentScale(ctx, params)
+	var response ReadAppsV1NamespacedDeploymentScaleRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAppsV1NamespacedDeploymentScale",
+			OperationID:   "readAppsV1NamespacedDeploymentScale",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAppsV1NamespacedDeploymentScaleParams
+			Response = ReadAppsV1NamespacedDeploymentScaleRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAppsV1NamespacedDeploymentScaleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAppsV1NamespacedDeploymentScale(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAppsV1NamespacedDeploymentScale(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11694,7 +17860,41 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 		return
 	}
 
-	response, err := s.h.ReadAppsV1NamespacedDeploymentStatus(ctx, params)
+	var response ReadAppsV1NamespacedDeploymentStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAppsV1NamespacedDeploymentStatus",
+			OperationID:   "readAppsV1NamespacedDeploymentStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAppsV1NamespacedDeploymentStatusParams
+			Response = ReadAppsV1NamespacedDeploymentStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAppsV1NamespacedDeploymentStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAppsV1NamespacedDeploymentStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAppsV1NamespacedDeploymentStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11767,7 +17967,41 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 		return
 	}
 
-	response, err := s.h.ReadAppsV1NamespacedReplicaSet(ctx, params)
+	var response ReadAppsV1NamespacedReplicaSetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAppsV1NamespacedReplicaSet",
+			OperationID:   "readAppsV1NamespacedReplicaSet",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAppsV1NamespacedReplicaSetParams
+			Response = ReadAppsV1NamespacedReplicaSetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAppsV1NamespacedReplicaSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAppsV1NamespacedReplicaSet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAppsV1NamespacedReplicaSet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11840,7 +18074,41 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 		return
 	}
 
-	response, err := s.h.ReadAppsV1NamespacedReplicaSetScale(ctx, params)
+	var response ReadAppsV1NamespacedReplicaSetScaleRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAppsV1NamespacedReplicaSetScale",
+			OperationID:   "readAppsV1NamespacedReplicaSetScale",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAppsV1NamespacedReplicaSetScaleParams
+			Response = ReadAppsV1NamespacedReplicaSetScaleRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAppsV1NamespacedReplicaSetScaleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAppsV1NamespacedReplicaSetScale(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAppsV1NamespacedReplicaSetScale(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11913,7 +18181,41 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 		return
 	}
 
-	response, err := s.h.ReadAppsV1NamespacedReplicaSetStatus(ctx, params)
+	var response ReadAppsV1NamespacedReplicaSetStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAppsV1NamespacedReplicaSetStatus",
+			OperationID:   "readAppsV1NamespacedReplicaSetStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAppsV1NamespacedReplicaSetStatusParams
+			Response = ReadAppsV1NamespacedReplicaSetStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAppsV1NamespacedReplicaSetStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAppsV1NamespacedReplicaSetStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAppsV1NamespacedReplicaSetStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -11986,7 +18288,41 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 		return
 	}
 
-	response, err := s.h.ReadAppsV1NamespacedStatefulSet(ctx, params)
+	var response ReadAppsV1NamespacedStatefulSetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAppsV1NamespacedStatefulSet",
+			OperationID:   "readAppsV1NamespacedStatefulSet",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAppsV1NamespacedStatefulSetParams
+			Response = ReadAppsV1NamespacedStatefulSetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAppsV1NamespacedStatefulSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAppsV1NamespacedStatefulSet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAppsV1NamespacedStatefulSet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12059,7 +18395,41 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 		return
 	}
 
-	response, err := s.h.ReadAppsV1NamespacedStatefulSetScale(ctx, params)
+	var response ReadAppsV1NamespacedStatefulSetScaleRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAppsV1NamespacedStatefulSetScale",
+			OperationID:   "readAppsV1NamespacedStatefulSetScale",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAppsV1NamespacedStatefulSetScaleParams
+			Response = ReadAppsV1NamespacedStatefulSetScaleRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAppsV1NamespacedStatefulSetScaleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAppsV1NamespacedStatefulSetScale(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAppsV1NamespacedStatefulSetScale(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12132,7 +18502,41 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 		return
 	}
 
-	response, err := s.h.ReadAppsV1NamespacedStatefulSetStatus(ctx, params)
+	var response ReadAppsV1NamespacedStatefulSetStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAppsV1NamespacedStatefulSetStatus",
+			OperationID:   "readAppsV1NamespacedStatefulSetStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAppsV1NamespacedStatefulSetStatusParams
+			Response = ReadAppsV1NamespacedStatefulSetStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAppsV1NamespacedStatefulSetStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAppsV1NamespacedStatefulSetStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAppsV1NamespacedStatefulSetStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12205,7 +18609,41 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 		return
 	}
 
-	response, err := s.h.ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
+	var response ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			OperationID:   "readAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams
+			Response = ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12278,7 +18716,41 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 		return
 	}
 
-	response, err := s.h.ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx, params)
+	var response ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
+			OperationID:   "readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams
+			Response = ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12351,7 +18823,41 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 		return
 	}
 
-	response, err := s.h.ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
+	var response ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			OperationID:   "readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams
+			Response = ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12424,7 +18930,41 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 		return
 	}
 
-	response, err := s.h.ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(ctx, params)
+	var response ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
+			OperationID:   "readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams
+			Response = ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12497,7 +19037,41 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 		return
 	}
 
-	response, err := s.h.ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
+	var response ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			OperationID:   "readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams
+			Response = ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12570,7 +19144,41 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 		return
 	}
 
-	response, err := s.h.ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(ctx, params)
+	var response ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
+			OperationID:   "readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams
+			Response = ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12643,7 +19251,41 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 		return
 	}
 
-	response, err := s.h.ReadBatchV1NamespacedCronJob(ctx, params)
+	var response ReadBatchV1NamespacedCronJobRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadBatchV1NamespacedCronJob",
+			OperationID:   "readBatchV1NamespacedCronJob",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadBatchV1NamespacedCronJobParams
+			Response = ReadBatchV1NamespacedCronJobRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadBatchV1NamespacedCronJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadBatchV1NamespacedCronJob(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadBatchV1NamespacedCronJob(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12716,7 +19358,41 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 		return
 	}
 
-	response, err := s.h.ReadBatchV1NamespacedCronJobStatus(ctx, params)
+	var response ReadBatchV1NamespacedCronJobStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadBatchV1NamespacedCronJobStatus",
+			OperationID:   "readBatchV1NamespacedCronJobStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadBatchV1NamespacedCronJobStatusParams
+			Response = ReadBatchV1NamespacedCronJobStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadBatchV1NamespacedCronJobStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadBatchV1NamespacedCronJobStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadBatchV1NamespacedCronJobStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12789,7 +19465,41 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 		return
 	}
 
-	response, err := s.h.ReadBatchV1NamespacedJob(ctx, params)
+	var response ReadBatchV1NamespacedJobRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadBatchV1NamespacedJob",
+			OperationID:   "readBatchV1NamespacedJob",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadBatchV1NamespacedJobParams
+			Response = ReadBatchV1NamespacedJobRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadBatchV1NamespacedJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadBatchV1NamespacedJob(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadBatchV1NamespacedJob(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12862,7 +19572,41 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 		return
 	}
 
-	response, err := s.h.ReadBatchV1NamespacedJobStatus(ctx, params)
+	var response ReadBatchV1NamespacedJobStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadBatchV1NamespacedJobStatus",
+			OperationID:   "readBatchV1NamespacedJobStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadBatchV1NamespacedJobStatusParams
+			Response = ReadBatchV1NamespacedJobStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadBatchV1NamespacedJobStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadBatchV1NamespacedJobStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadBatchV1NamespacedJobStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -12935,7 +19679,41 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 		return
 	}
 
-	response, err := s.h.ReadBatchV1beta1NamespacedCronJob(ctx, params)
+	var response ReadBatchV1beta1NamespacedCronJobRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadBatchV1beta1NamespacedCronJob",
+			OperationID:   "readBatchV1beta1NamespacedCronJob",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadBatchV1beta1NamespacedCronJobParams
+			Response = ReadBatchV1beta1NamespacedCronJobRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadBatchV1beta1NamespacedCronJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadBatchV1beta1NamespacedCronJob(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadBatchV1beta1NamespacedCronJob(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13008,7 +19786,41 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 		return
 	}
 
-	response, err := s.h.ReadBatchV1beta1NamespacedCronJobStatus(ctx, params)
+	var response ReadBatchV1beta1NamespacedCronJobStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadBatchV1beta1NamespacedCronJobStatus",
+			OperationID:   "readBatchV1beta1NamespacedCronJobStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadBatchV1beta1NamespacedCronJobStatusParams
+			Response = ReadBatchV1beta1NamespacedCronJobStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadBatchV1beta1NamespacedCronJobStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadBatchV1beta1NamespacedCronJobStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadBatchV1beta1NamespacedCronJobStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13081,7 +19893,40 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 		return
 	}
 
-	response, err := s.h.ReadCertificatesV1CertificateSigningRequest(ctx, params)
+	var response ReadCertificatesV1CertificateSigningRequestRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCertificatesV1CertificateSigningRequest",
+			OperationID:   "readCertificatesV1CertificateSigningRequest",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCertificatesV1CertificateSigningRequestParams
+			Response = ReadCertificatesV1CertificateSigningRequestRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCertificatesV1CertificateSigningRequestParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCertificatesV1CertificateSigningRequest(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCertificatesV1CertificateSigningRequest(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13154,7 +19999,40 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 		return
 	}
 
-	response, err := s.h.ReadCertificatesV1CertificateSigningRequestApproval(ctx, params)
+	var response ReadCertificatesV1CertificateSigningRequestApprovalRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCertificatesV1CertificateSigningRequestApproval",
+			OperationID:   "readCertificatesV1CertificateSigningRequestApproval",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCertificatesV1CertificateSigningRequestApprovalParams
+			Response = ReadCertificatesV1CertificateSigningRequestApprovalRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCertificatesV1CertificateSigningRequestApprovalParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCertificatesV1CertificateSigningRequestApproval(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCertificatesV1CertificateSigningRequestApproval(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13227,7 +20105,40 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 		return
 	}
 
-	response, err := s.h.ReadCertificatesV1CertificateSigningRequestStatus(ctx, params)
+	var response ReadCertificatesV1CertificateSigningRequestStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCertificatesV1CertificateSigningRequestStatus",
+			OperationID:   "readCertificatesV1CertificateSigningRequestStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCertificatesV1CertificateSigningRequestStatusParams
+			Response = ReadCertificatesV1CertificateSigningRequestStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCertificatesV1CertificateSigningRequestStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCertificatesV1CertificateSigningRequestStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCertificatesV1CertificateSigningRequestStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13300,7 +20211,41 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 		return
 	}
 
-	response, err := s.h.ReadCoordinationV1NamespacedLease(ctx, params)
+	var response ReadCoordinationV1NamespacedLeaseRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoordinationV1NamespacedLease",
+			OperationID:   "readCoordinationV1NamespacedLease",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoordinationV1NamespacedLeaseParams
+			Response = ReadCoordinationV1NamespacedLeaseRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoordinationV1NamespacedLeaseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoordinationV1NamespacedLease(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoordinationV1NamespacedLease(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13373,7 +20318,40 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 		return
 	}
 
-	response, err := s.h.ReadCoreV1ComponentStatus(ctx, params)
+	var response ReadCoreV1ComponentStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1ComponentStatus",
+			OperationID:   "readCoreV1ComponentStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1ComponentStatusParams
+			Response = ReadCoreV1ComponentStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1ComponentStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1ComponentStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1ComponentStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13446,7 +20424,40 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.ReadCoreV1Namespace(ctx, params)
+	var response ReadCoreV1NamespaceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1Namespace",
+			OperationID:   "readCoreV1Namespace",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespaceParams
+			Response = ReadCoreV1NamespaceRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespaceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1Namespace(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1Namespace(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13519,7 +20530,40 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespaceStatus(ctx, params)
+	var response ReadCoreV1NamespaceStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespaceStatus",
+			OperationID:   "readCoreV1NamespaceStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespaceStatusParams
+			Response = ReadCoreV1NamespaceStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespaceStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespaceStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespaceStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13592,7 +20636,41 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedConfigMap(ctx, params)
+	var response ReadCoreV1NamespacedConfigMapRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedConfigMap",
+			OperationID:   "readCoreV1NamespacedConfigMap",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedConfigMapParams
+			Response = ReadCoreV1NamespacedConfigMapRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedConfigMapParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedConfigMap(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedConfigMap(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13665,7 +20743,41 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedEndpoints(ctx, params)
+	var response ReadCoreV1NamespacedEndpointsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedEndpoints",
+			OperationID:   "readCoreV1NamespacedEndpoints",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedEndpointsParams
+			Response = ReadCoreV1NamespacedEndpointsRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedEndpointsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedEndpoints(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedEndpoints(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13738,7 +20850,41 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedEvent(ctx, params)
+	var response ReadCoreV1NamespacedEventRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedEvent",
+			OperationID:   "readCoreV1NamespacedEvent",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedEventParams
+			Response = ReadCoreV1NamespacedEventRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedEvent(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedEvent(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13811,7 +20957,41 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedLimitRange(ctx, params)
+	var response ReadCoreV1NamespacedLimitRangeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedLimitRange",
+			OperationID:   "readCoreV1NamespacedLimitRange",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedLimitRangeParams
+			Response = ReadCoreV1NamespacedLimitRangeRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedLimitRangeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedLimitRange(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedLimitRange(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13884,7 +21064,41 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedPersistentVolumeClaim(ctx, params)
+	var response ReadCoreV1NamespacedPersistentVolumeClaimRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedPersistentVolumeClaim",
+			OperationID:   "readCoreV1NamespacedPersistentVolumeClaim",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedPersistentVolumeClaimParams
+			Response = ReadCoreV1NamespacedPersistentVolumeClaimRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedPersistentVolumeClaimParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedPersistentVolumeClaim(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedPersistentVolumeClaim(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -13957,7 +21171,41 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx, params)
+	var response ReadCoreV1NamespacedPersistentVolumeClaimStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedPersistentVolumeClaimStatus",
+			OperationID:   "readCoreV1NamespacedPersistentVolumeClaimStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedPersistentVolumeClaimStatusParams
+			Response = ReadCoreV1NamespacedPersistentVolumeClaimStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedPersistentVolumeClaimStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14030,7 +21278,41 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedPod(ctx, params)
+	var response ReadCoreV1NamespacedPodRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedPod",
+			OperationID:   "readCoreV1NamespacedPod",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedPodParams
+			Response = ReadCoreV1NamespacedPodRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedPodParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedPod(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedPod(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14103,7 +21385,41 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedPodEphemeralcontainers(ctx, params)
+	var response ReadCoreV1NamespacedPodEphemeralcontainersRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedPodEphemeralcontainers",
+			OperationID:   "readCoreV1NamespacedPodEphemeralcontainers",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedPodEphemeralcontainersParams
+			Response = ReadCoreV1NamespacedPodEphemeralcontainersRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedPodEphemeralcontainersParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedPodEphemeralcontainers(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedPodEphemeralcontainers(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14176,7 +21492,49 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedPodLog(ctx, params)
+	var response ReadCoreV1NamespacedPodLogRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedPodLog",
+			OperationID:   "readCoreV1NamespacedPodLog",
+			Body:          nil,
+			Params: map[string]any{
+				"container":                    params.Container,
+				"follow":                       params.Follow,
+				"insecureSkipTLSVerifyBackend": params.InsecureSkipTLSVerifyBackend,
+				"limitBytes":                   params.LimitBytes,
+				"name":                         params.Name,
+				"namespace":                    params.Namespace,
+				"pretty":                       params.Pretty,
+				"previous":                     params.Previous,
+				"sinceSeconds":                 params.SinceSeconds,
+				"tailLines":                    params.TailLines,
+				"timestamps":                   params.Timestamps,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedPodLogParams
+			Response = ReadCoreV1NamespacedPodLogRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedPodLogParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedPodLog(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedPodLog(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14249,7 +21607,41 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedPodStatus(ctx, params)
+	var response ReadCoreV1NamespacedPodStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedPodStatus",
+			OperationID:   "readCoreV1NamespacedPodStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedPodStatusParams
+			Response = ReadCoreV1NamespacedPodStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedPodStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedPodStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedPodStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14322,7 +21714,41 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedPodTemplate(ctx, params)
+	var response ReadCoreV1NamespacedPodTemplateRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedPodTemplate",
+			OperationID:   "readCoreV1NamespacedPodTemplate",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedPodTemplateParams
+			Response = ReadCoreV1NamespacedPodTemplateRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedPodTemplateParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedPodTemplate(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedPodTemplate(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14395,7 +21821,41 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedReplicationController(ctx, params)
+	var response ReadCoreV1NamespacedReplicationControllerRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedReplicationController",
+			OperationID:   "readCoreV1NamespacedReplicationController",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedReplicationControllerParams
+			Response = ReadCoreV1NamespacedReplicationControllerRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedReplicationControllerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedReplicationController(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedReplicationController(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14468,7 +21928,41 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedReplicationControllerScale(ctx, params)
+	var response ReadCoreV1NamespacedReplicationControllerScaleRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedReplicationControllerScale",
+			OperationID:   "readCoreV1NamespacedReplicationControllerScale",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedReplicationControllerScaleParams
+			Response = ReadCoreV1NamespacedReplicationControllerScaleRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedReplicationControllerScaleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedReplicationControllerScale(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedReplicationControllerScale(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14541,7 +22035,41 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedReplicationControllerStatus(ctx, params)
+	var response ReadCoreV1NamespacedReplicationControllerStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedReplicationControllerStatus",
+			OperationID:   "readCoreV1NamespacedReplicationControllerStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedReplicationControllerStatusParams
+			Response = ReadCoreV1NamespacedReplicationControllerStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedReplicationControllerStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedReplicationControllerStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedReplicationControllerStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14614,7 +22142,41 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedResourceQuota(ctx, params)
+	var response ReadCoreV1NamespacedResourceQuotaRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedResourceQuota",
+			OperationID:   "readCoreV1NamespacedResourceQuota",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedResourceQuotaParams
+			Response = ReadCoreV1NamespacedResourceQuotaRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedResourceQuotaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedResourceQuota(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedResourceQuota(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14687,7 +22249,41 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedResourceQuotaStatus(ctx, params)
+	var response ReadCoreV1NamespacedResourceQuotaStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedResourceQuotaStatus",
+			OperationID:   "readCoreV1NamespacedResourceQuotaStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedResourceQuotaStatusParams
+			Response = ReadCoreV1NamespacedResourceQuotaStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedResourceQuotaStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedResourceQuotaStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedResourceQuotaStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14760,7 +22356,41 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedSecret(ctx, params)
+	var response ReadCoreV1NamespacedSecretRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedSecret",
+			OperationID:   "readCoreV1NamespacedSecret",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedSecretParams
+			Response = ReadCoreV1NamespacedSecretRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedSecret(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedSecret(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14833,7 +22463,41 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedService(ctx, params)
+	var response ReadCoreV1NamespacedServiceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedService",
+			OperationID:   "readCoreV1NamespacedService",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedServiceParams
+			Response = ReadCoreV1NamespacedServiceRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedServiceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedService(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedService(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14906,7 +22570,41 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedServiceAccount(ctx, params)
+	var response ReadCoreV1NamespacedServiceAccountRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedServiceAccount",
+			OperationID:   "readCoreV1NamespacedServiceAccount",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedServiceAccountParams
+			Response = ReadCoreV1NamespacedServiceAccountRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedServiceAccountParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedServiceAccount(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedServiceAccount(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -14979,7 +22677,41 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NamespacedServiceStatus(ctx, params)
+	var response ReadCoreV1NamespacedServiceStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NamespacedServiceStatus",
+			OperationID:   "readCoreV1NamespacedServiceStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NamespacedServiceStatusParams
+			Response = ReadCoreV1NamespacedServiceStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NamespacedServiceStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NamespacedServiceStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NamespacedServiceStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15052,7 +22784,40 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 		return
 	}
 
-	response, err := s.h.ReadCoreV1Node(ctx, params)
+	var response ReadCoreV1NodeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1Node",
+			OperationID:   "readCoreV1Node",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NodeParams
+			Response = ReadCoreV1NodeRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NodeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1Node(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1Node(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15125,7 +22890,40 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.ReadCoreV1NodeStatus(ctx, params)
+	var response ReadCoreV1NodeStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1NodeStatus",
+			OperationID:   "readCoreV1NodeStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1NodeStatusParams
+			Response = ReadCoreV1NodeStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1NodeStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1NodeStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1NodeStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15198,7 +22996,40 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 		return
 	}
 
-	response, err := s.h.ReadCoreV1PersistentVolume(ctx, params)
+	var response ReadCoreV1PersistentVolumeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1PersistentVolume",
+			OperationID:   "readCoreV1PersistentVolume",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1PersistentVolumeParams
+			Response = ReadCoreV1PersistentVolumeRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1PersistentVolumeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1PersistentVolume(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1PersistentVolume(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15271,7 +23102,40 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 		return
 	}
 
-	response, err := s.h.ReadCoreV1PersistentVolumeStatus(ctx, params)
+	var response ReadCoreV1PersistentVolumeStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadCoreV1PersistentVolumeStatus",
+			OperationID:   "readCoreV1PersistentVolumeStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadCoreV1PersistentVolumeStatusParams
+			Response = ReadCoreV1PersistentVolumeStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadCoreV1PersistentVolumeStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadCoreV1PersistentVolumeStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadCoreV1PersistentVolumeStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15344,7 +23208,41 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 		return
 	}
 
-	response, err := s.h.ReadDiscoveryV1NamespacedEndpointSlice(ctx, params)
+	var response ReadDiscoveryV1NamespacedEndpointSliceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadDiscoveryV1NamespacedEndpointSlice",
+			OperationID:   "readDiscoveryV1NamespacedEndpointSlice",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadDiscoveryV1NamespacedEndpointSliceParams
+			Response = ReadDiscoveryV1NamespacedEndpointSliceRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadDiscoveryV1NamespacedEndpointSliceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadDiscoveryV1NamespacedEndpointSlice(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadDiscoveryV1NamespacedEndpointSlice(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15417,7 +23315,41 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 		return
 	}
 
-	response, err := s.h.ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
+	var response ReadDiscoveryV1beta1NamespacedEndpointSliceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadDiscoveryV1beta1NamespacedEndpointSlice",
+			OperationID:   "readDiscoveryV1beta1NamespacedEndpointSlice",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadDiscoveryV1beta1NamespacedEndpointSliceParams
+			Response = ReadDiscoveryV1beta1NamespacedEndpointSliceRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadDiscoveryV1beta1NamespacedEndpointSliceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15490,7 +23422,41 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 		return
 	}
 
-	response, err := s.h.ReadEventsV1NamespacedEvent(ctx, params)
+	var response ReadEventsV1NamespacedEventRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadEventsV1NamespacedEvent",
+			OperationID:   "readEventsV1NamespacedEvent",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadEventsV1NamespacedEventParams
+			Response = ReadEventsV1NamespacedEventRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadEventsV1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadEventsV1NamespacedEvent(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadEventsV1NamespacedEvent(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15563,7 +23529,41 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 		return
 	}
 
-	response, err := s.h.ReadEventsV1beta1NamespacedEvent(ctx, params)
+	var response ReadEventsV1beta1NamespacedEventRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadEventsV1beta1NamespacedEvent",
+			OperationID:   "readEventsV1beta1NamespacedEvent",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadEventsV1beta1NamespacedEventParams
+			Response = ReadEventsV1beta1NamespacedEventRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadEventsV1beta1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadEventsV1beta1NamespacedEvent(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadEventsV1beta1NamespacedEvent(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15636,7 +23636,40 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 		return
 	}
 
-	response, err := s.h.ReadFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
+	var response ReadFlowcontrolApiserverV1beta1FlowSchemaRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadFlowcontrolApiserverV1beta1FlowSchema",
+			OperationID:   "readFlowcontrolApiserverV1beta1FlowSchema",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadFlowcontrolApiserverV1beta1FlowSchemaParams
+			Response = ReadFlowcontrolApiserverV1beta1FlowSchemaRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadFlowcontrolApiserverV1beta1FlowSchemaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15709,7 +23742,40 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 		return
 	}
 
-	response, err := s.h.ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx, params)
+	var response ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus",
+			OperationID:   "readFlowcontrolApiserverV1beta1FlowSchemaStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams
+			Response = ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15782,7 +23848,40 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		return
 	}
 
-	response, err := s.h.ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
+	var response ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			OperationID:   "readFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams
+			Response = ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15855,7 +23954,40 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		return
 	}
 
-	response, err := s.h.ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus(ctx, params)
+	var response ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
+			OperationID:   "readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams
+			Response = ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -15928,7 +24060,40 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 		return
 	}
 
-	response, err := s.h.ReadFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
+	var response ReadFlowcontrolApiserverV1beta2FlowSchemaRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadFlowcontrolApiserverV1beta2FlowSchema",
+			OperationID:   "readFlowcontrolApiserverV1beta2FlowSchema",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadFlowcontrolApiserverV1beta2FlowSchemaParams
+			Response = ReadFlowcontrolApiserverV1beta2FlowSchemaRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadFlowcontrolApiserverV1beta2FlowSchemaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16001,7 +24166,40 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 		return
 	}
 
-	response, err := s.h.ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx, params)
+	var response ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus",
+			OperationID:   "readFlowcontrolApiserverV1beta2FlowSchemaStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams
+			Response = ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16074,7 +24272,40 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		return
 	}
 
-	response, err := s.h.ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
+	var response ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			OperationID:   "readFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams
+			Response = ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16147,7 +24378,40 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		return
 	}
 
-	response, err := s.h.ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus(ctx, params)
+	var response ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
+			OperationID:   "readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams
+			Response = ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16220,7 +24484,40 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 		return
 	}
 
-	response, err := s.h.ReadInternalApiserverV1alpha1StorageVersion(ctx, params)
+	var response ReadInternalApiserverV1alpha1StorageVersionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadInternalApiserverV1alpha1StorageVersion",
+			OperationID:   "readInternalApiserverV1alpha1StorageVersion",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadInternalApiserverV1alpha1StorageVersionParams
+			Response = ReadInternalApiserverV1alpha1StorageVersionRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadInternalApiserverV1alpha1StorageVersionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadInternalApiserverV1alpha1StorageVersion(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadInternalApiserverV1alpha1StorageVersion(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16293,7 +24590,40 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 		return
 	}
 
-	response, err := s.h.ReadInternalApiserverV1alpha1StorageVersionStatus(ctx, params)
+	var response ReadInternalApiserverV1alpha1StorageVersionStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadInternalApiserverV1alpha1StorageVersionStatus",
+			OperationID:   "readInternalApiserverV1alpha1StorageVersionStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadInternalApiserverV1alpha1StorageVersionStatusParams
+			Response = ReadInternalApiserverV1alpha1StorageVersionStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadInternalApiserverV1alpha1StorageVersionStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadInternalApiserverV1alpha1StorageVersionStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadInternalApiserverV1alpha1StorageVersionStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16366,7 +24696,40 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 		return
 	}
 
-	response, err := s.h.ReadNetworkingV1IngressClass(ctx, params)
+	var response ReadNetworkingV1IngressClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadNetworkingV1IngressClass",
+			OperationID:   "readNetworkingV1IngressClass",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadNetworkingV1IngressClassParams
+			Response = ReadNetworkingV1IngressClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadNetworkingV1IngressClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadNetworkingV1IngressClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadNetworkingV1IngressClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16439,7 +24802,41 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 		return
 	}
 
-	response, err := s.h.ReadNetworkingV1NamespacedIngress(ctx, params)
+	var response ReadNetworkingV1NamespacedIngressRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadNetworkingV1NamespacedIngress",
+			OperationID:   "readNetworkingV1NamespacedIngress",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadNetworkingV1NamespacedIngressParams
+			Response = ReadNetworkingV1NamespacedIngressRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadNetworkingV1NamespacedIngressParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadNetworkingV1NamespacedIngress(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadNetworkingV1NamespacedIngress(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16512,7 +24909,41 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 		return
 	}
 
-	response, err := s.h.ReadNetworkingV1NamespacedIngressStatus(ctx, params)
+	var response ReadNetworkingV1NamespacedIngressStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadNetworkingV1NamespacedIngressStatus",
+			OperationID:   "readNetworkingV1NamespacedIngressStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadNetworkingV1NamespacedIngressStatusParams
+			Response = ReadNetworkingV1NamespacedIngressStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadNetworkingV1NamespacedIngressStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadNetworkingV1NamespacedIngressStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadNetworkingV1NamespacedIngressStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16585,7 +25016,41 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 		return
 	}
 
-	response, err := s.h.ReadNetworkingV1NamespacedNetworkPolicy(ctx, params)
+	var response ReadNetworkingV1NamespacedNetworkPolicyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadNetworkingV1NamespacedNetworkPolicy",
+			OperationID:   "readNetworkingV1NamespacedNetworkPolicy",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadNetworkingV1NamespacedNetworkPolicyParams
+			Response = ReadNetworkingV1NamespacedNetworkPolicyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadNetworkingV1NamespacedNetworkPolicyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadNetworkingV1NamespacedNetworkPolicy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadNetworkingV1NamespacedNetworkPolicy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16658,7 +25123,40 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.ReadNodeV1RuntimeClass(ctx, params)
+	var response ReadNodeV1RuntimeClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadNodeV1RuntimeClass",
+			OperationID:   "readNodeV1RuntimeClass",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadNodeV1RuntimeClassParams
+			Response = ReadNodeV1RuntimeClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadNodeV1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadNodeV1RuntimeClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadNodeV1RuntimeClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16731,7 +25229,40 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 		return
 	}
 
-	response, err := s.h.ReadNodeV1alpha1RuntimeClass(ctx, params)
+	var response ReadNodeV1alpha1RuntimeClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadNodeV1alpha1RuntimeClass",
+			OperationID:   "readNodeV1alpha1RuntimeClass",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadNodeV1alpha1RuntimeClassParams
+			Response = ReadNodeV1alpha1RuntimeClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadNodeV1alpha1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadNodeV1alpha1RuntimeClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadNodeV1alpha1RuntimeClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16804,7 +25335,40 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 		return
 	}
 
-	response, err := s.h.ReadNodeV1beta1RuntimeClass(ctx, params)
+	var response ReadNodeV1beta1RuntimeClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadNodeV1beta1RuntimeClass",
+			OperationID:   "readNodeV1beta1RuntimeClass",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadNodeV1beta1RuntimeClassParams
+			Response = ReadNodeV1beta1RuntimeClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadNodeV1beta1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadNodeV1beta1RuntimeClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadNodeV1beta1RuntimeClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16877,7 +25441,41 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 		return
 	}
 
-	response, err := s.h.ReadPolicyV1NamespacedPodDisruptionBudget(ctx, params)
+	var response ReadPolicyV1NamespacedPodDisruptionBudgetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadPolicyV1NamespacedPodDisruptionBudget",
+			OperationID:   "readPolicyV1NamespacedPodDisruptionBudget",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadPolicyV1NamespacedPodDisruptionBudgetParams
+			Response = ReadPolicyV1NamespacedPodDisruptionBudgetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadPolicyV1NamespacedPodDisruptionBudgetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadPolicyV1NamespacedPodDisruptionBudget(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadPolicyV1NamespacedPodDisruptionBudget(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -16950,7 +25548,41 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 		return
 	}
 
-	response, err := s.h.ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx, params)
+	var response ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadPolicyV1NamespacedPodDisruptionBudgetStatus",
+			OperationID:   "readPolicyV1NamespacedPodDisruptionBudgetStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams
+			Response = ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadPolicyV1NamespacedPodDisruptionBudgetStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17023,7 +25655,41 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 		return
 	}
 
-	response, err := s.h.ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
+	var response ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadPolicyV1beta1NamespacedPodDisruptionBudget",
+			OperationID:   "readPolicyV1beta1NamespacedPodDisruptionBudget",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams
+			Response = ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadPolicyV1beta1NamespacedPodDisruptionBudgetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17096,7 +25762,41 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 		return
 	}
 
-	response, err := s.h.ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx, params)
+	var response ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
+			OperationID:   "readPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams
+			Response = ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17169,7 +25869,40 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 		return
 	}
 
-	response, err := s.h.ReadPolicyV1beta1PodSecurityPolicy(ctx, params)
+	var response ReadPolicyV1beta1PodSecurityPolicyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadPolicyV1beta1PodSecurityPolicy",
+			OperationID:   "readPolicyV1beta1PodSecurityPolicy",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadPolicyV1beta1PodSecurityPolicyParams
+			Response = ReadPolicyV1beta1PodSecurityPolicyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadPolicyV1beta1PodSecurityPolicyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadPolicyV1beta1PodSecurityPolicy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadPolicyV1beta1PodSecurityPolicy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17242,7 +25975,40 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 		return
 	}
 
-	response, err := s.h.ReadRbacAuthorizationV1ClusterRole(ctx, params)
+	var response ReadRbacAuthorizationV1ClusterRoleRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadRbacAuthorizationV1ClusterRole",
+			OperationID:   "readRbacAuthorizationV1ClusterRole",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadRbacAuthorizationV1ClusterRoleParams
+			Response = ReadRbacAuthorizationV1ClusterRoleRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadRbacAuthorizationV1ClusterRoleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadRbacAuthorizationV1ClusterRole(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadRbacAuthorizationV1ClusterRole(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17315,7 +26081,40 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 		return
 	}
 
-	response, err := s.h.ReadRbacAuthorizationV1ClusterRoleBinding(ctx, params)
+	var response ReadRbacAuthorizationV1ClusterRoleBindingRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadRbacAuthorizationV1ClusterRoleBinding",
+			OperationID:   "readRbacAuthorizationV1ClusterRoleBinding",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadRbacAuthorizationV1ClusterRoleBindingParams
+			Response = ReadRbacAuthorizationV1ClusterRoleBindingRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadRbacAuthorizationV1ClusterRoleBindingParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadRbacAuthorizationV1ClusterRoleBinding(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadRbacAuthorizationV1ClusterRoleBinding(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17388,7 +26187,41 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 		return
 	}
 
-	response, err := s.h.ReadRbacAuthorizationV1NamespacedRole(ctx, params)
+	var response ReadRbacAuthorizationV1NamespacedRoleRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadRbacAuthorizationV1NamespacedRole",
+			OperationID:   "readRbacAuthorizationV1NamespacedRole",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadRbacAuthorizationV1NamespacedRoleParams
+			Response = ReadRbacAuthorizationV1NamespacedRoleRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadRbacAuthorizationV1NamespacedRoleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadRbacAuthorizationV1NamespacedRole(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadRbacAuthorizationV1NamespacedRole(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17461,7 +26294,41 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 		return
 	}
 
-	response, err := s.h.ReadRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
+	var response ReadRbacAuthorizationV1NamespacedRoleBindingRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadRbacAuthorizationV1NamespacedRoleBinding",
+			OperationID:   "readRbacAuthorizationV1NamespacedRoleBinding",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadRbacAuthorizationV1NamespacedRoleBindingParams
+			Response = ReadRbacAuthorizationV1NamespacedRoleBindingRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadRbacAuthorizationV1NamespacedRoleBindingParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17534,7 +26401,40 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 		return
 	}
 
-	response, err := s.h.ReadSchedulingV1PriorityClass(ctx, params)
+	var response ReadSchedulingV1PriorityClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadSchedulingV1PriorityClass",
+			OperationID:   "readSchedulingV1PriorityClass",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadSchedulingV1PriorityClassParams
+			Response = ReadSchedulingV1PriorityClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadSchedulingV1PriorityClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadSchedulingV1PriorityClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadSchedulingV1PriorityClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17607,7 +26507,40 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 		return
 	}
 
-	response, err := s.h.ReadStorageV1CSIDriver(ctx, params)
+	var response ReadStorageV1CSIDriverRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadStorageV1CSIDriver",
+			OperationID:   "readStorageV1CSIDriver",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadStorageV1CSIDriverParams
+			Response = ReadStorageV1CSIDriverRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadStorageV1CSIDriverParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadStorageV1CSIDriver(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadStorageV1CSIDriver(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17680,7 +26613,40 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.ReadStorageV1CSINode(ctx, params)
+	var response ReadStorageV1CSINodeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadStorageV1CSINode",
+			OperationID:   "readStorageV1CSINode",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadStorageV1CSINodeParams
+			Response = ReadStorageV1CSINodeRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadStorageV1CSINodeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadStorageV1CSINode(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadStorageV1CSINode(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17753,7 +26719,40 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 		return
 	}
 
-	response, err := s.h.ReadStorageV1StorageClass(ctx, params)
+	var response ReadStorageV1StorageClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadStorageV1StorageClass",
+			OperationID:   "readStorageV1StorageClass",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadStorageV1StorageClassParams
+			Response = ReadStorageV1StorageClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadStorageV1StorageClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadStorageV1StorageClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadStorageV1StorageClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17826,7 +26825,40 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 		return
 	}
 
-	response, err := s.h.ReadStorageV1VolumeAttachment(ctx, params)
+	var response ReadStorageV1VolumeAttachmentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadStorageV1VolumeAttachment",
+			OperationID:   "readStorageV1VolumeAttachment",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadStorageV1VolumeAttachmentParams
+			Response = ReadStorageV1VolumeAttachmentRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadStorageV1VolumeAttachmentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadStorageV1VolumeAttachment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadStorageV1VolumeAttachment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17899,7 +26931,40 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 		return
 	}
 
-	response, err := s.h.ReadStorageV1VolumeAttachmentStatus(ctx, params)
+	var response ReadStorageV1VolumeAttachmentStatusRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadStorageV1VolumeAttachmentStatus",
+			OperationID:   "readStorageV1VolumeAttachmentStatus",
+			Body:          nil,
+			Params: map[string]any{
+				"name":   params.Name,
+				"pretty": params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadStorageV1VolumeAttachmentStatusParams
+			Response = ReadStorageV1VolumeAttachmentStatusRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadStorageV1VolumeAttachmentStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadStorageV1VolumeAttachmentStatus(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadStorageV1VolumeAttachmentStatus(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -17972,7 +27037,41 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 		return
 	}
 
-	response, err := s.h.ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
+	var response ReadStorageV1alpha1NamespacedCSIStorageCapacityRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadStorageV1alpha1NamespacedCSIStorageCapacity",
+			OperationID:   "readStorageV1alpha1NamespacedCSIStorageCapacity",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadStorageV1alpha1NamespacedCSIStorageCapacityParams
+			Response = ReadStorageV1alpha1NamespacedCSIStorageCapacityRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadStorageV1alpha1NamespacedCSIStorageCapacityParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18045,7 +27144,41 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 		return
 	}
 
-	response, err := s.h.ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
+	var response ReadStorageV1beta1NamespacedCSIStorageCapacityRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReadStorageV1beta1NamespacedCSIStorageCapacity",
+			OperationID:   "readStorageV1beta1NamespacedCSIStorageCapacity",
+			Body:          nil,
+			Params: map[string]any{
+				"name":      params.Name,
+				"namespace": params.Namespace,
+				"pretty":    params.Pretty,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = ReadStorageV1beta1NamespacedCSIStorageCapacityParams
+			Response = ReadStorageV1beta1NamespacedCSIStorageCapacityRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackReadStorageV1beta1NamespacedCSIStorageCapacityParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18118,7 +27251,49 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 		return
 	}
 
-	response, err := s.h.WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
+	var response WatchAdmissionregistrationV1MutatingWebhookConfigurationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAdmissionregistrationV1MutatingWebhookConfiguration",
+			OperationID:   "watchAdmissionregistrationV1MutatingWebhookConfiguration",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAdmissionregistrationV1MutatingWebhookConfigurationParams
+			Response = WatchAdmissionregistrationV1MutatingWebhookConfigurationRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAdmissionregistrationV1MutatingWebhookConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18191,7 +27366,48 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 		return
 	}
 
-	response, err := s.h.WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx, params)
+	var response WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAdmissionregistrationV1MutatingWebhookConfigurationList",
+			OperationID:   "watchAdmissionregistrationV1MutatingWebhookConfigurationList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams
+			Response = WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18264,7 +27480,49 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 		return
 	}
 
-	response, err := s.h.WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
+	var response WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAdmissionregistrationV1ValidatingWebhookConfiguration",
+			OperationID:   "watchAdmissionregistrationV1ValidatingWebhookConfiguration",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams
+			Response = WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18337,7 +27595,48 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 		return
 	}
 
-	response, err := s.h.WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx, params)
+	var response WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList",
+			OperationID:   "watchAdmissionregistrationV1ValidatingWebhookConfigurationList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams
+			Response = WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18410,7 +27709,49 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 		return
 	}
 
-	response, err := s.h.WatchApiextensionsV1CustomResourceDefinition(ctx, params)
+	var response WatchApiextensionsV1CustomResourceDefinitionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchApiextensionsV1CustomResourceDefinition",
+			OperationID:   "watchApiextensionsV1CustomResourceDefinition",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchApiextensionsV1CustomResourceDefinitionParams
+			Response = WatchApiextensionsV1CustomResourceDefinitionRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchApiextensionsV1CustomResourceDefinitionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchApiextensionsV1CustomResourceDefinition(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchApiextensionsV1CustomResourceDefinition(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18483,7 +27824,48 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 		return
 	}
 
-	response, err := s.h.WatchApiextensionsV1CustomResourceDefinitionList(ctx, params)
+	var response WatchApiextensionsV1CustomResourceDefinitionListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchApiextensionsV1CustomResourceDefinitionList",
+			OperationID:   "watchApiextensionsV1CustomResourceDefinitionList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchApiextensionsV1CustomResourceDefinitionListParams
+			Response = WatchApiextensionsV1CustomResourceDefinitionListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchApiextensionsV1CustomResourceDefinitionListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchApiextensionsV1CustomResourceDefinitionList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchApiextensionsV1CustomResourceDefinitionList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18556,7 +27938,49 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 		return
 	}
 
-	response, err := s.h.WatchApiregistrationV1APIService(ctx, params)
+	var response WatchApiregistrationV1APIServiceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchApiregistrationV1APIService",
+			OperationID:   "watchApiregistrationV1APIService",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchApiregistrationV1APIServiceParams
+			Response = WatchApiregistrationV1APIServiceRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchApiregistrationV1APIServiceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchApiregistrationV1APIService(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchApiregistrationV1APIService(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18629,7 +28053,48 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 		return
 	}
 
-	response, err := s.h.WatchApiregistrationV1APIServiceList(ctx, params)
+	var response WatchApiregistrationV1APIServiceListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchApiregistrationV1APIServiceList",
+			OperationID:   "watchApiregistrationV1APIServiceList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchApiregistrationV1APIServiceListParams
+			Response = WatchApiregistrationV1APIServiceListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchApiregistrationV1APIServiceListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchApiregistrationV1APIServiceList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchApiregistrationV1APIServiceList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18702,7 +28167,48 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 		return
 	}
 
-	response, err := s.h.WatchAppsV1ControllerRevisionListForAllNamespaces(ctx, params)
+	var response WatchAppsV1ControllerRevisionListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAppsV1ControllerRevisionListForAllNamespaces",
+			OperationID:   "watchAppsV1ControllerRevisionListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAppsV1ControllerRevisionListForAllNamespacesParams
+			Response = WatchAppsV1ControllerRevisionListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAppsV1ControllerRevisionListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAppsV1ControllerRevisionListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAppsV1ControllerRevisionListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18775,7 +28281,48 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 		return
 	}
 
-	response, err := s.h.WatchAppsV1DaemonSetListForAllNamespaces(ctx, params)
+	var response WatchAppsV1DaemonSetListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAppsV1DaemonSetListForAllNamespaces",
+			OperationID:   "watchAppsV1DaemonSetListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAppsV1DaemonSetListForAllNamespacesParams
+			Response = WatchAppsV1DaemonSetListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAppsV1DaemonSetListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAppsV1DaemonSetListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAppsV1DaemonSetListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18848,7 +28395,48 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 		return
 	}
 
-	response, err := s.h.WatchAppsV1DeploymentListForAllNamespaces(ctx, params)
+	var response WatchAppsV1DeploymentListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAppsV1DeploymentListForAllNamespaces",
+			OperationID:   "watchAppsV1DeploymentListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAppsV1DeploymentListForAllNamespacesParams
+			Response = WatchAppsV1DeploymentListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAppsV1DeploymentListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAppsV1DeploymentListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAppsV1DeploymentListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18921,7 +28509,50 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 		return
 	}
 
-	response, err := s.h.WatchAppsV1NamespacedControllerRevision(ctx, params)
+	var response WatchAppsV1NamespacedControllerRevisionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAppsV1NamespacedControllerRevision",
+			OperationID:   "watchAppsV1NamespacedControllerRevision",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAppsV1NamespacedControllerRevisionParams
+			Response = WatchAppsV1NamespacedControllerRevisionRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAppsV1NamespacedControllerRevisionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAppsV1NamespacedControllerRevision(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAppsV1NamespacedControllerRevision(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -18994,7 +28625,49 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 		return
 	}
 
-	response, err := s.h.WatchAppsV1NamespacedControllerRevisionList(ctx, params)
+	var response WatchAppsV1NamespacedControllerRevisionListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAppsV1NamespacedControllerRevisionList",
+			OperationID:   "watchAppsV1NamespacedControllerRevisionList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAppsV1NamespacedControllerRevisionListParams
+			Response = WatchAppsV1NamespacedControllerRevisionListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAppsV1NamespacedControllerRevisionListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAppsV1NamespacedControllerRevisionList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAppsV1NamespacedControllerRevisionList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19067,7 +28740,50 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 		return
 	}
 
-	response, err := s.h.WatchAppsV1NamespacedDaemonSet(ctx, params)
+	var response WatchAppsV1NamespacedDaemonSetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAppsV1NamespacedDaemonSet",
+			OperationID:   "watchAppsV1NamespacedDaemonSet",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAppsV1NamespacedDaemonSetParams
+			Response = WatchAppsV1NamespacedDaemonSetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAppsV1NamespacedDaemonSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAppsV1NamespacedDaemonSet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAppsV1NamespacedDaemonSet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19140,7 +28856,49 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 		return
 	}
 
-	response, err := s.h.WatchAppsV1NamespacedDaemonSetList(ctx, params)
+	var response WatchAppsV1NamespacedDaemonSetListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAppsV1NamespacedDaemonSetList",
+			OperationID:   "watchAppsV1NamespacedDaemonSetList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAppsV1NamespacedDaemonSetListParams
+			Response = WatchAppsV1NamespacedDaemonSetListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAppsV1NamespacedDaemonSetListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAppsV1NamespacedDaemonSetList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAppsV1NamespacedDaemonSetList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19213,7 +28971,50 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 		return
 	}
 
-	response, err := s.h.WatchAppsV1NamespacedDeployment(ctx, params)
+	var response WatchAppsV1NamespacedDeploymentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAppsV1NamespacedDeployment",
+			OperationID:   "watchAppsV1NamespacedDeployment",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAppsV1NamespacedDeploymentParams
+			Response = WatchAppsV1NamespacedDeploymentRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAppsV1NamespacedDeploymentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAppsV1NamespacedDeployment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAppsV1NamespacedDeployment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19286,7 +29087,49 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 		return
 	}
 
-	response, err := s.h.WatchAppsV1NamespacedDeploymentList(ctx, params)
+	var response WatchAppsV1NamespacedDeploymentListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAppsV1NamespacedDeploymentList",
+			OperationID:   "watchAppsV1NamespacedDeploymentList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAppsV1NamespacedDeploymentListParams
+			Response = WatchAppsV1NamespacedDeploymentListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAppsV1NamespacedDeploymentListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAppsV1NamespacedDeploymentList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAppsV1NamespacedDeploymentList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19359,7 +29202,50 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 		return
 	}
 
-	response, err := s.h.WatchAppsV1NamespacedReplicaSet(ctx, params)
+	var response WatchAppsV1NamespacedReplicaSetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAppsV1NamespacedReplicaSet",
+			OperationID:   "watchAppsV1NamespacedReplicaSet",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAppsV1NamespacedReplicaSetParams
+			Response = WatchAppsV1NamespacedReplicaSetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAppsV1NamespacedReplicaSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAppsV1NamespacedReplicaSet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAppsV1NamespacedReplicaSet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19432,7 +29318,49 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 		return
 	}
 
-	response, err := s.h.WatchAppsV1NamespacedReplicaSetList(ctx, params)
+	var response WatchAppsV1NamespacedReplicaSetListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAppsV1NamespacedReplicaSetList",
+			OperationID:   "watchAppsV1NamespacedReplicaSetList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAppsV1NamespacedReplicaSetListParams
+			Response = WatchAppsV1NamespacedReplicaSetListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAppsV1NamespacedReplicaSetListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAppsV1NamespacedReplicaSetList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAppsV1NamespacedReplicaSetList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19505,7 +29433,50 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 		return
 	}
 
-	response, err := s.h.WatchAppsV1NamespacedStatefulSet(ctx, params)
+	var response WatchAppsV1NamespacedStatefulSetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAppsV1NamespacedStatefulSet",
+			OperationID:   "watchAppsV1NamespacedStatefulSet",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAppsV1NamespacedStatefulSetParams
+			Response = WatchAppsV1NamespacedStatefulSetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAppsV1NamespacedStatefulSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAppsV1NamespacedStatefulSet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAppsV1NamespacedStatefulSet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19578,7 +29549,49 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 		return
 	}
 
-	response, err := s.h.WatchAppsV1NamespacedStatefulSetList(ctx, params)
+	var response WatchAppsV1NamespacedStatefulSetListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAppsV1NamespacedStatefulSetList",
+			OperationID:   "watchAppsV1NamespacedStatefulSetList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAppsV1NamespacedStatefulSetListParams
+			Response = WatchAppsV1NamespacedStatefulSetListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAppsV1NamespacedStatefulSetListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAppsV1NamespacedStatefulSetList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAppsV1NamespacedStatefulSetList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19651,7 +29664,48 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 		return
 	}
 
-	response, err := s.h.WatchAppsV1ReplicaSetListForAllNamespaces(ctx, params)
+	var response WatchAppsV1ReplicaSetListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAppsV1ReplicaSetListForAllNamespaces",
+			OperationID:   "watchAppsV1ReplicaSetListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAppsV1ReplicaSetListForAllNamespacesParams
+			Response = WatchAppsV1ReplicaSetListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAppsV1ReplicaSetListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAppsV1ReplicaSetListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAppsV1ReplicaSetListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19724,7 +29778,48 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 		return
 	}
 
-	response, err := s.h.WatchAppsV1StatefulSetListForAllNamespaces(ctx, params)
+	var response WatchAppsV1StatefulSetListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAppsV1StatefulSetListForAllNamespaces",
+			OperationID:   "watchAppsV1StatefulSetListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAppsV1StatefulSetListForAllNamespacesParams
+			Response = WatchAppsV1StatefulSetListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAppsV1StatefulSetListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAppsV1StatefulSetListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAppsV1StatefulSetListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19797,7 +29892,48 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 		return
 	}
 
-	response, err := s.h.WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
+	var response WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
+			OperationID:   "watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams
+			Response = WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19870,7 +30006,50 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 		return
 	}
 
-	response, err := s.h.WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
+	var response WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			OperationID:   "watchAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams
+			Response = WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -19943,7 +30122,49 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 		return
 	}
 
-	response, err := s.h.WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx, params)
+	var response WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
+			OperationID:   "watchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams
+			Response = WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20016,7 +30237,48 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 		return
 	}
 
-	response, err := s.h.WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
+	var response WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
+			OperationID:   "watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams
+			Response = WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20089,7 +30351,50 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 		return
 	}
 
-	response, err := s.h.WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
+	var response WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			OperationID:   "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams
+			Response = WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20162,7 +30467,49 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 		return
 	}
 
-	response, err := s.h.WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ctx, params)
+	var response WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
+			OperationID:   "watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams
+			Response = WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20235,7 +30582,48 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 		return
 	}
 
-	response, err := s.h.WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
+	var response WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
+			OperationID:   "watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams
+			Response = WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20308,7 +30696,50 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 		return
 	}
 
-	response, err := s.h.WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
+	var response WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			OperationID:   "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams
+			Response = WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20381,7 +30812,49 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 		return
 	}
 
-	response, err := s.h.WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ctx, params)
+	var response WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
+			OperationID:   "watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams
+			Response = WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20454,7 +30927,48 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 		return
 	}
 
-	response, err := s.h.WatchBatchV1CronJobListForAllNamespaces(ctx, params)
+	var response WatchBatchV1CronJobListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchBatchV1CronJobListForAllNamespaces",
+			OperationID:   "watchBatchV1CronJobListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchBatchV1CronJobListForAllNamespacesParams
+			Response = WatchBatchV1CronJobListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchBatchV1CronJobListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchBatchV1CronJobListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchBatchV1CronJobListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20527,7 +31041,48 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 		return
 	}
 
-	response, err := s.h.WatchBatchV1JobListForAllNamespaces(ctx, params)
+	var response WatchBatchV1JobListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchBatchV1JobListForAllNamespaces",
+			OperationID:   "watchBatchV1JobListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchBatchV1JobListForAllNamespacesParams
+			Response = WatchBatchV1JobListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchBatchV1JobListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchBatchV1JobListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchBatchV1JobListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20600,7 +31155,50 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 		return
 	}
 
-	response, err := s.h.WatchBatchV1NamespacedCronJob(ctx, params)
+	var response WatchBatchV1NamespacedCronJobRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchBatchV1NamespacedCronJob",
+			OperationID:   "watchBatchV1NamespacedCronJob",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchBatchV1NamespacedCronJobParams
+			Response = WatchBatchV1NamespacedCronJobRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchBatchV1NamespacedCronJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchBatchV1NamespacedCronJob(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchBatchV1NamespacedCronJob(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20673,7 +31271,49 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 		return
 	}
 
-	response, err := s.h.WatchBatchV1NamespacedCronJobList(ctx, params)
+	var response WatchBatchV1NamespacedCronJobListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchBatchV1NamespacedCronJobList",
+			OperationID:   "watchBatchV1NamespacedCronJobList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchBatchV1NamespacedCronJobListParams
+			Response = WatchBatchV1NamespacedCronJobListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchBatchV1NamespacedCronJobListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchBatchV1NamespacedCronJobList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchBatchV1NamespacedCronJobList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20746,7 +31386,50 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 		return
 	}
 
-	response, err := s.h.WatchBatchV1NamespacedJob(ctx, params)
+	var response WatchBatchV1NamespacedJobRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchBatchV1NamespacedJob",
+			OperationID:   "watchBatchV1NamespacedJob",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchBatchV1NamespacedJobParams
+			Response = WatchBatchV1NamespacedJobRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchBatchV1NamespacedJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchBatchV1NamespacedJob(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchBatchV1NamespacedJob(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20819,7 +31502,49 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 		return
 	}
 
-	response, err := s.h.WatchBatchV1NamespacedJobList(ctx, params)
+	var response WatchBatchV1NamespacedJobListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchBatchV1NamespacedJobList",
+			OperationID:   "watchBatchV1NamespacedJobList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchBatchV1NamespacedJobListParams
+			Response = WatchBatchV1NamespacedJobListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchBatchV1NamespacedJobListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchBatchV1NamespacedJobList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchBatchV1NamespacedJobList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20892,7 +31617,48 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 		return
 	}
 
-	response, err := s.h.WatchBatchV1beta1CronJobListForAllNamespaces(ctx, params)
+	var response WatchBatchV1beta1CronJobListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchBatchV1beta1CronJobListForAllNamespaces",
+			OperationID:   "watchBatchV1beta1CronJobListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchBatchV1beta1CronJobListForAllNamespacesParams
+			Response = WatchBatchV1beta1CronJobListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchBatchV1beta1CronJobListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchBatchV1beta1CronJobListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchBatchV1beta1CronJobListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -20965,7 +31731,50 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 		return
 	}
 
-	response, err := s.h.WatchBatchV1beta1NamespacedCronJob(ctx, params)
+	var response WatchBatchV1beta1NamespacedCronJobRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchBatchV1beta1NamespacedCronJob",
+			OperationID:   "watchBatchV1beta1NamespacedCronJob",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchBatchV1beta1NamespacedCronJobParams
+			Response = WatchBatchV1beta1NamespacedCronJobRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchBatchV1beta1NamespacedCronJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchBatchV1beta1NamespacedCronJob(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchBatchV1beta1NamespacedCronJob(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21038,7 +31847,49 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 		return
 	}
 
-	response, err := s.h.WatchBatchV1beta1NamespacedCronJobList(ctx, params)
+	var response WatchBatchV1beta1NamespacedCronJobListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchBatchV1beta1NamespacedCronJobList",
+			OperationID:   "watchBatchV1beta1NamespacedCronJobList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchBatchV1beta1NamespacedCronJobListParams
+			Response = WatchBatchV1beta1NamespacedCronJobListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchBatchV1beta1NamespacedCronJobListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchBatchV1beta1NamespacedCronJobList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchBatchV1beta1NamespacedCronJobList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21111,7 +31962,49 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 		return
 	}
 
-	response, err := s.h.WatchCertificatesV1CertificateSigningRequest(ctx, params)
+	var response WatchCertificatesV1CertificateSigningRequestRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCertificatesV1CertificateSigningRequest",
+			OperationID:   "watchCertificatesV1CertificateSigningRequest",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCertificatesV1CertificateSigningRequestParams
+			Response = WatchCertificatesV1CertificateSigningRequestRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCertificatesV1CertificateSigningRequestParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCertificatesV1CertificateSigningRequest(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCertificatesV1CertificateSigningRequest(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21184,7 +32077,48 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 		return
 	}
 
-	response, err := s.h.WatchCertificatesV1CertificateSigningRequestList(ctx, params)
+	var response WatchCertificatesV1CertificateSigningRequestListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCertificatesV1CertificateSigningRequestList",
+			OperationID:   "watchCertificatesV1CertificateSigningRequestList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCertificatesV1CertificateSigningRequestListParams
+			Response = WatchCertificatesV1CertificateSigningRequestListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCertificatesV1CertificateSigningRequestListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCertificatesV1CertificateSigningRequestList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCertificatesV1CertificateSigningRequestList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21257,7 +32191,48 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 		return
 	}
 
-	response, err := s.h.WatchCoordinationV1LeaseListForAllNamespaces(ctx, params)
+	var response WatchCoordinationV1LeaseListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoordinationV1LeaseListForAllNamespaces",
+			OperationID:   "watchCoordinationV1LeaseListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoordinationV1LeaseListForAllNamespacesParams
+			Response = WatchCoordinationV1LeaseListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoordinationV1LeaseListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoordinationV1LeaseListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoordinationV1LeaseListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21330,7 +32305,50 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 		return
 	}
 
-	response, err := s.h.WatchCoordinationV1NamespacedLease(ctx, params)
+	var response WatchCoordinationV1NamespacedLeaseRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoordinationV1NamespacedLease",
+			OperationID:   "watchCoordinationV1NamespacedLease",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoordinationV1NamespacedLeaseParams
+			Response = WatchCoordinationV1NamespacedLeaseRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoordinationV1NamespacedLeaseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoordinationV1NamespacedLease(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoordinationV1NamespacedLease(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21403,7 +32421,49 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 		return
 	}
 
-	response, err := s.h.WatchCoordinationV1NamespacedLeaseList(ctx, params)
+	var response WatchCoordinationV1NamespacedLeaseListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoordinationV1NamespacedLeaseList",
+			OperationID:   "watchCoordinationV1NamespacedLeaseList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoordinationV1NamespacedLeaseListParams
+			Response = WatchCoordinationV1NamespacedLeaseListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoordinationV1NamespacedLeaseListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoordinationV1NamespacedLeaseList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoordinationV1NamespacedLeaseList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21476,7 +32536,48 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 		return
 	}
 
-	response, err := s.h.WatchCoreV1ConfigMapListForAllNamespaces(ctx, params)
+	var response WatchCoreV1ConfigMapListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1ConfigMapListForAllNamespaces",
+			OperationID:   "watchCoreV1ConfigMapListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1ConfigMapListForAllNamespacesParams
+			Response = WatchCoreV1ConfigMapListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1ConfigMapListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1ConfigMapListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1ConfigMapListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21549,7 +32650,48 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 		return
 	}
 
-	response, err := s.h.WatchCoreV1EndpointsListForAllNamespaces(ctx, params)
+	var response WatchCoreV1EndpointsListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1EndpointsListForAllNamespaces",
+			OperationID:   "watchCoreV1EndpointsListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1EndpointsListForAllNamespacesParams
+			Response = WatchCoreV1EndpointsListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1EndpointsListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1EndpointsListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1EndpointsListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21622,7 +32764,48 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 		return
 	}
 
-	response, err := s.h.WatchCoreV1EventListForAllNamespaces(ctx, params)
+	var response WatchCoreV1EventListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1EventListForAllNamespaces",
+			OperationID:   "watchCoreV1EventListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1EventListForAllNamespacesParams
+			Response = WatchCoreV1EventListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1EventListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1EventListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1EventListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21695,7 +32878,48 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 		return
 	}
 
-	response, err := s.h.WatchCoreV1LimitRangeListForAllNamespaces(ctx, params)
+	var response WatchCoreV1LimitRangeListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1LimitRangeListForAllNamespaces",
+			OperationID:   "watchCoreV1LimitRangeListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1LimitRangeListForAllNamespacesParams
+			Response = WatchCoreV1LimitRangeListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1LimitRangeListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1LimitRangeListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1LimitRangeListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21768,7 +32992,49 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 		return
 	}
 
-	response, err := s.h.WatchCoreV1Namespace(ctx, params)
+	var response WatchCoreV1NamespaceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1Namespace",
+			OperationID:   "watchCoreV1Namespace",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespaceParams
+			Response = WatchCoreV1NamespaceRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespaceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1Namespace(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1Namespace(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21841,7 +33107,48 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespaceList(ctx, params)
+	var response WatchCoreV1NamespaceListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespaceList",
+			OperationID:   "watchCoreV1NamespaceList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespaceListParams
+			Response = WatchCoreV1NamespaceListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespaceListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespaceList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespaceList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21914,7 +33221,50 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedConfigMap(ctx, params)
+	var response WatchCoreV1NamespacedConfigMapRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedConfigMap",
+			OperationID:   "watchCoreV1NamespacedConfigMap",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedConfigMapParams
+			Response = WatchCoreV1NamespacedConfigMapRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedConfigMapParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedConfigMap(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedConfigMap(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -21987,7 +33337,49 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedConfigMapList(ctx, params)
+	var response WatchCoreV1NamespacedConfigMapListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedConfigMapList",
+			OperationID:   "watchCoreV1NamespacedConfigMapList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedConfigMapListParams
+			Response = WatchCoreV1NamespacedConfigMapListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedConfigMapListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedConfigMapList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedConfigMapList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22060,7 +33452,50 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedEndpoints(ctx, params)
+	var response WatchCoreV1NamespacedEndpointsRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedEndpoints",
+			OperationID:   "watchCoreV1NamespacedEndpoints",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedEndpointsParams
+			Response = WatchCoreV1NamespacedEndpointsRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedEndpointsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedEndpoints(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedEndpoints(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22133,7 +33568,49 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedEndpointsList(ctx, params)
+	var response WatchCoreV1NamespacedEndpointsListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedEndpointsList",
+			OperationID:   "watchCoreV1NamespacedEndpointsList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedEndpointsListParams
+			Response = WatchCoreV1NamespacedEndpointsListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedEndpointsListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedEndpointsList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedEndpointsList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22206,7 +33683,50 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedEvent(ctx, params)
+	var response WatchCoreV1NamespacedEventRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedEvent",
+			OperationID:   "watchCoreV1NamespacedEvent",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedEventParams
+			Response = WatchCoreV1NamespacedEventRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedEvent(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedEvent(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22279,7 +33799,49 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedEventList(ctx, params)
+	var response WatchCoreV1NamespacedEventListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedEventList",
+			OperationID:   "watchCoreV1NamespacedEventList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedEventListParams
+			Response = WatchCoreV1NamespacedEventListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedEventListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedEventList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedEventList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22352,7 +33914,50 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedLimitRange(ctx, params)
+	var response WatchCoreV1NamespacedLimitRangeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedLimitRange",
+			OperationID:   "watchCoreV1NamespacedLimitRange",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedLimitRangeParams
+			Response = WatchCoreV1NamespacedLimitRangeRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedLimitRangeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedLimitRange(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedLimitRange(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22425,7 +34030,49 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedLimitRangeList(ctx, params)
+	var response WatchCoreV1NamespacedLimitRangeListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedLimitRangeList",
+			OperationID:   "watchCoreV1NamespacedLimitRangeList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedLimitRangeListParams
+			Response = WatchCoreV1NamespacedLimitRangeListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedLimitRangeListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedLimitRangeList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedLimitRangeList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22498,7 +34145,50 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedPersistentVolumeClaim(ctx, params)
+	var response WatchCoreV1NamespacedPersistentVolumeClaimRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedPersistentVolumeClaim",
+			OperationID:   "watchCoreV1NamespacedPersistentVolumeClaim",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedPersistentVolumeClaimParams
+			Response = WatchCoreV1NamespacedPersistentVolumeClaimRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedPersistentVolumeClaimParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedPersistentVolumeClaim(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedPersistentVolumeClaim(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22571,7 +34261,49 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedPersistentVolumeClaimList(ctx, params)
+	var response WatchCoreV1NamespacedPersistentVolumeClaimListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedPersistentVolumeClaimList",
+			OperationID:   "watchCoreV1NamespacedPersistentVolumeClaimList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedPersistentVolumeClaimListParams
+			Response = WatchCoreV1NamespacedPersistentVolumeClaimListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedPersistentVolumeClaimListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedPersistentVolumeClaimList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedPersistentVolumeClaimList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22644,7 +34376,50 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedPod(ctx, params)
+	var response WatchCoreV1NamespacedPodRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedPod",
+			OperationID:   "watchCoreV1NamespacedPod",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedPodParams
+			Response = WatchCoreV1NamespacedPodRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedPodParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedPod(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedPod(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22717,7 +34492,49 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedPodList(ctx, params)
+	var response WatchCoreV1NamespacedPodListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedPodList",
+			OperationID:   "watchCoreV1NamespacedPodList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedPodListParams
+			Response = WatchCoreV1NamespacedPodListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedPodListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedPodList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedPodList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22790,7 +34607,50 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedPodTemplate(ctx, params)
+	var response WatchCoreV1NamespacedPodTemplateRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedPodTemplate",
+			OperationID:   "watchCoreV1NamespacedPodTemplate",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedPodTemplateParams
+			Response = WatchCoreV1NamespacedPodTemplateRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedPodTemplateParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedPodTemplate(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedPodTemplate(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22863,7 +34723,49 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedPodTemplateList(ctx, params)
+	var response WatchCoreV1NamespacedPodTemplateListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedPodTemplateList",
+			OperationID:   "watchCoreV1NamespacedPodTemplateList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedPodTemplateListParams
+			Response = WatchCoreV1NamespacedPodTemplateListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedPodTemplateListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedPodTemplateList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedPodTemplateList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -22936,7 +34838,50 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedReplicationController(ctx, params)
+	var response WatchCoreV1NamespacedReplicationControllerRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedReplicationController",
+			OperationID:   "watchCoreV1NamespacedReplicationController",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedReplicationControllerParams
+			Response = WatchCoreV1NamespacedReplicationControllerRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedReplicationControllerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedReplicationController(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedReplicationController(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23009,7 +34954,49 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedReplicationControllerList(ctx, params)
+	var response WatchCoreV1NamespacedReplicationControllerListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedReplicationControllerList",
+			OperationID:   "watchCoreV1NamespacedReplicationControllerList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedReplicationControllerListParams
+			Response = WatchCoreV1NamespacedReplicationControllerListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedReplicationControllerListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedReplicationControllerList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedReplicationControllerList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23082,7 +35069,50 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedResourceQuota(ctx, params)
+	var response WatchCoreV1NamespacedResourceQuotaRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedResourceQuota",
+			OperationID:   "watchCoreV1NamespacedResourceQuota",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedResourceQuotaParams
+			Response = WatchCoreV1NamespacedResourceQuotaRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedResourceQuotaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedResourceQuota(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedResourceQuota(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23155,7 +35185,49 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedResourceQuotaList(ctx, params)
+	var response WatchCoreV1NamespacedResourceQuotaListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedResourceQuotaList",
+			OperationID:   "watchCoreV1NamespacedResourceQuotaList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedResourceQuotaListParams
+			Response = WatchCoreV1NamespacedResourceQuotaListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedResourceQuotaListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedResourceQuotaList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedResourceQuotaList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23228,7 +35300,50 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedSecret(ctx, params)
+	var response WatchCoreV1NamespacedSecretRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedSecret",
+			OperationID:   "watchCoreV1NamespacedSecret",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedSecretParams
+			Response = WatchCoreV1NamespacedSecretRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedSecret(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedSecret(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23301,7 +35416,49 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedSecretList(ctx, params)
+	var response WatchCoreV1NamespacedSecretListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedSecretList",
+			OperationID:   "watchCoreV1NamespacedSecretList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedSecretListParams
+			Response = WatchCoreV1NamespacedSecretListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedSecretListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedSecretList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedSecretList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23374,7 +35531,50 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedService(ctx, params)
+	var response WatchCoreV1NamespacedServiceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedService",
+			OperationID:   "watchCoreV1NamespacedService",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedServiceParams
+			Response = WatchCoreV1NamespacedServiceRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedServiceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedService(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedService(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23447,7 +35647,50 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedServiceAccount(ctx, params)
+	var response WatchCoreV1NamespacedServiceAccountRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedServiceAccount",
+			OperationID:   "watchCoreV1NamespacedServiceAccount",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedServiceAccountParams
+			Response = WatchCoreV1NamespacedServiceAccountRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedServiceAccountParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedServiceAccount(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedServiceAccount(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23520,7 +35763,49 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedServiceAccountList(ctx, params)
+	var response WatchCoreV1NamespacedServiceAccountListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedServiceAccountList",
+			OperationID:   "watchCoreV1NamespacedServiceAccountList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedServiceAccountListParams
+			Response = WatchCoreV1NamespacedServiceAccountListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedServiceAccountListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedServiceAccountList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedServiceAccountList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23593,7 +35878,49 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NamespacedServiceList(ctx, params)
+	var response WatchCoreV1NamespacedServiceListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NamespacedServiceList",
+			OperationID:   "watchCoreV1NamespacedServiceList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NamespacedServiceListParams
+			Response = WatchCoreV1NamespacedServiceListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NamespacedServiceListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NamespacedServiceList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NamespacedServiceList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23666,7 +35993,49 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 		return
 	}
 
-	response, err := s.h.WatchCoreV1Node(ctx, params)
+	var response WatchCoreV1NodeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1Node",
+			OperationID:   "watchCoreV1Node",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NodeParams
+			Response = WatchCoreV1NodeRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NodeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1Node(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1Node(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23739,7 +36108,48 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 		return
 	}
 
-	response, err := s.h.WatchCoreV1NodeList(ctx, params)
+	var response WatchCoreV1NodeListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1NodeList",
+			OperationID:   "watchCoreV1NodeList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1NodeListParams
+			Response = WatchCoreV1NodeListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1NodeListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1NodeList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1NodeList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23812,7 +36222,49 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 		return
 	}
 
-	response, err := s.h.WatchCoreV1PersistentVolume(ctx, params)
+	var response WatchCoreV1PersistentVolumeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1PersistentVolume",
+			OperationID:   "watchCoreV1PersistentVolume",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1PersistentVolumeParams
+			Response = WatchCoreV1PersistentVolumeRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1PersistentVolumeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1PersistentVolume(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1PersistentVolume(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23885,7 +36337,48 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 		return
 	}
 
-	response, err := s.h.WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx, params)
+	var response WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1PersistentVolumeClaimListForAllNamespaces",
+			OperationID:   "watchCoreV1PersistentVolumeClaimListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams
+			Response = WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -23958,7 +36451,48 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 		return
 	}
 
-	response, err := s.h.WatchCoreV1PersistentVolumeList(ctx, params)
+	var response WatchCoreV1PersistentVolumeListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1PersistentVolumeList",
+			OperationID:   "watchCoreV1PersistentVolumeList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1PersistentVolumeListParams
+			Response = WatchCoreV1PersistentVolumeListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1PersistentVolumeListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1PersistentVolumeList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1PersistentVolumeList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24031,7 +36565,48 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 		return
 	}
 
-	response, err := s.h.WatchCoreV1PodListForAllNamespaces(ctx, params)
+	var response WatchCoreV1PodListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1PodListForAllNamespaces",
+			OperationID:   "watchCoreV1PodListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1PodListForAllNamespacesParams
+			Response = WatchCoreV1PodListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1PodListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1PodListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1PodListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24104,7 +36679,48 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 		return
 	}
 
-	response, err := s.h.WatchCoreV1PodTemplateListForAllNamespaces(ctx, params)
+	var response WatchCoreV1PodTemplateListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1PodTemplateListForAllNamespaces",
+			OperationID:   "watchCoreV1PodTemplateListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1PodTemplateListForAllNamespacesParams
+			Response = WatchCoreV1PodTemplateListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1PodTemplateListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1PodTemplateListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1PodTemplateListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24177,7 +36793,48 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 		return
 	}
 
-	response, err := s.h.WatchCoreV1ReplicationControllerListForAllNamespaces(ctx, params)
+	var response WatchCoreV1ReplicationControllerListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1ReplicationControllerListForAllNamespaces",
+			OperationID:   "watchCoreV1ReplicationControllerListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1ReplicationControllerListForAllNamespacesParams
+			Response = WatchCoreV1ReplicationControllerListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1ReplicationControllerListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1ReplicationControllerListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1ReplicationControllerListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24250,7 +36907,48 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 		return
 	}
 
-	response, err := s.h.WatchCoreV1ResourceQuotaListForAllNamespaces(ctx, params)
+	var response WatchCoreV1ResourceQuotaListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1ResourceQuotaListForAllNamespaces",
+			OperationID:   "watchCoreV1ResourceQuotaListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1ResourceQuotaListForAllNamespacesParams
+			Response = WatchCoreV1ResourceQuotaListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1ResourceQuotaListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1ResourceQuotaListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1ResourceQuotaListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24323,7 +37021,48 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 		return
 	}
 
-	response, err := s.h.WatchCoreV1SecretListForAllNamespaces(ctx, params)
+	var response WatchCoreV1SecretListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1SecretListForAllNamespaces",
+			OperationID:   "watchCoreV1SecretListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1SecretListForAllNamespacesParams
+			Response = WatchCoreV1SecretListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1SecretListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1SecretListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1SecretListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24396,7 +37135,48 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 		return
 	}
 
-	response, err := s.h.WatchCoreV1ServiceAccountListForAllNamespaces(ctx, params)
+	var response WatchCoreV1ServiceAccountListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1ServiceAccountListForAllNamespaces",
+			OperationID:   "watchCoreV1ServiceAccountListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1ServiceAccountListForAllNamespacesParams
+			Response = WatchCoreV1ServiceAccountListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1ServiceAccountListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1ServiceAccountListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1ServiceAccountListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24469,7 +37249,48 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 		return
 	}
 
-	response, err := s.h.WatchCoreV1ServiceListForAllNamespaces(ctx, params)
+	var response WatchCoreV1ServiceListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchCoreV1ServiceListForAllNamespaces",
+			OperationID:   "watchCoreV1ServiceListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchCoreV1ServiceListForAllNamespacesParams
+			Response = WatchCoreV1ServiceListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchCoreV1ServiceListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchCoreV1ServiceListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchCoreV1ServiceListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24542,7 +37363,48 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 		return
 	}
 
-	response, err := s.h.WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx, params)
+	var response WatchDiscoveryV1EndpointSliceListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchDiscoveryV1EndpointSliceListForAllNamespaces",
+			OperationID:   "watchDiscoveryV1EndpointSliceListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchDiscoveryV1EndpointSliceListForAllNamespacesParams
+			Response = WatchDiscoveryV1EndpointSliceListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchDiscoveryV1EndpointSliceListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24615,7 +37477,50 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 		return
 	}
 
-	response, err := s.h.WatchDiscoveryV1NamespacedEndpointSlice(ctx, params)
+	var response WatchDiscoveryV1NamespacedEndpointSliceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchDiscoveryV1NamespacedEndpointSlice",
+			OperationID:   "watchDiscoveryV1NamespacedEndpointSlice",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchDiscoveryV1NamespacedEndpointSliceParams
+			Response = WatchDiscoveryV1NamespacedEndpointSliceRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchDiscoveryV1NamespacedEndpointSliceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchDiscoveryV1NamespacedEndpointSlice(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchDiscoveryV1NamespacedEndpointSlice(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24688,7 +37593,49 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 		return
 	}
 
-	response, err := s.h.WatchDiscoveryV1NamespacedEndpointSliceList(ctx, params)
+	var response WatchDiscoveryV1NamespacedEndpointSliceListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchDiscoveryV1NamespacedEndpointSliceList",
+			OperationID:   "watchDiscoveryV1NamespacedEndpointSliceList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchDiscoveryV1NamespacedEndpointSliceListParams
+			Response = WatchDiscoveryV1NamespacedEndpointSliceListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchDiscoveryV1NamespacedEndpointSliceListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchDiscoveryV1NamespacedEndpointSliceList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchDiscoveryV1NamespacedEndpointSliceList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24761,7 +37708,48 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 		return
 	}
 
-	response, err := s.h.WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx, params)
+	var response WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
+			OperationID:   "watchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams
+			Response = WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24834,7 +37822,50 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 		return
 	}
 
-	response, err := s.h.WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
+	var response WatchDiscoveryV1beta1NamespacedEndpointSliceRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchDiscoveryV1beta1NamespacedEndpointSlice",
+			OperationID:   "watchDiscoveryV1beta1NamespacedEndpointSlice",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchDiscoveryV1beta1NamespacedEndpointSliceParams
+			Response = WatchDiscoveryV1beta1NamespacedEndpointSliceRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchDiscoveryV1beta1NamespacedEndpointSliceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24907,7 +37938,49 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 		return
 	}
 
-	response, err := s.h.WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx, params)
+	var response WatchDiscoveryV1beta1NamespacedEndpointSliceListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchDiscoveryV1beta1NamespacedEndpointSliceList",
+			OperationID:   "watchDiscoveryV1beta1NamespacedEndpointSliceList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchDiscoveryV1beta1NamespacedEndpointSliceListParams
+			Response = WatchDiscoveryV1beta1NamespacedEndpointSliceListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchDiscoveryV1beta1NamespacedEndpointSliceListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -24980,7 +38053,48 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 		return
 	}
 
-	response, err := s.h.WatchEventsV1EventListForAllNamespaces(ctx, params)
+	var response WatchEventsV1EventListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchEventsV1EventListForAllNamespaces",
+			OperationID:   "watchEventsV1EventListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchEventsV1EventListForAllNamespacesParams
+			Response = WatchEventsV1EventListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchEventsV1EventListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchEventsV1EventListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchEventsV1EventListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25053,7 +38167,50 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 		return
 	}
 
-	response, err := s.h.WatchEventsV1NamespacedEvent(ctx, params)
+	var response WatchEventsV1NamespacedEventRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchEventsV1NamespacedEvent",
+			OperationID:   "watchEventsV1NamespacedEvent",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchEventsV1NamespacedEventParams
+			Response = WatchEventsV1NamespacedEventRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchEventsV1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchEventsV1NamespacedEvent(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchEventsV1NamespacedEvent(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25126,7 +38283,49 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 		return
 	}
 
-	response, err := s.h.WatchEventsV1NamespacedEventList(ctx, params)
+	var response WatchEventsV1NamespacedEventListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchEventsV1NamespacedEventList",
+			OperationID:   "watchEventsV1NamespacedEventList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchEventsV1NamespacedEventListParams
+			Response = WatchEventsV1NamespacedEventListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchEventsV1NamespacedEventListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchEventsV1NamespacedEventList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchEventsV1NamespacedEventList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25199,7 +38398,48 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 		return
 	}
 
-	response, err := s.h.WatchEventsV1beta1EventListForAllNamespaces(ctx, params)
+	var response WatchEventsV1beta1EventListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchEventsV1beta1EventListForAllNamespaces",
+			OperationID:   "watchEventsV1beta1EventListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchEventsV1beta1EventListForAllNamespacesParams
+			Response = WatchEventsV1beta1EventListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchEventsV1beta1EventListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchEventsV1beta1EventListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchEventsV1beta1EventListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25272,7 +38512,50 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 		return
 	}
 
-	response, err := s.h.WatchEventsV1beta1NamespacedEvent(ctx, params)
+	var response WatchEventsV1beta1NamespacedEventRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchEventsV1beta1NamespacedEvent",
+			OperationID:   "watchEventsV1beta1NamespacedEvent",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchEventsV1beta1NamespacedEventParams
+			Response = WatchEventsV1beta1NamespacedEventRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchEventsV1beta1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchEventsV1beta1NamespacedEvent(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchEventsV1beta1NamespacedEvent(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25345,7 +38628,49 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 		return
 	}
 
-	response, err := s.h.WatchEventsV1beta1NamespacedEventList(ctx, params)
+	var response WatchEventsV1beta1NamespacedEventListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchEventsV1beta1NamespacedEventList",
+			OperationID:   "watchEventsV1beta1NamespacedEventList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchEventsV1beta1NamespacedEventListParams
+			Response = WatchEventsV1beta1NamespacedEventListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchEventsV1beta1NamespacedEventListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchEventsV1beta1NamespacedEventList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchEventsV1beta1NamespacedEventList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25418,7 +38743,49 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 		return
 	}
 
-	response, err := s.h.WatchFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
+	var response WatchFlowcontrolApiserverV1beta1FlowSchemaRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchFlowcontrolApiserverV1beta1FlowSchema",
+			OperationID:   "watchFlowcontrolApiserverV1beta1FlowSchema",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchFlowcontrolApiserverV1beta1FlowSchemaParams
+			Response = WatchFlowcontrolApiserverV1beta1FlowSchemaRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchFlowcontrolApiserverV1beta1FlowSchemaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25491,7 +38858,48 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 		return
 	}
 
-	response, err := s.h.WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx, params)
+	var response WatchFlowcontrolApiserverV1beta1FlowSchemaListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchFlowcontrolApiserverV1beta1FlowSchemaList",
+			OperationID:   "watchFlowcontrolApiserverV1beta1FlowSchemaList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchFlowcontrolApiserverV1beta1FlowSchemaListParams
+			Response = WatchFlowcontrolApiserverV1beta1FlowSchemaListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchFlowcontrolApiserverV1beta1FlowSchemaListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25564,7 +38972,49 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 		return
 	}
 
-	response, err := s.h.WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
+	var response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			OperationID:   "watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams
+			Response = WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25637,7 +39087,48 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 		return
 	}
 
-	response, err := s.h.WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx, params)
+	var response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
+			OperationID:   "watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams
+			Response = WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25710,7 +39201,49 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 		return
 	}
 
-	response, err := s.h.WatchFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
+	var response WatchFlowcontrolApiserverV1beta2FlowSchemaRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchFlowcontrolApiserverV1beta2FlowSchema",
+			OperationID:   "watchFlowcontrolApiserverV1beta2FlowSchema",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchFlowcontrolApiserverV1beta2FlowSchemaParams
+			Response = WatchFlowcontrolApiserverV1beta2FlowSchemaRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchFlowcontrolApiserverV1beta2FlowSchemaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25783,7 +39316,48 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 		return
 	}
 
-	response, err := s.h.WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx, params)
+	var response WatchFlowcontrolApiserverV1beta2FlowSchemaListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchFlowcontrolApiserverV1beta2FlowSchemaList",
+			OperationID:   "watchFlowcontrolApiserverV1beta2FlowSchemaList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchFlowcontrolApiserverV1beta2FlowSchemaListParams
+			Response = WatchFlowcontrolApiserverV1beta2FlowSchemaListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchFlowcontrolApiserverV1beta2FlowSchemaListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25856,7 +39430,49 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 		return
 	}
 
-	response, err := s.h.WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
+	var response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			OperationID:   "watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams
+			Response = WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -25929,7 +39545,48 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 		return
 	}
 
-	response, err := s.h.WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx, params)
+	var response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
+			OperationID:   "watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams
+			Response = WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26002,7 +39659,49 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 		return
 	}
 
-	response, err := s.h.WatchInternalApiserverV1alpha1StorageVersion(ctx, params)
+	var response WatchInternalApiserverV1alpha1StorageVersionRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchInternalApiserverV1alpha1StorageVersion",
+			OperationID:   "watchInternalApiserverV1alpha1StorageVersion",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchInternalApiserverV1alpha1StorageVersionParams
+			Response = WatchInternalApiserverV1alpha1StorageVersionRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchInternalApiserverV1alpha1StorageVersionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchInternalApiserverV1alpha1StorageVersion(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchInternalApiserverV1alpha1StorageVersion(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26075,7 +39774,48 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 		return
 	}
 
-	response, err := s.h.WatchInternalApiserverV1alpha1StorageVersionList(ctx, params)
+	var response WatchInternalApiserverV1alpha1StorageVersionListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchInternalApiserverV1alpha1StorageVersionList",
+			OperationID:   "watchInternalApiserverV1alpha1StorageVersionList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchInternalApiserverV1alpha1StorageVersionListParams
+			Response = WatchInternalApiserverV1alpha1StorageVersionListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchInternalApiserverV1alpha1StorageVersionListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchInternalApiserverV1alpha1StorageVersionList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchInternalApiserverV1alpha1StorageVersionList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26148,7 +39888,49 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 		return
 	}
 
-	response, err := s.h.WatchNetworkingV1IngressClass(ctx, params)
+	var response WatchNetworkingV1IngressClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchNetworkingV1IngressClass",
+			OperationID:   "watchNetworkingV1IngressClass",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchNetworkingV1IngressClassParams
+			Response = WatchNetworkingV1IngressClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchNetworkingV1IngressClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchNetworkingV1IngressClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchNetworkingV1IngressClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26221,7 +40003,48 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 		return
 	}
 
-	response, err := s.h.WatchNetworkingV1IngressClassList(ctx, params)
+	var response WatchNetworkingV1IngressClassListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchNetworkingV1IngressClassList",
+			OperationID:   "watchNetworkingV1IngressClassList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchNetworkingV1IngressClassListParams
+			Response = WatchNetworkingV1IngressClassListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchNetworkingV1IngressClassListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchNetworkingV1IngressClassList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchNetworkingV1IngressClassList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26294,7 +40117,48 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 		return
 	}
 
-	response, err := s.h.WatchNetworkingV1IngressListForAllNamespaces(ctx, params)
+	var response WatchNetworkingV1IngressListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchNetworkingV1IngressListForAllNamespaces",
+			OperationID:   "watchNetworkingV1IngressListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchNetworkingV1IngressListForAllNamespacesParams
+			Response = WatchNetworkingV1IngressListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchNetworkingV1IngressListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchNetworkingV1IngressListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchNetworkingV1IngressListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26367,7 +40231,50 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 		return
 	}
 
-	response, err := s.h.WatchNetworkingV1NamespacedIngress(ctx, params)
+	var response WatchNetworkingV1NamespacedIngressRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchNetworkingV1NamespacedIngress",
+			OperationID:   "watchNetworkingV1NamespacedIngress",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchNetworkingV1NamespacedIngressParams
+			Response = WatchNetworkingV1NamespacedIngressRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchNetworkingV1NamespacedIngressParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchNetworkingV1NamespacedIngress(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchNetworkingV1NamespacedIngress(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26440,7 +40347,49 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 		return
 	}
 
-	response, err := s.h.WatchNetworkingV1NamespacedIngressList(ctx, params)
+	var response WatchNetworkingV1NamespacedIngressListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchNetworkingV1NamespacedIngressList",
+			OperationID:   "watchNetworkingV1NamespacedIngressList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchNetworkingV1NamespacedIngressListParams
+			Response = WatchNetworkingV1NamespacedIngressListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchNetworkingV1NamespacedIngressListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchNetworkingV1NamespacedIngressList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchNetworkingV1NamespacedIngressList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26513,7 +40462,50 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 		return
 	}
 
-	response, err := s.h.WatchNetworkingV1NamespacedNetworkPolicy(ctx, params)
+	var response WatchNetworkingV1NamespacedNetworkPolicyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchNetworkingV1NamespacedNetworkPolicy",
+			OperationID:   "watchNetworkingV1NamespacedNetworkPolicy",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchNetworkingV1NamespacedNetworkPolicyParams
+			Response = WatchNetworkingV1NamespacedNetworkPolicyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchNetworkingV1NamespacedNetworkPolicyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchNetworkingV1NamespacedNetworkPolicy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchNetworkingV1NamespacedNetworkPolicy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26586,7 +40578,49 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 		return
 	}
 
-	response, err := s.h.WatchNetworkingV1NamespacedNetworkPolicyList(ctx, params)
+	var response WatchNetworkingV1NamespacedNetworkPolicyListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchNetworkingV1NamespacedNetworkPolicyList",
+			OperationID:   "watchNetworkingV1NamespacedNetworkPolicyList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchNetworkingV1NamespacedNetworkPolicyListParams
+			Response = WatchNetworkingV1NamespacedNetworkPolicyListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchNetworkingV1NamespacedNetworkPolicyListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchNetworkingV1NamespacedNetworkPolicyList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchNetworkingV1NamespacedNetworkPolicyList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26659,7 +40693,48 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 		return
 	}
 
-	response, err := s.h.WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx, params)
+	var response WatchNetworkingV1NetworkPolicyListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchNetworkingV1NetworkPolicyListForAllNamespaces",
+			OperationID:   "watchNetworkingV1NetworkPolicyListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchNetworkingV1NetworkPolicyListForAllNamespacesParams
+			Response = WatchNetworkingV1NetworkPolicyListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchNetworkingV1NetworkPolicyListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26732,7 +40807,49 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 		return
 	}
 
-	response, err := s.h.WatchNodeV1RuntimeClass(ctx, params)
+	var response WatchNodeV1RuntimeClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchNodeV1RuntimeClass",
+			OperationID:   "watchNodeV1RuntimeClass",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchNodeV1RuntimeClassParams
+			Response = WatchNodeV1RuntimeClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchNodeV1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchNodeV1RuntimeClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchNodeV1RuntimeClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26805,7 +40922,48 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 		return
 	}
 
-	response, err := s.h.WatchNodeV1RuntimeClassList(ctx, params)
+	var response WatchNodeV1RuntimeClassListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchNodeV1RuntimeClassList",
+			OperationID:   "watchNodeV1RuntimeClassList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchNodeV1RuntimeClassListParams
+			Response = WatchNodeV1RuntimeClassListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchNodeV1RuntimeClassListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchNodeV1RuntimeClassList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchNodeV1RuntimeClassList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26878,7 +41036,49 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 		return
 	}
 
-	response, err := s.h.WatchNodeV1alpha1RuntimeClass(ctx, params)
+	var response WatchNodeV1alpha1RuntimeClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchNodeV1alpha1RuntimeClass",
+			OperationID:   "watchNodeV1alpha1RuntimeClass",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchNodeV1alpha1RuntimeClassParams
+			Response = WatchNodeV1alpha1RuntimeClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchNodeV1alpha1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchNodeV1alpha1RuntimeClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchNodeV1alpha1RuntimeClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -26951,7 +41151,48 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 		return
 	}
 
-	response, err := s.h.WatchNodeV1alpha1RuntimeClassList(ctx, params)
+	var response WatchNodeV1alpha1RuntimeClassListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchNodeV1alpha1RuntimeClassList",
+			OperationID:   "watchNodeV1alpha1RuntimeClassList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchNodeV1alpha1RuntimeClassListParams
+			Response = WatchNodeV1alpha1RuntimeClassListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchNodeV1alpha1RuntimeClassListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchNodeV1alpha1RuntimeClassList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchNodeV1alpha1RuntimeClassList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27024,7 +41265,49 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 		return
 	}
 
-	response, err := s.h.WatchNodeV1beta1RuntimeClass(ctx, params)
+	var response WatchNodeV1beta1RuntimeClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchNodeV1beta1RuntimeClass",
+			OperationID:   "watchNodeV1beta1RuntimeClass",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchNodeV1beta1RuntimeClassParams
+			Response = WatchNodeV1beta1RuntimeClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchNodeV1beta1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchNodeV1beta1RuntimeClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchNodeV1beta1RuntimeClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27097,7 +41380,48 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 		return
 	}
 
-	response, err := s.h.WatchNodeV1beta1RuntimeClassList(ctx, params)
+	var response WatchNodeV1beta1RuntimeClassListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchNodeV1beta1RuntimeClassList",
+			OperationID:   "watchNodeV1beta1RuntimeClassList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchNodeV1beta1RuntimeClassListParams
+			Response = WatchNodeV1beta1RuntimeClassListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchNodeV1beta1RuntimeClassListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchNodeV1beta1RuntimeClassList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchNodeV1beta1RuntimeClassList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27170,7 +41494,50 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 		return
 	}
 
-	response, err := s.h.WatchPolicyV1NamespacedPodDisruptionBudget(ctx, params)
+	var response WatchPolicyV1NamespacedPodDisruptionBudgetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchPolicyV1NamespacedPodDisruptionBudget",
+			OperationID:   "watchPolicyV1NamespacedPodDisruptionBudget",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchPolicyV1NamespacedPodDisruptionBudgetParams
+			Response = WatchPolicyV1NamespacedPodDisruptionBudgetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchPolicyV1NamespacedPodDisruptionBudgetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchPolicyV1NamespacedPodDisruptionBudget(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchPolicyV1NamespacedPodDisruptionBudget(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27243,7 +41610,49 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 		return
 	}
 
-	response, err := s.h.WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx, params)
+	var response WatchPolicyV1NamespacedPodDisruptionBudgetListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchPolicyV1NamespacedPodDisruptionBudgetList",
+			OperationID:   "watchPolicyV1NamespacedPodDisruptionBudgetList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchPolicyV1NamespacedPodDisruptionBudgetListParams
+			Response = WatchPolicyV1NamespacedPodDisruptionBudgetListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchPolicyV1NamespacedPodDisruptionBudgetListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27316,7 +41725,48 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 		return
 	}
 
-	response, err := s.h.WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx, params)
+	var response WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces",
+			OperationID:   "watchPolicyV1PodDisruptionBudgetListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams
+			Response = WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27389,7 +41839,50 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 		return
 	}
 
-	response, err := s.h.WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
+	var response WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchPolicyV1beta1NamespacedPodDisruptionBudget",
+			OperationID:   "watchPolicyV1beta1NamespacedPodDisruptionBudget",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams
+			Response = WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27462,7 +41955,49 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 		return
 	}
 
-	response, err := s.h.WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx, params)
+	var response WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList",
+			OperationID:   "watchPolicyV1beta1NamespacedPodDisruptionBudgetList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams
+			Response = WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27535,7 +42070,48 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 		return
 	}
 
-	response, err := s.h.WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx, params)
+	var response WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
+			OperationID:   "watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams
+			Response = WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27608,7 +42184,49 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 		return
 	}
 
-	response, err := s.h.WatchPolicyV1beta1PodSecurityPolicy(ctx, params)
+	var response WatchPolicyV1beta1PodSecurityPolicyRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchPolicyV1beta1PodSecurityPolicy",
+			OperationID:   "watchPolicyV1beta1PodSecurityPolicy",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchPolicyV1beta1PodSecurityPolicyParams
+			Response = WatchPolicyV1beta1PodSecurityPolicyRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchPolicyV1beta1PodSecurityPolicyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchPolicyV1beta1PodSecurityPolicy(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchPolicyV1beta1PodSecurityPolicy(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27681,7 +42299,48 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 		return
 	}
 
-	response, err := s.h.WatchPolicyV1beta1PodSecurityPolicyList(ctx, params)
+	var response WatchPolicyV1beta1PodSecurityPolicyListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchPolicyV1beta1PodSecurityPolicyList",
+			OperationID:   "watchPolicyV1beta1PodSecurityPolicyList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchPolicyV1beta1PodSecurityPolicyListParams
+			Response = WatchPolicyV1beta1PodSecurityPolicyListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchPolicyV1beta1PodSecurityPolicyListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchPolicyV1beta1PodSecurityPolicyList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchPolicyV1beta1PodSecurityPolicyList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27754,7 +42413,49 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 		return
 	}
 
-	response, err := s.h.WatchRbacAuthorizationV1ClusterRole(ctx, params)
+	var response WatchRbacAuthorizationV1ClusterRoleRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchRbacAuthorizationV1ClusterRole",
+			OperationID:   "watchRbacAuthorizationV1ClusterRole",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchRbacAuthorizationV1ClusterRoleParams
+			Response = WatchRbacAuthorizationV1ClusterRoleRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchRbacAuthorizationV1ClusterRoleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchRbacAuthorizationV1ClusterRole(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchRbacAuthorizationV1ClusterRole(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27827,7 +42528,49 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 		return
 	}
 
-	response, err := s.h.WatchRbacAuthorizationV1ClusterRoleBinding(ctx, params)
+	var response WatchRbacAuthorizationV1ClusterRoleBindingRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchRbacAuthorizationV1ClusterRoleBinding",
+			OperationID:   "watchRbacAuthorizationV1ClusterRoleBinding",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchRbacAuthorizationV1ClusterRoleBindingParams
+			Response = WatchRbacAuthorizationV1ClusterRoleBindingRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchRbacAuthorizationV1ClusterRoleBindingParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchRbacAuthorizationV1ClusterRoleBinding(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchRbacAuthorizationV1ClusterRoleBinding(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27900,7 +42643,48 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 		return
 	}
 
-	response, err := s.h.WatchRbacAuthorizationV1ClusterRoleBindingList(ctx, params)
+	var response WatchRbacAuthorizationV1ClusterRoleBindingListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchRbacAuthorizationV1ClusterRoleBindingList",
+			OperationID:   "watchRbacAuthorizationV1ClusterRoleBindingList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchRbacAuthorizationV1ClusterRoleBindingListParams
+			Response = WatchRbacAuthorizationV1ClusterRoleBindingListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchRbacAuthorizationV1ClusterRoleBindingListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchRbacAuthorizationV1ClusterRoleBindingList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchRbacAuthorizationV1ClusterRoleBindingList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -27973,7 +42757,48 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 		return
 	}
 
-	response, err := s.h.WatchRbacAuthorizationV1ClusterRoleList(ctx, params)
+	var response WatchRbacAuthorizationV1ClusterRoleListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchRbacAuthorizationV1ClusterRoleList",
+			OperationID:   "watchRbacAuthorizationV1ClusterRoleList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchRbacAuthorizationV1ClusterRoleListParams
+			Response = WatchRbacAuthorizationV1ClusterRoleListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchRbacAuthorizationV1ClusterRoleListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchRbacAuthorizationV1ClusterRoleList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchRbacAuthorizationV1ClusterRoleList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28046,7 +42871,50 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 		return
 	}
 
-	response, err := s.h.WatchRbacAuthorizationV1NamespacedRole(ctx, params)
+	var response WatchRbacAuthorizationV1NamespacedRoleRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchRbacAuthorizationV1NamespacedRole",
+			OperationID:   "watchRbacAuthorizationV1NamespacedRole",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchRbacAuthorizationV1NamespacedRoleParams
+			Response = WatchRbacAuthorizationV1NamespacedRoleRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchRbacAuthorizationV1NamespacedRoleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchRbacAuthorizationV1NamespacedRole(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchRbacAuthorizationV1NamespacedRole(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28119,7 +42987,50 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 		return
 	}
 
-	response, err := s.h.WatchRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
+	var response WatchRbacAuthorizationV1NamespacedRoleBindingRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchRbacAuthorizationV1NamespacedRoleBinding",
+			OperationID:   "watchRbacAuthorizationV1NamespacedRoleBinding",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchRbacAuthorizationV1NamespacedRoleBindingParams
+			Response = WatchRbacAuthorizationV1NamespacedRoleBindingRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchRbacAuthorizationV1NamespacedRoleBindingParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28192,7 +43103,49 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 		return
 	}
 
-	response, err := s.h.WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx, params)
+	var response WatchRbacAuthorizationV1NamespacedRoleBindingListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchRbacAuthorizationV1NamespacedRoleBindingList",
+			OperationID:   "watchRbacAuthorizationV1NamespacedRoleBindingList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchRbacAuthorizationV1NamespacedRoleBindingListParams
+			Response = WatchRbacAuthorizationV1NamespacedRoleBindingListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchRbacAuthorizationV1NamespacedRoleBindingListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28265,7 +43218,49 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 		return
 	}
 
-	response, err := s.h.WatchRbacAuthorizationV1NamespacedRoleList(ctx, params)
+	var response WatchRbacAuthorizationV1NamespacedRoleListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchRbacAuthorizationV1NamespacedRoleList",
+			OperationID:   "watchRbacAuthorizationV1NamespacedRoleList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchRbacAuthorizationV1NamespacedRoleListParams
+			Response = WatchRbacAuthorizationV1NamespacedRoleListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchRbacAuthorizationV1NamespacedRoleListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchRbacAuthorizationV1NamespacedRoleList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchRbacAuthorizationV1NamespacedRoleList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28338,7 +43333,48 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 		return
 	}
 
-	response, err := s.h.WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx, params)
+	var response WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces",
+			OperationID:   "watchRbacAuthorizationV1RoleBindingListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams
+			Response = WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28411,7 +43447,48 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 		return
 	}
 
-	response, err := s.h.WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx, params)
+	var response WatchRbacAuthorizationV1RoleListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchRbacAuthorizationV1RoleListForAllNamespaces",
+			OperationID:   "watchRbacAuthorizationV1RoleListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchRbacAuthorizationV1RoleListForAllNamespacesParams
+			Response = WatchRbacAuthorizationV1RoleListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchRbacAuthorizationV1RoleListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28484,7 +43561,49 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 		return
 	}
 
-	response, err := s.h.WatchSchedulingV1PriorityClass(ctx, params)
+	var response WatchSchedulingV1PriorityClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchSchedulingV1PriorityClass",
+			OperationID:   "watchSchedulingV1PriorityClass",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchSchedulingV1PriorityClassParams
+			Response = WatchSchedulingV1PriorityClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchSchedulingV1PriorityClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchSchedulingV1PriorityClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchSchedulingV1PriorityClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28557,7 +43676,48 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 		return
 	}
 
-	response, err := s.h.WatchSchedulingV1PriorityClassList(ctx, params)
+	var response WatchSchedulingV1PriorityClassListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchSchedulingV1PriorityClassList",
+			OperationID:   "watchSchedulingV1PriorityClassList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchSchedulingV1PriorityClassListParams
+			Response = WatchSchedulingV1PriorityClassListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchSchedulingV1PriorityClassListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchSchedulingV1PriorityClassList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchSchedulingV1PriorityClassList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28630,7 +43790,49 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 		return
 	}
 
-	response, err := s.h.WatchStorageV1CSIDriver(ctx, params)
+	var response WatchStorageV1CSIDriverRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchStorageV1CSIDriver",
+			OperationID:   "watchStorageV1CSIDriver",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchStorageV1CSIDriverParams
+			Response = WatchStorageV1CSIDriverRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchStorageV1CSIDriverParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchStorageV1CSIDriver(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchStorageV1CSIDriver(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28703,7 +43905,48 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 		return
 	}
 
-	response, err := s.h.WatchStorageV1CSIDriverList(ctx, params)
+	var response WatchStorageV1CSIDriverListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchStorageV1CSIDriverList",
+			OperationID:   "watchStorageV1CSIDriverList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchStorageV1CSIDriverListParams
+			Response = WatchStorageV1CSIDriverListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchStorageV1CSIDriverListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchStorageV1CSIDriverList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchStorageV1CSIDriverList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28776,7 +44019,49 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 		return
 	}
 
-	response, err := s.h.WatchStorageV1CSINode(ctx, params)
+	var response WatchStorageV1CSINodeRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchStorageV1CSINode",
+			OperationID:   "watchStorageV1CSINode",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchStorageV1CSINodeParams
+			Response = WatchStorageV1CSINodeRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchStorageV1CSINodeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchStorageV1CSINode(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchStorageV1CSINode(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28849,7 +44134,48 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 		return
 	}
 
-	response, err := s.h.WatchStorageV1CSINodeList(ctx, params)
+	var response WatchStorageV1CSINodeListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchStorageV1CSINodeList",
+			OperationID:   "watchStorageV1CSINodeList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchStorageV1CSINodeListParams
+			Response = WatchStorageV1CSINodeListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchStorageV1CSINodeListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchStorageV1CSINodeList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchStorageV1CSINodeList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28922,7 +44248,49 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 		return
 	}
 
-	response, err := s.h.WatchStorageV1StorageClass(ctx, params)
+	var response WatchStorageV1StorageClassRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchStorageV1StorageClass",
+			OperationID:   "watchStorageV1StorageClass",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchStorageV1StorageClassParams
+			Response = WatchStorageV1StorageClassRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchStorageV1StorageClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchStorageV1StorageClass(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchStorageV1StorageClass(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -28995,7 +44363,48 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 		return
 	}
 
-	response, err := s.h.WatchStorageV1StorageClassList(ctx, params)
+	var response WatchStorageV1StorageClassListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchStorageV1StorageClassList",
+			OperationID:   "watchStorageV1StorageClassList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchStorageV1StorageClassListParams
+			Response = WatchStorageV1StorageClassListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchStorageV1StorageClassListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchStorageV1StorageClassList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchStorageV1StorageClassList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29068,7 +44477,49 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 		return
 	}
 
-	response, err := s.h.WatchStorageV1VolumeAttachment(ctx, params)
+	var response WatchStorageV1VolumeAttachmentRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchStorageV1VolumeAttachment",
+			OperationID:   "watchStorageV1VolumeAttachment",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchStorageV1VolumeAttachmentParams
+			Response = WatchStorageV1VolumeAttachmentRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchStorageV1VolumeAttachmentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchStorageV1VolumeAttachment(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchStorageV1VolumeAttachment(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29141,7 +44592,48 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 		return
 	}
 
-	response, err := s.h.WatchStorageV1VolumeAttachmentList(ctx, params)
+	var response WatchStorageV1VolumeAttachmentListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchStorageV1VolumeAttachmentList",
+			OperationID:   "watchStorageV1VolumeAttachmentList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchStorageV1VolumeAttachmentListParams
+			Response = WatchStorageV1VolumeAttachmentListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchStorageV1VolumeAttachmentListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchStorageV1VolumeAttachmentList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchStorageV1VolumeAttachmentList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29214,7 +44706,48 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 		return
 	}
 
-	response, err := s.h.WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx, params)
+	var response WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
+			OperationID:   "watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams
+			Response = WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29287,7 +44820,50 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 		return
 	}
 
-	response, err := s.h.WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
+	var response WatchStorageV1alpha1NamespacedCSIStorageCapacityRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchStorageV1alpha1NamespacedCSIStorageCapacity",
+			OperationID:   "watchStorageV1alpha1NamespacedCSIStorageCapacity",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchStorageV1alpha1NamespacedCSIStorageCapacityParams
+			Response = WatchStorageV1alpha1NamespacedCSIStorageCapacityRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchStorageV1alpha1NamespacedCSIStorageCapacityParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29360,7 +44936,49 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 		return
 	}
 
-	response, err := s.h.WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx, params)
+	var response WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchStorageV1alpha1NamespacedCSIStorageCapacityList",
+			OperationID:   "watchStorageV1alpha1NamespacedCSIStorageCapacityList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams
+			Response = WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29433,7 +45051,48 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 		return
 	}
 
-	response, err := s.h.WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx, params)
+	var response WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
+			OperationID:   "watchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams
+			Response = WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29506,7 +45165,50 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 		return
 	}
 
-	response, err := s.h.WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
+	var response WatchStorageV1beta1NamespacedCSIStorageCapacityRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchStorageV1beta1NamespacedCSIStorageCapacity",
+			OperationID:   "watchStorageV1beta1NamespacedCSIStorageCapacity",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"name":                 params.Name,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchStorageV1beta1NamespacedCSIStorageCapacityParams
+			Response = WatchStorageV1beta1NamespacedCSIStorageCapacityRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchStorageV1beta1NamespacedCSIStorageCapacityParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -29579,7 +45281,49 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 		return
 	}
 
-	response, err := s.h.WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx, params)
+	var response WatchStorageV1beta1NamespacedCSIStorageCapacityListRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "WatchStorageV1beta1NamespacedCSIStorageCapacityList",
+			OperationID:   "watchStorageV1beta1NamespacedCSIStorageCapacityList",
+			Body:          nil,
+			Params: map[string]any{
+				"allowWatchBookmarks":  params.AllowWatchBookmarks,
+				"continue":             params.Continue,
+				"fieldSelector":        params.FieldSelector,
+				"labelSelector":        params.LabelSelector,
+				"limit":                params.Limit,
+				"namespace":            params.Namespace,
+				"pretty":               params.Pretty,
+				"resourceVersion":      params.ResourceVersion,
+				"resourceVersionMatch": params.ResourceVersionMatch,
+				"timeoutSeconds":       params.TimeoutSeconds,
+				"watch":                params.Watch,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = WatchStorageV1beta1NamespacedCSIStorageCapacityListParams
+			Response = WatchStorageV1beta1NamespacedCSIStorageCapacityListRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackWatchStorageV1beta1NamespacedCSIStorageCapacityListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)

@@ -215,6 +215,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		{"response_encoders", genServer},
 		{"response_decoders", genClient},
 		{"validators", true},
+		{"middleware", true},
 		{"server", genServer},
 		{"client", genClient},
 		{"cfg", true},

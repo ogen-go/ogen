@@ -1,0 +1,9 @@
+{{ define "middleware"}}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
+
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+// Middleware is middleware type.
+type Middleware = middleware.Middleware
+{{- end }}

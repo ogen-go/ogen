@@ -15,6 +15,13 @@ type CachingParams struct {
 	Count int64
 }
 
+func unpackCachingParams(packed map[string]any) (params CachingParams) {
+	if v, ok := packed["count"]; ok {
+		params.Count, _ = v.(int64)
+	}
+	return params
+}
+
 func decodeCachingParams(args [0]string, r *http.Request) (params CachingParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: count.
@@ -53,6 +60,13 @@ type QueriesParams struct {
 	Queries int64
 }
 
+func unpackQueriesParams(packed map[string]any) (params QueriesParams) {
+	if v, ok := packed["queries"]; ok {
+		params.Queries, _ = v.(int64)
+	}
+	return params
+}
+
 func decodeQueriesParams(args [0]string, r *http.Request) (params QueriesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: queries.
@@ -89,6 +103,13 @@ func decodeQueriesParams(args [0]string, r *http.Request) (params QueriesParams,
 
 type UpdatesParams struct {
 	Queries int64
+}
+
+func unpackUpdatesParams(packed map[string]any) (params UpdatesParams) {
+	if v, ok := packed["queries"]; ok {
+		params.Queries, _ = v.(int64)
+	}
+	return params
 }
 
 func decodeUpdatesParams(args [0]string, r *http.Request) (params UpdatesParams, _ error) {

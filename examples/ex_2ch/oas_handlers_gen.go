@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -10,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 )
 
@@ -59,7 +61,40 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.R
 		return
 	}
 
-	response, err := s.h.APICaptcha2chcaptchaIDGet(ctx, params)
+	var response Captcha
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "APICaptcha2chcaptchaIDGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"board":  params.Board,
+				"thread": params.Thread,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = APICaptcha2chcaptchaIDGetParams
+			Response = Captcha
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackAPICaptcha2chcaptchaIDGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.APICaptcha2chcaptchaIDGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.APICaptcha2chcaptchaIDGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -119,7 +154,39 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, w http
 		return
 	}
 
-	response, err := s.h.APICaptcha2chcaptchaShowGet(ctx, params)
+	var response APICaptcha2chcaptchaShowGetRes
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "APICaptcha2chcaptchaShowGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"id": params.ID,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = APICaptcha2chcaptchaShowGetParams
+			Response = APICaptcha2chcaptchaShowGetRes
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackAPICaptcha2chcaptchaShowGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.APICaptcha2chcaptchaShowGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.APICaptcha2chcaptchaShowGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -179,7 +246,41 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http
 		return
 	}
 
-	response, err := s.h.APICaptchaAppIDPublicKeyGet(ctx, params)
+	var response Captcha
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "APICaptchaAppIDPublicKeyGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"public_key": params.PublicKey,
+				"board":      params.Board,
+				"thread":     params.Thread,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = APICaptchaAppIDPublicKeyGetParams
+			Response = Captcha
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackAPICaptchaAppIDPublicKeyGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.APICaptchaAppIDPublicKeyGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.APICaptchaAppIDPublicKeyGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -239,7 +340,40 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 		return
 	}
 
-	response, err := s.h.APICaptchaInvisibleRecaptchaIDGet(ctx, params)
+	var response Captcha
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "APICaptchaInvisibleRecaptchaIDGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"board":  params.Board,
+				"thread": params.Thread,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = APICaptchaInvisibleRecaptchaIDGetParams
+			Response = Captcha
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackAPICaptchaInvisibleRecaptchaIDGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.APICaptchaInvisibleRecaptchaIDGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.APICaptchaInvisibleRecaptchaIDGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -285,7 +419,37 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 		err error
 	)
 
-	response, err := s.h.APICaptchaInvisibleRecaptchaMobileGet(ctx)
+	var response APICaptchaInvisibleRecaptchaMobileGetOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "APICaptchaInvisibleRecaptchaMobileGet",
+			OperationID:   "",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = APICaptchaInvisibleRecaptchaMobileGetOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.APICaptchaInvisibleRecaptchaMobileGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.APICaptchaInvisibleRecaptchaMobileGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -345,7 +509,40 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.Re
 		return
 	}
 
-	response, err := s.h.APICaptchaRecaptchaIDGet(ctx, params)
+	var response Captcha
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "APICaptchaRecaptchaIDGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"board":  params.Board,
+				"thread": params.Thread,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = APICaptchaRecaptchaIDGetParams
+			Response = Captcha
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackAPICaptchaRecaptchaIDGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.APICaptchaRecaptchaIDGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.APICaptchaRecaptchaIDGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -391,7 +588,37 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w htt
 		err error
 	)
 
-	response, err := s.h.APICaptchaRecaptchaMobileGet(ctx)
+	var response APICaptchaRecaptchaMobileGetOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "APICaptchaRecaptchaMobileGet",
+			OperationID:   "",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = APICaptchaRecaptchaMobileGetOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.APICaptchaRecaptchaMobileGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.APICaptchaRecaptchaMobileGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -451,7 +678,40 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWrite
 		return
 	}
 
-	response, err := s.h.APIDislikeGet(ctx, params)
+	var response Like
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "APIDislikeGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"board": params.Board,
+				"num":   params.Num,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = APIDislikeGetParams
+			Response = Like
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackAPIDislikeGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.APIDislikeGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.APIDislikeGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -511,7 +771,40 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, 
 		return
 	}
 
-	response, err := s.h.APILikeGet(ctx, params)
+	var response Like
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "APILikeGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"board": params.Board,
+				"num":   params.Num,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = APILikeGetParams
+			Response = Like
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackAPILikeGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.APILikeGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.APILikeGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -571,7 +864,41 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 		return
 	}
 
-	response, err := s.h.APIMobileV2AfterBoardThreadNumGet(ctx, params)
+	var response MobileThreadPostsAfter
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "APIMobileV2AfterBoardThreadNumGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"board":  params.Board,
+				"thread": params.Thread,
+				"num":    params.Num,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = APIMobileV2AfterBoardThreadNumGetParams
+			Response = MobileThreadPostsAfter
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackAPIMobileV2AfterBoardThreadNumGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.APIMobileV2AfterBoardThreadNumGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.APIMobileV2AfterBoardThreadNumGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -617,7 +944,37 @@ func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, w http.Respon
 		err error
 	)
 
-	response, err := s.h.APIMobileV2BoardsGet(ctx)
+	var response Boards
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "APIMobileV2BoardsGet",
+			OperationID:   "",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = Boards
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.APIMobileV2BoardsGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.APIMobileV2BoardsGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -677,7 +1034,40 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w ht
 		return
 	}
 
-	response, err := s.h.APIMobileV2InfoBoardThreadGet(ctx, params)
+	var response MobileThreadLastInfo
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "APIMobileV2InfoBoardThreadGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"board":  params.Board,
+				"thread": params.Thread,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = APIMobileV2InfoBoardThreadGetParams
+			Response = MobileThreadLastInfo
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackAPIMobileV2InfoBoardThreadGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.APIMobileV2InfoBoardThreadGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.APIMobileV2InfoBoardThreadGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -737,7 +1127,40 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, w http.
 		return
 	}
 
-	response, err := s.h.APIMobileV2PostBoardNumGet(ctx, params)
+	var response MobilePost
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "APIMobileV2PostBoardNumGet",
+			OperationID:   "",
+			Body:          nil,
+			Params: map[string]any{
+				"board": params.Board,
+				"num":   params.Num,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = APIMobileV2PostBoardNumGetParams
+			Response = MobilePost
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackAPIMobileV2PostBoardNumGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.APIMobileV2PostBoardNumGet(ctx, params)
+			},
+		)
+	} else {
+		response, err = s.h.APIMobileV2PostBoardNumGet(ctx, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -812,7 +1235,39 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseW
 		}
 	}()
 
-	response, err := s.h.UserPassloginPost(ctx, request, params)
+	var response Passcode
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "UserPassloginPost",
+			OperationID:   "",
+			Body:          request,
+			Params: map[string]any{
+				"json": params.JSON,
+			},
+			Raw: r,
+		}
+
+		type (
+			Request  = OptUserPassloginPostReq
+			Params   = UserPassloginPostParams
+			Response = Passcode
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			unpackUserPassloginPostParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.UserPassloginPost(ctx, request, params)
+			},
+		)
+	} else {
+		response, err = s.h.UserPassloginPost(ctx, request, params)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -877,7 +1332,37 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, w http.ResponseWri
 		}
 	}()
 
-	response, err := s.h.UserPostingPost(ctx, request)
+	var response UserPostingPostOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "UserPostingPost",
+			OperationID:   "",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptUserPostingPostReqForm
+			Params   = struct{}
+			Response = UserPostingPostOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.UserPostingPost(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.UserPostingPost(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -942,7 +1427,37 @@ func (s *Server) handleUserReportPostRequest(args [0]string, w http.ResponseWrit
 		}
 	}()
 
-	response, err := s.h.UserReportPost(ctx, request)
+	var response Report
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "UserReportPost",
+			OperationID:   "",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptUserReportPostReq
+			Params   = struct{}
+			Response = Report
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.UserReportPost(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.UserReportPost(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)

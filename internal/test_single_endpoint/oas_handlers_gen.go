@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -12,6 +13,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/otelogen"
 )
 
@@ -49,7 +51,37 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWrite
 		err error
 	)
 
-	response, err := s.h.ProbeLiveness(ctx)
+	var response string
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ProbeLiveness",
+			OperationID:   "probeLiveness",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = string
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ProbeLiveness(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.ProbeLiveness(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		if errRes, ok := errors.Into[*ErrorStatusCode](err); ok {

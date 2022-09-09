@@ -15,6 +15,13 @@ type CombinedParams struct {
 	Type CombinedType
 }
 
+func unpackCombinedParams(packed map[string]any) (params CombinedParams) {
+	if v, ok := packed["type"]; ok {
+		params.Type, _ = v.(CombinedType)
+	}
+	return params
+}
+
 func decodeCombinedParams(args [0]string, r *http.Request) (params CombinedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: type.
@@ -61,6 +68,13 @@ type HeadersCombinedParams struct {
 	Type HeadersCombinedType
 }
 
+func unpackHeadersCombinedParams(packed map[string]any) (params HeadersCombinedParams) {
+	if v, ok := packed["type"]; ok {
+		params.Type, _ = v.(HeadersCombinedType)
+	}
+	return params
+}
+
 func decodeHeadersCombinedParams(args [0]string, r *http.Request) (params HeadersCombinedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: type.
@@ -105,6 +119,13 @@ func decodeHeadersCombinedParams(args [0]string, r *http.Request) (params Header
 
 type IntersectPatternCodeParams struct {
 	Code int
+}
+
+func unpackIntersectPatternCodeParams(packed map[string]any) (params IntersectPatternCodeParams) {
+	if v, ok := packed["code"]; ok {
+		params.Code, _ = v.(int)
+	}
+	return params
 }
 
 func decodeIntersectPatternCodeParams(args [0]string, r *http.Request) (params IntersectPatternCodeParams, _ error) {

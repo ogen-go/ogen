@@ -3,12 +3,15 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
+
+	"github.com/ogen-go/ogen/middleware"
 )
 
 // HandleFooGetRequest handles GET /foo operation.
@@ -43,7 +46,37 @@ func (s *Server) handleFooGetRequest(args [0]string, w http.ResponseWriter, r *h
 		err error
 	)
 
-	response, err := s.h.FooGet(ctx)
+	var response string
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "FooGet",
+			OperationID:   "",
+			Body:          nil,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = struct{}
+			Params   = struct{}
+			Response = string
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.FooGet(ctx)
+			},
+		)
+	} else {
+		response, err = s.h.FooGet(ctx)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)

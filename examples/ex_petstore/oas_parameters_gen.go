@@ -16,6 +16,13 @@ type ListPetsParams struct {
 	Limit OptInt32
 }
 
+func unpackListPetsParams(packed map[string]any) (params ListPetsParams) {
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt32)
+	}
+	return params
+}
+
 func decodeListPetsParams(args [0]string, r *http.Request) (params ListPetsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: limit.
@@ -58,6 +65,13 @@ func decodeListPetsParams(args [0]string, r *http.Request) (params ListPetsParam
 type ShowPetByIdParams struct {
 	// The id of the pet to retrieve.
 	PetId string
+}
+
+func unpackShowPetByIdParams(packed map[string]any) (params ShowPetByIdParams) {
+	if v, ok := packed["petId"]; ok {
+		params.PetId, _ = v.(string)
+	}
+	return params
 }
 
 func decodeShowPetByIdParams(args [1]string, r *http.Request) (params ShowPetByIdParams, _ error) {

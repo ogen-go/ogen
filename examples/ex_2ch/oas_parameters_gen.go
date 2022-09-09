@@ -19,6 +19,16 @@ type APICaptcha2chcaptchaIDGetParams struct {
 	Thread OptInt
 }
 
+func unpackAPICaptcha2chcaptchaIDGetParams(packed map[string]any) (params APICaptcha2chcaptchaIDGetParams) {
+	if v, ok := packed["board"]; ok {
+		params.Board, _ = v.(OptString)
+	}
+	if v, ok := packed["thread"]; ok {
+		params.Thread, _ = v.(OptInt)
+	}
+	return params
+}
+
 func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, r *http.Request) (params APICaptcha2chcaptchaIDGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
@@ -121,6 +131,13 @@ type APICaptcha2chcaptchaShowGetParams struct {
 	ID string
 }
 
+func unpackAPICaptcha2chcaptchaShowGetParams(packed map[string]any) (params APICaptcha2chcaptchaShowGetParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(string)
+	}
+	return params
+}
+
 func decodeAPICaptcha2chcaptchaShowGetParams(args [0]string, r *http.Request) (params APICaptcha2chcaptchaShowGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: id.
@@ -164,6 +181,19 @@ type APICaptchaAppIDPublicKeyGetParams struct {
 	Board OptString
 	// Номер треда.
 	Thread OptInt
+}
+
+func unpackAPICaptchaAppIDPublicKeyGetParams(packed map[string]any) (params APICaptchaAppIDPublicKeyGetParams) {
+	if v, ok := packed["public_key"]; ok {
+		params.PublicKey, _ = v.(string)
+	}
+	if v, ok := packed["board"]; ok {
+		params.Board, _ = v.(OptString)
+	}
+	if v, ok := packed["thread"]; ok {
+		params.Thread, _ = v.(OptInt)
+	}
+	return params
 }
 
 func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (params APICaptchaAppIDPublicKeyGetParams, _ error) {
@@ -301,6 +331,16 @@ type APICaptchaInvisibleRecaptchaIDGetParams struct {
 	Thread OptInt
 }
 
+func unpackAPICaptchaInvisibleRecaptchaIDGetParams(packed map[string]any) (params APICaptchaInvisibleRecaptchaIDGetParams) {
+	if v, ok := packed["board"]; ok {
+		params.Board, _ = v.(OptString)
+	}
+	if v, ok := packed["thread"]; ok {
+		params.Thread, _ = v.(OptInt)
+	}
+	return params
+}
+
 func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, r *http.Request) (params APICaptchaInvisibleRecaptchaIDGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
@@ -403,6 +443,16 @@ type APICaptchaRecaptchaIDGetParams struct {
 	Board OptString
 	// Номер треда.
 	Thread OptInt
+}
+
+func unpackAPICaptchaRecaptchaIDGetParams(packed map[string]any) (params APICaptchaRecaptchaIDGetParams) {
+	if v, ok := packed["board"]; ok {
+		params.Board, _ = v.(OptString)
+	}
+	if v, ok := packed["thread"]; ok {
+		params.Thread, _ = v.(OptInt)
+	}
+	return params
 }
 
 func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, r *http.Request) (params APICaptchaRecaptchaIDGetParams, _ error) {
@@ -509,6 +559,16 @@ type APIDislikeGetParams struct {
 	Num int
 }
 
+func unpackAPIDislikeGetParams(packed map[string]any) (params APIDislikeGetParams) {
+	if v, ok := packed["board"]; ok {
+		params.Board, _ = v.(string)
+	}
+	if v, ok := packed["num"]; ok {
+		params.Num, _ = v.(int)
+	}
+	return params
+}
+
 func decodeAPIDislikeGetParams(args [0]string, r *http.Request) (params APIDislikeGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
@@ -594,6 +654,16 @@ type APILikeGetParams struct {
 	Board string
 	// Номер поста.
 	Num int
+}
+
+func unpackAPILikeGetParams(packed map[string]any) (params APILikeGetParams) {
+	if v, ok := packed["board"]; ok {
+		params.Board, _ = v.(string)
+	}
+	if v, ok := packed["num"]; ok {
+		params.Num, _ = v.(int)
+	}
+	return params
 }
 
 func decodeAPILikeGetParams(args [0]string, r *http.Request) (params APILikeGetParams, _ error) {
@@ -683,6 +753,19 @@ type APIMobileV2AfterBoardThreadNumGetParams struct {
 	Thread int
 	// Номер поста.
 	Num int
+}
+
+func unpackAPIMobileV2AfterBoardThreadNumGetParams(packed map[string]any) (params APIMobileV2AfterBoardThreadNumGetParams) {
+	if v, ok := packed["board"]; ok {
+		params.Board, _ = v.(string)
+	}
+	if v, ok := packed["thread"]; ok {
+		params.Thread, _ = v.(int)
+	}
+	if v, ok := packed["num"]; ok {
+		params.Num, _ = v.(int)
+	}
+	return params
 }
 
 func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Request) (params APIMobileV2AfterBoardThreadNumGetParams, _ error) {
@@ -823,6 +906,16 @@ type APIMobileV2InfoBoardThreadGetParams struct {
 	Thread int
 }
 
+func unpackAPIMobileV2InfoBoardThreadGetParams(packed map[string]any) (params APIMobileV2InfoBoardThreadGetParams) {
+	if v, ok := packed["board"]; ok {
+		params.Board, _ = v.(string)
+	}
+	if v, ok := packed["thread"]; ok {
+		params.Thread, _ = v.(int)
+	}
+	return params
+}
+
 func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) (params APIMobileV2InfoBoardThreadGetParams, _ error) {
 	// Decode path: board.
 	{
@@ -913,6 +1006,16 @@ type APIMobileV2PostBoardNumGetParams struct {
 	Num int
 }
 
+func unpackAPIMobileV2PostBoardNumGetParams(packed map[string]any) (params APIMobileV2PostBoardNumGetParams) {
+	if v, ok := packed["board"]; ok {
+		params.Board, _ = v.(string)
+	}
+	if v, ok := packed["num"]; ok {
+		params.Num, _ = v.(int)
+	}
+	return params
+}
+
 func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, r *http.Request) (params APIMobileV2PostBoardNumGetParams, _ error) {
 	// Decode path: board.
 	{
@@ -1000,6 +1103,13 @@ type UserPassloginPostParams struct {
 	// Параметр, указывающий что запрос выполняется не
 	// пользователем и ответ нужен в формате json.
 	JSON int
+}
+
+func unpackUserPassloginPostParams(packed map[string]any) (params UserPassloginPostParams) {
+	if v, ok := packed["json"]; ok {
+		params.JSON, _ = v.(int)
+	}
+	return params
 }
 
 func decodeUserPassloginPostParams(args [0]string, r *http.Request) (params UserPassloginPostParams, _ error) {

@@ -16,6 +16,13 @@ type CreatePetCategoriesParams struct {
 	ID int
 }
 
+func unpackCreatePetCategoriesParams(packed map[string]any) (params CreatePetCategoriesParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(int)
+	}
+	return params
+}
+
 func decodeCreatePetCategoriesParams(args [1]string, r *http.Request) (params CreatePetCategoriesParams, _ error) {
 	// Decode path: id.
 	{
@@ -54,6 +61,13 @@ func decodeCreatePetCategoriesParams(args [1]string, r *http.Request) (params Cr
 type CreatePetFriendsParams struct {
 	// ID of the Pet.
 	ID int
+}
+
+func unpackCreatePetFriendsParams(packed map[string]any) (params CreatePetFriendsParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(int)
+	}
+	return params
 }
 
 func decodeCreatePetFriendsParams(args [1]string, r *http.Request) (params CreatePetFriendsParams, _ error) {
@@ -96,6 +110,13 @@ type CreatePetOwnerParams struct {
 	ID int
 }
 
+func unpackCreatePetOwnerParams(packed map[string]any) (params CreatePetOwnerParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(int)
+	}
+	return params
+}
+
 func decodeCreatePetOwnerParams(args [1]string, r *http.Request) (params CreatePetOwnerParams, _ error) {
 	// Decode path: id.
 	{
@@ -134,6 +155,13 @@ func decodeCreatePetOwnerParams(args [1]string, r *http.Request) (params CreateP
 type DeletePetParams struct {
 	// ID of the Pet.
 	ID int
+}
+
+func unpackDeletePetParams(packed map[string]any) (params DeletePetParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(int)
+	}
+	return params
 }
 
 func decodeDeletePetParams(args [1]string, r *http.Request) (params DeletePetParams, _ error) {
@@ -176,6 +204,13 @@ type DeletePetOwnerParams struct {
 	ID int
 }
 
+func unpackDeletePetOwnerParams(packed map[string]any) (params DeletePetOwnerParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(int)
+	}
+	return params
+}
+
 func decodeDeletePetOwnerParams(args [1]string, r *http.Request) (params DeletePetOwnerParams, _ error) {
 	// Decode path: id.
 	{
@@ -216,6 +251,16 @@ type ListPetParams struct {
 	Page OptInt32
 	// Item count to render per page.
 	ItemsPerPage OptInt32
+}
+
+func unpackListPetParams(packed map[string]any) (params ListPetParams) {
+	if v, ok := packed["page"]; ok {
+		params.Page, _ = v.(OptInt32)
+	}
+	if v, ok := packed["itemsPerPage"]; ok {
+		params.ItemsPerPage, _ = v.(OptInt32)
+	}
+	return params
 }
 
 func decodeListPetParams(args [0]string, r *http.Request) (params ListPetParams, _ error) {
@@ -298,6 +343,19 @@ type ListPetCategoriesParams struct {
 	Page OptInt32
 	// Item count to render per page.
 	ItemsPerPage OptInt32
+}
+
+func unpackListPetCategoriesParams(packed map[string]any) (params ListPetCategoriesParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(int)
+	}
+	if v, ok := packed["page"]; ok {
+		params.Page, _ = v.(OptInt32)
+	}
+	if v, ok := packed["itemsPerPage"]; ok {
+		params.ItemsPerPage, _ = v.(OptInt32)
+	}
+	return params
 }
 
 func decodeListPetCategoriesParams(args [1]string, r *http.Request) (params ListPetCategoriesParams, _ error) {
@@ -413,6 +471,19 @@ type ListPetFriendsParams struct {
 	ItemsPerPage OptInt32
 }
 
+func unpackListPetFriendsParams(packed map[string]any) (params ListPetFriendsParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(int)
+	}
+	if v, ok := packed["page"]; ok {
+		params.Page, _ = v.(OptInt32)
+	}
+	if v, ok := packed["itemsPerPage"]; ok {
+		params.ItemsPerPage, _ = v.(OptInt32)
+	}
+	return params
+}
+
 func decodeListPetFriendsParams(args [1]string, r *http.Request) (params ListPetFriendsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: id.
@@ -522,6 +593,13 @@ type ReadPetParams struct {
 	ID int
 }
 
+func unpackReadPetParams(packed map[string]any) (params ReadPetParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(int)
+	}
+	return params
+}
+
 func decodeReadPetParams(args [1]string, r *http.Request) (params ReadPetParams, _ error) {
 	// Decode path: id.
 	{
@@ -562,6 +640,13 @@ type ReadPetOwnerParams struct {
 	ID int
 }
 
+func unpackReadPetOwnerParams(packed map[string]any) (params ReadPetOwnerParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(int)
+	}
+	return params
+}
+
 func decodeReadPetOwnerParams(args [1]string, r *http.Request) (params ReadPetOwnerParams, _ error) {
 	// Decode path: id.
 	{
@@ -600,6 +685,13 @@ func decodeReadPetOwnerParams(args [1]string, r *http.Request) (params ReadPetOw
 type UpdatePetParams struct {
 	// ID of the Pet.
 	ID int
+}
+
+func unpackUpdatePetParams(packed map[string]any) (params UpdatePetParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(int)
+	}
+	return params
 }
 
 func decodeUpdatePetParams(args [1]string, r *http.Request) (params UpdatePetParams, _ error) {

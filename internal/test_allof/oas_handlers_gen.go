@@ -3,6 +3,7 @@
 package api
 
 import (
+	"context"
 	"net/http"
 	"time"
 
@@ -10,6 +11,7 @@ import (
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 )
@@ -67,7 +69,37 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 		}
 	}()
 
-	response, err := s.h.NullableStrings(ctx, request)
+	var response NullableStringsOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "NullableStrings",
+			OperationID:   "nullableStrings",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = NullableStringsOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.NullableStrings(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.NullableStrings(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -134,7 +166,37 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 		}
 	}()
 
-	response, err := s.h.ObjectsWithConflictingArrayProperty(ctx, request)
+	var response ObjectsWithConflictingArrayPropertyOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ObjectsWithConflictingArrayProperty",
+			OperationID:   "objectsWithConflictingArrayProperty",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = ObjectsWithConflictingArrayPropertyReq
+			Params   = struct{}
+			Response = ObjectsWithConflictingArrayPropertyOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ObjectsWithConflictingArrayProperty(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.ObjectsWithConflictingArrayProperty(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -201,7 +263,37 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 		}
 	}()
 
-	response, err := s.h.ObjectsWithConflictingProperties(ctx, request)
+	var response ObjectsWithConflictingPropertiesOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ObjectsWithConflictingProperties",
+			OperationID:   "objectsWithConflictingProperties",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = ObjectsWithConflictingPropertiesReq
+			Params   = struct{}
+			Response = ObjectsWithConflictingPropertiesOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ObjectsWithConflictingProperties(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.ObjectsWithConflictingProperties(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -268,7 +360,37 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 		}
 	}()
 
-	response, err := s.h.ReferencedAllof(ctx, request)
+	var response ReferencedAllofOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReferencedAllof",
+			OperationID:   "referencedAllof",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = ReferencedAllofReq
+			Params   = struct{}
+			Response = ReferencedAllofOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReferencedAllof(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.ReferencedAllof(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -335,7 +457,37 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 		}
 	}()
 
-	response, err := s.h.ReferencedAllofOptional(ctx, request)
+	var response ReferencedAllofOptionalOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "ReferencedAllofOptional",
+			OperationID:   "referencedAllofOptional",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = ReferencedAllofOptionalReq
+			Params   = struct{}
+			Response = ReferencedAllofOptionalOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.ReferencedAllofOptional(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.ReferencedAllofOptional(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -402,7 +554,37 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.SimpleInteger(ctx, request)
+	var response SimpleIntegerOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "SimpleInteger",
+			OperationID:   "simpleInteger",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = int
+			Params   = struct{}
+			Response = SimpleIntegerOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.SimpleInteger(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SimpleInteger(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
@@ -469,7 +651,37 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 		}
 	}()
 
-	response, err := s.h.SimpleObjects(ctx, request)
+	var response SimpleObjectsOK
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "SimpleObjects",
+			OperationID:   "simpleObjects",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = SimpleObjectsReq
+			Params   = struct{}
+			Response = SimpleObjectsOK
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.SimpleObjects(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.SimpleObjects(ctx, request)
+	}
 	if err != nil {
 		recordError("Internal", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)

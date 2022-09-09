@@ -23,6 +23,22 @@ type MarketCandlesGetParams struct {
 	Interval CandleResolution
 }
 
+func unpackMarketCandlesGetParams(packed map[string]any) (params MarketCandlesGetParams) {
+	if v, ok := packed["figi"]; ok {
+		params.Figi, _ = v.(string)
+	}
+	if v, ok := packed["from"]; ok {
+		params.From, _ = v.(time.Time)
+	}
+	if v, ok := packed["to"]; ok {
+		params.To, _ = v.(time.Time)
+	}
+	if v, ok := packed["interval"]; ok {
+		params.Interval, _ = v.(CandleResolution)
+	}
+	return params
+}
+
 func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (params MarketCandlesGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: figi.
@@ -159,6 +175,16 @@ type MarketOrderbookGetParams struct {
 	Depth int32
 }
 
+func unpackMarketOrderbookGetParams(packed map[string]any) (params MarketOrderbookGetParams) {
+	if v, ok := packed["figi"]; ok {
+		params.Figi, _ = v.(string)
+	}
+	if v, ok := packed["depth"]; ok {
+		params.Depth, _ = v.(int32)
+	}
+	return params
+}
+
 func decodeMarketOrderbookGetParams(args [0]string, r *http.Request) (params MarketOrderbookGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: figi.
@@ -227,6 +253,13 @@ type MarketSearchByFigiGetParams struct {
 	Figi string
 }
 
+func unpackMarketSearchByFigiGetParams(packed map[string]any) (params MarketSearchByFigiGetParams) {
+	if v, ok := packed["figi"]; ok {
+		params.Figi, _ = v.(string)
+	}
+	return params
+}
+
 func decodeMarketSearchByFigiGetParams(args [0]string, r *http.Request) (params MarketSearchByFigiGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: figi.
@@ -264,6 +297,13 @@ func decodeMarketSearchByFigiGetParams(args [0]string, r *http.Request) (params 
 type MarketSearchByTickerGetParams struct {
 	// Тикер инструмента.
 	Ticker string
+}
+
+func unpackMarketSearchByTickerGetParams(packed map[string]any) (params MarketSearchByTickerGetParams) {
+	if v, ok := packed["ticker"]; ok {
+		params.Ticker, _ = v.(string)
+	}
+	return params
 }
 
 func decodeMarketSearchByTickerGetParams(args [0]string, r *http.Request) (params MarketSearchByTickerGetParams, _ error) {
@@ -309,6 +349,22 @@ type OperationsGetParams struct {
 	Figi OptString
 	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
+}
+
+func unpackOperationsGetParams(packed map[string]any) (params OperationsGetParams) {
+	if v, ok := packed["from"]; ok {
+		params.From, _ = v.(time.Time)
+	}
+	if v, ok := packed["to"]; ok {
+		params.To, _ = v.(time.Time)
+	}
+	if v, ok := packed["figi"]; ok {
+		params.Figi, _ = v.(OptString)
+	}
+	if v, ok := packed["brokerAccountId"]; ok {
+		params.BrokerAccountId, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeOperationsGetParams(args [0]string, r *http.Request) (params OperationsGetParams, _ error) {
@@ -449,6 +505,16 @@ type OrdersCancelPostParams struct {
 	BrokerAccountId OptString
 }
 
+func unpackOrdersCancelPostParams(packed map[string]any) (params OrdersCancelPostParams) {
+	if v, ok := packed["orderId"]; ok {
+		params.OrderId, _ = v.(string)
+	}
+	if v, ok := packed["brokerAccountId"]; ok {
+		params.BrokerAccountId, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (params OrdersCancelPostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: orderId.
@@ -522,6 +588,13 @@ type OrdersGetParams struct {
 	BrokerAccountId OptString
 }
 
+func unpackOrdersGetParams(packed map[string]any) (params OrdersGetParams) {
+	if v, ok := packed["brokerAccountId"]; ok {
+		params.BrokerAccountId, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeOrdersGetParams(args [0]string, r *http.Request) (params OrdersGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
@@ -566,6 +639,16 @@ type OrdersLimitOrderPostParams struct {
 	Figi string
 	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
+}
+
+func unpackOrdersLimitOrderPostParams(packed map[string]any) (params OrdersLimitOrderPostParams) {
+	if v, ok := packed["figi"]; ok {
+		params.Figi, _ = v.(string)
+	}
+	if v, ok := packed["brokerAccountId"]; ok {
+		params.BrokerAccountId, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeOrdersLimitOrderPostParams(args [0]string, r *http.Request) (params OrdersLimitOrderPostParams, _ error) {
@@ -644,6 +727,16 @@ type OrdersMarketOrderPostParams struct {
 	BrokerAccountId OptString
 }
 
+func unpackOrdersMarketOrderPostParams(packed map[string]any) (params OrdersMarketOrderPostParams) {
+	if v, ok := packed["figi"]; ok {
+		params.Figi, _ = v.(string)
+	}
+	if v, ok := packed["brokerAccountId"]; ok {
+		params.BrokerAccountId, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (params OrdersMarketOrderPostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: figi.
@@ -717,6 +810,13 @@ type PortfolioCurrenciesGetParams struct {
 	BrokerAccountId OptString
 }
 
+func unpackPortfolioCurrenciesGetParams(packed map[string]any) (params PortfolioCurrenciesGetParams) {
+	if v, ok := packed["brokerAccountId"]; ok {
+		params.BrokerAccountId, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodePortfolioCurrenciesGetParams(args [0]string, r *http.Request) (params PortfolioCurrenciesGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
@@ -759,6 +859,13 @@ func decodePortfolioCurrenciesGetParams(args [0]string, r *http.Request) (params
 type PortfolioGetParams struct {
 	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
+}
+
+func unpackPortfolioGetParams(packed map[string]any) (params PortfolioGetParams) {
+	if v, ok := packed["brokerAccountId"]; ok {
+		params.BrokerAccountId, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodePortfolioGetParams(args [0]string, r *http.Request) (params PortfolioGetParams, _ error) {
@@ -805,6 +912,13 @@ type SandboxClearPostParams struct {
 	BrokerAccountId OptString
 }
 
+func unpackSandboxClearPostParams(packed map[string]any) (params SandboxClearPostParams) {
+	if v, ok := packed["brokerAccountId"]; ok {
+		params.BrokerAccountId, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeSandboxClearPostParams(args [0]string, r *http.Request) (params SandboxClearPostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
@@ -847,6 +961,13 @@ func decodeSandboxClearPostParams(args [0]string, r *http.Request) (params Sandb
 type SandboxCurrenciesBalancePostParams struct {
 	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
+}
+
+func unpackSandboxCurrenciesBalancePostParams(packed map[string]any) (params SandboxCurrenciesBalancePostParams) {
+	if v, ok := packed["brokerAccountId"]; ok {
+		params.BrokerAccountId, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeSandboxCurrenciesBalancePostParams(args [0]string, r *http.Request) (params SandboxCurrenciesBalancePostParams, _ error) {
@@ -893,6 +1014,13 @@ type SandboxPositionsBalancePostParams struct {
 	BrokerAccountId OptString
 }
 
+func unpackSandboxPositionsBalancePostParams(packed map[string]any) (params SandboxPositionsBalancePostParams) {
+	if v, ok := packed["brokerAccountId"]; ok {
+		params.BrokerAccountId, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeSandboxPositionsBalancePostParams(args [0]string, r *http.Request) (params SandboxPositionsBalancePostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
@@ -935,6 +1063,13 @@ func decodeSandboxPositionsBalancePostParams(args [0]string, r *http.Request) (p
 type SandboxRemovePostParams struct {
 	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
+}
+
+func unpackSandboxRemovePostParams(packed map[string]any) (params SandboxRemovePostParams) {
+	if v, ok := packed["brokerAccountId"]; ok {
+		params.BrokerAccountId, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeSandboxRemovePostParams(args [0]string, r *http.Request) (params SandboxRemovePostParams, _ error) {

@@ -16,6 +16,13 @@ type DeletePetParams struct {
 	ID int64
 }
 
+func unpackDeletePetParams(packed map[string]any) (params DeletePetParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(int64)
+	}
+	return params
+}
+
 func decodeDeletePetParams(args [1]string, r *http.Request) (params DeletePetParams, _ error) {
 	// Decode path: id.
 	{
@@ -54,6 +61,13 @@ func decodeDeletePetParams(args [1]string, r *http.Request) (params DeletePetPar
 type FindPetByIDParams struct {
 	// ID of pet to fetch.
 	ID int64
+}
+
+func unpackFindPetByIDParams(packed map[string]any) (params FindPetByIDParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(int64)
+	}
+	return params
 }
 
 func decodeFindPetByIDParams(args [1]string, r *http.Request) (params FindPetByIDParams, _ error) {
@@ -96,6 +110,16 @@ type FindPetsParams struct {
 	Tags []string
 	// Maximum number of results to return.
 	Limit OptInt32
+}
+
+func unpackFindPetsParams(packed map[string]any) (params FindPetsParams) {
+	if v, ok := packed["tags"]; ok {
+		params.Tags, _ = v.([]string)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt32)
+	}
+	return params
 }
 
 func decodeFindPetsParams(args [0]string, r *http.Request) (params FindPetsParams, _ error) {
