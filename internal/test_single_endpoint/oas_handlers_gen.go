@@ -73,9 +73,9 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProbeLiveness(ctx)
 			},
 		)

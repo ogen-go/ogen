@@ -91,9 +91,9 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CreateSnapshot(ctx, request)
 			},
 		)
@@ -188,9 +188,9 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CreateSyncAction(ctx, request)
 			},
 		)
@@ -266,9 +266,9 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.DescribeBalloonConfig(ctx)
 			},
 		)
@@ -344,9 +344,9 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.DescribeBalloonStats(ctx)
 			},
 		)
@@ -422,9 +422,9 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.DescribeInstance(ctx)
 			},
 		)
@@ -500,9 +500,9 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetExportVmConfig(ctx)
 			},
 		)
@@ -578,9 +578,9 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetMachineConfiguration(ctx)
 			},
 		)
@@ -675,9 +675,9 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.LoadSnapshot(ctx, request)
 			},
 		)
@@ -770,9 +770,9 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MmdsConfigPut(ctx, request)
 			},
 		)
@@ -846,9 +846,9 @@ func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MmdsGet(ctx)
 			},
 		)
@@ -941,9 +941,9 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MmdsPatch(ctx, request)
 			},
 		)
@@ -1036,9 +1036,9 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MmdsPut(ctx, request)
 			},
 		)
@@ -1133,9 +1133,9 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PatchBalloon(ctx, request)
 			},
 		)
@@ -1230,9 +1230,9 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PatchBalloonStatsInterval(ctx, request)
 			},
 		)
@@ -1339,9 +1339,9 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPatchGuestDriveByIDParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PatchGuestDriveByID(ctx, request, params)
 			},
 		)
@@ -1448,9 +1448,9 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPatchGuestNetworkInterfaceByIDParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PatchGuestNetworkInterfaceByID(ctx, request, params)
 			},
 		)
@@ -1545,9 +1545,9 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PatchMachineConfiguration(ctx, request)
 			},
 		)
@@ -1642,9 +1642,9 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PatchVm(ctx, request)
 			},
 		)
@@ -1739,9 +1739,9 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PutBalloon(ctx, request)
 			},
 		)
@@ -1836,9 +1836,9 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PutGuestBootSource(ctx, request)
 			},
 		)
@@ -1945,9 +1945,9 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPutGuestDriveByIDParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PutGuestDriveByID(ctx, request, params)
 			},
 		)
@@ -2054,9 +2054,9 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPutGuestNetworkInterfaceByIDParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PutGuestNetworkInterfaceByID(ctx, request, params)
 			},
 		)
@@ -2151,9 +2151,9 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PutGuestVsock(ctx, request)
 			},
 		)
@@ -2248,9 +2248,9 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PutLogger(ctx, request)
 			},
 		)
@@ -2345,9 +2345,9 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PutMachineConfiguration(ctx, request)
 			},
 		)
@@ -2442,9 +2442,9 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PutMetrics(ctx, request)
 			},
 		)

@@ -93,9 +93,9 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AddStickerToSet(ctx, request)
 			},
 		)
@@ -198,9 +198,9 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AnswerCallbackQuery(ctx, request)
 			},
 		)
@@ -303,9 +303,9 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AnswerInlineQuery(ctx, request)
 			},
 		)
@@ -408,9 +408,9 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AnswerPreCheckoutQuery(ctx, request)
 			},
 		)
@@ -513,9 +513,9 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AnswerShippingQuery(ctx, request)
 			},
 		)
@@ -618,9 +618,9 @@ func (s *Server) handleAnswerWebAppQueryRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AnswerWebAppQuery(ctx, request)
 			},
 		)
@@ -723,9 +723,9 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ApproveChatJoinRequest(ctx, request)
 			},
 		)
@@ -828,9 +828,9 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.BanChatMember(ctx, request)
 			},
 		)
@@ -933,9 +933,9 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.BanChatSenderChat(ctx, request)
 			},
 		)
@@ -1019,9 +1019,9 @@ func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.Close(ctx)
 			},
 		)
@@ -1124,9 +1124,9 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CopyMessage(ctx, request)
 			},
 		)
@@ -1229,9 +1229,9 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CreateChatInviteLink(ctx, request)
 			},
 		)
@@ -1334,9 +1334,9 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CreateNewStickerSet(ctx, request)
 			},
 		)
@@ -1439,9 +1439,9 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.DeclineChatJoinRequest(ctx, request)
 			},
 		)
@@ -1544,9 +1544,9 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.DeleteChatPhoto(ctx, request)
 			},
 		)
@@ -1649,9 +1649,9 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.DeleteChatStickerSet(ctx, request)
 			},
 		)
@@ -1754,9 +1754,9 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.DeleteMessage(ctx, request)
 			},
 		)
@@ -1859,9 +1859,9 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.DeleteMyCommands(ctx, request)
 			},
 		)
@@ -1964,9 +1964,9 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.DeleteStickerFromSet(ctx, request)
 			},
 		)
@@ -2069,9 +2069,9 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.DeleteWebhook(ctx, request)
 			},
 		)
@@ -2174,9 +2174,9 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EditChatInviteLink(ctx, request)
 			},
 		)
@@ -2279,9 +2279,9 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EditMessageCaption(ctx, request)
 			},
 		)
@@ -2384,9 +2384,9 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EditMessageLiveLocation(ctx, request)
 			},
 		)
@@ -2489,9 +2489,9 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EditMessageMedia(ctx, request)
 			},
 		)
@@ -2594,9 +2594,9 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EditMessageReplyMarkup(ctx, request)
 			},
 		)
@@ -2699,9 +2699,9 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EditMessageText(ctx, request)
 			},
 		)
@@ -2804,9 +2804,9 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ExportChatInviteLink(ctx, request)
 			},
 		)
@@ -2909,9 +2909,9 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ForwardMessage(ctx, request)
 			},
 		)
@@ -3014,9 +3014,9 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetChat(ctx, request)
 			},
 		)
@@ -3119,9 +3119,9 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetChatAdministrators(ctx, request)
 			},
 		)
@@ -3224,9 +3224,9 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetChatMember(ctx, request)
 			},
 		)
@@ -3329,9 +3329,9 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetChatMemberCount(ctx, request)
 			},
 		)
@@ -3434,9 +3434,9 @@ func (s *Server) handleGetChatMenuButtonRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetChatMenuButton(ctx, request)
 			},
 		)
@@ -3539,9 +3539,9 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetFile(ctx, request)
 			},
 		)
@@ -3644,9 +3644,9 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetGameHighScores(ctx, request)
 			},
 		)
@@ -3730,9 +3730,9 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetMe(ctx)
 			},
 		)
@@ -3835,9 +3835,9 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetMyCommands(ctx, request)
 			},
 		)
@@ -3940,9 +3940,9 @@ func (s *Server) handleGetMyDefaultAdministratorRightsRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetMyDefaultAdministratorRights(ctx, request)
 			},
 		)
@@ -4045,9 +4045,9 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetStickerSet(ctx, request)
 			},
 		)
@@ -4150,9 +4150,9 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetUpdates(ctx, request)
 			},
 		)
@@ -4255,9 +4255,9 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetUserProfilePhotos(ctx, request)
 			},
 		)
@@ -4341,9 +4341,9 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetWebhookInfo(ctx)
 			},
 		)
@@ -4446,9 +4446,9 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.LeaveChat(ctx, request)
 			},
 		)
@@ -4532,9 +4532,9 @@ func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.LogOut(ctx)
 			},
 		)
@@ -4637,9 +4637,9 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PinChatMessage(ctx, request)
 			},
 		)
@@ -4742,9 +4742,9 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PromoteChatMember(ctx, request)
 			},
 		)
@@ -4847,9 +4847,9 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.RestrictChatMember(ctx, request)
 			},
 		)
@@ -4952,9 +4952,9 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.RevokeChatInviteLink(ctx, request)
 			},
 		)
@@ -5057,9 +5057,9 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendAnimation(ctx, request)
 			},
 		)
@@ -5162,9 +5162,9 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendAudio(ctx, request)
 			},
 		)
@@ -5267,9 +5267,9 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendChatAction(ctx, request)
 			},
 		)
@@ -5372,9 +5372,9 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendContact(ctx, request)
 			},
 		)
@@ -5477,9 +5477,9 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendDice(ctx, request)
 			},
 		)
@@ -5582,9 +5582,9 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendDocument(ctx, request)
 			},
 		)
@@ -5687,9 +5687,9 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendGame(ctx, request)
 			},
 		)
@@ -5792,9 +5792,9 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendInvoice(ctx, request)
 			},
 		)
@@ -5897,9 +5897,9 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendLocation(ctx, request)
 			},
 		)
@@ -6002,9 +6002,9 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendMediaGroup(ctx, request)
 			},
 		)
@@ -6107,9 +6107,9 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendMessage(ctx, request)
 			},
 		)
@@ -6212,9 +6212,9 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendPhoto(ctx, request)
 			},
 		)
@@ -6317,9 +6317,9 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendPoll(ctx, request)
 			},
 		)
@@ -6422,9 +6422,9 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendSticker(ctx, request)
 			},
 		)
@@ -6527,9 +6527,9 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendVenue(ctx, request)
 			},
 		)
@@ -6632,9 +6632,9 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendVideo(ctx, request)
 			},
 		)
@@ -6737,9 +6737,9 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendVideoNote(ctx, request)
 			},
 		)
@@ -6842,9 +6842,9 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SendVoice(ctx, request)
 			},
 		)
@@ -6947,9 +6947,9 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SetChatAdministratorCustomTitle(ctx, request)
 			},
 		)
@@ -7052,9 +7052,9 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SetChatDescription(ctx, request)
 			},
 		)
@@ -7157,9 +7157,9 @@ func (s *Server) handleSetChatMenuButtonRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SetChatMenuButton(ctx, request)
 			},
 		)
@@ -7262,9 +7262,9 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SetChatPermissions(ctx, request)
 			},
 		)
@@ -7367,9 +7367,9 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SetChatPhoto(ctx, request)
 			},
 		)
@@ -7472,9 +7472,9 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SetChatStickerSet(ctx, request)
 			},
 		)
@@ -7577,9 +7577,9 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SetChatTitle(ctx, request)
 			},
 		)
@@ -7682,9 +7682,9 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SetGameScore(ctx, request)
 			},
 		)
@@ -7787,9 +7787,9 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SetMyCommands(ctx, request)
 			},
 		)
@@ -7892,9 +7892,9 @@ func (s *Server) handleSetMyDefaultAdministratorRightsRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SetMyDefaultAdministratorRights(ctx, request)
 			},
 		)
@@ -7997,9 +7997,9 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SetPassportDataErrors(ctx, request)
 			},
 		)
@@ -8102,9 +8102,9 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SetStickerPositionInSet(ctx, request)
 			},
 		)
@@ -8207,9 +8207,9 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SetStickerSetThumb(ctx, request)
 			},
 		)
@@ -8312,9 +8312,9 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SetWebhook(ctx, request)
 			},
 		)
@@ -8417,9 +8417,9 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.StopMessageLiveLocation(ctx, request)
 			},
 		)
@@ -8522,9 +8522,9 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.StopPoll(ctx, request)
 			},
 		)
@@ -8627,9 +8627,9 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UnbanChatMember(ctx, request)
 			},
 		)
@@ -8732,9 +8732,9 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UnbanChatSenderChat(ctx, request)
 			},
 		)
@@ -8837,9 +8837,9 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UnpinAllChatMessages(ctx, request)
 			},
 		)
@@ -8942,9 +8942,9 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UnpinChatMessage(ctx, request)
 			},
 		)
@@ -9047,9 +9047,9 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UploadStickerFile(ctx, request)
 			},
 		)

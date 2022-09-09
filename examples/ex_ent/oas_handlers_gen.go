@@ -91,9 +91,9 @@ func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CreatePet(ctx, request)
 			},
 		)
@@ -200,9 +200,9 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackCreatePetCategoriesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CreatePetCategories(ctx, request, params)
 			},
 		)
@@ -309,9 +309,9 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackCreatePetFriendsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CreatePetFriends(ctx, request, params)
 			},
 		)
@@ -418,9 +418,9 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackCreatePetOwnerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CreatePetOwner(ctx, request, params)
 			},
 		)
@@ -512,9 +512,9 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackDeletePetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.DeletePet(ctx, params)
 			},
 		)
@@ -606,9 +606,9 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackDeletePetOwnerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.DeletePetOwner(ctx, params)
 			},
 		)
@@ -701,9 +701,9 @@ func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListPetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListPet(ctx, params)
 			},
 		)
@@ -797,9 +797,9 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListPetCategoriesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListPetCategories(ctx, params)
 			},
 		)
@@ -893,9 +893,9 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListPetFriendsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListPetFriends(ctx, params)
 			},
 		)
@@ -987,9 +987,9 @@ func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadPetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadPet(ctx, params)
 			},
 		)
@@ -1081,9 +1081,9 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadPetOwnerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadPetOwner(ctx, params)
 			},
 		)
@@ -1190,9 +1190,9 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUpdatePetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UpdatePet(ctx, request, params)
 			},
 		)

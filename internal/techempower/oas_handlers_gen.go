@@ -88,9 +88,9 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackCachingParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.Caching(ctx, params)
 			},
 		)
@@ -166,9 +166,9 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.DB(ctx)
 			},
 		)
@@ -244,9 +244,9 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.JSON(ctx)
 			},
 		)
@@ -338,9 +338,9 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackQueriesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.Queries(ctx, params)
 			},
 		)
@@ -432,9 +432,9 @@ func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUpdatesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.Updates(ctx, params)
 			},
 		)

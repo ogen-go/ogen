@@ -72,9 +72,9 @@ func (s *Server) handleCreatePetsRequest(args [0]string, w http.ResponseWriter, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CreatePets(ctx)
 			},
 		)
@@ -166,9 +166,9 @@ func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListPetsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListPets(ctx, params)
 			},
 		)
@@ -260,9 +260,9 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackShowPetByIdParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ShowPetById(ctx, params)
 			},
 		)

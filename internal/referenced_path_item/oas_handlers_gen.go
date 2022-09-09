@@ -68,9 +68,9 @@ func (s *Server) handleFooGetRequest(args [0]string, w http.ResponseWriter, r *h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.FooGet(ctx)
 			},
 		)

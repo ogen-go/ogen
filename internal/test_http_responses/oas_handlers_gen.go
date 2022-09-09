@@ -72,9 +72,9 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AnyContentTypeBinaryStringSchema(ctx)
 			},
 		)
@@ -150,9 +150,9 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AnyContentTypeBinaryStringSchemaDefault(ctx)
 			},
 		)
@@ -244,9 +244,9 @@ func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackCombinedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.Combined(ctx, params)
 			},
 		)
@@ -322,9 +322,9 @@ func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.Headers200(ctx)
 			},
 		)
@@ -416,9 +416,9 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackHeadersCombinedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.HeadersCombined(ctx, params)
 			},
 		)
@@ -494,9 +494,9 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.HeadersDefault(ctx)
 			},
 		)
@@ -572,9 +572,9 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.HeadersPattern(ctx)
 			},
 		)
@@ -666,9 +666,9 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIntersectPatternCodeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IntersectPatternCode(ctx, params)
 			},
 		)
@@ -744,9 +744,9 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MultipleGenericResponses(ctx)
 			},
 		)
@@ -822,9 +822,9 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OctetStreamBinaryStringSchema(ctx)
 			},
 		)
@@ -900,9 +900,9 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OctetStreamEmptySchema(ctx)
 			},
 		)
@@ -978,9 +978,9 @@ func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TextPlainBinaryStringSchema(ctx)
 			},
 		)

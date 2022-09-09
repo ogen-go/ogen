@@ -91,9 +91,9 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AllRequestBodies(ctx, request)
 			},
 		)
@@ -188,9 +188,9 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AllRequestBodiesOptional(ctx, request)
 			},
 		)
@@ -285,9 +285,9 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MaskContentType(ctx, request)
 			},
 		)
@@ -382,9 +382,9 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MaskContentTypeOptional(ctx, request)
 			},
 		)

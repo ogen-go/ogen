@@ -22,6 +22,25 @@ type DataGetFormatParams struct {
 	Kek string
 }
 
+func unpackDataGetFormatParams(packed map[string]any) (params DataGetFormatParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(int)
+	}
+	if v, ok := packed["foo"]; ok {
+		params.Foo, _ = v.(string)
+	}
+	if v, ok := packed["bar"]; ok {
+		params.Bar, _ = v.(string)
+	}
+	if v, ok := packed["baz"]; ok {
+		params.Baz, _ = v.(string)
+	}
+	if v, ok := packed["kek"]; ok {
+		params.Kek, _ = v.(string)
+	}
+	return params
+}
+
 func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetFormatParams, _ error) {
 	// Decode path: id.
 	{
@@ -202,6 +221,13 @@ type DefaultTestParams struct {
 	Default OptInt32
 }
 
+func unpackDefaultTestParams(packed map[string]any) (params DefaultTestParams) {
+	if v, ok := packed["default"]; ok {
+		params.Default, _ = v.(OptInt32)
+	}
+	return params
+}
+
 func decodeDefaultTestParams(args [0]string, r *http.Request) (params DefaultTestParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: default.
@@ -251,6 +277,16 @@ type FoobarGetParams struct {
 	InlinedParam int64
 	// Number of items to skip.
 	Skip int32
+}
+
+func unpackFoobarGetParams(packed map[string]any) (params FoobarGetParams) {
+	if v, ok := packed["inlinedParam"]; ok {
+		params.InlinedParam, _ = v.(int64)
+	}
+	if v, ok := packed["skip"]; ok {
+		params.Skip, _ = v.(int32)
+	}
+	return params
 }
 
 func decodeFoobarGetParams(args [0]string, r *http.Request) (params FoobarGetParams, _ error) {
@@ -320,6 +356,13 @@ type GetHeaderParams struct {
 	XAuthToken string
 }
 
+func unpackGetHeaderParams(packed map[string]any) (params GetHeaderParams) {
+	if v, ok := packed["x-auth-token"]; ok {
+		params.XAuthToken, _ = v.(string)
+	}
+	return params
+}
+
 func decodeGetHeaderParams(args [0]string, r *http.Request) (params GetHeaderParams, _ error) {
 	h := uri.NewHeaderDecoder(r.Header)
 	// Decode header: x-auth-token.
@@ -355,6 +398,13 @@ func decodeGetHeaderParams(args [0]string, r *http.Request) (params GetHeaderPar
 type PetFriendsNamesByIDParams struct {
 	// Pet ID.
 	ID int
+}
+
+func unpackPetFriendsNamesByIDParams(packed map[string]any) (params PetFriendsNamesByIDParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(int)
+	}
+	return params
 }
 
 func decodePetFriendsNamesByIDParams(args [1]string, r *http.Request) (params PetFriendsNamesByIDParams, _ error) {
@@ -401,6 +451,22 @@ type PetGetParams struct {
 	XScope []string
 	// Token.
 	Token string
+}
+
+func unpackPetGetParams(packed map[string]any) (params PetGetParams) {
+	if v, ok := packed["petID"]; ok {
+		params.PetID, _ = v.(int64)
+	}
+	if v, ok := packed["x-tags"]; ok {
+		params.XTags, _ = v.([]uuid.UUID)
+	}
+	if v, ok := packed["x-scope"]; ok {
+		params.XScope, _ = v.([]string)
+	}
+	if v, ok := packed["token"]; ok {
+		params.Token, _ = v.(string)
+	}
+	return params
 }
 
 func decodePetGetParams(args [0]string, r *http.Request) (params PetGetParams, _ error) {
@@ -577,6 +643,13 @@ type PetGetAvatarByIDParams struct {
 	PetID int64
 }
 
+func unpackPetGetAvatarByIDParams(packed map[string]any) (params PetGetAvatarByIDParams) {
+	if v, ok := packed["petID"]; ok {
+		params.PetID, _ = v.(int64)
+	}
+	return params
+}
+
 func decodePetGetAvatarByIDParams(args [0]string, r *http.Request) (params PetGetAvatarByIDParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: petID.
@@ -614,6 +687,13 @@ func decodePetGetAvatarByIDParams(args [0]string, r *http.Request) (params PetGe
 type PetGetAvatarByNameParams struct {
 	// Name of pet.
 	Name string
+}
+
+func unpackPetGetAvatarByNameParams(packed map[string]any) (params PetGetAvatarByNameParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	return params
 }
 
 func decodePetGetAvatarByNameParams(args [1]string, r *http.Request) (params PetGetAvatarByNameParams, _ error) {
@@ -656,6 +736,13 @@ type PetGetByNameParams struct {
 	Name string
 }
 
+func unpackPetGetByNameParams(packed map[string]any) (params PetGetByNameParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	return params
+}
+
 func decodePetGetByNameParams(args [1]string, r *http.Request) (params PetGetByNameParams, _ error) {
 	// Decode path: name.
 	{
@@ -694,6 +781,13 @@ func decodePetGetByNameParams(args [1]string, r *http.Request) (params PetGetByN
 type PetNameByIDParams struct {
 	// Pet ID.
 	ID int
+}
+
+func unpackPetNameByIDParams(packed map[string]any) (params PetNameByIDParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(int)
+	}
+	return params
 }
 
 func decodePetNameByIDParams(args [1]string, r *http.Request) (params PetNameByIDParams, _ error) {
@@ -736,6 +830,13 @@ type PetUploadAvatarByIDParams struct {
 	PetID int64
 }
 
+func unpackPetUploadAvatarByIDParams(packed map[string]any) (params PetUploadAvatarByIDParams) {
+	if v, ok := packed["petID"]; ok {
+		params.PetID, _ = v.(int64)
+	}
+	return params
+}
+
 func decodePetUploadAvatarByIDParams(args [0]string, r *http.Request) (params PetUploadAvatarByIDParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: petID.
@@ -772,6 +873,13 @@ func decodePetUploadAvatarByIDParams(args [0]string, r *http.Request) (params Pe
 
 type TestContentParameterParams struct {
 	Param OptTestContentParameterParam
+}
+
+func unpackTestContentParameterParams(packed map[string]any) (params TestContentParameterParams) {
+	if v, ok := packed["param"]; ok {
+		params.Param, _ = v.(OptTestContentParameterParam)
+	}
+	return params
 }
 
 func decodeTestContentParameterParams(args [0]string, r *http.Request) (params TestContentParameterParams, _ error) {
@@ -811,6 +919,16 @@ func decodeTestContentParameterParams(args [0]string, r *http.Request) (params T
 type TestObjectQueryParameterParams struct {
 	FormObject OptTestObjectQueryParameterFormObject
 	DeepObject OptTestObjectQueryParameterDeepObject
+}
+
+func unpackTestObjectQueryParameterParams(packed map[string]any) (params TestObjectQueryParameterParams) {
+	if v, ok := packed["formObject"]; ok {
+		params.FormObject, _ = v.(OptTestObjectQueryParameterFormObject)
+	}
+	if v, ok := packed["deepObject"]; ok {
+		params.DeepObject, _ = v.(OptTestObjectQueryParameterDeepObject)
+	}
+	return params
 }
 
 func decodeTestObjectQueryParameterParams(args [0]string, r *http.Request) (params TestObjectQueryParameterParams, _ error) {

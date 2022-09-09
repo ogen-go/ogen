@@ -91,9 +91,9 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestFormURLEncoded(ctx, request)
 			},
 		)
@@ -188,9 +188,9 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestMultipart(ctx, request)
 			},
 		)
@@ -285,9 +285,9 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestMultipartUpload(ctx, request)
 			},
 		)
@@ -382,9 +382,9 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestShareFormSchema(ctx, request)
 			},
 		)

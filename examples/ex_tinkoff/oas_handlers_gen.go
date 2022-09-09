@@ -84,9 +84,9 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MarketBondsGet(ctx)
 			},
 		)
@@ -190,9 +190,9 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMarketCandlesGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MarketCandlesGet(ctx, params)
 			},
 		)
@@ -281,9 +281,9 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MarketCurrenciesGet(ctx)
 			},
 		)
@@ -372,9 +372,9 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MarketEtfsGet(ctx)
 			},
 		)
@@ -476,9 +476,9 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMarketOrderbookGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MarketOrderbookGet(ctx, params)
 			},
 		)
@@ -579,9 +579,9 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMarketSearchByFigiGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MarketSearchByFigiGet(ctx, params)
 			},
 		)
@@ -682,9 +682,9 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMarketSearchByTickerGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MarketSearchByTickerGet(ctx, params)
 			},
 		)
@@ -773,9 +773,9 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MarketStocksGet(ctx)
 			},
 		)
@@ -879,9 +879,9 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOperationsGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OperationsGet(ctx, params)
 			},
 		)
@@ -983,9 +983,9 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrdersCancelPostParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrdersCancelPost(ctx, params)
 			},
 		)
@@ -1086,9 +1086,9 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrdersGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrdersGet(ctx, params)
 			},
 		)
@@ -1205,9 +1205,9 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrdersLimitOrderPostParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrdersLimitOrderPost(ctx, request, params)
 			},
 		)
@@ -1324,9 +1324,9 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrdersMarketOrderPostParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrdersMarketOrderPost(ctx, request, params)
 			},
 		)
@@ -1427,9 +1427,9 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPortfolioCurrenciesGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PortfolioCurrenciesGet(ctx, params)
 			},
 		)
@@ -1530,9 +1530,9 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPortfolioGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PortfolioGet(ctx, params)
 			},
 		)
@@ -1633,9 +1633,9 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackSandboxClearPostParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SandboxClearPost(ctx, params)
 			},
 		)
@@ -1751,9 +1751,9 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackSandboxCurrenciesBalancePostParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SandboxCurrenciesBalancePost(ctx, request, params)
 			},
 		)
@@ -1869,9 +1869,9 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackSandboxPositionsBalancePostParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SandboxPositionsBalancePost(ctx, request, params)
 			},
 		)
@@ -1975,9 +1975,9 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SandboxRegisterPost(ctx, request)
 			},
 		)
@@ -2078,9 +2078,9 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackSandboxRemovePostParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SandboxRemovePost(ctx, params)
 			},
 		)
@@ -2169,9 +2169,9 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UserAccountsGet(ctx)
 			},
 		)

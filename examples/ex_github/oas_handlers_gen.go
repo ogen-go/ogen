@@ -90,9 +90,9 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 			},
 		)
@@ -186,9 +186,9 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsAddSelectedRepoToOrgSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsAddSelectedRepoToOrgSecret(ctx, params)
 			},
 		)
@@ -282,9 +282,9 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsAddSelfHostedRunnerToGroupForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsAddSelfHostedRunnerToGroupForOrg(ctx, params)
 			},
 		)
@@ -378,9 +378,9 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsApproveWorkflowRunParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsApproveWorkflowRun(ctx, params)
 			},
 		)
@@ -474,9 +474,9 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsCancelWorkflowRunParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsCancelWorkflowRun(ctx, params)
 			},
 		)
@@ -585,9 +585,9 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsCreateOrUpdateEnvironmentSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsCreateOrUpdateEnvironmentSecret(ctx, request, params)
 			},
 		)
@@ -695,9 +695,9 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsCreateOrUpdateOrgSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsCreateOrUpdateOrgSecret(ctx, request, params)
 			},
 		)
@@ -806,9 +806,9 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsCreateOrUpdateRepoSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsCreateOrUpdateRepoSecret(ctx, request, params)
 			},
 		)
@@ -900,9 +900,9 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsCreateRegistrationTokenForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsCreateRegistrationTokenForOrg(ctx, params)
 			},
 		)
@@ -995,9 +995,9 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsCreateRegistrationTokenForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsCreateRegistrationTokenForRepo(ctx, params)
 			},
 		)
@@ -1089,9 +1089,9 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsCreateRemoveTokenForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsCreateRemoveTokenForOrg(ctx, params)
 			},
 		)
@@ -1184,9 +1184,9 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsCreateRemoveTokenForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsCreateRemoveTokenForRepo(ctx, params)
 			},
 		)
@@ -1293,9 +1293,9 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsCreateSelfHostedRunnerGroupForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsCreateSelfHostedRunnerGroupForOrg(ctx, request, params)
 			},
 		)
@@ -1389,9 +1389,9 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsDeleteArtifactParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsDeleteArtifact(ctx, params)
 			},
 		)
@@ -1485,9 +1485,9 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsDeleteEnvironmentSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsDeleteEnvironmentSecret(ctx, params)
 			},
 		)
@@ -1580,9 +1580,9 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsDeleteOrgSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsDeleteOrgSecret(ctx, params)
 			},
 		)
@@ -1676,9 +1676,9 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsDeleteRepoSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsDeleteRepoSecret(ctx, params)
 			},
 		)
@@ -1771,9 +1771,9 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsDeleteSelfHostedRunnerFromOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsDeleteSelfHostedRunnerFromOrg(ctx, params)
 			},
 		)
@@ -1867,9 +1867,9 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsDeleteSelfHostedRunnerFromRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsDeleteSelfHostedRunnerFromRepo(ctx, params)
 			},
 		)
@@ -1962,9 +1962,9 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsDeleteSelfHostedRunnerGroupFromOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx, params)
 			},
 		)
@@ -2058,9 +2058,9 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsDeleteWorkflowRunParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsDeleteWorkflowRun(ctx, params)
 			},
 		)
@@ -2154,9 +2154,9 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsDeleteWorkflowRunLogsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsDeleteWorkflowRunLogs(ctx, params)
 			},
 		)
@@ -2249,9 +2249,9 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsDisableSelectedRepositoryGithubActionsOrganizationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx, params)
 			},
 		)
@@ -2346,9 +2346,9 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsDownloadArtifactParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsDownloadArtifact(ctx, params)
 			},
 		)
@@ -2442,9 +2442,9 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsDownloadJobLogsForWorkflowRunParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsDownloadJobLogsForWorkflowRun(ctx, params)
 			},
 		)
@@ -2538,9 +2538,9 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsDownloadWorkflowRunLogsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsDownloadWorkflowRunLogs(ctx, params)
 			},
 		)
@@ -2633,9 +2633,9 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsEnableSelectedRepositoryGithubActionsOrganizationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx, params)
 			},
 		)
@@ -2727,9 +2727,9 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetAllowedActionsOrganizationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetAllowedActionsOrganization(ctx, params)
 			},
 		)
@@ -2822,9 +2822,9 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetAllowedActionsRepositoryParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetAllowedActionsRepository(ctx, params)
 			},
 		)
@@ -2918,9 +2918,9 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetArtifactParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetArtifact(ctx, params)
 			},
 		)
@@ -3013,9 +3013,9 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetEnvironmentPublicKeyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetEnvironmentPublicKey(ctx, params)
 			},
 		)
@@ -3109,9 +3109,9 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetEnvironmentSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetEnvironmentSecret(ctx, params)
 			},
 		)
@@ -3203,9 +3203,9 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetGithubActionsPermissionsOrganizationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetGithubActionsPermissionsOrganization(ctx, params)
 			},
 		)
@@ -3298,9 +3298,9 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetGithubActionsPermissionsRepositoryParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetGithubActionsPermissionsRepository(ctx, params)
 			},
 		)
@@ -3394,9 +3394,9 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetJobForWorkflowRunParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetJobForWorkflowRun(ctx, params)
 			},
 		)
@@ -3488,9 +3488,9 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetOrgPublicKeyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetOrgPublicKey(ctx, params)
 			},
 		)
@@ -3583,9 +3583,9 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetOrgSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetOrgSecret(ctx, params)
 			},
 		)
@@ -3678,9 +3678,9 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetRepoPublicKeyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetRepoPublicKey(ctx, params)
 			},
 		)
@@ -3774,9 +3774,9 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetRepoSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetRepoSecret(ctx, params)
 			},
 		)
@@ -3870,9 +3870,9 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetReviewsForRunParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetReviewsForRun(ctx, params)
 			},
 		)
@@ -3965,9 +3965,9 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetSelfHostedRunnerForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetSelfHostedRunnerForOrg(ctx, params)
 			},
 		)
@@ -4061,9 +4061,9 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetSelfHostedRunnerForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetSelfHostedRunnerForRepo(ctx, params)
 			},
 		)
@@ -4156,9 +4156,9 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetSelfHostedRunnerGroupForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetSelfHostedRunnerGroupForOrg(ctx, params)
 			},
 		)
@@ -4252,9 +4252,9 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetWorkflowRunParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetWorkflowRun(ctx, params)
 			},
 		)
@@ -4348,9 +4348,9 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsGetWorkflowRunUsageParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsGetWorkflowRunUsage(ctx, params)
 			},
 		)
@@ -4445,9 +4445,9 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsListArtifactsForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsListArtifactsForRepo(ctx, params)
 			},
 		)
@@ -4542,9 +4542,9 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsListEnvironmentSecretsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsListEnvironmentSecrets(ctx, params)
 			},
 		)
@@ -4641,9 +4641,9 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsListJobsForWorkflowRunParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsListJobsForWorkflowRun(ctx, params)
 			},
 		)
@@ -4737,9 +4737,9 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsListOrgSecretsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsListOrgSecrets(ctx, params)
 			},
 		)
@@ -4834,9 +4834,9 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 			},
 		)
@@ -4931,9 +4931,9 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsListRepoSecretsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsListRepoSecrets(ctx, params)
 			},
 		)
@@ -5028,9 +5028,9 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsListRepoWorkflowsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsListRepoWorkflows(ctx, params)
 			},
 		)
@@ -5122,9 +5122,9 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsListRunnerApplicationsForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsListRunnerApplicationsForOrg(ctx, params)
 			},
 		)
@@ -5217,9 +5217,9 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsListRunnerApplicationsForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsListRunnerApplicationsForRepo(ctx, params)
 			},
 		)
@@ -5314,9 +5314,9 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsListSelectedReposForOrgSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsListSelectedReposForOrgSecret(ctx, params)
 			},
 		)
@@ -5410,9 +5410,9 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsListSelectedRepositoriesEnabledGithubActionsOrganization(ctx, params)
 			},
 		)
@@ -5506,9 +5506,9 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsListSelfHostedRunnerGroupsForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsListSelfHostedRunnerGroupsForOrg(ctx, params)
 			},
 		)
@@ -5602,9 +5602,9 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsListSelfHostedRunnersForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsListSelfHostedRunnersForOrg(ctx, params)
 			},
 		)
@@ -5699,9 +5699,9 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsListSelfHostedRunnersForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsListSelfHostedRunnersForRepo(ctx, params)
 			},
 		)
@@ -5796,9 +5796,9 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsListSelfHostedRunnersInGroupForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsListSelfHostedRunnersInGroupForOrg(ctx, params)
 			},
 		)
@@ -5894,9 +5894,9 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsListWorkflowRunArtifactsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsListWorkflowRunArtifacts(ctx, params)
 			},
 		)
@@ -5996,9 +5996,9 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsListWorkflowRunsForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsListWorkflowRunsForRepo(ctx, params)
 			},
 		)
@@ -6092,9 +6092,9 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsReRunWorkflowParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsReRunWorkflow(ctx, params)
 			},
 		)
@@ -6188,9 +6188,9 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx, params)
 			},
 		)
@@ -6284,9 +6284,9 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsRemoveSelectedRepoFromOrgSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsRemoveSelectedRepoFromOrgSecret(ctx, params)
 			},
 		)
@@ -6380,9 +6380,9 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsRemoveSelfHostedRunnerFromGroupForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx, params)
 			},
 		)
@@ -6476,9 +6476,9 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsRetryWorkflowParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsRetryWorkflow(ctx, params)
 			},
 		)
@@ -6587,9 +6587,9 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsReviewPendingDeploymentsForRunParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsReviewPendingDeploymentsForRun(ctx, request, params)
 			},
 		)
@@ -6696,9 +6696,9 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsSetAllowedActionsOrganizationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsSetAllowedActionsOrganization(ctx, request, params)
 			},
 		)
@@ -6806,9 +6806,9 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsSetAllowedActionsRepositoryParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsSetAllowedActionsRepository(ctx, request, params)
 			},
 		)
@@ -6915,9 +6915,9 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsSetGithubActionsPermissionsOrganizationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsSetGithubActionsPermissionsOrganization(ctx, request, params)
 			},
 		)
@@ -7025,9 +7025,9 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsSetGithubActionsPermissionsRepositoryParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsSetGithubActionsPermissionsRepository(ctx, request, params)
 			},
 		)
@@ -7135,9 +7135,9 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx, request, params)
 			},
 		)
@@ -7245,9 +7245,9 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsSetSelectedReposForOrgSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsSetSelectedReposForOrgSecret(ctx, request, params)
 			},
 		)
@@ -7354,9 +7354,9 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(ctx, request, params)
 			},
 		)
@@ -7464,9 +7464,9 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsSetSelfHostedRunnersInGroupForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsSetSelfHostedRunnersInGroupForOrg(ctx, request, params)
 			},
 		)
@@ -7574,9 +7574,9 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActionsUpdateSelfHostedRunnerGroupForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActionsUpdateSelfHostedRunnerGroupForOrg(ctx, request, params)
 			},
 		)
@@ -7669,9 +7669,9 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityCheckRepoIsStarredByAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityCheckRepoIsStarredByAuthenticatedUser(ctx, params)
 			},
 		)
@@ -7764,9 +7764,9 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityDeleteRepoSubscriptionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityDeleteRepoSubscription(ctx, params)
 			},
 		)
@@ -7858,9 +7858,9 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityDeleteThreadSubscriptionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityDeleteThreadSubscription(ctx, params)
 			},
 		)
@@ -7936,9 +7936,9 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityGetFeeds(ctx)
 			},
 		)
@@ -8031,9 +8031,9 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityGetRepoSubscriptionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityGetRepoSubscription(ctx, params)
 			},
 		)
@@ -8125,9 +8125,9 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityGetThreadParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityGetThread(ctx, params)
 			},
 		)
@@ -8219,9 +8219,9 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityGetThreadSubscriptionForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityGetThreadSubscriptionForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -8315,9 +8315,9 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityListEventsForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityListEventsForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -8414,9 +8414,9 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityListNotificationsForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityListNotificationsForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -8511,9 +8511,9 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityListOrgEventsForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityListOrgEventsForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -8606,9 +8606,9 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityListPublicEventsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityListPublicEvents(ctx, params)
 			},
 		)
@@ -8703,9 +8703,9 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityListPublicEventsForRepoNetworkParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityListPublicEventsForRepoNetwork(ctx, params)
 			},
 		)
@@ -8799,9 +8799,9 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityListPublicEventsForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityListPublicEventsForUser(ctx, params)
 			},
 		)
@@ -8895,9 +8895,9 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityListPublicOrgEventsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityListPublicOrgEvents(ctx, params)
 			},
 		)
@@ -8991,9 +8991,9 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityListReceivedEventsForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityListReceivedEventsForUser(ctx, params)
 			},
 		)
@@ -9087,9 +9087,9 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityListReceivedPublicEventsForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityListReceivedPublicEventsForUser(ctx, params)
 			},
 		)
@@ -9184,9 +9184,9 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityListRepoEventsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityListRepoEvents(ctx, params)
 			},
 		)
@@ -9285,9 +9285,9 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityListRepoNotificationsForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityListRepoNotificationsForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -9382,9 +9382,9 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityListReposStarredByAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityListReposStarredByAuthenticatedUser(ctx, params)
 			},
 		)
@@ -9478,9 +9478,9 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityListReposWatchedByUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityListReposWatchedByUser(ctx, params)
 			},
 		)
@@ -9573,9 +9573,9 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityListWatchedReposForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityListWatchedReposForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -9670,9 +9670,9 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityListWatchersForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityListWatchersForRepo(ctx, params)
 			},
 		)
@@ -9767,9 +9767,9 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityMarkNotificationsAsRead(ctx, request)
 			},
 		)
@@ -9877,9 +9877,9 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityMarkRepoNotificationsAsReadParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityMarkRepoNotificationsAsRead(ctx, request, params)
 			},
 		)
@@ -9971,9 +9971,9 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityMarkThreadAsReadParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityMarkThreadAsRead(ctx, params)
 			},
 		)
@@ -10081,9 +10081,9 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivitySetRepoSubscriptionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivitySetRepoSubscription(ctx, request, params)
 			},
 		)
@@ -10190,9 +10190,9 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivitySetThreadSubscriptionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivitySetThreadSubscription(ctx, request, params)
 			},
 		)
@@ -10285,9 +10285,9 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityStarRepoForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityStarRepoForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -10380,9 +10380,9 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackActivityUnstarRepoForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ActivityUnstarRepoForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -10475,9 +10475,9 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsAddRepoToInstallationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsAddRepoToInstallation(ctx, params)
 			},
 		)
@@ -10584,9 +10584,9 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsCheckTokenParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsCheckToken(ctx, request, params)
 			},
 		)
@@ -10695,9 +10695,9 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsCreateContentAttachmentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsCreateContentAttachment(ctx, request, params)
 			},
 		)
@@ -10804,9 +10804,9 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsCreateFromManifestParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsCreateFromManifest(ctx, request, params)
 			},
 		)
@@ -10913,9 +10913,9 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsCreateInstallationAccessTokenParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsCreateInstallationAccessToken(ctx, request, params)
 			},
 		)
@@ -11022,9 +11022,9 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsDeleteAuthorizationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsDeleteAuthorization(ctx, request, params)
 			},
 		)
@@ -11116,9 +11116,9 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsDeleteInstallationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsDeleteInstallation(ctx, params)
 			},
 		)
@@ -11225,9 +11225,9 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsDeleteTokenParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsDeleteToken(ctx, request, params)
 			},
 		)
@@ -11303,9 +11303,9 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsGetAuthenticated(ctx)
 			},
 		)
@@ -11397,9 +11397,9 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsGetBySlugParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsGetBySlug(ctx, params)
 			},
 		)
@@ -11491,9 +11491,9 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsGetSubscriptionPlanForAccountParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsGetSubscriptionPlanForAccount(ctx, params)
 			},
 		)
@@ -11585,9 +11585,9 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsGetSubscriptionPlanForAccountStubbedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsGetSubscriptionPlanForAccountStubbed(ctx, params)
 			},
 		)
@@ -11663,9 +11663,9 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsGetWebhookConfigForApp(ctx)
 			},
 		)
@@ -11757,9 +11757,9 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsGetWebhookDeliveryParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsGetWebhookDelivery(ctx, params)
 			},
 		)
@@ -11855,9 +11855,9 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsListAccountsForPlanParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsListAccountsForPlan(ctx, params)
 			},
 		)
@@ -11953,9 +11953,9 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsListAccountsForPlanStubbedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsListAccountsForPlanStubbed(ctx, params)
 			},
 		)
@@ -12049,9 +12049,9 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsListInstallationReposForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsListInstallationReposForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -12144,9 +12144,9 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsListPlansParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsListPlans(ctx, params)
 			},
 		)
@@ -12239,9 +12239,9 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsListPlansStubbedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsListPlansStubbed(ctx, params)
 			},
 		)
@@ -12334,9 +12334,9 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsListReposAccessibleToInstallationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsListReposAccessibleToInstallation(ctx, params)
 			},
 		)
@@ -12429,9 +12429,9 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsListSubscriptionsForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsListSubscriptionsForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -12524,9 +12524,9 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsListSubscriptionsForAuthenticatedUserStubbedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsListSubscriptionsForAuthenticatedUserStubbed(ctx, params)
 			},
 		)
@@ -12619,9 +12619,9 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsListWebhookDeliveriesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsListWebhookDeliveries(ctx, params)
 			},
 		)
@@ -12713,9 +12713,9 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsRedeliverWebhookDeliveryParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsRedeliverWebhookDelivery(ctx, params)
 			},
 		)
@@ -12808,9 +12808,9 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsRemoveRepoFromInstallationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsRemoveRepoFromInstallation(ctx, params)
 			},
 		)
@@ -12917,9 +12917,9 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsResetTokenParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsResetToken(ctx, request, params)
 			},
 		)
@@ -12995,9 +12995,9 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsRevokeInstallationAccessToken(ctx)
 			},
 		)
@@ -13104,9 +13104,9 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsScopeTokenParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsScopeToken(ctx, request, params)
 			},
 		)
@@ -13198,9 +13198,9 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsSuspendInstallationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsSuspendInstallation(ctx, params)
 			},
 		)
@@ -13292,9 +13292,9 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAppsUnsuspendInstallationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsUnsuspendInstallation(ctx, params)
 			},
 		)
@@ -13389,9 +13389,9 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AppsUpdateWebhookConfigForApp(ctx, request)
 			},
 		)
@@ -13483,9 +13483,9 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackBillingGetGithubActionsBillingGheParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.BillingGetGithubActionsBillingGhe(ctx, params)
 			},
 		)
@@ -13577,9 +13577,9 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackBillingGetGithubActionsBillingOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.BillingGetGithubActionsBillingOrg(ctx, params)
 			},
 		)
@@ -13671,9 +13671,9 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackBillingGetGithubActionsBillingUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.BillingGetGithubActionsBillingUser(ctx, params)
 			},
 		)
@@ -13765,9 +13765,9 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackBillingGetGithubPackagesBillingGheParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.BillingGetGithubPackagesBillingGhe(ctx, params)
 			},
 		)
@@ -13859,9 +13859,9 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackBillingGetGithubPackagesBillingOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.BillingGetGithubPackagesBillingOrg(ctx, params)
 			},
 		)
@@ -13953,9 +13953,9 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackBillingGetGithubPackagesBillingUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.BillingGetGithubPackagesBillingUser(ctx, params)
 			},
 		)
@@ -14047,9 +14047,9 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackBillingGetSharedStorageBillingGheParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.BillingGetSharedStorageBillingGhe(ctx, params)
 			},
 		)
@@ -14141,9 +14141,9 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackBillingGetSharedStorageBillingOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.BillingGetSharedStorageBillingOrg(ctx, params)
 			},
 		)
@@ -14235,9 +14235,9 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackBillingGetSharedStorageBillingUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.BillingGetSharedStorageBillingUser(ctx, params)
 			},
 		)
@@ -14345,9 +14345,9 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackChecksCreateSuiteParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ChecksCreateSuite(ctx, request, params)
 			},
 		)
@@ -14441,9 +14441,9 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackChecksGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ChecksGet(ctx, params)
 			},
 		)
@@ -14537,9 +14537,9 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackChecksGetSuiteParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ChecksGetSuite(ctx, params)
 			},
 		)
@@ -14635,9 +14635,9 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackChecksListAnnotationsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ChecksListAnnotations(ctx, params)
 			},
 		)
@@ -14737,9 +14737,9 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackChecksListForRefParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ChecksListForRef(ctx, params)
 			},
 		)
@@ -14838,9 +14838,9 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackChecksListForSuiteParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ChecksListForSuite(ctx, params)
 			},
 		)
@@ -14938,9 +14938,9 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackChecksListSuitesForRefParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ChecksListSuitesForRef(ctx, params)
 			},
 		)
@@ -15034,9 +15034,9 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackChecksRerequestSuiteParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ChecksRerequestSuite(ctx, params)
 			},
 		)
@@ -15144,9 +15144,9 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackChecksSetSuitesPreferencesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ChecksSetSuitesPreferences(ctx, request, params)
 			},
 		)
@@ -15241,9 +15241,9 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackCodeScanningDeleteAnalysisParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CodeScanningDeleteAnalysis(ctx, params)
 			},
 		)
@@ -15337,9 +15337,9 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackCodeScanningGetAlertParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CodeScanningGetAlert(ctx, params)
 			},
 		)
@@ -15433,9 +15433,9 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackCodeScanningGetAnalysisParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CodeScanningGetAnalysis(ctx, params)
 			},
 		)
@@ -15529,9 +15529,9 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackCodeScanningGetSarifParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CodeScanningGetSarif(ctx, params)
 			},
 		)
@@ -15628,9 +15628,9 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackCodeScanningListAlertInstancesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CodeScanningListAlertInstances(ctx, params)
 			},
 		)
@@ -15729,9 +15729,9 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackCodeScanningListAlertsForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CodeScanningListAlertsForRepo(ctx, params)
 			},
 		)
@@ -15830,9 +15830,9 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackCodeScanningListRecentAnalysesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CodeScanningListRecentAnalyses(ctx, params)
 			},
 		)
@@ -15941,9 +15941,9 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackCodeScanningUpdateAlertParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CodeScanningUpdateAlert(ctx, request, params)
 			},
 		)
@@ -16051,9 +16051,9 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackCodeScanningUploadSarifParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CodeScanningUploadSarif(ctx, request, params)
 			},
 		)
@@ -16129,9 +16129,9 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CodesOfConductGetAllCodesOfConduct(ctx)
 			},
 		)
@@ -16223,9 +16223,9 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackCodesOfConductGetConductCodeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.CodesOfConductGetConductCode(ctx, params)
 			},
 		)
@@ -16301,9 +16301,9 @@ func (s *Server) handleEmojisGetRequest(args [0]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EmojisGet(ctx)
 			},
 		)
@@ -16397,9 +16397,9 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 			},
 		)
@@ -16493,9 +16493,9 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx, params)
 			},
 		)
@@ -16587,9 +16587,9 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminCreateRegistrationTokenForEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx, params)
 			},
 		)
@@ -16681,9 +16681,9 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminCreateRemoveTokenForEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminCreateRemoveTokenForEnterprise(ctx, params)
 			},
 		)
@@ -16790,9 +16790,9 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
 			},
 		)
@@ -16885,9 +16885,9 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminDeleteScimGroupFromEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminDeleteScimGroupFromEnterprise(ctx, params)
 			},
 		)
@@ -16980,9 +16980,9 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx, params)
 			},
 		)
@@ -17075,9 +17075,9 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx, params)
 			},
 		)
@@ -17170,9 +17170,9 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminDeleteUserFromEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminDeleteUserFromEnterprise(ctx, params)
 			},
 		)
@@ -17265,9 +17265,9 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise(ctx, params)
 			},
 		)
@@ -17360,9 +17360,9 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise(ctx, params)
 			},
 		)
@@ -17454,9 +17454,9 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminGetAllowedActionsEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminGetAllowedActionsEnterprise(ctx, params)
 			},
 		)
@@ -17555,9 +17555,9 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminGetAuditLogParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminGetAuditLog(ctx, params)
 			},
 		)
@@ -17649,9 +17649,9 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx, params)
 			},
 		)
@@ -17745,9 +17745,9 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx, params)
 			},
 		)
@@ -17840,9 +17840,9 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx, params)
 			},
 		)
@@ -17935,9 +17935,9 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx, params)
 			},
 		)
@@ -18030,9 +18030,9 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx, params)
 			},
 		)
@@ -18127,9 +18127,9 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 			},
 		)
@@ -18225,9 +18225,9 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminListProvisionedGroupsEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminListProvisionedGroupsEnterprise(ctx, params)
 			},
 		)
@@ -18322,9 +18322,9 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminListProvisionedIdentitiesEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx, params)
 			},
 		)
@@ -18416,9 +18416,9 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminListRunnerApplicationsForEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminListRunnerApplicationsForEnterprise(ctx, params)
 			},
 		)
@@ -18512,9 +18512,9 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, params)
 			},
 		)
@@ -18608,9 +18608,9 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx, params)
 			},
 		)
@@ -18704,9 +18704,9 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminListSelfHostedRunnersForEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx, params)
 			},
 		)
@@ -18801,9 +18801,9 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx, params)
 			},
 		)
@@ -18910,9 +18910,9 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminProvisionAndInviteEnterpriseGroupParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx, request, params)
 			},
 		)
@@ -19019,9 +19019,9 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminProvisionAndInviteEnterpriseUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx, request, params)
 			},
 		)
@@ -19115,9 +19115,9 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, params)
 			},
 		)
@@ -19211,9 +19211,9 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx, params)
 			},
 		)
@@ -19320,9 +19320,9 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminSetAllowedActionsEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminSetAllowedActionsEnterprise(ctx, request, params)
 			},
 		)
@@ -19429,9 +19429,9 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx, request, params)
 			},
 		)
@@ -19539,9 +19539,9 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx, request, params)
 			},
 		)
@@ -19649,9 +19649,9 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx, request, params)
 			},
 		)
@@ -19759,9 +19759,9 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(ctx, request, params)
 			},
 		)
@@ -19868,9 +19868,9 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise(ctx, request, params)
 			},
 		)
@@ -19978,9 +19978,9 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx, request, params)
 			},
 		)
@@ -20088,9 +20088,9 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminUpdateAttributeForEnterpriseGroupParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx, request, params)
 			},
 		)
@@ -20198,9 +20198,9 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminUpdateAttributeForEnterpriseUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx, request, params)
 			},
 		)
@@ -20308,9 +20308,9 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx, request, params)
 			},
 		)
@@ -20402,9 +20402,9 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsCheckIsStarredParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsCheckIsStarred(ctx, params)
 			},
 		)
@@ -20499,9 +20499,9 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsCreate(ctx, request)
 			},
 		)
@@ -20608,9 +20608,9 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsCreateCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsCreateComment(ctx, request, params)
 			},
 		)
@@ -20702,9 +20702,9 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsDeleteParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsDelete(ctx, params)
 			},
 		)
@@ -20797,9 +20797,9 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsDeleteCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsDeleteComment(ctx, params)
 			},
 		)
@@ -20891,9 +20891,9 @@ func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsForkParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsFork(ctx, params)
 			},
 		)
@@ -20985,9 +20985,9 @@ func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsGet(ctx, params)
 			},
 		)
@@ -21080,9 +21080,9 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsGetCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsGetComment(ctx, params)
 			},
 		)
@@ -21175,9 +21175,9 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsGetRevisionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsGetRevision(ctx, params)
 			},
 		)
@@ -21271,9 +21271,9 @@ func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsList(ctx, params)
 			},
 		)
@@ -21367,9 +21367,9 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsListCommentsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsListComments(ctx, params)
 			},
 		)
@@ -21463,9 +21463,9 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsListCommitsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsListCommits(ctx, params)
 			},
 		)
@@ -21560,9 +21560,9 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsListForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsListForUser(ctx, params)
 			},
 		)
@@ -21656,9 +21656,9 @@ func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsListForksParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsListForks(ctx, params)
 			},
 		)
@@ -21752,9 +21752,9 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsListPublicParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsListPublic(ctx, params)
 			},
 		)
@@ -21848,9 +21848,9 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsListStarredParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsListStarred(ctx, params)
 			},
 		)
@@ -21942,9 +21942,9 @@ func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsStarParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsStar(ctx, params)
 			},
 		)
@@ -22036,9 +22036,9 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsUnstarParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsUnstar(ctx, params)
 			},
 		)
@@ -22146,9 +22146,9 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGistsUpdateCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GistsUpdateComment(ctx, request, params)
 			},
 		)
@@ -22256,9 +22256,9 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGitCreateBlobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GitCreateBlob(ctx, request, params)
 			},
 		)
@@ -22366,9 +22366,9 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGitCreateCommitParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GitCreateCommit(ctx, request, params)
 			},
 		)
@@ -22476,9 +22476,9 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGitCreateRefParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GitCreateRef(ctx, request, params)
 			},
 		)
@@ -22586,9 +22586,9 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGitCreateTagParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GitCreateTag(ctx, request, params)
 			},
 		)
@@ -22696,9 +22696,9 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGitCreateTreeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GitCreateTree(ctx, request, params)
 			},
 		)
@@ -22792,9 +22792,9 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGitDeleteRefParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GitDeleteRef(ctx, params)
 			},
 		)
@@ -22888,9 +22888,9 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGitGetBlobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GitGetBlob(ctx, params)
 			},
 		)
@@ -22984,9 +22984,9 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGitGetCommitParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GitGetCommit(ctx, params)
 			},
 		)
@@ -23080,9 +23080,9 @@ func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGitGetRefParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GitGetRef(ctx, params)
 			},
 		)
@@ -23176,9 +23176,9 @@ func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGitGetTagParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GitGetTag(ctx, params)
 			},
 		)
@@ -23273,9 +23273,9 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGitGetTreeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GitGetTree(ctx, params)
 			},
 		)
@@ -23371,9 +23371,9 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGitListMatchingRefsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GitListMatchingRefs(ctx, params)
 			},
 		)
@@ -23482,9 +23482,9 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGitUpdateRefParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GitUpdateRef(ctx, request, params)
 			},
 		)
@@ -23560,9 +23560,9 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GitignoreGetAllTemplates(ctx)
 			},
 		)
@@ -23654,9 +23654,9 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGitignoreGetTemplateParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GitignoreGetTemplate(ctx, params)
 			},
 		)
@@ -23732,9 +23732,9 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.InteractionsRemoveRestrictionsForAuthenticatedUser(ctx)
 			},
 		)
@@ -23826,9 +23826,9 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackInteractionsRemoveRestrictionsForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.InteractionsRemoveRestrictionsForOrg(ctx, params)
 			},
 		)
@@ -23921,9 +23921,9 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackInteractionsRemoveRestrictionsForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.InteractionsRemoveRestrictionsForRepo(ctx, params)
 			},
 		)
@@ -24018,9 +24018,9 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.InteractionsSetRestrictionsForAuthenticatedUser(ctx, request)
 			},
 		)
@@ -24127,9 +24127,9 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackInteractionsSetRestrictionsForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.InteractionsSetRestrictionsForOrg(ctx, request, params)
 			},
 		)
@@ -24237,9 +24237,9 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackInteractionsSetRestrictionsForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.InteractionsSetRestrictionsForRepo(ctx, request, params)
 			},
 		)
@@ -24348,9 +24348,9 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesAddAssigneesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesAddAssignees(ctx, request, params)
 			},
 		)
@@ -24444,9 +24444,9 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesCheckUserCanBeAssignedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesCheckUserCanBeAssigned(ctx, params)
 			},
 		)
@@ -24554,9 +24554,9 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesCreateParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesCreate(ctx, request, params)
 			},
 		)
@@ -24665,9 +24665,9 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesCreateCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesCreateComment(ctx, request, params)
 			},
 		)
@@ -24775,9 +24775,9 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesCreateLabelParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesCreateLabel(ctx, request, params)
 			},
 		)
@@ -24885,9 +24885,9 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesCreateMilestoneParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesCreateMilestone(ctx, request, params)
 			},
 		)
@@ -24981,9 +24981,9 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesDeleteCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesDeleteComment(ctx, params)
 			},
 		)
@@ -25077,9 +25077,9 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesDeleteLabelParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesDeleteLabel(ctx, params)
 			},
 		)
@@ -25173,9 +25173,9 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesDeleteMilestoneParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesDeleteMilestone(ctx, params)
 			},
 		)
@@ -25269,9 +25269,9 @@ func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesGet(ctx, params)
 			},
 		)
@@ -25365,9 +25365,9 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesGetCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesGetComment(ctx, params)
 			},
 		)
@@ -25461,9 +25461,9 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesGetEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesGetEvent(ctx, params)
 			},
 		)
@@ -25557,9 +25557,9 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesGetLabelParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesGetLabel(ctx, params)
 			},
 		)
@@ -25653,9 +25653,9 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesGetMilestoneParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesGetMilestone(ctx, params)
 			},
 		)
@@ -25758,9 +25758,9 @@ func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesList(ctx, params)
 			},
 		)
@@ -25855,9 +25855,9 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesListAssigneesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesListAssignees(ctx, params)
 			},
 		)
@@ -25954,9 +25954,9 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesListCommentsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesListComments(ctx, params)
 			},
 		)
@@ -26054,9 +26054,9 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesListCommentsForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesListCommentsForRepo(ctx, params)
 			},
 		)
@@ -26151,9 +26151,9 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesListEventsForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesListEventsForRepo(ctx, params)
 			},
 		)
@@ -26252,9 +26252,9 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesListForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesListForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -26354,9 +26354,9 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesListForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesListForOrg(ctx, params)
 			},
 		)
@@ -26460,9 +26460,9 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesListForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesListForRepo(ctx, params)
 			},
 		)
@@ -26558,9 +26558,9 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesListLabelsForMilestoneParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesListLabelsForMilestone(ctx, params)
 			},
 		)
@@ -26655,9 +26655,9 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesListLabelsForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesListLabelsForRepo(ctx, params)
 			},
 		)
@@ -26753,9 +26753,9 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesListLabelsOnIssueParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesListLabelsOnIssue(ctx, params)
 			},
 		)
@@ -26853,9 +26853,9 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesListMilestonesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesListMilestones(ctx, params)
 			},
 		)
@@ -26964,9 +26964,9 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesLockParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesLock(ctx, request, params)
 			},
 		)
@@ -27060,9 +27060,9 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesRemoveAllLabelsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesRemoveAllLabels(ctx, params)
 			},
 		)
@@ -27171,9 +27171,9 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesRemoveAssigneesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesRemoveAssignees(ctx, request, params)
 			},
 		)
@@ -27268,9 +27268,9 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesRemoveLabelParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesRemoveLabel(ctx, params)
 			},
 		)
@@ -27364,9 +27364,9 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesUnlockParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesUnlock(ctx, params)
 			},
 		)
@@ -27475,9 +27475,9 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesUpdateParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesUpdate(ctx, request, params)
 			},
 		)
@@ -27586,9 +27586,9 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesUpdateCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesUpdateComment(ctx, request, params)
 			},
 		)
@@ -27697,9 +27697,9 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesUpdateLabelParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesUpdateLabel(ctx, request, params)
 			},
 		)
@@ -27808,9 +27808,9 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackIssuesUpdateMilestoneParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.IssuesUpdateMilestone(ctx, request, params)
 			},
 		)
@@ -27902,9 +27902,9 @@ func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackLicensesGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.LicensesGet(ctx, params)
 			},
 		)
@@ -27998,9 +27998,9 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackLicensesGetAllCommonlyUsedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.LicensesGetAllCommonlyUsed(ctx, params)
 			},
 		)
@@ -28093,9 +28093,9 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackLicensesGetForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.LicensesGetForRepo(ctx, params)
 			},
 		)
@@ -28171,9 +28171,9 @@ func (s *Server) handleMetaGetRequest(args [0]string, w http.ResponseWriter, r *
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MetaGet(ctx)
 			},
 		)
@@ -28249,9 +28249,9 @@ func (s *Server) handleMetaGetZenRequest(args [0]string, w http.ResponseWriter, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MetaGetZen(ctx)
 			},
 		)
@@ -28327,9 +28327,9 @@ func (s *Server) handleMetaRootRequest(args [0]string, w http.ResponseWriter, r 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MetaRoot(ctx)
 			},
 		)
@@ -28422,9 +28422,9 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsCancelImportParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsCancelImport(ctx, params)
 			},
 		)
@@ -28516,9 +28516,9 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsDeleteArchiveForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsDeleteArchiveForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -28611,9 +28611,9 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsDeleteArchiveForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsDeleteArchiveForOrg(ctx, params)
 			},
 		)
@@ -28706,9 +28706,9 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsDownloadArchiveForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsDownloadArchiveForOrg(ctx, params)
 			},
 		)
@@ -28800,9 +28800,9 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsGetArchiveForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsGetArchiveForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -28896,9 +28896,9 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsGetCommitAuthorsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsGetCommitAuthors(ctx, params)
 			},
 		)
@@ -28991,9 +28991,9 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsGetImportStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsGetImportStatus(ctx, params)
 			},
 		)
@@ -29086,9 +29086,9 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsGetLargeFilesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsGetLargeFiles(ctx, params)
 			},
 		)
@@ -29181,9 +29181,9 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsGetStatusForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsGetStatusForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -29277,9 +29277,9 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsGetStatusForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsGetStatusForOrg(ctx, params)
 			},
 		)
@@ -29372,9 +29372,9 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsListForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsListForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -29469,9 +29469,9 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsListForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsListForOrg(ctx, params)
 			},
 		)
@@ -29566,9 +29566,9 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsListReposForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsListReposForOrg(ctx, params)
 			},
 		)
@@ -29662,9 +29662,9 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsListReposForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsListReposForUser(ctx, params)
 			},
 		)
@@ -29773,9 +29773,9 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsMapCommitAuthorParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsMapCommitAuthor(ctx, request, params)
 			},
 		)
@@ -29883,9 +29883,9 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsSetLfsPreferenceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsSetLfsPreference(ctx, request, params)
 			},
 		)
@@ -29980,9 +29980,9 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsStartForAuthenticatedUser(ctx, request)
 			},
 		)
@@ -30089,9 +30089,9 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsStartForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsStartForOrg(ctx, request, params)
 			},
 		)
@@ -30199,9 +30199,9 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsStartImportParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsStartImport(ctx, request, params)
 			},
 		)
@@ -30294,9 +30294,9 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsUnlockRepoForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsUnlockRepoForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -30390,9 +30390,9 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsUnlockRepoForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsUnlockRepoForOrg(ctx, params)
 			},
 		)
@@ -30500,9 +30500,9 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackMigrationsUpdateImportParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.MigrationsUpdateImport(ctx, request, params)
 			},
 		)
@@ -30597,9 +30597,9 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OAuthAuthorizationsCreateAuthorization(ctx, request)
 			},
 		)
@@ -30691,9 +30691,9 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOAuthAuthorizationsDeleteAuthorizationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OAuthAuthorizationsDeleteAuthorization(ctx, params)
 			},
 		)
@@ -30785,9 +30785,9 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOAuthAuthorizationsDeleteGrantParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OAuthAuthorizationsDeleteGrant(ctx, params)
 			},
 		)
@@ -30879,9 +30879,9 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOAuthAuthorizationsGetAuthorizationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OAuthAuthorizationsGetAuthorization(ctx, params)
 			},
 		)
@@ -30973,9 +30973,9 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOAuthAuthorizationsGetGrantParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OAuthAuthorizationsGetGrant(ctx, params)
 			},
 		)
@@ -31082,9 +31082,9 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOAuthAuthorizationsGetOrCreateAuthorizationForAppParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx, request, params)
 			},
 		)
@@ -31192,9 +31192,9 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint(ctx, request, params)
 			},
 		)
@@ -31288,9 +31288,9 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOAuthAuthorizationsListAuthorizationsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OAuthAuthorizationsListAuthorizations(ctx, params)
 			},
 		)
@@ -31384,9 +31384,9 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOAuthAuthorizationsListGrantsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OAuthAuthorizationsListGrants(ctx, params)
 			},
 		)
@@ -31493,9 +31493,9 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOAuthAuthorizationsUpdateAuthorizationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OAuthAuthorizationsUpdateAuthorization(ctx, request, params)
 			},
 		)
@@ -31588,9 +31588,9 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsBlockUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsBlockUser(ctx, params)
 			},
 		)
@@ -31683,9 +31683,9 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsCancelInvitationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsCancelInvitation(ctx, params)
 			},
 		)
@@ -31778,9 +31778,9 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsCheckBlockedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsCheckBlockedUser(ctx, params)
 			},
 		)
@@ -31873,9 +31873,9 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsCheckMembershipForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsCheckMembershipForUser(ctx, params)
 			},
 		)
@@ -31968,9 +31968,9 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsCheckPublicMembershipForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsCheckPublicMembershipForUser(ctx, params)
 			},
 		)
@@ -32063,9 +32063,9 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsConvertMemberToOutsideCollaboratorParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsConvertMemberToOutsideCollaborator(ctx, params)
 			},
 		)
@@ -32172,9 +32172,9 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsCreateInvitationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsCreateInvitation(ctx, request, params)
 			},
 		)
@@ -32281,9 +32281,9 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsCreateWebhookParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsCreateWebhook(ctx, request, params)
 			},
 		)
@@ -32376,9 +32376,9 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsDeleteWebhookParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsDeleteWebhook(ctx, params)
 			},
 		)
@@ -32470,9 +32470,9 @@ func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsGet(ctx, params)
 			},
 		)
@@ -32571,9 +32571,9 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsGetAuditLogParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsGetAuditLog(ctx, params)
 			},
 		)
@@ -32665,9 +32665,9 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsGetMembershipForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsGetMembershipForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -32760,9 +32760,9 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsGetMembershipForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsGetMembershipForUser(ctx, params)
 			},
 		)
@@ -32855,9 +32855,9 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsGetWebhookParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsGetWebhook(ctx, params)
 			},
 		)
@@ -32950,9 +32950,9 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsGetWebhookConfigForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsGetWebhookConfigForOrg(ctx, params)
 			},
 		)
@@ -33046,9 +33046,9 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsGetWebhookDeliveryParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsGetWebhookDelivery(ctx, params)
 			},
 		)
@@ -33141,9 +33141,9 @@ func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsList(ctx, params)
 			},
 		)
@@ -33235,9 +33235,9 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsListBlockedUsersParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsListBlockedUsers(ctx, params)
 			},
 		)
@@ -33331,9 +33331,9 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsListFailedInvitationsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsListFailedInvitations(ctx, params)
 			},
 		)
@@ -33426,9 +33426,9 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsListForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsListForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -33522,9 +33522,9 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsListForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsListForUser(ctx, params)
 			},
 		)
@@ -33619,9 +33619,9 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsListInvitationTeamsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsListInvitationTeams(ctx, params)
 			},
 		)
@@ -33717,9 +33717,9 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsListMembersParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsListMembers(ctx, params)
 			},
 		)
@@ -33813,9 +33813,9 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsListMembershipsForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsListMembershipsForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -33910,9 +33910,9 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsListOutsideCollaboratorsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsListOutsideCollaborators(ctx, params)
 			},
 		)
@@ -34006,9 +34006,9 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsListPendingInvitationsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsListPendingInvitations(ctx, params)
 			},
 		)
@@ -34102,9 +34102,9 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsListPublicMembersParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsListPublicMembers(ctx, params)
 			},
 		)
@@ -34196,9 +34196,9 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsListSamlSSOAuthorizationsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsListSamlSSOAuthorizations(ctx, params)
 			},
 		)
@@ -34293,9 +34293,9 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsListWebhookDeliveriesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsListWebhookDeliveries(ctx, params)
 			},
 		)
@@ -34389,9 +34389,9 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsListWebhooksParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsListWebhooks(ctx, params)
 			},
 		)
@@ -34484,9 +34484,9 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsPingWebhookParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsPingWebhook(ctx, params)
 			},
 		)
@@ -34580,9 +34580,9 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsRedeliverWebhookDeliveryParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsRedeliverWebhookDelivery(ctx, params)
 			},
 		)
@@ -34675,9 +34675,9 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsRemoveMemberParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsRemoveMember(ctx, params)
 			},
 		)
@@ -34770,9 +34770,9 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsRemoveMembershipForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsRemoveMembershipForUser(ctx, params)
 			},
 		)
@@ -34865,9 +34865,9 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsRemoveOutsideCollaboratorParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsRemoveOutsideCollaborator(ctx, params)
 			},
 		)
@@ -34960,9 +34960,9 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsRemovePublicMembershipForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsRemovePublicMembershipForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -35055,9 +35055,9 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsRemoveSamlSSOAuthorizationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsRemoveSamlSSOAuthorization(ctx, params)
 			},
 		)
@@ -35165,9 +35165,9 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsSetMembershipForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsSetMembershipForUser(ctx, request, params)
 			},
 		)
@@ -35260,9 +35260,9 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsSetPublicMembershipForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsSetPublicMembershipForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -35355,9 +35355,9 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsUnblockUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsUnblockUser(ctx, params)
 			},
 		)
@@ -35464,9 +35464,9 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsUpdateMembershipForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsUpdateMembershipForAuthenticatedUser(ctx, request, params)
 			},
 		)
@@ -35574,9 +35574,9 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsUpdateWebhookParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsUpdateWebhook(ctx, request, params)
 			},
 		)
@@ -35684,9 +35684,9 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackOrgsUpdateWebhookConfigForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OrgsUpdateWebhookConfigForOrg(ctx, request, params)
 			},
 		)
@@ -35779,9 +35779,9 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesDeletePackageForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesDeletePackageForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -35875,9 +35875,9 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesDeletePackageForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesDeletePackageForOrg(ctx, params)
 			},
 		)
@@ -35971,9 +35971,9 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesDeletePackageForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesDeletePackageForUser(ctx, params)
 			},
 		)
@@ -36067,9 +36067,9 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesDeletePackageVersionForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesDeletePackageVersionForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -36164,9 +36164,9 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesDeletePackageVersionForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesDeletePackageVersionForOrg(ctx, params)
 			},
 		)
@@ -36261,9 +36261,9 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesDeletePackageVersionForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesDeletePackageVersionForUser(ctx, params)
 			},
 		)
@@ -36359,9 +36359,9 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser(ctx, params)
 			},
 		)
@@ -36458,9 +36458,9 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesGetAllPackageVersionsForPackageOwnedByOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx, params)
 			},
 		)
@@ -36554,9 +36554,9 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesGetAllPackageVersionsForPackageOwnedByUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx, params)
 			},
 		)
@@ -36649,9 +36649,9 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesGetPackageForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesGetPackageForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -36745,9 +36745,9 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesGetPackageForOrganizationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesGetPackageForOrganization(ctx, params)
 			},
 		)
@@ -36841,9 +36841,9 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesGetPackageForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesGetPackageForUser(ctx, params)
 			},
 		)
@@ -36937,9 +36937,9 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesGetPackageVersionForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesGetPackageVersionForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -37034,9 +37034,9 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesGetPackageVersionForOrganizationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesGetPackageVersionForOrganization(ctx, params)
 			},
 		)
@@ -37131,9 +37131,9 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesGetPackageVersionForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesGetPackageVersionForUser(ctx, params)
 			},
 		)
@@ -37226,9 +37226,9 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesListPackagesForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesListPackagesForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -37322,9 +37322,9 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesListPackagesForOrganizationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesListPackagesForOrganization(ctx, params)
 			},
 		)
@@ -37418,9 +37418,9 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesListPackagesForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesListPackagesForUser(ctx, params)
 			},
 		)
@@ -37514,9 +37514,9 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesRestorePackageForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesRestorePackageForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -37611,9 +37611,9 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesRestorePackageForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesRestorePackageForOrg(ctx, params)
 			},
 		)
@@ -37708,9 +37708,9 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesRestorePackageForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesRestorePackageForUser(ctx, params)
 			},
 		)
@@ -37804,9 +37804,9 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesRestorePackageVersionForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesRestorePackageVersionForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -37901,9 +37901,9 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesRestorePackageVersionForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesRestorePackageVersionForOrg(ctx, params)
 			},
 		)
@@ -37998,9 +37998,9 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPackagesRestorePackageVersionForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PackagesRestorePackageVersionForUser(ctx, params)
 			},
 		)
@@ -38108,9 +38108,9 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsAddCollaboratorParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsAddCollaborator(ctx, request, params)
 			},
 		)
@@ -38217,9 +38217,9 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsCreateColumnParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsCreateColumn(ctx, request, params)
 			},
 		)
@@ -38314,9 +38314,9 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsCreateForAuthenticatedUser(ctx, request)
 			},
 		)
@@ -38423,9 +38423,9 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsCreateForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsCreateForOrg(ctx, request, params)
 			},
 		)
@@ -38533,9 +38533,9 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsCreateForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsCreateForRepo(ctx, request, params)
 			},
 		)
@@ -38627,9 +38627,9 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsDeleteParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsDelete(ctx, params)
 			},
 		)
@@ -38721,9 +38721,9 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsDeleteCardParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsDeleteCard(ctx, params)
 			},
 		)
@@ -38815,9 +38815,9 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsDeleteColumnParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsDeleteColumn(ctx, params)
 			},
 		)
@@ -38909,9 +38909,9 @@ func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsGet(ctx, params)
 			},
 		)
@@ -39003,9 +39003,9 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsGetCardParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsGetCard(ctx, params)
 			},
 		)
@@ -39097,9 +39097,9 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsGetColumnParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsGetColumn(ctx, params)
 			},
 		)
@@ -39192,9 +39192,9 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsGetPermissionForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsGetPermissionForUser(ctx, params)
 			},
 		)
@@ -39289,9 +39289,9 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsListCardsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsListCards(ctx, params)
 			},
 		)
@@ -39386,9 +39386,9 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsListCollaboratorsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsListCollaborators(ctx, params)
 			},
 		)
@@ -39482,9 +39482,9 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsListColumnsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsListColumns(ctx, params)
 			},
 		)
@@ -39579,9 +39579,9 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsListForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsListForOrg(ctx, params)
 			},
 		)
@@ -39677,9 +39677,9 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsListForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsListForRepo(ctx, params)
 			},
 		)
@@ -39774,9 +39774,9 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsListForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsListForUser(ctx, params)
 			},
 		)
@@ -39883,9 +39883,9 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsMoveCardParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsMoveCard(ctx, request, params)
 			},
 		)
@@ -39992,9 +39992,9 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsMoveColumnParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsMoveColumn(ctx, request, params)
 			},
 		)
@@ -40087,9 +40087,9 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsRemoveCollaboratorParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsRemoveCollaborator(ctx, params)
 			},
 		)
@@ -40196,9 +40196,9 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsUpdateParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsUpdate(ctx, request, params)
 			},
 		)
@@ -40305,9 +40305,9 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsUpdateCardParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsUpdateCard(ctx, request, params)
 			},
 		)
@@ -40414,9 +40414,9 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackProjectsUpdateColumnParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ProjectsUpdateColumn(ctx, request, params)
 			},
 		)
@@ -40510,9 +40510,9 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsCheckIfMergedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsCheckIfMerged(ctx, params)
 			},
 		)
@@ -40620,9 +40620,9 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsCreateParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsCreate(ctx, request, params)
 			},
 		)
@@ -40732,9 +40732,9 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsCreateReplyForReviewCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsCreateReplyForReviewComment(ctx, request, params)
 			},
 		)
@@ -40843,9 +40843,9 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsCreateReviewParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsCreateReview(ctx, request, params)
 			},
 		)
@@ -40954,9 +40954,9 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsCreateReviewCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsCreateReviewComment(ctx, request, params)
 			},
 		)
@@ -41051,9 +41051,9 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsDeletePendingReviewParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsDeletePendingReview(ctx, params)
 			},
 		)
@@ -41147,9 +41147,9 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsDeleteReviewCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsDeleteReviewComment(ctx, params)
 			},
 		)
@@ -41259,9 +41259,9 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsDismissReviewParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsDismissReview(ctx, request, params)
 			},
 		)
@@ -41355,9 +41355,9 @@ func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsGet(ctx, params)
 			},
 		)
@@ -41452,9 +41452,9 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsGetReviewParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsGetReview(ctx, params)
 			},
 		)
@@ -41548,9 +41548,9 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsGetReviewCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsGetReviewComment(ctx, params)
 			},
 		)
@@ -41650,9 +41650,9 @@ func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsList(ctx, params)
 			},
 		)
@@ -41749,9 +41749,9 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsListCommentsForReviewParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsListCommentsForReview(ctx, params)
 			},
 		)
@@ -41847,9 +41847,9 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsListCommitsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsListCommits(ctx, params)
 			},
 		)
@@ -41945,9 +41945,9 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsListFilesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsListFiles(ctx, params)
 			},
 		)
@@ -42043,9 +42043,9 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsListRequestedReviewersParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsListRequestedReviewers(ctx, params)
 			},
 		)
@@ -42144,9 +42144,9 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsListReviewCommentsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsListReviewComments(ctx, params)
 			},
 		)
@@ -42244,9 +42244,9 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsListReviewCommentsForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsListReviewCommentsForRepo(ctx, params)
 			},
 		)
@@ -42342,9 +42342,9 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsListReviewsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsListReviews(ctx, params)
 			},
 		)
@@ -42453,9 +42453,9 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsMergeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsMerge(ctx, request, params)
 			},
 		)
@@ -42564,9 +42564,9 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsRemoveRequestedReviewersParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsRemoveRequestedReviewers(ctx, request, params)
 			},
 		)
@@ -42676,9 +42676,9 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsSubmitReviewParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsSubmitReview(ctx, request, params)
 			},
 		)
@@ -42787,9 +42787,9 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsUpdateParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsUpdate(ctx, request, params)
 			},
 		)
@@ -42898,9 +42898,9 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsUpdateBranchParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsUpdateBranch(ctx, request, params)
 			},
 		)
@@ -43010,9 +43010,9 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsUpdateReviewParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsUpdateReview(ctx, request, params)
 			},
 		)
@@ -43121,9 +43121,9 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPullsUpdateReviewCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PullsUpdateReviewComment(ctx, request, params)
 			},
 		)
@@ -43199,9 +43199,9 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.RateLimitGet(ctx)
 			},
 		)
@@ -43310,9 +43310,9 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsCreateForCommitCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsCreateForCommitComment(ctx, request, params)
 			},
 		)
@@ -43421,9 +43421,9 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsCreateForIssueParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsCreateForIssue(ctx, request, params)
 			},
 		)
@@ -43532,9 +43532,9 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsCreateForIssueCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsCreateForIssueComment(ctx, request, params)
 			},
 		)
@@ -43643,9 +43643,9 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsCreateForPullRequestReviewCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsCreateForPullRequestReviewComment(ctx, request, params)
 			},
 		)
@@ -43754,9 +43754,9 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsCreateForReleaseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsCreateForRelease(ctx, request, params)
 			},
 		)
@@ -43866,9 +43866,9 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsCreateForTeamDiscussionCommentInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsCreateForTeamDiscussionCommentInOrg(ctx, request, params)
 			},
 		)
@@ -43977,9 +43977,9 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsCreateForTeamDiscussionCommentLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsCreateForTeamDiscussionCommentLegacy(ctx, request, params)
 			},
 		)
@@ -44088,9 +44088,9 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsCreateForTeamDiscussionInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsCreateForTeamDiscussionInOrg(ctx, request, params)
 			},
 		)
@@ -44198,9 +44198,9 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsCreateForTeamDiscussionLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsCreateForTeamDiscussionLegacy(ctx, request, params)
 			},
 		)
@@ -44295,9 +44295,9 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsDeleteForCommitCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsDeleteForCommitComment(ctx, params)
 			},
 		)
@@ -44392,9 +44392,9 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsDeleteForIssueParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsDeleteForIssue(ctx, params)
 			},
 		)
@@ -44489,9 +44489,9 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsDeleteForIssueCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsDeleteForIssueComment(ctx, params)
 			},
 		)
@@ -44586,9 +44586,9 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsDeleteForPullRequestCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsDeleteForPullRequestComment(ctx, params)
 			},
 		)
@@ -44683,9 +44683,9 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsDeleteForTeamDiscussionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsDeleteForTeamDiscussion(ctx, params)
 			},
 		)
@@ -44781,9 +44781,9 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsDeleteForTeamDiscussionCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsDeleteForTeamDiscussionComment(ctx, params)
 			},
 		)
@@ -44875,9 +44875,9 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsDeleteLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsDeleteLegacy(ctx, params)
 			},
 		)
@@ -44974,9 +44974,9 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsListForCommitCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsListForCommitComment(ctx, params)
 			},
 		)
@@ -45073,9 +45073,9 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsListForIssueParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsListForIssue(ctx, params)
 			},
 		)
@@ -45172,9 +45172,9 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsListForIssueCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsListForIssueComment(ctx, params)
 			},
 		)
@@ -45271,9 +45271,9 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsListForPullRequestReviewCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsListForPullRequestReviewComment(ctx, params)
 			},
 		)
@@ -45371,9 +45371,9 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsListForTeamDiscussionCommentInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsListForTeamDiscussionCommentInOrg(ctx, params)
 			},
 		)
@@ -45470,9 +45470,9 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsListForTeamDiscussionCommentLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsListForTeamDiscussionCommentLegacy(ctx, params)
 			},
 		)
@@ -45569,9 +45569,9 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsListForTeamDiscussionInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsListForTeamDiscussionInOrg(ctx, params)
 			},
 		)
@@ -45667,9 +45667,9 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReactionsListForTeamDiscussionLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReactionsListForTeamDiscussionLegacy(ctx, params)
 			},
 		)
@@ -45761,9 +45761,9 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposAcceptInvitationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposAcceptInvitation(ctx, params)
 			},
 		)
@@ -45872,9 +45872,9 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposAddAppAccessRestrictionsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposAddAppAccessRestrictions(ctx, request, params)
 			},
 		)
@@ -45983,9 +45983,9 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposAddCollaboratorParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposAddCollaborator(ctx, request, params)
 			},
 		)
@@ -46094,9 +46094,9 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposAddStatusCheckContextsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposAddStatusCheckContexts(ctx, request, params)
 			},
 		)
@@ -46205,9 +46205,9 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposAddTeamAccessRestrictionsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposAddTeamAccessRestrictions(ctx, request, params)
 			},
 		)
@@ -46316,9 +46316,9 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposAddUserAccessRestrictionsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposAddUserAccessRestrictions(ctx, request, params)
 			},
 		)
@@ -46412,9 +46412,9 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCheckCollaboratorParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCheckCollaborator(ctx, params)
 			},
 		)
@@ -46507,9 +46507,9 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCheckVulnerabilityAlertsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCheckVulnerabilityAlerts(ctx, params)
 			},
 		)
@@ -46605,9 +46605,9 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCompareCommitsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCompareCommits(ctx, params)
 			},
 		)
@@ -46715,9 +46715,9 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCreateAutolinkParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCreateAutolink(ctx, request, params)
 			},
 		)
@@ -46826,9 +46826,9 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCreateCommitCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCreateCommitComment(ctx, request, params)
 			},
 		)
@@ -46922,9 +46922,9 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCreateCommitSignatureProtectionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCreateCommitSignatureProtection(ctx, params)
 			},
 		)
@@ -47033,9 +47033,9 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCreateCommitStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCreateCommitStatus(ctx, request, params)
 			},
 		)
@@ -47143,9 +47143,9 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCreateDeployKeyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCreateDeployKey(ctx, request, params)
 			},
 		)
@@ -47253,9 +47253,9 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCreateDeploymentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCreateDeployment(ctx, request, params)
 			},
 		)
@@ -47364,9 +47364,9 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCreateDeploymentStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCreateDeploymentStatus(ctx, request, params)
 			},
 		)
@@ -47474,9 +47474,9 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCreateDispatchEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCreateDispatchEvent(ctx, request, params)
 			},
 		)
@@ -47571,9 +47571,9 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCreateForAuthenticatedUser(ctx, request)
 			},
 		)
@@ -47681,9 +47681,9 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCreateForkParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCreateFork(ctx, request, params)
 			},
 		)
@@ -47790,9 +47790,9 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCreateInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCreateInOrg(ctx, request, params)
 			},
 		)
@@ -47901,9 +47901,9 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCreateOrUpdateFileContentsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCreateOrUpdateFileContents(ctx, request, params)
 			},
 		)
@@ -48011,9 +48011,9 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCreatePagesSiteParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCreatePagesSite(ctx, request, params)
 			},
 		)
@@ -48121,9 +48121,9 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCreateReleaseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCreateRelease(ctx, request, params)
 			},
 		)
@@ -48231,9 +48231,9 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCreateUsingTemplateParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCreateUsingTemplate(ctx, request, params)
 			},
 		)
@@ -48341,9 +48341,9 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposCreateWebhookParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposCreateWebhook(ctx, request, params)
 			},
 		)
@@ -48435,9 +48435,9 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeclineInvitationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDeclineInvitation(ctx, params)
 			},
 		)
@@ -48530,9 +48530,9 @@ func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeleteParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDelete(ctx, params)
 			},
 		)
@@ -48626,9 +48626,9 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeleteAccessRestrictionsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDeleteAccessRestrictions(ctx, params)
 			},
 		)
@@ -48722,9 +48722,9 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeleteAdminBranchProtectionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDeleteAdminBranchProtection(ctx, params)
 			},
 		)
@@ -48818,9 +48818,9 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeleteAnEnvironmentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDeleteAnEnvironment(ctx, params)
 			},
 		)
@@ -48914,9 +48914,9 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeleteAutolinkParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDeleteAutolink(ctx, params)
 			},
 		)
@@ -49010,9 +49010,9 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeleteBranchProtectionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDeleteBranchProtection(ctx, params)
 			},
 		)
@@ -49106,9 +49106,9 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeleteCommitCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDeleteCommitComment(ctx, params)
 			},
 		)
@@ -49202,9 +49202,9 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeleteCommitSignatureProtectionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDeleteCommitSignatureProtection(ctx, params)
 			},
 		)
@@ -49298,9 +49298,9 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeleteDeployKeyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDeleteDeployKey(ctx, params)
 			},
 		)
@@ -49394,9 +49394,9 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeleteDeploymentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDeleteDeployment(ctx, params)
 			},
 		)
@@ -49505,9 +49505,9 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeleteFileParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDeleteFile(ctx, request, params)
 			},
 		)
@@ -49601,9 +49601,9 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeleteInvitationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDeleteInvitation(ctx, params)
 			},
 		)
@@ -49696,9 +49696,9 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeletePagesSiteParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDeletePagesSite(ctx, params)
 			},
 		)
@@ -49792,9 +49792,9 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeletePullRequestReviewProtectionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDeletePullRequestReviewProtection(ctx, params)
 			},
 		)
@@ -49888,9 +49888,9 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeleteReleaseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDeleteRelease(ctx, params)
 			},
 		)
@@ -49984,9 +49984,9 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeleteReleaseAssetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDeleteReleaseAsset(ctx, params)
 			},
 		)
@@ -50080,9 +50080,9 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDeleteWebhookParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDeleteWebhook(ctx, params)
 			},
 		)
@@ -50175,9 +50175,9 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDisableAutomatedSecurityFixesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDisableAutomatedSecurityFixes(ctx, params)
 			},
 		)
@@ -50270,9 +50270,9 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDisableLfsForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDisableLfsForRepo(ctx, params)
 			},
 		)
@@ -50365,9 +50365,9 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDisableVulnerabilityAlertsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDisableVulnerabilityAlerts(ctx, params)
 			},
 		)
@@ -50461,9 +50461,9 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDownloadTarballArchiveParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDownloadTarballArchive(ctx, params)
 			},
 		)
@@ -50557,9 +50557,9 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposDownloadZipballArchiveParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposDownloadZipballArchive(ctx, params)
 			},
 		)
@@ -50652,9 +50652,9 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposEnableAutomatedSecurityFixesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposEnableAutomatedSecurityFixes(ctx, params)
 			},
 		)
@@ -50747,9 +50747,9 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposEnableLfsForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposEnableLfsForRepo(ctx, params)
 			},
 		)
@@ -50842,9 +50842,9 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposEnableVulnerabilityAlertsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposEnableVulnerabilityAlerts(ctx, params)
 			},
 		)
@@ -50937,9 +50937,9 @@ func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGet(ctx, params)
 			},
 		)
@@ -51033,9 +51033,9 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetAccessRestrictionsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetAccessRestrictions(ctx, params)
 			},
 		)
@@ -51129,9 +51129,9 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetAdminBranchProtectionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetAdminBranchProtection(ctx, params)
 			},
 		)
@@ -51225,9 +51225,9 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetAllStatusCheckContextsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetAllStatusCheckContexts(ctx, params)
 			},
 		)
@@ -51322,9 +51322,9 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetAllTopicsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetAllTopics(ctx, params)
 			},
 		)
@@ -51418,9 +51418,9 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetAppsWithAccessToProtectedBranchParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetAppsWithAccessToProtectedBranch(ctx, params)
 			},
 		)
@@ -51514,9 +51514,9 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetAutolinkParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetAutolink(ctx, params)
 			},
 		)
@@ -51610,9 +51610,9 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetBranchParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetBranch(ctx, params)
 			},
 		)
@@ -51706,9 +51706,9 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetBranchProtectionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetBranchProtection(ctx, params)
 			},
 		)
@@ -51802,9 +51802,9 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetClonesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetClones(ctx, params)
 			},
 		)
@@ -51897,9 +51897,9 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetCodeFrequencyStatsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetCodeFrequencyStats(ctx, params)
 			},
 		)
@@ -51993,9 +51993,9 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetCollaboratorPermissionLevelParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetCollaboratorPermissionLevel(ctx, params)
 			},
 		)
@@ -52091,9 +52091,9 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetCombinedStatusForRefParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetCombinedStatusForRef(ctx, params)
 			},
 		)
@@ -52189,9 +52189,9 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetCommitParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetCommit(ctx, params)
 			},
 		)
@@ -52284,9 +52284,9 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetCommitActivityStatsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetCommitActivityStats(ctx, params)
 			},
 		)
@@ -52380,9 +52380,9 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetCommitCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetCommitComment(ctx, params)
 			},
 		)
@@ -52476,9 +52476,9 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetCommitSignatureProtectionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetCommitSignatureProtection(ctx, params)
 			},
 		)
@@ -52571,9 +52571,9 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetCommunityProfileMetricsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetCommunityProfileMetrics(ctx, params)
 			},
 		)
@@ -52666,9 +52666,9 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetContributorsStatsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetContributorsStats(ctx, params)
 			},
 		)
@@ -52762,9 +52762,9 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetDeployKeyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetDeployKey(ctx, params)
 			},
 		)
@@ -52858,9 +52858,9 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetDeploymentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetDeployment(ctx, params)
 			},
 		)
@@ -52955,9 +52955,9 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetDeploymentStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetDeploymentStatus(ctx, params)
 			},
 		)
@@ -53050,9 +53050,9 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetLatestPagesBuildParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetLatestPagesBuild(ctx, params)
 			},
 		)
@@ -53145,9 +53145,9 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetLatestReleaseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetLatestRelease(ctx, params)
 			},
 		)
@@ -53240,9 +53240,9 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetPagesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetPages(ctx, params)
 			},
 		)
@@ -53336,9 +53336,9 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetPagesBuildParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetPagesBuild(ctx, params)
 			},
 		)
@@ -53431,9 +53431,9 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetPagesHealthCheckParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetPagesHealthCheck(ctx, params)
 			},
 		)
@@ -53526,9 +53526,9 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetParticipationStatsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetParticipationStats(ctx, params)
 			},
 		)
@@ -53622,9 +53622,9 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetPullRequestReviewProtectionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetPullRequestReviewProtection(ctx, params)
 			},
 		)
@@ -53717,9 +53717,9 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetPunchCardStatsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetPunchCardStats(ctx, params)
 			},
 		)
@@ -53813,9 +53813,9 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetReadmeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetReadme(ctx, params)
 			},
 		)
@@ -53910,9 +53910,9 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetReadmeInDirectoryParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetReadmeInDirectory(ctx, params)
 			},
 		)
@@ -54006,9 +54006,9 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetReleaseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetRelease(ctx, params)
 			},
 		)
@@ -54102,9 +54102,9 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetReleaseAssetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetReleaseAsset(ctx, params)
 			},
 		)
@@ -54198,9 +54198,9 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetReleaseByTagParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetReleaseByTag(ctx, params)
 			},
 		)
@@ -54294,9 +54294,9 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetStatusChecksProtectionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetStatusChecksProtection(ctx, params)
 			},
 		)
@@ -54390,9 +54390,9 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetTeamsWithAccessToProtectedBranchParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetTeamsWithAccessToProtectedBranch(ctx, params)
 			},
 		)
@@ -54485,9 +54485,9 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetTopPathsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetTopPaths(ctx, params)
 			},
 		)
@@ -54580,9 +54580,9 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetTopReferrersParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetTopReferrers(ctx, params)
 			},
 		)
@@ -54676,9 +54676,9 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetUsersWithAccessToProtectedBranchParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetUsersWithAccessToProtectedBranch(ctx, params)
 			},
 		)
@@ -54772,9 +54772,9 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetViewsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetViews(ctx, params)
 			},
 		)
@@ -54868,9 +54868,9 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetWebhookParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetWebhook(ctx, params)
 			},
 		)
@@ -54964,9 +54964,9 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetWebhookConfigForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetWebhookConfigForRepo(ctx, params)
 			},
 		)
@@ -55061,9 +55061,9 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposGetWebhookDeliveryParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposGetWebhookDelivery(ctx, params)
 			},
 		)
@@ -55157,9 +55157,9 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListAutolinksParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListAutolinks(ctx, params)
 			},
 		)
@@ -55255,9 +55255,9 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListBranchesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListBranches(ctx, params)
 			},
 		)
@@ -55351,9 +55351,9 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListBranchesForHeadCommitParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListBranchesForHeadCommit(ctx, params)
 			},
 		)
@@ -55449,9 +55449,9 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListCollaboratorsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListCollaborators(ctx, params)
 			},
 		)
@@ -55547,9 +55547,9 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListCommentsForCommitParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListCommentsForCommit(ctx, params)
 			},
 		)
@@ -55644,9 +55644,9 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListCommitCommentsForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListCommitCommentsForRepo(ctx, params)
 			},
 		)
@@ -55742,9 +55742,9 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListCommitStatusesForRefParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListCommitStatusesForRef(ctx, params)
 			},
 		)
@@ -55844,9 +55844,9 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListCommitsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListCommits(ctx, params)
 			},
 		)
@@ -55942,9 +55942,9 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListContributorsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListContributors(ctx, params)
 			},
 		)
@@ -56039,9 +56039,9 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListDeployKeysParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListDeployKeys(ctx, params)
 			},
 		)
@@ -56137,9 +56137,9 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListDeploymentStatusesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListDeploymentStatuses(ctx, params)
 			},
 		)
@@ -56238,9 +56238,9 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListDeploymentsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListDeployments(ctx, params)
 			},
 		)
@@ -56340,9 +56340,9 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -56439,9 +56439,9 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListForOrg(ctx, params)
 			},
 		)
@@ -56538,9 +56538,9 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListForUser(ctx, params)
 			},
 		)
@@ -56636,9 +56636,9 @@ func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListForksParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListForks(ctx, params)
 			},
 		)
@@ -56733,9 +56733,9 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListInvitationsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListInvitations(ctx, params)
 			},
 		)
@@ -56828,9 +56828,9 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListInvitationsForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListInvitationsForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -56923,9 +56923,9 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListLanguagesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListLanguages(ctx, params)
 			},
 		)
@@ -57020,9 +57020,9 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListPagesBuildsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListPagesBuilds(ctx, params)
 			},
 		)
@@ -57114,9 +57114,9 @@ func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListPublicParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListPublic(ctx, params)
 			},
 		)
@@ -57212,9 +57212,9 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListPullRequestsAssociatedWithCommitParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListPullRequestsAssociatedWithCommit(ctx, params)
 			},
 		)
@@ -57310,9 +57310,9 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListReleaseAssetsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListReleaseAssets(ctx, params)
 			},
 		)
@@ -57407,9 +57407,9 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListReleasesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListReleases(ctx, params)
 			},
 		)
@@ -57504,9 +57504,9 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListTagsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListTags(ctx, params)
 			},
 		)
@@ -57601,9 +57601,9 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListTeamsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListTeams(ctx, params)
 			},
 		)
@@ -57699,9 +57699,9 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListWebhookDeliveriesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListWebhookDeliveries(ctx, params)
 			},
 		)
@@ -57796,9 +57796,9 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposListWebhooksParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposListWebhooks(ctx, params)
 			},
 		)
@@ -57906,9 +57906,9 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposMergeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposMerge(ctx, request, params)
 			},
 		)
@@ -58016,9 +58016,9 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposMergeUpstreamParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposMergeUpstream(ctx, request, params)
 			},
 		)
@@ -58112,9 +58112,9 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposPingWebhookParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposPingWebhook(ctx, params)
 			},
 		)
@@ -58209,9 +58209,9 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposRedeliverWebhookDeliveryParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposRedeliverWebhookDelivery(ctx, params)
 			},
 		)
@@ -58320,9 +58320,9 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposRemoveAppAccessRestrictionsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposRemoveAppAccessRestrictions(ctx, request, params)
 			},
 		)
@@ -58416,9 +58416,9 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposRemoveCollaboratorParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposRemoveCollaborator(ctx, params)
 			},
 		)
@@ -58527,9 +58527,9 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposRemoveStatusCheckContextsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposRemoveStatusCheckContexts(ctx, request, params)
 			},
 		)
@@ -58623,9 +58623,9 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposRemoveStatusCheckProtectionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposRemoveStatusCheckProtection(ctx, params)
 			},
 		)
@@ -58734,9 +58734,9 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposRemoveTeamAccessRestrictionsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposRemoveTeamAccessRestrictions(ctx, request, params)
 			},
 		)
@@ -58845,9 +58845,9 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposRemoveUserAccessRestrictionsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposRemoveUserAccessRestrictions(ctx, request, params)
 			},
 		)
@@ -58956,9 +58956,9 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposRenameBranchParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposRenameBranch(ctx, request, params)
 			},
 		)
@@ -59066,9 +59066,9 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposReplaceAllTopicsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposReplaceAllTopics(ctx, request, params)
 			},
 		)
@@ -59161,9 +59161,9 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposRequestPagesBuildParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposRequestPagesBuild(ctx, params)
 			},
 		)
@@ -59257,9 +59257,9 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposSetAdminBranchProtectionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposSetAdminBranchProtection(ctx, params)
 			},
 		)
@@ -59368,9 +59368,9 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposSetAppAccessRestrictionsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposSetAppAccessRestrictions(ctx, request, params)
 			},
 		)
@@ -59479,9 +59479,9 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposSetStatusCheckContextsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposSetStatusCheckContexts(ctx, request, params)
 			},
 		)
@@ -59590,9 +59590,9 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposSetTeamAccessRestrictionsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposSetTeamAccessRestrictions(ctx, request, params)
 			},
 		)
@@ -59701,9 +59701,9 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposSetUserAccessRestrictionsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposSetUserAccessRestrictions(ctx, request, params)
 			},
 		)
@@ -59797,9 +59797,9 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposTestPushWebhookParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposTestPushWebhook(ctx, params)
 			},
 		)
@@ -59907,9 +59907,9 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposTransferParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposTransfer(ctx, request, params)
 			},
 		)
@@ -60017,9 +60017,9 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposUpdateParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposUpdate(ctx, request, params)
 			},
 		)
@@ -60128,9 +60128,9 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposUpdateBranchProtectionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposUpdateBranchProtection(ctx, request, params)
 			},
 		)
@@ -60239,9 +60239,9 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposUpdateCommitCommentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposUpdateCommitComment(ctx, request, params)
 			},
 		)
@@ -60350,9 +60350,9 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposUpdateInvitationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposUpdateInvitation(ctx, request, params)
 			},
 		)
@@ -60461,9 +60461,9 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposUpdatePullRequestReviewProtectionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposUpdatePullRequestReviewProtection(ctx, request, params)
 			},
 		)
@@ -60572,9 +60572,9 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposUpdateReleaseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposUpdateRelease(ctx, request, params)
 			},
 		)
@@ -60683,9 +60683,9 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposUpdateReleaseAssetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposUpdateReleaseAsset(ctx, request, params)
 			},
 		)
@@ -60794,9 +60794,9 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposUpdateStatusCheckProtectionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposUpdateStatusCheckProtection(ctx, request, params)
 			},
 		)
@@ -60905,9 +60905,9 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposUpdateWebhookParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposUpdateWebhook(ctx, request, params)
 			},
 		)
@@ -61016,9 +61016,9 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReposUpdateWebhookConfigForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReposUpdateWebhookConfigForRepo(ctx, request, params)
 			},
 		)
@@ -61111,9 +61111,9 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackScimDeleteUserFromOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ScimDeleteUserFromOrg(ctx, params)
 			},
 		)
@@ -61209,9 +61209,9 @@ func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackSearchCodeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SearchCode(ctx, params)
 			},
 		)
@@ -61307,9 +61307,9 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackSearchCommitsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SearchCommits(ctx, params)
 			},
 		)
@@ -61405,9 +61405,9 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackSearchIssuesAndPullRequestsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SearchIssuesAndPullRequests(ctx, params)
 			},
 		)
@@ -61504,9 +61504,9 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackSearchLabelsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SearchLabels(ctx, params)
 			},
 		)
@@ -61602,9 +61602,9 @@ func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackSearchReposParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SearchRepos(ctx, params)
 			},
 		)
@@ -61698,9 +61698,9 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackSearchTopicsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SearchTopics(ctx, params)
 			},
 		)
@@ -61796,9 +61796,9 @@ func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackSearchUsersParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SearchUsers(ctx, params)
 			},
 		)
@@ -61892,9 +61892,9 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackSecretScanningGetAlertParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SecretScanningGetAlert(ctx, params)
 			},
 		)
@@ -61990,9 +61990,9 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackSecretScanningListAlertsForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SecretScanningListAlertsForOrg(ctx, params)
 			},
 		)
@@ -62089,9 +62089,9 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackSecretScanningListAlertsForRepoParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SecretScanningListAlertsForRepo(ctx, params)
 			},
 		)
@@ -62200,9 +62200,9 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackSecretScanningUpdateAlertParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SecretScanningUpdateAlert(ctx, request, params)
 			},
 		)
@@ -62295,9 +62295,9 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsAddMemberLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsAddMemberLegacy(ctx, params)
 			},
 		)
@@ -62406,9 +62406,9 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsAddOrUpdateMembershipForUserInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsAddOrUpdateMembershipForUserInOrg(ctx, request, params)
 			},
 		)
@@ -62516,9 +62516,9 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsAddOrUpdateMembershipForUserLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsAddOrUpdateMembershipForUserLegacy(ctx, request, params)
 			},
 		)
@@ -62627,9 +62627,9 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsAddOrUpdateProjectPermissionsInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsAddOrUpdateProjectPermissionsInOrg(ctx, request, params)
 			},
 		)
@@ -62737,9 +62737,9 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsAddOrUpdateProjectPermissionsLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsAddOrUpdateProjectPermissionsLegacy(ctx, request, params)
 			},
 		)
@@ -62849,9 +62849,9 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsAddOrUpdateRepoPermissionsInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsAddOrUpdateRepoPermissionsInOrg(ctx, request, params)
 			},
 		)
@@ -62960,9 +62960,9 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsAddOrUpdateRepoPermissionsLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsAddOrUpdateRepoPermissionsLegacy(ctx, request, params)
 			},
 		)
@@ -63056,9 +63056,9 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsCheckPermissionsForProjectInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsCheckPermissionsForProjectInOrg(ctx, params)
 			},
 		)
@@ -63151,9 +63151,9 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsCheckPermissionsForProjectLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsCheckPermissionsForProjectLegacy(ctx, params)
 			},
 		)
@@ -63248,9 +63248,9 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsCheckPermissionsForRepoInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsCheckPermissionsForRepoInOrg(ctx, params)
 			},
 		)
@@ -63344,9 +63344,9 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsCheckPermissionsForRepoLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsCheckPermissionsForRepoLegacy(ctx, params)
 			},
 		)
@@ -63453,9 +63453,9 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsCreateParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsCreate(ctx, request, params)
 			},
 		)
@@ -63564,9 +63564,9 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsCreateDiscussionCommentInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsCreateDiscussionCommentInOrg(ctx, request, params)
 			},
 		)
@@ -63674,9 +63674,9 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsCreateDiscussionCommentLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsCreateDiscussionCommentLegacy(ctx, request, params)
 			},
 		)
@@ -63784,9 +63784,9 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsCreateDiscussionInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsCreateDiscussionInOrg(ctx, request, params)
 			},
 		)
@@ -63893,9 +63893,9 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsCreateDiscussionLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsCreateDiscussionLegacy(ctx, request, params)
 			},
 		)
@@ -64003,9 +64003,9 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx, request, params)
 			},
 		)
@@ -64112,9 +64112,9 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx, request, params)
 			},
 		)
@@ -64209,9 +64209,9 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsDeleteDiscussionCommentInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsDeleteDiscussionCommentInOrg(ctx, params)
 			},
 		)
@@ -64305,9 +64305,9 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsDeleteDiscussionCommentLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsDeleteDiscussionCommentLegacy(ctx, params)
 			},
 		)
@@ -64401,9 +64401,9 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsDeleteDiscussionInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsDeleteDiscussionInOrg(ctx, params)
 			},
 		)
@@ -64496,9 +64496,9 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsDeleteDiscussionLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsDeleteDiscussionLegacy(ctx, params)
 			},
 		)
@@ -64591,9 +64591,9 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsDeleteInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsDeleteInOrg(ctx, params)
 			},
 		)
@@ -64685,9 +64685,9 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsDeleteLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsDeleteLegacy(ctx, params)
 			},
 		)
@@ -64780,9 +64780,9 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsGetByNameParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsGetByName(ctx, params)
 			},
 		)
@@ -64877,9 +64877,9 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsGetDiscussionCommentInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsGetDiscussionCommentInOrg(ctx, params)
 			},
 		)
@@ -64973,9 +64973,9 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsGetDiscussionCommentLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsGetDiscussionCommentLegacy(ctx, params)
 			},
 		)
@@ -65069,9 +65069,9 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsGetDiscussionInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsGetDiscussionInOrg(ctx, params)
 			},
 		)
@@ -65164,9 +65164,9 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsGetDiscussionLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsGetDiscussionLegacy(ctx, params)
 			},
 		)
@@ -65258,9 +65258,9 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsGetLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsGetLegacy(ctx, params)
 			},
 		)
@@ -65353,9 +65353,9 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsGetMemberLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsGetMemberLegacy(ctx, params)
 			},
 		)
@@ -65449,9 +65449,9 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsGetMembershipForUserInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsGetMembershipForUserInOrg(ctx, params)
 			},
 		)
@@ -65544,9 +65544,9 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsGetMembershipForUserLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsGetMembershipForUserLegacy(ctx, params)
 			},
 		)
@@ -65640,9 +65640,9 @@ func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsList(ctx, params)
 			},
 		)
@@ -65737,9 +65737,9 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListChildInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListChildInOrg(ctx, params)
 			},
 		)
@@ -65833,9 +65833,9 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListChildLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListChildLegacy(ctx, params)
 			},
 		)
@@ -65932,9 +65932,9 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListDiscussionCommentsInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListDiscussionCommentsInOrg(ctx, params)
 			},
 		)
@@ -66030,9 +66030,9 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListDiscussionCommentsLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListDiscussionCommentsLegacy(ctx, params)
 			},
 		)
@@ -66129,9 +66129,9 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListDiscussionsInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListDiscussionsInOrg(ctx, params)
 			},
 		)
@@ -66226,9 +66226,9 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListDiscussionsLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListDiscussionsLegacy(ctx, params)
 			},
 		)
@@ -66321,9 +66321,9 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -66415,9 +66415,9 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListIdpGroupsForLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListIdpGroupsForLegacy(ctx, params)
 			},
 		)
@@ -66511,9 +66511,9 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListIdpGroupsForOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListIdpGroupsForOrg(ctx, params)
 			},
 		)
@@ -66606,9 +66606,9 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListIdpGroupsInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListIdpGroupsInOrg(ctx, params)
 			},
 		)
@@ -66704,9 +66704,9 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListMembersInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListMembersInOrg(ctx, params)
 			},
 		)
@@ -66801,9 +66801,9 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListMembersLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListMembersLegacy(ctx, params)
 			},
 		)
@@ -66898,9 +66898,9 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListPendingInvitationsInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListPendingInvitationsInOrg(ctx, params)
 			},
 		)
@@ -66994,9 +66994,9 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListPendingInvitationsLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListPendingInvitationsLegacy(ctx, params)
 			},
 		)
@@ -67091,9 +67091,9 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListProjectsInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListProjectsInOrg(ctx, params)
 			},
 		)
@@ -67187,9 +67187,9 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListProjectsLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListProjectsLegacy(ctx, params)
 			},
 		)
@@ -67284,9 +67284,9 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListReposInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListReposInOrg(ctx, params)
 			},
 		)
@@ -67380,9 +67380,9 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsListReposLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsListReposLegacy(ctx, params)
 			},
 		)
@@ -67475,9 +67475,9 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsRemoveMemberLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsRemoveMemberLegacy(ctx, params)
 			},
 		)
@@ -67571,9 +67571,9 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsRemoveMembershipForUserInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsRemoveMembershipForUserInOrg(ctx, params)
 			},
 		)
@@ -67666,9 +67666,9 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsRemoveMembershipForUserLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsRemoveMembershipForUserLegacy(ctx, params)
 			},
 		)
@@ -67762,9 +67762,9 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsRemoveProjectInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsRemoveProjectInOrg(ctx, params)
 			},
 		)
@@ -67857,9 +67857,9 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsRemoveProjectLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsRemoveProjectLegacy(ctx, params)
 			},
 		)
@@ -67954,9 +67954,9 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsRemoveRepoInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsRemoveRepoInOrg(ctx, params)
 			},
 		)
@@ -68050,9 +68050,9 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsRemoveRepoLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsRemoveRepoLegacy(ctx, params)
 			},
 		)
@@ -68162,9 +68162,9 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsUpdateDiscussionCommentInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsUpdateDiscussionCommentInOrg(ctx, request, params)
 			},
 		)
@@ -68273,9 +68273,9 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsUpdateDiscussionCommentLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsUpdateDiscussionCommentLegacy(ctx, request, params)
 			},
 		)
@@ -68384,9 +68384,9 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsUpdateDiscussionInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsUpdateDiscussionInOrg(ctx, request, params)
 			},
 		)
@@ -68494,9 +68494,9 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsUpdateDiscussionLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsUpdateDiscussionLegacy(ctx, request, params)
 			},
 		)
@@ -68604,9 +68604,9 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsUpdateInOrgParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsUpdateInOrg(ctx, request, params)
 			},
 		)
@@ -68713,9 +68713,9 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTeamsUpdateLegacyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TeamsUpdateLegacy(ctx, request, params)
 			},
 		)
@@ -68810,9 +68810,9 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersAddEmailForAuthenticated(ctx, request)
 			},
 		)
@@ -68904,9 +68904,9 @@ func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersBlockParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersBlock(ctx, params)
 			},
 		)
@@ -68998,9 +68998,9 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersCheckBlockedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersCheckBlocked(ctx, params)
 			},
 		)
@@ -69093,9 +69093,9 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersCheckFollowingForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersCheckFollowingForUser(ctx, params)
 			},
 		)
@@ -69187,9 +69187,9 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersCheckPersonIsFollowedByAuthenticatedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersCheckPersonIsFollowedByAuthenticated(ctx, params)
 			},
 		)
@@ -69284,9 +69284,9 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersCreateGpgKeyForAuthenticated(ctx, request)
 			},
 		)
@@ -69381,9 +69381,9 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersCreatePublicSSHKeyForAuthenticated(ctx, request)
 			},
 		)
@@ -69478,9 +69478,9 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersDeleteEmailForAuthenticated(ctx, request)
 			},
 		)
@@ -69572,9 +69572,9 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersDeleteGpgKeyForAuthenticatedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersDeleteGpgKeyForAuthenticated(ctx, params)
 			},
 		)
@@ -69666,9 +69666,9 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersDeletePublicSSHKeyForAuthenticatedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersDeletePublicSSHKeyForAuthenticated(ctx, params)
 			},
 		)
@@ -69760,9 +69760,9 @@ func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersFollowParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersFollow(ctx, params)
 			},
 		)
@@ -69838,9 +69838,9 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersGetAuthenticated(ctx)
 			},
 		)
@@ -69932,9 +69932,9 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersGetByUsernameParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersGetByUsername(ctx, params)
 			},
 		)
@@ -70028,9 +70028,9 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersGetContextForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersGetContextForUser(ctx, params)
 			},
 		)
@@ -70122,9 +70122,9 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersGetGpgKeyForAuthenticatedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersGetGpgKeyForAuthenticated(ctx, params)
 			},
 		)
@@ -70216,9 +70216,9 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersGetPublicSSHKeyForAuthenticatedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersGetPublicSSHKeyForAuthenticated(ctx, params)
 			},
 		)
@@ -70311,9 +70311,9 @@ func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersList(ctx, params)
 			},
 		)
@@ -70389,9 +70389,9 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersListBlockedByAuthenticated(ctx)
 			},
 		)
@@ -70484,9 +70484,9 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersListEmailsForAuthenticatedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersListEmailsForAuthenticated(ctx, params)
 			},
 		)
@@ -70579,9 +70579,9 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersListFollowedByAuthenticatedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersListFollowedByAuthenticated(ctx, params)
 			},
 		)
@@ -70674,9 +70674,9 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersListFollowersForAuthenticatedUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersListFollowersForAuthenticatedUser(ctx, params)
 			},
 		)
@@ -70770,9 +70770,9 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersListFollowersForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersListFollowersForUser(ctx, params)
 			},
 		)
@@ -70866,9 +70866,9 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersListFollowingForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersListFollowingForUser(ctx, params)
 			},
 		)
@@ -70961,9 +70961,9 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersListGpgKeysForAuthenticatedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersListGpgKeysForAuthenticated(ctx, params)
 			},
 		)
@@ -71057,9 +71057,9 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersListGpgKeysForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersListGpgKeysForUser(ctx, params)
 			},
 		)
@@ -71152,9 +71152,9 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersListPublicEmailsForAuthenticatedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersListPublicEmailsForAuthenticated(ctx, params)
 			},
 		)
@@ -71248,9 +71248,9 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersListPublicKeysForUserParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersListPublicKeysForUser(ctx, params)
 			},
 		)
@@ -71343,9 +71343,9 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersListPublicSSHKeysForAuthenticatedParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersListPublicSSHKeysForAuthenticated(ctx, params)
 			},
 		)
@@ -71440,9 +71440,9 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersSetPrimaryEmailVisibilityForAuthenticated(ctx, request)
 			},
 		)
@@ -71534,9 +71534,9 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersUnblockParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersUnblock(ctx, params)
 			},
 		)
@@ -71628,9 +71628,9 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUsersUnfollowParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersUnfollow(ctx, params)
 			},
 		)
@@ -71725,9 +71725,9 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UsersUpdateAuthenticated(ctx, request)
 			},
 		)

@@ -91,9 +91,9 @@ func (s *Server) handleAddPetRequest(args [0]string, w http.ResponseWriter, r *h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.AddPet(ctx, request)
 			},
 		)
@@ -185,9 +185,9 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackDeletePetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.DeletePet(ctx, params)
 			},
 		)
@@ -279,9 +279,9 @@ func (s *Server) handleFindPetByIDRequest(args [1]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackFindPetByIDParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.FindPetByID(ctx, params)
 			},
 		)
@@ -374,9 +374,9 @@ func (s *Server) handleFindPetsRequest(args [0]string, w http.ResponseWriter, r 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackFindPetsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.FindPets(ctx, params)
 			},
 		)

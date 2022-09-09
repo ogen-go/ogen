@@ -70,6 +70,40 @@ type ListAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	Pretty OptString
 }
 
+func unpackListAdmissionregistrationV1MutatingWebhookConfigurationParams(packed map[string]any) (params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args [0]string, r *http.Request) (params ListAdmissionregistrationV1MutatingWebhookConfigurationParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -472,6 +506,40 @@ type ListAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	Watch OptBool
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListAdmissionregistrationV1ValidatingWebhookConfigurationParams(packed map[string]any) (params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args [0]string, r *http.Request) (params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams, _ error) {
@@ -878,6 +946,40 @@ type ListApiextensionsV1CustomResourceDefinitionParams struct {
 	Pretty OptString
 }
 
+func unpackListApiextensionsV1CustomResourceDefinitionParams(packed map[string]any) (params ListApiextensionsV1CustomResourceDefinitionParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListApiextensionsV1CustomResourceDefinitionParams(args [0]string, r *http.Request) (params ListApiextensionsV1CustomResourceDefinitionParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -1280,6 +1382,40 @@ type ListApiregistrationV1APIServiceParams struct {
 	Watch OptBool
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListApiregistrationV1APIServiceParams(packed map[string]any) (params ListApiregistrationV1APIServiceParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListApiregistrationV1APIServiceParams(args [0]string, r *http.Request) (params ListApiregistrationV1APIServiceParams, _ error) {
@@ -1686,6 +1822,40 @@ type ListAppsV1ControllerRevisionForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListAppsV1ControllerRevisionForAllNamespacesParams(packed map[string]any) (params ListAppsV1ControllerRevisionForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListAppsV1ControllerRevisionForAllNamespacesParams(args [0]string, r *http.Request) (params ListAppsV1ControllerRevisionForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -2088,6 +2258,40 @@ type ListAppsV1DaemonSetForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackListAppsV1DaemonSetForAllNamespacesParams(packed map[string]any) (params ListAppsV1DaemonSetForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeListAppsV1DaemonSetForAllNamespacesParams(args [0]string, r *http.Request) (params ListAppsV1DaemonSetForAllNamespacesParams, _ error) {
@@ -2494,6 +2698,40 @@ type ListAppsV1DeploymentForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListAppsV1DeploymentForAllNamespacesParams(packed map[string]any) (params ListAppsV1DeploymentForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListAppsV1DeploymentForAllNamespacesParams(args [0]string, r *http.Request) (params ListAppsV1DeploymentForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -2898,6 +3136,43 @@ type ListAppsV1NamespacedControllerRevisionParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListAppsV1NamespacedControllerRevisionParams(packed map[string]any) (params ListAppsV1NamespacedControllerRevisionParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListAppsV1NamespacedControllerRevisionParams(args [1]string, r *http.Request) (params ListAppsV1NamespacedControllerRevisionParams, _ error) {
@@ -3337,6 +3612,43 @@ type ListAppsV1NamespacedDaemonSetParams struct {
 	Pretty OptString
 }
 
+func unpackListAppsV1NamespacedDaemonSetParams(packed map[string]any) (params ListAppsV1NamespacedDaemonSetParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListAppsV1NamespacedDaemonSetParams(args [1]string, r *http.Request) (params ListAppsV1NamespacedDaemonSetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -3772,6 +4084,43 @@ type ListAppsV1NamespacedDeploymentParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListAppsV1NamespacedDeploymentParams(packed map[string]any) (params ListAppsV1NamespacedDeploymentParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListAppsV1NamespacedDeploymentParams(args [1]string, r *http.Request) (params ListAppsV1NamespacedDeploymentParams, _ error) {
@@ -4211,6 +4560,43 @@ type ListAppsV1NamespacedReplicaSetParams struct {
 	Pretty OptString
 }
 
+func unpackListAppsV1NamespacedReplicaSetParams(packed map[string]any) (params ListAppsV1NamespacedReplicaSetParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListAppsV1NamespacedReplicaSetParams(args [1]string, r *http.Request) (params ListAppsV1NamespacedReplicaSetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -4648,6 +5034,43 @@ type ListAppsV1NamespacedStatefulSetParams struct {
 	Pretty OptString
 }
 
+func unpackListAppsV1NamespacedStatefulSetParams(packed map[string]any) (params ListAppsV1NamespacedStatefulSetParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListAppsV1NamespacedStatefulSetParams(args [1]string, r *http.Request) (params ListAppsV1NamespacedStatefulSetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -5083,6 +5506,40 @@ type ListAppsV1ReplicaSetForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListAppsV1ReplicaSetForAllNamespacesParams(packed map[string]any) (params ListAppsV1ReplicaSetForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListAppsV1ReplicaSetForAllNamespacesParams(args [0]string, r *http.Request) (params ListAppsV1ReplicaSetForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -5485,6 +5942,40 @@ type ListAppsV1StatefulSetForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackListAppsV1StatefulSetForAllNamespacesParams(packed map[string]any) (params ListAppsV1StatefulSetForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeListAppsV1StatefulSetForAllNamespacesParams(args [0]string, r *http.Request) (params ListAppsV1StatefulSetForAllNamespacesParams, _ error) {
@@ -5891,6 +6382,40 @@ type ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(packed map[string]any) (params ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args [0]string, r *http.Request) (params ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -6295,6 +6820,43 @@ type ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args [1]string, r *http.Request) (params ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams, _ error) {
@@ -6732,6 +7294,40 @@ type ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams struct 
 	Watch OptBool
 }
 
+func unpackListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(packed map[string]any) (params ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(args [0]string, r *http.Request) (params ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -7136,6 +7732,43 @@ type ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args [1]string, r *http.Request) (params ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams, _ error) {
@@ -7573,6 +8206,40 @@ type ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams struct 
 	Watch OptBool
 }
 
+func unpackListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(packed map[string]any) (params ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(args [0]string, r *http.Request) (params ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -7977,6 +8644,43 @@ type ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args [1]string, r *http.Request) (params ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams, _ error) {
@@ -8414,6 +9118,40 @@ type ListBatchV1CronJobForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListBatchV1CronJobForAllNamespacesParams(packed map[string]any) (params ListBatchV1CronJobForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListBatchV1CronJobForAllNamespacesParams(args [0]string, r *http.Request) (params ListBatchV1CronJobForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -8816,6 +9554,40 @@ type ListBatchV1JobForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackListBatchV1JobForAllNamespacesParams(packed map[string]any) (params ListBatchV1JobForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeListBatchV1JobForAllNamespacesParams(args [0]string, r *http.Request) (params ListBatchV1JobForAllNamespacesParams, _ error) {
@@ -9222,6 +9994,43 @@ type ListBatchV1NamespacedCronJobParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListBatchV1NamespacedCronJobParams(packed map[string]any) (params ListBatchV1NamespacedCronJobParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListBatchV1NamespacedCronJobParams(args [1]string, r *http.Request) (params ListBatchV1NamespacedCronJobParams, _ error) {
@@ -9661,6 +10470,43 @@ type ListBatchV1NamespacedJobParams struct {
 	Pretty OptString
 }
 
+func unpackListBatchV1NamespacedJobParams(packed map[string]any) (params ListBatchV1NamespacedJobParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListBatchV1NamespacedJobParams(args [1]string, r *http.Request) (params ListBatchV1NamespacedJobParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -10096,6 +10942,40 @@ type ListBatchV1beta1CronJobForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListBatchV1beta1CronJobForAllNamespacesParams(packed map[string]any) (params ListBatchV1beta1CronJobForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListBatchV1beta1CronJobForAllNamespacesParams(args [0]string, r *http.Request) (params ListBatchV1beta1CronJobForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -10500,6 +11380,43 @@ type ListBatchV1beta1NamespacedCronJobParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListBatchV1beta1NamespacedCronJobParams(packed map[string]any) (params ListBatchV1beta1NamespacedCronJobParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListBatchV1beta1NamespacedCronJobParams(args [1]string, r *http.Request) (params ListBatchV1beta1NamespacedCronJobParams, _ error) {
@@ -10937,6 +11854,40 @@ type ListCertificatesV1CertificateSigningRequestParams struct {
 	Pretty OptString
 }
 
+func unpackListCertificatesV1CertificateSigningRequestParams(packed map[string]any) (params ListCertificatesV1CertificateSigningRequestParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListCertificatesV1CertificateSigningRequestParams(args [0]string, r *http.Request) (params ListCertificatesV1CertificateSigningRequestParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -11339,6 +12290,40 @@ type ListCoordinationV1LeaseForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackListCoordinationV1LeaseForAllNamespacesParams(packed map[string]any) (params ListCoordinationV1LeaseForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeListCoordinationV1LeaseForAllNamespacesParams(args [0]string, r *http.Request) (params ListCoordinationV1LeaseForAllNamespacesParams, _ error) {
@@ -11745,6 +12730,43 @@ type ListCoordinationV1NamespacedLeaseParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListCoordinationV1NamespacedLeaseParams(packed map[string]any) (params ListCoordinationV1NamespacedLeaseParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListCoordinationV1NamespacedLeaseParams(args [1]string, r *http.Request) (params ListCoordinationV1NamespacedLeaseParams, _ error) {
@@ -12182,6 +13204,40 @@ type ListCoreV1ComponentStatusParams struct {
 	Watch OptBool
 }
 
+func unpackListCoreV1ComponentStatusParams(packed map[string]any) (params ListCoreV1ComponentStatusParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListCoreV1ComponentStatusParams(args [0]string, r *http.Request) (params ListCoreV1ComponentStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -12584,6 +13640,40 @@ type ListCoreV1ConfigMapForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackListCoreV1ConfigMapForAllNamespacesParams(packed map[string]any) (params ListCoreV1ConfigMapForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeListCoreV1ConfigMapForAllNamespacesParams(args [0]string, r *http.Request) (params ListCoreV1ConfigMapForAllNamespacesParams, _ error) {
@@ -12990,6 +14080,40 @@ type ListCoreV1EndpointsForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListCoreV1EndpointsForAllNamespacesParams(packed map[string]any) (params ListCoreV1EndpointsForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListCoreV1EndpointsForAllNamespacesParams(args [0]string, r *http.Request) (params ListCoreV1EndpointsForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -13392,6 +14516,40 @@ type ListCoreV1EventForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackListCoreV1EventForAllNamespacesParams(packed map[string]any) (params ListCoreV1EventForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeListCoreV1EventForAllNamespacesParams(args [0]string, r *http.Request) (params ListCoreV1EventForAllNamespacesParams, _ error) {
@@ -13798,6 +14956,40 @@ type ListCoreV1LimitRangeForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListCoreV1LimitRangeForAllNamespacesParams(packed map[string]any) (params ListCoreV1LimitRangeForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListCoreV1LimitRangeForAllNamespacesParams(args [0]string, r *http.Request) (params ListCoreV1LimitRangeForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -14200,6 +15392,40 @@ type ListCoreV1NamespaceParams struct {
 	Watch OptBool
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListCoreV1NamespaceParams(packed map[string]any) (params ListCoreV1NamespaceParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListCoreV1NamespaceParams(args [0]string, r *http.Request) (params ListCoreV1NamespaceParams, _ error) {
@@ -14606,6 +15832,43 @@ type ListCoreV1NamespacedConfigMapParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListCoreV1NamespacedConfigMapParams(packed map[string]any) (params ListCoreV1NamespacedConfigMapParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListCoreV1NamespacedConfigMapParams(args [1]string, r *http.Request) (params ListCoreV1NamespacedConfigMapParams, _ error) {
@@ -15045,6 +16308,43 @@ type ListCoreV1NamespacedEndpointsParams struct {
 	Pretty OptString
 }
 
+func unpackListCoreV1NamespacedEndpointsParams(packed map[string]any) (params ListCoreV1NamespacedEndpointsParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListCoreV1NamespacedEndpointsParams(args [1]string, r *http.Request) (params ListCoreV1NamespacedEndpointsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -15480,6 +16780,43 @@ type ListCoreV1NamespacedEventParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListCoreV1NamespacedEventParams(packed map[string]any) (params ListCoreV1NamespacedEventParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListCoreV1NamespacedEventParams(args [1]string, r *http.Request) (params ListCoreV1NamespacedEventParams, _ error) {
@@ -15919,6 +17256,43 @@ type ListCoreV1NamespacedLimitRangeParams struct {
 	Pretty OptString
 }
 
+func unpackListCoreV1NamespacedLimitRangeParams(packed map[string]any) (params ListCoreV1NamespacedLimitRangeParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListCoreV1NamespacedLimitRangeParams(args [1]string, r *http.Request) (params ListCoreV1NamespacedLimitRangeParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -16354,6 +17728,43 @@ type ListCoreV1NamespacedPersistentVolumeClaimParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListCoreV1NamespacedPersistentVolumeClaimParams(packed map[string]any) (params ListCoreV1NamespacedPersistentVolumeClaimParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args [1]string, r *http.Request) (params ListCoreV1NamespacedPersistentVolumeClaimParams, _ error) {
@@ -16793,6 +18204,43 @@ type ListCoreV1NamespacedPodParams struct {
 	Pretty OptString
 }
 
+func unpackListCoreV1NamespacedPodParams(packed map[string]any) (params ListCoreV1NamespacedPodParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListCoreV1NamespacedPodParams(args [1]string, r *http.Request) (params ListCoreV1NamespacedPodParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -17228,6 +18676,43 @@ type ListCoreV1NamespacedPodTemplateParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListCoreV1NamespacedPodTemplateParams(packed map[string]any) (params ListCoreV1NamespacedPodTemplateParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListCoreV1NamespacedPodTemplateParams(args [1]string, r *http.Request) (params ListCoreV1NamespacedPodTemplateParams, _ error) {
@@ -17667,6 +19152,43 @@ type ListCoreV1NamespacedReplicationControllerParams struct {
 	Pretty OptString
 }
 
+func unpackListCoreV1NamespacedReplicationControllerParams(packed map[string]any) (params ListCoreV1NamespacedReplicationControllerParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListCoreV1NamespacedReplicationControllerParams(args [1]string, r *http.Request) (params ListCoreV1NamespacedReplicationControllerParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -18102,6 +19624,43 @@ type ListCoreV1NamespacedResourceQuotaParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListCoreV1NamespacedResourceQuotaParams(packed map[string]any) (params ListCoreV1NamespacedResourceQuotaParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListCoreV1NamespacedResourceQuotaParams(args [1]string, r *http.Request) (params ListCoreV1NamespacedResourceQuotaParams, _ error) {
@@ -18541,6 +20100,43 @@ type ListCoreV1NamespacedSecretParams struct {
 	Pretty OptString
 }
 
+func unpackListCoreV1NamespacedSecretParams(packed map[string]any) (params ListCoreV1NamespacedSecretParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListCoreV1NamespacedSecretParams(args [1]string, r *http.Request) (params ListCoreV1NamespacedSecretParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -18976,6 +20572,43 @@ type ListCoreV1NamespacedServiceParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListCoreV1NamespacedServiceParams(packed map[string]any) (params ListCoreV1NamespacedServiceParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListCoreV1NamespacedServiceParams(args [1]string, r *http.Request) (params ListCoreV1NamespacedServiceParams, _ error) {
@@ -19415,6 +21048,43 @@ type ListCoreV1NamespacedServiceAccountParams struct {
 	Pretty OptString
 }
 
+func unpackListCoreV1NamespacedServiceAccountParams(packed map[string]any) (params ListCoreV1NamespacedServiceAccountParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListCoreV1NamespacedServiceAccountParams(args [1]string, r *http.Request) (params ListCoreV1NamespacedServiceAccountParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -19850,6 +21520,40 @@ type ListCoreV1NodeParams struct {
 	Pretty OptString
 }
 
+func unpackListCoreV1NodeParams(packed map[string]any) (params ListCoreV1NodeParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListCoreV1NodeParams(args [0]string, r *http.Request) (params ListCoreV1NodeParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -20252,6 +21956,40 @@ type ListCoreV1PersistentVolumeParams struct {
 	Watch OptBool
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListCoreV1PersistentVolumeParams(packed map[string]any) (params ListCoreV1PersistentVolumeParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListCoreV1PersistentVolumeParams(args [0]string, r *http.Request) (params ListCoreV1PersistentVolumeParams, _ error) {
@@ -20658,6 +22396,40 @@ type ListCoreV1PersistentVolumeClaimForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListCoreV1PersistentVolumeClaimForAllNamespacesParams(packed map[string]any) (params ListCoreV1PersistentVolumeClaimForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args [0]string, r *http.Request) (params ListCoreV1PersistentVolumeClaimForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -21060,6 +22832,40 @@ type ListCoreV1PodForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackListCoreV1PodForAllNamespacesParams(packed map[string]any) (params ListCoreV1PodForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeListCoreV1PodForAllNamespacesParams(args [0]string, r *http.Request) (params ListCoreV1PodForAllNamespacesParams, _ error) {
@@ -21466,6 +23272,40 @@ type ListCoreV1PodTemplateForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListCoreV1PodTemplateForAllNamespacesParams(packed map[string]any) (params ListCoreV1PodTemplateForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListCoreV1PodTemplateForAllNamespacesParams(args [0]string, r *http.Request) (params ListCoreV1PodTemplateForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -21868,6 +23708,40 @@ type ListCoreV1ReplicationControllerForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackListCoreV1ReplicationControllerForAllNamespacesParams(packed map[string]any) (params ListCoreV1ReplicationControllerForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeListCoreV1ReplicationControllerForAllNamespacesParams(args [0]string, r *http.Request) (params ListCoreV1ReplicationControllerForAllNamespacesParams, _ error) {
@@ -22274,6 +24148,40 @@ type ListCoreV1ResourceQuotaForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListCoreV1ResourceQuotaForAllNamespacesParams(packed map[string]any) (params ListCoreV1ResourceQuotaForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListCoreV1ResourceQuotaForAllNamespacesParams(args [0]string, r *http.Request) (params ListCoreV1ResourceQuotaForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -22676,6 +24584,40 @@ type ListCoreV1SecretForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackListCoreV1SecretForAllNamespacesParams(packed map[string]any) (params ListCoreV1SecretForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeListCoreV1SecretForAllNamespacesParams(args [0]string, r *http.Request) (params ListCoreV1SecretForAllNamespacesParams, _ error) {
@@ -23082,6 +25024,40 @@ type ListCoreV1ServiceAccountForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListCoreV1ServiceAccountForAllNamespacesParams(packed map[string]any) (params ListCoreV1ServiceAccountForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListCoreV1ServiceAccountForAllNamespacesParams(args [0]string, r *http.Request) (params ListCoreV1ServiceAccountForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -23484,6 +25460,40 @@ type ListCoreV1ServiceForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackListCoreV1ServiceForAllNamespacesParams(packed map[string]any) (params ListCoreV1ServiceForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeListCoreV1ServiceForAllNamespacesParams(args [0]string, r *http.Request) (params ListCoreV1ServiceForAllNamespacesParams, _ error) {
@@ -23890,6 +25900,40 @@ type ListDiscoveryV1EndpointSliceForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListDiscoveryV1EndpointSliceForAllNamespacesParams(packed map[string]any) (params ListDiscoveryV1EndpointSliceForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args [0]string, r *http.Request) (params ListDiscoveryV1EndpointSliceForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -24294,6 +26338,43 @@ type ListDiscoveryV1NamespacedEndpointSliceParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListDiscoveryV1NamespacedEndpointSliceParams(packed map[string]any) (params ListDiscoveryV1NamespacedEndpointSliceParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListDiscoveryV1NamespacedEndpointSliceParams(args [1]string, r *http.Request) (params ListDiscoveryV1NamespacedEndpointSliceParams, _ error) {
@@ -24731,6 +26812,40 @@ type ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(packed map[string]any) (params ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args [0]string, r *http.Request) (params ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -25135,6 +27250,43 @@ type ListDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListDiscoveryV1beta1NamespacedEndpointSliceParams(packed map[string]any) (params ListDiscoveryV1beta1NamespacedEndpointSliceParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args [1]string, r *http.Request) (params ListDiscoveryV1beta1NamespacedEndpointSliceParams, _ error) {
@@ -25572,6 +27724,40 @@ type ListEventsV1EventForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListEventsV1EventForAllNamespacesParams(packed map[string]any) (params ListEventsV1EventForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListEventsV1EventForAllNamespacesParams(args [0]string, r *http.Request) (params ListEventsV1EventForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -25976,6 +28162,43 @@ type ListEventsV1NamespacedEventParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListEventsV1NamespacedEventParams(packed map[string]any) (params ListEventsV1NamespacedEventParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListEventsV1NamespacedEventParams(args [1]string, r *http.Request) (params ListEventsV1NamespacedEventParams, _ error) {
@@ -26413,6 +28636,40 @@ type ListEventsV1beta1EventForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListEventsV1beta1EventForAllNamespacesParams(packed map[string]any) (params ListEventsV1beta1EventForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListEventsV1beta1EventForAllNamespacesParams(args [0]string, r *http.Request) (params ListEventsV1beta1EventForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -26817,6 +29074,43 @@ type ListEventsV1beta1NamespacedEventParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListEventsV1beta1NamespacedEventParams(packed map[string]any) (params ListEventsV1beta1NamespacedEventParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListEventsV1beta1NamespacedEventParams(args [1]string, r *http.Request) (params ListEventsV1beta1NamespacedEventParams, _ error) {
@@ -27254,6 +29548,40 @@ type ListFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	Pretty OptString
 }
 
+func unpackListFlowcontrolApiserverV1beta1FlowSchemaParams(packed map[string]any) (params ListFlowcontrolApiserverV1beta1FlowSchemaParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args [0]string, r *http.Request) (params ListFlowcontrolApiserverV1beta1FlowSchemaParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -27656,6 +29984,40 @@ type ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	Watch OptBool
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(packed map[string]any) (params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args [0]string, r *http.Request) (params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams, _ error) {
@@ -28062,6 +30424,40 @@ type ListFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	Pretty OptString
 }
 
+func unpackListFlowcontrolApiserverV1beta2FlowSchemaParams(packed map[string]any) (params ListFlowcontrolApiserverV1beta2FlowSchemaParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args [0]string, r *http.Request) (params ListFlowcontrolApiserverV1beta2FlowSchemaParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -28464,6 +30860,40 @@ type ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	Watch OptBool
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(packed map[string]any) (params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args [0]string, r *http.Request) (params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams, _ error) {
@@ -28870,6 +31300,40 @@ type ListInternalApiserverV1alpha1StorageVersionParams struct {
 	Pretty OptString
 }
 
+func unpackListInternalApiserverV1alpha1StorageVersionParams(packed map[string]any) (params ListInternalApiserverV1alpha1StorageVersionParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListInternalApiserverV1alpha1StorageVersionParams(args [0]string, r *http.Request) (params ListInternalApiserverV1alpha1StorageVersionParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -29272,6 +31736,40 @@ type ListNetworkingV1IngressClassParams struct {
 	Watch OptBool
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListNetworkingV1IngressClassParams(packed map[string]any) (params ListNetworkingV1IngressClassParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListNetworkingV1IngressClassParams(args [0]string, r *http.Request) (params ListNetworkingV1IngressClassParams, _ error) {
@@ -29678,6 +32176,40 @@ type ListNetworkingV1IngressForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListNetworkingV1IngressForAllNamespacesParams(packed map[string]any) (params ListNetworkingV1IngressForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListNetworkingV1IngressForAllNamespacesParams(args [0]string, r *http.Request) (params ListNetworkingV1IngressForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -30082,6 +32614,43 @@ type ListNetworkingV1NamespacedIngressParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListNetworkingV1NamespacedIngressParams(packed map[string]any) (params ListNetworkingV1NamespacedIngressParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListNetworkingV1NamespacedIngressParams(args [1]string, r *http.Request) (params ListNetworkingV1NamespacedIngressParams, _ error) {
@@ -30521,6 +33090,43 @@ type ListNetworkingV1NamespacedNetworkPolicyParams struct {
 	Pretty OptString
 }
 
+func unpackListNetworkingV1NamespacedNetworkPolicyParams(packed map[string]any) (params ListNetworkingV1NamespacedNetworkPolicyParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListNetworkingV1NamespacedNetworkPolicyParams(args [1]string, r *http.Request) (params ListNetworkingV1NamespacedNetworkPolicyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -30956,6 +33562,40 @@ type ListNetworkingV1NetworkPolicyForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListNetworkingV1NetworkPolicyForAllNamespacesParams(packed map[string]any) (params ListNetworkingV1NetworkPolicyForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args [0]string, r *http.Request) (params ListNetworkingV1NetworkPolicyForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -31358,6 +33998,40 @@ type ListNodeV1RuntimeClassParams struct {
 	Watch OptBool
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListNodeV1RuntimeClassParams(packed map[string]any) (params ListNodeV1RuntimeClassParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListNodeV1RuntimeClassParams(args [0]string, r *http.Request) (params ListNodeV1RuntimeClassParams, _ error) {
@@ -31764,6 +34438,40 @@ type ListNodeV1alpha1RuntimeClassParams struct {
 	Pretty OptString
 }
 
+func unpackListNodeV1alpha1RuntimeClassParams(packed map[string]any) (params ListNodeV1alpha1RuntimeClassParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListNodeV1alpha1RuntimeClassParams(args [0]string, r *http.Request) (params ListNodeV1alpha1RuntimeClassParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -32166,6 +34874,40 @@ type ListNodeV1beta1RuntimeClassParams struct {
 	Watch OptBool
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListNodeV1beta1RuntimeClassParams(packed map[string]any) (params ListNodeV1beta1RuntimeClassParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListNodeV1beta1RuntimeClassParams(args [0]string, r *http.Request) (params ListNodeV1beta1RuntimeClassParams, _ error) {
@@ -32572,6 +35314,43 @@ type ListPolicyV1NamespacedPodDisruptionBudgetParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListPolicyV1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params ListPolicyV1NamespacedPodDisruptionBudgetParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args [1]string, r *http.Request) (params ListPolicyV1NamespacedPodDisruptionBudgetParams, _ error) {
@@ -33009,6 +35788,40 @@ type ListPolicyV1PodDisruptionBudgetForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListPolicyV1PodDisruptionBudgetForAllNamespacesParams(packed map[string]any) (params ListPolicyV1PodDisruptionBudgetForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args [0]string, r *http.Request) (params ListPolicyV1PodDisruptionBudgetForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -33413,6 +36226,43 @@ type ListPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListPolicyV1beta1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params ListPolicyV1beta1NamespacedPodDisruptionBudgetParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args [1]string, r *http.Request) (params ListPolicyV1beta1NamespacedPodDisruptionBudgetParams, _ error) {
@@ -33850,6 +36700,40 @@ type ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(packed map[string]any) (params ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args [0]string, r *http.Request) (params ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -34252,6 +37136,40 @@ type ListPolicyV1beta1PodSecurityPolicyParams struct {
 	Watch OptBool
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListPolicyV1beta1PodSecurityPolicyParams(packed map[string]any) (params ListPolicyV1beta1PodSecurityPolicyParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListPolicyV1beta1PodSecurityPolicyParams(args [0]string, r *http.Request) (params ListPolicyV1beta1PodSecurityPolicyParams, _ error) {
@@ -34658,6 +37576,40 @@ type ListRbacAuthorizationV1ClusterRoleParams struct {
 	Pretty OptString
 }
 
+func unpackListRbacAuthorizationV1ClusterRoleParams(packed map[string]any) (params ListRbacAuthorizationV1ClusterRoleParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListRbacAuthorizationV1ClusterRoleParams(args [0]string, r *http.Request) (params ListRbacAuthorizationV1ClusterRoleParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -35060,6 +38012,40 @@ type ListRbacAuthorizationV1ClusterRoleBindingParams struct {
 	Watch OptBool
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListRbacAuthorizationV1ClusterRoleBindingParams(packed map[string]any) (params ListRbacAuthorizationV1ClusterRoleBindingParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListRbacAuthorizationV1ClusterRoleBindingParams(args [0]string, r *http.Request) (params ListRbacAuthorizationV1ClusterRoleBindingParams, _ error) {
@@ -35466,6 +38452,43 @@ type ListRbacAuthorizationV1NamespacedRoleParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListRbacAuthorizationV1NamespacedRoleParams(packed map[string]any) (params ListRbacAuthorizationV1NamespacedRoleParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListRbacAuthorizationV1NamespacedRoleParams(args [1]string, r *http.Request) (params ListRbacAuthorizationV1NamespacedRoleParams, _ error) {
@@ -35905,6 +38928,43 @@ type ListRbacAuthorizationV1NamespacedRoleBindingParams struct {
 	Pretty OptString
 }
 
+func unpackListRbacAuthorizationV1NamespacedRoleBindingParams(packed map[string]any) (params ListRbacAuthorizationV1NamespacedRoleBindingParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args [1]string, r *http.Request) (params ListRbacAuthorizationV1NamespacedRoleBindingParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -36340,6 +39400,40 @@ type ListRbacAuthorizationV1RoleBindingForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListRbacAuthorizationV1RoleBindingForAllNamespacesParams(packed map[string]any) (params ListRbacAuthorizationV1RoleBindingForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args [0]string, r *http.Request) (params ListRbacAuthorizationV1RoleBindingForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -36742,6 +39836,40 @@ type ListRbacAuthorizationV1RoleForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackListRbacAuthorizationV1RoleForAllNamespacesParams(packed map[string]any) (params ListRbacAuthorizationV1RoleForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args [0]string, r *http.Request) (params ListRbacAuthorizationV1RoleForAllNamespacesParams, _ error) {
@@ -37148,6 +40276,40 @@ type ListSchedulingV1PriorityClassParams struct {
 	Pretty OptString
 }
 
+func unpackListSchedulingV1PriorityClassParams(packed map[string]any) (params ListSchedulingV1PriorityClassParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListSchedulingV1PriorityClassParams(args [0]string, r *http.Request) (params ListSchedulingV1PriorityClassParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -37550,6 +40712,40 @@ type ListStorageV1CSIDriverParams struct {
 	Watch OptBool
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListStorageV1CSIDriverParams(packed map[string]any) (params ListStorageV1CSIDriverParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListStorageV1CSIDriverParams(args [0]string, r *http.Request) (params ListStorageV1CSIDriverParams, _ error) {
@@ -37956,6 +41152,40 @@ type ListStorageV1CSINodeParams struct {
 	Pretty OptString
 }
 
+func unpackListStorageV1CSINodeParams(packed map[string]any) (params ListStorageV1CSINodeParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListStorageV1CSINodeParams(args [0]string, r *http.Request) (params ListStorageV1CSINodeParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -38358,6 +41588,40 @@ type ListStorageV1StorageClassParams struct {
 	Watch OptBool
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListStorageV1StorageClassParams(packed map[string]any) (params ListStorageV1StorageClassParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListStorageV1StorageClassParams(args [0]string, r *http.Request) (params ListStorageV1StorageClassParams, _ error) {
@@ -38764,6 +42028,40 @@ type ListStorageV1VolumeAttachmentParams struct {
 	Pretty OptString
 }
 
+func unpackListStorageV1VolumeAttachmentParams(packed map[string]any) (params ListStorageV1VolumeAttachmentParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListStorageV1VolumeAttachmentParams(args [0]string, r *http.Request) (params ListStorageV1VolumeAttachmentParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -39166,6 +42464,40 @@ type ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(packed map[string]any) (params ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args [0]string, r *http.Request) (params ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams, _ error) {
@@ -39572,6 +42904,43 @@ type ListStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackListStorageV1alpha1NamespacedCSIStorageCapacityParams(packed map[string]any) (params ListStorageV1alpha1NamespacedCSIStorageCapacityParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args [1]string, r *http.Request) (params ListStorageV1alpha1NamespacedCSIStorageCapacityParams, _ error) {
@@ -40009,6 +43378,40 @@ type ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(packed map[string]any) (params ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args [0]string, r *http.Request) (params ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -40415,6 +43818,43 @@ type ListStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 	Pretty OptString
 }
 
+func unpackListStorageV1beta1NamespacedCSIStorageCapacityParams(packed map[string]any) (params ListStorageV1beta1NamespacedCSIStorageCapacityParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args [1]string, r *http.Request) (params ListStorageV1beta1NamespacedCSIStorageCapacityParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -40796,6 +44236,13 @@ type LogFileHandlerParams struct {
 	Logpath string
 }
 
+func unpackLogFileHandlerParams(packed map[string]any) (params LogFileHandlerParams) {
+	if v, ok := packed["logpath"]; ok {
+		params.Logpath, _ = v.(string)
+	}
+	return params
+}
+
 func decodeLogFileHandlerParams(args [1]string, r *http.Request) (params LogFileHandlerParams, _ error) {
 	// Decode path: logpath.
 	{
@@ -40836,6 +44283,16 @@ type ReadAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	Name string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadAdmissionregistrationV1MutatingWebhookConfigurationParams(packed map[string]any) (params ReadAdmissionregistrationV1MutatingWebhookConfigurationParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationParams(args [1]string, r *http.Request) (params ReadAdmissionregistrationV1MutatingWebhookConfigurationParams, _ error) {
@@ -40915,6 +44372,16 @@ type ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	Pretty OptString
 }
 
+func unpackReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(packed map[string]any) (params ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(args [1]string, r *http.Request) (params ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -40990,6 +44457,16 @@ type ReadApiextensionsV1CustomResourceDefinitionParams struct {
 	Name string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadApiextensionsV1CustomResourceDefinitionParams(packed map[string]any) (params ReadApiextensionsV1CustomResourceDefinitionParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadApiextensionsV1CustomResourceDefinitionParams(args [1]string, r *http.Request) (params ReadApiextensionsV1CustomResourceDefinitionParams, _ error) {
@@ -41069,6 +44546,16 @@ type ReadApiextensionsV1CustomResourceDefinitionStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadApiextensionsV1CustomResourceDefinitionStatusParams(packed map[string]any) (params ReadApiextensionsV1CustomResourceDefinitionStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadApiextensionsV1CustomResourceDefinitionStatusParams(args [1]string, r *http.Request) (params ReadApiextensionsV1CustomResourceDefinitionStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -41144,6 +44631,16 @@ type ReadApiregistrationV1APIServiceParams struct {
 	Name string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadApiregistrationV1APIServiceParams(packed map[string]any) (params ReadApiregistrationV1APIServiceParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadApiregistrationV1APIServiceParams(args [1]string, r *http.Request) (params ReadApiregistrationV1APIServiceParams, _ error) {
@@ -41223,6 +44720,16 @@ type ReadApiregistrationV1APIServiceStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadApiregistrationV1APIServiceStatusParams(packed map[string]any) (params ReadApiregistrationV1APIServiceStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadApiregistrationV1APIServiceStatusParams(args [1]string, r *http.Request) (params ReadApiregistrationV1APIServiceStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -41300,6 +44807,19 @@ type ReadAppsV1NamespacedControllerRevisionParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadAppsV1NamespacedControllerRevisionParams(packed map[string]any) (params ReadAppsV1NamespacedControllerRevisionParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadAppsV1NamespacedControllerRevisionParams(args [2]string, r *http.Request) (params ReadAppsV1NamespacedControllerRevisionParams, _ error) {
@@ -41412,6 +44932,19 @@ type ReadAppsV1NamespacedDaemonSetParams struct {
 	Pretty OptString
 }
 
+func unpackReadAppsV1NamespacedDaemonSetParams(packed map[string]any) (params ReadAppsV1NamespacedDaemonSetParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadAppsV1NamespacedDaemonSetParams(args [2]string, r *http.Request) (params ReadAppsV1NamespacedDaemonSetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -41520,6 +45053,19 @@ type ReadAppsV1NamespacedDaemonSetStatusParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadAppsV1NamespacedDaemonSetStatusParams(packed map[string]any) (params ReadAppsV1NamespacedDaemonSetStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadAppsV1NamespacedDaemonSetStatusParams(args [2]string, r *http.Request) (params ReadAppsV1NamespacedDaemonSetStatusParams, _ error) {
@@ -41632,6 +45178,19 @@ type ReadAppsV1NamespacedDeploymentParams struct {
 	Pretty OptString
 }
 
+func unpackReadAppsV1NamespacedDeploymentParams(packed map[string]any) (params ReadAppsV1NamespacedDeploymentParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadAppsV1NamespacedDeploymentParams(args [2]string, r *http.Request) (params ReadAppsV1NamespacedDeploymentParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -41740,6 +45299,19 @@ type ReadAppsV1NamespacedDeploymentScaleParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadAppsV1NamespacedDeploymentScaleParams(packed map[string]any) (params ReadAppsV1NamespacedDeploymentScaleParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadAppsV1NamespacedDeploymentScaleParams(args [2]string, r *http.Request) (params ReadAppsV1NamespacedDeploymentScaleParams, _ error) {
@@ -41852,6 +45424,19 @@ type ReadAppsV1NamespacedDeploymentStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadAppsV1NamespacedDeploymentStatusParams(packed map[string]any) (params ReadAppsV1NamespacedDeploymentStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadAppsV1NamespacedDeploymentStatusParams(args [2]string, r *http.Request) (params ReadAppsV1NamespacedDeploymentStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -41960,6 +45545,19 @@ type ReadAppsV1NamespacedReplicaSetParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadAppsV1NamespacedReplicaSetParams(packed map[string]any) (params ReadAppsV1NamespacedReplicaSetParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadAppsV1NamespacedReplicaSetParams(args [2]string, r *http.Request) (params ReadAppsV1NamespacedReplicaSetParams, _ error) {
@@ -42072,6 +45670,19 @@ type ReadAppsV1NamespacedReplicaSetScaleParams struct {
 	Pretty OptString
 }
 
+func unpackReadAppsV1NamespacedReplicaSetScaleParams(packed map[string]any) (params ReadAppsV1NamespacedReplicaSetScaleParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadAppsV1NamespacedReplicaSetScaleParams(args [2]string, r *http.Request) (params ReadAppsV1NamespacedReplicaSetScaleParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -42180,6 +45791,19 @@ type ReadAppsV1NamespacedReplicaSetStatusParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadAppsV1NamespacedReplicaSetStatusParams(packed map[string]any) (params ReadAppsV1NamespacedReplicaSetStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadAppsV1NamespacedReplicaSetStatusParams(args [2]string, r *http.Request) (params ReadAppsV1NamespacedReplicaSetStatusParams, _ error) {
@@ -42292,6 +45916,19 @@ type ReadAppsV1NamespacedStatefulSetParams struct {
 	Pretty OptString
 }
 
+func unpackReadAppsV1NamespacedStatefulSetParams(packed map[string]any) (params ReadAppsV1NamespacedStatefulSetParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadAppsV1NamespacedStatefulSetParams(args [2]string, r *http.Request) (params ReadAppsV1NamespacedStatefulSetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -42400,6 +46037,19 @@ type ReadAppsV1NamespacedStatefulSetScaleParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadAppsV1NamespacedStatefulSetScaleParams(packed map[string]any) (params ReadAppsV1NamespacedStatefulSetScaleParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadAppsV1NamespacedStatefulSetScaleParams(args [2]string, r *http.Request) (params ReadAppsV1NamespacedStatefulSetScaleParams, _ error) {
@@ -42512,6 +46162,19 @@ type ReadAppsV1NamespacedStatefulSetStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadAppsV1NamespacedStatefulSetStatusParams(packed map[string]any) (params ReadAppsV1NamespacedStatefulSetStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadAppsV1NamespacedStatefulSetStatusParams(args [2]string, r *http.Request) (params ReadAppsV1NamespacedStatefulSetStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -42620,6 +46283,19 @@ type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args [2]string, r *http.Request) (params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams, _ error) {
@@ -42732,6 +46408,19 @@ type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(packed map[string]any) (params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(args [2]string, r *http.Request) (params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -42840,6 +46529,19 @@ type ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args [2]string, r *http.Request) (params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams, _ error) {
@@ -42952,6 +46654,19 @@ type ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams struct 
 	Pretty OptString
 }
 
+func unpackReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(packed map[string]any) (params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(args [2]string, r *http.Request) (params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -43060,6 +46775,19 @@ type ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args [2]string, r *http.Request) (params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams, _ error) {
@@ -43172,6 +46900,19 @@ type ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams struct 
 	Pretty OptString
 }
 
+func unpackReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(packed map[string]any) (params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(args [2]string, r *http.Request) (params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -43280,6 +47021,19 @@ type ReadBatchV1NamespacedCronJobParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadBatchV1NamespacedCronJobParams(packed map[string]any) (params ReadBatchV1NamespacedCronJobParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadBatchV1NamespacedCronJobParams(args [2]string, r *http.Request) (params ReadBatchV1NamespacedCronJobParams, _ error) {
@@ -43392,6 +47146,19 @@ type ReadBatchV1NamespacedCronJobStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadBatchV1NamespacedCronJobStatusParams(packed map[string]any) (params ReadBatchV1NamespacedCronJobStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadBatchV1NamespacedCronJobStatusParams(args [2]string, r *http.Request) (params ReadBatchV1NamespacedCronJobStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -43500,6 +47267,19 @@ type ReadBatchV1NamespacedJobParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadBatchV1NamespacedJobParams(packed map[string]any) (params ReadBatchV1NamespacedJobParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadBatchV1NamespacedJobParams(args [2]string, r *http.Request) (params ReadBatchV1NamespacedJobParams, _ error) {
@@ -43612,6 +47392,19 @@ type ReadBatchV1NamespacedJobStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadBatchV1NamespacedJobStatusParams(packed map[string]any) (params ReadBatchV1NamespacedJobStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadBatchV1NamespacedJobStatusParams(args [2]string, r *http.Request) (params ReadBatchV1NamespacedJobStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -43720,6 +47513,19 @@ type ReadBatchV1beta1NamespacedCronJobParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadBatchV1beta1NamespacedCronJobParams(packed map[string]any) (params ReadBatchV1beta1NamespacedCronJobParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadBatchV1beta1NamespacedCronJobParams(args [2]string, r *http.Request) (params ReadBatchV1beta1NamespacedCronJobParams, _ error) {
@@ -43832,6 +47638,19 @@ type ReadBatchV1beta1NamespacedCronJobStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadBatchV1beta1NamespacedCronJobStatusParams(packed map[string]any) (params ReadBatchV1beta1NamespacedCronJobStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadBatchV1beta1NamespacedCronJobStatusParams(args [2]string, r *http.Request) (params ReadBatchV1beta1NamespacedCronJobStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -43940,6 +47759,16 @@ type ReadCertificatesV1CertificateSigningRequestParams struct {
 	Pretty OptString
 }
 
+func unpackReadCertificatesV1CertificateSigningRequestParams(packed map[string]any) (params ReadCertificatesV1CertificateSigningRequestParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadCertificatesV1CertificateSigningRequestParams(args [1]string, r *http.Request) (params ReadCertificatesV1CertificateSigningRequestParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -44015,6 +47844,16 @@ type ReadCertificatesV1CertificateSigningRequestApprovalParams struct {
 	Name string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadCertificatesV1CertificateSigningRequestApprovalParams(packed map[string]any) (params ReadCertificatesV1CertificateSigningRequestApprovalParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadCertificatesV1CertificateSigningRequestApprovalParams(args [1]string, r *http.Request) (params ReadCertificatesV1CertificateSigningRequestApprovalParams, _ error) {
@@ -44094,6 +47933,16 @@ type ReadCertificatesV1CertificateSigningRequestStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadCertificatesV1CertificateSigningRequestStatusParams(packed map[string]any) (params ReadCertificatesV1CertificateSigningRequestStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadCertificatesV1CertificateSigningRequestStatusParams(args [1]string, r *http.Request) (params ReadCertificatesV1CertificateSigningRequestStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -44171,6 +48020,19 @@ type ReadCoordinationV1NamespacedLeaseParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadCoordinationV1NamespacedLeaseParams(packed map[string]any) (params ReadCoordinationV1NamespacedLeaseParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadCoordinationV1NamespacedLeaseParams(args [2]string, r *http.Request) (params ReadCoordinationV1NamespacedLeaseParams, _ error) {
@@ -44281,6 +48143,16 @@ type ReadCoreV1ComponentStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadCoreV1ComponentStatusParams(packed map[string]any) (params ReadCoreV1ComponentStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadCoreV1ComponentStatusParams(args [1]string, r *http.Request) (params ReadCoreV1ComponentStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -44356,6 +48228,16 @@ type ReadCoreV1NamespaceParams struct {
 	Name string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadCoreV1NamespaceParams(packed map[string]any) (params ReadCoreV1NamespaceParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadCoreV1NamespaceParams(args [1]string, r *http.Request) (params ReadCoreV1NamespaceParams, _ error) {
@@ -44435,6 +48317,16 @@ type ReadCoreV1NamespaceStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadCoreV1NamespaceStatusParams(packed map[string]any) (params ReadCoreV1NamespaceStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadCoreV1NamespaceStatusParams(args [1]string, r *http.Request) (params ReadCoreV1NamespaceStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -44512,6 +48404,19 @@ type ReadCoreV1NamespacedConfigMapParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadCoreV1NamespacedConfigMapParams(packed map[string]any) (params ReadCoreV1NamespacedConfigMapParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadCoreV1NamespacedConfigMapParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedConfigMapParams, _ error) {
@@ -44624,6 +48529,19 @@ type ReadCoreV1NamespacedEndpointsParams struct {
 	Pretty OptString
 }
 
+func unpackReadCoreV1NamespacedEndpointsParams(packed map[string]any) (params ReadCoreV1NamespacedEndpointsParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadCoreV1NamespacedEndpointsParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedEndpointsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -44732,6 +48650,19 @@ type ReadCoreV1NamespacedEventParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadCoreV1NamespacedEventParams(packed map[string]any) (params ReadCoreV1NamespacedEventParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadCoreV1NamespacedEventParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedEventParams, _ error) {
@@ -44844,6 +48775,19 @@ type ReadCoreV1NamespacedLimitRangeParams struct {
 	Pretty OptString
 }
 
+func unpackReadCoreV1NamespacedLimitRangeParams(packed map[string]any) (params ReadCoreV1NamespacedLimitRangeParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadCoreV1NamespacedLimitRangeParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedLimitRangeParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -44952,6 +48896,19 @@ type ReadCoreV1NamespacedPersistentVolumeClaimParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadCoreV1NamespacedPersistentVolumeClaimParams(packed map[string]any) (params ReadCoreV1NamespacedPersistentVolumeClaimParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadCoreV1NamespacedPersistentVolumeClaimParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedPersistentVolumeClaimParams, _ error) {
@@ -45064,6 +49021,19 @@ type ReadCoreV1NamespacedPersistentVolumeClaimStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadCoreV1NamespacedPersistentVolumeClaimStatusParams(packed map[string]any) (params ReadCoreV1NamespacedPersistentVolumeClaimStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedPersistentVolumeClaimStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -45174,6 +49144,19 @@ type ReadCoreV1NamespacedPodParams struct {
 	Pretty OptString
 }
 
+func unpackReadCoreV1NamespacedPodParams(packed map[string]any) (params ReadCoreV1NamespacedPodParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadCoreV1NamespacedPodParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedPodParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -45282,6 +49265,19 @@ type ReadCoreV1NamespacedPodEphemeralcontainersParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadCoreV1NamespacedPodEphemeralcontainersParams(packed map[string]any) (params ReadCoreV1NamespacedPodEphemeralcontainersParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadCoreV1NamespacedPodEphemeralcontainersParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedPodEphemeralcontainersParams, _ error) {
@@ -45421,6 +49417,43 @@ type ReadCoreV1NamespacedPodLogParams struct {
 	// If true, add an RFC3339 or RFC3339Nano timestamp at the beginning of every line of log output.
 	// Defaults to false.
 	Timestamps OptBool
+}
+
+func unpackReadCoreV1NamespacedPodLogParams(packed map[string]any) (params ReadCoreV1NamespacedPodLogParams) {
+	if v, ok := packed["container"]; ok {
+		params.Container, _ = v.(OptString)
+	}
+	if v, ok := packed["follow"]; ok {
+		params.Follow, _ = v.(OptBool)
+	}
+	if v, ok := packed["insecureSkipTLSVerifyBackend"]; ok {
+		params.InsecureSkipTLSVerifyBackend, _ = v.(OptBool)
+	}
+	if v, ok := packed["limitBytes"]; ok {
+		params.LimitBytes, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["previous"]; ok {
+		params.Previous, _ = v.(OptBool)
+	}
+	if v, ok := packed["sinceSeconds"]; ok {
+		params.SinceSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["tailLines"]; ok {
+		params.TailLines, _ = v.(OptInt)
+	}
+	if v, ok := packed["timestamps"]; ok {
+		params.Timestamps, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeReadCoreV1NamespacedPodLogParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedPodLogParams, _ error) {
@@ -45805,6 +49838,19 @@ type ReadCoreV1NamespacedPodStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadCoreV1NamespacedPodStatusParams(packed map[string]any) (params ReadCoreV1NamespacedPodStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadCoreV1NamespacedPodStatusParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedPodStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -45913,6 +49959,19 @@ type ReadCoreV1NamespacedPodTemplateParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadCoreV1NamespacedPodTemplateParams(packed map[string]any) (params ReadCoreV1NamespacedPodTemplateParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadCoreV1NamespacedPodTemplateParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedPodTemplateParams, _ error) {
@@ -46025,6 +50084,19 @@ type ReadCoreV1NamespacedReplicationControllerParams struct {
 	Pretty OptString
 }
 
+func unpackReadCoreV1NamespacedReplicationControllerParams(packed map[string]any) (params ReadCoreV1NamespacedReplicationControllerParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadCoreV1NamespacedReplicationControllerParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedReplicationControllerParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -46133,6 +50205,19 @@ type ReadCoreV1NamespacedReplicationControllerScaleParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadCoreV1NamespacedReplicationControllerScaleParams(packed map[string]any) (params ReadCoreV1NamespacedReplicationControllerScaleParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadCoreV1NamespacedReplicationControllerScaleParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedReplicationControllerScaleParams, _ error) {
@@ -46245,6 +50330,19 @@ type ReadCoreV1NamespacedReplicationControllerStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadCoreV1NamespacedReplicationControllerStatusParams(packed map[string]any) (params ReadCoreV1NamespacedReplicationControllerStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadCoreV1NamespacedReplicationControllerStatusParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedReplicationControllerStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -46353,6 +50451,19 @@ type ReadCoreV1NamespacedResourceQuotaParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadCoreV1NamespacedResourceQuotaParams(packed map[string]any) (params ReadCoreV1NamespacedResourceQuotaParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadCoreV1NamespacedResourceQuotaParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedResourceQuotaParams, _ error) {
@@ -46465,6 +50576,19 @@ type ReadCoreV1NamespacedResourceQuotaStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadCoreV1NamespacedResourceQuotaStatusParams(packed map[string]any) (params ReadCoreV1NamespacedResourceQuotaStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadCoreV1NamespacedResourceQuotaStatusParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedResourceQuotaStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -46573,6 +50697,19 @@ type ReadCoreV1NamespacedSecretParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadCoreV1NamespacedSecretParams(packed map[string]any) (params ReadCoreV1NamespacedSecretParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadCoreV1NamespacedSecretParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedSecretParams, _ error) {
@@ -46685,6 +50822,19 @@ type ReadCoreV1NamespacedServiceParams struct {
 	Pretty OptString
 }
 
+func unpackReadCoreV1NamespacedServiceParams(packed map[string]any) (params ReadCoreV1NamespacedServiceParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadCoreV1NamespacedServiceParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedServiceParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -46793,6 +50943,19 @@ type ReadCoreV1NamespacedServiceAccountParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadCoreV1NamespacedServiceAccountParams(packed map[string]any) (params ReadCoreV1NamespacedServiceAccountParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadCoreV1NamespacedServiceAccountParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedServiceAccountParams, _ error) {
@@ -46905,6 +51068,19 @@ type ReadCoreV1NamespacedServiceStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadCoreV1NamespacedServiceStatusParams(packed map[string]any) (params ReadCoreV1NamespacedServiceStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadCoreV1NamespacedServiceStatusParams(args [2]string, r *http.Request) (params ReadCoreV1NamespacedServiceStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -47013,6 +51189,16 @@ type ReadCoreV1NodeParams struct {
 	Pretty OptString
 }
 
+func unpackReadCoreV1NodeParams(packed map[string]any) (params ReadCoreV1NodeParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadCoreV1NodeParams(args [1]string, r *http.Request) (params ReadCoreV1NodeParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -47088,6 +51274,16 @@ type ReadCoreV1NodeStatusParams struct {
 	Name string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadCoreV1NodeStatusParams(packed map[string]any) (params ReadCoreV1NodeStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadCoreV1NodeStatusParams(args [1]string, r *http.Request) (params ReadCoreV1NodeStatusParams, _ error) {
@@ -47167,6 +51363,16 @@ type ReadCoreV1PersistentVolumeParams struct {
 	Pretty OptString
 }
 
+func unpackReadCoreV1PersistentVolumeParams(packed map[string]any) (params ReadCoreV1PersistentVolumeParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadCoreV1PersistentVolumeParams(args [1]string, r *http.Request) (params ReadCoreV1PersistentVolumeParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -47242,6 +51448,16 @@ type ReadCoreV1PersistentVolumeStatusParams struct {
 	Name string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadCoreV1PersistentVolumeStatusParams(packed map[string]any) (params ReadCoreV1PersistentVolumeStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadCoreV1PersistentVolumeStatusParams(args [1]string, r *http.Request) (params ReadCoreV1PersistentVolumeStatusParams, _ error) {
@@ -47321,6 +51537,19 @@ type ReadDiscoveryV1NamespacedEndpointSliceParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadDiscoveryV1NamespacedEndpointSliceParams(packed map[string]any) (params ReadDiscoveryV1NamespacedEndpointSliceParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadDiscoveryV1NamespacedEndpointSliceParams(args [2]string, r *http.Request) (params ReadDiscoveryV1NamespacedEndpointSliceParams, _ error) {
@@ -47433,6 +51662,19 @@ type ReadDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 	Pretty OptString
 }
 
+func unpackReadDiscoveryV1beta1NamespacedEndpointSliceParams(packed map[string]any) (params ReadDiscoveryV1beta1NamespacedEndpointSliceParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadDiscoveryV1beta1NamespacedEndpointSliceParams(args [2]string, r *http.Request) (params ReadDiscoveryV1beta1NamespacedEndpointSliceParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -47541,6 +51783,19 @@ type ReadEventsV1NamespacedEventParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadEventsV1NamespacedEventParams(packed map[string]any) (params ReadEventsV1NamespacedEventParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadEventsV1NamespacedEventParams(args [2]string, r *http.Request) (params ReadEventsV1NamespacedEventParams, _ error) {
@@ -47653,6 +51908,19 @@ type ReadEventsV1beta1NamespacedEventParams struct {
 	Pretty OptString
 }
 
+func unpackReadEventsV1beta1NamespacedEventParams(packed map[string]any) (params ReadEventsV1beta1NamespacedEventParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadEventsV1beta1NamespacedEventParams(args [2]string, r *http.Request) (params ReadEventsV1beta1NamespacedEventParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -47761,6 +52029,16 @@ type ReadFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	Pretty OptString
 }
 
+func unpackReadFlowcontrolApiserverV1beta1FlowSchemaParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta1FlowSchemaParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadFlowcontrolApiserverV1beta1FlowSchemaParams(args [1]string, r *http.Request) (params ReadFlowcontrolApiserverV1beta1FlowSchemaParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -47836,6 +52114,16 @@ type ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams struct {
 	Name string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(args [1]string, r *http.Request) (params ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams, _ error) {
@@ -47915,6 +52203,16 @@ type ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	Pretty OptString
 }
 
+func unpackReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args [1]string, r *http.Request) (params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -47990,6 +52288,16 @@ type ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams struc
 	Name string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams(args [1]string, r *http.Request) (params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams, _ error) {
@@ -48069,6 +52377,16 @@ type ReadFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	Pretty OptString
 }
 
+func unpackReadFlowcontrolApiserverV1beta2FlowSchemaParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta2FlowSchemaParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadFlowcontrolApiserverV1beta2FlowSchemaParams(args [1]string, r *http.Request) (params ReadFlowcontrolApiserverV1beta2FlowSchemaParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -48144,6 +52462,16 @@ type ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams struct {
 	Name string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(args [1]string, r *http.Request) (params ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams, _ error) {
@@ -48223,6 +52551,16 @@ type ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	Pretty OptString
 }
 
+func unpackReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args [1]string, r *http.Request) (params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -48298,6 +52636,16 @@ type ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams struc
 	Name string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams(args [1]string, r *http.Request) (params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams, _ error) {
@@ -48377,6 +52725,16 @@ type ReadInternalApiserverV1alpha1StorageVersionParams struct {
 	Pretty OptString
 }
 
+func unpackReadInternalApiserverV1alpha1StorageVersionParams(packed map[string]any) (params ReadInternalApiserverV1alpha1StorageVersionParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadInternalApiserverV1alpha1StorageVersionParams(args [1]string, r *http.Request) (params ReadInternalApiserverV1alpha1StorageVersionParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -48452,6 +52810,16 @@ type ReadInternalApiserverV1alpha1StorageVersionStatusParams struct {
 	Name string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadInternalApiserverV1alpha1StorageVersionStatusParams(packed map[string]any) (params ReadInternalApiserverV1alpha1StorageVersionStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadInternalApiserverV1alpha1StorageVersionStatusParams(args [1]string, r *http.Request) (params ReadInternalApiserverV1alpha1StorageVersionStatusParams, _ error) {
@@ -48531,6 +52899,16 @@ type ReadNetworkingV1IngressClassParams struct {
 	Pretty OptString
 }
 
+func unpackReadNetworkingV1IngressClassParams(packed map[string]any) (params ReadNetworkingV1IngressClassParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadNetworkingV1IngressClassParams(args [1]string, r *http.Request) (params ReadNetworkingV1IngressClassParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -48608,6 +52986,19 @@ type ReadNetworkingV1NamespacedIngressParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadNetworkingV1NamespacedIngressParams(packed map[string]any) (params ReadNetworkingV1NamespacedIngressParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadNetworkingV1NamespacedIngressParams(args [2]string, r *http.Request) (params ReadNetworkingV1NamespacedIngressParams, _ error) {
@@ -48720,6 +53111,19 @@ type ReadNetworkingV1NamespacedIngressStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadNetworkingV1NamespacedIngressStatusParams(packed map[string]any) (params ReadNetworkingV1NamespacedIngressStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadNetworkingV1NamespacedIngressStatusParams(args [2]string, r *http.Request) (params ReadNetworkingV1NamespacedIngressStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -48830,6 +53234,19 @@ type ReadNetworkingV1NamespacedNetworkPolicyParams struct {
 	Pretty OptString
 }
 
+func unpackReadNetworkingV1NamespacedNetworkPolicyParams(packed map[string]any) (params ReadNetworkingV1NamespacedNetworkPolicyParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadNetworkingV1NamespacedNetworkPolicyParams(args [2]string, r *http.Request) (params ReadNetworkingV1NamespacedNetworkPolicyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -48938,6 +53355,16 @@ type ReadNodeV1RuntimeClassParams struct {
 	Pretty OptString
 }
 
+func unpackReadNodeV1RuntimeClassParams(packed map[string]any) (params ReadNodeV1RuntimeClassParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadNodeV1RuntimeClassParams(args [1]string, r *http.Request) (params ReadNodeV1RuntimeClassParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -49013,6 +53440,16 @@ type ReadNodeV1alpha1RuntimeClassParams struct {
 	Name string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadNodeV1alpha1RuntimeClassParams(packed map[string]any) (params ReadNodeV1alpha1RuntimeClassParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadNodeV1alpha1RuntimeClassParams(args [1]string, r *http.Request) (params ReadNodeV1alpha1RuntimeClassParams, _ error) {
@@ -49092,6 +53529,16 @@ type ReadNodeV1beta1RuntimeClassParams struct {
 	Pretty OptString
 }
 
+func unpackReadNodeV1beta1RuntimeClassParams(packed map[string]any) (params ReadNodeV1beta1RuntimeClassParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadNodeV1beta1RuntimeClassParams(args [1]string, r *http.Request) (params ReadNodeV1beta1RuntimeClassParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -49169,6 +53616,19 @@ type ReadPolicyV1NamespacedPodDisruptionBudgetParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadPolicyV1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params ReadPolicyV1NamespacedPodDisruptionBudgetParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadPolicyV1NamespacedPodDisruptionBudgetParams(args [2]string, r *http.Request) (params ReadPolicyV1NamespacedPodDisruptionBudgetParams, _ error) {
@@ -49281,6 +53741,19 @@ type ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(packed map[string]any) (params ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(args [2]string, r *http.Request) (params ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -49389,6 +53862,19 @@ type ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(args [2]string, r *http.Request) (params ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams, _ error) {
@@ -49501,6 +53987,19 @@ type ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams struct {
 	Pretty OptString
 }
 
+func unpackReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(packed map[string]any) (params ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(args [2]string, r *http.Request) (params ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -49609,6 +54108,16 @@ type ReadPolicyV1beta1PodSecurityPolicyParams struct {
 	Pretty OptString
 }
 
+func unpackReadPolicyV1beta1PodSecurityPolicyParams(packed map[string]any) (params ReadPolicyV1beta1PodSecurityPolicyParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadPolicyV1beta1PodSecurityPolicyParams(args [1]string, r *http.Request) (params ReadPolicyV1beta1PodSecurityPolicyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -49684,6 +54193,16 @@ type ReadRbacAuthorizationV1ClusterRoleParams struct {
 	Name string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadRbacAuthorizationV1ClusterRoleParams(packed map[string]any) (params ReadRbacAuthorizationV1ClusterRoleParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadRbacAuthorizationV1ClusterRoleParams(args [1]string, r *http.Request) (params ReadRbacAuthorizationV1ClusterRoleParams, _ error) {
@@ -49763,6 +54282,16 @@ type ReadRbacAuthorizationV1ClusterRoleBindingParams struct {
 	Pretty OptString
 }
 
+func unpackReadRbacAuthorizationV1ClusterRoleBindingParams(packed map[string]any) (params ReadRbacAuthorizationV1ClusterRoleBindingParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadRbacAuthorizationV1ClusterRoleBindingParams(args [1]string, r *http.Request) (params ReadRbacAuthorizationV1ClusterRoleBindingParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -49840,6 +54369,19 @@ type ReadRbacAuthorizationV1NamespacedRoleParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadRbacAuthorizationV1NamespacedRoleParams(packed map[string]any) (params ReadRbacAuthorizationV1NamespacedRoleParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadRbacAuthorizationV1NamespacedRoleParams(args [2]string, r *http.Request) (params ReadRbacAuthorizationV1NamespacedRoleParams, _ error) {
@@ -49952,6 +54494,19 @@ type ReadRbacAuthorizationV1NamespacedRoleBindingParams struct {
 	Pretty OptString
 }
 
+func unpackReadRbacAuthorizationV1NamespacedRoleBindingParams(packed map[string]any) (params ReadRbacAuthorizationV1NamespacedRoleBindingParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadRbacAuthorizationV1NamespacedRoleBindingParams(args [2]string, r *http.Request) (params ReadRbacAuthorizationV1NamespacedRoleBindingParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -50060,6 +54615,16 @@ type ReadSchedulingV1PriorityClassParams struct {
 	Pretty OptString
 }
 
+func unpackReadSchedulingV1PriorityClassParams(packed map[string]any) (params ReadSchedulingV1PriorityClassParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadSchedulingV1PriorityClassParams(args [1]string, r *http.Request) (params ReadSchedulingV1PriorityClassParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -50135,6 +54700,16 @@ type ReadStorageV1CSIDriverParams struct {
 	Name string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadStorageV1CSIDriverParams(packed map[string]any) (params ReadStorageV1CSIDriverParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadStorageV1CSIDriverParams(args [1]string, r *http.Request) (params ReadStorageV1CSIDriverParams, _ error) {
@@ -50214,6 +54789,16 @@ type ReadStorageV1CSINodeParams struct {
 	Pretty OptString
 }
 
+func unpackReadStorageV1CSINodeParams(packed map[string]any) (params ReadStorageV1CSINodeParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadStorageV1CSINodeParams(args [1]string, r *http.Request) (params ReadStorageV1CSINodeParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -50289,6 +54874,16 @@ type ReadStorageV1StorageClassParams struct {
 	Name string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadStorageV1StorageClassParams(packed map[string]any) (params ReadStorageV1StorageClassParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadStorageV1StorageClassParams(args [1]string, r *http.Request) (params ReadStorageV1StorageClassParams, _ error) {
@@ -50368,6 +54963,16 @@ type ReadStorageV1VolumeAttachmentParams struct {
 	Pretty OptString
 }
 
+func unpackReadStorageV1VolumeAttachmentParams(packed map[string]any) (params ReadStorageV1VolumeAttachmentParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
+}
+
 func decodeReadStorageV1VolumeAttachmentParams(args [1]string, r *http.Request) (params ReadStorageV1VolumeAttachmentParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: name.
@@ -50443,6 +55048,16 @@ type ReadStorageV1VolumeAttachmentStatusParams struct {
 	Name string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadStorageV1VolumeAttachmentStatusParams(packed map[string]any) (params ReadStorageV1VolumeAttachmentStatusParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadStorageV1VolumeAttachmentStatusParams(args [1]string, r *http.Request) (params ReadStorageV1VolumeAttachmentStatusParams, _ error) {
@@ -50522,6 +55137,19 @@ type ReadStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadStorageV1alpha1NamespacedCSIStorageCapacityParams(packed map[string]any) (params ReadStorageV1alpha1NamespacedCSIStorageCapacityParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityParams(args [2]string, r *http.Request) (params ReadStorageV1alpha1NamespacedCSIStorageCapacityParams, _ error) {
@@ -50632,6 +55260,19 @@ type ReadStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 	Namespace string
 	// If 'true', then the output is pretty printed.
 	Pretty OptString
+}
+
+func unpackReadStorageV1beta1NamespacedCSIStorageCapacityParams(packed map[string]any) (params ReadStorageV1beta1NamespacedCSIStorageCapacityParams) {
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	return params
 }
 
 func decodeReadStorageV1beta1NamespacedCSIStorageCapacityParams(args [2]string, r *http.Request) (params ReadStorageV1beta1NamespacedCSIStorageCapacityParams, _ error) {
@@ -50794,6 +55435,43 @@ type WatchAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(packed map[string]any) (params WatchAdmissionregistrationV1MutatingWebhookConfigurationParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args [1]string, r *http.Request) (params WatchAdmissionregistrationV1MutatingWebhookConfigurationParams, _ error) {
@@ -51231,6 +55909,40 @@ type WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(packed map[string]any) (params WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(args [0]string, r *http.Request) (params WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -51635,6 +56347,43 @@ type WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(packed map[string]any) (params WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args [1]string, r *http.Request) (params WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams, _ error) {
@@ -52072,6 +56821,40 @@ type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams struct
 	Watch OptBool
 }
 
+func unpackWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(packed map[string]any) (params WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(args [0]string, r *http.Request) (params WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -52476,6 +57259,43 @@ type WatchApiextensionsV1CustomResourceDefinitionParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchApiextensionsV1CustomResourceDefinitionParams(packed map[string]any) (params WatchApiextensionsV1CustomResourceDefinitionParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args [1]string, r *http.Request) (params WatchApiextensionsV1CustomResourceDefinitionParams, _ error) {
@@ -52913,6 +57733,40 @@ type WatchApiextensionsV1CustomResourceDefinitionListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchApiextensionsV1CustomResourceDefinitionListParams(packed map[string]any) (params WatchApiextensionsV1CustomResourceDefinitionListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args [0]string, r *http.Request) (params WatchApiextensionsV1CustomResourceDefinitionListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -53317,6 +58171,43 @@ type WatchApiregistrationV1APIServiceParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchApiregistrationV1APIServiceParams(packed map[string]any) (params WatchApiregistrationV1APIServiceParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchApiregistrationV1APIServiceParams(args [1]string, r *http.Request) (params WatchApiregistrationV1APIServiceParams, _ error) {
@@ -53754,6 +58645,40 @@ type WatchApiregistrationV1APIServiceListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchApiregistrationV1APIServiceListParams(packed map[string]any) (params WatchApiregistrationV1APIServiceListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchApiregistrationV1APIServiceListParams(args [0]string, r *http.Request) (params WatchApiregistrationV1APIServiceListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -54156,6 +59081,40 @@ type WatchAppsV1ControllerRevisionListForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchAppsV1ControllerRevisionListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1ControllerRevisionListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchAppsV1ControllerRevisionListForAllNamespacesParams, _ error) {
@@ -54562,6 +59521,40 @@ type WatchAppsV1DaemonSetListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchAppsV1DaemonSetListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1DaemonSetListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchAppsV1DaemonSetListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -54964,6 +59957,40 @@ type WatchAppsV1DeploymentListForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchAppsV1DeploymentListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1DeploymentListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchAppsV1DeploymentListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchAppsV1DeploymentListForAllNamespacesParams, _ error) {
@@ -55372,6 +60399,46 @@ type WatchAppsV1NamespacedControllerRevisionParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchAppsV1NamespacedControllerRevisionParams(packed map[string]any) (params WatchAppsV1NamespacedControllerRevisionParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchAppsV1NamespacedControllerRevisionParams(args [2]string, r *http.Request) (params WatchAppsV1NamespacedControllerRevisionParams, _ error) {
@@ -55842,6 +60909,43 @@ type WatchAppsV1NamespacedControllerRevisionListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchAppsV1NamespacedControllerRevisionListParams(packed map[string]any) (params WatchAppsV1NamespacedControllerRevisionListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchAppsV1NamespacedControllerRevisionListParams(args [1]string, r *http.Request) (params WatchAppsV1NamespacedControllerRevisionListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -56279,6 +61383,46 @@ type WatchAppsV1NamespacedDaemonSetParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchAppsV1NamespacedDaemonSetParams(packed map[string]any) (params WatchAppsV1NamespacedDaemonSetParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchAppsV1NamespacedDaemonSetParams(args [2]string, r *http.Request) (params WatchAppsV1NamespacedDaemonSetParams, _ error) {
@@ -56749,6 +61893,43 @@ type WatchAppsV1NamespacedDaemonSetListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchAppsV1NamespacedDaemonSetListParams(packed map[string]any) (params WatchAppsV1NamespacedDaemonSetListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchAppsV1NamespacedDaemonSetListParams(args [1]string, r *http.Request) (params WatchAppsV1NamespacedDaemonSetListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -57186,6 +62367,46 @@ type WatchAppsV1NamespacedDeploymentParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchAppsV1NamespacedDeploymentParams(packed map[string]any) (params WatchAppsV1NamespacedDeploymentParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchAppsV1NamespacedDeploymentParams(args [2]string, r *http.Request) (params WatchAppsV1NamespacedDeploymentParams, _ error) {
@@ -57656,6 +62877,43 @@ type WatchAppsV1NamespacedDeploymentListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchAppsV1NamespacedDeploymentListParams(packed map[string]any) (params WatchAppsV1NamespacedDeploymentListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchAppsV1NamespacedDeploymentListParams(args [1]string, r *http.Request) (params WatchAppsV1NamespacedDeploymentListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -58093,6 +63351,46 @@ type WatchAppsV1NamespacedReplicaSetParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchAppsV1NamespacedReplicaSetParams(packed map[string]any) (params WatchAppsV1NamespacedReplicaSetParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchAppsV1NamespacedReplicaSetParams(args [2]string, r *http.Request) (params WatchAppsV1NamespacedReplicaSetParams, _ error) {
@@ -58563,6 +63861,43 @@ type WatchAppsV1NamespacedReplicaSetListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchAppsV1NamespacedReplicaSetListParams(packed map[string]any) (params WatchAppsV1NamespacedReplicaSetListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchAppsV1NamespacedReplicaSetListParams(args [1]string, r *http.Request) (params WatchAppsV1NamespacedReplicaSetListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -59000,6 +64335,46 @@ type WatchAppsV1NamespacedStatefulSetParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchAppsV1NamespacedStatefulSetParams(packed map[string]any) (params WatchAppsV1NamespacedStatefulSetParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchAppsV1NamespacedStatefulSetParams(args [2]string, r *http.Request) (params WatchAppsV1NamespacedStatefulSetParams, _ error) {
@@ -59470,6 +64845,43 @@ type WatchAppsV1NamespacedStatefulSetListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchAppsV1NamespacedStatefulSetListParams(packed map[string]any) (params WatchAppsV1NamespacedStatefulSetListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchAppsV1NamespacedStatefulSetListParams(args [1]string, r *http.Request) (params WatchAppsV1NamespacedStatefulSetListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -59905,6 +65317,40 @@ type WatchAppsV1ReplicaSetListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchAppsV1ReplicaSetListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1ReplicaSetListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchAppsV1ReplicaSetListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -60309,6 +65755,40 @@ type WatchAppsV1StatefulSetListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchAppsV1StatefulSetListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1StatefulSetListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchAppsV1StatefulSetListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -60711,6 +66191,40 @@ type WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams struct 
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(packed map[string]any) (params WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams, _ error) {
@@ -61119,6 +66633,46 @@ type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args [2]string, r *http.Request) (params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams, _ error) {
@@ -61589,6 +67143,43 @@ type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(packed map[string]any) (params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args [1]string, r *http.Request) (params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -62024,6 +67615,40 @@ type WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams st
 	Watch OptBool
 }
 
+func unpackWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams(packed map[string]any) (params WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -62430,6 +68055,46 @@ type WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args [2]string, r *http.Request) (params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams, _ error) {
@@ -62900,6 +68565,43 @@ type WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(packed map[string]any) (params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(args [1]string, r *http.Request) (params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -63335,6 +69037,40 @@ type WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams st
 	Watch OptBool
 }
 
+func unpackWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams(packed map[string]any) (params WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -63741,6 +69477,46 @@ type WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args [2]string, r *http.Request) (params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams, _ error) {
@@ -64211,6 +69987,43 @@ type WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(packed map[string]any) (params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(args [1]string, r *http.Request) (params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -64646,6 +70459,40 @@ type WatchBatchV1CronJobListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchBatchV1CronJobListForAllNamespacesParams(packed map[string]any) (params WatchBatchV1CronJobListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchBatchV1CronJobListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchBatchV1CronJobListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -65048,6 +70895,40 @@ type WatchBatchV1JobListForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchBatchV1JobListForAllNamespacesParams(packed map[string]any) (params WatchBatchV1JobListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchBatchV1JobListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchBatchV1JobListForAllNamespacesParams, _ error) {
@@ -65456,6 +71337,46 @@ type WatchBatchV1NamespacedCronJobParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchBatchV1NamespacedCronJobParams(packed map[string]any) (params WatchBatchV1NamespacedCronJobParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchBatchV1NamespacedCronJobParams(args [2]string, r *http.Request) (params WatchBatchV1NamespacedCronJobParams, _ error) {
@@ -65926,6 +71847,43 @@ type WatchBatchV1NamespacedCronJobListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchBatchV1NamespacedCronJobListParams(packed map[string]any) (params WatchBatchV1NamespacedCronJobListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchBatchV1NamespacedCronJobListParams(args [1]string, r *http.Request) (params WatchBatchV1NamespacedCronJobListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -66363,6 +72321,46 @@ type WatchBatchV1NamespacedJobParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchBatchV1NamespacedJobParams(packed map[string]any) (params WatchBatchV1NamespacedJobParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchBatchV1NamespacedJobParams(args [2]string, r *http.Request) (params WatchBatchV1NamespacedJobParams, _ error) {
@@ -66833,6 +72831,43 @@ type WatchBatchV1NamespacedJobListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchBatchV1NamespacedJobListParams(packed map[string]any) (params WatchBatchV1NamespacedJobListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchBatchV1NamespacedJobListParams(args [1]string, r *http.Request) (params WatchBatchV1NamespacedJobListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -67268,6 +73303,40 @@ type WatchBatchV1beta1CronJobListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchBatchV1beta1CronJobListForAllNamespacesParams(packed map[string]any) (params WatchBatchV1beta1CronJobListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchBatchV1beta1CronJobListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -67674,6 +73743,46 @@ type WatchBatchV1beta1NamespacedCronJobParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchBatchV1beta1NamespacedCronJobParams(packed map[string]any) (params WatchBatchV1beta1NamespacedCronJobParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchBatchV1beta1NamespacedCronJobParams(args [2]string, r *http.Request) (params WatchBatchV1beta1NamespacedCronJobParams, _ error) {
@@ -68144,6 +74253,43 @@ type WatchBatchV1beta1NamespacedCronJobListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchBatchV1beta1NamespacedCronJobListParams(packed map[string]any) (params WatchBatchV1beta1NamespacedCronJobListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchBatchV1beta1NamespacedCronJobListParams(args [1]string, r *http.Request) (params WatchBatchV1beta1NamespacedCronJobListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -68581,6 +74727,43 @@ type WatchCertificatesV1CertificateSigningRequestParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCertificatesV1CertificateSigningRequestParams(packed map[string]any) (params WatchCertificatesV1CertificateSigningRequestParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCertificatesV1CertificateSigningRequestParams(args [1]string, r *http.Request) (params WatchCertificatesV1CertificateSigningRequestParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -69016,6 +75199,40 @@ type WatchCertificatesV1CertificateSigningRequestListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCertificatesV1CertificateSigningRequestListParams(packed map[string]any) (params WatchCertificatesV1CertificateSigningRequestListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCertificatesV1CertificateSigningRequestListParams(args [0]string, r *http.Request) (params WatchCertificatesV1CertificateSigningRequestListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -69418,6 +75635,40 @@ type WatchCoordinationV1LeaseListForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoordinationV1LeaseListForAllNamespacesParams(packed map[string]any) (params WatchCoordinationV1LeaseListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchCoordinationV1LeaseListForAllNamespacesParams, _ error) {
@@ -69826,6 +76077,46 @@ type WatchCoordinationV1NamespacedLeaseParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoordinationV1NamespacedLeaseParams(packed map[string]any) (params WatchCoordinationV1NamespacedLeaseParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoordinationV1NamespacedLeaseParams(args [2]string, r *http.Request) (params WatchCoordinationV1NamespacedLeaseParams, _ error) {
@@ -70296,6 +76587,43 @@ type WatchCoordinationV1NamespacedLeaseListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoordinationV1NamespacedLeaseListParams(packed map[string]any) (params WatchCoordinationV1NamespacedLeaseListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoordinationV1NamespacedLeaseListParams(args [1]string, r *http.Request) (params WatchCoordinationV1NamespacedLeaseListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -70731,6 +77059,40 @@ type WatchCoreV1ConfigMapListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1ConfigMapListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ConfigMapListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchCoreV1ConfigMapListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -71133,6 +77495,40 @@ type WatchCoreV1EndpointsListForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1EndpointsListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1EndpointsListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1EndpointsListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchCoreV1EndpointsListForAllNamespacesParams, _ error) {
@@ -71539,6 +77935,40 @@ type WatchCoreV1EventListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1EventListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1EventListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1EventListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchCoreV1EventListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -71941,6 +78371,40 @@ type WatchCoreV1LimitRangeListForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1LimitRangeListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1LimitRangeListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchCoreV1LimitRangeListForAllNamespacesParams, _ error) {
@@ -72347,6 +78811,43 @@ type WatchCoreV1NamespaceParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1NamespaceParams(packed map[string]any) (params WatchCoreV1NamespaceParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1NamespaceParams(args [1]string, r *http.Request) (params WatchCoreV1NamespaceParams, _ error) {
@@ -72784,6 +79285,40 @@ type WatchCoreV1NamespaceListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1NamespaceListParams(packed map[string]any) (params WatchCoreV1NamespaceListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1NamespaceListParams(args [0]string, r *http.Request) (params WatchCoreV1NamespaceListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -73190,6 +79725,46 @@ type WatchCoreV1NamespacedConfigMapParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1NamespacedConfigMapParams(packed map[string]any) (params WatchCoreV1NamespacedConfigMapParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1NamespacedConfigMapParams(args [2]string, r *http.Request) (params WatchCoreV1NamespacedConfigMapParams, _ error) {
@@ -73660,6 +80235,43 @@ type WatchCoreV1NamespacedConfigMapListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1NamespacedConfigMapListParams(packed map[string]any) (params WatchCoreV1NamespacedConfigMapListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1NamespacedConfigMapListParams(args [1]string, r *http.Request) (params WatchCoreV1NamespacedConfigMapListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -74097,6 +80709,46 @@ type WatchCoreV1NamespacedEndpointsParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1NamespacedEndpointsParams(packed map[string]any) (params WatchCoreV1NamespacedEndpointsParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1NamespacedEndpointsParams(args [2]string, r *http.Request) (params WatchCoreV1NamespacedEndpointsParams, _ error) {
@@ -74567,6 +81219,43 @@ type WatchCoreV1NamespacedEndpointsListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1NamespacedEndpointsListParams(packed map[string]any) (params WatchCoreV1NamespacedEndpointsListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1NamespacedEndpointsListParams(args [1]string, r *http.Request) (params WatchCoreV1NamespacedEndpointsListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -75004,6 +81693,46 @@ type WatchCoreV1NamespacedEventParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1NamespacedEventParams(packed map[string]any) (params WatchCoreV1NamespacedEventParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1NamespacedEventParams(args [2]string, r *http.Request) (params WatchCoreV1NamespacedEventParams, _ error) {
@@ -75474,6 +82203,43 @@ type WatchCoreV1NamespacedEventListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1NamespacedEventListParams(packed map[string]any) (params WatchCoreV1NamespacedEventListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1NamespacedEventListParams(args [1]string, r *http.Request) (params WatchCoreV1NamespacedEventListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -75911,6 +82677,46 @@ type WatchCoreV1NamespacedLimitRangeParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1NamespacedLimitRangeParams(packed map[string]any) (params WatchCoreV1NamespacedLimitRangeParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1NamespacedLimitRangeParams(args [2]string, r *http.Request) (params WatchCoreV1NamespacedLimitRangeParams, _ error) {
@@ -76381,6 +83187,43 @@ type WatchCoreV1NamespacedLimitRangeListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1NamespacedLimitRangeListParams(packed map[string]any) (params WatchCoreV1NamespacedLimitRangeListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1NamespacedLimitRangeListParams(args [1]string, r *http.Request) (params WatchCoreV1NamespacedLimitRangeListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -76818,6 +83661,46 @@ type WatchCoreV1NamespacedPersistentVolumeClaimParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1NamespacedPersistentVolumeClaimParams(packed map[string]any) (params WatchCoreV1NamespacedPersistentVolumeClaimParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args [2]string, r *http.Request) (params WatchCoreV1NamespacedPersistentVolumeClaimParams, _ error) {
@@ -77288,6 +84171,43 @@ type WatchCoreV1NamespacedPersistentVolumeClaimListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1NamespacedPersistentVolumeClaimListParams(packed map[string]any) (params WatchCoreV1NamespacedPersistentVolumeClaimListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args [1]string, r *http.Request) (params WatchCoreV1NamespacedPersistentVolumeClaimListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -77725,6 +84645,46 @@ type WatchCoreV1NamespacedPodParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1NamespacedPodParams(packed map[string]any) (params WatchCoreV1NamespacedPodParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1NamespacedPodParams(args [2]string, r *http.Request) (params WatchCoreV1NamespacedPodParams, _ error) {
@@ -78195,6 +85155,43 @@ type WatchCoreV1NamespacedPodListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1NamespacedPodListParams(packed map[string]any) (params WatchCoreV1NamespacedPodListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1NamespacedPodListParams(args [1]string, r *http.Request) (params WatchCoreV1NamespacedPodListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -78632,6 +85629,46 @@ type WatchCoreV1NamespacedPodTemplateParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1NamespacedPodTemplateParams(packed map[string]any) (params WatchCoreV1NamespacedPodTemplateParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1NamespacedPodTemplateParams(args [2]string, r *http.Request) (params WatchCoreV1NamespacedPodTemplateParams, _ error) {
@@ -79102,6 +86139,43 @@ type WatchCoreV1NamespacedPodTemplateListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1NamespacedPodTemplateListParams(packed map[string]any) (params WatchCoreV1NamespacedPodTemplateListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1NamespacedPodTemplateListParams(args [1]string, r *http.Request) (params WatchCoreV1NamespacedPodTemplateListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -79539,6 +86613,46 @@ type WatchCoreV1NamespacedReplicationControllerParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1NamespacedReplicationControllerParams(packed map[string]any) (params WatchCoreV1NamespacedReplicationControllerParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1NamespacedReplicationControllerParams(args [2]string, r *http.Request) (params WatchCoreV1NamespacedReplicationControllerParams, _ error) {
@@ -80009,6 +87123,43 @@ type WatchCoreV1NamespacedReplicationControllerListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1NamespacedReplicationControllerListParams(packed map[string]any) (params WatchCoreV1NamespacedReplicationControllerListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1NamespacedReplicationControllerListParams(args [1]string, r *http.Request) (params WatchCoreV1NamespacedReplicationControllerListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -80446,6 +87597,46 @@ type WatchCoreV1NamespacedResourceQuotaParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1NamespacedResourceQuotaParams(packed map[string]any) (params WatchCoreV1NamespacedResourceQuotaParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1NamespacedResourceQuotaParams(args [2]string, r *http.Request) (params WatchCoreV1NamespacedResourceQuotaParams, _ error) {
@@ -80916,6 +88107,43 @@ type WatchCoreV1NamespacedResourceQuotaListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1NamespacedResourceQuotaListParams(packed map[string]any) (params WatchCoreV1NamespacedResourceQuotaListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1NamespacedResourceQuotaListParams(args [1]string, r *http.Request) (params WatchCoreV1NamespacedResourceQuotaListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -81353,6 +88581,46 @@ type WatchCoreV1NamespacedSecretParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1NamespacedSecretParams(packed map[string]any) (params WatchCoreV1NamespacedSecretParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1NamespacedSecretParams(args [2]string, r *http.Request) (params WatchCoreV1NamespacedSecretParams, _ error) {
@@ -81823,6 +89091,43 @@ type WatchCoreV1NamespacedSecretListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1NamespacedSecretListParams(packed map[string]any) (params WatchCoreV1NamespacedSecretListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1NamespacedSecretListParams(args [1]string, r *http.Request) (params WatchCoreV1NamespacedSecretListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -82260,6 +89565,46 @@ type WatchCoreV1NamespacedServiceParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1NamespacedServiceParams(packed map[string]any) (params WatchCoreV1NamespacedServiceParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1NamespacedServiceParams(args [2]string, r *http.Request) (params WatchCoreV1NamespacedServiceParams, _ error) {
@@ -82732,6 +90077,46 @@ type WatchCoreV1NamespacedServiceAccountParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1NamespacedServiceAccountParams(packed map[string]any) (params WatchCoreV1NamespacedServiceAccountParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1NamespacedServiceAccountParams(args [2]string, r *http.Request) (params WatchCoreV1NamespacedServiceAccountParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -83200,6 +90585,43 @@ type WatchCoreV1NamespacedServiceAccountListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1NamespacedServiceAccountListParams(packed map[string]any) (params WatchCoreV1NamespacedServiceAccountListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1NamespacedServiceAccountListParams(args [1]string, r *http.Request) (params WatchCoreV1NamespacedServiceAccountListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -83635,6 +91057,43 @@ type WatchCoreV1NamespacedServiceListParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1NamespacedServiceListParams(packed map[string]any) (params WatchCoreV1NamespacedServiceListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1NamespacedServiceListParams(args [1]string, r *http.Request) (params WatchCoreV1NamespacedServiceListParams, _ error) {
@@ -84074,6 +91533,43 @@ type WatchCoreV1NodeParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1NodeParams(packed map[string]any) (params WatchCoreV1NodeParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1NodeParams(args [1]string, r *http.Request) (params WatchCoreV1NodeParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -84509,6 +92005,40 @@ type WatchCoreV1NodeListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1NodeListParams(packed map[string]any) (params WatchCoreV1NodeListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1NodeListParams(args [0]string, r *http.Request) (params WatchCoreV1NodeListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -84913,6 +92443,43 @@ type WatchCoreV1PersistentVolumeParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1PersistentVolumeParams(packed map[string]any) (params WatchCoreV1PersistentVolumeParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1PersistentVolumeParams(args [1]string, r *http.Request) (params WatchCoreV1PersistentVolumeParams, _ error) {
@@ -85350,6 +92917,40 @@ type WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -85752,6 +93353,40 @@ type WatchCoreV1PersistentVolumeListParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1PersistentVolumeListParams(packed map[string]any) (params WatchCoreV1PersistentVolumeListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1PersistentVolumeListParams(args [0]string, r *http.Request) (params WatchCoreV1PersistentVolumeListParams, _ error) {
@@ -86158,6 +93793,40 @@ type WatchCoreV1PodListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1PodListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1PodListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1PodListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchCoreV1PodListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -86560,6 +94229,40 @@ type WatchCoreV1PodTemplateListForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1PodTemplateListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1PodTemplateListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchCoreV1PodTemplateListForAllNamespacesParams, _ error) {
@@ -86966,6 +94669,40 @@ type WatchCoreV1ReplicationControllerListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1ReplicationControllerListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ReplicationControllerListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchCoreV1ReplicationControllerListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -87368,6 +95105,40 @@ type WatchCoreV1ResourceQuotaListForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1ResourceQuotaListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ResourceQuotaListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchCoreV1ResourceQuotaListForAllNamespacesParams, _ error) {
@@ -87774,6 +95545,40 @@ type WatchCoreV1SecretListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1SecretListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1SecretListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1SecretListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchCoreV1SecretListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -88176,6 +95981,40 @@ type WatchCoreV1ServiceAccountListForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchCoreV1ServiceAccountListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ServiceAccountListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchCoreV1ServiceAccountListForAllNamespacesParams, _ error) {
@@ -88582,6 +96421,40 @@ type WatchCoreV1ServiceListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchCoreV1ServiceListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ServiceListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchCoreV1ServiceListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchCoreV1ServiceListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -88984,6 +96857,40 @@ type WatchDiscoveryV1EndpointSliceListForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(packed map[string]any) (params WatchDiscoveryV1EndpointSliceListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchDiscoveryV1EndpointSliceListForAllNamespacesParams, _ error) {
@@ -89392,6 +97299,46 @@ type WatchDiscoveryV1NamespacedEndpointSliceParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchDiscoveryV1NamespacedEndpointSliceParams(packed map[string]any) (params WatchDiscoveryV1NamespacedEndpointSliceParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args [2]string, r *http.Request) (params WatchDiscoveryV1NamespacedEndpointSliceParams, _ error) {
@@ -89862,6 +97809,43 @@ type WatchDiscoveryV1NamespacedEndpointSliceListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchDiscoveryV1NamespacedEndpointSliceListParams(packed map[string]any) (params WatchDiscoveryV1NamespacedEndpointSliceListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args [1]string, r *http.Request) (params WatchDiscoveryV1NamespacedEndpointSliceListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -90297,6 +98281,40 @@ type WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(packed map[string]any) (params WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -90703,6 +98721,46 @@ type WatchDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchDiscoveryV1beta1NamespacedEndpointSliceParams(packed map[string]any) (params WatchDiscoveryV1beta1NamespacedEndpointSliceParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args [2]string, r *http.Request) (params WatchDiscoveryV1beta1NamespacedEndpointSliceParams, _ error) {
@@ -91173,6 +99231,43 @@ type WatchDiscoveryV1beta1NamespacedEndpointSliceListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(packed map[string]any) (params WatchDiscoveryV1beta1NamespacedEndpointSliceListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args [1]string, r *http.Request) (params WatchDiscoveryV1beta1NamespacedEndpointSliceListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -91608,6 +99703,40 @@ type WatchEventsV1EventListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchEventsV1EventListForAllNamespacesParams(packed map[string]any) (params WatchEventsV1EventListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchEventsV1EventListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchEventsV1EventListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -92014,6 +100143,46 @@ type WatchEventsV1NamespacedEventParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchEventsV1NamespacedEventParams(packed map[string]any) (params WatchEventsV1NamespacedEventParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchEventsV1NamespacedEventParams(args [2]string, r *http.Request) (params WatchEventsV1NamespacedEventParams, _ error) {
@@ -92484,6 +100653,43 @@ type WatchEventsV1NamespacedEventListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchEventsV1NamespacedEventListParams(packed map[string]any) (params WatchEventsV1NamespacedEventListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchEventsV1NamespacedEventListParams(args [1]string, r *http.Request) (params WatchEventsV1NamespacedEventListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -92919,6 +101125,40 @@ type WatchEventsV1beta1EventListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchEventsV1beta1EventListForAllNamespacesParams(packed map[string]any) (params WatchEventsV1beta1EventListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchEventsV1beta1EventListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchEventsV1beta1EventListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -93325,6 +101565,46 @@ type WatchEventsV1beta1NamespacedEventParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchEventsV1beta1NamespacedEventParams(packed map[string]any) (params WatchEventsV1beta1NamespacedEventParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchEventsV1beta1NamespacedEventParams(args [2]string, r *http.Request) (params WatchEventsV1beta1NamespacedEventParams, _ error) {
@@ -93795,6 +102075,43 @@ type WatchEventsV1beta1NamespacedEventListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchEventsV1beta1NamespacedEventListParams(packed map[string]any) (params WatchEventsV1beta1NamespacedEventListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchEventsV1beta1NamespacedEventListParams(args [1]string, r *http.Request) (params WatchEventsV1beta1NamespacedEventListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -94232,6 +102549,43 @@ type WatchFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	Watch OptBool
 }
 
+func unpackWatchFlowcontrolApiserverV1beta1FlowSchemaParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta1FlowSchemaParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args [1]string, r *http.Request) (params WatchFlowcontrolApiserverV1beta1FlowSchemaParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -94667,6 +103021,40 @@ type WatchFlowcontrolApiserverV1beta1FlowSchemaListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta1FlowSchemaListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args [0]string, r *http.Request) (params WatchFlowcontrolApiserverV1beta1FlowSchemaListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -95071,6 +103459,43 @@ type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args [1]string, r *http.Request) (params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams, _ error) {
@@ -95508,6 +103933,40 @@ type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams struct
 	Watch OptBool
 }
 
+func unpackWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(args [0]string, r *http.Request) (params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -95912,6 +104371,43 @@ type WatchFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchFlowcontrolApiserverV1beta2FlowSchemaParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta2FlowSchemaParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args [1]string, r *http.Request) (params WatchFlowcontrolApiserverV1beta2FlowSchemaParams, _ error) {
@@ -96349,6 +104845,40 @@ type WatchFlowcontrolApiserverV1beta2FlowSchemaListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta2FlowSchemaListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args [0]string, r *http.Request) (params WatchFlowcontrolApiserverV1beta2FlowSchemaListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -96753,6 +105283,43 @@ type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args [1]string, r *http.Request) (params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams, _ error) {
@@ -97190,6 +105757,40 @@ type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams struct
 	Watch OptBool
 }
 
+func unpackWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(args [0]string, r *http.Request) (params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -97594,6 +106195,43 @@ type WatchInternalApiserverV1alpha1StorageVersionParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchInternalApiserverV1alpha1StorageVersionParams(packed map[string]any) (params WatchInternalApiserverV1alpha1StorageVersionParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args [1]string, r *http.Request) (params WatchInternalApiserverV1alpha1StorageVersionParams, _ error) {
@@ -98031,6 +106669,40 @@ type WatchInternalApiserverV1alpha1StorageVersionListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchInternalApiserverV1alpha1StorageVersionListParams(packed map[string]any) (params WatchInternalApiserverV1alpha1StorageVersionListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args [0]string, r *http.Request) (params WatchInternalApiserverV1alpha1StorageVersionListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -98435,6 +107107,43 @@ type WatchNetworkingV1IngressClassParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchNetworkingV1IngressClassParams(packed map[string]any) (params WatchNetworkingV1IngressClassParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchNetworkingV1IngressClassParams(args [1]string, r *http.Request) (params WatchNetworkingV1IngressClassParams, _ error) {
@@ -98872,6 +107581,40 @@ type WatchNetworkingV1IngressClassListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchNetworkingV1IngressClassListParams(packed map[string]any) (params WatchNetworkingV1IngressClassListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchNetworkingV1IngressClassListParams(args [0]string, r *http.Request) (params WatchNetworkingV1IngressClassListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -99274,6 +108017,40 @@ type WatchNetworkingV1IngressListForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchNetworkingV1IngressListForAllNamespacesParams(packed map[string]any) (params WatchNetworkingV1IngressListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchNetworkingV1IngressListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchNetworkingV1IngressListForAllNamespacesParams, _ error) {
@@ -99682,6 +108459,46 @@ type WatchNetworkingV1NamespacedIngressParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchNetworkingV1NamespacedIngressParams(packed map[string]any) (params WatchNetworkingV1NamespacedIngressParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchNetworkingV1NamespacedIngressParams(args [2]string, r *http.Request) (params WatchNetworkingV1NamespacedIngressParams, _ error) {
@@ -100152,6 +108969,43 @@ type WatchNetworkingV1NamespacedIngressListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchNetworkingV1NamespacedIngressListParams(packed map[string]any) (params WatchNetworkingV1NamespacedIngressListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchNetworkingV1NamespacedIngressListParams(args [1]string, r *http.Request) (params WatchNetworkingV1NamespacedIngressListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -100589,6 +109443,46 @@ type WatchNetworkingV1NamespacedNetworkPolicyParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchNetworkingV1NamespacedNetworkPolicyParams(packed map[string]any) (params WatchNetworkingV1NamespacedNetworkPolicyParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args [2]string, r *http.Request) (params WatchNetworkingV1NamespacedNetworkPolicyParams, _ error) {
@@ -101059,6 +109953,43 @@ type WatchNetworkingV1NamespacedNetworkPolicyListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchNetworkingV1NamespacedNetworkPolicyListParams(packed map[string]any) (params WatchNetworkingV1NamespacedNetworkPolicyListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args [1]string, r *http.Request) (params WatchNetworkingV1NamespacedNetworkPolicyListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -101494,6 +110425,40 @@ type WatchNetworkingV1NetworkPolicyListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(packed map[string]any) (params WatchNetworkingV1NetworkPolicyListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchNetworkingV1NetworkPolicyListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -101898,6 +110863,43 @@ type WatchNodeV1RuntimeClassParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchNodeV1RuntimeClassParams(packed map[string]any) (params WatchNodeV1RuntimeClassParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchNodeV1RuntimeClassParams(args [1]string, r *http.Request) (params WatchNodeV1RuntimeClassParams, _ error) {
@@ -102335,6 +111337,40 @@ type WatchNodeV1RuntimeClassListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchNodeV1RuntimeClassListParams(packed map[string]any) (params WatchNodeV1RuntimeClassListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchNodeV1RuntimeClassListParams(args [0]string, r *http.Request) (params WatchNodeV1RuntimeClassListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -102739,6 +111775,43 @@ type WatchNodeV1alpha1RuntimeClassParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchNodeV1alpha1RuntimeClassParams(packed map[string]any) (params WatchNodeV1alpha1RuntimeClassParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchNodeV1alpha1RuntimeClassParams(args [1]string, r *http.Request) (params WatchNodeV1alpha1RuntimeClassParams, _ error) {
@@ -103176,6 +112249,40 @@ type WatchNodeV1alpha1RuntimeClassListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchNodeV1alpha1RuntimeClassListParams(packed map[string]any) (params WatchNodeV1alpha1RuntimeClassListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchNodeV1alpha1RuntimeClassListParams(args [0]string, r *http.Request) (params WatchNodeV1alpha1RuntimeClassListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -103580,6 +112687,43 @@ type WatchNodeV1beta1RuntimeClassParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchNodeV1beta1RuntimeClassParams(packed map[string]any) (params WatchNodeV1beta1RuntimeClassParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchNodeV1beta1RuntimeClassParams(args [1]string, r *http.Request) (params WatchNodeV1beta1RuntimeClassParams, _ error) {
@@ -104017,6 +113161,40 @@ type WatchNodeV1beta1RuntimeClassListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchNodeV1beta1RuntimeClassListParams(packed map[string]any) (params WatchNodeV1beta1RuntimeClassListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchNodeV1beta1RuntimeClassListParams(args [0]string, r *http.Request) (params WatchNodeV1beta1RuntimeClassListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -104423,6 +113601,46 @@ type WatchPolicyV1NamespacedPodDisruptionBudgetParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchPolicyV1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params WatchPolicyV1NamespacedPodDisruptionBudgetParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args [2]string, r *http.Request) (params WatchPolicyV1NamespacedPodDisruptionBudgetParams, _ error) {
@@ -104893,6 +114111,43 @@ type WatchPolicyV1NamespacedPodDisruptionBudgetListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchPolicyV1NamespacedPodDisruptionBudgetListParams(packed map[string]any) (params WatchPolicyV1NamespacedPodDisruptionBudgetListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args [1]string, r *http.Request) (params WatchPolicyV1NamespacedPodDisruptionBudgetListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -105328,6 +114583,40 @@ type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(packed map[string]any) (params WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -105734,6 +115023,46 @@ type WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args [2]string, r *http.Request) (params WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams, _ error) {
@@ -106204,6 +115533,43 @@ type WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(packed map[string]any) (params WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args [1]string, r *http.Request) (params WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -106639,6 +116005,40 @@ type WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(packed map[string]any) (params WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -107043,6 +116443,43 @@ type WatchPolicyV1beta1PodSecurityPolicyParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchPolicyV1beta1PodSecurityPolicyParams(packed map[string]any) (params WatchPolicyV1beta1PodSecurityPolicyParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args [1]string, r *http.Request) (params WatchPolicyV1beta1PodSecurityPolicyParams, _ error) {
@@ -107480,6 +116917,40 @@ type WatchPolicyV1beta1PodSecurityPolicyListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchPolicyV1beta1PodSecurityPolicyListParams(packed map[string]any) (params WatchPolicyV1beta1PodSecurityPolicyListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args [0]string, r *http.Request) (params WatchPolicyV1beta1PodSecurityPolicyListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -107884,6 +117355,43 @@ type WatchRbacAuthorizationV1ClusterRoleParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchRbacAuthorizationV1ClusterRoleParams(packed map[string]any) (params WatchRbacAuthorizationV1ClusterRoleParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchRbacAuthorizationV1ClusterRoleParams(args [1]string, r *http.Request) (params WatchRbacAuthorizationV1ClusterRoleParams, _ error) {
@@ -108323,6 +117831,43 @@ type WatchRbacAuthorizationV1ClusterRoleBindingParams struct {
 	Watch OptBool
 }
 
+func unpackWatchRbacAuthorizationV1ClusterRoleBindingParams(packed map[string]any) (params WatchRbacAuthorizationV1ClusterRoleBindingParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args [1]string, r *http.Request) (params WatchRbacAuthorizationV1ClusterRoleBindingParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -108758,6 +118303,40 @@ type WatchRbacAuthorizationV1ClusterRoleBindingListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchRbacAuthorizationV1ClusterRoleBindingListParams(packed map[string]any) (params WatchRbacAuthorizationV1ClusterRoleBindingListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args [0]string, r *http.Request) (params WatchRbacAuthorizationV1ClusterRoleBindingListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -109160,6 +118739,40 @@ type WatchRbacAuthorizationV1ClusterRoleListParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchRbacAuthorizationV1ClusterRoleListParams(packed map[string]any) (params WatchRbacAuthorizationV1ClusterRoleListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchRbacAuthorizationV1ClusterRoleListParams(args [0]string, r *http.Request) (params WatchRbacAuthorizationV1ClusterRoleListParams, _ error) {
@@ -109568,6 +119181,46 @@ type WatchRbacAuthorizationV1NamespacedRoleParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchRbacAuthorizationV1NamespacedRoleParams(packed map[string]any) (params WatchRbacAuthorizationV1NamespacedRoleParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args [2]string, r *http.Request) (params WatchRbacAuthorizationV1NamespacedRoleParams, _ error) {
@@ -110040,6 +119693,46 @@ type WatchRbacAuthorizationV1NamespacedRoleBindingParams struct {
 	Watch OptBool
 }
 
+func unpackWatchRbacAuthorizationV1NamespacedRoleBindingParams(packed map[string]any) (params WatchRbacAuthorizationV1NamespacedRoleBindingParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args [2]string, r *http.Request) (params WatchRbacAuthorizationV1NamespacedRoleBindingParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -110508,6 +120201,43 @@ type WatchRbacAuthorizationV1NamespacedRoleBindingListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchRbacAuthorizationV1NamespacedRoleBindingListParams(packed map[string]any) (params WatchRbacAuthorizationV1NamespacedRoleBindingListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args [1]string, r *http.Request) (params WatchRbacAuthorizationV1NamespacedRoleBindingListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -110945,6 +120675,43 @@ type WatchRbacAuthorizationV1NamespacedRoleListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchRbacAuthorizationV1NamespacedRoleListParams(packed map[string]any) (params WatchRbacAuthorizationV1NamespacedRoleListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args [1]string, r *http.Request) (params WatchRbacAuthorizationV1NamespacedRoleListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -111380,6 +121147,40 @@ type WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(packed map[string]any) (params WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -111782,6 +121583,40 @@ type WatchRbacAuthorizationV1RoleListForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchRbacAuthorizationV1RoleListForAllNamespacesParams(packed map[string]any) (params WatchRbacAuthorizationV1RoleListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchRbacAuthorizationV1RoleListForAllNamespacesParams, _ error) {
@@ -112188,6 +122023,43 @@ type WatchSchedulingV1PriorityClassParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchSchedulingV1PriorityClassParams(packed map[string]any) (params WatchSchedulingV1PriorityClassParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchSchedulingV1PriorityClassParams(args [1]string, r *http.Request) (params WatchSchedulingV1PriorityClassParams, _ error) {
@@ -112625,6 +122497,40 @@ type WatchSchedulingV1PriorityClassListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchSchedulingV1PriorityClassListParams(packed map[string]any) (params WatchSchedulingV1PriorityClassListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchSchedulingV1PriorityClassListParams(args [0]string, r *http.Request) (params WatchSchedulingV1PriorityClassListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -113029,6 +122935,43 @@ type WatchStorageV1CSIDriverParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchStorageV1CSIDriverParams(packed map[string]any) (params WatchStorageV1CSIDriverParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchStorageV1CSIDriverParams(args [1]string, r *http.Request) (params WatchStorageV1CSIDriverParams, _ error) {
@@ -113466,6 +123409,40 @@ type WatchStorageV1CSIDriverListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchStorageV1CSIDriverListParams(packed map[string]any) (params WatchStorageV1CSIDriverListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchStorageV1CSIDriverListParams(args [0]string, r *http.Request) (params WatchStorageV1CSIDriverListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -113870,6 +123847,43 @@ type WatchStorageV1CSINodeParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchStorageV1CSINodeParams(packed map[string]any) (params WatchStorageV1CSINodeParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchStorageV1CSINodeParams(args [1]string, r *http.Request) (params WatchStorageV1CSINodeParams, _ error) {
@@ -114307,6 +124321,40 @@ type WatchStorageV1CSINodeListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchStorageV1CSINodeListParams(packed map[string]any) (params WatchStorageV1CSINodeListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchStorageV1CSINodeListParams(args [0]string, r *http.Request) (params WatchStorageV1CSINodeListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -114711,6 +124759,43 @@ type WatchStorageV1StorageClassParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchStorageV1StorageClassParams(packed map[string]any) (params WatchStorageV1StorageClassParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchStorageV1StorageClassParams(args [1]string, r *http.Request) (params WatchStorageV1StorageClassParams, _ error) {
@@ -115148,6 +125233,40 @@ type WatchStorageV1StorageClassListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchStorageV1StorageClassListParams(packed map[string]any) (params WatchStorageV1StorageClassListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchStorageV1StorageClassListParams(args [0]string, r *http.Request) (params WatchStorageV1StorageClassListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -115552,6 +125671,43 @@ type WatchStorageV1VolumeAttachmentParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchStorageV1VolumeAttachmentParams(packed map[string]any) (params WatchStorageV1VolumeAttachmentParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchStorageV1VolumeAttachmentParams(args [1]string, r *http.Request) (params WatchStorageV1VolumeAttachmentParams, _ error) {
@@ -115989,6 +126145,40 @@ type WatchStorageV1VolumeAttachmentListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchStorageV1VolumeAttachmentListParams(packed map[string]any) (params WatchStorageV1VolumeAttachmentListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchStorageV1VolumeAttachmentListParams(args [0]string, r *http.Request) (params WatchStorageV1VolumeAttachmentListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -116391,6 +126581,40 @@ type WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(packed map[string]any) (params WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams, _ error) {
@@ -116799,6 +127023,46 @@ type WatchStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(packed map[string]any) (params WatchStorageV1alpha1NamespacedCSIStorageCapacityParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args [2]string, r *http.Request) (params WatchStorageV1alpha1NamespacedCSIStorageCapacityParams, _ error) {
@@ -117269,6 +127533,43 @@ type WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams struct {
 	Watch OptBool
 }
 
+func unpackWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(packed map[string]any) (params WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args [1]string, r *http.Request) (params WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -117704,6 +128005,40 @@ type WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams struct {
 	Watch OptBool
 }
 
+func unpackWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(packed map[string]any) (params WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
+}
+
 func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args [0]string, r *http.Request) (params WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: allowWatchBookmarks.
@@ -118110,6 +128445,46 @@ type WatchStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchStorageV1beta1NamespacedCSIStorageCapacityParams(packed map[string]any) (params WatchStorageV1beta1NamespacedCSIStorageCapacityParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["name"]; ok {
+		params.Name, _ = v.(string)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args [2]string, r *http.Request) (params WatchStorageV1beta1NamespacedCSIStorageCapacityParams, _ error) {
@@ -118578,6 +128953,43 @@ type WatchStorageV1beta1NamespacedCSIStorageCapacityListParams struct {
 	// Watch for changes to the described resources and return them as a stream of add, update, and
 	// remove notifications. Specify resourceVersion.
 	Watch OptBool
+}
+
+func unpackWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(packed map[string]any) (params WatchStorageV1beta1NamespacedCSIStorageCapacityListParams) {
+	if v, ok := packed["allowWatchBookmarks"]; ok {
+		params.AllowWatchBookmarks, _ = v.(OptBool)
+	}
+	if v, ok := packed["continue"]; ok {
+		params.Continue, _ = v.(OptString)
+	}
+	if v, ok := packed["fieldSelector"]; ok {
+		params.FieldSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["labelSelector"]; ok {
+		params.LabelSelector, _ = v.(OptString)
+	}
+	if v, ok := packed["limit"]; ok {
+		params.Limit, _ = v.(OptInt)
+	}
+	if v, ok := packed["namespace"]; ok {
+		params.Namespace, _ = v.(string)
+	}
+	if v, ok := packed["pretty"]; ok {
+		params.Pretty, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersion"]; ok {
+		params.ResourceVersion, _ = v.(OptString)
+	}
+	if v, ok := packed["resourceVersionMatch"]; ok {
+		params.ResourceVersionMatch, _ = v.(OptString)
+	}
+	if v, ok := packed["timeoutSeconds"]; ok {
+		params.TimeoutSeconds, _ = v.(OptInt)
+	}
+	if v, ok := packed["watch"]; ok {
+		params.Watch, _ = v.(OptBool)
+	}
+	return params
 }
 
 func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args [1]string, r *http.Request) (params WatchStorageV1beta1NamespacedCSIStorageCapacityListParams, _ error) {

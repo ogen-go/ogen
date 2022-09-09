@@ -86,9 +86,9 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAPICaptcha2chcaptchaIDGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.APICaptcha2chcaptchaIDGet(ctx, params)
 			},
 		)
@@ -178,9 +178,9 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAPICaptcha2chcaptchaShowGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.APICaptcha2chcaptchaShowGet(ctx, params)
 			},
 		)
@@ -272,9 +272,9 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAPICaptchaAppIDPublicKeyGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.APICaptchaAppIDPublicKeyGet(ctx, params)
 			},
 		)
@@ -365,9 +365,9 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAPICaptchaInvisibleRecaptchaIDGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.APICaptchaInvisibleRecaptchaIDGet(ctx, params)
 			},
 		)
@@ -441,9 +441,9 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.APICaptchaInvisibleRecaptchaMobileGet(ctx)
 			},
 		)
@@ -534,9 +534,9 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAPICaptchaRecaptchaIDGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.APICaptchaRecaptchaIDGet(ctx, params)
 			},
 		)
@@ -610,9 +610,9 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.APICaptchaRecaptchaMobileGet(ctx)
 			},
 		)
@@ -703,9 +703,9 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAPIDislikeGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.APIDislikeGet(ctx, params)
 			},
 		)
@@ -796,9 +796,9 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAPILikeGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.APILikeGet(ctx, params)
 			},
 		)
@@ -890,9 +890,9 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAPIMobileV2AfterBoardThreadNumGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.APIMobileV2AfterBoardThreadNumGet(ctx, params)
 			},
 		)
@@ -966,9 +966,9 @@ func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.APIMobileV2BoardsGet(ctx)
 			},
 		)
@@ -1059,9 +1059,9 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAPIMobileV2InfoBoardThreadGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.APIMobileV2InfoBoardThreadGet(ctx, params)
 			},
 		)
@@ -1152,9 +1152,9 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackAPIMobileV2PostBoardNumGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.APIMobileV2PostBoardNumGet(ctx, params)
 			},
 		)
@@ -1259,9 +1259,9 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackUserPassloginPostParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UserPassloginPost(ctx, request, params)
 			},
 		)
@@ -1354,9 +1354,9 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UserPostingPost(ctx, request)
 			},
 		)
@@ -1449,9 +1449,9 @@ func (s *Server) handleUserReportPostRequest(args [0]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.UserReportPost(ctx, request)
 			},
 		)

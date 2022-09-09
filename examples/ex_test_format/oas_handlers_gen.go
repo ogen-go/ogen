@@ -178,9 +178,9 @@ func (s *Server) handleTestQueryParameterRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTestQueryParameterParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestQueryParameter(ctx, request, params)
 			},
 		)
@@ -275,9 +275,9 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestAny(ctx, request)
 			},
 		)
@@ -372,9 +372,9 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestBoolean(ctx, request)
 			},
 		)
@@ -469,9 +469,9 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestBooleanArray(ctx, request)
 			},
 		)
@@ -566,9 +566,9 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestBooleanArrayArray(ctx, request)
 			},
 		)
@@ -663,9 +663,9 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestBooleanNullable(ctx, request)
 			},
 		)
@@ -760,9 +760,9 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestBooleanNullableArray(ctx, request)
 			},
 		)
@@ -857,9 +857,9 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestBooleanNullableArrayArray(ctx, request)
 			},
 		)
@@ -954,9 +954,9 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestEmptyStruct(ctx, request)
 			},
 		)
@@ -1051,9 +1051,9 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestFormatTest(ctx, request)
 			},
 		)
@@ -1148,9 +1148,9 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestInteger(ctx, request)
 			},
 		)
@@ -1245,9 +1245,9 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerArray(ctx, request)
 			},
 		)
@@ -1342,9 +1342,9 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerArrayArray(ctx, request)
 			},
 		)
@@ -1439,9 +1439,9 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerInt32(ctx, request)
 			},
 		)
@@ -1536,9 +1536,9 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerInt32Array(ctx, request)
 			},
 		)
@@ -1633,9 +1633,9 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerInt32ArrayArray(ctx, request)
 			},
 		)
@@ -1730,9 +1730,9 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerInt32Nullable(ctx, request)
 			},
 		)
@@ -1827,9 +1827,9 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerInt32NullableArray(ctx, request)
 			},
 		)
@@ -1924,9 +1924,9 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerInt32NullableArrayArray(ctx, request)
 			},
 		)
@@ -2021,9 +2021,9 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerInt64(ctx, request)
 			},
 		)
@@ -2118,9 +2118,9 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerInt64Array(ctx, request)
 			},
 		)
@@ -2215,9 +2215,9 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerInt64ArrayArray(ctx, request)
 			},
 		)
@@ -2312,9 +2312,9 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerInt64Nullable(ctx, request)
 			},
 		)
@@ -2409,9 +2409,9 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerInt64NullableArray(ctx, request)
 			},
 		)
@@ -2506,9 +2506,9 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerInt64NullableArrayArray(ctx, request)
 			},
 		)
@@ -2603,9 +2603,9 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerNullable(ctx, request)
 			},
 		)
@@ -2700,9 +2700,9 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerNullableArray(ctx, request)
 			},
 		)
@@ -2797,9 +2797,9 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerNullableArrayArray(ctx, request)
 			},
 		)
@@ -2894,9 +2894,9 @@ func (s *Server) handleTestRequestIntegerUnixRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnix(ctx, request)
 			},
 		)
@@ -2991,9 +2991,9 @@ func (s *Server) handleTestRequestIntegerUnixArrayRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixArray(ctx, request)
 			},
 		)
@@ -3088,9 +3088,9 @@ func (s *Server) handleTestRequestIntegerUnixArrayArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixArrayArray(ctx, request)
 			},
 		)
@@ -3185,9 +3185,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixMicro(ctx, request)
 			},
 		)
@@ -3282,9 +3282,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixMicroArray(ctx, request)
 			},
 		)
@@ -3379,9 +3379,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayArrayRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixMicroArrayArray(ctx, request)
 			},
 		)
@@ -3476,9 +3476,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixMicroNullable(ctx, request)
 			},
 		)
@@ -3573,9 +3573,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixMicroNullableArray(ctx, request)
 			},
 		)
@@ -3670,9 +3670,9 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayArrayRequest(args
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixMicroNullableArrayArray(ctx, request)
 			},
 		)
@@ -3767,9 +3767,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixMilli(ctx, request)
 			},
 		)
@@ -3864,9 +3864,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixMilliArray(ctx, request)
 			},
 		)
@@ -3961,9 +3961,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayArrayRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixMilliArrayArray(ctx, request)
 			},
 		)
@@ -4058,9 +4058,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixMilliNullable(ctx, request)
 			},
 		)
@@ -4155,9 +4155,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixMilliNullableArray(ctx, request)
 			},
 		)
@@ -4252,9 +4252,9 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayArrayRequest(args
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixMilliNullableArrayArray(ctx, request)
 			},
 		)
@@ -4349,9 +4349,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixNano(ctx, request)
 			},
 		)
@@ -4446,9 +4446,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixNanoArray(ctx, request)
 			},
 		)
@@ -4543,9 +4543,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixNanoArrayArray(ctx, request)
 			},
 		)
@@ -4640,9 +4640,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixNanoNullable(ctx, request)
 			},
 		)
@@ -4737,9 +4737,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixNanoNullableArray(ctx, request)
 			},
 		)
@@ -4834,9 +4834,9 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayArrayRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixNanoNullableArrayArray(ctx, request)
 			},
 		)
@@ -4931,9 +4931,9 @@ func (s *Server) handleTestRequestIntegerUnixNullableRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixNullable(ctx, request)
 			},
 		)
@@ -5028,9 +5028,9 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixNullableArray(ctx, request)
 			},
 		)
@@ -5125,9 +5125,9 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixNullableArrayArray(ctx, request)
 			},
 		)
@@ -5222,9 +5222,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixSeconds(ctx, request)
 			},
 		)
@@ -5319,9 +5319,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixSecondsArray(ctx, request)
 			},
 		)
@@ -5416,9 +5416,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixSecondsArrayArray(ctx, request)
 			},
 		)
@@ -5513,9 +5513,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixSecondsNullable(ctx, request)
 			},
 		)
@@ -5610,9 +5610,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixSecondsNullableArray(ctx, request)
 			},
 		)
@@ -5707,9 +5707,9 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest(ar
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestIntegerUnixSecondsNullableArrayArray(ctx, request)
 			},
 		)
@@ -5804,9 +5804,9 @@ func (s *Server) handleTestRequestNullRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNull(ctx, request)
 			},
 		)
@@ -5901,9 +5901,9 @@ func (s *Server) handleTestRequestNullArrayRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNullArray(ctx, request)
 			},
 		)
@@ -5998,9 +5998,9 @@ func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNullArrayArray(ctx, request)
 			},
 		)
@@ -6095,9 +6095,9 @@ func (s *Server) handleTestRequestNullNullableRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNullNullable(ctx, request)
 			},
 		)
@@ -6192,9 +6192,9 @@ func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNullNullableArray(ctx, request)
 			},
 		)
@@ -6289,9 +6289,9 @@ func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNullNullableArrayArray(ctx, request)
 			},
 		)
@@ -6386,9 +6386,9 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumber(ctx, request)
 			},
 		)
@@ -6483,9 +6483,9 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberArray(ctx, request)
 			},
 		)
@@ -6580,9 +6580,9 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberArrayArray(ctx, request)
 			},
 		)
@@ -6677,9 +6677,9 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberDouble(ctx, request)
 			},
 		)
@@ -6774,9 +6774,9 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberDoubleArray(ctx, request)
 			},
 		)
@@ -6871,9 +6871,9 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberDoubleArrayArray(ctx, request)
 			},
 		)
@@ -6968,9 +6968,9 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberDoubleNullable(ctx, request)
 			},
 		)
@@ -7065,9 +7065,9 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberDoubleNullableArray(ctx, request)
 			},
 		)
@@ -7162,9 +7162,9 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberDoubleNullableArrayArray(ctx, request)
 			},
 		)
@@ -7259,9 +7259,9 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberFloat(ctx, request)
 			},
 		)
@@ -7356,9 +7356,9 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberFloatArray(ctx, request)
 			},
 		)
@@ -7453,9 +7453,9 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberFloatArrayArray(ctx, request)
 			},
 		)
@@ -7550,9 +7550,9 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberFloatNullable(ctx, request)
 			},
 		)
@@ -7647,9 +7647,9 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberFloatNullableArray(ctx, request)
 			},
 		)
@@ -7744,9 +7744,9 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberFloatNullableArrayArray(ctx, request)
 			},
 		)
@@ -7841,9 +7841,9 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberInt32(ctx, request)
 			},
 		)
@@ -7938,9 +7938,9 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberInt32Array(ctx, request)
 			},
 		)
@@ -8035,9 +8035,9 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberInt32ArrayArray(ctx, request)
 			},
 		)
@@ -8132,9 +8132,9 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberInt32Nullable(ctx, request)
 			},
 		)
@@ -8229,9 +8229,9 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberInt32NullableArray(ctx, request)
 			},
 		)
@@ -8326,9 +8326,9 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberInt32NullableArrayArray(ctx, request)
 			},
 		)
@@ -8423,9 +8423,9 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberInt64(ctx, request)
 			},
 		)
@@ -8520,9 +8520,9 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberInt64Array(ctx, request)
 			},
 		)
@@ -8617,9 +8617,9 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberInt64ArrayArray(ctx, request)
 			},
 		)
@@ -8714,9 +8714,9 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberInt64Nullable(ctx, request)
 			},
 		)
@@ -8811,9 +8811,9 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberInt64NullableArray(ctx, request)
 			},
 		)
@@ -8908,9 +8908,9 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberInt64NullableArrayArray(ctx, request)
 			},
 		)
@@ -9005,9 +9005,9 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberNullable(ctx, request)
 			},
 		)
@@ -9102,9 +9102,9 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberNullableArray(ctx, request)
 			},
 		)
@@ -9199,9 +9199,9 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestNumberNullableArrayArray(ctx, request)
 			},
 		)
@@ -9296,9 +9296,9 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredAny(ctx, request)
 			},
 		)
@@ -9393,9 +9393,9 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredBoolean(ctx, request)
 			},
 		)
@@ -9490,9 +9490,9 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredBooleanArray(ctx, request)
 			},
 		)
@@ -9587,9 +9587,9 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredBooleanArrayArray(ctx, request)
 			},
 		)
@@ -9684,9 +9684,9 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredBooleanNullable(ctx, request)
 			},
 		)
@@ -9781,9 +9781,9 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredBooleanNullableArray(ctx, request)
 			},
 		)
@@ -9878,9 +9878,9 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredBooleanNullableArrayArray(ctx, request)
 			},
 		)
@@ -9975,9 +9975,9 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredEmptyStruct(ctx, request)
 			},
 		)
@@ -10072,9 +10072,9 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredFormatTest(ctx, request)
 			},
 		)
@@ -10169,9 +10169,9 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredInteger(ctx, request)
 			},
 		)
@@ -10266,9 +10266,9 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerArray(ctx, request)
 			},
 		)
@@ -10363,9 +10363,9 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerArrayArray(ctx, request)
 			},
 		)
@@ -10460,9 +10460,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerInt32(ctx, request)
 			},
 		)
@@ -10557,9 +10557,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerInt32Array(ctx, request)
 			},
 		)
@@ -10654,9 +10654,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerInt32ArrayArray(ctx, request)
 			},
 		)
@@ -10751,9 +10751,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerInt32Nullable(ctx, request)
 			},
 		)
@@ -10848,9 +10848,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerInt32NullableArray(ctx, request)
 			},
 		)
@@ -10945,9 +10945,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerInt32NullableArrayArray(ctx, request)
 			},
 		)
@@ -11042,9 +11042,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerInt64(ctx, request)
 			},
 		)
@@ -11139,9 +11139,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerInt64Array(ctx, request)
 			},
 		)
@@ -11236,9 +11236,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerInt64ArrayArray(ctx, request)
 			},
 		)
@@ -11333,9 +11333,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerInt64Nullable(ctx, request)
 			},
 		)
@@ -11430,9 +11430,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerInt64NullableArray(ctx, request)
 			},
 		)
@@ -11527,9 +11527,9 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerInt64NullableArrayArray(ctx, request)
 			},
 		)
@@ -11624,9 +11624,9 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerNullable(ctx, request)
 			},
 		)
@@ -11721,9 +11721,9 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerNullableArray(ctx, request)
 			},
 		)
@@ -11818,9 +11818,9 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerNullableArrayArray(ctx, request)
 			},
 		)
@@ -11915,9 +11915,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnix(ctx, request)
 			},
 		)
@@ -12012,9 +12012,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixArray(ctx, request)
 			},
 		)
@@ -12109,9 +12109,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixArrayArray(ctx, request)
 			},
 		)
@@ -12206,9 +12206,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixMicro(ctx, request)
 			},
 		)
@@ -12303,9 +12303,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixMicroArray(ctx, request)
 			},
 		)
@@ -12400,9 +12400,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest(args
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixMicroArrayArray(ctx, request)
 			},
 		)
@@ -12497,9 +12497,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixMicroNullable(ctx, request)
 			},
 		)
@@ -12594,9 +12594,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest(a
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixMicroNullableArray(ctx, request)
 			},
 		)
@@ -12691,9 +12691,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixMicroNullableArrayArray(ctx, request)
 			},
 		)
@@ -12788,9 +12788,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixMilli(ctx, request)
 			},
 		)
@@ -12885,9 +12885,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixMilliArray(ctx, request)
 			},
 		)
@@ -12982,9 +12982,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest(args
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixMilliArrayArray(ctx, request)
 			},
 		)
@@ -13079,9 +13079,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixMilliNullable(ctx, request)
 			},
 		)
@@ -13176,9 +13176,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest(a
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixMilliNullableArray(ctx, request)
 			},
 		)
@@ -13273,9 +13273,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixMilliNullableArrayArray(ctx, request)
 			},
 		)
@@ -13370,9 +13370,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixNano(ctx, request)
 			},
 		)
@@ -13467,9 +13467,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixNanoArray(ctx, request)
 			},
 		)
@@ -13564,9 +13564,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixNanoArrayArray(ctx, request)
 			},
 		)
@@ -13661,9 +13661,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixNanoNullable(ctx, request)
 			},
 		)
@@ -13758,9 +13758,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest(ar
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixNanoNullableArray(ctx, request)
 			},
 		)
@@ -13855,9 +13855,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixNanoNullableArrayArray(ctx, request)
 			},
 		)
@@ -13952,9 +13952,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixNullable(ctx, request)
 			},
 		)
@@ -14049,9 +14049,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixNullableArray(ctx, request)
 			},
 		)
@@ -14146,9 +14146,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest(a
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixNullableArrayArray(ctx, request)
 			},
 		)
@@ -14243,9 +14243,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixSeconds(ctx, request)
 			},
 		)
@@ -14340,9 +14340,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixSecondsArray(ctx, request)
 			},
 		)
@@ -14437,9 +14437,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(ar
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixSecondsArrayArray(ctx, request)
 			},
 		)
@@ -14534,9 +14534,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableRequest(args
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixSecondsNullable(ctx, request)
 			},
 		)
@@ -14631,9 +14631,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixSecondsNullableArray(ctx, request)
 			},
 		)
@@ -14728,9 +14728,9 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx, request)
 			},
 		)
@@ -14825,9 +14825,9 @@ func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNull(ctx, request)
 			},
 		)
@@ -14922,9 +14922,9 @@ func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNullArray(ctx, request)
 			},
 		)
@@ -15019,9 +15019,9 @@ func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNullArrayArray(ctx, request)
 			},
 		)
@@ -15116,9 +15116,9 @@ func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNullNullable(ctx, request)
 			},
 		)
@@ -15213,9 +15213,9 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNullNullableArray(ctx, request)
 			},
 		)
@@ -15310,9 +15310,9 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNullNullableArrayArray(ctx, request)
 			},
 		)
@@ -15407,9 +15407,9 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumber(ctx, request)
 			},
 		)
@@ -15504,9 +15504,9 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberArray(ctx, request)
 			},
 		)
@@ -15601,9 +15601,9 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberArrayArray(ctx, request)
 			},
 		)
@@ -15698,9 +15698,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberDouble(ctx, request)
 			},
 		)
@@ -15795,9 +15795,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberDoubleArray(ctx, request)
 			},
 		)
@@ -15892,9 +15892,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberDoubleArrayArray(ctx, request)
 			},
 		)
@@ -15989,9 +15989,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberDoubleNullable(ctx, request)
 			},
 		)
@@ -16086,9 +16086,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberDoubleNullableArray(ctx, request)
 			},
 		)
@@ -16183,9 +16183,9 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberDoubleNullableArrayArray(ctx, request)
 			},
 		)
@@ -16280,9 +16280,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberFloat(ctx, request)
 			},
 		)
@@ -16377,9 +16377,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberFloatArray(ctx, request)
 			},
 		)
@@ -16474,9 +16474,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberFloatArrayArray(ctx, request)
 			},
 		)
@@ -16571,9 +16571,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberFloatNullable(ctx, request)
 			},
 		)
@@ -16668,9 +16668,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberFloatNullableArray(ctx, request)
 			},
 		)
@@ -16765,9 +16765,9 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberFloatNullableArrayArray(ctx, request)
 			},
 		)
@@ -16862,9 +16862,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberInt32(ctx, request)
 			},
 		)
@@ -16959,9 +16959,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberInt32Array(ctx, request)
 			},
 		)
@@ -17056,9 +17056,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberInt32ArrayArray(ctx, request)
 			},
 		)
@@ -17153,9 +17153,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberInt32Nullable(ctx, request)
 			},
 		)
@@ -17250,9 +17250,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberInt32NullableArray(ctx, request)
 			},
 		)
@@ -17347,9 +17347,9 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberInt32NullableArrayArray(ctx, request)
 			},
 		)
@@ -17444,9 +17444,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberInt64(ctx, request)
 			},
 		)
@@ -17541,9 +17541,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberInt64Array(ctx, request)
 			},
 		)
@@ -17638,9 +17638,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberInt64ArrayArray(ctx, request)
 			},
 		)
@@ -17735,9 +17735,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberInt64Nullable(ctx, request)
 			},
 		)
@@ -17832,9 +17832,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberInt64NullableArray(ctx, request)
 			},
 		)
@@ -17929,9 +17929,9 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberInt64NullableArrayArray(ctx, request)
 			},
 		)
@@ -18026,9 +18026,9 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberNullable(ctx, request)
 			},
 		)
@@ -18123,9 +18123,9 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberNullableArray(ctx, request)
 			},
 		)
@@ -18220,9 +18220,9 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredNumberNullableArrayArray(ctx, request)
 			},
 		)
@@ -18317,9 +18317,9 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredString(ctx, request)
 			},
 		)
@@ -18414,9 +18414,9 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringArray(ctx, request)
 			},
 		)
@@ -18511,9 +18511,9 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringArrayArray(ctx, request)
 			},
 		)
@@ -18608,9 +18608,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringBinary(ctx, request)
 			},
 		)
@@ -18705,9 +18705,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringBinaryArray(ctx, request)
 			},
 		)
@@ -18802,9 +18802,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringBinaryArrayArray(ctx, request)
 			},
 		)
@@ -18899,9 +18899,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringBinaryNullable(ctx, request)
 			},
 		)
@@ -18996,9 +18996,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringBinaryNullableArray(ctx, request)
 			},
 		)
@@ -19093,9 +19093,9 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringBinaryNullableArrayArray(ctx, request)
 			},
 		)
@@ -19190,9 +19190,9 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringByte(ctx, request)
 			},
 		)
@@ -19287,9 +19287,9 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringByteArray(ctx, request)
 			},
 		)
@@ -19384,9 +19384,9 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringByteArrayArray(ctx, request)
 			},
 		)
@@ -19481,9 +19481,9 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringByteNullable(ctx, request)
 			},
 		)
@@ -19578,9 +19578,9 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringByteNullableArray(ctx, request)
 			},
 		)
@@ -19675,9 +19675,9 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringByteNullableArrayArray(ctx, request)
 			},
 		)
@@ -19772,9 +19772,9 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDate(ctx, request)
 			},
 		)
@@ -19869,9 +19869,9 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDateArray(ctx, request)
 			},
 		)
@@ -19966,9 +19966,9 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDateArrayArray(ctx, request)
 			},
 		)
@@ -20063,9 +20063,9 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDateNullable(ctx, request)
 			},
 		)
@@ -20160,9 +20160,9 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDateNullableArray(ctx, request)
 			},
 		)
@@ -20257,9 +20257,9 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDateNullableArrayArray(ctx, request)
 			},
 		)
@@ -20354,9 +20354,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDateTime(ctx, request)
 			},
 		)
@@ -20451,9 +20451,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDateTimeArray(ctx, request)
 			},
 		)
@@ -20548,9 +20548,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDateTimeArrayArray(ctx, request)
 			},
 		)
@@ -20645,9 +20645,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDateTimeNullable(ctx, request)
 			},
 		)
@@ -20742,9 +20742,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDateTimeNullableArray(ctx, request)
 			},
 		)
@@ -20839,9 +20839,9 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDateTimeNullableArrayArray(ctx, request)
 			},
 		)
@@ -20936,9 +20936,9 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDuration(ctx, request)
 			},
 		)
@@ -21033,9 +21033,9 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDurationArray(ctx, request)
 			},
 		)
@@ -21130,9 +21130,9 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDurationArrayArray(ctx, request)
 			},
 		)
@@ -21227,9 +21227,9 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDurationNullable(ctx, request)
 			},
 		)
@@ -21324,9 +21324,9 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDurationNullableArray(ctx, request)
 			},
 		)
@@ -21421,9 +21421,9 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringDurationNullableArrayArray(ctx, request)
 			},
 		)
@@ -21518,9 +21518,9 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringEmail(ctx, request)
 			},
 		)
@@ -21615,9 +21615,9 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringEmailArray(ctx, request)
 			},
 		)
@@ -21712,9 +21712,9 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringEmailArrayArray(ctx, request)
 			},
 		)
@@ -21809,9 +21809,9 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringEmailNullable(ctx, request)
 			},
 		)
@@ -21906,9 +21906,9 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringEmailNullableArray(ctx, request)
 			},
 		)
@@ -22003,9 +22003,9 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringEmailNullableArrayArray(ctx, request)
 			},
 		)
@@ -22100,9 +22100,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringHostname(ctx, request)
 			},
 		)
@@ -22197,9 +22197,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringHostnameArray(ctx, request)
 			},
 		)
@@ -22294,9 +22294,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringHostnameArrayArray(ctx, request)
 			},
 		)
@@ -22391,9 +22391,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringHostnameNullable(ctx, request)
 			},
 		)
@@ -22488,9 +22488,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringHostnameNullableArray(ctx, request)
 			},
 		)
@@ -22585,9 +22585,9 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringHostnameNullableArrayArray(ctx, request)
 			},
 		)
@@ -22682,9 +22682,9 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIP(ctx, request)
 			},
 		)
@@ -22779,9 +22779,9 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIPArray(ctx, request)
 			},
 		)
@@ -22876,9 +22876,9 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIPArrayArray(ctx, request)
 			},
 		)
@@ -22973,9 +22973,9 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIPNullable(ctx, request)
 			},
 		)
@@ -23070,9 +23070,9 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIPNullableArray(ctx, request)
 			},
 		)
@@ -23167,9 +23167,9 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIPNullableArrayArray(ctx, request)
 			},
 		)
@@ -23264,9 +23264,9 @@ func (s *Server) handleTestRequestRequiredStringInt32Request(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringInt32(ctx, request)
 			},
 		)
@@ -23361,9 +23361,9 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringInt32Array(ctx, request)
 			},
 		)
@@ -23458,9 +23458,9 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringInt32ArrayArray(ctx, request)
 			},
 		)
@@ -23555,9 +23555,9 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringInt32Nullable(ctx, request)
 			},
 		)
@@ -23652,9 +23652,9 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringInt32NullableArray(ctx, request)
 			},
 		)
@@ -23749,9 +23749,9 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayArrayRequest(a
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringInt32NullableArrayArray(ctx, request)
 			},
 		)
@@ -23846,9 +23846,9 @@ func (s *Server) handleTestRequestRequiredStringInt64Request(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringInt64(ctx, request)
 			},
 		)
@@ -23943,9 +23943,9 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringInt64Array(ctx, request)
 			},
 		)
@@ -24040,9 +24040,9 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringInt64ArrayArray(ctx, request)
 			},
 		)
@@ -24137,9 +24137,9 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringInt64Nullable(ctx, request)
 			},
 		)
@@ -24234,9 +24234,9 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringInt64NullableArray(ctx, request)
 			},
 		)
@@ -24331,9 +24331,9 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayArrayRequest(a
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringInt64NullableArrayArray(ctx, request)
 			},
 		)
@@ -24428,9 +24428,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIpv4(ctx, request)
 			},
 		)
@@ -24525,9 +24525,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIpv4Array(ctx, request)
 			},
 		)
@@ -24622,9 +24622,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIpv4ArrayArray(ctx, request)
 			},
 		)
@@ -24719,9 +24719,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIpv4Nullable(ctx, request)
 			},
 		)
@@ -24816,9 +24816,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIpv4NullableArray(ctx, request)
 			},
 		)
@@ -24913,9 +24913,9 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIpv4NullableArrayArray(ctx, request)
 			},
 		)
@@ -25010,9 +25010,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIpv6(ctx, request)
 			},
 		)
@@ -25107,9 +25107,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIpv6Array(ctx, request)
 			},
 		)
@@ -25204,9 +25204,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIpv6ArrayArray(ctx, request)
 			},
 		)
@@ -25301,9 +25301,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIpv6Nullable(ctx, request)
 			},
 		)
@@ -25398,9 +25398,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIpv6NullableArray(ctx, request)
 			},
 		)
@@ -25495,9 +25495,9 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringIpv6NullableArrayArray(ctx, request)
 			},
 		)
@@ -25592,9 +25592,9 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringNullable(ctx, request)
 			},
 		)
@@ -25689,9 +25689,9 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringNullableArray(ctx, request)
 			},
 		)
@@ -25786,9 +25786,9 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringNullableArrayArray(ctx, request)
 			},
 		)
@@ -25883,9 +25883,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringPassword(ctx, request)
 			},
 		)
@@ -25980,9 +25980,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringPasswordArray(ctx, request)
 			},
 		)
@@ -26077,9 +26077,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringPasswordArrayArray(ctx, request)
 			},
 		)
@@ -26174,9 +26174,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringPasswordNullable(ctx, request)
 			},
 		)
@@ -26271,9 +26271,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringPasswordNullableArray(ctx, request)
 			},
 		)
@@ -26368,9 +26368,9 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringPasswordNullableArrayArray(ctx, request)
 			},
 		)
@@ -26465,9 +26465,9 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringTime(ctx, request)
 			},
 		)
@@ -26562,9 +26562,9 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringTimeArray(ctx, request)
 			},
 		)
@@ -26659,9 +26659,9 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringTimeArrayArray(ctx, request)
 			},
 		)
@@ -26756,9 +26756,9 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringTimeNullable(ctx, request)
 			},
 		)
@@ -26853,9 +26853,9 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringTimeNullableArray(ctx, request)
 			},
 		)
@@ -26950,9 +26950,9 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringTimeNullableArrayArray(ctx, request)
 			},
 		)
@@ -27047,9 +27047,9 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringURI(ctx, request)
 			},
 		)
@@ -27144,9 +27144,9 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringURIArray(ctx, request)
 			},
 		)
@@ -27241,9 +27241,9 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringURIArrayArray(ctx, request)
 			},
 		)
@@ -27338,9 +27338,9 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringURINullable(ctx, request)
 			},
 		)
@@ -27435,9 +27435,9 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringURINullableArray(ctx, request)
 			},
 		)
@@ -27532,9 +27532,9 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringURINullableArrayArray(ctx, request)
 			},
 		)
@@ -27629,9 +27629,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUUID(ctx, request)
 			},
 		)
@@ -27726,9 +27726,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUUIDArray(ctx, request)
 			},
 		)
@@ -27823,9 +27823,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUUIDArrayArray(ctx, request)
 			},
 		)
@@ -27920,9 +27920,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUUIDNullable(ctx, request)
 			},
 		)
@@ -28017,9 +28017,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUUIDNullableArray(ctx, request)
 			},
 		)
@@ -28114,9 +28114,9 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUUIDNullableArrayArray(ctx, request)
 			},
 		)
@@ -28211,9 +28211,9 @@ func (s *Server) handleTestRequestRequiredStringUnixRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnix(ctx, request)
 			},
 		)
@@ -28308,9 +28308,9 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixArray(ctx, request)
 			},
 		)
@@ -28405,9 +28405,9 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixArrayArray(ctx, request)
 			},
 		)
@@ -28502,9 +28502,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixMicro(ctx, request)
 			},
 		)
@@ -28599,9 +28599,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixMicroArray(ctx, request)
 			},
 		)
@@ -28696,9 +28696,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayArrayRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixMicroArrayArray(ctx, request)
 			},
 		)
@@ -28793,9 +28793,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixMicroNullable(ctx, request)
 			},
 		)
@@ -28890,9 +28890,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayRequest(ar
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixMicroNullableArray(ctx, request)
 			},
 		)
@@ -28987,9 +28987,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixMicroNullableArrayArray(ctx, request)
 			},
 		)
@@ -29084,9 +29084,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixMilli(ctx, request)
 			},
 		)
@@ -29181,9 +29181,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixMilliArray(ctx, request)
 			},
 		)
@@ -29278,9 +29278,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayArrayRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixMilliArrayArray(ctx, request)
 			},
 		)
@@ -29375,9 +29375,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixMilliNullable(ctx, request)
 			},
 		)
@@ -29472,9 +29472,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayRequest(ar
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixMilliNullableArray(ctx, request)
 			},
 		)
@@ -29569,9 +29569,9 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixMilliNullableArrayArray(ctx, request)
 			},
 		)
@@ -29666,9 +29666,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixNano(ctx, request)
 			},
 		)
@@ -29763,9 +29763,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixNanoArray(ctx, request)
 			},
 		)
@@ -29860,9 +29860,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixNanoArrayArray(ctx, request)
 			},
 		)
@@ -29957,9 +29957,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixNanoNullable(ctx, request)
 			},
 		)
@@ -30054,9 +30054,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayRequest(arg
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixNanoNullableArray(ctx, request)
 			},
 		)
@@ -30151,9 +30151,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixNanoNullableArrayArray(ctx, request)
 			},
 		)
@@ -30248,9 +30248,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixNullable(ctx, request)
 			},
 		)
@@ -30345,9 +30345,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixNullableArray(ctx, request)
 			},
 		)
@@ -30442,9 +30442,9 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayArrayRequest(ar
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixNullableArrayArray(ctx, request)
 			},
 		)
@@ -30539,9 +30539,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixSeconds(ctx, request)
 			},
 		)
@@ -30636,9 +30636,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixSecondsArray(ctx, request)
 			},
 		)
@@ -30733,9 +30733,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayArrayRequest(arg
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixSecondsArrayArray(ctx, request)
 			},
 		)
@@ -30830,9 +30830,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixSecondsNullable(ctx, request)
 			},
 		)
@@ -30927,9 +30927,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixSecondsNullableArray(ctx, request)
 			},
 		)
@@ -31024,9 +31024,9 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx, request)
 			},
 		)
@@ -31121,9 +31121,9 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestString(ctx, request)
 			},
 		)
@@ -31218,9 +31218,9 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringArray(ctx, request)
 			},
 		)
@@ -31315,9 +31315,9 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringArrayArray(ctx, request)
 			},
 		)
@@ -31412,9 +31412,9 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringBinary(ctx, request)
 			},
 		)
@@ -31509,9 +31509,9 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringBinaryArray(ctx, request)
 			},
 		)
@@ -31606,9 +31606,9 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringBinaryArrayArray(ctx, request)
 			},
 		)
@@ -31703,9 +31703,9 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringBinaryNullable(ctx, request)
 			},
 		)
@@ -31800,9 +31800,9 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringBinaryNullableArray(ctx, request)
 			},
 		)
@@ -31897,9 +31897,9 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringBinaryNullableArrayArray(ctx, request)
 			},
 		)
@@ -31994,9 +31994,9 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringByte(ctx, request)
 			},
 		)
@@ -32091,9 +32091,9 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringByteArray(ctx, request)
 			},
 		)
@@ -32188,9 +32188,9 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringByteArrayArray(ctx, request)
 			},
 		)
@@ -32285,9 +32285,9 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringByteNullable(ctx, request)
 			},
 		)
@@ -32382,9 +32382,9 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringByteNullableArray(ctx, request)
 			},
 		)
@@ -32479,9 +32479,9 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringByteNullableArrayArray(ctx, request)
 			},
 		)
@@ -32576,9 +32576,9 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDate(ctx, request)
 			},
 		)
@@ -32673,9 +32673,9 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDateArray(ctx, request)
 			},
 		)
@@ -32770,9 +32770,9 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDateArrayArray(ctx, request)
 			},
 		)
@@ -32867,9 +32867,9 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDateNullable(ctx, request)
 			},
 		)
@@ -32964,9 +32964,9 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDateNullableArray(ctx, request)
 			},
 		)
@@ -33061,9 +33061,9 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDateNullableArrayArray(ctx, request)
 			},
 		)
@@ -33158,9 +33158,9 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDateTime(ctx, request)
 			},
 		)
@@ -33255,9 +33255,9 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDateTimeArray(ctx, request)
 			},
 		)
@@ -33352,9 +33352,9 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDateTimeArrayArray(ctx, request)
 			},
 		)
@@ -33449,9 +33449,9 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDateTimeNullable(ctx, request)
 			},
 		)
@@ -33546,9 +33546,9 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDateTimeNullableArray(ctx, request)
 			},
 		)
@@ -33643,9 +33643,9 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDateTimeNullableArrayArray(ctx, request)
 			},
 		)
@@ -33740,9 +33740,9 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDuration(ctx, request)
 			},
 		)
@@ -33837,9 +33837,9 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDurationArray(ctx, request)
 			},
 		)
@@ -33934,9 +33934,9 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDurationArrayArray(ctx, request)
 			},
 		)
@@ -34031,9 +34031,9 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDurationNullable(ctx, request)
 			},
 		)
@@ -34128,9 +34128,9 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDurationNullableArray(ctx, request)
 			},
 		)
@@ -34225,9 +34225,9 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringDurationNullableArrayArray(ctx, request)
 			},
 		)
@@ -34322,9 +34322,9 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringEmail(ctx, request)
 			},
 		)
@@ -34419,9 +34419,9 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringEmailArray(ctx, request)
 			},
 		)
@@ -34516,9 +34516,9 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringEmailArrayArray(ctx, request)
 			},
 		)
@@ -34613,9 +34613,9 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringEmailNullable(ctx, request)
 			},
 		)
@@ -34710,9 +34710,9 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringEmailNullableArray(ctx, request)
 			},
 		)
@@ -34807,9 +34807,9 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringEmailNullableArrayArray(ctx, request)
 			},
 		)
@@ -34904,9 +34904,9 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringHostname(ctx, request)
 			},
 		)
@@ -35001,9 +35001,9 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringHostnameArray(ctx, request)
 			},
 		)
@@ -35098,9 +35098,9 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringHostnameArrayArray(ctx, request)
 			},
 		)
@@ -35195,9 +35195,9 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringHostnameNullable(ctx, request)
 			},
 		)
@@ -35292,9 +35292,9 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringHostnameNullableArray(ctx, request)
 			},
 		)
@@ -35389,9 +35389,9 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringHostnameNullableArrayArray(ctx, request)
 			},
 		)
@@ -35486,9 +35486,9 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIP(ctx, request)
 			},
 		)
@@ -35583,9 +35583,9 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIPArray(ctx, request)
 			},
 		)
@@ -35680,9 +35680,9 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIPArrayArray(ctx, request)
 			},
 		)
@@ -35777,9 +35777,9 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIPNullable(ctx, request)
 			},
 		)
@@ -35874,9 +35874,9 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIPNullableArray(ctx, request)
 			},
 		)
@@ -35971,9 +35971,9 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIPNullableArrayArray(ctx, request)
 			},
 		)
@@ -36068,9 +36068,9 @@ func (s *Server) handleTestRequestStringInt32Request(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringInt32(ctx, request)
 			},
 		)
@@ -36165,9 +36165,9 @@ func (s *Server) handleTestRequestStringInt32ArrayRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringInt32Array(ctx, request)
 			},
 		)
@@ -36262,9 +36262,9 @@ func (s *Server) handleTestRequestStringInt32ArrayArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringInt32ArrayArray(ctx, request)
 			},
 		)
@@ -36359,9 +36359,9 @@ func (s *Server) handleTestRequestStringInt32NullableRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringInt32Nullable(ctx, request)
 			},
 		)
@@ -36456,9 +36456,9 @@ func (s *Server) handleTestRequestStringInt32NullableArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringInt32NullableArray(ctx, request)
 			},
 		)
@@ -36553,9 +36553,9 @@ func (s *Server) handleTestRequestStringInt32NullableArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringInt32NullableArrayArray(ctx, request)
 			},
 		)
@@ -36650,9 +36650,9 @@ func (s *Server) handleTestRequestStringInt64Request(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringInt64(ctx, request)
 			},
 		)
@@ -36747,9 +36747,9 @@ func (s *Server) handleTestRequestStringInt64ArrayRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringInt64Array(ctx, request)
 			},
 		)
@@ -36844,9 +36844,9 @@ func (s *Server) handleTestRequestStringInt64ArrayArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringInt64ArrayArray(ctx, request)
 			},
 		)
@@ -36941,9 +36941,9 @@ func (s *Server) handleTestRequestStringInt64NullableRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringInt64Nullable(ctx, request)
 			},
 		)
@@ -37038,9 +37038,9 @@ func (s *Server) handleTestRequestStringInt64NullableArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringInt64NullableArray(ctx, request)
 			},
 		)
@@ -37135,9 +37135,9 @@ func (s *Server) handleTestRequestStringInt64NullableArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringInt64NullableArrayArray(ctx, request)
 			},
 		)
@@ -37232,9 +37232,9 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIpv4(ctx, request)
 			},
 		)
@@ -37329,9 +37329,9 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIpv4Array(ctx, request)
 			},
 		)
@@ -37426,9 +37426,9 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIpv4ArrayArray(ctx, request)
 			},
 		)
@@ -37523,9 +37523,9 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIpv4Nullable(ctx, request)
 			},
 		)
@@ -37620,9 +37620,9 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIpv4NullableArray(ctx, request)
 			},
 		)
@@ -37717,9 +37717,9 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIpv4NullableArrayArray(ctx, request)
 			},
 		)
@@ -37814,9 +37814,9 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIpv6(ctx, request)
 			},
 		)
@@ -37911,9 +37911,9 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIpv6Array(ctx, request)
 			},
 		)
@@ -38008,9 +38008,9 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIpv6ArrayArray(ctx, request)
 			},
 		)
@@ -38105,9 +38105,9 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIpv6Nullable(ctx, request)
 			},
 		)
@@ -38202,9 +38202,9 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIpv6NullableArray(ctx, request)
 			},
 		)
@@ -38299,9 +38299,9 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringIpv6NullableArrayArray(ctx, request)
 			},
 		)
@@ -38396,9 +38396,9 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringNullable(ctx, request)
 			},
 		)
@@ -38493,9 +38493,9 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringNullableArray(ctx, request)
 			},
 		)
@@ -38590,9 +38590,9 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringNullableArrayArray(ctx, request)
 			},
 		)
@@ -38687,9 +38687,9 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringPassword(ctx, request)
 			},
 		)
@@ -38784,9 +38784,9 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringPasswordArray(ctx, request)
 			},
 		)
@@ -38881,9 +38881,9 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringPasswordArrayArray(ctx, request)
 			},
 		)
@@ -38978,9 +38978,9 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringPasswordNullable(ctx, request)
 			},
 		)
@@ -39075,9 +39075,9 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringPasswordNullableArray(ctx, request)
 			},
 		)
@@ -39172,9 +39172,9 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringPasswordNullableArrayArray(ctx, request)
 			},
 		)
@@ -39269,9 +39269,9 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringTime(ctx, request)
 			},
 		)
@@ -39366,9 +39366,9 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringTimeArray(ctx, request)
 			},
 		)
@@ -39463,9 +39463,9 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringTimeArrayArray(ctx, request)
 			},
 		)
@@ -39560,9 +39560,9 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringTimeNullable(ctx, request)
 			},
 		)
@@ -39657,9 +39657,9 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringTimeNullableArray(ctx, request)
 			},
 		)
@@ -39754,9 +39754,9 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringTimeNullableArrayArray(ctx, request)
 			},
 		)
@@ -39851,9 +39851,9 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringURI(ctx, request)
 			},
 		)
@@ -39948,9 +39948,9 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringURIArray(ctx, request)
 			},
 		)
@@ -40045,9 +40045,9 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringURIArrayArray(ctx, request)
 			},
 		)
@@ -40142,9 +40142,9 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringURINullable(ctx, request)
 			},
 		)
@@ -40239,9 +40239,9 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringURINullableArray(ctx, request)
 			},
 		)
@@ -40336,9 +40336,9 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringURINullableArrayArray(ctx, request)
 			},
 		)
@@ -40433,9 +40433,9 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUUID(ctx, request)
 			},
 		)
@@ -40530,9 +40530,9 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUUIDArray(ctx, request)
 			},
 		)
@@ -40627,9 +40627,9 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUUIDArrayArray(ctx, request)
 			},
 		)
@@ -40724,9 +40724,9 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUUIDNullable(ctx, request)
 			},
 		)
@@ -40821,9 +40821,9 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUUIDNullableArray(ctx, request)
 			},
 		)
@@ -40918,9 +40918,9 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUUIDNullableArrayArray(ctx, request)
 			},
 		)
@@ -41015,9 +41015,9 @@ func (s *Server) handleTestRequestStringUnixRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnix(ctx, request)
 			},
 		)
@@ -41112,9 +41112,9 @@ func (s *Server) handleTestRequestStringUnixArrayRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixArray(ctx, request)
 			},
 		)
@@ -41209,9 +41209,9 @@ func (s *Server) handleTestRequestStringUnixArrayArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixArrayArray(ctx, request)
 			},
 		)
@@ -41306,9 +41306,9 @@ func (s *Server) handleTestRequestStringUnixMicroRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixMicro(ctx, request)
 			},
 		)
@@ -41403,9 +41403,9 @@ func (s *Server) handleTestRequestStringUnixMicroArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixMicroArray(ctx, request)
 			},
 		)
@@ -41500,9 +41500,9 @@ func (s *Server) handleTestRequestStringUnixMicroArrayArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixMicroArrayArray(ctx, request)
 			},
 		)
@@ -41597,9 +41597,9 @@ func (s *Server) handleTestRequestStringUnixMicroNullableRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixMicroNullable(ctx, request)
 			},
 		)
@@ -41694,9 +41694,9 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixMicroNullableArray(ctx, request)
 			},
 		)
@@ -41791,9 +41791,9 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayArrayRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixMicroNullableArrayArray(ctx, request)
 			},
 		)
@@ -41888,9 +41888,9 @@ func (s *Server) handleTestRequestStringUnixMilliRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixMilli(ctx, request)
 			},
 		)
@@ -41985,9 +41985,9 @@ func (s *Server) handleTestRequestStringUnixMilliArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixMilliArray(ctx, request)
 			},
 		)
@@ -42082,9 +42082,9 @@ func (s *Server) handleTestRequestStringUnixMilliArrayArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixMilliArrayArray(ctx, request)
 			},
 		)
@@ -42179,9 +42179,9 @@ func (s *Server) handleTestRequestStringUnixMilliNullableRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixMilliNullable(ctx, request)
 			},
 		)
@@ -42276,9 +42276,9 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixMilliNullableArray(ctx, request)
 			},
 		)
@@ -42373,9 +42373,9 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayArrayRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixMilliNullableArrayArray(ctx, request)
 			},
 		)
@@ -42470,9 +42470,9 @@ func (s *Server) handleTestRequestStringUnixNanoRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixNano(ctx, request)
 			},
 		)
@@ -42567,9 +42567,9 @@ func (s *Server) handleTestRequestStringUnixNanoArrayRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixNanoArray(ctx, request)
 			},
 		)
@@ -42664,9 +42664,9 @@ func (s *Server) handleTestRequestStringUnixNanoArrayArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixNanoArrayArray(ctx, request)
 			},
 		)
@@ -42761,9 +42761,9 @@ func (s *Server) handleTestRequestStringUnixNanoNullableRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixNanoNullable(ctx, request)
 			},
 		)
@@ -42858,9 +42858,9 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixNanoNullableArray(ctx, request)
 			},
 		)
@@ -42955,9 +42955,9 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixNanoNullableArrayArray(ctx, request)
 			},
 		)
@@ -43052,9 +43052,9 @@ func (s *Server) handleTestRequestStringUnixNullableRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixNullable(ctx, request)
 			},
 		)
@@ -43149,9 +43149,9 @@ func (s *Server) handleTestRequestStringUnixNullableArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixNullableArray(ctx, request)
 			},
 		)
@@ -43246,9 +43246,9 @@ func (s *Server) handleTestRequestStringUnixNullableArrayArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixNullableArrayArray(ctx, request)
 			},
 		)
@@ -43343,9 +43343,9 @@ func (s *Server) handleTestRequestStringUnixSecondsRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixSeconds(ctx, request)
 			},
 		)
@@ -43440,9 +43440,9 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixSecondsArray(ctx, request)
 			},
 		)
@@ -43537,9 +43537,9 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixSecondsArrayArray(ctx, request)
 			},
 		)
@@ -43634,9 +43634,9 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixSecondsNullable(ctx, request)
 			},
 		)
@@ -43731,9 +43731,9 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixSecondsNullableArray(ctx, request)
 			},
 		)
@@ -43828,9 +43828,9 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayArrayRequest(arg
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestRequestStringUnixSecondsNullableArrayArray(ctx, request)
 			},
 		)
@@ -43925,9 +43925,9 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseAny(ctx, request)
 			},
 		)
@@ -44022,9 +44022,9 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.Respons
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseBoolean(ctx, request)
 			},
 		)
@@ -44119,9 +44119,9 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseBooleanArray(ctx, request)
 			},
 		)
@@ -44216,9 +44216,9 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseBooleanArrayArray(ctx, request)
 			},
 		)
@@ -44313,9 +44313,9 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseBooleanNullable(ctx, request)
 			},
 		)
@@ -44410,9 +44410,9 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseBooleanNullableArray(ctx, request)
 			},
 		)
@@ -44507,9 +44507,9 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseBooleanNullableArrayArray(ctx, request)
 			},
 		)
@@ -44604,9 +44604,9 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseEmptyStruct(ctx, request)
 			},
 		)
@@ -44701,9 +44701,9 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseFormatTest(ctx, request)
 			},
 		)
@@ -44798,9 +44798,9 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.Respons
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseInteger(ctx, request)
 			},
 		)
@@ -44895,9 +44895,9 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerArray(ctx, request)
 			},
 		)
@@ -44992,9 +44992,9 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerArrayArray(ctx, request)
 			},
 		)
@@ -45089,9 +45089,9 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerInt32(ctx, request)
 			},
 		)
@@ -45186,9 +45186,9 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerInt32Array(ctx, request)
 			},
 		)
@@ -45283,9 +45283,9 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerInt32ArrayArray(ctx, request)
 			},
 		)
@@ -45380,9 +45380,9 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerInt32Nullable(ctx, request)
 			},
 		)
@@ -45477,9 +45477,9 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerInt32NullableArray(ctx, request)
 			},
 		)
@@ -45574,9 +45574,9 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerInt32NullableArrayArray(ctx, request)
 			},
 		)
@@ -45671,9 +45671,9 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerInt64(ctx, request)
 			},
 		)
@@ -45768,9 +45768,9 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerInt64Array(ctx, request)
 			},
 		)
@@ -45865,9 +45865,9 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerInt64ArrayArray(ctx, request)
 			},
 		)
@@ -45962,9 +45962,9 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerInt64Nullable(ctx, request)
 			},
 		)
@@ -46059,9 +46059,9 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerInt64NullableArray(ctx, request)
 			},
 		)
@@ -46156,9 +46156,9 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerInt64NullableArrayArray(ctx, request)
 			},
 		)
@@ -46253,9 +46253,9 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerNullable(ctx, request)
 			},
 		)
@@ -46350,9 +46350,9 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerNullableArray(ctx, request)
 			},
 		)
@@ -46447,9 +46447,9 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerNullableArrayArray(ctx, request)
 			},
 		)
@@ -46544,9 +46544,9 @@ func (s *Server) handleTestResponseIntegerUnixRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnix(ctx, request)
 			},
 		)
@@ -46641,9 +46641,9 @@ func (s *Server) handleTestResponseIntegerUnixArrayRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixArray(ctx, request)
 			},
 		)
@@ -46738,9 +46738,9 @@ func (s *Server) handleTestResponseIntegerUnixArrayArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixArrayArray(ctx, request)
 			},
 		)
@@ -46835,9 +46835,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixMicro(ctx, request)
 			},
 		)
@@ -46932,9 +46932,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixMicroArray(ctx, request)
 			},
 		)
@@ -47029,9 +47029,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixMicroArrayArray(ctx, request)
 			},
 		)
@@ -47126,9 +47126,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixMicroNullable(ctx, request)
 			},
 		)
@@ -47223,9 +47223,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixMicroNullableArray(ctx, request)
 			},
 		)
@@ -47320,9 +47320,9 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayArrayRequest(arg
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixMicroNullableArrayArray(ctx, request)
 			},
 		)
@@ -47417,9 +47417,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixMilli(ctx, request)
 			},
 		)
@@ -47514,9 +47514,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixMilliArray(ctx, request)
 			},
 		)
@@ -47611,9 +47611,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixMilliArrayArray(ctx, request)
 			},
 		)
@@ -47708,9 +47708,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixMilliNullable(ctx, request)
 			},
 		)
@@ -47805,9 +47805,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixMilliNullableArray(ctx, request)
 			},
 		)
@@ -47902,9 +47902,9 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayArrayRequest(arg
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixMilliNullableArrayArray(ctx, request)
 			},
 		)
@@ -47999,9 +47999,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixNano(ctx, request)
 			},
 		)
@@ -48096,9 +48096,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixNanoArray(ctx, request)
 			},
 		)
@@ -48193,9 +48193,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayArrayRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixNanoArrayArray(ctx, request)
 			},
 		)
@@ -48290,9 +48290,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixNanoNullable(ctx, request)
 			},
 		)
@@ -48387,9 +48387,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixNanoNullableArray(ctx, request)
 			},
 		)
@@ -48484,9 +48484,9 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayArrayRequest(args
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixNanoNullableArrayArray(ctx, request)
 			},
 		)
@@ -48581,9 +48581,9 @@ func (s *Server) handleTestResponseIntegerUnixNullableRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixNullable(ctx, request)
 			},
 		)
@@ -48678,9 +48678,9 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixNullableArray(ctx, request)
 			},
 		)
@@ -48775,9 +48775,9 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixNullableArrayArray(ctx, request)
 			},
 		)
@@ -48872,9 +48872,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixSeconds(ctx, request)
 			},
 		)
@@ -48969,9 +48969,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixSecondsArray(ctx, request)
 			},
 		)
@@ -49066,9 +49066,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixSecondsArrayArray(ctx, request)
 			},
 		)
@@ -49163,9 +49163,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixSecondsNullable(ctx, request)
 			},
 		)
@@ -49260,9 +49260,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayRequest(args [
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixSecondsNullableArray(ctx, request)
 			},
 		)
@@ -49357,9 +49357,9 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest(a
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseIntegerUnixSecondsNullableArrayArray(ctx, request)
 			},
 		)
@@ -49454,9 +49454,9 @@ func (s *Server) handleTestResponseNullRequest(args [0]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNull(ctx, request)
 			},
 		)
@@ -49551,9 +49551,9 @@ func (s *Server) handleTestResponseNullArrayRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNullArray(ctx, request)
 			},
 		)
@@ -49648,9 +49648,9 @@ func (s *Server) handleTestResponseNullArrayArrayRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNullArrayArray(ctx, request)
 			},
 		)
@@ -49745,9 +49745,9 @@ func (s *Server) handleTestResponseNullNullableRequest(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNullNullable(ctx, request)
 			},
 		)
@@ -49842,9 +49842,9 @@ func (s *Server) handleTestResponseNullNullableArrayRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNullNullableArray(ctx, request)
 			},
 		)
@@ -49939,9 +49939,9 @@ func (s *Server) handleTestResponseNullNullableArrayArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNullNullableArrayArray(ctx, request)
 			},
 		)
@@ -50036,9 +50036,9 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumber(ctx, request)
 			},
 		)
@@ -50133,9 +50133,9 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberArray(ctx, request)
 			},
 		)
@@ -50230,9 +50230,9 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberArrayArray(ctx, request)
 			},
 		)
@@ -50327,9 +50327,9 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberDouble(ctx, request)
 			},
 		)
@@ -50424,9 +50424,9 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberDoubleArray(ctx, request)
 			},
 		)
@@ -50521,9 +50521,9 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberDoubleArrayArray(ctx, request)
 			},
 		)
@@ -50618,9 +50618,9 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberDoubleNullable(ctx, request)
 			},
 		)
@@ -50715,9 +50715,9 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberDoubleNullableArray(ctx, request)
 			},
 		)
@@ -50812,9 +50812,9 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberDoubleNullableArrayArray(ctx, request)
 			},
 		)
@@ -50909,9 +50909,9 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberFloat(ctx, request)
 			},
 		)
@@ -51006,9 +51006,9 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberFloatArray(ctx, request)
 			},
 		)
@@ -51103,9 +51103,9 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberFloatArrayArray(ctx, request)
 			},
 		)
@@ -51200,9 +51200,9 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberFloatNullable(ctx, request)
 			},
 		)
@@ -51297,9 +51297,9 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberFloatNullableArray(ctx, request)
 			},
 		)
@@ -51394,9 +51394,9 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberFloatNullableArrayArray(ctx, request)
 			},
 		)
@@ -51491,9 +51491,9 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberInt32(ctx, request)
 			},
 		)
@@ -51588,9 +51588,9 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberInt32Array(ctx, request)
 			},
 		)
@@ -51685,9 +51685,9 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberInt32ArrayArray(ctx, request)
 			},
 		)
@@ -51782,9 +51782,9 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberInt32Nullable(ctx, request)
 			},
 		)
@@ -51879,9 +51879,9 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberInt32NullableArray(ctx, request)
 			},
 		)
@@ -51976,9 +51976,9 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberInt32NullableArrayArray(ctx, request)
 			},
 		)
@@ -52073,9 +52073,9 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberInt64(ctx, request)
 			},
 		)
@@ -52170,9 +52170,9 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberInt64Array(ctx, request)
 			},
 		)
@@ -52267,9 +52267,9 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberInt64ArrayArray(ctx, request)
 			},
 		)
@@ -52364,9 +52364,9 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberInt64Nullable(ctx, request)
 			},
 		)
@@ -52461,9 +52461,9 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberInt64NullableArray(ctx, request)
 			},
 		)
@@ -52558,9 +52558,9 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberInt64NullableArrayArray(ctx, request)
 			},
 		)
@@ -52655,9 +52655,9 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberNullable(ctx, request)
 			},
 		)
@@ -52752,9 +52752,9 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberNullableArray(ctx, request)
 			},
 		)
@@ -52849,9 +52849,9 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseNumberNullableArrayArray(ctx, request)
 			},
 		)
@@ -52946,9 +52946,9 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseString(ctx, request)
 			},
 		)
@@ -53043,9 +53043,9 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringArray(ctx, request)
 			},
 		)
@@ -53140,9 +53140,9 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringArrayArray(ctx, request)
 			},
 		)
@@ -53237,9 +53237,9 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringBinary(ctx, request)
 			},
 		)
@@ -53334,9 +53334,9 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringBinaryArray(ctx, request)
 			},
 		)
@@ -53431,9 +53431,9 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringBinaryArrayArray(ctx, request)
 			},
 		)
@@ -53528,9 +53528,9 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringBinaryNullable(ctx, request)
 			},
 		)
@@ -53625,9 +53625,9 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringBinaryNullableArray(ctx, request)
 			},
 		)
@@ -53722,9 +53722,9 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringBinaryNullableArrayArray(ctx, request)
 			},
 		)
@@ -53819,9 +53819,9 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringByte(ctx, request)
 			},
 		)
@@ -53916,9 +53916,9 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringByteArray(ctx, request)
 			},
 		)
@@ -54013,9 +54013,9 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringByteArrayArray(ctx, request)
 			},
 		)
@@ -54110,9 +54110,9 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringByteNullable(ctx, request)
 			},
 		)
@@ -54207,9 +54207,9 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringByteNullableArray(ctx, request)
 			},
 		)
@@ -54304,9 +54304,9 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringByteNullableArrayArray(ctx, request)
 			},
 		)
@@ -54401,9 +54401,9 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDate(ctx, request)
 			},
 		)
@@ -54498,9 +54498,9 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDateArray(ctx, request)
 			},
 		)
@@ -54595,9 +54595,9 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDateArrayArray(ctx, request)
 			},
 		)
@@ -54692,9 +54692,9 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDateNullable(ctx, request)
 			},
 		)
@@ -54789,9 +54789,9 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDateNullableArray(ctx, request)
 			},
 		)
@@ -54886,9 +54886,9 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDateNullableArrayArray(ctx, request)
 			},
 		)
@@ -54983,9 +54983,9 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDateTime(ctx, request)
 			},
 		)
@@ -55080,9 +55080,9 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDateTimeArray(ctx, request)
 			},
 		)
@@ -55177,9 +55177,9 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDateTimeArrayArray(ctx, request)
 			},
 		)
@@ -55274,9 +55274,9 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDateTimeNullable(ctx, request)
 			},
 		)
@@ -55371,9 +55371,9 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDateTimeNullableArray(ctx, request)
 			},
 		)
@@ -55468,9 +55468,9 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDateTimeNullableArrayArray(ctx, request)
 			},
 		)
@@ -55565,9 +55565,9 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDuration(ctx, request)
 			},
 		)
@@ -55662,9 +55662,9 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDurationArray(ctx, request)
 			},
 		)
@@ -55759,9 +55759,9 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDurationArrayArray(ctx, request)
 			},
 		)
@@ -55856,9 +55856,9 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDurationNullable(ctx, request)
 			},
 		)
@@ -55953,9 +55953,9 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDurationNullableArray(ctx, request)
 			},
 		)
@@ -56050,9 +56050,9 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringDurationNullableArrayArray(ctx, request)
 			},
 		)
@@ -56147,9 +56147,9 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringEmail(ctx, request)
 			},
 		)
@@ -56244,9 +56244,9 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringEmailArray(ctx, request)
 			},
 		)
@@ -56341,9 +56341,9 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringEmailArrayArray(ctx, request)
 			},
 		)
@@ -56438,9 +56438,9 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringEmailNullable(ctx, request)
 			},
 		)
@@ -56535,9 +56535,9 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringEmailNullableArray(ctx, request)
 			},
 		)
@@ -56632,9 +56632,9 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringEmailNullableArrayArray(ctx, request)
 			},
 		)
@@ -56729,9 +56729,9 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringHostname(ctx, request)
 			},
 		)
@@ -56826,9 +56826,9 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringHostnameArray(ctx, request)
 			},
 		)
@@ -56923,9 +56923,9 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringHostnameArrayArray(ctx, request)
 			},
 		)
@@ -57020,9 +57020,9 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringHostnameNullable(ctx, request)
 			},
 		)
@@ -57117,9 +57117,9 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringHostnameNullableArray(ctx, request)
 			},
 		)
@@ -57214,9 +57214,9 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringHostnameNullableArrayArray(ctx, request)
 			},
 		)
@@ -57311,9 +57311,9 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIP(ctx, request)
 			},
 		)
@@ -57408,9 +57408,9 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIPArray(ctx, request)
 			},
 		)
@@ -57505,9 +57505,9 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIPArrayArray(ctx, request)
 			},
 		)
@@ -57602,9 +57602,9 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIPNullable(ctx, request)
 			},
 		)
@@ -57699,9 +57699,9 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIPNullableArray(ctx, request)
 			},
 		)
@@ -57796,9 +57796,9 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIPNullableArrayArray(ctx, request)
 			},
 		)
@@ -57893,9 +57893,9 @@ func (s *Server) handleTestResponseStringInt32Request(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringInt32(ctx, request)
 			},
 		)
@@ -57990,9 +57990,9 @@ func (s *Server) handleTestResponseStringInt32ArrayRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringInt32Array(ctx, request)
 			},
 		)
@@ -58087,9 +58087,9 @@ func (s *Server) handleTestResponseStringInt32ArrayArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringInt32ArrayArray(ctx, request)
 			},
 		)
@@ -58184,9 +58184,9 @@ func (s *Server) handleTestResponseStringInt32NullableRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringInt32Nullable(ctx, request)
 			},
 		)
@@ -58281,9 +58281,9 @@ func (s *Server) handleTestResponseStringInt32NullableArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringInt32NullableArray(ctx, request)
 			},
 		)
@@ -58378,9 +58378,9 @@ func (s *Server) handleTestResponseStringInt32NullableArrayArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringInt32NullableArrayArray(ctx, request)
 			},
 		)
@@ -58475,9 +58475,9 @@ func (s *Server) handleTestResponseStringInt64Request(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringInt64(ctx, request)
 			},
 		)
@@ -58572,9 +58572,9 @@ func (s *Server) handleTestResponseStringInt64ArrayRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringInt64Array(ctx, request)
 			},
 		)
@@ -58669,9 +58669,9 @@ func (s *Server) handleTestResponseStringInt64ArrayArrayRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringInt64ArrayArray(ctx, request)
 			},
 		)
@@ -58766,9 +58766,9 @@ func (s *Server) handleTestResponseStringInt64NullableRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringInt64Nullable(ctx, request)
 			},
 		)
@@ -58863,9 +58863,9 @@ func (s *Server) handleTestResponseStringInt64NullableArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringInt64NullableArray(ctx, request)
 			},
 		)
@@ -58960,9 +58960,9 @@ func (s *Server) handleTestResponseStringInt64NullableArrayArrayRequest(args [0]
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringInt64NullableArrayArray(ctx, request)
 			},
 		)
@@ -59057,9 +59057,9 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIpv4(ctx, request)
 			},
 		)
@@ -59154,9 +59154,9 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIpv4Array(ctx, request)
 			},
 		)
@@ -59251,9 +59251,9 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIpv4ArrayArray(ctx, request)
 			},
 		)
@@ -59348,9 +59348,9 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIpv4Nullable(ctx, request)
 			},
 		)
@@ -59445,9 +59445,9 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIpv4NullableArray(ctx, request)
 			},
 		)
@@ -59542,9 +59542,9 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIpv4NullableArrayArray(ctx, request)
 			},
 		)
@@ -59639,9 +59639,9 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIpv6(ctx, request)
 			},
 		)
@@ -59736,9 +59736,9 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIpv6Array(ctx, request)
 			},
 		)
@@ -59833,9 +59833,9 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIpv6ArrayArray(ctx, request)
 			},
 		)
@@ -59930,9 +59930,9 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIpv6Nullable(ctx, request)
 			},
 		)
@@ -60027,9 +60027,9 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIpv6NullableArray(ctx, request)
 			},
 		)
@@ -60124,9 +60124,9 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringIpv6NullableArrayArray(ctx, request)
 			},
 		)
@@ -60221,9 +60221,9 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringNullable(ctx, request)
 			},
 		)
@@ -60318,9 +60318,9 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringNullableArray(ctx, request)
 			},
 		)
@@ -60415,9 +60415,9 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringNullableArrayArray(ctx, request)
 			},
 		)
@@ -60512,9 +60512,9 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringPassword(ctx, request)
 			},
 		)
@@ -60609,9 +60609,9 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringPasswordArray(ctx, request)
 			},
 		)
@@ -60706,9 +60706,9 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringPasswordArrayArray(ctx, request)
 			},
 		)
@@ -60803,9 +60803,9 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringPasswordNullable(ctx, request)
 			},
 		)
@@ -60900,9 +60900,9 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringPasswordNullableArray(ctx, request)
 			},
 		)
@@ -60997,9 +60997,9 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringPasswordNullableArrayArray(ctx, request)
 			},
 		)
@@ -61094,9 +61094,9 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringTime(ctx, request)
 			},
 		)
@@ -61191,9 +61191,9 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringTimeArray(ctx, request)
 			},
 		)
@@ -61288,9 +61288,9 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringTimeArrayArray(ctx, request)
 			},
 		)
@@ -61385,9 +61385,9 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringTimeNullable(ctx, request)
 			},
 		)
@@ -61482,9 +61482,9 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringTimeNullableArray(ctx, request)
 			},
 		)
@@ -61579,9 +61579,9 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringTimeNullableArrayArray(ctx, request)
 			},
 		)
@@ -61676,9 +61676,9 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringURI(ctx, request)
 			},
 		)
@@ -61773,9 +61773,9 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringURIArray(ctx, request)
 			},
 		)
@@ -61870,9 +61870,9 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringURIArrayArray(ctx, request)
 			},
 		)
@@ -61967,9 +61967,9 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringURINullable(ctx, request)
 			},
 		)
@@ -62064,9 +62064,9 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringURINullableArray(ctx, request)
 			},
 		)
@@ -62161,9 +62161,9 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringURINullableArrayArray(ctx, request)
 			},
 		)
@@ -62258,9 +62258,9 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUUID(ctx, request)
 			},
 		)
@@ -62355,9 +62355,9 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUUIDArray(ctx, request)
 			},
 		)
@@ -62452,9 +62452,9 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUUIDArrayArray(ctx, request)
 			},
 		)
@@ -62549,9 +62549,9 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUUIDNullable(ctx, request)
 			},
 		)
@@ -62646,9 +62646,9 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUUIDNullableArray(ctx, request)
 			},
 		)
@@ -62743,9 +62743,9 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUUIDNullableArrayArray(ctx, request)
 			},
 		)
@@ -62840,9 +62840,9 @@ func (s *Server) handleTestResponseStringUnixRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnix(ctx, request)
 			},
 		)
@@ -62937,9 +62937,9 @@ func (s *Server) handleTestResponseStringUnixArrayRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixArray(ctx, request)
 			},
 		)
@@ -63034,9 +63034,9 @@ func (s *Server) handleTestResponseStringUnixArrayArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixArrayArray(ctx, request)
 			},
 		)
@@ -63131,9 +63131,9 @@ func (s *Server) handleTestResponseStringUnixMicroRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixMicro(ctx, request)
 			},
 		)
@@ -63228,9 +63228,9 @@ func (s *Server) handleTestResponseStringUnixMicroArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixMicroArray(ctx, request)
 			},
 		)
@@ -63325,9 +63325,9 @@ func (s *Server) handleTestResponseStringUnixMicroArrayArrayRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixMicroArrayArray(ctx, request)
 			},
 		)
@@ -63422,9 +63422,9 @@ func (s *Server) handleTestResponseStringUnixMicroNullableRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixMicroNullable(ctx, request)
 			},
 		)
@@ -63519,9 +63519,9 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixMicroNullableArray(ctx, request)
 			},
 		)
@@ -63616,9 +63616,9 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayArrayRequest(args
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixMicroNullableArrayArray(ctx, request)
 			},
 		)
@@ -63713,9 +63713,9 @@ func (s *Server) handleTestResponseStringUnixMilliRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixMilli(ctx, request)
 			},
 		)
@@ -63810,9 +63810,9 @@ func (s *Server) handleTestResponseStringUnixMilliArrayRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixMilliArray(ctx, request)
 			},
 		)
@@ -63907,9 +63907,9 @@ func (s *Server) handleTestResponseStringUnixMilliArrayArrayRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixMilliArrayArray(ctx, request)
 			},
 		)
@@ -64004,9 +64004,9 @@ func (s *Server) handleTestResponseStringUnixMilliNullableRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixMilliNullable(ctx, request)
 			},
 		)
@@ -64101,9 +64101,9 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixMilliNullableArray(ctx, request)
 			},
 		)
@@ -64198,9 +64198,9 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayArrayRequest(args
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixMilliNullableArrayArray(ctx, request)
 			},
 		)
@@ -64295,9 +64295,9 @@ func (s *Server) handleTestResponseStringUnixNanoRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixNano(ctx, request)
 			},
 		)
@@ -64392,9 +64392,9 @@ func (s *Server) handleTestResponseStringUnixNanoArrayRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixNanoArray(ctx, request)
 			},
 		)
@@ -64489,9 +64489,9 @@ func (s *Server) handleTestResponseStringUnixNanoArrayArrayRequest(args [0]strin
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixNanoArrayArray(ctx, request)
 			},
 		)
@@ -64586,9 +64586,9 @@ func (s *Server) handleTestResponseStringUnixNanoNullableRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixNanoNullable(ctx, request)
 			},
 		)
@@ -64683,9 +64683,9 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixNanoNullableArray(ctx, request)
 			},
 		)
@@ -64780,9 +64780,9 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayArrayRequest(args 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixNanoNullableArrayArray(ctx, request)
 			},
 		)
@@ -64877,9 +64877,9 @@ func (s *Server) handleTestResponseStringUnixNullableRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixNullable(ctx, request)
 			},
 		)
@@ -64974,9 +64974,9 @@ func (s *Server) handleTestResponseStringUnixNullableArrayRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixNullableArray(ctx, request)
 			},
 		)
@@ -65071,9 +65071,9 @@ func (s *Server) handleTestResponseStringUnixNullableArrayArrayRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixNullableArrayArray(ctx, request)
 			},
 		)
@@ -65168,9 +65168,9 @@ func (s *Server) handleTestResponseStringUnixSecondsRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixSeconds(ctx, request)
 			},
 		)
@@ -65265,9 +65265,9 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixSecondsArray(ctx, request)
 			},
 		)
@@ -65362,9 +65362,9 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayArrayRequest(args [0]st
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixSecondsArrayArray(ctx, request)
 			},
 		)
@@ -65459,9 +65459,9 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableRequest(args [0]stri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixSecondsNullable(ctx, request)
 			},
 		)
@@ -65556,9 +65556,9 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixSecondsNullableArray(ctx, request)
 			},
 		)
@@ -65653,9 +65653,9 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayArrayRequest(ar
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestResponseStringUnixSecondsNullableArrayArray(ctx, request)
 			},
 		)

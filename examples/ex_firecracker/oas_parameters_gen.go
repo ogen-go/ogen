@@ -16,6 +16,13 @@ type PatchGuestDriveByIDParams struct {
 	DriveID string
 }
 
+func unpackPatchGuestDriveByIDParams(packed map[string]any) (params PatchGuestDriveByIDParams) {
+	if v, ok := packed["drive_id"]; ok {
+		params.DriveID, _ = v.(string)
+	}
+	return params
+}
+
 func decodePatchGuestDriveByIDParams(args [1]string, r *http.Request) (params PatchGuestDriveByIDParams, _ error) {
 	// Decode path: drive_id.
 	{
@@ -54,6 +61,13 @@ func decodePatchGuestDriveByIDParams(args [1]string, r *http.Request) (params Pa
 type PatchGuestNetworkInterfaceByIDParams struct {
 	// The id of the guest network interface.
 	IfaceID string
+}
+
+func unpackPatchGuestNetworkInterfaceByIDParams(packed map[string]any) (params PatchGuestNetworkInterfaceByIDParams) {
+	if v, ok := packed["iface_id"]; ok {
+		params.IfaceID, _ = v.(string)
+	}
+	return params
 }
 
 func decodePatchGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request) (params PatchGuestNetworkInterfaceByIDParams, _ error) {
@@ -96,6 +110,13 @@ type PutGuestDriveByIDParams struct {
 	DriveID string
 }
 
+func unpackPutGuestDriveByIDParams(packed map[string]any) (params PutGuestDriveByIDParams) {
+	if v, ok := packed["drive_id"]; ok {
+		params.DriveID, _ = v.(string)
+	}
+	return params
+}
+
 func decodePutGuestDriveByIDParams(args [1]string, r *http.Request) (params PutGuestDriveByIDParams, _ error) {
 	// Decode path: drive_id.
 	{
@@ -134,6 +155,13 @@ func decodePutGuestDriveByIDParams(args [1]string, r *http.Request) (params PutG
 type PutGuestNetworkInterfaceByIDParams struct {
 	// The id of the guest network interface.
 	IfaceID string
+}
+
+func unpackPutGuestNetworkInterfaceByIDParams(packed map[string]any) (params PutGuestNetworkInterfaceByIDParams) {
+	if v, ok := packed["iface_id"]; ok {
+		params.IfaceID, _ = v.(string)
+	}
+	return params
 }
 
 func decodePutGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request) (params PutGuestNetworkInterfaceByIDParams, _ error) {

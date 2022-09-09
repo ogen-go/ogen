@@ -87,9 +87,9 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetAPIVersions(ctx)
 			},
 		)
@@ -180,9 +180,9 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetAdmissionregistrationAPIGroup(ctx)
 			},
 		)
@@ -273,9 +273,9 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetAdmissionregistrationV1APIResources(ctx)
 			},
 		)
@@ -366,9 +366,9 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetApiextensionsAPIGroup(ctx)
 			},
 		)
@@ -459,9 +459,9 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetApiextensionsV1APIResources(ctx)
 			},
 		)
@@ -552,9 +552,9 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetApiregistrationAPIGroup(ctx)
 			},
 		)
@@ -645,9 +645,9 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetApiregistrationV1APIResources(ctx)
 			},
 		)
@@ -738,9 +738,9 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetAppsAPIGroup(ctx)
 			},
 		)
@@ -831,9 +831,9 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetAppsV1APIResources(ctx)
 			},
 		)
@@ -924,9 +924,9 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetAuthenticationAPIGroup(ctx)
 			},
 		)
@@ -1017,9 +1017,9 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetAuthenticationV1APIResources(ctx)
 			},
 		)
@@ -1110,9 +1110,9 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetAuthorizationAPIGroup(ctx)
 			},
 		)
@@ -1203,9 +1203,9 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetAuthorizationV1APIResources(ctx)
 			},
 		)
@@ -1296,9 +1296,9 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetAutoscalingAPIGroup(ctx)
 			},
 		)
@@ -1389,9 +1389,9 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetAutoscalingV1APIResources(ctx)
 			},
 		)
@@ -1482,9 +1482,9 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetAutoscalingV2beta1APIResources(ctx)
 			},
 		)
@@ -1575,9 +1575,9 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetAutoscalingV2beta2APIResources(ctx)
 			},
 		)
@@ -1668,9 +1668,9 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetBatchAPIGroup(ctx)
 			},
 		)
@@ -1761,9 +1761,9 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetBatchV1APIResources(ctx)
 			},
 		)
@@ -1854,9 +1854,9 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetBatchV1beta1APIResources(ctx)
 			},
 		)
@@ -1947,9 +1947,9 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetCertificatesAPIGroup(ctx)
 			},
 		)
@@ -2040,9 +2040,9 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetCertificatesV1APIResources(ctx)
 			},
 		)
@@ -2133,9 +2133,9 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetCodeVersion(ctx)
 			},
 		)
@@ -2226,9 +2226,9 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetCoordinationAPIGroup(ctx)
 			},
 		)
@@ -2319,9 +2319,9 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetCoordinationV1APIResources(ctx)
 			},
 		)
@@ -2412,9 +2412,9 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetCoreAPIVersions(ctx)
 			},
 		)
@@ -2505,9 +2505,9 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetCoreV1APIResources(ctx)
 			},
 		)
@@ -2598,9 +2598,9 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetDiscoveryAPIGroup(ctx)
 			},
 		)
@@ -2691,9 +2691,9 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetDiscoveryV1APIResources(ctx)
 			},
 		)
@@ -2784,9 +2784,9 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetDiscoveryV1beta1APIResources(ctx)
 			},
 		)
@@ -2877,9 +2877,9 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetEventsAPIGroup(ctx)
 			},
 		)
@@ -2970,9 +2970,9 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetEventsV1APIResources(ctx)
 			},
 		)
@@ -3063,9 +3063,9 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetEventsV1beta1APIResources(ctx)
 			},
 		)
@@ -3156,9 +3156,9 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetFlowcontrolApiserverAPIGroup(ctx)
 			},
 		)
@@ -3249,9 +3249,9 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetFlowcontrolApiserverV1beta1APIResources(ctx)
 			},
 		)
@@ -3342,9 +3342,9 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetFlowcontrolApiserverV1beta2APIResources(ctx)
 			},
 		)
@@ -3435,9 +3435,9 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetInternalApiserverAPIGroup(ctx)
 			},
 		)
@@ -3528,9 +3528,9 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetInternalApiserverV1alpha1APIResources(ctx)
 			},
 		)
@@ -3621,9 +3621,9 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetNetworkingAPIGroup(ctx)
 			},
 		)
@@ -3714,9 +3714,9 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetNetworkingV1APIResources(ctx)
 			},
 		)
@@ -3807,9 +3807,9 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetNodeAPIGroup(ctx)
 			},
 		)
@@ -3900,9 +3900,9 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetNodeV1APIResources(ctx)
 			},
 		)
@@ -3993,9 +3993,9 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetNodeV1alpha1APIResources(ctx)
 			},
 		)
@@ -4086,9 +4086,9 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetNodeV1beta1APIResources(ctx)
 			},
 		)
@@ -4179,9 +4179,9 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetPolicyAPIGroup(ctx)
 			},
 		)
@@ -4272,9 +4272,9 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetPolicyV1APIResources(ctx)
 			},
 		)
@@ -4365,9 +4365,9 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetPolicyV1beta1APIResources(ctx)
 			},
 		)
@@ -4458,9 +4458,9 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetRbacAuthorizationAPIGroup(ctx)
 			},
 		)
@@ -4551,9 +4551,9 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetRbacAuthorizationV1APIResources(ctx)
 			},
 		)
@@ -4644,9 +4644,9 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.Respo
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetSchedulingAPIGroup(ctx)
 			},
 		)
@@ -4737,9 +4737,9 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetSchedulingV1APIResources(ctx)
 			},
 		)
@@ -4830,9 +4830,9 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetServiceAccountIssuerOpenIDConfiguration(ctx)
 			},
 		)
@@ -4923,9 +4923,9 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetStorageAPIGroup(ctx)
 			},
 		)
@@ -5016,9 +5016,9 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetStorageV1APIResources(ctx)
 			},
 		)
@@ -5109,9 +5109,9 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetStorageV1alpha1APIResources(ctx)
 			},
 		)
@@ -5202,9 +5202,9 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetStorageV1beta1APIResources(ctx)
 			},
 		)
@@ -5316,9 +5316,9 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAdmissionregistrationV1MutatingWebhookConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
 			},
 		)
@@ -5430,9 +5430,9 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAdmissionregistrationV1ValidatingWebhookConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
 			},
 		)
@@ -5544,9 +5544,9 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListApiextensionsV1CustomResourceDefinitionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListApiextensionsV1CustomResourceDefinition(ctx, params)
 			},
 		)
@@ -5658,9 +5658,9 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListApiregistrationV1APIServiceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListApiregistrationV1APIService(ctx, params)
 			},
 		)
@@ -5772,9 +5772,9 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAppsV1ControllerRevisionForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAppsV1ControllerRevisionForAllNamespaces(ctx, params)
 			},
 		)
@@ -5886,9 +5886,9 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAppsV1DaemonSetForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAppsV1DaemonSetForAllNamespaces(ctx, params)
 			},
 		)
@@ -6000,9 +6000,9 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAppsV1DeploymentForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAppsV1DeploymentForAllNamespaces(ctx, params)
 			},
 		)
@@ -6115,9 +6115,9 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAppsV1NamespacedControllerRevisionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAppsV1NamespacedControllerRevision(ctx, params)
 			},
 		)
@@ -6230,9 +6230,9 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAppsV1NamespacedDaemonSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAppsV1NamespacedDaemonSet(ctx, params)
 			},
 		)
@@ -6345,9 +6345,9 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAppsV1NamespacedDeploymentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAppsV1NamespacedDeployment(ctx, params)
 			},
 		)
@@ -6460,9 +6460,9 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAppsV1NamespacedReplicaSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAppsV1NamespacedReplicaSet(ctx, params)
 			},
 		)
@@ -6575,9 +6575,9 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAppsV1NamespacedStatefulSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAppsV1NamespacedStatefulSet(ctx, params)
 			},
 		)
@@ -6689,9 +6689,9 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAppsV1ReplicaSetForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAppsV1ReplicaSetForAllNamespaces(ctx, params)
 			},
 		)
@@ -6803,9 +6803,9 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAppsV1StatefulSetForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAppsV1StatefulSetForAllNamespaces(ctx, params)
 			},
 		)
@@ -6917,9 +6917,9 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx, params)
 			},
 		)
@@ -7032,9 +7032,9 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAutoscalingV1NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
 			},
 		)
@@ -7146,9 +7146,9 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(ctx, params)
 			},
 		)
@@ -7261,9 +7261,9 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
 			},
 		)
@@ -7375,9 +7375,9 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(ctx, params)
 			},
 		)
@@ -7490,9 +7490,9 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
 			},
 		)
@@ -7604,9 +7604,9 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListBatchV1CronJobForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListBatchV1CronJobForAllNamespaces(ctx, params)
 			},
 		)
@@ -7718,9 +7718,9 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListBatchV1JobForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListBatchV1JobForAllNamespaces(ctx, params)
 			},
 		)
@@ -7833,9 +7833,9 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListBatchV1NamespacedCronJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListBatchV1NamespacedCronJob(ctx, params)
 			},
 		)
@@ -7948,9 +7948,9 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListBatchV1NamespacedJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListBatchV1NamespacedJob(ctx, params)
 			},
 		)
@@ -8062,9 +8062,9 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListBatchV1beta1CronJobForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListBatchV1beta1CronJobForAllNamespaces(ctx, params)
 			},
 		)
@@ -8177,9 +8177,9 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListBatchV1beta1NamespacedCronJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListBatchV1beta1NamespacedCronJob(ctx, params)
 			},
 		)
@@ -8291,9 +8291,9 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCertificatesV1CertificateSigningRequestParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCertificatesV1CertificateSigningRequest(ctx, params)
 			},
 		)
@@ -8405,9 +8405,9 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoordinationV1LeaseForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoordinationV1LeaseForAllNamespaces(ctx, params)
 			},
 		)
@@ -8520,9 +8520,9 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoordinationV1NamespacedLeaseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoordinationV1NamespacedLease(ctx, params)
 			},
 		)
@@ -8634,9 +8634,9 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1ComponentStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1ComponentStatus(ctx, params)
 			},
 		)
@@ -8748,9 +8748,9 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1ConfigMapForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1ConfigMapForAllNamespaces(ctx, params)
 			},
 		)
@@ -8862,9 +8862,9 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1EndpointsForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1EndpointsForAllNamespaces(ctx, params)
 			},
 		)
@@ -8976,9 +8976,9 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1EventForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1EventForAllNamespaces(ctx, params)
 			},
 		)
@@ -9090,9 +9090,9 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1LimitRangeForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1LimitRangeForAllNamespaces(ctx, params)
 			},
 		)
@@ -9204,9 +9204,9 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1NamespaceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1Namespace(ctx, params)
 			},
 		)
@@ -9319,9 +9319,9 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1NamespacedConfigMapParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1NamespacedConfigMap(ctx, params)
 			},
 		)
@@ -9434,9 +9434,9 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1NamespacedEndpointsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1NamespacedEndpoints(ctx, params)
 			},
 		)
@@ -9549,9 +9549,9 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1NamespacedEvent(ctx, params)
 			},
 		)
@@ -9664,9 +9664,9 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1NamespacedLimitRangeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1NamespacedLimitRange(ctx, params)
 			},
 		)
@@ -9779,9 +9779,9 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1NamespacedPersistentVolumeClaimParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1NamespacedPersistentVolumeClaim(ctx, params)
 			},
 		)
@@ -9894,9 +9894,9 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1NamespacedPodParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1NamespacedPod(ctx, params)
 			},
 		)
@@ -10009,9 +10009,9 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1NamespacedPodTemplateParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1NamespacedPodTemplate(ctx, params)
 			},
 		)
@@ -10124,9 +10124,9 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1NamespacedReplicationControllerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1NamespacedReplicationController(ctx, params)
 			},
 		)
@@ -10239,9 +10239,9 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1NamespacedResourceQuotaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1NamespacedResourceQuota(ctx, params)
 			},
 		)
@@ -10354,9 +10354,9 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1NamespacedSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1NamespacedSecret(ctx, params)
 			},
 		)
@@ -10469,9 +10469,9 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1NamespacedServiceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1NamespacedService(ctx, params)
 			},
 		)
@@ -10584,9 +10584,9 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1NamespacedServiceAccountParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1NamespacedServiceAccount(ctx, params)
 			},
 		)
@@ -10698,9 +10698,9 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1NodeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1Node(ctx, params)
 			},
 		)
@@ -10812,9 +10812,9 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1PersistentVolumeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1PersistentVolume(ctx, params)
 			},
 		)
@@ -10926,9 +10926,9 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1PersistentVolumeClaimForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx, params)
 			},
 		)
@@ -11040,9 +11040,9 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1PodForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1PodForAllNamespaces(ctx, params)
 			},
 		)
@@ -11154,9 +11154,9 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1PodTemplateForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1PodTemplateForAllNamespaces(ctx, params)
 			},
 		)
@@ -11268,9 +11268,9 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1ReplicationControllerForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1ReplicationControllerForAllNamespaces(ctx, params)
 			},
 		)
@@ -11382,9 +11382,9 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1ResourceQuotaForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1ResourceQuotaForAllNamespaces(ctx, params)
 			},
 		)
@@ -11496,9 +11496,9 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1SecretForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1SecretForAllNamespaces(ctx, params)
 			},
 		)
@@ -11610,9 +11610,9 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1ServiceAccountForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1ServiceAccountForAllNamespaces(ctx, params)
 			},
 		)
@@ -11724,9 +11724,9 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListCoreV1ServiceForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListCoreV1ServiceForAllNamespaces(ctx, params)
 			},
 		)
@@ -11838,9 +11838,9 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListDiscoveryV1EndpointSliceForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListDiscoveryV1EndpointSliceForAllNamespaces(ctx, params)
 			},
 		)
@@ -11953,9 +11953,9 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListDiscoveryV1NamespacedEndpointSliceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListDiscoveryV1NamespacedEndpointSlice(ctx, params)
 			},
 		)
@@ -12067,9 +12067,9 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListDiscoveryV1beta1EndpointSliceForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx, params)
 			},
 		)
@@ -12182,9 +12182,9 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListDiscoveryV1beta1NamespacedEndpointSliceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
 			},
 		)
@@ -12296,9 +12296,9 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListEventsV1EventForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListEventsV1EventForAllNamespaces(ctx, params)
 			},
 		)
@@ -12411,9 +12411,9 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListEventsV1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListEventsV1NamespacedEvent(ctx, params)
 			},
 		)
@@ -12525,9 +12525,9 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListEventsV1beta1EventForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListEventsV1beta1EventForAllNamespaces(ctx, params)
 			},
 		)
@@ -12640,9 +12640,9 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListEventsV1beta1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListEventsV1beta1NamespacedEvent(ctx, params)
 			},
 		)
@@ -12754,9 +12754,9 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListFlowcontrolApiserverV1beta1FlowSchemaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
 			},
 		)
@@ -12868,9 +12868,9 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
 			},
 		)
@@ -12982,9 +12982,9 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListFlowcontrolApiserverV1beta2FlowSchemaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
 			},
 		)
@@ -13096,9 +13096,9 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
 			},
 		)
@@ -13210,9 +13210,9 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListInternalApiserverV1alpha1StorageVersionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListInternalApiserverV1alpha1StorageVersion(ctx, params)
 			},
 		)
@@ -13324,9 +13324,9 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListNetworkingV1IngressClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListNetworkingV1IngressClass(ctx, params)
 			},
 		)
@@ -13438,9 +13438,9 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListNetworkingV1IngressForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListNetworkingV1IngressForAllNamespaces(ctx, params)
 			},
 		)
@@ -13553,9 +13553,9 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListNetworkingV1NamespacedIngressParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListNetworkingV1NamespacedIngress(ctx, params)
 			},
 		)
@@ -13668,9 +13668,9 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListNetworkingV1NamespacedNetworkPolicyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListNetworkingV1NamespacedNetworkPolicy(ctx, params)
 			},
 		)
@@ -13782,9 +13782,9 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListNetworkingV1NetworkPolicyForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListNetworkingV1NetworkPolicyForAllNamespaces(ctx, params)
 			},
 		)
@@ -13896,9 +13896,9 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListNodeV1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListNodeV1RuntimeClass(ctx, params)
 			},
 		)
@@ -14010,9 +14010,9 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListNodeV1alpha1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListNodeV1alpha1RuntimeClass(ctx, params)
 			},
 		)
@@ -14124,9 +14124,9 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListNodeV1beta1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListNodeV1beta1RuntimeClass(ctx, params)
 			},
 		)
@@ -14239,9 +14239,9 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListPolicyV1NamespacedPodDisruptionBudgetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListPolicyV1NamespacedPodDisruptionBudget(ctx, params)
 			},
 		)
@@ -14353,9 +14353,9 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListPolicyV1PodDisruptionBudgetForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx, params)
 			},
 		)
@@ -14468,9 +14468,9 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListPolicyV1beta1NamespacedPodDisruptionBudgetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
 			},
 		)
@@ -14582,9 +14582,9 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx, params)
 			},
 		)
@@ -14696,9 +14696,9 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListPolicyV1beta1PodSecurityPolicyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListPolicyV1beta1PodSecurityPolicy(ctx, params)
 			},
 		)
@@ -14810,9 +14810,9 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListRbacAuthorizationV1ClusterRoleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListRbacAuthorizationV1ClusterRole(ctx, params)
 			},
 		)
@@ -14924,9 +14924,9 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListRbacAuthorizationV1ClusterRoleBindingParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListRbacAuthorizationV1ClusterRoleBinding(ctx, params)
 			},
 		)
@@ -15039,9 +15039,9 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListRbacAuthorizationV1NamespacedRoleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListRbacAuthorizationV1NamespacedRole(ctx, params)
 			},
 		)
@@ -15154,9 +15154,9 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListRbacAuthorizationV1NamespacedRoleBindingParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
 			},
 		)
@@ -15268,9 +15268,9 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListRbacAuthorizationV1RoleBindingForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx, params)
 			},
 		)
@@ -15382,9 +15382,9 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListRbacAuthorizationV1RoleForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListRbacAuthorizationV1RoleForAllNamespaces(ctx, params)
 			},
 		)
@@ -15496,9 +15496,9 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListSchedulingV1PriorityClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListSchedulingV1PriorityClass(ctx, params)
 			},
 		)
@@ -15610,9 +15610,9 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListStorageV1CSIDriverParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListStorageV1CSIDriver(ctx, params)
 			},
 		)
@@ -15724,9 +15724,9 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListStorageV1CSINodeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListStorageV1CSINode(ctx, params)
 			},
 		)
@@ -15838,9 +15838,9 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListStorageV1StorageClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListStorageV1StorageClass(ctx, params)
 			},
 		)
@@ -15952,9 +15952,9 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListStorageV1VolumeAttachmentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListStorageV1VolumeAttachment(ctx, params)
 			},
 		)
@@ -16066,9 +16066,9 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx, params)
 			},
 		)
@@ -16181,9 +16181,9 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListStorageV1alpha1NamespacedCSIStorageCapacityParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
 			},
 		)
@@ -16295,9 +16295,9 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListStorageV1beta1CSIStorageCapacityForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx, params)
 			},
 		)
@@ -16410,9 +16410,9 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackListStorageV1beta1NamespacedCSIStorageCapacityParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ListStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
 			},
 		)
@@ -16515,9 +16515,9 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackLogFileHandlerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.LogFileHandler(ctx, params)
 			},
 		)
@@ -16608,9 +16608,9 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.LogFileListHandler(ctx)
 			},
 		)
@@ -16714,9 +16714,9 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAdmissionregistrationV1MutatingWebhookConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
 			},
 		)
@@ -16820,9 +16820,9 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAdmissionregistrationV1ValidatingWebhookConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
 			},
 		)
@@ -16926,9 +16926,9 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadApiextensionsV1CustomResourceDefinitionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadApiextensionsV1CustomResourceDefinition(ctx, params)
 			},
 		)
@@ -17032,9 +17032,9 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadApiextensionsV1CustomResourceDefinitionStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadApiextensionsV1CustomResourceDefinitionStatus(ctx, params)
 			},
 		)
@@ -17138,9 +17138,9 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadApiregistrationV1APIServiceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadApiregistrationV1APIService(ctx, params)
 			},
 		)
@@ -17244,9 +17244,9 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadApiregistrationV1APIServiceStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadApiregistrationV1APIServiceStatus(ctx, params)
 			},
 		)
@@ -17351,9 +17351,9 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAppsV1NamespacedControllerRevisionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAppsV1NamespacedControllerRevision(ctx, params)
 			},
 		)
@@ -17458,9 +17458,9 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAppsV1NamespacedDaemonSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAppsV1NamespacedDaemonSet(ctx, params)
 			},
 		)
@@ -17565,9 +17565,9 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAppsV1NamespacedDaemonSetStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAppsV1NamespacedDaemonSetStatus(ctx, params)
 			},
 		)
@@ -17672,9 +17672,9 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAppsV1NamespacedDeploymentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAppsV1NamespacedDeployment(ctx, params)
 			},
 		)
@@ -17779,9 +17779,9 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAppsV1NamespacedDeploymentScaleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAppsV1NamespacedDeploymentScale(ctx, params)
 			},
 		)
@@ -17886,9 +17886,9 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAppsV1NamespacedDeploymentStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAppsV1NamespacedDeploymentStatus(ctx, params)
 			},
 		)
@@ -17993,9 +17993,9 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAppsV1NamespacedReplicaSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAppsV1NamespacedReplicaSet(ctx, params)
 			},
 		)
@@ -18100,9 +18100,9 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAppsV1NamespacedReplicaSetScaleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAppsV1NamespacedReplicaSetScale(ctx, params)
 			},
 		)
@@ -18207,9 +18207,9 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAppsV1NamespacedReplicaSetStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAppsV1NamespacedReplicaSetStatus(ctx, params)
 			},
 		)
@@ -18314,9 +18314,9 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAppsV1NamespacedStatefulSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAppsV1NamespacedStatefulSet(ctx, params)
 			},
 		)
@@ -18421,9 +18421,9 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAppsV1NamespacedStatefulSetScaleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAppsV1NamespacedStatefulSetScale(ctx, params)
 			},
 		)
@@ -18528,9 +18528,9 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAppsV1NamespacedStatefulSetStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAppsV1NamespacedStatefulSetStatus(ctx, params)
 			},
 		)
@@ -18635,9 +18635,9 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
 			},
 		)
@@ -18742,9 +18742,9 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx, params)
 			},
 		)
@@ -18849,9 +18849,9 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
 			},
 		)
@@ -18956,9 +18956,9 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(ctx, params)
 			},
 		)
@@ -19063,9 +19063,9 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
 			},
 		)
@@ -19170,9 +19170,9 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(ctx, params)
 			},
 		)
@@ -19277,9 +19277,9 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadBatchV1NamespacedCronJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadBatchV1NamespacedCronJob(ctx, params)
 			},
 		)
@@ -19384,9 +19384,9 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadBatchV1NamespacedCronJobStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadBatchV1NamespacedCronJobStatus(ctx, params)
 			},
 		)
@@ -19491,9 +19491,9 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadBatchV1NamespacedJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadBatchV1NamespacedJob(ctx, params)
 			},
 		)
@@ -19598,9 +19598,9 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadBatchV1NamespacedJobStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadBatchV1NamespacedJobStatus(ctx, params)
 			},
 		)
@@ -19705,9 +19705,9 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadBatchV1beta1NamespacedCronJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadBatchV1beta1NamespacedCronJob(ctx, params)
 			},
 		)
@@ -19812,9 +19812,9 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadBatchV1beta1NamespacedCronJobStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadBatchV1beta1NamespacedCronJobStatus(ctx, params)
 			},
 		)
@@ -19918,9 +19918,9 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCertificatesV1CertificateSigningRequestParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCertificatesV1CertificateSigningRequest(ctx, params)
 			},
 		)
@@ -20024,9 +20024,9 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCertificatesV1CertificateSigningRequestApprovalParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCertificatesV1CertificateSigningRequestApproval(ctx, params)
 			},
 		)
@@ -20130,9 +20130,9 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCertificatesV1CertificateSigningRequestStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCertificatesV1CertificateSigningRequestStatus(ctx, params)
 			},
 		)
@@ -20237,9 +20237,9 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoordinationV1NamespacedLeaseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoordinationV1NamespacedLease(ctx, params)
 			},
 		)
@@ -20343,9 +20343,9 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1ComponentStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1ComponentStatus(ctx, params)
 			},
 		)
@@ -20449,9 +20449,9 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespaceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1Namespace(ctx, params)
 			},
 		)
@@ -20555,9 +20555,9 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespaceStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespaceStatus(ctx, params)
 			},
 		)
@@ -20662,9 +20662,9 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedConfigMapParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedConfigMap(ctx, params)
 			},
 		)
@@ -20769,9 +20769,9 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedEndpointsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedEndpoints(ctx, params)
 			},
 		)
@@ -20876,9 +20876,9 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedEvent(ctx, params)
 			},
 		)
@@ -20983,9 +20983,9 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedLimitRangeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedLimitRange(ctx, params)
 			},
 		)
@@ -21090,9 +21090,9 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedPersistentVolumeClaimParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedPersistentVolumeClaim(ctx, params)
 			},
 		)
@@ -21197,9 +21197,9 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedPersistentVolumeClaimStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx, params)
 			},
 		)
@@ -21304,9 +21304,9 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedPodParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedPod(ctx, params)
 			},
 		)
@@ -21411,9 +21411,9 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedPodEphemeralcontainersParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedPodEphemeralcontainers(ctx, params)
 			},
 		)
@@ -21526,9 +21526,9 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedPodLogParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedPodLog(ctx, params)
 			},
 		)
@@ -21633,9 +21633,9 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedPodStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedPodStatus(ctx, params)
 			},
 		)
@@ -21740,9 +21740,9 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedPodTemplateParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedPodTemplate(ctx, params)
 			},
 		)
@@ -21847,9 +21847,9 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedReplicationControllerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedReplicationController(ctx, params)
 			},
 		)
@@ -21954,9 +21954,9 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedReplicationControllerScaleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedReplicationControllerScale(ctx, params)
 			},
 		)
@@ -22061,9 +22061,9 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedReplicationControllerStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedReplicationControllerStatus(ctx, params)
 			},
 		)
@@ -22168,9 +22168,9 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedResourceQuotaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedResourceQuota(ctx, params)
 			},
 		)
@@ -22275,9 +22275,9 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedResourceQuotaStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedResourceQuotaStatus(ctx, params)
 			},
 		)
@@ -22382,9 +22382,9 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedSecret(ctx, params)
 			},
 		)
@@ -22489,9 +22489,9 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedServiceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedService(ctx, params)
 			},
 		)
@@ -22596,9 +22596,9 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedServiceAccountParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedServiceAccount(ctx, params)
 			},
 		)
@@ -22703,9 +22703,9 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NamespacedServiceStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NamespacedServiceStatus(ctx, params)
 			},
 		)
@@ -22809,9 +22809,9 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NodeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1Node(ctx, params)
 			},
 		)
@@ -22915,9 +22915,9 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1NodeStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1NodeStatus(ctx, params)
 			},
 		)
@@ -23021,9 +23021,9 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1PersistentVolumeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1PersistentVolume(ctx, params)
 			},
 		)
@@ -23127,9 +23127,9 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadCoreV1PersistentVolumeStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadCoreV1PersistentVolumeStatus(ctx, params)
 			},
 		)
@@ -23234,9 +23234,9 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadDiscoveryV1NamespacedEndpointSliceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadDiscoveryV1NamespacedEndpointSlice(ctx, params)
 			},
 		)
@@ -23341,9 +23341,9 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadDiscoveryV1beta1NamespacedEndpointSliceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
 			},
 		)
@@ -23448,9 +23448,9 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadEventsV1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadEventsV1NamespacedEvent(ctx, params)
 			},
 		)
@@ -23555,9 +23555,9 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadEventsV1beta1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadEventsV1beta1NamespacedEvent(ctx, params)
 			},
 		)
@@ -23661,9 +23661,9 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadFlowcontrolApiserverV1beta1FlowSchemaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
 			},
 		)
@@ -23767,9 +23767,9 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx, params)
 			},
 		)
@@ -23873,9 +23873,9 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
 			},
 		)
@@ -23979,9 +23979,9 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus(ctx, params)
 			},
 		)
@@ -24085,9 +24085,9 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadFlowcontrolApiserverV1beta2FlowSchemaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
 			},
 		)
@@ -24191,9 +24191,9 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx, params)
 			},
 		)
@@ -24297,9 +24297,9 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
 			},
 		)
@@ -24403,9 +24403,9 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus(ctx, params)
 			},
 		)
@@ -24509,9 +24509,9 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadInternalApiserverV1alpha1StorageVersionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadInternalApiserverV1alpha1StorageVersion(ctx, params)
 			},
 		)
@@ -24615,9 +24615,9 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadInternalApiserverV1alpha1StorageVersionStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadInternalApiserverV1alpha1StorageVersionStatus(ctx, params)
 			},
 		)
@@ -24721,9 +24721,9 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadNetworkingV1IngressClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadNetworkingV1IngressClass(ctx, params)
 			},
 		)
@@ -24828,9 +24828,9 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadNetworkingV1NamespacedIngressParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadNetworkingV1NamespacedIngress(ctx, params)
 			},
 		)
@@ -24935,9 +24935,9 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadNetworkingV1NamespacedIngressStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadNetworkingV1NamespacedIngressStatus(ctx, params)
 			},
 		)
@@ -25042,9 +25042,9 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadNetworkingV1NamespacedNetworkPolicyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadNetworkingV1NamespacedNetworkPolicy(ctx, params)
 			},
 		)
@@ -25148,9 +25148,9 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadNodeV1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadNodeV1RuntimeClass(ctx, params)
 			},
 		)
@@ -25254,9 +25254,9 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadNodeV1alpha1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadNodeV1alpha1RuntimeClass(ctx, params)
 			},
 		)
@@ -25360,9 +25360,9 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadNodeV1beta1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadNodeV1beta1RuntimeClass(ctx, params)
 			},
 		)
@@ -25467,9 +25467,9 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadPolicyV1NamespacedPodDisruptionBudgetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadPolicyV1NamespacedPodDisruptionBudget(ctx, params)
 			},
 		)
@@ -25574,9 +25574,9 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadPolicyV1NamespacedPodDisruptionBudgetStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx, params)
 			},
 		)
@@ -25681,9 +25681,9 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadPolicyV1beta1NamespacedPodDisruptionBudgetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
 			},
 		)
@@ -25788,9 +25788,9 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx, params)
 			},
 		)
@@ -25894,9 +25894,9 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadPolicyV1beta1PodSecurityPolicyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadPolicyV1beta1PodSecurityPolicy(ctx, params)
 			},
 		)
@@ -26000,9 +26000,9 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadRbacAuthorizationV1ClusterRoleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadRbacAuthorizationV1ClusterRole(ctx, params)
 			},
 		)
@@ -26106,9 +26106,9 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadRbacAuthorizationV1ClusterRoleBindingParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadRbacAuthorizationV1ClusterRoleBinding(ctx, params)
 			},
 		)
@@ -26213,9 +26213,9 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadRbacAuthorizationV1NamespacedRoleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadRbacAuthorizationV1NamespacedRole(ctx, params)
 			},
 		)
@@ -26320,9 +26320,9 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadRbacAuthorizationV1NamespacedRoleBindingParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
 			},
 		)
@@ -26426,9 +26426,9 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadSchedulingV1PriorityClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadSchedulingV1PriorityClass(ctx, params)
 			},
 		)
@@ -26532,9 +26532,9 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadStorageV1CSIDriverParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadStorageV1CSIDriver(ctx, params)
 			},
 		)
@@ -26638,9 +26638,9 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadStorageV1CSINodeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadStorageV1CSINode(ctx, params)
 			},
 		)
@@ -26744,9 +26744,9 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadStorageV1StorageClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadStorageV1StorageClass(ctx, params)
 			},
 		)
@@ -26850,9 +26850,9 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadStorageV1VolumeAttachmentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadStorageV1VolumeAttachment(ctx, params)
 			},
 		)
@@ -26956,9 +26956,9 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadStorageV1VolumeAttachmentStatusParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadStorageV1VolumeAttachmentStatus(ctx, params)
 			},
 		)
@@ -27063,9 +27063,9 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadStorageV1alpha1NamespacedCSIStorageCapacityParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
 			},
 		)
@@ -27170,9 +27170,9 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackReadStorageV1beta1NamespacedCSIStorageCapacityParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
 			},
 		)
@@ -27285,9 +27285,9 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAdmissionregistrationV1MutatingWebhookConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx, params)
 			},
 		)
@@ -27399,9 +27399,9 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ctx, params)
 			},
 		)
@@ -27514,9 +27514,9 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx, params)
 			},
 		)
@@ -27628,9 +27628,9 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(ctx, params)
 			},
 		)
@@ -27743,9 +27743,9 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchApiextensionsV1CustomResourceDefinitionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchApiextensionsV1CustomResourceDefinition(ctx, params)
 			},
 		)
@@ -27857,9 +27857,9 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchApiextensionsV1CustomResourceDefinitionListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchApiextensionsV1CustomResourceDefinitionList(ctx, params)
 			},
 		)
@@ -27972,9 +27972,9 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchApiregistrationV1APIServiceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchApiregistrationV1APIService(ctx, params)
 			},
 		)
@@ -28086,9 +28086,9 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchApiregistrationV1APIServiceListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchApiregistrationV1APIServiceList(ctx, params)
 			},
 		)
@@ -28200,9 +28200,9 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAppsV1ControllerRevisionListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAppsV1ControllerRevisionListForAllNamespaces(ctx, params)
 			},
 		)
@@ -28314,9 +28314,9 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAppsV1DaemonSetListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAppsV1DaemonSetListForAllNamespaces(ctx, params)
 			},
 		)
@@ -28428,9 +28428,9 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAppsV1DeploymentListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAppsV1DeploymentListForAllNamespaces(ctx, params)
 			},
 		)
@@ -28544,9 +28544,9 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAppsV1NamespacedControllerRevisionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAppsV1NamespacedControllerRevision(ctx, params)
 			},
 		)
@@ -28659,9 +28659,9 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAppsV1NamespacedControllerRevisionListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAppsV1NamespacedControllerRevisionList(ctx, params)
 			},
 		)
@@ -28775,9 +28775,9 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAppsV1NamespacedDaemonSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAppsV1NamespacedDaemonSet(ctx, params)
 			},
 		)
@@ -28890,9 +28890,9 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAppsV1NamespacedDaemonSetListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAppsV1NamespacedDaemonSetList(ctx, params)
 			},
 		)
@@ -29006,9 +29006,9 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAppsV1NamespacedDeploymentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAppsV1NamespacedDeployment(ctx, params)
 			},
 		)
@@ -29121,9 +29121,9 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAppsV1NamespacedDeploymentListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAppsV1NamespacedDeploymentList(ctx, params)
 			},
 		)
@@ -29237,9 +29237,9 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAppsV1NamespacedReplicaSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAppsV1NamespacedReplicaSet(ctx, params)
 			},
 		)
@@ -29352,9 +29352,9 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAppsV1NamespacedReplicaSetListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAppsV1NamespacedReplicaSetList(ctx, params)
 			},
 		)
@@ -29468,9 +29468,9 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAppsV1NamespacedStatefulSetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAppsV1NamespacedStatefulSet(ctx, params)
 			},
 		)
@@ -29583,9 +29583,9 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAppsV1NamespacedStatefulSetListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAppsV1NamespacedStatefulSetList(ctx, params)
 			},
 		)
@@ -29697,9 +29697,9 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAppsV1ReplicaSetListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAppsV1ReplicaSetListForAllNamespaces(ctx, params)
 			},
 		)
@@ -29811,9 +29811,9 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAppsV1StatefulSetListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAppsV1StatefulSetListForAllNamespaces(ctx, params)
 			},
 		)
@@ -29925,9 +29925,9 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
 			},
 		)
@@ -30041,9 +30041,9 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx, params)
 			},
 		)
@@ -30156,9 +30156,9 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx, params)
 			},
 		)
@@ -30270,9 +30270,9 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
 			},
 		)
@@ -30386,9 +30386,9 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx, params)
 			},
 		)
@@ -30501,9 +30501,9 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ctx, params)
 			},
 		)
@@ -30615,9 +30615,9 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces(ctx, params)
 			},
 		)
@@ -30731,9 +30731,9 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx, params)
 			},
 		)
@@ -30846,9 +30846,9 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ctx, params)
 			},
 		)
@@ -30960,9 +30960,9 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchBatchV1CronJobListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchBatchV1CronJobListForAllNamespaces(ctx, params)
 			},
 		)
@@ -31074,9 +31074,9 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchBatchV1JobListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchBatchV1JobListForAllNamespaces(ctx, params)
 			},
 		)
@@ -31190,9 +31190,9 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchBatchV1NamespacedCronJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchBatchV1NamespacedCronJob(ctx, params)
 			},
 		)
@@ -31305,9 +31305,9 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchBatchV1NamespacedCronJobListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchBatchV1NamespacedCronJobList(ctx, params)
 			},
 		)
@@ -31421,9 +31421,9 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchBatchV1NamespacedJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchBatchV1NamespacedJob(ctx, params)
 			},
 		)
@@ -31536,9 +31536,9 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchBatchV1NamespacedJobListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchBatchV1NamespacedJobList(ctx, params)
 			},
 		)
@@ -31650,9 +31650,9 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchBatchV1beta1CronJobListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchBatchV1beta1CronJobListForAllNamespaces(ctx, params)
 			},
 		)
@@ -31766,9 +31766,9 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchBatchV1beta1NamespacedCronJobParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchBatchV1beta1NamespacedCronJob(ctx, params)
 			},
 		)
@@ -31881,9 +31881,9 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchBatchV1beta1NamespacedCronJobListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchBatchV1beta1NamespacedCronJobList(ctx, params)
 			},
 		)
@@ -31996,9 +31996,9 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCertificatesV1CertificateSigningRequestParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCertificatesV1CertificateSigningRequest(ctx, params)
 			},
 		)
@@ -32110,9 +32110,9 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCertificatesV1CertificateSigningRequestListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCertificatesV1CertificateSigningRequestList(ctx, params)
 			},
 		)
@@ -32224,9 +32224,9 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoordinationV1LeaseListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoordinationV1LeaseListForAllNamespaces(ctx, params)
 			},
 		)
@@ -32340,9 +32340,9 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoordinationV1NamespacedLeaseParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoordinationV1NamespacedLease(ctx, params)
 			},
 		)
@@ -32455,9 +32455,9 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoordinationV1NamespacedLeaseListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoordinationV1NamespacedLeaseList(ctx, params)
 			},
 		)
@@ -32569,9 +32569,9 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1ConfigMapListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1ConfigMapListForAllNamespaces(ctx, params)
 			},
 		)
@@ -32683,9 +32683,9 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1EndpointsListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1EndpointsListForAllNamespaces(ctx, params)
 			},
 		)
@@ -32797,9 +32797,9 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1EventListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1EventListForAllNamespaces(ctx, params)
 			},
 		)
@@ -32911,9 +32911,9 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1LimitRangeListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1LimitRangeListForAllNamespaces(ctx, params)
 			},
 		)
@@ -33026,9 +33026,9 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespaceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1Namespace(ctx, params)
 			},
 		)
@@ -33140,9 +33140,9 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespaceListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespaceList(ctx, params)
 			},
 		)
@@ -33256,9 +33256,9 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedConfigMapParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedConfigMap(ctx, params)
 			},
 		)
@@ -33371,9 +33371,9 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedConfigMapListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedConfigMapList(ctx, params)
 			},
 		)
@@ -33487,9 +33487,9 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedEndpointsParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedEndpoints(ctx, params)
 			},
 		)
@@ -33602,9 +33602,9 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedEndpointsListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedEndpointsList(ctx, params)
 			},
 		)
@@ -33718,9 +33718,9 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedEvent(ctx, params)
 			},
 		)
@@ -33833,9 +33833,9 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedEventListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedEventList(ctx, params)
 			},
 		)
@@ -33949,9 +33949,9 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedLimitRangeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedLimitRange(ctx, params)
 			},
 		)
@@ -34064,9 +34064,9 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedLimitRangeListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedLimitRangeList(ctx, params)
 			},
 		)
@@ -34180,9 +34180,9 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedPersistentVolumeClaimParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedPersistentVolumeClaim(ctx, params)
 			},
 		)
@@ -34295,9 +34295,9 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedPersistentVolumeClaimListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedPersistentVolumeClaimList(ctx, params)
 			},
 		)
@@ -34411,9 +34411,9 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedPodParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedPod(ctx, params)
 			},
 		)
@@ -34526,9 +34526,9 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedPodListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedPodList(ctx, params)
 			},
 		)
@@ -34642,9 +34642,9 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedPodTemplateParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedPodTemplate(ctx, params)
 			},
 		)
@@ -34757,9 +34757,9 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedPodTemplateListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedPodTemplateList(ctx, params)
 			},
 		)
@@ -34873,9 +34873,9 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedReplicationControllerParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedReplicationController(ctx, params)
 			},
 		)
@@ -34988,9 +34988,9 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedReplicationControllerListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedReplicationControllerList(ctx, params)
 			},
 		)
@@ -35104,9 +35104,9 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedResourceQuotaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedResourceQuota(ctx, params)
 			},
 		)
@@ -35219,9 +35219,9 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedResourceQuotaListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedResourceQuotaList(ctx, params)
 			},
 		)
@@ -35335,9 +35335,9 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedSecretParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedSecret(ctx, params)
 			},
 		)
@@ -35450,9 +35450,9 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedSecretListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedSecretList(ctx, params)
 			},
 		)
@@ -35566,9 +35566,9 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedServiceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedService(ctx, params)
 			},
 		)
@@ -35682,9 +35682,9 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedServiceAccountParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedServiceAccount(ctx, params)
 			},
 		)
@@ -35797,9 +35797,9 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedServiceAccountListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedServiceAccountList(ctx, params)
 			},
 		)
@@ -35912,9 +35912,9 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NamespacedServiceListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NamespacedServiceList(ctx, params)
 			},
 		)
@@ -36027,9 +36027,9 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NodeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1Node(ctx, params)
 			},
 		)
@@ -36141,9 +36141,9 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1NodeListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1NodeList(ctx, params)
 			},
 		)
@@ -36256,9 +36256,9 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1PersistentVolumeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1PersistentVolume(ctx, params)
 			},
 		)
@@ -36370,9 +36370,9 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx, params)
 			},
 		)
@@ -36484,9 +36484,9 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1PersistentVolumeListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1PersistentVolumeList(ctx, params)
 			},
 		)
@@ -36598,9 +36598,9 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1PodListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1PodListForAllNamespaces(ctx, params)
 			},
 		)
@@ -36712,9 +36712,9 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1PodTemplateListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1PodTemplateListForAllNamespaces(ctx, params)
 			},
 		)
@@ -36826,9 +36826,9 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1ReplicationControllerListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1ReplicationControllerListForAllNamespaces(ctx, params)
 			},
 		)
@@ -36940,9 +36940,9 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1ResourceQuotaListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1ResourceQuotaListForAllNamespaces(ctx, params)
 			},
 		)
@@ -37054,9 +37054,9 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1SecretListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1SecretListForAllNamespaces(ctx, params)
 			},
 		)
@@ -37168,9 +37168,9 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1ServiceAccountListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1ServiceAccountListForAllNamespaces(ctx, params)
 			},
 		)
@@ -37282,9 +37282,9 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchCoreV1ServiceListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchCoreV1ServiceListForAllNamespaces(ctx, params)
 			},
 		)
@@ -37396,9 +37396,9 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchDiscoveryV1EndpointSliceListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx, params)
 			},
 		)
@@ -37512,9 +37512,9 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchDiscoveryV1NamespacedEndpointSliceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchDiscoveryV1NamespacedEndpointSlice(ctx, params)
 			},
 		)
@@ -37627,9 +37627,9 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchDiscoveryV1NamespacedEndpointSliceListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchDiscoveryV1NamespacedEndpointSliceList(ctx, params)
 			},
 		)
@@ -37741,9 +37741,9 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx, params)
 			},
 		)
@@ -37857,9 +37857,9 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchDiscoveryV1beta1NamespacedEndpointSliceParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx, params)
 			},
 		)
@@ -37972,9 +37972,9 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchDiscoveryV1beta1NamespacedEndpointSliceListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx, params)
 			},
 		)
@@ -38086,9 +38086,9 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchEventsV1EventListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchEventsV1EventListForAllNamespaces(ctx, params)
 			},
 		)
@@ -38202,9 +38202,9 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchEventsV1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchEventsV1NamespacedEvent(ctx, params)
 			},
 		)
@@ -38317,9 +38317,9 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchEventsV1NamespacedEventListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchEventsV1NamespacedEventList(ctx, params)
 			},
 		)
@@ -38431,9 +38431,9 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchEventsV1beta1EventListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchEventsV1beta1EventListForAllNamespaces(ctx, params)
 			},
 		)
@@ -38547,9 +38547,9 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchEventsV1beta1NamespacedEventParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchEventsV1beta1NamespacedEvent(ctx, params)
 			},
 		)
@@ -38662,9 +38662,9 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchEventsV1beta1NamespacedEventListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchEventsV1beta1NamespacedEventList(ctx, params)
 			},
 		)
@@ -38777,9 +38777,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchFlowcontrolApiserverV1beta1FlowSchemaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchFlowcontrolApiserverV1beta1FlowSchema(ctx, params)
 			},
 		)
@@ -38891,9 +38891,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchFlowcontrolApiserverV1beta1FlowSchemaListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx, params)
 			},
 		)
@@ -39006,9 +39006,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx, params)
 			},
 		)
@@ -39120,9 +39120,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(ctx, params)
 			},
 		)
@@ -39235,9 +39235,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchFlowcontrolApiserverV1beta2FlowSchemaParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchFlowcontrolApiserverV1beta2FlowSchema(ctx, params)
 			},
 		)
@@ -39349,9 +39349,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchFlowcontrolApiserverV1beta2FlowSchemaListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx, params)
 			},
 		)
@@ -39464,9 +39464,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx, params)
 			},
 		)
@@ -39578,9 +39578,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(ctx, params)
 			},
 		)
@@ -39693,9 +39693,9 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchInternalApiserverV1alpha1StorageVersionParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchInternalApiserverV1alpha1StorageVersion(ctx, params)
 			},
 		)
@@ -39807,9 +39807,9 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchInternalApiserverV1alpha1StorageVersionListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchInternalApiserverV1alpha1StorageVersionList(ctx, params)
 			},
 		)
@@ -39922,9 +39922,9 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchNetworkingV1IngressClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchNetworkingV1IngressClass(ctx, params)
 			},
 		)
@@ -40036,9 +40036,9 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchNetworkingV1IngressClassListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchNetworkingV1IngressClassList(ctx, params)
 			},
 		)
@@ -40150,9 +40150,9 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchNetworkingV1IngressListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchNetworkingV1IngressListForAllNamespaces(ctx, params)
 			},
 		)
@@ -40266,9 +40266,9 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchNetworkingV1NamespacedIngressParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchNetworkingV1NamespacedIngress(ctx, params)
 			},
 		)
@@ -40381,9 +40381,9 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchNetworkingV1NamespacedIngressListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchNetworkingV1NamespacedIngressList(ctx, params)
 			},
 		)
@@ -40497,9 +40497,9 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchNetworkingV1NamespacedNetworkPolicyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchNetworkingV1NamespacedNetworkPolicy(ctx, params)
 			},
 		)
@@ -40612,9 +40612,9 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchNetworkingV1NamespacedNetworkPolicyListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchNetworkingV1NamespacedNetworkPolicyList(ctx, params)
 			},
 		)
@@ -40726,9 +40726,9 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchNetworkingV1NetworkPolicyListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx, params)
 			},
 		)
@@ -40841,9 +40841,9 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchNodeV1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchNodeV1RuntimeClass(ctx, params)
 			},
 		)
@@ -40955,9 +40955,9 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchNodeV1RuntimeClassListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchNodeV1RuntimeClassList(ctx, params)
 			},
 		)
@@ -41070,9 +41070,9 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchNodeV1alpha1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchNodeV1alpha1RuntimeClass(ctx, params)
 			},
 		)
@@ -41184,9 +41184,9 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchNodeV1alpha1RuntimeClassListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchNodeV1alpha1RuntimeClassList(ctx, params)
 			},
 		)
@@ -41299,9 +41299,9 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchNodeV1beta1RuntimeClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchNodeV1beta1RuntimeClass(ctx, params)
 			},
 		)
@@ -41413,9 +41413,9 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchNodeV1beta1RuntimeClassListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchNodeV1beta1RuntimeClassList(ctx, params)
 			},
 		)
@@ -41529,9 +41529,9 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchPolicyV1NamespacedPodDisruptionBudgetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchPolicyV1NamespacedPodDisruptionBudget(ctx, params)
 			},
 		)
@@ -41644,9 +41644,9 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchPolicyV1NamespacedPodDisruptionBudgetListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx, params)
 			},
 		)
@@ -41758,9 +41758,9 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx, params)
 			},
 		)
@@ -41874,9 +41874,9 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx, params)
 			},
 		)
@@ -41989,9 +41989,9 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx, params)
 			},
 		)
@@ -42103,9 +42103,9 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx, params)
 			},
 		)
@@ -42218,9 +42218,9 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchPolicyV1beta1PodSecurityPolicyParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchPolicyV1beta1PodSecurityPolicy(ctx, params)
 			},
 		)
@@ -42332,9 +42332,9 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchPolicyV1beta1PodSecurityPolicyListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchPolicyV1beta1PodSecurityPolicyList(ctx, params)
 			},
 		)
@@ -42447,9 +42447,9 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchRbacAuthorizationV1ClusterRoleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchRbacAuthorizationV1ClusterRole(ctx, params)
 			},
 		)
@@ -42562,9 +42562,9 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchRbacAuthorizationV1ClusterRoleBindingParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchRbacAuthorizationV1ClusterRoleBinding(ctx, params)
 			},
 		)
@@ -42676,9 +42676,9 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchRbacAuthorizationV1ClusterRoleBindingListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchRbacAuthorizationV1ClusterRoleBindingList(ctx, params)
 			},
 		)
@@ -42790,9 +42790,9 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchRbacAuthorizationV1ClusterRoleListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchRbacAuthorizationV1ClusterRoleList(ctx, params)
 			},
 		)
@@ -42906,9 +42906,9 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchRbacAuthorizationV1NamespacedRoleParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchRbacAuthorizationV1NamespacedRole(ctx, params)
 			},
 		)
@@ -43022,9 +43022,9 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchRbacAuthorizationV1NamespacedRoleBindingParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchRbacAuthorizationV1NamespacedRoleBinding(ctx, params)
 			},
 		)
@@ -43137,9 +43137,9 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchRbacAuthorizationV1NamespacedRoleBindingListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx, params)
 			},
 		)
@@ -43252,9 +43252,9 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchRbacAuthorizationV1NamespacedRoleListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchRbacAuthorizationV1NamespacedRoleList(ctx, params)
 			},
 		)
@@ -43366,9 +43366,9 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx, params)
 			},
 		)
@@ -43480,9 +43480,9 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchRbacAuthorizationV1RoleListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx, params)
 			},
 		)
@@ -43595,9 +43595,9 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchSchedulingV1PriorityClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchSchedulingV1PriorityClass(ctx, params)
 			},
 		)
@@ -43709,9 +43709,9 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchSchedulingV1PriorityClassListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchSchedulingV1PriorityClassList(ctx, params)
 			},
 		)
@@ -43824,9 +43824,9 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchStorageV1CSIDriverParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchStorageV1CSIDriver(ctx, params)
 			},
 		)
@@ -43938,9 +43938,9 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchStorageV1CSIDriverListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchStorageV1CSIDriverList(ctx, params)
 			},
 		)
@@ -44053,9 +44053,9 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchStorageV1CSINodeParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchStorageV1CSINode(ctx, params)
 			},
 		)
@@ -44167,9 +44167,9 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchStorageV1CSINodeListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchStorageV1CSINodeList(ctx, params)
 			},
 		)
@@ -44282,9 +44282,9 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchStorageV1StorageClassParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchStorageV1StorageClass(ctx, params)
 			},
 		)
@@ -44396,9 +44396,9 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchStorageV1StorageClassListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchStorageV1StorageClassList(ctx, params)
 			},
 		)
@@ -44511,9 +44511,9 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchStorageV1VolumeAttachmentParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchStorageV1VolumeAttachment(ctx, params)
 			},
 		)
@@ -44625,9 +44625,9 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchStorageV1VolumeAttachmentListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchStorageV1VolumeAttachmentList(ctx, params)
 			},
 		)
@@ -44739,9 +44739,9 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx, params)
 			},
 		)
@@ -44855,9 +44855,9 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchStorageV1alpha1NamespacedCSIStorageCapacityParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx, params)
 			},
 		)
@@ -44970,9 +44970,9 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx, params)
 			},
 		)
@@ -45084,9 +45084,9 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx, params)
 			},
 		)
@@ -45200,9 +45200,9 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchStorageV1beta1NamespacedCSIStorageCapacityParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx, params)
 			},
 		)
@@ -45315,9 +45315,9 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackWatchStorageV1beta1NamespacedCSIStorageCapacityListParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx, params)
 			},
 		)

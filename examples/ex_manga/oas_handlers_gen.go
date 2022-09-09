@@ -88,9 +88,9 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGetBookParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetBook(ctx, params)
 			},
 		)
@@ -183,9 +183,9 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseW
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGetPageCoverImageParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetPageCoverImage(ctx, params)
 			},
 		)
@@ -279,9 +279,9 @@ func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGetPageImageParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetPageImage(ctx, params)
 			},
 		)
@@ -375,9 +375,9 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.Respo
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGetPageThumbnailImageParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetPageThumbnailImage(ctx, params)
 			},
 		)
@@ -470,9 +470,9 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackSearchParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.Search(ctx, params)
 			},
 		)
@@ -565,9 +565,9 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackSearchByTagIDParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SearchByTagID(ctx, params)
 			},
 		)

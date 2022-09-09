@@ -92,9 +92,9 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackDataGetFormatParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.DataGetFormat(ctx, params)
 			},
 		)
@@ -201,9 +201,9 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackDefaultTestParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.DefaultTest(ctx, request, params)
 			},
 		)
@@ -279,9 +279,9 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ErrorGet(ctx)
 			},
 		)
@@ -374,9 +374,9 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackFoobarGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.FoobarGet(ctx, params)
 			},
 		)
@@ -471,9 +471,9 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.FoobarPost(ctx, request)
 			},
 		)
@@ -547,9 +547,9 @@ func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.FoobarPut(ctx)
 			},
 		)
@@ -641,9 +641,9 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackGetHeaderParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.GetHeader(ctx, params)
 			},
 		)
@@ -719,9 +719,9 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.NoAdditionalPropertiesTest(ctx)
 			},
 		)
@@ -797,9 +797,9 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.NullableDefaultResponse(ctx)
 			},
 		)
@@ -894,9 +894,9 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.OneofBug(ctx, request)
 			},
 		)
@@ -970,9 +970,9 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PatternRecursiveMapGet(ctx)
 			},
 		)
@@ -1067,9 +1067,9 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PetCreate(ctx, request)
 			},
 		)
@@ -1161,9 +1161,9 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPetFriendsNamesByIDParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PetFriendsNamesByID(ctx, params)
 			},
 		)
@@ -1258,9 +1258,9 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPetGetParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PetGet(ctx, params)
 			},
 		)
@@ -1352,9 +1352,9 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPetGetAvatarByIDParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PetGetAvatarByID(ctx, params)
 			},
 		)
@@ -1446,9 +1446,9 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPetGetAvatarByNameParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PetGetAvatarByName(ctx, params)
 			},
 		)
@@ -1540,9 +1540,9 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPetGetByNameParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PetGetByName(ctx, params)
 			},
 		)
@@ -1634,9 +1634,9 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPetNameByIDParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PetNameByID(ctx, params)
 			},
 		)
@@ -1729,9 +1729,9 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PetUpdateNameAliasPost(ctx, request)
 			},
 		)
@@ -1824,9 +1824,9 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PetUpdateNamePost(ctx, request)
 			},
 		)
@@ -1933,9 +1933,9 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackPetUploadAvatarByIDParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.PetUploadAvatarByID(ctx, request, params)
 			},
 		)
@@ -2009,9 +2009,9 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseW
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.RecursiveArrayGet(ctx)
 			},
 		)
@@ -2085,9 +2085,9 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.RecursiveMapGet(ctx)
 			},
 		)
@@ -2178,9 +2178,9 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SecurityTest(ctx)
 			},
 		)
@@ -2254,9 +2254,9 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.StringIntMapGet(ctx)
 			},
 		)
@@ -2348,9 +2348,9 @@ func (s *Server) handleTestContentParameterRequest(args [0]string, w http.Respon
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTestContentParameterParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestContentParameter(ctx, params)
 			},
 		)
@@ -2445,9 +2445,9 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestFloatValidation(ctx, request)
 			},
 		)
@@ -2523,9 +2523,9 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, w http.Response
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestNullableOneofs(ctx)
 			},
 		)
@@ -2618,9 +2618,9 @@ func (s *Server) handleTestObjectQueryParameterRequest(args [0]string, w http.Re
 			Response,
 		](
 			m,
-			params,
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			unpackTestObjectQueryParameterParams,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.TestObjectQueryParameter(ctx, params)
 			},
 		)

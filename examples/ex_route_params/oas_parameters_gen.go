@@ -17,6 +17,16 @@ type DataGetParams struct {
 	Key string
 }
 
+func unpackDataGetParams(packed map[string]any) (params DataGetParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(int)
+	}
+	if v, ok := packed["key"]; ok {
+		params.Key, _ = v.(string)
+	}
+	return params
+}
+
 func decodeDataGetParams(args [2]string, r *http.Request) (params DataGetParams, _ error) {
 	// Decode path: id.
 	{
@@ -102,6 +112,13 @@ func decodeDataGetParams(args [2]string, r *http.Request) (params DataGetParams,
 
 type DataGetIDParams struct {
 	ID int
+}
+
+func unpackDataGetIDParams(packed map[string]any) (params DataGetIDParams) {
+	if v, ok := packed["id"]; ok {
+		params.ID, _ = v.(int)
+	}
+	return params
 }
 
 func decodeDataGetIDParams(args [1]string, r *http.Request) (params DataGetIDParams, _ error) {

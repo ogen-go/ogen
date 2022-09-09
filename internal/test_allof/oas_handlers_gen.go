@@ -91,9 +91,9 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.NullableStrings(ctx, request)
 			},
 		)
@@ -188,9 +188,9 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ObjectsWithConflictingArrayProperty(ctx, request)
 			},
 		)
@@ -285,9 +285,9 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ObjectsWithConflictingProperties(ctx, request)
 			},
 		)
@@ -382,9 +382,9 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReferencedAllof(ctx, request)
 			},
 		)
@@ -479,9 +479,9 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.ReferencedAllofOptional(ctx, request)
 			},
 		)
@@ -576,9 +576,9 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SimpleInteger(ctx, request)
 			},
 		)
@@ -673,9 +673,9 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 			Response,
 		](
 			m,
-			struct{}{},
 			mreq,
-			func(ctx context.Context, params Params, request Request) (Response, error) {
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
 				return s.h.SimpleObjects(ctx, request)
 			},
 		)
