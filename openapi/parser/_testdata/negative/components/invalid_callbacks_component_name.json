@@ -1,0 +1,33 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "title",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/foo": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "User info"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "callbacks": {
+      "foo!bar": {
+        "http://localhost:1000": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "User info"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
