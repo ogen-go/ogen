@@ -50,3 +50,47 @@ func TestChainMiddlewares(t *testing.T) {
 	a.NoError(err)
 	a.Equal("ok", resp.Type)
 }
+
+func BenchmarkChainMiddlewares(b *testing.B) {
+	const N = 20
+	noop := func(req Request, next Next) (Response, error) {
+		return next(req)
+	}
+
+	var (
+		chain = ChainMiddlewares(func() (r []Middleware) {
+			for i := 0; i < N; i++ {
+				r = append(r, noop)
+			}
+			return r
+		}()...)
+		req = Request{
+			Context: context.Background(),
+			Body:    []string{},
+			Params:  map[string]any{},
+		}
+		resp = Response{Type: "ok"}
+		next = func(req Request) (Response, error) {
+			return resp, nil
+		}
+	)
+
+	b.ReportAllocs()
+	b.ResetTimer()
+
+	var (
+		sinkResp Response
+		sinkErr  error
+	)
+
+	for i := 0; i < b.N; i++ {
+		sinkResp, sinkErr = chain(req, next)
+	}
+
+	if sinkErr != nil {
+		b.Fatal(sinkErr)
+	}
+	if sinkResp != resp {
+		b.Fatalf("Expected %v, got %v", resp, sinkResp)
+	}
+}
