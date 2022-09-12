@@ -42,9 +42,10 @@ func ChainMiddlewares(m ...Middleware) Middleware {
 			return next(req)
 		}
 	}
+	tail := ChainMiddlewares(m[1:]...)
 	return func(req Request, next Next) (Response, error) {
 		return m[0](req, func(req Request) (Response, error) {
-			return ChainMiddlewares(m[1:]...)(req, next)
+			return tail(req, next)
 		})
 	}
 }
