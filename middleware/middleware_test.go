@@ -36,19 +36,24 @@ func TestChainMiddlewares(t *testing.T) {
 	)
 	a := require.New(t)
 
-	req := Request{
-		Context: context.Background(),
-		Body:    []string{},
-		Params:  map[string]any{},
+	for i := range [2]struct{}{} {
+		req := Request{
+			Context: context.Background(),
+			Body:    []string{},
+			Params: map[string]any{
+				"call": i,
+			},
+		}
+		resp, err := chain(req, func(req Request) (Response, error) {
+			a.Equal([]string{"first", "second", "third"}, req.Body)
+			a.Equal("bar", req.Params["second"])
+			a.Equal("baz", req.Context.Value(testKey{}))
+			a.Equal(i, req.Params["call"])
+			return Response{Type: "ok"}, nil
+		})
+		a.NoError(err)
+		a.Equal("ok", resp.Type)
 	}
-	resp, err := chain(req, func(req Request) (Response, error) {
-		a.Equal([]string{"first", "second", "third"}, req.Body)
-		a.Equal("bar", req.Params["second"])
-		a.Equal("baz", req.Context.Value(testKey{}))
-		return Response{Type: "ok"}, nil
-	})
-	a.NoError(err)
-	a.Equal("ok", resp.Type)
 }
 
 func BenchmarkChainMiddlewares(b *testing.B) {
