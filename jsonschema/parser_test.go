@@ -1,14 +1,17 @@
 package jsonschema
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 	"testing"
 
 	"github.com/go-faster/errors"
+	yaml "github.com/go-faster/yamlx"
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen/internal/jsonpointer"
+	"github.com/ogen-go/ogen/internal/location"
 )
 
 type components map[string]*RawSchema
@@ -343,6 +346,46 @@ func TestSchemaReferencedArray(t *testing.T) {
 	require.NoError(t, err)
 	require.Equal(t, expectRefcache, parser.refcache)
 	require.Equal(t, expect, out)
+}
+
+func TestSchemaExtensions(t *testing.T) {
+	tests := []struct {
+		raw       string
+		expect    *Schema
+		expectErr bool
+	}{
+		{
+			`{"type": "string", "x-ogen-name": "foo"}`,
+			&Schema{
+				Type:      String,
+				XOgenName: "foo",
+			},
+			false,
+		},
+		{`{"type": "string", "x-ogen-name": {}}`, nil, true},
+	}
+
+	for i, tt := range tests {
+		tt := tt
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			a := require.New(t)
+
+			var raw RawSchema
+			a.NoError(yaml.Unmarshal([]byte(tt.raw), &raw))
+
+			out, err := NewParser(Settings{
+				Filename: "test.yaml",
+			}).Parse(&raw)
+			if tt.expectErr {
+				a.Error(err)
+				return
+			}
+			a.NoError(err)
+			// Zero locator to simplify comparison.
+			out.Locator = location.Locator{}
+			a.Equal(tt.expect, out)
+		})
+	}
 }
 
 func TestInvalidMultipleOf(t *testing.T) {
