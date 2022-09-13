@@ -13,7 +13,7 @@ import (
 )
 
 // Extensions map is "^x-" fields list.
-type Extensions map[string]*yaml.Node
+type Extensions map[string]yaml.Node
 
 func isExtensionKey(key string) bool {
 	return strings.HasPrefix(key, "x-")
@@ -23,12 +23,13 @@ func isExtensionKey(key string) bool {
 func (p Extensions) MarshalYAML() (any, error) {
 	content := make([]*yaml.Node, 0, len(p)*2)
 	for key, val := range p {
+		val := val
 		if !isExtensionKey(key) {
 			continue
 		}
 		content = append(content,
 			&yaml.Node{Kind: yaml.ScalarNode, Tag: "!!str", Value: key},
-			val,
+			&val,
 		)
 	}
 
@@ -61,8 +62,9 @@ func (p *Extensions) UnmarshalYAML(node *yaml.Node) error {
 		if err := keyNode.Decode(&key); err != nil {
 			return err
 		}
-		if isExtensionKey(key) {
-			m[key] = value
+		// FIXME(tdakkota): use *yamlx.Node instead of yaml.Node
+		if isExtensionKey(key) && value != nil {
+			m[key] = *value
 		}
 	}
 	return nil
@@ -74,12 +76,13 @@ func (p Extensions) MarshalJSON() ([]byte, error) {
 
 	e.ObjStart()
 	for key, val := range p {
+		val := val
 		if !isExtensionKey(key) {
 			continue
 		}
 
 		e.FieldStart(key)
-		b, err := convertYAMLtoRawJSON(val)
+		b, err := convertYAMLtoRawJSON(&val)
 		if err != nil {
 			return nil, errors.Wrap(err, "marshal")
 		}
@@ -112,7 +115,7 @@ func (p *Extensions) UnmarshalJSON(data []byte) error {
 		if err != nil {
 			return err
 		}
-		m[key] = value
+		m[key] = *value
 
 		return nil
 	})
