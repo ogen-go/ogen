@@ -7,7 +7,6 @@ import (
 	"regexp"
 
 	"github.com/go-faster/errors"
-	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/location"
@@ -57,7 +56,7 @@ func (p *Parser) Resolve(ref string, ctx *jsonpointer.ResolveCtx) (*Schema, erro
 func (p *Parser) parse(schema *RawSchema, ctx *jsonpointer.ResolveCtx) (_ *Schema, rerr error) {
 	if schema != nil {
 		defer func() {
-			rerr = p.wrapLocation(ctx.LastLoc(), schema.Locator, rerr)
+			rerr = p.wrapLocation(ctx.LastLoc(), schema.Common.Locator, rerr)
 		}()
 	}
 	return p.parse1(schema, ctx, func(s *Schema) *Schema {
@@ -73,7 +72,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 
 	if schema != nil && s != nil {
 		if enum := schema.Enum; len(enum) > 0 {
-			loc := schema.Locator.Field("enum")
+			loc := schema.Common.Locator.Field("enum")
 			for i := range enum {
 				for j := range enum {
 					if i == j {
@@ -112,15 +111,13 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 				return nil
 			}(); err != nil {
 				err := errors.Wrap(err, "parse default")
-				return nil, p.wrapField("default", ctx.LastLoc(), schema.Locator, err)
+				return nil, p.wrapField("default", ctx.LastLoc(), schema.Common.Locator, err)
 			}
 		}
-		if a, ok := schema.XAnnotations["x-ogen-name"]; ok {
-			name, err := jx.DecodeBytes(a).Str()
-			if err != nil {
-				return nil, errors.Wrapf(err, "decode %q", a)
+		if a, ok := schema.Common.Extensions["x-ogen-name"]; ok {
+			if err := a.Decode(&s.XOgenName); err != nil {
+				return nil, errors.Wrap(err, "parse x-ogen-name")
 			}
-			s.XOgenName = name
 		}
 	}
 
@@ -132,7 +129,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 		return nil, nil
 	}
 	wrapField := func(field string, err error) error {
-		return p.wrapField(field, ctx.LastLoc(), schema.Locator, err)
+		return p.wrapField(field, ctx.LastLoc(), schema.Common.Locator, err)
 	}
 
 	validateMinMax := func(prop string, min, max *uint64) (rerr error) {
@@ -180,7 +177,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 	case len(schema.OneOf) > 0:
 		s := hook(&Schema{})
 
-		schemas, err := p.parseMany(schema.OneOf, schema.Locator, ctx)
+		schemas, err := p.parseMany(schema.OneOf, schema.Common.Locator, ctx)
 		if err != nil {
 			return nil, wrapField("oneOf", err)
 		}
@@ -208,7 +205,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 			Pattern:   schema.Pattern,
 		})
 
-		schemas, err := p.parseMany(schema.AnyOf, schema.Locator, ctx)
+		schemas, err := p.parseMany(schema.AnyOf, schema.Common.Locator, ctx)
 		if err != nil {
 			return nil, wrapField("anyOf", err)
 		}
@@ -218,7 +215,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 	case len(schema.AllOf) > 0:
 		s := hook(&Schema{})
 
-		schemas, err := p.parseMany(schema.AllOf, schema.Locator, ctx)
+		schemas, err := p.parseMany(schema.AllOf, schema.Common.Locator, ctx)
 		if err != nil {
 			return nil, wrapField("allOf", err)
 		}
@@ -302,7 +299,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 		}
 
 		if pp := schema.PatternProperties; len(pp) > 0 {
-			ppLoc := schema.Locator.Field("patternProperties")
+			ppLoc := schema.Common.Locator.Field("patternProperties")
 
 			patterns := make([]PatternProperty, len(pp))
 			for idx, prop := range pp {
@@ -326,7 +323,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 			s.PatternProperties = patterns
 		}
 
-		propsLoc := schema.Locator.Field("properties")
+		propsLoc := schema.Common.Locator.Field("properties")
 		for _, propSpec := range schema.Properties {
 			prop, err := p.parse(propSpec.Schema, ctx)
 			if err != nil {
@@ -489,6 +486,6 @@ func (p *Parser) extendInfo(schema *RawSchema, s *Schema) *Schema {
 		}
 	}
 
-	s.Locator = schema.Locator
+	s.Locator = schema.Common.Locator
 	return s
 }
