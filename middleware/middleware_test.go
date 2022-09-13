@@ -79,14 +79,11 @@ func TestChainMiddlewares(t *testing.T) {
 
 func BenchmarkChainMiddlewares(b *testing.B) {
 	const N = 20
-	noop := func(req Request, next Next) (Response, error) {
-		return next(req)
-	}
 
 	var (
 		chain = ChainMiddlewares(func() (r []Middleware) {
 			for i := 0; i < N; i++ {
-				r = append(r, noop)
+				r = append(r, justCallNext)
 			}
 			return r
 		}()...)
