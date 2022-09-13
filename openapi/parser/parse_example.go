@@ -10,13 +10,14 @@ func (p *parser) parseExample(e *ogen.Example, ctx *jsonpointer.ResolveCtx) (_ *
 	if e == nil {
 		return nil, nil
 	}
+	locator := e.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(ctx.LastLoc(), e.Locator, rerr)
+		rerr = p.wrapLocation(ctx.LastLoc(), locator, rerr)
 	}()
 	if ref := e.Ref; ref != "" {
 		resolved, err := p.resolveExample(ref, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.LastLoc(), e.Locator, err)
+			return nil, p.wrapRef(ctx.LastLoc(), locator, err)
 		}
 		return resolved, nil
 	}
@@ -26,6 +27,6 @@ func (p *parser) parseExample(e *ogen.Example, ctx *jsonpointer.ResolveCtx) (_ *
 		Description:   e.Description,
 		Value:         e.Value,
 		ExternalValue: e.ExternalValue,
-		Locator:       e.Locator,
+		Locator:       locator,
 	}, nil
 }

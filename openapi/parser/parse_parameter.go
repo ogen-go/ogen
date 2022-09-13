@@ -69,7 +69,7 @@ func (p *parser) parseParams(
 		}
 		if _, ok := unique[ploc]; ok {
 			err := errors.Errorf("duplicate parameter: %q in %q", param.Name, param.In)
-			return nil, p.wrapLocation(ctx.LastLoc(), spec.Locator, err)
+			return nil, p.wrapLocation(ctx.LastLoc(), spec.Common.Locator, err)
 		}
 
 		unique[ploc] = struct{}{}
@@ -85,16 +85,17 @@ func (p *parser) validateParameter(
 	param *ogen.Parameter,
 	file string,
 ) error {
+	locator := param.Common.Locator
 	switch {
 	case param.Schema != nil && param.Content != nil:
 		err := errors.New("parameter MUST contain either a schema property, or a content property, but not both")
-		return p.wrapField("schema", file, param.Locator, err)
+		return p.wrapField("schema", file, locator, err)
 	case param.Schema == nil && param.Content == nil:
 		return errors.New("parameter MUST contain either a schema property, or a content property")
 	case param.Content != nil && len(param.Content) < 1:
 		// https://github.com/OAI/OpenAPI-Specification/discussions/2875
 		err := errors.New("content must have at least one entry")
-		return p.wrapField("content", file, param.Locator, err)
+		return p.wrapField("content", file, locator, err)
 	}
 
 	// Path parameters are always required.
@@ -102,12 +103,12 @@ func (p *parser) validateParameter(
 	case openapi.LocationPath:
 		if !param.Required {
 			err := errors.New("path parameters must be required")
-			return p.wrapField("required", file, param.Locator, err)
+			return p.wrapField("required", file, locator, err)
 		}
 	case openapi.LocationHeader:
 		if !httpguts.ValidHeaderFieldName(name) {
 			err := errors.Errorf("invalid header name %q", name)
-			return p.wrapField("name", file, param.Locator, err)
+			return p.wrapField("name", file, locator, err)
 		}
 	}
 	return nil
@@ -117,13 +118,14 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *jsonpointer.ResolveC
 	if param == nil {
 		return nil, errors.New("parameter object is empty or null")
 	}
+	locator := param.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(ctx.LastLoc(), param.Locator, rerr)
+		rerr = p.wrapLocation(ctx.LastLoc(), locator, rerr)
 	}()
 	if ref := param.Ref; ref != "" {
 		parsed, err := p.resolveParameter(ref, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.LastLoc(), param.Locator, err)
+			return nil, p.wrapRef(ctx.LastLoc(), locator, err)
 		}
 		return parsed, nil
 	}
@@ -138,7 +140,7 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *jsonpointer.ResolveC
 	locatedIn, exists := types[strings.ToLower(param.In)]
 	if !exists {
 		err := errors.Errorf("unknown parameter location %q", param.In)
-		return nil, p.wrapField("in", ctx.LastLoc(), param.Locator, err)
+		return nil, p.wrapField("in", ctx.LastLoc(), locator, err)
 	}
 
 	if err := p.validateParameter(param.Name, locatedIn, param, ctx.LastLoc()); err != nil {
@@ -148,13 +150,13 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *jsonpointer.ResolveC
 	schema, err := p.parseSchema(param.Schema, ctx)
 	if err != nil {
 		err := errors.Wrap(err, "schema")
-		return nil, p.wrapField("schema", ctx.LastLoc(), param.Locator, err)
+		return nil, p.wrapField("schema", ctx.LastLoc(), locator, err)
 	}
 
-	content, err := p.parseParameterContent(param.Content, param.Locator.Field("content"), ctx)
+	content, err := p.parseParameterContent(param.Content, locator.Field("content"), ctx)
 	if err != nil {
 		err := errors.Wrap(err, "content")
-		return nil, p.wrapField("content", ctx.LastLoc(), param.Locator, err)
+		return nil, p.wrapField("content", ctx.LastLoc(), locator, err)
 	}
 
 	op := &openapi.Parameter{
@@ -168,7 +170,7 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *jsonpointer.ResolveC
 		Explode:       inferParamExplode(locatedIn, param.Explode),
 		Required:      param.Required,
 		AllowReserved: param.AllowReserved,
-		Locator:       param.Locator,
+		Locator:       locator,
 	}
 
 	// TODO: Validate content?

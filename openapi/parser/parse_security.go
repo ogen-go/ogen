@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+	"golang.org/x/exp/maps"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/jsonpointer"
@@ -19,14 +20,15 @@ func (p *parser) parseSecurityScheme(
 	if scheme == nil {
 		return nil, errors.New("securityScheme is empty or null")
 	}
+	locator := scheme.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(ctx.LastLoc(), scheme.Locator, rerr)
+		rerr = p.wrapLocation(ctx.LastLoc(), locator, rerr)
 	}()
 
 	if ref := scheme.Ref; ref != "" {
 		resolved, err := p.resolveSecurityScheme(ref, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.LastLoc(), scheme.Locator, err)
+			return nil, p.wrapRef(ctx.LastLoc(), locator, err)
 		}
 		return resolved, nil
 	}
@@ -38,11 +40,11 @@ func (p *parser) parseSecurityScheme(
 			case "query", "header", "cookie":
 			default:
 				err := errors.Errorf(`invalid "in": %q`, scheme.In)
-				return p.wrapField("in", ctx.LastLoc(), scheme.Locator, err)
+				return p.wrapField("in", ctx.LastLoc(), locator, err)
 			}
 			if scheme.Name == "" {
 				err := errors.New(`"name" is required and MUST be a non-empty string`)
-				return p.wrapField("name", ctx.LastLoc(), scheme.Locator, err)
+				return p.wrapField("name", ctx.LastLoc(), locator, err)
 			}
 			return nil
 		case "http":
@@ -64,23 +66,23 @@ func (p *parser) parseSecurityScheme(
 				"vapid":
 			default:
 				err := errors.Errorf(`invalid "scheme": %q`, scheme.Scheme)
-				return p.wrapField("scheme", ctx.LastLoc(), scheme.Locator, err)
+				return p.wrapField("scheme", ctx.LastLoc(), locator, err)
 			}
 			return nil
 		case "mutualTLS":
 			return nil
 		case "oauth2":
 			err := p.validateOAuthFlows(scheme.Flows, ctx.LastLoc())
-			return p.wrapField("flows", ctx.LastLoc(), scheme.Locator, err)
+			return p.wrapField("flows", ctx.LastLoc(), locator, err)
 		case "openIdConnect":
 			if _, err := url.ParseRequestURI(scheme.OpenIDConnectURL); err != nil {
 				err := errors.Wrap(err, `"openIdConnectUrl" MUST be in the form of a URL`)
-				return p.wrapField("openIdConnectUrl", ctx.LastLoc(), scheme.Locator, err)
+				return p.wrapField("openIdConnectUrl", ctx.LastLoc(), locator, err)
 			}
 			return nil
 		default:
 			err := errors.Errorf("unknown security scheme type %q", scheme.Type)
-			return p.wrapField("type", ctx.LastLoc(), scheme.Locator, err)
+			return p.wrapField("type", ctx.LastLoc(), locator, err)
 		}
 	}(); err != nil {
 		return nil, errors.Wrap(err, scheme.Type)
@@ -113,16 +115,18 @@ func (p *parser) validateOAuthFlows(flows *ogen.OAuthFlows, loc string) (rerr er
 	if flows == nil {
 		return errors.New("oAuthFlows is empty or null")
 	}
+	locator := flows.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(loc, flows.Locator, rerr)
+		rerr = p.wrapLocation(loc, locator, rerr)
 	}()
 
 	check := func(flow *ogen.OAuthFlow, authURL, tokenURL bool) (rerr error) {
 		if flow == nil {
 			return nil
 		}
+		locator := flow.Common.Locator
 		defer func() {
-			rerr = p.wrapLocation(loc, flow.Locator, rerr)
+			rerr = p.wrapLocation(loc, locator, rerr)
 		}()
 
 		checkURL := func(name, input string, check bool) error {
@@ -131,7 +135,7 @@ func (p *parser) validateOAuthFlows(flows *ogen.OAuthFlows, loc string) (rerr er
 			}
 			if _, err := url.ParseRequestURI(input); err != nil {
 				err := errors.Wrapf(err, `%q MUST be in the form of a URL`, name)
-				return p.wrapField(name, loc, flow.Locator, err)
+				return p.wrapField(name, loc, locator, err)
 			}
 			return nil
 		}
@@ -156,17 +160,13 @@ func cloneOAuthFlows(flows ogen.OAuthFlows) (r openapi.OAuthFlows) {
 		if flow == nil {
 			return nil
 		}
-		r := &openapi.OAuthFlow{
+		return &openapi.OAuthFlow{
 			AuthorizationURL: flow.AuthorizationURL,
 			TokenURL:         flow.TokenURL,
 			RefreshURL:       flow.RefreshURL,
-			Scopes:           make(map[string]string, len(flow.Scopes)),
-			Locator:          flow.Locator,
+			Scopes:           maps.Clone(flow.Scopes),
+			Locator:          flow.Common.Locator,
 		}
-		for k, v := range flow.Scopes {
-			r.Scopes[k] = v
-		}
-		return r
 	}
 
 	return openapi.OAuthFlows{
@@ -174,7 +174,7 @@ func cloneOAuthFlows(flows ogen.OAuthFlows) (r openapi.OAuthFlows) {
 		Password:          cloneFlow(flows.Password),
 		ClientCredentials: cloneFlow(flows.ClientCredentials),
 		AuthorizationCode: cloneFlow(flows.AuthorizationCode),
-		Locator:           flows.Locator,
+		Locator:           flows.Common.Locator,
 	}
 }
 
@@ -231,7 +231,7 @@ func (p *parser) parseSecurityRequirements(
 					BearerFormat:     spec.BearerFormat,
 					Flows:            cloneOAuthFlows(flows),
 					OpenIDConnectURL: spec.OpenIDConnectURL,
-					Locator:          spec.Locator,
+					Locator:          spec.Common.Locator,
 				},
 			})
 		}

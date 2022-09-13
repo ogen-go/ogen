@@ -40,34 +40,35 @@ func validateComponentsKeys(p *parser, c *ogen.Components) error {
 	if c == nil {
 		return nil
 	}
-	if err := validateComponentsKey(p, c.Schemas, c.Locator.Field("schemas")); err != nil {
+	locator := c.Common.Locator
+	if err := validateComponentsKey(p, c.Schemas, locator.Field("schemas")); err != nil {
 		return errors.Wrap(err, "schemas")
 	}
-	if err := validateComponentsKey(p, c.Responses, c.Locator.Field("responses")); err != nil {
+	if err := validateComponentsKey(p, c.Responses, locator.Field("responses")); err != nil {
 		return errors.Wrap(err, "responses")
 	}
-	if err := validateComponentsKey(p, c.Parameters, c.Locator.Field("parameters")); err != nil {
+	if err := validateComponentsKey(p, c.Parameters, locator.Field("parameters")); err != nil {
 		return errors.Wrap(err, "parameters")
 	}
-	if err := validateComponentsKey(p, c.Examples, c.Locator.Field("examples")); err != nil {
+	if err := validateComponentsKey(p, c.Examples, locator.Field("examples")); err != nil {
 		return errors.Wrap(err, "examples")
 	}
-	if err := validateComponentsKey(p, c.RequestBodies, c.Locator.Field("requestBodies")); err != nil {
+	if err := validateComponentsKey(p, c.RequestBodies, locator.Field("requestBodies")); err != nil {
 		return errors.Wrap(err, "requestBodies")
 	}
-	if err := validateComponentsKey(p, c.Headers, c.Locator.Field("headers")); err != nil {
+	if err := validateComponentsKey(p, c.Headers, locator.Field("headers")); err != nil {
 		return errors.Wrap(err, "headers")
 	}
-	if err := validateComponentsKey(p, c.SecuritySchemes, c.Locator.Field("securitySchemes")); err != nil {
+	if err := validateComponentsKey(p, c.SecuritySchemes, locator.Field("securitySchemes")); err != nil {
 		return errors.Wrap(err, "securitySchemes")
 	}
-	if err := validateComponentsKey(p, c.Links, c.Locator.Field("links")); err != nil {
+	if err := validateComponentsKey(p, c.Links, locator.Field("links")); err != nil {
 		return errors.Wrap(err, "links")
 	}
-	if err := validateComponentsKey(p, c.Callbacks, c.Locator.Field("callbacks")); err != nil {
+	if err := validateComponentsKey(p, c.Callbacks, locator.Field("callbacks")); err != nil {
 		return errors.Wrap(err, "callbacks")
 	}
-	if err := validateComponentsKey(p, c.PathItems, c.Locator.Field("pathItems")); err != nil {
+	if err := validateComponentsKey(p, c.PathItems, locator.Field("pathItems")); err != nil {
 		return errors.Wrap(err, "pathItems")
 	}
 	return nil
@@ -83,8 +84,9 @@ func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rer
 			RequestBodies: map[string]*openapi.RequestBody{},
 		}, nil
 	}
+	locator := c.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation("", c.Locator, rerr)
+		rerr = p.wrapLocation("", locator, rerr)
 	}()
 
 	if err := validateComponentsKeys(p, c); err != nil {
@@ -99,9 +101,9 @@ func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rer
 		RequestBodies: make(map[string]*openapi.RequestBody, len(c.RequestBodies)),
 	}
 	wrapErr := func(component, name string, err error) error {
-		loc := c.Locator.Field(component).Field(name)
+		locator := locator.Field(component).Field(name)
 		err = errors.Wrapf(err, "%s: %q", component, name)
-		return p.wrapLocation("", loc, err)
+		return p.wrapLocation("", locator, err)
 	}
 
 	for name := range c.Schemas {

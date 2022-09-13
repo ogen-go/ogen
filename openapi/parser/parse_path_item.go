@@ -20,19 +20,20 @@ func (p *parser) parsePathItem(
 	if item == nil {
 		return nil, errors.New("pathItem object is empty or null")
 	}
+	locator := item.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(ctx.LastLoc(), item.Locator, rerr)
+		rerr = p.wrapLocation(ctx.LastLoc(), locator, rerr)
 	}()
 
 	if ref := item.Ref; ref != "" {
 		ops, err := p.resolvePathItem(path, ref, operationIDs, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.LastLoc(), item.Locator, err)
+			return nil, p.wrapRef(ctx.LastLoc(), locator, err)
 		}
 		return ops, nil
 	}
 
-	itemParams, err := p.parseParams(item.Parameters, item.Locator.Field("parameters"), ctx)
+	itemParams, err := p.parseParams(item.Parameters, locator.Field("parameters"), ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "parameters")
 	}
@@ -69,8 +70,9 @@ func (p *parser) parseOp(
 	itemParams []*openapi.Parameter,
 	ctx *jsonpointer.ResolveCtx,
 ) (_ *openapi.Operation, err error) {
+	locator := spec.Common.Locator
 	defer func() {
-		err = p.wrapLocation(ctx.LastLoc(), spec.Locator, err)
+		err = p.wrapLocation(ctx.LastLoc(), locator, err)
 	}()
 
 	op := &openapi.Operation{
@@ -79,10 +81,10 @@ func (p *parser) parseOp(
 		Description: spec.Description,
 		Deprecated:  spec.Deprecated,
 		HTTPMethod:  httpMethod,
-		Locator:     spec.Locator,
+		Locator:     locator,
 	}
 
-	opParams, err := p.parseParams(spec.Parameters, spec.Locator.Field("parameters"), ctx)
+	opParams, err := p.parseParams(spec.Parameters, locator.Field("parameters"), ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "parameters")
 	}
@@ -103,7 +105,7 @@ func (p *parser) parseOp(
 	}
 
 	{
-		locator := spec.Locator.Field("responses")
+		locator := locator.Field("responses")
 		op.Responses, err = p.parseResponses(spec.Responses, locator, ctx)
 		if err != nil {
 			err := errors.Wrap(err, "responses")
@@ -127,7 +129,7 @@ func (p *parser) parseOp(
 	if spec.Security != nil {
 		// Use operation level security.
 		security = spec.Security
-		securityParent = spec.Locator
+		securityParent = locator
 	}
 	if err := parseSecurity(security, securityParent.Field("security")); err != nil {
 		return nil, err

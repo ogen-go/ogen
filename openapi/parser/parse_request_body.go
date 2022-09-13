@@ -12,13 +12,14 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx *jsonpointer.Resol
 	if body == nil {
 		return nil, errors.New("requestBody object is empty or null")
 	}
+	locator := body.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(ctx.LastLoc(), body.Locator, rerr)
+		rerr = p.wrapLocation(ctx.LastLoc(), locator, rerr)
 	}()
 	if ref := body.Ref; ref != "" {
 		resolved, err := p.resolveRequestBody(ref, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.LastLoc(), body.Locator, err)
+			return nil, p.wrapRef(ctx.LastLoc(), locator, err)
 		}
 		return resolved, nil
 	}
@@ -29,7 +30,7 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx *jsonpointer.Resol
 			return nil, errors.New("content must have at least one entry")
 		}
 
-		content, err := p.parseContent(body.Content, body.Locator.Field("content"), ctx)
+		content, err := p.parseContent(body.Content, locator.Field("content"), ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, "parse content")
 		}
@@ -37,13 +38,13 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx *jsonpointer.Resol
 		return content, nil
 	}()
 	if err != nil {
-		return nil, p.wrapField("content", ctx.LastLoc(), body.Locator, err)
+		return nil, p.wrapField("content", ctx.LastLoc(), locator, err)
 	}
 
 	return &openapi.RequestBody{
 		Description: body.Description,
 		Required:    body.Required,
 		Content:     content,
-		Locator:     body.Locator,
+		Locator:     locator,
 	}, nil
 }

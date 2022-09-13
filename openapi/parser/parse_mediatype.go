@@ -78,8 +78,9 @@ func (p *parser) parseParameterContent(
 }
 
 func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.ResolveCtx) (_ *openapi.MediaType, rerr error) {
+	locator := m.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(ctx.LastLoc(), m.Locator, rerr)
+		rerr = p.wrapLocation(ctx.LastLoc(), locator, rerr)
 	}()
 
 	s, err := p.parseSchema(m.Schema, ctx)
@@ -100,8 +101,9 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 			}
 
 			parseEncoding := func(name string, prop jsonschema.Property, e ogen.Encoding) (rerr error) {
+				locator := e.Common.Locator
 				defer func() {
-					rerr = p.wrapLocation(ctx.LastLoc(), e.Locator, rerr)
+					rerr = p.wrapLocation(ctx.LastLoc(), locator, rerr)
 				}()
 
 				encoding := &openapi.Encoding{
@@ -110,11 +112,11 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 					Style:         inferParamStyle(openapi.LocationQuery, e.Style),
 					Explode:       inferParamExplode(openapi.LocationQuery, e.Explode),
 					AllowReserved: e.AllowReserved,
-					Locator:       e.Locator,
+					Locator:       locator,
 				}
 				encoding.Headers, err = p.parseHeaders(e.Headers, ctx)
 				if err != nil {
-					return p.wrapField("headers", ctx.LastLoc(), e.Locator, err)
+					return p.wrapField("headers", ctx.LastLoc(), locator, err)
 				}
 				encodings[name] = encoding
 
@@ -134,7 +136,7 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 				return nil
 			}
 
-			encodingLoc := m.Locator.Field("encoding")
+			encodingLoc := locator.Field("encoding")
 			for name, e := range m.Encoding {
 				prop, ok := names[name]
 				if !ok {
@@ -175,6 +177,6 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 		Example:  json.RawMessage(m.Example),
 		Examples: examples,
 		Encoding: encodings,
-		Locator:  m.Locator,
+		Locator:  locator,
 	}, nil
 }
