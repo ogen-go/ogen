@@ -7,6 +7,8 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	yaml "github.com/go-faster/yamlx"
+
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 // The Schema Object allows the definition of input and output data types.
@@ -239,7 +241,7 @@ type Schema struct {
 	// described is not a string.
 	ContentMediaType string `json:"contentMediaType,omitempty" yaml:"contentMediaType,omitempty"`
 
-	Locator Locator `json:"-" yaml:",inline"`
+	Common jsonschema.OpenAPICommon `json:"-" yaml:",inline"`
 }
 
 // Property is item of Properties.
@@ -500,6 +502,8 @@ type Discriminator struct {
 	PropertyName string `json:"propertyName" yaml:"propertyName"`
 	// An object to hold mappings between payload values and schema names or references.
 	Mapping map[string]string `json:"mapping,omitempty" yaml:"mapping,omitempty"`
+
+	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
 // XML is a metadata object that allows for more fine-tuned XML model definitions.
@@ -532,4 +536,6 @@ type XML struct {
 	//
 	// Default value is false.
 	Wrapped bool `json:"wrapped,omitempty" yaml:"wrapped,omitempty"`
+
+	Common OpenAPICommon `json:"-" yaml:",inline"`
 }

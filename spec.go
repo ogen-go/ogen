@@ -21,6 +21,13 @@ type (
 	// RawValue is a raw JSON value.
 	RawValue = jsonschema.RawValue
 
+	// Extensions is a map of OpenAPI extensions.
+	//
+	// See https://spec.openapis.org/oas/v3.1.0#specification-extensions.
+	Extensions = jsonschema.Extensions
+	// OpenAPICommon is a common OpenAPI object fields (extensions and locator).
+	OpenAPICommon = jsonschema.OpenAPICommon
+
 	// Locator stores location of JSON value.
 	Locator = location.Locator
 )
@@ -70,6 +77,9 @@ type Spec struct {
 
 	// Additional external documentation.
 	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty" yaml:"externalDocs,omitempty"`
+
+	// Specification extensions.
+	Extensions Extensions `json:"-" yaml:",inline"`
 
 	// Raw YAML node. Used by '$ref' resolvers.
 	Raw *yaml.Node `json:"-" yaml:"-"`
@@ -138,6 +148,9 @@ type Info struct {
 	License *License `json:"license,omitempty" yaml:"license,omitempty"`
 	// REQUIRED. The version of the OpenAPI document.
 	Version string `json:"version" yaml:"version"`
+
+	// Specification extensions.
+	Extensions Extensions `json:"-" yaml:",inline"`
 }
 
 // Contact information for the exposed API.
@@ -150,6 +163,9 @@ type Contact struct {
 	URL string `json:"url,omitempty" yaml:"url,omitempty"`
 	// The email address of the contact person/organization.
 	Email string `json:"email,omitempty" yaml:"email,omitempty"`
+
+	// Specification extensions.
+	Extensions Extensions `json:"-" yaml:",inline"`
 }
 
 // License information for the exposed API.
@@ -162,6 +178,9 @@ type License struct {
 	Identifier string `json:"identifier,omitempty" yaml:"identifier,omitempty"`
 	// A URL to the license used for the API.
 	URL string `json:"url,omitempty" yaml:"url,omitempty"`
+
+	// Specification extensions.
+	Extensions Extensions `json:"-" yaml:",inline"`
 }
 
 // Server represents a Server.
@@ -177,6 +196,9 @@ type Server struct {
 	Description string `json:"description,omitempty" yaml:"description,omitempty"`
 	// A map between a variable name and its value. The value is used for substitution in the server's URL template.
 	Variables map[string]ServerVariable `json:"variables,omitempty" yaml:"variables,omitempty"`
+
+	// Specification extensions.
+	Extensions Extensions `json:"-" yaml:",inline"`
 }
 
 // ServerVariable describes an object representing a Server Variable for server URL template substitution.
@@ -193,6 +215,9 @@ type ServerVariable struct {
 	Default string `json:"default" yaml:"default"`
 	// An optional description for the server variable. CommonMark syntax MAY be used for rich text representation.
 	Description string `json:"description,omitempty" yaml:"description,omitempty"`
+
+	// Specification extensions.
+	Extensions Extensions `json:"-" yaml:",inline"`
 }
 
 // Components Holds a set of reusable objects for different aspects of the OAS.
@@ -201,18 +226,28 @@ type ServerVariable struct {
 //
 // See https://spec.openapis.org/oas/v3.1.0#components-object.
 type Components struct {
-	Schemas         map[string]*Schema         `json:"schemas,omitempty" yaml:"schemas,omitempty"`
-	Responses       map[string]*Response       `json:"responses,omitempty" yaml:"responses,omitempty"`
-	Parameters      map[string]*Parameter      `json:"parameters,omitempty" yaml:"parameters,omitempty"`
-	Examples        map[string]*Example        `json:"examples,omitempty" yaml:"examples,omitempty"`
-	RequestBodies   map[string]*RequestBody    `json:"requestBodies,omitempty" yaml:"requestBodies,omitempty"`
-	Headers         map[string]*Header         `json:"headers,omitempty" yaml:"headers,omitempty"`
+	// An object to hold reusable Schema Objects.
+	Schemas map[string]*Schema `json:"schemas,omitempty" yaml:"schemas,omitempty"`
+	// An object to hold reusable Response Objects.
+	Responses map[string]*Response `json:"responses,omitempty" yaml:"responses,omitempty"`
+	// An object to hold reusable Parameter Objects.
+	Parameters map[string]*Parameter `json:"parameters,omitempty" yaml:"parameters,omitempty"`
+	// An object to hold reusable Example Objects.
+	Examples map[string]*Example `json:"examples,omitempty" yaml:"examples,omitempty"`
+	// An object to hold reusable Request Body Objects.
+	RequestBodies map[string]*RequestBody `json:"requestBodies,omitempty" yaml:"requestBodies,omitempty"`
+	// An object to hold reusable Header Objects.
+	Headers map[string]*Header `json:"headers,omitempty" yaml:"headers,omitempty"`
+	// An object to hold reusable Security Scheme Objects.
 	SecuritySchemes map[string]*SecurityScheme `json:"securitySchemes,omitempty" yaml:"securitySchemes,omitempty"`
-	Links           map[string]*Link           `json:"links,omitempty" yaml:"links,omitempty"`
-	Callbacks       map[string]*Callback       `json:"callbacks,omitempty" yaml:"callbacks,omitempty"`
-	PathItems       map[string]*PathItem       `json:"pathItems,omitempty" yaml:"pathItems,omitempty"`
+	// An object to hold reusable Link Objects.
+	Links map[string]*Link `json:"links,omitempty" yaml:"links,omitempty"`
+	// An object to hold reusable Callback Objects.
+	Callbacks map[string]*Callback `json:"callbacks,omitempty" yaml:"callbacks,omitempty"`
+	// An object to hold reusable Path Item Objects.
+	PathItems map[string]*PathItem `json:"pathItems,omitempty" yaml:"pathItems,omitempty"`
 
-	Locator Locator `json:"-" yaml:",inline"`
+	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
 // Init initializes all fields.
@@ -293,7 +328,7 @@ type PathItem struct {
 	// a combination of a name and location.
 	Parameters []*Parameter `json:"parameters,omitempty" yaml:"parameters,omitempty"`
 
-	Locator Locator `json:"-" yaml:",inline"`
+	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
 // Operation describes a single API operation on a path.
@@ -347,7 +382,7 @@ type Operation struct {
 	// it will be overridden by this value.
 	Servers []Server `json:"servers,omitempty" yaml:"servers,omitempty"`
 
-	Locator Locator `json:"-" yaml:",inline"`
+	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
 // ExternalDocumentation describes a reference to external resource for extended documentation.
@@ -358,6 +393,9 @@ type ExternalDocumentation struct {
 	Description string `json:"description,omitempty" yaml:"description,omitempty"`
 	// REQUIRED. The URL for the target documentation. This MUST be in the form of a URL.
 	URL string `json:"url" yaml:"url"`
+
+	// Specification extensions.
+	Extensions Extensions `json:"-" yaml:",inline"`
 }
 
 // Parameter describes a single operation parameter.
@@ -414,7 +452,7 @@ type Parameter struct {
 	// The map MUST only contain one entry.
 	Content map[string]Media `json:"content,omitempty" yaml:"content,omitempty"`
 
-	Locator Locator `json:"-" yaml:",inline"`
+	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
 // RequestBody describes a single request body.
@@ -438,7 +476,7 @@ type RequestBody struct {
 	// Determines if the request body is required in the request. Defaults to false.
 	Required bool `json:"required,omitempty" yaml:"required,omitempty"`
 
-	Locator Locator `json:"-" yaml:",inline"`
+	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
 // Media provides schema and examples for the media type identified by its key.
@@ -460,7 +498,7 @@ type Media struct {
 	// type is multipart or application/x-www-form-urlencoded.
 	Encoding map[string]Encoding `json:"encoding,omitempty" yaml:"encoding,omitempty"`
 
-	Locator Locator `json:"-" yaml:",inline"`
+	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
 // Encoding describes single encoding definition applied to a single schema property.
@@ -491,7 +529,7 @@ type Encoding struct {
 	// is not application/x-www-form-urlencoded.
 	AllowReserved bool `json:"allowReserved,omitempty" yaml:"allowReserved,omitempty"`
 
-	Locator Locator `json:"-" yaml:",inline"`
+	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
 // Responses is a container for the expected responses of an operation.
@@ -536,7 +574,7 @@ type Response struct {
 	// of the names for Component Objects.
 	Links map[string]*Link `json:"links,omitempty" yaml:"links,omitempty"`
 
-	Locator Locator `json:"-" yaml:",inline"`
+	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
 // Callback is a map of possible out-of band callbacks related to the parent operation.
@@ -569,7 +607,7 @@ type Example struct {
 	// A URI that points to the literal example.
 	ExternalValue string `json:"externalValue,omitempty" yaml:"externalValue,omitempty"`
 
-	Locator Locator `json:"-" yaml:",inline"`
+	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
 // Link describes a possible design-time link for a response.
@@ -592,6 +630,8 @@ type Link struct {
 	// The key is the parameter name to be used, whereas the value can be a constant or an expression to be
 	// evaluated and passed to the linked operation.
 	Parameters map[string]RawValue `json:"parameters,omitempty" yaml:"parameters,omitempty"`
+
+	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
 // Header describes header response.
@@ -615,4 +655,7 @@ type Tag struct {
 	Description string `json:"description,omitempty" yaml:"description,omitempty"`
 	// Additional external documentation for this tag.
 	ExternalDocs *ExternalDocumentation `json:"externalDocs,omitempty" yaml:"externalDocs,omitempty"`
+
+	// Specification extensions.
+	Extensions Extensions `json:"-" yaml:",inline"`
 }
