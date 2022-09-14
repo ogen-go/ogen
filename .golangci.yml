@@ -128,7 +128,7 @@ issues:
 
     # Not supposed to be constant.
     - linters: [ goconst ]
-      text: 'string `(string|number|int32|int64)`'
+      text: 'string `(string|number|u?int\d{0,2})`'
     - linters: [ goconst ]
       text: 'string `(Unix|unix|date|time)'
 
