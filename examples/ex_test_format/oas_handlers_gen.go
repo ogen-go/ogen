@@ -99,6 +99,12 @@ func (s *Server) handleTestQueryParameterRequest(args [0]string, w http.Response
 				"integer_int32_array":        params.IntegerInt32Array,
 				"integer_int64":              params.IntegerInt64,
 				"integer_int64_array":        params.IntegerInt64Array,
+				"integer_uint":               params.IntegerUint,
+				"integer_uint32":             params.IntegerUint32,
+				"integer_uint32_array":       params.IntegerUint32Array,
+				"integer_uint64":             params.IntegerUint64,
+				"integer_uint64_array":       params.IntegerUint64Array,
+				"integer_uint_array":         params.IntegerUintArray,
 				"integer_unix":               params.IntegerUnix,
 				"integer_unix-micro":         params.IntegerUnixMicro,
 				"integer_unix-micro_array":   params.IntegerUnixMicroArray,
@@ -2813,6 +2819,1752 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 	}
 
 	if err := encodeTestRequestIntegerNullableArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUintRequest handles test_request_integer_uint operation.
+//
+// POST /test_request_integer_uint
+func (s *Server) handleTestRequestIntegerUintRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUint",
+			ID:   "test_request_integer_uint",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUintRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUint",
+			OperationID:   "test_request_integer_uint",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptUint
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUint(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUint(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUintResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUint32Request handles test_request_integer_uint32 operation.
+//
+// POST /test_request_integer_uint32
+func (s *Server) handleTestRequestIntegerUint32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint32"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint32",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUint32",
+			ID:   "test_request_integer_uint32",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUint32Request(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUint32",
+			OperationID:   "test_request_integer_uint32",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptUint32
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUint32(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUint32(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUint32Response(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUint32ArrayRequest handles test_request_integer_uint32_array operation.
+//
+// POST /test_request_integer_uint32_array
+func (s *Server) handleTestRequestIntegerUint32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint32_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint32Array",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUint32Array",
+			ID:   "test_request_integer_uint32_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUint32ArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUint32Array",
+			OperationID:   "test_request_integer_uint32_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = []uint32
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUint32Array(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUint32Array(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUint32ArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUint32ArrayArrayRequest handles test_request_integer_uint32_array_array operation.
+//
+// POST /test_request_integer_uint32_array_array
+func (s *Server) handleTestRequestIntegerUint32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint32_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint32ArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUint32ArrayArray",
+			ID:   "test_request_integer_uint32_array_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUint32ArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUint32ArrayArray",
+			OperationID:   "test_request_integer_uint32_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = [][]uint32
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUint32ArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUint32ArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUint32ArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUint32NullableRequest handles test_request_integer_uint32_nullable operation.
+//
+// POST /test_request_integer_uint32_nullable
+func (s *Server) handleTestRequestIntegerUint32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint32_nullable"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint32Nullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUint32Nullable",
+			ID:   "test_request_integer_uint32_nullable",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUint32NullableRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUint32Nullable",
+			OperationID:   "test_request_integer_uint32_nullable",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptNilUint32
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUint32Nullable(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUint32Nullable(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUint32NullableResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUint32NullableArrayRequest handles test_request_integer_uint32_nullable_array operation.
+//
+// POST /test_request_integer_uint32_nullable_array
+func (s *Server) handleTestRequestIntegerUint32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint32_nullable_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint32NullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUint32NullableArray",
+			ID:   "test_request_integer_uint32_nullable_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUint32NullableArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUint32NullableArray",
+			OperationID:   "test_request_integer_uint32_nullable_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = []NilUint32
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUint32NullableArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUint32NullableArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUint32NullableArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUint32NullableArrayArrayRequest handles test_request_integer_uint32_nullable_array_array operation.
+//
+// POST /test_request_integer_uint32_nullable_array_array
+func (s *Server) handleTestRequestIntegerUint32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint32_nullable_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint32NullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUint32NullableArrayArray",
+			ID:   "test_request_integer_uint32_nullable_array_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUint32NullableArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUint32NullableArrayArray",
+			OperationID:   "test_request_integer_uint32_nullable_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = [][]NilUint32
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUint32NullableArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUint32NullableArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUint32NullableArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUint64Request handles test_request_integer_uint64 operation.
+//
+// POST /test_request_integer_uint64
+func (s *Server) handleTestRequestIntegerUint64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint64"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint64",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUint64",
+			ID:   "test_request_integer_uint64",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUint64Request(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUint64",
+			OperationID:   "test_request_integer_uint64",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptUint64
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUint64(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUint64(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUint64Response(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUint64ArrayRequest handles test_request_integer_uint64_array operation.
+//
+// POST /test_request_integer_uint64_array
+func (s *Server) handleTestRequestIntegerUint64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint64_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint64Array",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUint64Array",
+			ID:   "test_request_integer_uint64_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUint64ArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUint64Array",
+			OperationID:   "test_request_integer_uint64_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = []uint64
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUint64Array(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUint64Array(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUint64ArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUint64ArrayArrayRequest handles test_request_integer_uint64_array_array operation.
+//
+// POST /test_request_integer_uint64_array_array
+func (s *Server) handleTestRequestIntegerUint64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint64_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint64ArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUint64ArrayArray",
+			ID:   "test_request_integer_uint64_array_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUint64ArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUint64ArrayArray",
+			OperationID:   "test_request_integer_uint64_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = [][]uint64
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUint64ArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUint64ArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUint64ArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUint64NullableRequest handles test_request_integer_uint64_nullable operation.
+//
+// POST /test_request_integer_uint64_nullable
+func (s *Server) handleTestRequestIntegerUint64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint64_nullable"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint64Nullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUint64Nullable",
+			ID:   "test_request_integer_uint64_nullable",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUint64NullableRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUint64Nullable",
+			OperationID:   "test_request_integer_uint64_nullable",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptNilUint64
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUint64Nullable(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUint64Nullable(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUint64NullableResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUint64NullableArrayRequest handles test_request_integer_uint64_nullable_array operation.
+//
+// POST /test_request_integer_uint64_nullable_array
+func (s *Server) handleTestRequestIntegerUint64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint64_nullable_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint64NullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUint64NullableArray",
+			ID:   "test_request_integer_uint64_nullable_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUint64NullableArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUint64NullableArray",
+			OperationID:   "test_request_integer_uint64_nullable_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = []NilUint64
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUint64NullableArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUint64NullableArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUint64NullableArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUint64NullableArrayArrayRequest handles test_request_integer_uint64_nullable_array_array operation.
+//
+// POST /test_request_integer_uint64_nullable_array_array
+func (s *Server) handleTestRequestIntegerUint64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint64_nullable_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint64NullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUint64NullableArrayArray",
+			ID:   "test_request_integer_uint64_nullable_array_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUint64NullableArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUint64NullableArrayArray",
+			OperationID:   "test_request_integer_uint64_nullable_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = [][]NilUint64
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUint64NullableArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUint64NullableArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUint64NullableArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUintArrayRequest handles test_request_integer_uint_array operation.
+//
+// POST /test_request_integer_uint_array
+func (s *Server) handleTestRequestIntegerUintArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUintArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUintArray",
+			ID:   "test_request_integer_uint_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUintArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUintArray",
+			OperationID:   "test_request_integer_uint_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = []uint
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUintArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUintArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUintArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUintArrayArrayRequest handles test_request_integer_uint_array_array operation.
+//
+// POST /test_request_integer_uint_array_array
+func (s *Server) handleTestRequestIntegerUintArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUintArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUintArrayArray",
+			ID:   "test_request_integer_uint_array_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUintArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUintArrayArray",
+			OperationID:   "test_request_integer_uint_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = [][]uint
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUintArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUintArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUintArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUintNullableRequest handles test_request_integer_uint_nullable operation.
+//
+// POST /test_request_integer_uint_nullable
+func (s *Server) handleTestRequestIntegerUintNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint_nullable"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUintNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUintNullable",
+			ID:   "test_request_integer_uint_nullable",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUintNullableRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUintNullable",
+			OperationID:   "test_request_integer_uint_nullable",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = OptNilUint
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUintNullable(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUintNullable(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUintNullableResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUintNullableArrayRequest handles test_request_integer_uint_nullable_array operation.
+//
+// POST /test_request_integer_uint_nullable_array
+func (s *Server) handleTestRequestIntegerUintNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint_nullable_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUintNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUintNullableArray",
+			ID:   "test_request_integer_uint_nullable_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUintNullableArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUintNullableArray",
+			OperationID:   "test_request_integer_uint_nullable_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = []NilUint
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUintNullableArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUintNullableArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUintNullableArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestIntegerUintNullableArrayArrayRequest handles test_request_integer_uint_nullable_array_array operation.
+//
+// POST /test_request_integer_uint_nullable_array_array
+func (s *Server) handleTestRequestIntegerUintNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_integer_uint_nullable_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUintNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestIntegerUintNullableArrayArray",
+			ID:   "test_request_integer_uint_nullable_array_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestIntegerUintNullableArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestIntegerUintNullableArrayArray",
+			OperationID:   "test_request_integer_uint_nullable_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = [][]NilUint
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestIntegerUintNullableArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestIntegerUintNullableArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestIntegerUintNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
@@ -11834,6 +13586,1752 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 	}
 
 	if err := encodeTestRequestRequiredIntegerNullableArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUintRequest handles test_request_required_integer_uint operation.
+//
+// POST /test_request_required_integer_uint
+func (s *Server) handleTestRequestRequiredIntegerUintRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUint",
+			ID:   "test_request_required_integer_uint",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUintRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUint",
+			OperationID:   "test_request_required_integer_uint",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = uint
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUint(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUint(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUintResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUint32Request handles test_request_required_integer_uint32 operation.
+//
+// POST /test_request_required_integer_uint32
+func (s *Server) handleTestRequestRequiredIntegerUint32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint32"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint32",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUint32",
+			ID:   "test_request_required_integer_uint32",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUint32Request(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUint32",
+			OperationID:   "test_request_required_integer_uint32",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = uint32
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUint32(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUint32(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUint32Response(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUint32ArrayRequest handles test_request_required_integer_uint32_array operation.
+//
+// POST /test_request_required_integer_uint32_array
+func (s *Server) handleTestRequestRequiredIntegerUint32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint32_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint32Array",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUint32Array",
+			ID:   "test_request_required_integer_uint32_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUint32ArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUint32Array",
+			OperationID:   "test_request_required_integer_uint32_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = []uint32
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUint32Array(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUint32Array(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUint32ArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUint32ArrayArrayRequest handles test_request_required_integer_uint32_array_array operation.
+//
+// POST /test_request_required_integer_uint32_array_array
+func (s *Server) handleTestRequestRequiredIntegerUint32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint32_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint32ArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUint32ArrayArray",
+			ID:   "test_request_required_integer_uint32_array_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUint32ArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUint32ArrayArray",
+			OperationID:   "test_request_required_integer_uint32_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = [][]uint32
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUint32ArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUint32ArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUint32ArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUint32NullableRequest handles test_request_required_integer_uint32_nullable operation.
+//
+// POST /test_request_required_integer_uint32_nullable
+func (s *Server) handleTestRequestRequiredIntegerUint32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint32_nullable"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint32Nullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUint32Nullable",
+			ID:   "test_request_required_integer_uint32_nullable",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUint32NullableRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUint32Nullable",
+			OperationID:   "test_request_required_integer_uint32_nullable",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = NilUint32
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUint32Nullable(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUint32Nullable(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUint32NullableResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUint32NullableArrayRequest handles test_request_required_integer_uint32_nullable_array operation.
+//
+// POST /test_request_required_integer_uint32_nullable_array
+func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint32_nullable_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint32NullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUint32NullableArray",
+			ID:   "test_request_required_integer_uint32_nullable_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUint32NullableArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUint32NullableArray",
+			OperationID:   "test_request_required_integer_uint32_nullable_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = []NilUint32
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUint32NullableArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUint32NullableArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUint32NullableArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUint32NullableArrayArrayRequest handles test_request_required_integer_uint32_nullable_array_array operation.
+//
+// POST /test_request_required_integer_uint32_nullable_array_array
+func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint32_nullable_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint32NullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUint32NullableArrayArray",
+			ID:   "test_request_required_integer_uint32_nullable_array_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUint32NullableArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUint32NullableArrayArray",
+			OperationID:   "test_request_required_integer_uint32_nullable_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = [][]NilUint32
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUint32NullableArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUint32NullableArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUint32NullableArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUint64Request handles test_request_required_integer_uint64 operation.
+//
+// POST /test_request_required_integer_uint64
+func (s *Server) handleTestRequestRequiredIntegerUint64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint64"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint64",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUint64",
+			ID:   "test_request_required_integer_uint64",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUint64Request(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUint64",
+			OperationID:   "test_request_required_integer_uint64",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = uint64
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUint64(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUint64(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUint64Response(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUint64ArrayRequest handles test_request_required_integer_uint64_array operation.
+//
+// POST /test_request_required_integer_uint64_array
+func (s *Server) handleTestRequestRequiredIntegerUint64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint64_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint64Array",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUint64Array",
+			ID:   "test_request_required_integer_uint64_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUint64ArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUint64Array",
+			OperationID:   "test_request_required_integer_uint64_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = []uint64
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUint64Array(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUint64Array(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUint64ArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUint64ArrayArrayRequest handles test_request_required_integer_uint64_array_array operation.
+//
+// POST /test_request_required_integer_uint64_array_array
+func (s *Server) handleTestRequestRequiredIntegerUint64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint64_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint64ArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUint64ArrayArray",
+			ID:   "test_request_required_integer_uint64_array_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUint64ArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUint64ArrayArray",
+			OperationID:   "test_request_required_integer_uint64_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = [][]uint64
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUint64ArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUint64ArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUint64ArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUint64NullableRequest handles test_request_required_integer_uint64_nullable operation.
+//
+// POST /test_request_required_integer_uint64_nullable
+func (s *Server) handleTestRequestRequiredIntegerUint64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint64_nullable"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint64Nullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUint64Nullable",
+			ID:   "test_request_required_integer_uint64_nullable",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUint64NullableRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUint64Nullable",
+			OperationID:   "test_request_required_integer_uint64_nullable",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = NilUint64
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUint64Nullable(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUint64Nullable(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUint64NullableResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUint64NullableArrayRequest handles test_request_required_integer_uint64_nullable_array operation.
+//
+// POST /test_request_required_integer_uint64_nullable_array
+func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint64_nullable_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint64NullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUint64NullableArray",
+			ID:   "test_request_required_integer_uint64_nullable_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUint64NullableArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUint64NullableArray",
+			OperationID:   "test_request_required_integer_uint64_nullable_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = []NilUint64
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUint64NullableArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUint64NullableArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUint64NullableArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUint64NullableArrayArrayRequest handles test_request_required_integer_uint64_nullable_array_array operation.
+//
+// POST /test_request_required_integer_uint64_nullable_array_array
+func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint64_nullable_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint64NullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUint64NullableArrayArray",
+			ID:   "test_request_required_integer_uint64_nullable_array_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUint64NullableArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUint64NullableArrayArray",
+			OperationID:   "test_request_required_integer_uint64_nullable_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = [][]NilUint64
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUint64NullableArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUint64NullableArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUint64NullableArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUintArrayRequest handles test_request_required_integer_uint_array operation.
+//
+// POST /test_request_required_integer_uint_array
+func (s *Server) handleTestRequestRequiredIntegerUintArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUintArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUintArray",
+			ID:   "test_request_required_integer_uint_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUintArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUintArray",
+			OperationID:   "test_request_required_integer_uint_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = []uint
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUintArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUintArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUintArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUintArrayArrayRequest handles test_request_required_integer_uint_array_array operation.
+//
+// POST /test_request_required_integer_uint_array_array
+func (s *Server) handleTestRequestRequiredIntegerUintArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUintArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUintArrayArray",
+			ID:   "test_request_required_integer_uint_array_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUintArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUintArrayArray",
+			OperationID:   "test_request_required_integer_uint_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = [][]uint
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUintArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUintArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUintArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUintNullableRequest handles test_request_required_integer_uint_nullable operation.
+//
+// POST /test_request_required_integer_uint_nullable
+func (s *Server) handleTestRequestRequiredIntegerUintNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint_nullable"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUintNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUintNullable",
+			ID:   "test_request_required_integer_uint_nullable",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUintNullableRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUintNullable",
+			OperationID:   "test_request_required_integer_uint_nullable",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = NilUint
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUintNullable(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUintNullable(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUintNullableResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUintNullableArrayRequest handles test_request_required_integer_uint_nullable_array operation.
+//
+// POST /test_request_required_integer_uint_nullable_array
+func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint_nullable_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUintNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUintNullableArray",
+			ID:   "test_request_required_integer_uint_nullable_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUintNullableArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUintNullableArray",
+			OperationID:   "test_request_required_integer_uint_nullable_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = []NilUint
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUintNullableArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUintNullableArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUintNullableArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestRequestRequiredIntegerUintNullableArrayArrayRequest handles test_request_required_integer_uint_nullable_array_array operation.
+//
+// POST /test_request_required_integer_uint_nullable_array_array
+func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_integer_uint_nullable_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUintNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestRequestRequiredIntegerUintNullableArrayArray",
+			ID:   "test_request_required_integer_uint_nullable_array_array",
+		}
+	)
+	request, close, err := s.decodeTestRequestRequiredIntegerUintNullableArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response Error
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestRequestRequiredIntegerUintNullableArrayArray",
+			OperationID:   "test_request_required_integer_uint_nullable_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = [][]NilUint
+			Params   = struct{}
+			Response = Error
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestRequestRequiredIntegerUintNullableArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestRequestRequiredIntegerUintNullableArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredIntegerUintNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
@@ -46463,6 +49961,1752 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 	}
 
 	if err := encodeTestResponseIntegerNullableArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUintRequest handles test_response_integer_uint operation.
+//
+// POST /test_response_integer_uint
+func (s *Server) handleTestResponseIntegerUintRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUint",
+			ID:   "test_response_integer_uint",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUintRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response uint
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUint",
+			OperationID:   "test_response_integer_uint",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = uint
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUint(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUint(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUintResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUint32Request handles test_response_integer_uint32 operation.
+//
+// POST /test_response_integer_uint32
+func (s *Server) handleTestResponseIntegerUint32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint32"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint32",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUint32",
+			ID:   "test_response_integer_uint32",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUint32Request(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response uint32
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUint32",
+			OperationID:   "test_response_integer_uint32",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = uint32
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUint32(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUint32(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUint32Response(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUint32ArrayRequest handles test_response_integer_uint32_array operation.
+//
+// POST /test_response_integer_uint32_array
+func (s *Server) handleTestResponseIntegerUint32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint32_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint32Array",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUint32Array",
+			ID:   "test_response_integer_uint32_array",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUint32ArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response []uint32
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUint32Array",
+			OperationID:   "test_response_integer_uint32_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = []uint32
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUint32Array(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUint32Array(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUint32ArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUint32ArrayArrayRequest handles test_response_integer_uint32_array_array operation.
+//
+// POST /test_response_integer_uint32_array_array
+func (s *Server) handleTestResponseIntegerUint32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint32_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint32ArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUint32ArrayArray",
+			ID:   "test_response_integer_uint32_array_array",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUint32ArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response [][]uint32
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUint32ArrayArray",
+			OperationID:   "test_response_integer_uint32_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = [][]uint32
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUint32ArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUint32ArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUint32ArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUint32NullableRequest handles test_response_integer_uint32_nullable operation.
+//
+// POST /test_response_integer_uint32_nullable
+func (s *Server) handleTestResponseIntegerUint32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint32_nullable"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint32Nullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUint32Nullable",
+			ID:   "test_response_integer_uint32_nullable",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUint32NullableRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response NilUint32
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUint32Nullable",
+			OperationID:   "test_response_integer_uint32_nullable",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = NilUint32
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUint32Nullable(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUint32Nullable(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUint32NullableResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUint32NullableArrayRequest handles test_response_integer_uint32_nullable_array operation.
+//
+// POST /test_response_integer_uint32_nullable_array
+func (s *Server) handleTestResponseIntegerUint32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint32_nullable_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint32NullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUint32NullableArray",
+			ID:   "test_response_integer_uint32_nullable_array",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUint32NullableArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response []NilUint32
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUint32NullableArray",
+			OperationID:   "test_response_integer_uint32_nullable_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = []NilUint32
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUint32NullableArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUint32NullableArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUint32NullableArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUint32NullableArrayArrayRequest handles test_response_integer_uint32_nullable_array_array operation.
+//
+// POST /test_response_integer_uint32_nullable_array_array
+func (s *Server) handleTestResponseIntegerUint32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint32_nullable_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint32NullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUint32NullableArrayArray",
+			ID:   "test_response_integer_uint32_nullable_array_array",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUint32NullableArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response [][]NilUint32
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUint32NullableArrayArray",
+			OperationID:   "test_response_integer_uint32_nullable_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = [][]NilUint32
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUint32NullableArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUint32NullableArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUint32NullableArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUint64Request handles test_response_integer_uint64 operation.
+//
+// POST /test_response_integer_uint64
+func (s *Server) handleTestResponseIntegerUint64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint64"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint64",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUint64",
+			ID:   "test_response_integer_uint64",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUint64Request(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response uint64
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUint64",
+			OperationID:   "test_response_integer_uint64",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = uint64
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUint64(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUint64(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUint64Response(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUint64ArrayRequest handles test_response_integer_uint64_array operation.
+//
+// POST /test_response_integer_uint64_array
+func (s *Server) handleTestResponseIntegerUint64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint64_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint64Array",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUint64Array",
+			ID:   "test_response_integer_uint64_array",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUint64ArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response []uint64
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUint64Array",
+			OperationID:   "test_response_integer_uint64_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = []uint64
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUint64Array(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUint64Array(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUint64ArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUint64ArrayArrayRequest handles test_response_integer_uint64_array_array operation.
+//
+// POST /test_response_integer_uint64_array_array
+func (s *Server) handleTestResponseIntegerUint64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint64_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint64ArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUint64ArrayArray",
+			ID:   "test_response_integer_uint64_array_array",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUint64ArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response [][]uint64
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUint64ArrayArray",
+			OperationID:   "test_response_integer_uint64_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = [][]uint64
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUint64ArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUint64ArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUint64ArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUint64NullableRequest handles test_response_integer_uint64_nullable operation.
+//
+// POST /test_response_integer_uint64_nullable
+func (s *Server) handleTestResponseIntegerUint64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint64_nullable"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint64Nullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUint64Nullable",
+			ID:   "test_response_integer_uint64_nullable",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUint64NullableRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response NilUint64
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUint64Nullable",
+			OperationID:   "test_response_integer_uint64_nullable",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = NilUint64
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUint64Nullable(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUint64Nullable(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUint64NullableResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUint64NullableArrayRequest handles test_response_integer_uint64_nullable_array operation.
+//
+// POST /test_response_integer_uint64_nullable_array
+func (s *Server) handleTestResponseIntegerUint64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint64_nullable_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint64NullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUint64NullableArray",
+			ID:   "test_response_integer_uint64_nullable_array",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUint64NullableArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response []NilUint64
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUint64NullableArray",
+			OperationID:   "test_response_integer_uint64_nullable_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = []NilUint64
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUint64NullableArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUint64NullableArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUint64NullableArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUint64NullableArrayArrayRequest handles test_response_integer_uint64_nullable_array_array operation.
+//
+// POST /test_response_integer_uint64_nullable_array_array
+func (s *Server) handleTestResponseIntegerUint64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint64_nullable_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint64NullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUint64NullableArrayArray",
+			ID:   "test_response_integer_uint64_nullable_array_array",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUint64NullableArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response [][]NilUint64
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUint64NullableArrayArray",
+			OperationID:   "test_response_integer_uint64_nullable_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = [][]NilUint64
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUint64NullableArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUint64NullableArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUint64NullableArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUintArrayRequest handles test_response_integer_uint_array operation.
+//
+// POST /test_response_integer_uint_array
+func (s *Server) handleTestResponseIntegerUintArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUintArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUintArray",
+			ID:   "test_response_integer_uint_array",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUintArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response []uint
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUintArray",
+			OperationID:   "test_response_integer_uint_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = []uint
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUintArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUintArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUintArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUintArrayArrayRequest handles test_response_integer_uint_array_array operation.
+//
+// POST /test_response_integer_uint_array_array
+func (s *Server) handleTestResponseIntegerUintArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUintArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUintArrayArray",
+			ID:   "test_response_integer_uint_array_array",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUintArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response [][]uint
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUintArrayArray",
+			OperationID:   "test_response_integer_uint_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = [][]uint
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUintArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUintArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUintArrayArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUintNullableRequest handles test_response_integer_uint_nullable operation.
+//
+// POST /test_response_integer_uint_nullable
+func (s *Server) handleTestResponseIntegerUintNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint_nullable"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUintNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUintNullable",
+			ID:   "test_response_integer_uint_nullable",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUintNullableRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response NilUint
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUintNullable",
+			OperationID:   "test_response_integer_uint_nullable",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = NilUint
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUintNullable(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUintNullable(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUintNullableResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUintNullableArrayRequest handles test_response_integer_uint_nullable_array operation.
+//
+// POST /test_response_integer_uint_nullable_array
+func (s *Server) handleTestResponseIntegerUintNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint_nullable_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUintNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUintNullableArray",
+			ID:   "test_response_integer_uint_nullable_array",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUintNullableArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response []NilUint
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUintNullableArray",
+			OperationID:   "test_response_integer_uint_nullable_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = []NilUint
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUintNullableArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUintNullableArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUintNullableArrayResponse(response, w, span); err != nil {
+		recordError("EncodeResponse", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+}
+
+// HandleTestResponseIntegerUintNullableArrayArrayRequest handles test_response_integer_uint_nullable_array_array operation.
+//
+// POST /test_response_integer_uint_nullable_array_array
+func (s *Server) handleTestResponseIntegerUintNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_integer_uint_nullable_array_array"),
+	}
+
+	// Start a span for this request.
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUintNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	defer span.End()
+
+	// Run stopwatch.
+	startTime := time.Now()
+	defer func() {
+		elapsedDuration := time.Since(startTime)
+		s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+	}()
+
+	// Increment request counter.
+	s.requests.Add(ctx, 1, otelAttrs...)
+
+	var (
+		recordError = func(stage string, err error) {
+			span.RecordError(err)
+			span.SetStatus(codes.Error, stage)
+			s.errors.Add(ctx, 1, otelAttrs...)
+		}
+		err          error
+		opErrContext = ogenerrors.OperationContext{
+			Name: "TestResponseIntegerUintNullableArrayArray",
+			ID:   "test_response_integer_uint_nullable_array_array",
+		}
+	)
+	request, close, err := s.decodeTestResponseIntegerUintNullableArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			OperationContext: opErrContext,
+			Err:              err,
+		}
+		recordError("DecodeRequest", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+	defer func() {
+		if err := close(); err != nil {
+			recordError("CloseRequest", err)
+		}
+	}()
+
+	var response [][]NilUint
+	if m := s.cfg.Middleware; m != nil {
+		mreq := middleware.Request{
+			Context:       ctx,
+			OperationName: "TestResponseIntegerUintNullableArrayArray",
+			OperationID:   "test_response_integer_uint_nullable_array_array",
+			Body:          request,
+			Params:        map[string]any{},
+			Raw:           r,
+		}
+
+		type (
+			Request  = string
+			Params   = struct{}
+			Response = [][]NilUint
+		)
+		response, err = middleware.HookMiddleware[
+			Request,
+			Params,
+			Response,
+		](
+			m,
+			mreq,
+			nil,
+			func(ctx context.Context, request Request, params Params) (Response, error) {
+				return s.h.TestResponseIntegerUintNullableArrayArray(ctx, request)
+			},
+		)
+	} else {
+		response, err = s.h.TestResponseIntegerUintNullableArrayArray(ctx, request)
+	}
+	if err != nil {
+		recordError("Internal", err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseIntegerUintNullableArrayArrayResponse(response, w, span); err != nil {
 		recordError("EncodeResponse", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return

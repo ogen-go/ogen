@@ -91,6 +91,69 @@
 						}
 					},
 					{
+						"name": "integer_uint",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "uint"
+						}
+					},
+					{
+						"name": "integer_uint32",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "uint32"
+						}
+					},
+					{
+						"name": "integer_uint32_array",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "integer",
+								"format": "uint32"
+							}
+						}
+					},
+					{
+						"name": "integer_uint64",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "integer",
+							"format": "uint64"
+						}
+					},
+					{
+						"name": "integer_uint64_array",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "integer",
+								"format": "uint64"
+							}
+						}
+					},
+					{
+						"name": "integer_uint_array",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "integer",
+								"format": "uint"
+							}
+						}
+					},
+					{
 						"name": "integer_unix",
 						"in": "query",
 						"required": true,
@@ -848,6 +911,27 @@
 											"format": "int64"
 										}
 									},
+									"required_array_integer_uint": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint"
+										}
+									},
+									"required_array_integer_uint32": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint32"
+										}
+									},
+									"required_array_integer_uint64": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint64"
+										}
+									},
 									"required_array_integer_unix": {
 										"type": "array",
 										"items": {
@@ -1121,6 +1205,36 @@
 											"items": {
 												"type": "integer",
 												"format": "int64"
+											}
+										}
+									},
+									"required_double_array_integer_uint": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint"
+											}
+										}
+									},
+									"required_double_array_integer_uint32": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint32"
+											}
+										}
+									},
+									"required_double_array_integer_uint64": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint64"
 											}
 										}
 									},
@@ -1462,6 +1576,18 @@
 										"type": "integer",
 										"format": "int64"
 									},
+									"required_integer_uint": {
+										"type": "integer",
+										"format": "uint"
+									},
+									"required_integer_uint32": {
+										"type": "integer",
+										"format": "uint32"
+									},
+									"required_integer_uint64": {
+										"type": "integer",
+										"format": "uint64"
+									},
 									"required_integer_unix": {
 										"type": "integer",
 										"format": "unix"
@@ -1620,6 +1746,27 @@
 										"items": {
 											"type": "integer",
 											"format": "int64"
+										}
+									},
+									"optional_array_integer_uint": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint"
+										}
+									},
+									"optional_array_integer_uint32": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint32"
+										}
+									},
+									"optional_array_integer_uint64": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint64"
 										}
 									},
 									"optional_array_integer_unix": {
@@ -1895,6 +2042,36 @@
 											"items": {
 												"type": "integer",
 												"format": "int64"
+											}
+										}
+									},
+									"optional_double_array_integer_uint": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint"
+											}
+										}
+									},
+									"optional_double_array_integer_uint32": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint32"
+											}
+										}
+									},
+									"optional_double_array_integer_uint64": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint64"
 											}
 										}
 									},
@@ -2236,6 +2413,18 @@
 										"type": "integer",
 										"format": "int64"
 									},
+									"optional_integer_uint": {
+										"type": "integer",
+										"format": "uint"
+									},
+									"optional_integer_uint32": {
+										"type": "integer",
+										"format": "uint32"
+									},
+									"optional_integer_uint64": {
+										"type": "integer",
+										"format": "uint64"
+									},
 									"optional_integer_unix": {
 										"type": "integer",
 										"format": "unix"
@@ -2373,6 +2562,9 @@
 									"required_array_integer",
 									"required_array_integer_int32",
 									"required_array_integer_int64",
+									"required_array_integer_uint",
+									"required_array_integer_uint32",
+									"required_array_integer_uint64",
 									"required_array_integer_unix",
 									"required_array_integer_unix-micro",
 									"required_array_integer_unix-milli",
@@ -2412,6 +2604,9 @@
 									"required_double_array_integer",
 									"required_double_array_integer_int32",
 									"required_double_array_integer_int64",
+									"required_double_array_integer_uint",
+									"required_double_array_integer_uint32",
+									"required_double_array_integer_uint64",
 									"required_double_array_integer_unix",
 									"required_double_array_integer_unix-micro",
 									"required_double_array_integer_unix-milli",
@@ -2448,6 +2643,9 @@
 									"required_integer",
 									"required_integer_int32",
 									"required_integer_int64",
+									"required_integer_uint",
+									"required_integer_uint32",
+									"required_integer_uint64",
 									"required_integer_unix",
 									"required_integer_unix-micro",
 									"required_integer_unix-milli",
@@ -3055,6 +3253,447 @@
 									"type": "array",
 									"items": {
 										"type": "integer",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint": {
+			"post": {
+				"operationId": "test_request_integer_uint",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "uint"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint32": {
+			"post": {
+				"operationId": "test_request_integer_uint32",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "uint32"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint32_array": {
+			"post": {
+				"operationId": "test_request_integer_uint32_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "uint32"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint32_array_array": {
+			"post": {
+				"operationId": "test_request_integer_uint32_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint32"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint32_nullable": {
+			"post": {
+				"operationId": "test_request_integer_uint32_nullable",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "uint32",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint32_nullable_array": {
+			"post": {
+				"operationId": "test_request_integer_uint32_nullable_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "uint32",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint32_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_integer_uint32_nullable_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint32",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint64": {
+			"post": {
+				"operationId": "test_request_integer_uint64",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "uint64"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint64_array": {
+			"post": {
+				"operationId": "test_request_integer_uint64_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "uint64"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint64_array_array": {
+			"post": {
+				"operationId": "test_request_integer_uint64_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint64"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint64_nullable": {
+			"post": {
+				"operationId": "test_request_integer_uint64_nullable",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "uint64",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint64_nullable_array": {
+			"post": {
+				"operationId": "test_request_integer_uint64_nullable_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "uint64",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint64_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_integer_uint64_nullable_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint64",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint_array": {
+			"post": {
+				"operationId": "test_request_integer_uint_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "uint"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint_array_array": {
+			"post": {
+				"operationId": "test_request_integer_uint_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint_nullable": {
+			"post": {
+				"operationId": "test_request_integer_uint_nullable",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "uint",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint_nullable_array": {
+			"post": {
+				"operationId": "test_request_integer_uint_nullable_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "uint",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_integer_uint_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_integer_uint_nullable_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint",
 										"nullable": true
 									}
 								}
@@ -4755,6 +5394,27 @@
 											"format": "int64"
 										}
 									},
+									"required_array_integer_uint": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint"
+										}
+									},
+									"required_array_integer_uint32": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint32"
+										}
+									},
+									"required_array_integer_uint64": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint64"
+										}
+									},
 									"required_array_integer_unix": {
 										"type": "array",
 										"items": {
@@ -5028,6 +5688,36 @@
 											"items": {
 												"type": "integer",
 												"format": "int64"
+											}
+										}
+									},
+									"required_double_array_integer_uint": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint"
+											}
+										}
+									},
+									"required_double_array_integer_uint32": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint32"
+											}
+										}
+									},
+									"required_double_array_integer_uint64": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint64"
 											}
 										}
 									},
@@ -5369,6 +6059,18 @@
 										"type": "integer",
 										"format": "int64"
 									},
+									"required_integer_uint": {
+										"type": "integer",
+										"format": "uint"
+									},
+									"required_integer_uint32": {
+										"type": "integer",
+										"format": "uint32"
+									},
+									"required_integer_uint64": {
+										"type": "integer",
+										"format": "uint64"
+									},
 									"required_integer_unix": {
 										"type": "integer",
 										"format": "unix"
@@ -5527,6 +6229,27 @@
 										"items": {
 											"type": "integer",
 											"format": "int64"
+										}
+									},
+									"optional_array_integer_uint": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint"
+										}
+									},
+									"optional_array_integer_uint32": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint32"
+										}
+									},
+									"optional_array_integer_uint64": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint64"
 										}
 									},
 									"optional_array_integer_unix": {
@@ -5802,6 +6525,36 @@
 											"items": {
 												"type": "integer",
 												"format": "int64"
+											}
+										}
+									},
+									"optional_double_array_integer_uint": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint"
+											}
+										}
+									},
+									"optional_double_array_integer_uint32": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint32"
+											}
+										}
+									},
+									"optional_double_array_integer_uint64": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint64"
 											}
 										}
 									},
@@ -6143,6 +6896,18 @@
 										"type": "integer",
 										"format": "int64"
 									},
+									"optional_integer_uint": {
+										"type": "integer",
+										"format": "uint"
+									},
+									"optional_integer_uint32": {
+										"type": "integer",
+										"format": "uint32"
+									},
+									"optional_integer_uint64": {
+										"type": "integer",
+										"format": "uint64"
+									},
 									"optional_integer_unix": {
 										"type": "integer",
 										"format": "unix"
@@ -6280,6 +7045,9 @@
 									"required_array_integer",
 									"required_array_integer_int32",
 									"required_array_integer_int64",
+									"required_array_integer_uint",
+									"required_array_integer_uint32",
+									"required_array_integer_uint64",
 									"required_array_integer_unix",
 									"required_array_integer_unix-micro",
 									"required_array_integer_unix-milli",
@@ -6319,6 +7087,9 @@
 									"required_double_array_integer",
 									"required_double_array_integer_int32",
 									"required_double_array_integer_int64",
+									"required_double_array_integer_uint",
+									"required_double_array_integer_uint32",
+									"required_double_array_integer_uint64",
 									"required_double_array_integer_unix",
 									"required_double_array_integer_unix-micro",
 									"required_double_array_integer_unix-milli",
@@ -6355,6 +7126,9 @@
 									"required_integer",
 									"required_integer_int32",
 									"required_integer_int64",
+									"required_integer_uint",
+									"required_integer_uint32",
+									"required_integer_uint64",
 									"required_integer_unix",
 									"required_integer_unix-micro",
 									"required_integer_unix-milli",
@@ -6986,6 +7760,465 @@
 									"type": "array",
 									"items": {
 										"type": "integer",
+										"nullable": true
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint": {
+			"post": {
+				"operationId": "test_request_required_integer_uint",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "uint"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint32": {
+			"post": {
+				"operationId": "test_request_required_integer_uint32",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "uint32"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint32_array": {
+			"post": {
+				"operationId": "test_request_required_integer_uint32_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "uint32"
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint32_array_array": {
+			"post": {
+				"operationId": "test_request_required_integer_uint32_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint32"
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint32_nullable": {
+			"post": {
+				"operationId": "test_request_required_integer_uint32_nullable",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "uint32",
+								"nullable": true
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint32_nullable_array": {
+			"post": {
+				"operationId": "test_request_required_integer_uint32_nullable_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "uint32",
+									"nullable": true
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint32_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_required_integer_uint32_nullable_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint32",
+										"nullable": true
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint64": {
+			"post": {
+				"operationId": "test_request_required_integer_uint64",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "uint64"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint64_array": {
+			"post": {
+				"operationId": "test_request_required_integer_uint64_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "uint64"
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint64_array_array": {
+			"post": {
+				"operationId": "test_request_required_integer_uint64_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint64"
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint64_nullable": {
+			"post": {
+				"operationId": "test_request_required_integer_uint64_nullable",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "uint64",
+								"nullable": true
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint64_nullable_array": {
+			"post": {
+				"operationId": "test_request_required_integer_uint64_nullable_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "uint64",
+									"nullable": true
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint64_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_required_integer_uint64_nullable_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint64",
+										"nullable": true
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint_array": {
+			"post": {
+				"operationId": "test_request_required_integer_uint_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "uint"
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint_array_array": {
+			"post": {
+				"operationId": "test_request_required_integer_uint_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint"
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint_nullable": {
+			"post": {
+				"operationId": "test_request_required_integer_uint_nullable",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "integer",
+								"format": "uint",
+								"nullable": true
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint_nullable_array": {
+			"post": {
+				"operationId": "test_request_required_integer_uint_nullable_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "integer",
+									"format": "uint",
+									"nullable": true
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_integer_uint_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_required_integer_uint_nullable_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint",
 										"nullable": true
 									}
 								}
@@ -15343,6 +16576,27 @@
 												"format": "int64"
 											}
 										},
+										"required_array_integer_uint": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint"
+											}
+										},
+										"required_array_integer_uint32": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint32"
+											}
+										},
+										"required_array_integer_uint64": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint64"
+											}
+										},
 										"required_array_integer_unix": {
 											"type": "array",
 											"items": {
@@ -15616,6 +16870,36 @@
 												"items": {
 													"type": "integer",
 													"format": "int64"
+												}
+											}
+										},
+										"required_double_array_integer_uint": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "integer",
+													"format": "uint"
+												}
+											}
+										},
+										"required_double_array_integer_uint32": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "integer",
+													"format": "uint32"
+												}
+											}
+										},
+										"required_double_array_integer_uint64": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "integer",
+													"format": "uint64"
 												}
 											}
 										},
@@ -15957,6 +17241,18 @@
 											"type": "integer",
 											"format": "int64"
 										},
+										"required_integer_uint": {
+											"type": "integer",
+											"format": "uint"
+										},
+										"required_integer_uint32": {
+											"type": "integer",
+											"format": "uint32"
+										},
+										"required_integer_uint64": {
+											"type": "integer",
+											"format": "uint64"
+										},
 										"required_integer_unix": {
 											"type": "integer",
 											"format": "unix"
@@ -16115,6 +17411,27 @@
 											"items": {
 												"type": "integer",
 												"format": "int64"
+											}
+										},
+										"optional_array_integer_uint": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint"
+											}
+										},
+										"optional_array_integer_uint32": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint32"
+											}
+										},
+										"optional_array_integer_uint64": {
+											"type": "array",
+											"items": {
+												"type": "integer",
+												"format": "uint64"
 											}
 										},
 										"optional_array_integer_unix": {
@@ -16390,6 +17707,36 @@
 												"items": {
 													"type": "integer",
 													"format": "int64"
+												}
+											}
+										},
+										"optional_double_array_integer_uint": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "integer",
+													"format": "uint"
+												}
+											}
+										},
+										"optional_double_array_integer_uint32": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "integer",
+													"format": "uint32"
+												}
+											}
+										},
+										"optional_double_array_integer_uint64": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "integer",
+													"format": "uint64"
 												}
 											}
 										},
@@ -16731,6 +18078,18 @@
 											"type": "integer",
 											"format": "int64"
 										},
+										"optional_integer_uint": {
+											"type": "integer",
+											"format": "uint"
+										},
+										"optional_integer_uint32": {
+											"type": "integer",
+											"format": "uint32"
+										},
+										"optional_integer_uint64": {
+											"type": "integer",
+											"format": "uint64"
+										},
 										"optional_integer_unix": {
 											"type": "integer",
 											"format": "unix"
@@ -16868,6 +18227,9 @@
 										"required_array_integer",
 										"required_array_integer_int32",
 										"required_array_integer_int64",
+										"required_array_integer_uint",
+										"required_array_integer_uint32",
+										"required_array_integer_uint64",
 										"required_array_integer_unix",
 										"required_array_integer_unix-micro",
 										"required_array_integer_unix-milli",
@@ -16907,6 +18269,9 @@
 										"required_double_array_integer",
 										"required_double_array_integer_int32",
 										"required_double_array_integer_int64",
+										"required_double_array_integer_uint",
+										"required_double_array_integer_uint32",
+										"required_double_array_integer_uint64",
 										"required_double_array_integer_unix",
 										"required_double_array_integer_unix-micro",
 										"required_double_array_integer_unix-milli",
@@ -16943,6 +18308,9 @@
 										"required_integer",
 										"required_integer_int32",
 										"required_integer_int64",
+										"required_integer_uint",
+										"required_integer_uint32",
+										"required_integer_uint64",
 										"required_integer_unix",
 										"required_integer_unix-micro",
 										"required_integer_unix-milli",
@@ -17550,6 +18918,447 @@
 										"type": "array",
 										"items": {
 											"type": "integer",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint": {
+			"post": {
+				"operationId": "test_response_integer_uint",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "integer",
+									"format": "uint"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint32": {
+			"post": {
+				"operationId": "test_response_integer_uint32",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "integer",
+									"format": "uint32"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint32_array": {
+			"post": {
+				"operationId": "test_response_integer_uint32_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint32"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint32_array_array": {
+			"post": {
+				"operationId": "test_response_integer_uint32_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint32"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint32_nullable": {
+			"post": {
+				"operationId": "test_response_integer_uint32_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "integer",
+									"format": "uint32",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint32_nullable_array": {
+			"post": {
+				"operationId": "test_response_integer_uint32_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint32",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint32_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_integer_uint32_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint32",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint64": {
+			"post": {
+				"operationId": "test_response_integer_uint64",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "integer",
+									"format": "uint64"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint64_array": {
+			"post": {
+				"operationId": "test_response_integer_uint64_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint64"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint64_array_array": {
+			"post": {
+				"operationId": "test_response_integer_uint64_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint64"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint64_nullable": {
+			"post": {
+				"operationId": "test_response_integer_uint64_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "integer",
+									"format": "uint64",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint64_nullable_array": {
+			"post": {
+				"operationId": "test_response_integer_uint64_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint64",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint64_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_integer_uint64_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint64",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint_array": {
+			"post": {
+				"operationId": "test_response_integer_uint_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint_array_array": {
+			"post": {
+				"operationId": "test_response_integer_uint_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint_nullable": {
+			"post": {
+				"operationId": "test_response_integer_uint_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "integer",
+									"format": "uint",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint_nullable_array": {
+			"post": {
+				"operationId": "test_response_integer_uint_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "integer",
+										"format": "uint",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_integer_uint_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_integer_uint_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "integer",
+											"format": "uint",
 											"nullable": true
 										}
 									}

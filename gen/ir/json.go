@@ -144,7 +144,15 @@ func (j JSON) Format() string {
 		return "IP"
 	case "uri":
 		return "URI"
-	case "int32", "int64":
+	case "int8",
+		"int16",
+		"int32",
+		"int64",
+		"uint",
+		"uint8",
+		"uint16",
+		"uint32",
+		"uint64":
 		if s.Type != jsonschema.String {
 			return ""
 		}
@@ -274,6 +282,13 @@ func (j JSON) Fn() string {
 		return "Str"
 	case ByteSlice:
 		return "Base64"
+	case Uint,
+		Uint8,
+		Uint16,
+		Uint32,
+		Uint64:
+		s := j.t.Primitive.String()
+		return strings.ToUpper(s[:2]) + s[2:]
 	default:
 		return capitalize.Capitalize(j.t.Primitive.String())
 	}

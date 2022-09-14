@@ -23,7 +23,10 @@ func (t *Type) EncodeFn() string {
 	switch t.Primitive {
 	case ByteSlice:
 		return "Bytes"
-	case Int, Int64, Int32, String, Bool, Float32, Float64:
+	case Int, Int8, Int16, Int32, Int64,
+		Uint, Uint8, Uint16, Uint32, Uint64,
+		Float32, Float64,
+		String, Bool:
 		return capitalize.Capitalize(t.Primitive.String())
 	case UUID, Time, IP, Duration, URL:
 		return afterDot(t.Primitive.String())
@@ -39,7 +42,15 @@ func (t Type) uriFormat() string {
 			return capitalize.Capitalize(f)
 		case "date-time":
 			return "DateTime"
-		case "int32", "int64":
+		case "int8",
+			"int16",
+			"int32",
+			"int64",
+			"uint",
+			"uint8",
+			"uint16",
+			"uint32",
+			"uint64":
 			if s.Type != jsonschema.String {
 				break
 			}

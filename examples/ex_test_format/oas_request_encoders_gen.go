@@ -566,6 +566,372 @@ func encodeTestRequestIntegerNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+func encodeTestRequestIntegerUintRequest(
+	req OptUint,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	if !req.Set {
+		// Keep request with empty body if value is not set.
+		return nil
+	}
+	e := jx.GetEncoder()
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestIntegerUint32Request(
+	req OptUint32,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	if !req.Set {
+		// Keep request with empty body if value is not set.
+		return nil
+	}
+	e := jx.GetEncoder()
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestIntegerUint32ArrayRequest(
+	req []uint32,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.UInt32(elem)
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestIntegerUint32ArrayArrayRequest(
+	req [][]uint32,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.UInt32(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestIntegerUint32NullableRequest(
+	req OptNilUint32,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	if !req.Set {
+		// Keep request with empty body if value is not set.
+		return nil
+	}
+	e := jx.GetEncoder()
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestIntegerUint32NullableArrayRequest(
+	req []NilUint32,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				elem.Encode(e)
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestIntegerUint32NullableArrayArrayRequest(
+	req [][]NilUint32,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					elem.Encode(e)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestIntegerUint64Request(
+	req OptUint64,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	if !req.Set {
+		// Keep request with empty body if value is not set.
+		return nil
+	}
+	e := jx.GetEncoder()
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestIntegerUint64ArrayRequest(
+	req []uint64,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.UInt64(elem)
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestIntegerUint64ArrayArrayRequest(
+	req [][]uint64,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.UInt64(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestIntegerUint64NullableRequest(
+	req OptNilUint64,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	if !req.Set {
+		// Keep request with empty body if value is not set.
+		return nil
+	}
+	e := jx.GetEncoder()
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestIntegerUint64NullableArrayRequest(
+	req []NilUint64,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				elem.Encode(e)
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestIntegerUint64NullableArrayArrayRequest(
+	req [][]NilUint64,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					elem.Encode(e)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestIntegerUintArrayRequest(
+	req []uint,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.UInt(elem)
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestIntegerUintArrayArrayRequest(
+	req [][]uint,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					e.UInt(elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestIntegerUintNullableRequest(
+	req OptNilUint,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	if !req.Set {
+		// Keep request with empty body if value is not set.
+		return nil
+	}
+	e := jx.GetEncoder()
+	{
+		if req.Set {
+			req.Encode(e)
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestIntegerUintNullableArrayRequest(
+	req []NilUint,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				elem.Encode(e)
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestIntegerUintNullableArrayArrayRequest(
+	req [][]NilUint,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		if req != nil {
+			e.ArrStart()
+			for _, elem := range req {
+				e.ArrStart()
+				for _, elem := range elem {
+					elem.Encode(e)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
 func encodeTestRequestIntegerUnixRequest(
 	req OptUnixSeconds,
 	r *http.Request,
@@ -2342,6 +2708,312 @@ func encodeTestRequestRequiredIntegerNullableArrayRequest(
 }
 func encodeTestRequestRequiredIntegerNullableArrayArrayRequest(
 	req [][]NilInt,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				elem.Encode(e)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUintRequest(
+	req uint,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.UInt(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUint32Request(
+	req uint32,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.UInt32(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUint32ArrayRequest(
+	req []uint32,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			e.UInt32(elem)
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUint32ArrayArrayRequest(
+	req [][]uint32,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.UInt32(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUint32NullableRequest(
+	req NilUint32,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUint32NullableArrayRequest(
+	req []NilUint32,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUint32NullableArrayArrayRequest(
+	req [][]NilUint32,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				elem.Encode(e)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUint64Request(
+	req uint64,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.UInt64(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUint64ArrayRequest(
+	req []uint64,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			e.UInt64(elem)
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUint64ArrayArrayRequest(
+	req [][]uint64,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.UInt64(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUint64NullableRequest(
+	req NilUint64,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUint64NullableArrayRequest(
+	req []NilUint64,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUint64NullableArrayArrayRequest(
+	req [][]NilUint64,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				elem.Encode(e)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUintArrayRequest(
+	req []uint,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			e.UInt(elem)
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUintArrayArrayRequest(
+	req [][]uint,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				e.UInt(elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUintNullableRequest(
+	req NilUint,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		req.Encode(e)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUintNullableArrayRequest(
+	req []NilUint,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.ArrStart()
+		for _, elem := range req {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestRequestRequiredIntegerUintNullableArrayArrayRequest(
+	req [][]NilUint,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
@@ -8750,6 +9422,240 @@ func encodeTestResponseIntegerNullableArrayRequest(
 	return nil
 }
 func encodeTestResponseIntegerNullableArrayArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUintRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUint32Request(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUint32ArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUint32ArrayArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUint32NullableRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUint32NullableArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUint32NullableArrayArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUint64Request(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUint64ArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUint64ArrayArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUint64NullableRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUint64NullableArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUint64NullableArrayArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUintArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUintArrayArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUintNullableRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUintNullableArrayRequest(
+	req string,
+	r *http.Request,
+) error {
+	const contentType = "application/json"
+	e := jx.GetEncoder()
+	{
+		e.Str(req)
+	}
+	encoded := e.Bytes()
+	ht.SetBody(r, bytes.NewReader(encoded), contentType)
+	return nil
+}
+func encodeTestResponseIntegerUintNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
 ) error {

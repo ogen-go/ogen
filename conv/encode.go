@@ -9,11 +9,17 @@ import (
 	"github.com/google/uuid"
 )
 
-func IntToString(v int) string { return strconv.Itoa(v) }
-
-func Int32ToString(v int32) string { return strconv.Itoa(int(v)) }
-
+func IntToString(v int) string     { return strconv.Itoa(v) }
+func Int8ToString(v int8) string   { return strconv.FormatInt(int64(v), 10) }
+func Int16ToString(v int16) string { return strconv.FormatInt(int64(v), 10) }
+func Int32ToString(v int32) string { return strconv.FormatInt(int64(v), 10) }
 func Int64ToString(v int64) string { return strconv.FormatInt(v, 10) }
+
+func UintToString(v uint) string     { return strconv.FormatUint(uint64(v), 10) }
+func Uint8ToString(v uint8) string   { return strconv.FormatUint(uint64(v), 10) }
+func Uint16ToString(v uint16) string { return strconv.FormatUint(uint64(v), 10) }
+func Uint32ToString(v uint32) string { return strconv.FormatUint(uint64(v), 10) }
+func Uint64ToString(v uint64) string { return strconv.FormatUint(v, 10) }
 
 func Float32ToString(v float32) string { return strconv.FormatFloat(float64(v), 'f', 10, 64) }
 
