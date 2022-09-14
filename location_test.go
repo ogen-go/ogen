@@ -138,26 +138,26 @@ func TestLocation(t *testing.T) {
 			schema = media.Schema
 		)
 		// Compare PathItem.
-		equalLoc(&foo.Locator, 8, 13)
+		equalLoc(&foo.Common.Locator, 8, 13)
 
 		// Compare post
-		equalLoc(&post.Locator, 9, 15)
+		equalLoc(&post.Common.Locator, 9, 15)
 
 		// Compare Parameters.
-		equalLoc(&post.Parameters[0].Locator, 11, 11)
-		equalLoc(&post.Parameters[1].Locator, 18, 11)
+		equalLoc(&post.Parameters[0].Common.Locator, 11, 11)
+		equalLoc(&post.Parameters[1].Common.Locator, 18, 11)
 
 		// Compare RequestBody.
-		equalLoc(&body.Locator, 26, 24)
-		equalLoc(&media.Locator, 28, 33)
-		equalLoc(&schema.Locator, 29, 25)
+		equalLoc(&body.Common.Locator, 26, 24)
+		equalLoc(&media.Common.Locator, 28, 33)
+		equalLoc(&schema.Common.Locator, 29, 25)
 
 		// Compare get.
-		equalLoc(&get.Locator, 48, 14)
+		equalLoc(&get.Common.Locator, 48, 14)
 
 		var user = locationSpec.Components.Schemas["User"]
-		equalLoc(&user.Locator, 59, 15)
-		equalLoc(&user.Properties[0].Schema.Locator, 62, 19)
+		equalLoc(&user.Common.Locator, 59, 15)
+		equalLoc(&user.Properties[0].Schema.Common.Locator, 62, 19)
 	})
 	t.Run("YAML", func(t *testing.T) {
 		a := assert.New(t)
@@ -175,20 +175,20 @@ func TestLocation(t *testing.T) {
 		)
 		// FIXME(tdakkota): parser sets map/seq location to the first element.
 		// Compare PathItem and Operation.
-		equalLoc(&foo.Locator, 7, 5)
-		equalLoc(&post.Locator, 8, 7)
+		equalLoc(&foo.Common.Locator, 7, 5)
+		equalLoc(&post.Common.Locator, 8, 7)
 
 		// Compare Parameters.
-		equalLoc(&post.Parameters[0].Locator, 9, 11)
-		equalLoc(&post.Parameters[1].Locator, 13, 11)
+		equalLoc(&post.Parameters[0].Common.Locator, 9, 11)
+		equalLoc(&post.Parameters[1].Common.Locator, 13, 11)
 
 		// Compare RequestBody.
-		equalLoc(&body.Locator, 18, 9)
-		equalLoc(&requestMedia.Locator, 20, 13)
-		equalLoc(&requestSchema.Locator, 21, 15)
+		equalLoc(&body.Common.Locator, 18, 9)
+		equalLoc(&requestMedia.Common.Locator, 20, 13)
+		equalLoc(&requestSchema.Common.Locator, 21, 15)
 
 		var user = locationSpec.Components.Schemas["User"]
-		equalLoc(&user.Locator, 36, 7)
-		equalLoc(&user.Properties[0].Schema.Locator, 39, 11)
+		equalLoc(&user.Common.Locator, 36, 7)
+		equalLoc(&user.Properties[0].Schema.Common.Locator, 39, 11)
 	})
 }

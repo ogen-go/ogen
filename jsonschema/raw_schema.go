@@ -1,11 +1,5 @@
 package jsonschema
 
-import (
-	"encoding/json"
-
-	"github.com/ogen-go/ogen/internal/location"
-)
-
 // RawSchema is unparsed JSON Schema.
 type RawSchema struct {
 	Ref                  string                `json:"$ref,omitempty" yaml:"$ref,omitempty"`
@@ -45,8 +39,7 @@ type RawSchema struct {
 	XML           *XML           `json:"xml,omitempty" yaml:"xml,omitempty"`
 	Example       Example        `json:"example,omitempty" yaml:"example,omitempty"`
 
-	XAnnotations map[string]json.RawMessage `json:"-" yaml:"-"`
-	Locator      location.Locator           `json:"-" yaml:",inline"`
+	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
 // Discriminator discriminates types for OneOf, AllOf, AnyOf.
@@ -57,6 +50,8 @@ type Discriminator struct {
 	PropertyName string `json:"propertyName" yaml:"propertyName"`
 	// An object to hold mappings between payload values and schema names or references.
 	Mapping map[string]string `json:"mapping,omitempty" yaml:"mapping,omitempty"`
+
+	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
 // XML is a metadata object that allows for more fine-tuned XML model definitions.

@@ -18,6 +18,11 @@ const (
 )
 
 var (
+	_extensions = ogen.Extensions(nil)
+	_common     = ogen.OpenAPICommon{
+		Extensions: _extensions,
+	}
+
 	// reusable query param
 	_queryParam = ogen.NewParameter().
 			InQuery().
@@ -103,8 +108,8 @@ func TestBuilder(t *testing.T) {
 			Version: "0.1.0",
 		},
 		Servers: []ogen.Server{
-			{"staging", "staging.api.com", nil},
-			{"production", "api.com", nil},
+			{"staging", "staging.api.com", nil, _extensions},
+			{"production", "api.com", nil, _extensions},
 		},
 		Paths: map[string]*ogen.PathItem{
 			pathWithID: {
@@ -212,6 +217,7 @@ func TestBuilder(t *testing.T) {
 				},
 			},
 		},
+		Extensions: _extensions,
 	}
 	// referenced path
 	path := ogen.NewPathItem().
@@ -328,18 +334,22 @@ func TestBuilder(t *testing.T) {
 		SetHead(ogen.NewOperation().SetOperationID("head").SetResponses(ogen.Responses{"resp": ogen.NewResponse()})).
 		SetPatch(ogen.NewOperation().SetOperationID("patch").AddParameters(ogen.NewParameter().InHeader().SetDeprecated(true))).
 		SetTrace(ogen.NewOperation().SetOperationID("trace")).
-		SetServers([]ogen.Server{{"url1", "desc1", nil}}).
+		SetServers([]ogen.Server{{"url1", "desc1", nil, nil}}).
 		AddServers(ogen.NewServer().SetDescription("desc2").SetURL("url2")).
 		SetParameters([]*ogen.Parameter{_queryParam.Parameter})
 	assert.Equal(t, &ogen.PathItem{
-		Put:        &ogen.Operation{OperationID: "put", Tags: []string{"tag1", "tag2"}},
-		Delete:     &ogen.Operation{OperationID: "delete", Summary: "summary"},
-		Options:    &ogen.Operation{OperationID: "options", Parameters: []*ogen.Parameter{_cookieParam.Parameter}},
-		Head:       &ogen.Operation{OperationID: "head", Responses: ogen.Responses{"resp": &ogen.Response{}}},
-		Patch:      &ogen.Operation{OperationID: "patch", Parameters: []*ogen.Parameter{{In: "header", Deprecated: true}}},
-		Trace:      &ogen.Operation{OperationID: "trace"},
-		Servers:    []ogen.Server{{"url1", "desc1", nil}, {"url2", "desc2", nil}},
+		Put:     &ogen.Operation{OperationID: "put", Tags: []string{"tag1", "tag2"}},
+		Delete:  &ogen.Operation{OperationID: "delete", Summary: "summary"},
+		Options: &ogen.Operation{OperationID: "options", Parameters: []*ogen.Parameter{_cookieParam.Parameter}},
+		Head:    &ogen.Operation{OperationID: "head", Responses: ogen.Responses{"resp": &ogen.Response{}}},
+		Patch:   &ogen.Operation{OperationID: "patch", Parameters: []*ogen.Parameter{{In: "header", Deprecated: true}}},
+		Trace:   &ogen.Operation{OperationID: "trace"},
+		Servers: []ogen.Server{
+			{"url1", "desc1", nil, nil},
+			{"url2", "desc2", nil, nil},
+		},
 		Parameters: []*ogen.Parameter{_queryParam.Parameter},
+		Common:     _common,
 	}, pi)
 
 	mlt := uint64(1)

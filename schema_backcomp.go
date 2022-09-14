@@ -1,8 +1,6 @@
 package ogen
 
 import (
-	"encoding/json"
-
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -56,8 +54,7 @@ func (s *Schema) ToJSONSchema() *jsonschema.RawSchema {
 		Discriminator:        s.Discriminator.ToJSONSchema(),
 		XML:                  s.XML.ToJSONSchema(),
 		Example:              s.Example,
-		XAnnotations:         map[string]json.RawMessage{},
-		Locator:              s.Locator,
+		Common:               s.Common,
 	}
 }
 

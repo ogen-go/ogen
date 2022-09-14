@@ -28,13 +28,14 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *jsonpointer.
 	if header == nil {
 		return nil, errors.New("header object is empty or null")
 	}
+	locator := header.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(ctx.LastLoc(), header.Locator, rerr)
+		rerr = p.wrapLocation(ctx.LastLoc(), locator, rerr)
 	}()
 	if ref := header.Ref; ref != "" {
 		resolved, err := p.resolveHeader(name, ref, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.LastLoc(), header.Locator, err)
+			return nil, p.wrapRef(ctx.LastLoc(), locator, err)
 		}
 		return resolved, nil
 	}
@@ -44,7 +45,7 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *jsonpointer.
 			return nil
 		}
 		err := errors.Errorf(`%q MUST NOT be specified, got %q`, name, got)
-		return p.wrapField(name, ctx.LastLoc(), header.Locator, err)
+		return p.wrapField(name, ctx.LastLoc(), locator, err)
 	}
 	if err := mustNotSpecified("in", header.In); err != nil {
 		return nil, err
@@ -61,13 +62,13 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *jsonpointer.
 	schema, err := p.parseSchema(header.Schema, ctx)
 	if err != nil {
 		err := errors.Wrap(err, "schema")
-		return nil, p.wrapField("schema", ctx.LastLoc(), header.Locator, err)
+		return nil, p.wrapField("schema", ctx.LastLoc(), locator, err)
 	}
 
-	content, err := p.parseParameterContent(header.Content, header.Locator.Field("content"), ctx)
+	content, err := p.parseParameterContent(header.Content, locator.Field("content"), ctx)
 	if err != nil {
 		err := errors.Wrap(err, "content")
-		return nil, p.wrapField("content", ctx.LastLoc(), header.Locator, err)
+		return nil, p.wrapField("content", ctx.LastLoc(), locator, err)
 	}
 
 	op := &openapi.Header{
@@ -80,7 +81,7 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *jsonpointer.
 		Style:       inferParamStyle(locatedIn, header.Style),
 		Explode:     inferParamExplode(locatedIn, header.Explode),
 		Required:    header.Required,
-		Locator:     header.Locator,
+		Locator:     locator,
 	}
 
 	// TODO: Validate content?
