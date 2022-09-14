@@ -10,8 +10,17 @@ import (
 )
 
 func ToInt(s string) (int, error) {
-	v, err := strconv.ParseInt(s, 10, 32)
-	return int(v), err
+	return strconv.Atoi(s)
+}
+
+func ToInt8(s string) (int8, error) {
+	v, err := strconv.ParseInt(s, 10, 8)
+	return int8(v), err
+}
+
+func ToInt16(s string) (int16, error) {
+	v, err := strconv.ParseInt(s, 10, 16)
+	return int16(v), err
 }
 
 func ToInt32(s string) (int32, error) {
@@ -21,6 +30,30 @@ func ToInt32(s string) (int32, error) {
 
 func ToInt64(s string) (int64, error) {
 	return strconv.ParseInt(s, 10, 64)
+}
+
+func ToUint(s string) (uint, error) {
+	v, err := strconv.ParseUint(s, 10, 0)
+	return uint(v), err
+}
+
+func ToUint8(s string) (uint8, error) {
+	v, err := strconv.ParseUint(s, 10, 8)
+	return uint8(v), err
+}
+
+func ToUint16(s string) (uint16, error) {
+	v, err := strconv.ParseUint(s, 10, 16)
+	return uint16(v), err
+}
+
+func ToUint32(s string) (uint32, error) {
+	v, err := strconv.ParseUint(s, 10, 32)
+	return uint32(v), err
+}
+
+func ToUint64(s string) (uint64, error) {
+	return strconv.ParseUint(s, 10, 64)
 }
 
 func ToFloat32(s string) (float32, error) {
