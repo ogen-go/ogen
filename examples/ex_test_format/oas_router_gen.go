@@ -641,297 +641,37 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 									}
 								}
-							case 'u': // Prefix: "unix"
-								if l := len("unix"); len(elem) >= l && elem[0:l] == "unix" {
+							case 'u': // Prefix: "u"
+								if l := len("u"); len(elem) >= l && elem[0:l] == "u" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									switch r.Method {
-									case "POST":
-										s.handleTestRequestIntegerUnixRequest([0]string{}, w, r)
-									default:
-										s.notAllowed(w, r, "POST")
-									}
-
-									return
+									break
 								}
 								switch elem[0] {
-								case '-': // Prefix: "-"
-									if l := len("-"); len(elem) >= l && elem[0:l] == "-" {
+								case 'i': // Prefix: "int"
+									if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										break
+										switch r.Method {
+										case "POST":
+											s.handleTestRequestIntegerUintRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
 									}
 									switch elem[0] {
-									case 'm': // Prefix: "mi"
-										if l := len("mi"); len(elem) >= l && elem[0:l] == "mi" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'c': // Prefix: "cro"
-											if l := len("cro"); len(elem) >= l && elem[0:l] == "cro" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch r.Method {
-												case "POST":
-													s.handleTestRequestIntegerUnixMicroRequest([0]string{}, w, r)
-												default:
-													s.notAllowed(w, r, "POST")
-												}
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_"
-												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'a': // Prefix: "array"
-													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch r.Method {
-														case "POST":
-															s.handleTestRequestIntegerUnixMicroArrayRequest([0]string{}, w, r)
-														default:
-															s.notAllowed(w, r, "POST")
-														}
-
-														return
-													}
-													switch elem[0] {
-													case '_': // Prefix: "_array"
-														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf node.
-															switch r.Method {
-															case "POST":
-																s.handleTestRequestIntegerUnixMicroArrayArrayRequest([0]string{}, w, r)
-															default:
-																s.notAllowed(w, r, "POST")
-															}
-
-															return
-														}
-													}
-												case 'n': // Prefix: "nullable"
-													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch r.Method {
-														case "POST":
-															s.handleTestRequestIntegerUnixMicroNullableRequest([0]string{}, w, r)
-														default:
-															s.notAllowed(w, r, "POST")
-														}
-
-														return
-													}
-													switch elem[0] {
-													case '_': // Prefix: "_array"
-														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch r.Method {
-															case "POST":
-																s.handleTestRequestIntegerUnixMicroNullableArrayRequest([0]string{}, w, r)
-															default:
-																s.notAllowed(w, r, "POST")
-															}
-
-															return
-														}
-														switch elem[0] {
-														case '_': // Prefix: "_array"
-															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																// Leaf node.
-																switch r.Method {
-																case "POST":
-																	s.handleTestRequestIntegerUnixMicroNullableArrayArrayRequest([0]string{}, w, r)
-																default:
-																	s.notAllowed(w, r, "POST")
-																}
-
-																return
-															}
-														}
-													}
-												}
-											}
-										case 'l': // Prefix: "lli"
-											if l := len("lli"); len(elem) >= l && elem[0:l] == "lli" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch r.Method {
-												case "POST":
-													s.handleTestRequestIntegerUnixMilliRequest([0]string{}, w, r)
-												default:
-													s.notAllowed(w, r, "POST")
-												}
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_"
-												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'a': // Prefix: "array"
-													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch r.Method {
-														case "POST":
-															s.handleTestRequestIntegerUnixMilliArrayRequest([0]string{}, w, r)
-														default:
-															s.notAllowed(w, r, "POST")
-														}
-
-														return
-													}
-													switch elem[0] {
-													case '_': // Prefix: "_array"
-														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf node.
-															switch r.Method {
-															case "POST":
-																s.handleTestRequestIntegerUnixMilliArrayArrayRequest([0]string{}, w, r)
-															default:
-																s.notAllowed(w, r, "POST")
-															}
-
-															return
-														}
-													}
-												case 'n': // Prefix: "nullable"
-													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch r.Method {
-														case "POST":
-															s.handleTestRequestIntegerUnixMilliNullableRequest([0]string{}, w, r)
-														default:
-															s.notAllowed(w, r, "POST")
-														}
-
-														return
-													}
-													switch elem[0] {
-													case '_': // Prefix: "_array"
-														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch r.Method {
-															case "POST":
-																s.handleTestRequestIntegerUnixMilliNullableArrayRequest([0]string{}, w, r)
-															default:
-																s.notAllowed(w, r, "POST")
-															}
-
-															return
-														}
-														switch elem[0] {
-														case '_': // Prefix: "_array"
-															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																// Leaf node.
-																switch r.Method {
-																case "POST":
-																	s.handleTestRequestIntegerUnixMilliNullableArrayArrayRequest([0]string{}, w, r)
-																default:
-																	s.notAllowed(w, r, "POST")
-																}
-
-																return
-															}
-														}
-													}
-												}
-											}
-										}
-									case 'n': // Prefix: "nano"
-										if l := len("nano"); len(elem) >= l && elem[0:l] == "nano" {
+									case '3': // Prefix: "32"
+										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 											elem = elem[l:]
 										} else {
 											break
@@ -940,7 +680,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestIntegerUnixNanoRequest([0]string{}, w, r)
+												s.handleTestRequestIntegerUint32Request([0]string{}, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -969,7 +709,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerUnixNanoArrayRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerUint32ArrayRequest([0]string{}, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -988,7 +728,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestIntegerUnixNanoArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestIntegerUint32ArrayArrayRequest([0]string{}, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -1006,7 +746,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerUnixNanoNullableRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerUint32NullableRequest([0]string{}, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -1024,7 +764,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestIntegerUnixNanoNullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestIntegerUint32NullableArrayRequest([0]string{}, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -1043,7 +783,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestIntegerUnixNanoNullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestIntegerUint32NullableArrayArrayRequest([0]string{}, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -1054,8 +794,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 											}
 										}
-									case 's': // Prefix: "seconds"
-										if l := len("seconds"); len(elem) >= l && elem[0:l] == "seconds" {
+									case '6': // Prefix: "64"
+										if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
 											elem = elem[l:]
 										} else {
 											break
@@ -1064,7 +804,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestRequestIntegerUnixSecondsRequest([0]string{}, w, r)
+												s.handleTestRequestIntegerUint64Request([0]string{}, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -1093,7 +833,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerUnixSecondsArrayRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerUint64ArrayRequest([0]string{}, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -1112,7 +852,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestIntegerUnixSecondsArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestIntegerUint64ArrayArrayRequest([0]string{}, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -1130,7 +870,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerUnixSecondsNullableRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerUint64NullableRequest([0]string{}, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -1148,7 +888,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestIntegerUnixSecondsNullableArrayRequest([0]string{}, w, r)
+															s.handleTestRequestIntegerUint64NullableArrayRequest([0]string{}, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -1167,7 +907,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestIntegerUint64NullableArrayArrayRequest([0]string{}, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -1178,75 +918,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 											}
 										}
-									}
-								case '_': // Prefix: "_"
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "array"
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											switch r.Method {
-											case "POST":
-												s.handleTestRequestIntegerUnixArrayRequest([0]string{}, w, r)
-											default:
-												s.notAllowed(w, r, "POST")
-											}
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf node.
-												switch r.Method {
-												case "POST":
-													s.handleTestRequestIntegerUnixArrayArrayRequest([0]string{}, w, r)
-												default:
-													s.notAllowed(w, r, "POST")
-												}
-
-												return
-											}
-										}
-									case 'n': // Prefix: "nullable"
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
 											break
 										}
-
-										if len(elem) == 0 {
-											switch r.Method {
-											case "POST":
-												s.handleTestRequestIntegerUnixNullableRequest([0]string{}, w, r)
-											default:
-												s.notAllowed(w, r, "POST")
-											}
-
-											return
-										}
 										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 												elem = elem[l:]
 											} else {
 												break
@@ -1255,7 +939,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestIntegerUnixNullableArrayRequest([0]string{}, w, r)
+													s.handleTestRequestIntegerUintArrayRequest([0]string{}, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -1274,12 +958,712 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestIntegerUnixNullableArrayArrayRequest([0]string{}, w, r)
+														s.handleTestRequestIntegerUintArrayArrayRequest([0]string{}, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
 
 													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestIntegerUintNullableRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestIntegerUintNullableArrayRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestIntegerUintNullableArrayArrayRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											}
+										}
+									}
+								case 'n': // Prefix: "nix"
+									if l := len("nix"); len(elem) >= l && elem[0:l] == "nix" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestRequestIntegerUnixRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '-': // Prefix: "-"
+										if l := len("-"); len(elem) >= l && elem[0:l] == "-" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'm': // Prefix: "mi"
+											if l := len("mi"); len(elem) >= l && elem[0:l] == "mi" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'c': // Prefix: "cro"
+												if l := len("cro"); len(elem) >= l && elem[0:l] == "cro" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestIntegerUnixMicroRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_"
+													if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "array"
+														if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestIntegerUnixMicroArrayRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestIntegerUnixMicroArrayArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													case 'n': // Prefix: "nullable"
+														if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestIntegerUnixMicroNullableRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestIntegerUnixMicroNullableArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf node.
+																	switch r.Method {
+																	case "POST":
+																		s.handleTestRequestIntegerUnixMicroNullableArrayArrayRequest([0]string{}, w, r)
+																	default:
+																		s.notAllowed(w, r, "POST")
+																	}
+
+																	return
+																}
+															}
+														}
+													}
+												}
+											case 'l': // Prefix: "lli"
+												if l := len("lli"); len(elem) >= l && elem[0:l] == "lli" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestIntegerUnixMilliRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_"
+													if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "array"
+														if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestIntegerUnixMilliArrayRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestIntegerUnixMilliArrayArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													case 'n': // Prefix: "nullable"
+														if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestIntegerUnixMilliNullableRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestIntegerUnixMilliNullableArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf node.
+																	switch r.Method {
+																	case "POST":
+																		s.handleTestRequestIntegerUnixMilliNullableArrayArrayRequest([0]string{}, w, r)
+																	default:
+																		s.notAllowed(w, r, "POST")
+																	}
+
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										case 'n': // Prefix: "nano"
+											if l := len("nano"); len(elem) >= l && elem[0:l] == "nano" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestIntegerUnixNanoRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestIntegerUnixNanoArrayRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestIntegerUnixNanoArrayArrayRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestIntegerUnixNanoNullableRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestIntegerUnixNanoNullableArrayRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestIntegerUnixNanoNullableArrayArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													}
+												}
+											}
+										case 's': // Prefix: "seconds"
+											if l := len("seconds"); len(elem) >= l && elem[0:l] == "seconds" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestIntegerUnixSecondsRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestIntegerUnixSecondsArrayRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestIntegerUnixSecondsArrayArrayRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestIntegerUnixSecondsNullableRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestIntegerUnixSecondsNullableArrayRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestIntegerUnixArrayRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestIntegerUnixArrayArrayRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestRequestIntegerUnixNullableRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestIntegerUnixNullableArrayRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestIntegerUnixNullableArrayArrayRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
 												}
 											}
 										}
@@ -2626,297 +3010,37 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 										}
 									}
-								case 'u': // Prefix: "unix"
-									if l := len("unix"); len(elem) >= l && elem[0:l] == "unix" {
+								case 'u': // Prefix: "u"
+									if l := len("u"); len(elem) >= l && elem[0:l] == "u" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										switch r.Method {
-										case "POST":
-											s.handleTestRequestRequiredIntegerUnixRequest([0]string{}, w, r)
-										default:
-											s.notAllowed(w, r, "POST")
-										}
-
-										return
+										break
 									}
 									switch elem[0] {
-									case '-': // Prefix: "-"
-										if l := len("-"); len(elem) >= l && elem[0:l] == "-" {
+									case 'i': // Prefix: "int"
+										if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											break
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestRequiredIntegerUintRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
 										}
 										switch elem[0] {
-										case 'm': // Prefix: "mi"
-											if l := len("mi"); len(elem) >= l && elem[0:l] == "mi" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'c': // Prefix: "cro"
-												if l := len("cro"); len(elem) >= l && elem[0:l] == "cro" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													switch r.Method {
-													case "POST":
-														s.handleTestRequestRequiredIntegerUnixMicroRequest([0]string{}, w, r)
-													default:
-														s.notAllowed(w, r, "POST")
-													}
-
-													return
-												}
-												switch elem[0] {
-												case '_': // Prefix: "_"
-													if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case 'a': // Prefix: "array"
-														if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch r.Method {
-															case "POST":
-																s.handleTestRequestRequiredIntegerUnixMicroArrayRequest([0]string{}, w, r)
-															default:
-																s.notAllowed(w, r, "POST")
-															}
-
-															return
-														}
-														switch elem[0] {
-														case '_': // Prefix: "_array"
-															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																// Leaf node.
-																switch r.Method {
-																case "POST":
-																	s.handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest([0]string{}, w, r)
-																default:
-																	s.notAllowed(w, r, "POST")
-																}
-
-																return
-															}
-														}
-													case 'n': // Prefix: "nullable"
-														if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch r.Method {
-															case "POST":
-																s.handleTestRequestRequiredIntegerUnixMicroNullableRequest([0]string{}, w, r)
-															default:
-																s.notAllowed(w, r, "POST")
-															}
-
-															return
-														}
-														switch elem[0] {
-														case '_': // Prefix: "_array"
-															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																switch r.Method {
-																case "POST":
-																	s.handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest([0]string{}, w, r)
-																default:
-																	s.notAllowed(w, r, "POST")
-																}
-
-																return
-															}
-															switch elem[0] {
-															case '_': // Prefix: "_array"
-																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	// Leaf node.
-																	switch r.Method {
-																	case "POST":
-																		s.handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequest([0]string{}, w, r)
-																	default:
-																		s.notAllowed(w, r, "POST")
-																	}
-
-																	return
-																}
-															}
-														}
-													}
-												}
-											case 'l': // Prefix: "lli"
-												if l := len("lli"); len(elem) >= l && elem[0:l] == "lli" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													switch r.Method {
-													case "POST":
-														s.handleTestRequestRequiredIntegerUnixMilliRequest([0]string{}, w, r)
-													default:
-														s.notAllowed(w, r, "POST")
-													}
-
-													return
-												}
-												switch elem[0] {
-												case '_': // Prefix: "_"
-													if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case 'a': // Prefix: "array"
-														if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch r.Method {
-															case "POST":
-																s.handleTestRequestRequiredIntegerUnixMilliArrayRequest([0]string{}, w, r)
-															default:
-																s.notAllowed(w, r, "POST")
-															}
-
-															return
-														}
-														switch elem[0] {
-														case '_': // Prefix: "_array"
-															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																// Leaf node.
-																switch r.Method {
-																case "POST":
-																	s.handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest([0]string{}, w, r)
-																default:
-																	s.notAllowed(w, r, "POST")
-																}
-
-																return
-															}
-														}
-													case 'n': // Prefix: "nullable"
-														if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch r.Method {
-															case "POST":
-																s.handleTestRequestRequiredIntegerUnixMilliNullableRequest([0]string{}, w, r)
-															default:
-																s.notAllowed(w, r, "POST")
-															}
-
-															return
-														}
-														switch elem[0] {
-														case '_': // Prefix: "_array"
-															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																switch r.Method {
-																case "POST":
-																	s.handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest([0]string{}, w, r)
-																default:
-																	s.notAllowed(w, r, "POST")
-																}
-
-																return
-															}
-															switch elem[0] {
-															case '_': // Prefix: "_array"
-																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	// Leaf node.
-																	switch r.Method {
-																	case "POST":
-																		s.handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequest([0]string{}, w, r)
-																	default:
-																		s.notAllowed(w, r, "POST")
-																	}
-
-																	return
-																}
-															}
-														}
-													}
-												}
-											}
-										case 'n': // Prefix: "nano"
-											if l := len("nano"); len(elem) >= l && elem[0:l] == "nano" {
+										case '3': // Prefix: "32"
+											if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 												elem = elem[l:]
 											} else {
 												break
@@ -2925,7 +3049,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredIntegerUnixNanoRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredIntegerUint32Request([0]string{}, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -2954,7 +3078,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerUnixNanoArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerUint32ArrayRequest([0]string{}, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -2973,7 +3097,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredIntegerUint32ArrayArrayRequest([0]string{}, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -2991,7 +3115,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerUnixNanoNullableRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerUint32NullableRequest([0]string{}, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -3009,7 +3133,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredIntegerUint32NullableArrayRequest([0]string{}, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -3028,7 +3152,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest([0]string{}, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -3039,8 +3163,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 												}
 											}
-										case 's': // Prefix: "seconds"
-											if l := len("seconds"); len(elem) >= l && elem[0:l] == "seconds" {
+										case '6': // Prefix: "64"
+											if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
 												elem = elem[l:]
 											} else {
 												break
@@ -3049,7 +3173,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestRequestRequiredIntegerUnixSecondsRequest([0]string{}, w, r)
+													s.handleTestRequestRequiredIntegerUint64Request([0]string{}, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -3078,7 +3202,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerUnixSecondsArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerUint64ArrayRequest([0]string{}, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -3097,7 +3221,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredIntegerUint64ArrayArrayRequest([0]string{}, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -3115,7 +3239,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerUnixSecondsNullableRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerUint64NullableRequest([0]string{}, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -3133,7 +3257,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														if len(elem) == 0 {
 															switch r.Method {
 															case "POST":
-																s.handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest([0]string{}, w, r)
+																s.handleTestRequestRequiredIntegerUint64NullableArrayRequest([0]string{}, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -3152,7 +3276,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																// Leaf node.
 																switch r.Method {
 																case "POST":
-																	s.handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRequest([0]string{}, w, r)
+																	s.handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest([0]string{}, w, r)
 																default:
 																	s.notAllowed(w, r, "POST")
 																}
@@ -3163,75 +3287,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 												}
 											}
-										}
-									case '_': // Prefix: "_"
-										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'a': // Prefix: "array"
-											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												switch r.Method {
-												case "POST":
-													s.handleTestRequestRequiredIntegerUnixArrayRequest([0]string{}, w, r)
-												default:
-													s.notAllowed(w, r, "POST")
-												}
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf node.
-													switch r.Method {
-													case "POST":
-														s.handleTestRequestRequiredIntegerUnixArrayArrayRequest([0]string{}, w, r)
-													default:
-														s.notAllowed(w, r, "POST")
-													}
-
-													return
-												}
-											}
-										case 'n': // Prefix: "nullable"
-											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-												elem = elem[l:]
-											} else {
 												break
 											}
-
-											if len(elem) == 0 {
-												switch r.Method {
-												case "POST":
-													s.handleTestRequestRequiredIntegerUnixNullableRequest([0]string{}, w, r)
-												default:
-													s.notAllowed(w, r, "POST")
-												}
-
-												return
-											}
 											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 													elem = elem[l:]
 												} else {
 													break
@@ -3240,7 +3308,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestRequestRequiredIntegerUnixNullableArrayRequest([0]string{}, w, r)
+														s.handleTestRequestRequiredIntegerUintArrayRequest([0]string{}, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -3259,12 +3327,712 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest([0]string{}, w, r)
+															s.handleTestRequestRequiredIntegerUintArrayArrayRequest([0]string{}, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
 
 														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredIntegerUintNullableRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredIntegerUintNullableArrayRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredIntegerUintNullableArrayArrayRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												}
+											}
+										}
+									case 'n': // Prefix: "nix"
+										if l := len("nix"); len(elem) >= l && elem[0:l] == "nix" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch r.Method {
+											case "POST":
+												s.handleTestRequestRequiredIntegerUnixRequest([0]string{}, w, r)
+											default:
+												s.notAllowed(w, r, "POST")
+											}
+
+											return
+										}
+										switch elem[0] {
+										case '-': // Prefix: "-"
+											if l := len("-"); len(elem) >= l && elem[0:l] == "-" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'm': // Prefix: "mi"
+												if l := len("mi"); len(elem) >= l && elem[0:l] == "mi" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "cro"
+													if l := len("cro"); len(elem) >= l && elem[0:l] == "cro" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredIntegerUnixMicroRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_"
+														if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case 'a': // Prefix: "array"
+															if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredIntegerUnixMicroArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf node.
+																	switch r.Method {
+																	case "POST":
+																		s.handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest([0]string{}, w, r)
+																	default:
+																		s.notAllowed(w, r, "POST")
+																	}
+
+																	return
+																}
+															}
+														case 'n': // Prefix: "nullable"
+															if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredIntegerUnixMicroNullableRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	switch r.Method {
+																	case "POST":
+																		s.handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest([0]string{}, w, r)
+																	default:
+																		s.notAllowed(w, r, "POST")
+																	}
+
+																	return
+																}
+																switch elem[0] {
+																case '_': // Prefix: "_array"
+																	if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																		elem = elem[l:]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		// Leaf node.
+																		switch r.Method {
+																		case "POST":
+																			s.handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequest([0]string{}, w, r)
+																		default:
+																			s.notAllowed(w, r, "POST")
+																		}
+
+																		return
+																	}
+																}
+															}
+														}
+													}
+												case 'l': // Prefix: "lli"
+													if l := len("lli"); len(elem) >= l && elem[0:l] == "lli" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredIntegerUnixMilliRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_"
+														if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case 'a': // Prefix: "array"
+															if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredIntegerUnixMilliArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf node.
+																	switch r.Method {
+																	case "POST":
+																		s.handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest([0]string{}, w, r)
+																	default:
+																		s.notAllowed(w, r, "POST")
+																	}
+
+																	return
+																}
+															}
+														case 'n': // Prefix: "nullable"
+															if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredIntegerUnixMilliNullableRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	switch r.Method {
+																	case "POST":
+																		s.handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest([0]string{}, w, r)
+																	default:
+																		s.notAllowed(w, r, "POST")
+																	}
+
+																	return
+																}
+																switch elem[0] {
+																case '_': // Prefix: "_array"
+																	if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																		elem = elem[l:]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		// Leaf node.
+																		switch r.Method {
+																		case "POST":
+																			s.handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequest([0]string{}, w, r)
+																		default:
+																			s.notAllowed(w, r, "POST")
+																		}
+
+																		return
+																	}
+																}
+															}
+														}
+													}
+												}
+											case 'n': // Prefix: "nano"
+												if l := len("nano"); len(elem) >= l && elem[0:l] == "nano" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredIntegerUnixNanoRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_"
+													if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "array"
+														if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredIntegerUnixNanoArrayRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													case 'n': // Prefix: "nullable"
+														if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredIntegerUnixNanoNullableRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf node.
+																	switch r.Method {
+																	case "POST":
+																		s.handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayRequest([0]string{}, w, r)
+																	default:
+																		s.notAllowed(w, r, "POST")
+																	}
+
+																	return
+																}
+															}
+														}
+													}
+												}
+											case 's': // Prefix: "seconds"
+												if l := len("seconds"); len(elem) >= l && elem[0:l] == "seconds" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredIntegerUnixSecondsRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_"
+													if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "array"
+														if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredIntegerUnixSecondsArrayRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													case 'n': // Prefix: "nullable"
+														if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredIntegerUnixSecondsNullableRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch r.Method {
+																case "POST":
+																	s.handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf node.
+																	switch r.Method {
+																	case "POST":
+																		s.handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRequest([0]string{}, w, r)
+																	default:
+																		s.notAllowed(w, r, "POST")
+																	}
+
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredIntegerUnixArrayRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredIntegerUnixArrayArrayRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestRequestRequiredIntegerUnixNullableRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestRequestRequiredIntegerUnixNullableArrayRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
 													}
 												}
 											}
@@ -10261,297 +11029,37 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 									}
 								}
-							case 'u': // Prefix: "unix"
-								if l := len("unix"); len(elem) >= l && elem[0:l] == "unix" {
+							case 'u': // Prefix: "u"
+								if l := len("u"); len(elem) >= l && elem[0:l] == "u" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									switch r.Method {
-									case "POST":
-										s.handleTestResponseIntegerUnixRequest([0]string{}, w, r)
-									default:
-										s.notAllowed(w, r, "POST")
-									}
-
-									return
+									break
 								}
 								switch elem[0] {
-								case '-': // Prefix: "-"
-									if l := len("-"); len(elem) >= l && elem[0:l] == "-" {
+								case 'i': // Prefix: "int"
+									if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										break
+										switch r.Method {
+										case "POST":
+											s.handleTestResponseIntegerUintRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
 									}
 									switch elem[0] {
-									case 'm': // Prefix: "mi"
-										if l := len("mi"); len(elem) >= l && elem[0:l] == "mi" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'c': // Prefix: "cro"
-											if l := len("cro"); len(elem) >= l && elem[0:l] == "cro" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch r.Method {
-												case "POST":
-													s.handleTestResponseIntegerUnixMicroRequest([0]string{}, w, r)
-												default:
-													s.notAllowed(w, r, "POST")
-												}
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_"
-												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'a': // Prefix: "array"
-													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch r.Method {
-														case "POST":
-															s.handleTestResponseIntegerUnixMicroArrayRequest([0]string{}, w, r)
-														default:
-															s.notAllowed(w, r, "POST")
-														}
-
-														return
-													}
-													switch elem[0] {
-													case '_': // Prefix: "_array"
-														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf node.
-															switch r.Method {
-															case "POST":
-																s.handleTestResponseIntegerUnixMicroArrayArrayRequest([0]string{}, w, r)
-															default:
-																s.notAllowed(w, r, "POST")
-															}
-
-															return
-														}
-													}
-												case 'n': // Prefix: "nullable"
-													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch r.Method {
-														case "POST":
-															s.handleTestResponseIntegerUnixMicroNullableRequest([0]string{}, w, r)
-														default:
-															s.notAllowed(w, r, "POST")
-														}
-
-														return
-													}
-													switch elem[0] {
-													case '_': // Prefix: "_array"
-														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch r.Method {
-															case "POST":
-																s.handleTestResponseIntegerUnixMicroNullableArrayRequest([0]string{}, w, r)
-															default:
-																s.notAllowed(w, r, "POST")
-															}
-
-															return
-														}
-														switch elem[0] {
-														case '_': // Prefix: "_array"
-															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																// Leaf node.
-																switch r.Method {
-																case "POST":
-																	s.handleTestResponseIntegerUnixMicroNullableArrayArrayRequest([0]string{}, w, r)
-																default:
-																	s.notAllowed(w, r, "POST")
-																}
-
-																return
-															}
-														}
-													}
-												}
-											}
-										case 'l': // Prefix: "lli"
-											if l := len("lli"); len(elem) >= l && elem[0:l] == "lli" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch r.Method {
-												case "POST":
-													s.handleTestResponseIntegerUnixMilliRequest([0]string{}, w, r)
-												default:
-													s.notAllowed(w, r, "POST")
-												}
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_"
-												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'a': // Prefix: "array"
-													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch r.Method {
-														case "POST":
-															s.handleTestResponseIntegerUnixMilliArrayRequest([0]string{}, w, r)
-														default:
-															s.notAllowed(w, r, "POST")
-														}
-
-														return
-													}
-													switch elem[0] {
-													case '_': // Prefix: "_array"
-														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															// Leaf node.
-															switch r.Method {
-															case "POST":
-																s.handleTestResponseIntegerUnixMilliArrayArrayRequest([0]string{}, w, r)
-															default:
-																s.notAllowed(w, r, "POST")
-															}
-
-															return
-														}
-													}
-												case 'n': // Prefix: "nullable"
-													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch r.Method {
-														case "POST":
-															s.handleTestResponseIntegerUnixMilliNullableRequest([0]string{}, w, r)
-														default:
-															s.notAllowed(w, r, "POST")
-														}
-
-														return
-													}
-													switch elem[0] {
-													case '_': // Prefix: "_array"
-														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch r.Method {
-															case "POST":
-																s.handleTestResponseIntegerUnixMilliNullableArrayRequest([0]string{}, w, r)
-															default:
-																s.notAllowed(w, r, "POST")
-															}
-
-															return
-														}
-														switch elem[0] {
-														case '_': // Prefix: "_array"
-															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																// Leaf node.
-																switch r.Method {
-																case "POST":
-																	s.handleTestResponseIntegerUnixMilliNullableArrayArrayRequest([0]string{}, w, r)
-																default:
-																	s.notAllowed(w, r, "POST")
-																}
-
-																return
-															}
-														}
-													}
-												}
-											}
-										}
-									case 'n': // Prefix: "nano"
-										if l := len("nano"); len(elem) >= l && elem[0:l] == "nano" {
+									case '3': // Prefix: "32"
+										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 											elem = elem[l:]
 										} else {
 											break
@@ -10560,7 +11068,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseIntegerUnixNanoRequest([0]string{}, w, r)
+												s.handleTestResponseIntegerUint32Request([0]string{}, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -10589,7 +11097,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerUnixNanoArrayRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerUint32ArrayRequest([0]string{}, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -10608,7 +11116,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseIntegerUnixNanoArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseIntegerUint32ArrayArrayRequest([0]string{}, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -10626,7 +11134,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerUnixNanoNullableRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerUint32NullableRequest([0]string{}, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -10644,7 +11152,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseIntegerUnixNanoNullableArrayRequest([0]string{}, w, r)
+															s.handleTestResponseIntegerUint32NullableArrayRequest([0]string{}, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -10663,7 +11171,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseIntegerUnixNanoNullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestResponseIntegerUint32NullableArrayArrayRequest([0]string{}, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -10674,8 +11182,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 											}
 										}
-									case 's': // Prefix: "seconds"
-										if l := len("seconds"); len(elem) >= l && elem[0:l] == "seconds" {
+									case '6': // Prefix: "64"
+										if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
 											elem = elem[l:]
 										} else {
 											break
@@ -10684,7 +11192,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										if len(elem) == 0 {
 											switch r.Method {
 											case "POST":
-												s.handleTestResponseIntegerUnixSecondsRequest([0]string{}, w, r)
+												s.handleTestResponseIntegerUint64Request([0]string{}, w, r)
 											default:
 												s.notAllowed(w, r, "POST")
 											}
@@ -10713,7 +11221,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerUnixSecondsArrayRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerUint64ArrayRequest([0]string{}, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -10732,7 +11240,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														// Leaf node.
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseIntegerUnixSecondsArrayArrayRequest([0]string{}, w, r)
+															s.handleTestResponseIntegerUint64ArrayArrayRequest([0]string{}, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -10750,7 +11258,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												if len(elem) == 0 {
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerUnixSecondsNullableRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerUint64NullableRequest([0]string{}, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
@@ -10768,7 +11276,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													if len(elem) == 0 {
 														switch r.Method {
 														case "POST":
-															s.handleTestResponseIntegerUnixSecondsNullableArrayRequest([0]string{}, w, r)
+															s.handleTestResponseIntegerUint64NullableArrayRequest([0]string{}, w, r)
 														default:
 															s.notAllowed(w, r, "POST")
 														}
@@ -10787,7 +11295,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															// Leaf node.
 															switch r.Method {
 															case "POST":
-																s.handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest([0]string{}, w, r)
+																s.handleTestResponseIntegerUint64NullableArrayArrayRequest([0]string{}, w, r)
 															default:
 																s.notAllowed(w, r, "POST")
 															}
@@ -10798,75 +11306,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 											}
 										}
-									}
-								case '_': // Prefix: "_"
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "array"
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											switch r.Method {
-											case "POST":
-												s.handleTestResponseIntegerUnixArrayRequest([0]string{}, w, r)
-											default:
-												s.notAllowed(w, r, "POST")
-											}
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf node.
-												switch r.Method {
-												case "POST":
-													s.handleTestResponseIntegerUnixArrayArrayRequest([0]string{}, w, r)
-												default:
-													s.notAllowed(w, r, "POST")
-												}
-
-												return
-											}
-										}
-									case 'n': // Prefix: "nullable"
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
 											break
 										}
-
-										if len(elem) == 0 {
-											switch r.Method {
-											case "POST":
-												s.handleTestResponseIntegerUnixNullableRequest([0]string{}, w, r)
-											default:
-												s.notAllowed(w, r, "POST")
-											}
-
-											return
-										}
 										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 												elem = elem[l:]
 											} else {
 												break
@@ -10875,7 +11327,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											if len(elem) == 0 {
 												switch r.Method {
 												case "POST":
-													s.handleTestResponseIntegerUnixNullableArrayRequest([0]string{}, w, r)
+													s.handleTestResponseIntegerUintArrayRequest([0]string{}, w, r)
 												default:
 													s.notAllowed(w, r, "POST")
 												}
@@ -10894,12 +11346,712 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													// Leaf node.
 													switch r.Method {
 													case "POST":
-														s.handleTestResponseIntegerUnixNullableArrayArrayRequest([0]string{}, w, r)
+														s.handleTestResponseIntegerUintArrayArrayRequest([0]string{}, w, r)
 													default:
 														s.notAllowed(w, r, "POST")
 													}
 
 													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseIntegerUintNullableRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseIntegerUintNullableArrayRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseIntegerUintNullableArrayArrayRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+												}
+											}
+										}
+									}
+								case 'n': // Prefix: "nix"
+									if l := len("nix"); len(elem) >= l && elem[0:l] == "nix" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch r.Method {
+										case "POST":
+											s.handleTestResponseIntegerUnixRequest([0]string{}, w, r)
+										default:
+											s.notAllowed(w, r, "POST")
+										}
+
+										return
+									}
+									switch elem[0] {
+									case '-': // Prefix: "-"
+										if l := len("-"); len(elem) >= l && elem[0:l] == "-" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'm': // Prefix: "mi"
+											if l := len("mi"); len(elem) >= l && elem[0:l] == "mi" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'c': // Prefix: "cro"
+												if l := len("cro"); len(elem) >= l && elem[0:l] == "cro" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseIntegerUnixMicroRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_"
+													if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "array"
+														if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseIntegerUnixMicroArrayRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestResponseIntegerUnixMicroArrayArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													case 'n': // Prefix: "nullable"
+														if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseIntegerUnixMicroNullableRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch r.Method {
+																case "POST":
+																	s.handleTestResponseIntegerUnixMicroNullableArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf node.
+																	switch r.Method {
+																	case "POST":
+																		s.handleTestResponseIntegerUnixMicroNullableArrayArrayRequest([0]string{}, w, r)
+																	default:
+																		s.notAllowed(w, r, "POST")
+																	}
+
+																	return
+																}
+															}
+														}
+													}
+												}
+											case 'l': // Prefix: "lli"
+												if l := len("lli"); len(elem) >= l && elem[0:l] == "lli" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseIntegerUnixMilliRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_"
+													if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "array"
+														if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseIntegerUnixMilliArrayRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestResponseIntegerUnixMilliArrayArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													case 'n': // Prefix: "nullable"
+														if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseIntegerUnixMilliNullableRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch r.Method {
+																case "POST":
+																	s.handleTestResponseIntegerUnixMilliNullableArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	// Leaf node.
+																	switch r.Method {
+																	case "POST":
+																		s.handleTestResponseIntegerUnixMilliNullableArrayArrayRequest([0]string{}, w, r)
+																	default:
+																		s.notAllowed(w, r, "POST")
+																	}
+
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										case 'n': // Prefix: "nano"
+											if l := len("nano"); len(elem) >= l && elem[0:l] == "nano" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseIntegerUnixNanoRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseIntegerUnixNanoArrayRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseIntegerUnixNanoArrayArrayRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseIntegerUnixNanoNullableRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseIntegerUnixNanoNullableArrayRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestResponseIntegerUnixNanoNullableArrayArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													}
+												}
+											}
+										case 's': // Prefix: "seconds"
+											if l := len("seconds"); len(elem) >= l && elem[0:l] == "seconds" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseIntegerUnixSecondsRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseIntegerUnixSecondsArrayRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf node.
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseIntegerUnixSecondsArrayArrayRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseIntegerUnixSecondsNullableRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch r.Method {
+															case "POST":
+																s.handleTestResponseIntegerUnixSecondsNullableArrayRequest([0]string{}, w, r)
+															default:
+																s.notAllowed(w, r, "POST")
+															}
+
+															return
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																// Leaf node.
+																switch r.Method {
+																case "POST":
+																	s.handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest([0]string{}, w, r)
+																default:
+																	s.notAllowed(w, r, "POST")
+																}
+
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseIntegerUnixArrayRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf node.
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseIntegerUnixArrayArrayRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch r.Method {
+												case "POST":
+													s.handleTestResponseIntegerUnixNullableRequest([0]string{}, w, r)
+												default:
+													s.notAllowed(w, r, "POST")
+												}
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch r.Method {
+													case "POST":
+														s.handleTestResponseIntegerUnixNullableArrayRequest([0]string{}, w, r)
+													default:
+														s.notAllowed(w, r, "POST")
+													}
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf node.
+														switch r.Method {
+														case "POST":
+															s.handleTestResponseIntegerUnixNullableArrayArrayRequest([0]string{}, w, r)
+														default:
+															s.notAllowed(w, r, "POST")
+														}
+
+														return
+													}
 												}
 											}
 										}
@@ -15217,323 +16369,39 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 									}
 								}
-							case 'u': // Prefix: "unix"
-								if l := len("unix"); len(elem) >= l && elem[0:l] == "unix" {
+							case 'u': // Prefix: "u"
+								if l := len("u"); len(elem) >= l && elem[0:l] == "u" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									switch method {
-									case "POST":
-										r.name = "TestRequestIntegerUnix"
-										r.operationID = "test_request_integer_unix"
-										r.args = args
-										r.count = 0
-										return r, true
-									default:
-										return
-									}
+									break
 								}
 								switch elem[0] {
-								case '-': // Prefix: "-"
-									if l := len("-"); len(elem) >= l && elem[0:l] == "-" {
+								case 'i': // Prefix: "int"
+									if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										break
+										switch method {
+										case "POST":
+											r.name = "TestRequestIntegerUint"
+											r.operationID = "test_request_integer_uint"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
-									case 'm': // Prefix: "mi"
-										if l := len("mi"); len(elem) >= l && elem[0:l] == "mi" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'c': // Prefix: "cro"
-											if l := len("cro"); len(elem) >= l && elem[0:l] == "cro" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "POST":
-													r.name = "TestRequestIntegerUnixMicro"
-													r.operationID = "test_request_integer_unix-micro"
-													r.args = args
-													r.count = 0
-													return r, true
-												default:
-													return
-												}
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_"
-												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'a': // Prefix: "array"
-													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch method {
-														case "POST":
-															r.name = "TestRequestIntegerUnixMicroArray"
-															r.operationID = "test_request_integer_unix-micro_array"
-															r.args = args
-															r.count = 0
-															return r, true
-														default:
-															return
-														}
-													}
-													switch elem[0] {
-													case '_': // Prefix: "_array"
-														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch method {
-															case "POST":
-																// Leaf: TestRequestIntegerUnixMicroArrayArray
-																r.name = "TestRequestIntegerUnixMicroArrayArray"
-																r.operationID = "test_request_integer_unix-micro_array_array"
-																r.args = args
-																r.count = 0
-																return r, true
-															default:
-																return
-															}
-														}
-													}
-												case 'n': // Prefix: "nullable"
-													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch method {
-														case "POST":
-															r.name = "TestRequestIntegerUnixMicroNullable"
-															r.operationID = "test_request_integer_unix-micro_nullable"
-															r.args = args
-															r.count = 0
-															return r, true
-														default:
-															return
-														}
-													}
-													switch elem[0] {
-													case '_': // Prefix: "_array"
-														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch method {
-															case "POST":
-																r.name = "TestRequestIntegerUnixMicroNullableArray"
-																r.operationID = "test_request_integer_unix-micro_nullable_array"
-																r.args = args
-																r.count = 0
-																return r, true
-															default:
-																return
-															}
-														}
-														switch elem[0] {
-														case '_': // Prefix: "_array"
-															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																switch method {
-																case "POST":
-																	// Leaf: TestRequestIntegerUnixMicroNullableArrayArray
-																	r.name = "TestRequestIntegerUnixMicroNullableArrayArray"
-																	r.operationID = "test_request_integer_unix-micro_nullable_array_array"
-																	r.args = args
-																	r.count = 0
-																	return r, true
-																default:
-																	return
-																}
-															}
-														}
-													}
-												}
-											}
-										case 'l': // Prefix: "lli"
-											if l := len("lli"); len(elem) >= l && elem[0:l] == "lli" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "POST":
-													r.name = "TestRequestIntegerUnixMilli"
-													r.operationID = "test_request_integer_unix-milli"
-													r.args = args
-													r.count = 0
-													return r, true
-												default:
-													return
-												}
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_"
-												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'a': // Prefix: "array"
-													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch method {
-														case "POST":
-															r.name = "TestRequestIntegerUnixMilliArray"
-															r.operationID = "test_request_integer_unix-milli_array"
-															r.args = args
-															r.count = 0
-															return r, true
-														default:
-															return
-														}
-													}
-													switch elem[0] {
-													case '_': // Prefix: "_array"
-														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch method {
-															case "POST":
-																// Leaf: TestRequestIntegerUnixMilliArrayArray
-																r.name = "TestRequestIntegerUnixMilliArrayArray"
-																r.operationID = "test_request_integer_unix-milli_array_array"
-																r.args = args
-																r.count = 0
-																return r, true
-															default:
-																return
-															}
-														}
-													}
-												case 'n': // Prefix: "nullable"
-													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch method {
-														case "POST":
-															r.name = "TestRequestIntegerUnixMilliNullable"
-															r.operationID = "test_request_integer_unix-milli_nullable"
-															r.args = args
-															r.count = 0
-															return r, true
-														default:
-															return
-														}
-													}
-													switch elem[0] {
-													case '_': // Prefix: "_array"
-														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch method {
-															case "POST":
-																r.name = "TestRequestIntegerUnixMilliNullableArray"
-																r.operationID = "test_request_integer_unix-milli_nullable_array"
-																r.args = args
-																r.count = 0
-																return r, true
-															default:
-																return
-															}
-														}
-														switch elem[0] {
-														case '_': // Prefix: "_array"
-															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																switch method {
-																case "POST":
-																	// Leaf: TestRequestIntegerUnixMilliNullableArrayArray
-																	r.name = "TestRequestIntegerUnixMilliNullableArrayArray"
-																	r.operationID = "test_request_integer_unix-milli_nullable_array_array"
-																	r.args = args
-																	r.count = 0
-																	return r, true
-																default:
-																	return
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									case 'n': // Prefix: "nano"
-										if l := len("nano"); len(elem) >= l && elem[0:l] == "nano" {
+									case '3': // Prefix: "32"
+										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 											elem = elem[l:]
 										} else {
 											break
@@ -15542,8 +16410,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "POST":
-												r.name = "TestRequestIntegerUnixNano"
-												r.operationID = "test_request_integer_unix-nano"
+												r.name = "TestRequestIntegerUint32"
+												r.operationID = "test_request_integer_uint32"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -15573,8 +16441,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "POST":
-														r.name = "TestRequestIntegerUnixNanoArray"
-														r.operationID = "test_request_integer_unix-nano_array"
+														r.name = "TestRequestIntegerUint32Array"
+														r.operationID = "test_request_integer_uint32_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -15593,9 +16461,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "POST":
-															// Leaf: TestRequestIntegerUnixNanoArrayArray
-															r.name = "TestRequestIntegerUnixNanoArrayArray"
-															r.operationID = "test_request_integer_unix-nano_array_array"
+															// Leaf: TestRequestIntegerUint32ArrayArray
+															r.name = "TestRequestIntegerUint32ArrayArray"
+															r.operationID = "test_request_integer_uint32_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15614,8 +16482,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "POST":
-														r.name = "TestRequestIntegerUnixNanoNullable"
-														r.operationID = "test_request_integer_unix-nano_nullable"
+														r.name = "TestRequestIntegerUint32Nullable"
+														r.operationID = "test_request_integer_uint32_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -15634,8 +16502,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "POST":
-															r.name = "TestRequestIntegerUnixNanoNullableArray"
-															r.operationID = "test_request_integer_unix-nano_nullable_array"
+															r.name = "TestRequestIntegerUint32NullableArray"
+															r.operationID = "test_request_integer_uint32_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15654,9 +16522,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "POST":
-																// Leaf: TestRequestIntegerUnixNanoNullableArrayArray
-																r.name = "TestRequestIntegerUnixNanoNullableArrayArray"
-																r.operationID = "test_request_integer_unix-nano_nullable_array_array"
+																// Leaf: TestRequestIntegerUint32NullableArrayArray
+																r.name = "TestRequestIntegerUint32NullableArrayArray"
+																r.operationID = "test_request_integer_uint32_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -15668,8 +16536,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 											}
 										}
-									case 's': // Prefix: "seconds"
-										if l := len("seconds"); len(elem) >= l && elem[0:l] == "seconds" {
+									case '6': // Prefix: "64"
+										if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
 											elem = elem[l:]
 										} else {
 											break
@@ -15678,8 +16546,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "POST":
-												r.name = "TestRequestIntegerUnixSeconds"
-												r.operationID = "test_request_integer_unix-seconds"
+												r.name = "TestRequestIntegerUint64"
+												r.operationID = "test_request_integer_uint64"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -15709,8 +16577,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "POST":
-														r.name = "TestRequestIntegerUnixSecondsArray"
-														r.operationID = "test_request_integer_unix-seconds_array"
+														r.name = "TestRequestIntegerUint64Array"
+														r.operationID = "test_request_integer_uint64_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -15729,9 +16597,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "POST":
-															// Leaf: TestRequestIntegerUnixSecondsArrayArray
-															r.name = "TestRequestIntegerUnixSecondsArrayArray"
-															r.operationID = "test_request_integer_unix-seconds_array_array"
+															// Leaf: TestRequestIntegerUint64ArrayArray
+															r.name = "TestRequestIntegerUint64ArrayArray"
+															r.operationID = "test_request_integer_uint64_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15750,8 +16618,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "POST":
-														r.name = "TestRequestIntegerUnixSecondsNullable"
-														r.operationID = "test_request_integer_unix-seconds_nullable"
+														r.name = "TestRequestIntegerUint64Nullable"
+														r.operationID = "test_request_integer_uint64_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -15770,8 +16638,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "POST":
-															r.name = "TestRequestIntegerUnixSecondsNullableArray"
-															r.operationID = "test_request_integer_unix-seconds_nullable_array"
+															r.name = "TestRequestIntegerUint64NullableArray"
+															r.operationID = "test_request_integer_uint64_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -15790,9 +16658,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "POST":
-																// Leaf: TestRequestIntegerUnixSecondsNullableArrayArray
-																r.name = "TestRequestIntegerUnixSecondsNullableArrayArray"
-																r.operationID = "test_request_integer_unix-seconds_nullable_array_array"
+																// Leaf: TestRequestIntegerUint64NullableArrayArray
+																r.name = "TestRequestIntegerUint64NullableArrayArray"
+																r.operationID = "test_request_integer_uint64_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -15804,40 +16672,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 											}
 										}
-									}
-								case '_': // Prefix: "_"
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "array"
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											switch method {
-											case "POST":
-												r.name = "TestRequestIntegerUnixArray"
-												r.operationID = "test_request_integer_unix_array"
-												r.args = args
-												r.count = 0
-												return r, true
-											default:
-												return
-											}
+											break
 										}
 										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 												elem = elem[l:]
 											} else {
 												break
@@ -15846,49 +16693,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "POST":
-													// Leaf: TestRequestIntegerUnixArrayArray
-													r.name = "TestRequestIntegerUnixArrayArray"
-													r.operationID = "test_request_integer_unix_array_array"
-													r.args = args
-													r.count = 0
-													return r, true
-												default:
-													return
-												}
-											}
-										}
-									case 'n': // Prefix: "nullable"
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											switch method {
-											case "POST":
-												r.name = "TestRequestIntegerUnixNullable"
-												r.operationID = "test_request_integer_unix_nullable"
-												r.args = args
-												r.count = 0
-												return r, true
-											default:
-												return
-											}
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "POST":
-													r.name = "TestRequestIntegerUnixNullableArray"
-													r.operationID = "test_request_integer_unix_nullable_array"
+													r.name = "TestRequestIntegerUintArray"
+													r.operationID = "test_request_integer_uint_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -15907,14 +16713,780 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "POST":
-														// Leaf: TestRequestIntegerUnixNullableArrayArray
-														r.name = "TestRequestIntegerUnixNullableArrayArray"
-														r.operationID = "test_request_integer_unix_nullable_array_array"
+														// Leaf: TestRequestIntegerUintArrayArray
+														r.name = "TestRequestIntegerUintArrayArray"
+														r.operationID = "test_request_integer_uint_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
 													default:
 														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestIntegerUintNullable"
+													r.operationID = "test_request_integer_uint_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestIntegerUintNullableArray"
+														r.operationID = "test_request_integer_uint_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestIntegerUintNullableArrayArray
+															r.name = "TestRequestIntegerUintNullableArrayArray"
+															r.operationID = "test_request_integer_uint_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											}
+										}
+									}
+								case 'n': // Prefix: "nix"
+									if l := len("nix"); len(elem) >= l && elem[0:l] == "nix" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = "TestRequestIntegerUnix"
+											r.operationID = "test_request_integer_unix"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '-': // Prefix: "-"
+										if l := len("-"); len(elem) >= l && elem[0:l] == "-" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'm': // Prefix: "mi"
+											if l := len("mi"); len(elem) >= l && elem[0:l] == "mi" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'c': // Prefix: "cro"
+												if l := len("cro"); len(elem) >= l && elem[0:l] == "cro" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestIntegerUnixMicro"
+														r.operationID = "test_request_integer_unix-micro"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_"
+													if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "array"
+														if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestIntegerUnixMicroArray"
+																r.operationID = "test_request_integer_unix-micro_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestRequestIntegerUnixMicroArrayArray
+																	r.name = "TestRequestIntegerUnixMicroArrayArray"
+																	r.operationID = "test_request_integer_unix-micro_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													case 'n': // Prefix: "nullable"
+														if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestIntegerUnixMicroNullable"
+																r.operationID = "test_request_integer_unix-micro_nullable"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	r.name = "TestRequestIntegerUnixMicroNullableArray"
+																	r.operationID = "test_request_integer_unix-micro_nullable_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	switch method {
+																	case "POST":
+																		// Leaf: TestRequestIntegerUnixMicroNullableArrayArray
+																		r.name = "TestRequestIntegerUnixMicroNullableArrayArray"
+																		r.operationID = "test_request_integer_unix-micro_nullable_array_array"
+																		r.args = args
+																		r.count = 0
+																		return r, true
+																	default:
+																		return
+																	}
+																}
+															}
+														}
+													}
+												}
+											case 'l': // Prefix: "lli"
+												if l := len("lli"); len(elem) >= l && elem[0:l] == "lli" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestIntegerUnixMilli"
+														r.operationID = "test_request_integer_unix-milli"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_"
+													if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "array"
+														if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestIntegerUnixMilliArray"
+																r.operationID = "test_request_integer_unix-milli_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestRequestIntegerUnixMilliArrayArray
+																	r.name = "TestRequestIntegerUnixMilliArrayArray"
+																	r.operationID = "test_request_integer_unix-milli_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													case 'n': // Prefix: "nullable"
+														if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestIntegerUnixMilliNullable"
+																r.operationID = "test_request_integer_unix-milli_nullable"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	r.name = "TestRequestIntegerUnixMilliNullableArray"
+																	r.operationID = "test_request_integer_unix-milli_nullable_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	switch method {
+																	case "POST":
+																		// Leaf: TestRequestIntegerUnixMilliNullableArrayArray
+																		r.name = "TestRequestIntegerUnixMilliNullableArrayArray"
+																		r.operationID = "test_request_integer_unix-milli_nullable_array_array"
+																		r.args = args
+																		r.count = 0
+																		return r, true
+																	default:
+																		return
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										case 'n': // Prefix: "nano"
+											if l := len("nano"); len(elem) >= l && elem[0:l] == "nano" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestIntegerUnixNano"
+													r.operationID = "test_request_integer_unix-nano"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestIntegerUnixNanoArray"
+															r.operationID = "test_request_integer_unix-nano_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestIntegerUnixNanoArrayArray
+																r.name = "TestRequestIntegerUnixNanoArrayArray"
+																r.operationID = "test_request_integer_unix-nano_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestIntegerUnixNanoNullable"
+															r.operationID = "test_request_integer_unix-nano_nullable"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestIntegerUnixNanoNullableArray"
+																r.operationID = "test_request_integer_unix-nano_nullable_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestRequestIntegerUnixNanoNullableArrayArray
+																	r.name = "TestRequestIntegerUnixNanoNullableArrayArray"
+																	r.operationID = "test_request_integer_unix-nano_nullable_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										case 's': // Prefix: "seconds"
+											if l := len("seconds"); len(elem) >= l && elem[0:l] == "seconds" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestIntegerUnixSeconds"
+													r.operationID = "test_request_integer_unix-seconds"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestIntegerUnixSecondsArray"
+															r.operationID = "test_request_integer_unix-seconds_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestIntegerUnixSecondsArrayArray
+																r.name = "TestRequestIntegerUnixSecondsArrayArray"
+																r.operationID = "test_request_integer_unix-seconds_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestIntegerUnixSecondsNullable"
+															r.operationID = "test_request_integer_unix-seconds_nullable"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestIntegerUnixSecondsNullableArray"
+																r.operationID = "test_request_integer_unix-seconds_nullable_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestRequestIntegerUnixSecondsNullableArrayArray
+																	r.name = "TestRequestIntegerUnixSecondsNullableArrayArray"
+																	r.operationID = "test_request_integer_unix-seconds_nullable_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestIntegerUnixArray"
+													r.operationID = "test_request_integer_unix_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestRequestIntegerUnixArrayArray
+														r.name = "TestRequestIntegerUnixArrayArray"
+														r.operationID = "test_request_integer_unix_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestRequestIntegerUnixNullable"
+													r.operationID = "test_request_integer_unix_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestIntegerUnixNullableArray"
+														r.operationID = "test_request_integer_unix_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestIntegerUnixNullableArrayArray
+															r.name = "TestRequestIntegerUnixNullableArrayArray"
+															r.operationID = "test_request_integer_unix_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											}
@@ -17388,323 +18960,39 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 										}
 									}
-								case 'u': // Prefix: "unix"
-									if l := len("unix"); len(elem) >= l && elem[0:l] == "unix" {
+								case 'u': // Prefix: "u"
+									if l := len("u"); len(elem) >= l && elem[0:l] == "u" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										switch method {
-										case "POST":
-											r.name = "TestRequestRequiredIntegerUnix"
-											r.operationID = "test_request_required_integer_unix"
-											r.args = args
-											r.count = 0
-											return r, true
-										default:
-											return
-										}
+										break
 									}
 									switch elem[0] {
-									case '-': // Prefix: "-"
-										if l := len("-"); len(elem) >= l && elem[0:l] == "-" {
+									case 'i': // Prefix: "int"
+										if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											break
+											switch method {
+											case "POST":
+												r.name = "TestRequestRequiredIntegerUint"
+												r.operationID = "test_request_required_integer_uint"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
 										}
 										switch elem[0] {
-										case 'm': // Prefix: "mi"
-											if l := len("mi"); len(elem) >= l && elem[0:l] == "mi" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												break
-											}
-											switch elem[0] {
-											case 'c': // Prefix: "cro"
-												if l := len("cro"); len(elem) >= l && elem[0:l] == "cro" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													switch method {
-													case "POST":
-														r.name = "TestRequestRequiredIntegerUnixMicro"
-														r.operationID = "test_request_required_integer_unix-micro"
-														r.args = args
-														r.count = 0
-														return r, true
-													default:
-														return
-													}
-												}
-												switch elem[0] {
-												case '_': // Prefix: "_"
-													if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case 'a': // Prefix: "array"
-														if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch method {
-															case "POST":
-																r.name = "TestRequestRequiredIntegerUnixMicroArray"
-																r.operationID = "test_request_required_integer_unix-micro_array"
-																r.args = args
-																r.count = 0
-																return r, true
-															default:
-																return
-															}
-														}
-														switch elem[0] {
-														case '_': // Prefix: "_array"
-															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																switch method {
-																case "POST":
-																	// Leaf: TestRequestRequiredIntegerUnixMicroArrayArray
-																	r.name = "TestRequestRequiredIntegerUnixMicroArrayArray"
-																	r.operationID = "test_request_required_integer_unix-micro_array_array"
-																	r.args = args
-																	r.count = 0
-																	return r, true
-																default:
-																	return
-																}
-															}
-														}
-													case 'n': // Prefix: "nullable"
-														if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch method {
-															case "POST":
-																r.name = "TestRequestRequiredIntegerUnixMicroNullable"
-																r.operationID = "test_request_required_integer_unix-micro_nullable"
-																r.args = args
-																r.count = 0
-																return r, true
-															default:
-																return
-															}
-														}
-														switch elem[0] {
-														case '_': // Prefix: "_array"
-															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																switch method {
-																case "POST":
-																	r.name = "TestRequestRequiredIntegerUnixMicroNullableArray"
-																	r.operationID = "test_request_required_integer_unix-micro_nullable_array"
-																	r.args = args
-																	r.count = 0
-																	return r, true
-																default:
-																	return
-																}
-															}
-															switch elem[0] {
-															case '_': // Prefix: "_array"
-																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	switch method {
-																	case "POST":
-																		// Leaf: TestRequestRequiredIntegerUnixMicroNullableArrayArray
-																		r.name = "TestRequestRequiredIntegerUnixMicroNullableArrayArray"
-																		r.operationID = "test_request_required_integer_unix-micro_nullable_array_array"
-																		r.args = args
-																		r.count = 0
-																		return r, true
-																	default:
-																		return
-																	}
-																}
-															}
-														}
-													}
-												}
-											case 'l': // Prefix: "lli"
-												if l := len("lli"); len(elem) >= l && elem[0:l] == "lli" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													switch method {
-													case "POST":
-														r.name = "TestRequestRequiredIntegerUnixMilli"
-														r.operationID = "test_request_required_integer_unix-milli"
-														r.args = args
-														r.count = 0
-														return r, true
-													default:
-														return
-													}
-												}
-												switch elem[0] {
-												case '_': // Prefix: "_"
-													if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														break
-													}
-													switch elem[0] {
-													case 'a': // Prefix: "array"
-														if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch method {
-															case "POST":
-																r.name = "TestRequestRequiredIntegerUnixMilliArray"
-																r.operationID = "test_request_required_integer_unix-milli_array"
-																r.args = args
-																r.count = 0
-																return r, true
-															default:
-																return
-															}
-														}
-														switch elem[0] {
-														case '_': // Prefix: "_array"
-															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																switch method {
-																case "POST":
-																	// Leaf: TestRequestRequiredIntegerUnixMilliArrayArray
-																	r.name = "TestRequestRequiredIntegerUnixMilliArrayArray"
-																	r.operationID = "test_request_required_integer_unix-milli_array_array"
-																	r.args = args
-																	r.count = 0
-																	return r, true
-																default:
-																	return
-																}
-															}
-														}
-													case 'n': // Prefix: "nullable"
-														if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch method {
-															case "POST":
-																r.name = "TestRequestRequiredIntegerUnixMilliNullable"
-																r.operationID = "test_request_required_integer_unix-milli_nullable"
-																r.args = args
-																r.count = 0
-																return r, true
-															default:
-																return
-															}
-														}
-														switch elem[0] {
-														case '_': // Prefix: "_array"
-															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																switch method {
-																case "POST":
-																	r.name = "TestRequestRequiredIntegerUnixMilliNullableArray"
-																	r.operationID = "test_request_required_integer_unix-milli_nullable_array"
-																	r.args = args
-																	r.count = 0
-																	return r, true
-																default:
-																	return
-																}
-															}
-															switch elem[0] {
-															case '_': // Prefix: "_array"
-																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																	elem = elem[l:]
-																} else {
-																	break
-																}
-
-																if len(elem) == 0 {
-																	switch method {
-																	case "POST":
-																		// Leaf: TestRequestRequiredIntegerUnixMilliNullableArrayArray
-																		r.name = "TestRequestRequiredIntegerUnixMilliNullableArrayArray"
-																		r.operationID = "test_request_required_integer_unix-milli_nullable_array_array"
-																		r.args = args
-																		r.count = 0
-																		return r, true
-																	default:
-																		return
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										case 'n': // Prefix: "nano"
-											if l := len("nano"); len(elem) >= l && elem[0:l] == "nano" {
+										case '3': // Prefix: "32"
+											if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 												elem = elem[l:]
 											} else {
 												break
@@ -17713,8 +19001,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "POST":
-													r.name = "TestRequestRequiredIntegerUnixNano"
-													r.operationID = "test_request_required_integer_unix-nano"
+													r.name = "TestRequestRequiredIntegerUint32"
+													r.operationID = "test_request_required_integer_uint32"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -17744,8 +19032,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "POST":
-															r.name = "TestRequestRequiredIntegerUnixNanoArray"
-															r.operationID = "test_request_required_integer_unix-nano_array"
+															r.name = "TestRequestRequiredIntegerUint32Array"
+															r.operationID = "test_request_required_integer_uint32_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -17764,9 +19052,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredIntegerUnixNanoArrayArray
-																r.name = "TestRequestRequiredIntegerUnixNanoArrayArray"
-																r.operationID = "test_request_required_integer_unix-nano_array_array"
+																// Leaf: TestRequestRequiredIntegerUint32ArrayArray
+																r.name = "TestRequestRequiredIntegerUint32ArrayArray"
+																r.operationID = "test_request_required_integer_uint32_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17785,8 +19073,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "POST":
-															r.name = "TestRequestRequiredIntegerUnixNanoNullable"
-															r.operationID = "test_request_required_integer_unix-nano_nullable"
+															r.name = "TestRequestRequiredIntegerUint32Nullable"
+															r.operationID = "test_request_required_integer_uint32_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -17805,8 +19093,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "POST":
-																r.name = "TestRequestRequiredIntegerUnixNanoNullableArray"
-																r.operationID = "test_request_required_integer_unix-nano_nullable_array"
+																r.name = "TestRequestRequiredIntegerUint32NullableArray"
+																r.operationID = "test_request_required_integer_uint32_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17825,9 +19113,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															if len(elem) == 0 {
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredIntegerUnixNanoNullableArrayArray
-																	r.name = "TestRequestRequiredIntegerUnixNanoNullableArrayArray"
-																	r.operationID = "test_request_required_integer_unix-nano_nullable_array_array"
+																	// Leaf: TestRequestRequiredIntegerUint32NullableArrayArray
+																	r.name = "TestRequestRequiredIntegerUint32NullableArrayArray"
+																	r.operationID = "test_request_required_integer_uint32_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17839,8 +19127,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 												}
 											}
-										case 's': // Prefix: "seconds"
-											if l := len("seconds"); len(elem) >= l && elem[0:l] == "seconds" {
+										case '6': // Prefix: "64"
+											if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
 												elem = elem[l:]
 											} else {
 												break
@@ -17849,8 +19137,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "POST":
-													r.name = "TestRequestRequiredIntegerUnixSeconds"
-													r.operationID = "test_request_required_integer_unix-seconds"
+													r.name = "TestRequestRequiredIntegerUint64"
+													r.operationID = "test_request_required_integer_uint64"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -17880,8 +19168,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "POST":
-															r.name = "TestRequestRequiredIntegerUnixSecondsArray"
-															r.operationID = "test_request_required_integer_unix-seconds_array"
+															r.name = "TestRequestRequiredIntegerUint64Array"
+															r.operationID = "test_request_required_integer_uint64_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -17900,9 +19188,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "POST":
-																// Leaf: TestRequestRequiredIntegerUnixSecondsArrayArray
-																r.name = "TestRequestRequiredIntegerUnixSecondsArrayArray"
-																r.operationID = "test_request_required_integer_unix-seconds_array_array"
+																// Leaf: TestRequestRequiredIntegerUint64ArrayArray
+																r.name = "TestRequestRequiredIntegerUint64ArrayArray"
+																r.operationID = "test_request_required_integer_uint64_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17921,8 +19209,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "POST":
-															r.name = "TestRequestRequiredIntegerUnixSecondsNullable"
-															r.operationID = "test_request_required_integer_unix-seconds_nullable"
+															r.name = "TestRequestRequiredIntegerUint64Nullable"
+															r.operationID = "test_request_required_integer_uint64_nullable"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -17941,8 +19229,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "POST":
-																r.name = "TestRequestRequiredIntegerUnixSecondsNullableArray"
-																r.operationID = "test_request_required_integer_unix-seconds_nullable_array"
+																r.name = "TestRequestRequiredIntegerUint64NullableArray"
+																r.operationID = "test_request_required_integer_uint64_nullable_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -17961,9 +19249,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															if len(elem) == 0 {
 																switch method {
 																case "POST":
-																	// Leaf: TestRequestRequiredIntegerUnixSecondsNullableArrayArray
-																	r.name = "TestRequestRequiredIntegerUnixSecondsNullableArrayArray"
-																	r.operationID = "test_request_required_integer_unix-seconds_nullable_array_array"
+																	// Leaf: TestRequestRequiredIntegerUint64NullableArrayArray
+																	r.name = "TestRequestRequiredIntegerUint64NullableArrayArray"
+																	r.operationID = "test_request_required_integer_uint64_nullable_array_array"
 																	r.args = args
 																	r.count = 0
 																	return r, true
@@ -17975,40 +19263,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 												}
 											}
-										}
-									case '_': // Prefix: "_"
-										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'a': // Prefix: "array"
-											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 												elem = elem[l:]
 											} else {
 												break
 											}
 
 											if len(elem) == 0 {
-												switch method {
-												case "POST":
-													r.name = "TestRequestRequiredIntegerUnixArray"
-													r.operationID = "test_request_required_integer_unix_array"
-													r.args = args
-													r.count = 0
-													return r, true
-												default:
-													return
-												}
+												break
 											}
 											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 													elem = elem[l:]
 												} else {
 													break
@@ -18017,49 +19284,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "POST":
-														// Leaf: TestRequestRequiredIntegerUnixArrayArray
-														r.name = "TestRequestRequiredIntegerUnixArrayArray"
-														r.operationID = "test_request_required_integer_unix_array_array"
-														r.args = args
-														r.count = 0
-														return r, true
-													default:
-														return
-													}
-												}
-											}
-										case 'n': // Prefix: "nullable"
-											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "POST":
-													r.name = "TestRequestRequiredIntegerUnixNullable"
-													r.operationID = "test_request_required_integer_unix_nullable"
-													r.args = args
-													r.count = 0
-													return r, true
-												default:
-													return
-												}
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													switch method {
-													case "POST":
-														r.name = "TestRequestRequiredIntegerUnixNullableArray"
-														r.operationID = "test_request_required_integer_unix_nullable_array"
+														r.name = "TestRequestRequiredIntegerUintArray"
+														r.operationID = "test_request_required_integer_uint_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -18078,14 +19304,780 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "POST":
-															// Leaf: TestRequestRequiredIntegerUnixNullableArrayArray
-															r.name = "TestRequestRequiredIntegerUnixNullableArrayArray"
-															r.operationID = "test_request_required_integer_unix_nullable_array_array"
+															// Leaf: TestRequestRequiredIntegerUintArrayArray
+															r.name = "TestRequestRequiredIntegerUintArrayArray"
+															r.operationID = "test_request_required_integer_uint_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
 														default:
 															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredIntegerUintNullable"
+														r.operationID = "test_request_required_integer_uint_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredIntegerUintNullableArray"
+															r.operationID = "test_request_required_integer_uint_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestRequiredIntegerUintNullableArrayArray
+																r.name = "TestRequestRequiredIntegerUintNullableArrayArray"
+																r.operationID = "test_request_required_integer_uint_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												}
+											}
+										}
+									case 'n': // Prefix: "nix"
+										if l := len("nix"); len(elem) >= l && elem[0:l] == "nix" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											switch method {
+											case "POST":
+												r.name = "TestRequestRequiredIntegerUnix"
+												r.operationID = "test_request_required_integer_unix"
+												r.args = args
+												r.count = 0
+												return r, true
+											default:
+												return
+											}
+										}
+										switch elem[0] {
+										case '-': // Prefix: "-"
+											if l := len("-"); len(elem) >= l && elem[0:l] == "-" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'm': // Prefix: "mi"
+												if l := len("mi"); len(elem) >= l && elem[0:l] == "mi" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'c': // Prefix: "cro"
+													if l := len("cro"); len(elem) >= l && elem[0:l] == "cro" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredIntegerUnixMicro"
+															r.operationID = "test_request_required_integer_unix-micro"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_"
+														if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case 'a': // Prefix: "array"
+															if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	r.name = "TestRequestRequiredIntegerUnixMicroArray"
+																	r.operationID = "test_request_required_integer_unix-micro_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	switch method {
+																	case "POST":
+																		// Leaf: TestRequestRequiredIntegerUnixMicroArrayArray
+																		r.name = "TestRequestRequiredIntegerUnixMicroArrayArray"
+																		r.operationID = "test_request_required_integer_unix-micro_array_array"
+																		r.args = args
+																		r.count = 0
+																		return r, true
+																	default:
+																		return
+																	}
+																}
+															}
+														case 'n': // Prefix: "nullable"
+															if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	r.name = "TestRequestRequiredIntegerUnixMicroNullable"
+																	r.operationID = "test_request_required_integer_unix-micro_nullable"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	switch method {
+																	case "POST":
+																		r.name = "TestRequestRequiredIntegerUnixMicroNullableArray"
+																		r.operationID = "test_request_required_integer_unix-micro_nullable_array"
+																		r.args = args
+																		r.count = 0
+																		return r, true
+																	default:
+																		return
+																	}
+																}
+																switch elem[0] {
+																case '_': // Prefix: "_array"
+																	if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																		elem = elem[l:]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		switch method {
+																		case "POST":
+																			// Leaf: TestRequestRequiredIntegerUnixMicroNullableArrayArray
+																			r.name = "TestRequestRequiredIntegerUnixMicroNullableArrayArray"
+																			r.operationID = "test_request_required_integer_unix-micro_nullable_array_array"
+																			r.args = args
+																			r.count = 0
+																			return r, true
+																		default:
+																			return
+																		}
+																	}
+																}
+															}
+														}
+													}
+												case 'l': // Prefix: "lli"
+													if l := len("lli"); len(elem) >= l && elem[0:l] == "lli" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredIntegerUnixMilli"
+															r.operationID = "test_request_required_integer_unix-milli"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_"
+														if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															break
+														}
+														switch elem[0] {
+														case 'a': // Prefix: "array"
+															if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	r.name = "TestRequestRequiredIntegerUnixMilliArray"
+																	r.operationID = "test_request_required_integer_unix-milli_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	switch method {
+																	case "POST":
+																		// Leaf: TestRequestRequiredIntegerUnixMilliArrayArray
+																		r.name = "TestRequestRequiredIntegerUnixMilliArrayArray"
+																		r.operationID = "test_request_required_integer_unix-milli_array_array"
+																		r.args = args
+																		r.count = 0
+																		return r, true
+																	default:
+																		return
+																	}
+																}
+															}
+														case 'n': // Prefix: "nullable"
+															if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	r.name = "TestRequestRequiredIntegerUnixMilliNullable"
+																	r.operationID = "test_request_required_integer_unix-milli_nullable"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	switch method {
+																	case "POST":
+																		r.name = "TestRequestRequiredIntegerUnixMilliNullableArray"
+																		r.operationID = "test_request_required_integer_unix-milli_nullable_array"
+																		r.args = args
+																		r.count = 0
+																		return r, true
+																	default:
+																		return
+																	}
+																}
+																switch elem[0] {
+																case '_': // Prefix: "_array"
+																	if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																		elem = elem[l:]
+																	} else {
+																		break
+																	}
+
+																	if len(elem) == 0 {
+																		switch method {
+																		case "POST":
+																			// Leaf: TestRequestRequiredIntegerUnixMilliNullableArrayArray
+																			r.name = "TestRequestRequiredIntegerUnixMilliNullableArrayArray"
+																			r.operationID = "test_request_required_integer_unix-milli_nullable_array_array"
+																			r.args = args
+																			r.count = 0
+																			return r, true
+																		default:
+																			return
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											case 'n': // Prefix: "nano"
+												if l := len("nano"); len(elem) >= l && elem[0:l] == "nano" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredIntegerUnixNano"
+														r.operationID = "test_request_required_integer_unix-nano"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_"
+													if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "array"
+														if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestRequiredIntegerUnixNanoArray"
+																r.operationID = "test_request_required_integer_unix-nano_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestRequestRequiredIntegerUnixNanoArrayArray
+																	r.name = "TestRequestRequiredIntegerUnixNanoArrayArray"
+																	r.operationID = "test_request_required_integer_unix-nano_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													case 'n': // Prefix: "nullable"
+														if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestRequiredIntegerUnixNanoNullable"
+																r.operationID = "test_request_required_integer_unix-nano_nullable"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	r.name = "TestRequestRequiredIntegerUnixNanoNullableArray"
+																	r.operationID = "test_request_required_integer_unix-nano_nullable_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	switch method {
+																	case "POST":
+																		// Leaf: TestRequestRequiredIntegerUnixNanoNullableArrayArray
+																		r.name = "TestRequestRequiredIntegerUnixNanoNullableArrayArray"
+																		r.operationID = "test_request_required_integer_unix-nano_nullable_array_array"
+																		r.args = args
+																		r.count = 0
+																		return r, true
+																	default:
+																		return
+																	}
+																}
+															}
+														}
+													}
+												}
+											case 's': // Prefix: "seconds"
+												if l := len("seconds"); len(elem) >= l && elem[0:l] == "seconds" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredIntegerUnixSeconds"
+														r.operationID = "test_request_required_integer_unix-seconds"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_"
+													if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "array"
+														if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestRequiredIntegerUnixSecondsArray"
+																r.operationID = "test_request_required_integer_unix-seconds_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestRequestRequiredIntegerUnixSecondsArrayArray
+																	r.name = "TestRequestRequiredIntegerUnixSecondsArrayArray"
+																	r.operationID = "test_request_required_integer_unix-seconds_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													case 'n': // Prefix: "nullable"
+														if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestRequestRequiredIntegerUnixSecondsNullable"
+																r.operationID = "test_request_required_integer_unix-seconds_nullable"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	r.name = "TestRequestRequiredIntegerUnixSecondsNullableArray"
+																	r.operationID = "test_request_required_integer_unix-seconds_nullable_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	switch method {
+																	case "POST":
+																		// Leaf: TestRequestRequiredIntegerUnixSecondsNullableArrayArray
+																		r.name = "TestRequestRequiredIntegerUnixSecondsNullableArrayArray"
+																		r.operationID = "test_request_required_integer_unix-seconds_nullable_array_array"
+																		r.args = args
+																		r.count = 0
+																		return r, true
+																	default:
+																		return
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredIntegerUnixArray"
+														r.operationID = "test_request_required_integer_unix_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestRequestRequiredIntegerUnixArrayArray
+															r.name = "TestRequestRequiredIntegerUnixArrayArray"
+															r.operationID = "test_request_required_integer_unix_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestRequestRequiredIntegerUnixNullable"
+														r.operationID = "test_request_required_integer_unix_nullable"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestRequestRequiredIntegerUnixNullableArray"
+															r.operationID = "test_request_required_integer_unix_nullable_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestRequestRequiredIntegerUnixNullableArrayArray
+																r.name = "TestRequestRequiredIntegerUnixNullableArrayArray"
+																r.operationID = "test_request_required_integer_unix_nullable_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
 														}
 													}
 												}
@@ -25737,323 +27729,39 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 									}
 								}
-							case 'u': // Prefix: "unix"
-								if l := len("unix"); len(elem) >= l && elem[0:l] == "unix" {
+							case 'u': // Prefix: "u"
+								if l := len("u"); len(elem) >= l && elem[0:l] == "u" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									switch method {
-									case "POST":
-										r.name = "TestResponseIntegerUnix"
-										r.operationID = "test_response_integer_unix"
-										r.args = args
-										r.count = 0
-										return r, true
-									default:
-										return
-									}
+									break
 								}
 								switch elem[0] {
-								case '-': // Prefix: "-"
-									if l := len("-"); len(elem) >= l && elem[0:l] == "-" {
+								case 'i': // Prefix: "int"
+									if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										break
+										switch method {
+										case "POST":
+											r.name = "TestResponseIntegerUint"
+											r.operationID = "test_response_integer_uint"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
 									}
 									switch elem[0] {
-									case 'm': // Prefix: "mi"
-										if l := len("mi"); len(elem) >= l && elem[0:l] == "mi" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											break
-										}
-										switch elem[0] {
-										case 'c': // Prefix: "cro"
-											if l := len("cro"); len(elem) >= l && elem[0:l] == "cro" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "POST":
-													r.name = "TestResponseIntegerUnixMicro"
-													r.operationID = "test_response_integer_unix-micro"
-													r.args = args
-													r.count = 0
-													return r, true
-												default:
-													return
-												}
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_"
-												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'a': // Prefix: "array"
-													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch method {
-														case "POST":
-															r.name = "TestResponseIntegerUnixMicroArray"
-															r.operationID = "test_response_integer_unix-micro_array"
-															r.args = args
-															r.count = 0
-															return r, true
-														default:
-															return
-														}
-													}
-													switch elem[0] {
-													case '_': // Prefix: "_array"
-														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch method {
-															case "POST":
-																// Leaf: TestResponseIntegerUnixMicroArrayArray
-																r.name = "TestResponseIntegerUnixMicroArrayArray"
-																r.operationID = "test_response_integer_unix-micro_array_array"
-																r.args = args
-																r.count = 0
-																return r, true
-															default:
-																return
-															}
-														}
-													}
-												case 'n': // Prefix: "nullable"
-													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch method {
-														case "POST":
-															r.name = "TestResponseIntegerUnixMicroNullable"
-															r.operationID = "test_response_integer_unix-micro_nullable"
-															r.args = args
-															r.count = 0
-															return r, true
-														default:
-															return
-														}
-													}
-													switch elem[0] {
-													case '_': // Prefix: "_array"
-														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch method {
-															case "POST":
-																r.name = "TestResponseIntegerUnixMicroNullableArray"
-																r.operationID = "test_response_integer_unix-micro_nullable_array"
-																r.args = args
-																r.count = 0
-																return r, true
-															default:
-																return
-															}
-														}
-														switch elem[0] {
-														case '_': // Prefix: "_array"
-															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																switch method {
-																case "POST":
-																	// Leaf: TestResponseIntegerUnixMicroNullableArrayArray
-																	r.name = "TestResponseIntegerUnixMicroNullableArrayArray"
-																	r.operationID = "test_response_integer_unix-micro_nullable_array_array"
-																	r.args = args
-																	r.count = 0
-																	return r, true
-																default:
-																	return
-																}
-															}
-														}
-													}
-												}
-											}
-										case 'l': // Prefix: "lli"
-											if l := len("lli"); len(elem) >= l && elem[0:l] == "lli" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "POST":
-													r.name = "TestResponseIntegerUnixMilli"
-													r.operationID = "test_response_integer_unix-milli"
-													r.args = args
-													r.count = 0
-													return r, true
-												default:
-													return
-												}
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_"
-												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													break
-												}
-												switch elem[0] {
-												case 'a': // Prefix: "array"
-													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch method {
-														case "POST":
-															r.name = "TestResponseIntegerUnixMilliArray"
-															r.operationID = "test_response_integer_unix-milli_array"
-															r.args = args
-															r.count = 0
-															return r, true
-														default:
-															return
-														}
-													}
-													switch elem[0] {
-													case '_': // Prefix: "_array"
-														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch method {
-															case "POST":
-																// Leaf: TestResponseIntegerUnixMilliArrayArray
-																r.name = "TestResponseIntegerUnixMilliArrayArray"
-																r.operationID = "test_response_integer_unix-milli_array_array"
-																r.args = args
-																r.count = 0
-																return r, true
-															default:
-																return
-															}
-														}
-													}
-												case 'n': // Prefix: "nullable"
-													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														switch method {
-														case "POST":
-															r.name = "TestResponseIntegerUnixMilliNullable"
-															r.operationID = "test_response_integer_unix-milli_nullable"
-															r.args = args
-															r.count = 0
-															return r, true
-														default:
-															return
-														}
-													}
-													switch elem[0] {
-													case '_': // Prefix: "_array"
-														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-															elem = elem[l:]
-														} else {
-															break
-														}
-
-														if len(elem) == 0 {
-															switch method {
-															case "POST":
-																r.name = "TestResponseIntegerUnixMilliNullableArray"
-																r.operationID = "test_response_integer_unix-milli_nullable_array"
-																r.args = args
-																r.count = 0
-																return r, true
-															default:
-																return
-															}
-														}
-														switch elem[0] {
-														case '_': // Prefix: "_array"
-															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-																elem = elem[l:]
-															} else {
-																break
-															}
-
-															if len(elem) == 0 {
-																switch method {
-																case "POST":
-																	// Leaf: TestResponseIntegerUnixMilliNullableArrayArray
-																	r.name = "TestResponseIntegerUnixMilliNullableArrayArray"
-																	r.operationID = "test_response_integer_unix-milli_nullable_array_array"
-																	r.args = args
-																	r.count = 0
-																	return r, true
-																default:
-																	return
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									case 'n': // Prefix: "nano"
-										if l := len("nano"); len(elem) >= l && elem[0:l] == "nano" {
+									case '3': // Prefix: "32"
+										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
 											elem = elem[l:]
 										} else {
 											break
@@ -26062,8 +27770,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "POST":
-												r.name = "TestResponseIntegerUnixNano"
-												r.operationID = "test_response_integer_unix-nano"
+												r.name = "TestResponseIntegerUint32"
+												r.operationID = "test_response_integer_uint32"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -26093,8 +27801,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "POST":
-														r.name = "TestResponseIntegerUnixNanoArray"
-														r.operationID = "test_response_integer_unix-nano_array"
+														r.name = "TestResponseIntegerUint32Array"
+														r.operationID = "test_response_integer_uint32_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -26113,9 +27821,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "POST":
-															// Leaf: TestResponseIntegerUnixNanoArrayArray
-															r.name = "TestResponseIntegerUnixNanoArrayArray"
-															r.operationID = "test_response_integer_unix-nano_array_array"
+															// Leaf: TestResponseIntegerUint32ArrayArray
+															r.name = "TestResponseIntegerUint32ArrayArray"
+															r.operationID = "test_response_integer_uint32_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -26134,8 +27842,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "POST":
-														r.name = "TestResponseIntegerUnixNanoNullable"
-														r.operationID = "test_response_integer_unix-nano_nullable"
+														r.name = "TestResponseIntegerUint32Nullable"
+														r.operationID = "test_response_integer_uint32_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -26154,8 +27862,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "POST":
-															r.name = "TestResponseIntegerUnixNanoNullableArray"
-															r.operationID = "test_response_integer_unix-nano_nullable_array"
+															r.name = "TestResponseIntegerUint32NullableArray"
+															r.operationID = "test_response_integer_uint32_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -26174,9 +27882,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "POST":
-																// Leaf: TestResponseIntegerUnixNanoNullableArrayArray
-																r.name = "TestResponseIntegerUnixNanoNullableArrayArray"
-																r.operationID = "test_response_integer_unix-nano_nullable_array_array"
+																// Leaf: TestResponseIntegerUint32NullableArrayArray
+																r.name = "TestResponseIntegerUint32NullableArrayArray"
+																r.operationID = "test_response_integer_uint32_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -26188,8 +27896,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 											}
 										}
-									case 's': // Prefix: "seconds"
-										if l := len("seconds"); len(elem) >= l && elem[0:l] == "seconds" {
+									case '6': // Prefix: "64"
+										if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
 											elem = elem[l:]
 										} else {
 											break
@@ -26198,8 +27906,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										if len(elem) == 0 {
 											switch method {
 											case "POST":
-												r.name = "TestResponseIntegerUnixSeconds"
-												r.operationID = "test_response_integer_unix-seconds"
+												r.name = "TestResponseIntegerUint64"
+												r.operationID = "test_response_integer_uint64"
 												r.args = args
 												r.count = 0
 												return r, true
@@ -26229,8 +27937,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "POST":
-														r.name = "TestResponseIntegerUnixSecondsArray"
-														r.operationID = "test_response_integer_unix-seconds_array"
+														r.name = "TestResponseIntegerUint64Array"
+														r.operationID = "test_response_integer_uint64_array"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -26249,9 +27957,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "POST":
-															// Leaf: TestResponseIntegerUnixSecondsArrayArray
-															r.name = "TestResponseIntegerUnixSecondsArrayArray"
-															r.operationID = "test_response_integer_unix-seconds_array_array"
+															// Leaf: TestResponseIntegerUint64ArrayArray
+															r.name = "TestResponseIntegerUint64ArrayArray"
+															r.operationID = "test_response_integer_uint64_array_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -26270,8 +27978,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "POST":
-														r.name = "TestResponseIntegerUnixSecondsNullable"
-														r.operationID = "test_response_integer_unix-seconds_nullable"
+														r.name = "TestResponseIntegerUint64Nullable"
+														r.operationID = "test_response_integer_uint64_nullable"
 														r.args = args
 														r.count = 0
 														return r, true
@@ -26290,8 +27998,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													if len(elem) == 0 {
 														switch method {
 														case "POST":
-															r.name = "TestResponseIntegerUnixSecondsNullableArray"
-															r.operationID = "test_response_integer_unix-seconds_nullable_array"
+															r.name = "TestResponseIntegerUint64NullableArray"
+															r.operationID = "test_response_integer_uint64_nullable_array"
 															r.args = args
 															r.count = 0
 															return r, true
@@ -26310,9 +28018,9 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														if len(elem) == 0 {
 															switch method {
 															case "POST":
-																// Leaf: TestResponseIntegerUnixSecondsNullableArrayArray
-																r.name = "TestResponseIntegerUnixSecondsNullableArrayArray"
-																r.operationID = "test_response_integer_unix-seconds_nullable_array_array"
+																// Leaf: TestResponseIntegerUint64NullableArrayArray
+																r.name = "TestResponseIntegerUint64NullableArrayArray"
+																r.operationID = "test_response_integer_uint64_nullable_array_array"
 																r.args = args
 																r.count = 0
 																return r, true
@@ -26324,40 +28032,19 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 											}
 										}
-									}
-								case '_': // Prefix: "_"
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										break
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "array"
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 											elem = elem[l:]
 										} else {
 											break
 										}
 
 										if len(elem) == 0 {
-											switch method {
-											case "POST":
-												r.name = "TestResponseIntegerUnixArray"
-												r.operationID = "test_response_integer_unix_array"
-												r.args = args
-												r.count = 0
-												return r, true
-											default:
-												return
-											}
+											break
 										}
 										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 												elem = elem[l:]
 											} else {
 												break
@@ -26366,49 +28053,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											if len(elem) == 0 {
 												switch method {
 												case "POST":
-													// Leaf: TestResponseIntegerUnixArrayArray
-													r.name = "TestResponseIntegerUnixArrayArray"
-													r.operationID = "test_response_integer_unix_array_array"
-													r.args = args
-													r.count = 0
-													return r, true
-												default:
-													return
-												}
-											}
-										}
-									case 'n': // Prefix: "nullable"
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											switch method {
-											case "POST":
-												r.name = "TestResponseIntegerUnixNullable"
-												r.operationID = "test_response_integer_unix_nullable"
-												r.args = args
-												r.count = 0
-												return r, true
-											default:
-												return
-											}
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												switch method {
-												case "POST":
-													r.name = "TestResponseIntegerUnixNullableArray"
-													r.operationID = "test_response_integer_unix_nullable_array"
+													r.name = "TestResponseIntegerUintArray"
+													r.operationID = "test_response_integer_uint_array"
 													r.args = args
 													r.count = 0
 													return r, true
@@ -26427,14 +28073,780 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												if len(elem) == 0 {
 													switch method {
 													case "POST":
-														// Leaf: TestResponseIntegerUnixNullableArrayArray
-														r.name = "TestResponseIntegerUnixNullableArrayArray"
-														r.operationID = "test_response_integer_unix_nullable_array_array"
+														// Leaf: TestResponseIntegerUintArrayArray
+														r.name = "TestResponseIntegerUintArrayArray"
+														r.operationID = "test_response_integer_uint_array_array"
 														r.args = args
 														r.count = 0
 														return r, true
 													default:
 														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseIntegerUintNullable"
+													r.operationID = "test_response_integer_uint_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseIntegerUintNullableArray"
+														r.operationID = "test_response_integer_uint_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestResponseIntegerUintNullableArrayArray
+															r.name = "TestResponseIntegerUintNullableArrayArray"
+															r.operationID = "test_response_integer_uint_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+												}
+											}
+										}
+									}
+								case 'n': // Prefix: "nix"
+									if l := len("nix"); len(elem) >= l && elem[0:l] == "nix" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										switch method {
+										case "POST":
+											r.name = "TestResponseIntegerUnix"
+											r.operationID = "test_response_integer_unix"
+											r.args = args
+											r.count = 0
+											return r, true
+										default:
+											return
+										}
+									}
+									switch elem[0] {
+									case '-': // Prefix: "-"
+										if l := len("-"); len(elem) >= l && elem[0:l] == "-" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'm': // Prefix: "mi"
+											if l := len("mi"); len(elem) >= l && elem[0:l] == "mi" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												break
+											}
+											switch elem[0] {
+											case 'c': // Prefix: "cro"
+												if l := len("cro"); len(elem) >= l && elem[0:l] == "cro" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseIntegerUnixMicro"
+														r.operationID = "test_response_integer_unix-micro"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_"
+													if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "array"
+														if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestResponseIntegerUnixMicroArray"
+																r.operationID = "test_response_integer_unix-micro_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestResponseIntegerUnixMicroArrayArray
+																	r.name = "TestResponseIntegerUnixMicroArrayArray"
+																	r.operationID = "test_response_integer_unix-micro_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													case 'n': // Prefix: "nullable"
+														if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestResponseIntegerUnixMicroNullable"
+																r.operationID = "test_response_integer_unix-micro_nullable"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	r.name = "TestResponseIntegerUnixMicroNullableArray"
+																	r.operationID = "test_response_integer_unix-micro_nullable_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	switch method {
+																	case "POST":
+																		// Leaf: TestResponseIntegerUnixMicroNullableArrayArray
+																		r.name = "TestResponseIntegerUnixMicroNullableArrayArray"
+																		r.operationID = "test_response_integer_unix-micro_nullable_array_array"
+																		r.args = args
+																		r.count = 0
+																		return r, true
+																	default:
+																		return
+																	}
+																}
+															}
+														}
+													}
+												}
+											case 'l': // Prefix: "lli"
+												if l := len("lli"); len(elem) >= l && elem[0:l] == "lli" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseIntegerUnixMilli"
+														r.operationID = "test_response_integer_unix-milli"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_"
+													if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														break
+													}
+													switch elem[0] {
+													case 'a': // Prefix: "array"
+														if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestResponseIntegerUnixMilliArray"
+																r.operationID = "test_response_integer_unix-milli_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestResponseIntegerUnixMilliArrayArray
+																	r.name = "TestResponseIntegerUnixMilliArrayArray"
+																	r.operationID = "test_response_integer_unix-milli_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													case 'n': // Prefix: "nullable"
+														if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestResponseIntegerUnixMilliNullable"
+																r.operationID = "test_response_integer_unix-milli_nullable"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	r.name = "TestResponseIntegerUnixMilliNullableArray"
+																	r.operationID = "test_response_integer_unix-milli_nullable_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+															switch elem[0] {
+															case '_': // Prefix: "_array"
+																if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																	elem = elem[l:]
+																} else {
+																	break
+																}
+
+																if len(elem) == 0 {
+																	switch method {
+																	case "POST":
+																		// Leaf: TestResponseIntegerUnixMilliNullableArrayArray
+																		r.name = "TestResponseIntegerUnixMilliNullableArrayArray"
+																		r.operationID = "test_response_integer_unix-milli_nullable_array_array"
+																		r.args = args
+																		r.count = 0
+																		return r, true
+																	default:
+																		return
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										case 'n': // Prefix: "nano"
+											if l := len("nano"); len(elem) >= l && elem[0:l] == "nano" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseIntegerUnixNano"
+													r.operationID = "test_response_integer_unix-nano"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestResponseIntegerUnixNanoArray"
+															r.operationID = "test_response_integer_unix-nano_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestResponseIntegerUnixNanoArrayArray
+																r.name = "TestResponseIntegerUnixNanoArrayArray"
+																r.operationID = "test_response_integer_unix-nano_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestResponseIntegerUnixNanoNullable"
+															r.operationID = "test_response_integer_unix-nano_nullable"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestResponseIntegerUnixNanoNullableArray"
+																r.operationID = "test_response_integer_unix-nano_nullable_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestResponseIntegerUnixNanoNullableArrayArray
+																	r.name = "TestResponseIntegerUnixNanoNullableArrayArray"
+																	r.operationID = "test_response_integer_unix-nano_nullable_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										case 's': // Prefix: "seconds"
+											if l := len("seconds"); len(elem) >= l && elem[0:l] == "seconds" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseIntegerUnixSeconds"
+													r.operationID = "test_response_integer_unix-seconds"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_"
+												if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													break
+												}
+												switch elem[0] {
+												case 'a': // Prefix: "array"
+													if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestResponseIntegerUnixSecondsArray"
+															r.operationID = "test_response_integer_unix-seconds_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																// Leaf: TestResponseIntegerUnixSecondsArrayArray
+																r.name = "TestResponseIntegerUnixSecondsArrayArray"
+																r.operationID = "test_response_integer_unix-seconds_array_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+													}
+												case 'n': // Prefix: "nullable"
+													if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															r.name = "TestResponseIntegerUnixSecondsNullable"
+															r.operationID = "test_response_integer_unix-seconds_nullable"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															switch method {
+															case "POST":
+																r.name = "TestResponseIntegerUnixSecondsNullableArray"
+																r.operationID = "test_response_integer_unix-seconds_nullable_array"
+																r.args = args
+																r.count = 0
+																return r, true
+															default:
+																return
+															}
+														}
+														switch elem[0] {
+														case '_': // Prefix: "_array"
+															if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+																elem = elem[l:]
+															} else {
+																break
+															}
+
+															if len(elem) == 0 {
+																switch method {
+																case "POST":
+																	// Leaf: TestResponseIntegerUnixSecondsNullableArrayArray
+																	r.name = "TestResponseIntegerUnixSecondsNullableArrayArray"
+																	r.operationID = "test_response_integer_unix-seconds_nullable_array_array"
+																	r.args = args
+																	r.count = 0
+																	return r, true
+																default:
+																	return
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											break
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseIntegerUnixArray"
+													r.operationID = "test_response_integer_unix_array"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														// Leaf: TestResponseIntegerUnixArrayArray
+														r.name = "TestResponseIntegerUnixArrayArray"
+														r.operationID = "test_response_integer_unix_array_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												switch method {
+												case "POST":
+													r.name = "TestResponseIntegerUnixNullable"
+													r.operationID = "test_response_integer_unix_nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												default:
+													return
+												}
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													switch method {
+													case "POST":
+														r.name = "TestResponseIntegerUnixNullableArray"
+														r.operationID = "test_response_integer_unix_nullable_array"
+														r.args = args
+														r.count = 0
+														return r, true
+													default:
+														return
+													}
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														switch method {
+														case "POST":
+															// Leaf: TestResponseIntegerUnixNullableArrayArray
+															r.name = "TestResponseIntegerUnixNullableArrayArray"
+															r.operationID = "test_response_integer_unix_nullable_array_array"
+															r.args = args
+															r.count = 0
+															return r, true
+														default:
+															return
+														}
 													}
 												}
 											}

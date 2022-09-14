@@ -853,6 +853,120 @@ func (o NilUUID) Or(d uuid.UUID) uuid.UUID {
 	return d
 }
 
+// NewNilUint returns new NilUint with value set to v.
+func NewNilUint(v uint) NilUint {
+	return NilUint{
+		Value: v,
+	}
+}
+
+// NilUint is nullable uint.
+type NilUint struct {
+	Value uint
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilUint) SetTo(v uint) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilUint) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilUint) Get() (v uint, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilUint) Or(d uint) uint {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilUint32 returns new NilUint32 with value set to v.
+func NewNilUint32(v uint32) NilUint32 {
+	return NilUint32{
+		Value: v,
+	}
+}
+
+// NilUint32 is nullable uint32.
+type NilUint32 struct {
+	Value uint32
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilUint32) SetTo(v uint32) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilUint32) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilUint32) Get() (v uint32, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilUint32) Or(d uint32) uint32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilUint64 returns new NilUint64 with value set to v.
+func NewNilUint64(v uint64) NilUint64 {
+	return NilUint64{
+		Value: v,
+	}
+}
+
+// NilUint64 is nullable uint64.
+type NilUint64 struct {
+	Value uint64
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilUint64) SetTo(v uint64) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilUint64) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilUint64) Get() (v uint64, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilUint64) Or(d uint64) uint64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilUnixMicro returns new NilUnixMicro with value set to v.
 func NewNilUnixMicro(v time.Time) NilUnixMicro {
 	return NilUnixMicro{
@@ -2822,6 +2936,171 @@ func (o OptNilUUID) Or(d uuid.UUID) uuid.UUID {
 	return d
 }
 
+// NewOptNilUint returns new OptNilUint with value set to v.
+func NewOptNilUint(v uint) OptNilUint {
+	return OptNilUint{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilUint is optional nullable uint.
+type OptNilUint struct {
+	Value uint
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilUint was set.
+func (o OptNilUint) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilUint) Reset() {
+	var v uint
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilUint) SetTo(v uint) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilUint) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilUint) Get() (v uint, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilUint) Or(d uint) uint {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilUint32 returns new OptNilUint32 with value set to v.
+func NewOptNilUint32(v uint32) OptNilUint32 {
+	return OptNilUint32{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilUint32 is optional nullable uint32.
+type OptNilUint32 struct {
+	Value uint32
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilUint32 was set.
+func (o OptNilUint32) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilUint32) Reset() {
+	var v uint32
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilUint32) SetTo(v uint32) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilUint32) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilUint32) Get() (v uint32, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilUint32) Or(d uint32) uint32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilUint64 returns new OptNilUint64 with value set to v.
+func NewOptNilUint64(v uint64) OptNilUint64 {
+	return OptNilUint64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilUint64 is optional nullable uint64.
+type OptNilUint64 struct {
+	Value uint64
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilUint64 was set.
+func (o OptNilUint64) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilUint64) Reset() {
+	var v uint64
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilUint64) SetTo(v uint64) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilUint64) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilUint64) Get() (v uint64, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilUint64) Or(d uint64) uint64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilUnixMicro returns new OptNilUnixMicro with value set to v.
 func NewOptNilUnixMicro(v time.Time) OptNilUnixMicro {
 	return OptNilUnixMicro{
@@ -3594,6 +3873,144 @@ func (o OptUUID) Or(d uuid.UUID) uuid.UUID {
 	return d
 }
 
+// NewOptUint returns new OptUint with value set to v.
+func NewOptUint(v uint) OptUint {
+	return OptUint{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptUint is optional uint.
+type OptUint struct {
+	Value uint
+	Set   bool
+}
+
+// IsSet returns true if OptUint was set.
+func (o OptUint) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptUint) Reset() {
+	var v uint
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptUint) SetTo(v uint) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptUint) Get() (v uint, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptUint) Or(d uint) uint {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptUint32 returns new OptUint32 with value set to v.
+func NewOptUint32(v uint32) OptUint32 {
+	return OptUint32{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptUint32 is optional uint32.
+type OptUint32 struct {
+	Value uint32
+	Set   bool
+}
+
+// IsSet returns true if OptUint32 was set.
+func (o OptUint32) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptUint32) Reset() {
+	var v uint32
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptUint32) SetTo(v uint32) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptUint32) Get() (v uint32, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptUint32) Or(d uint32) uint32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptUint64 returns new OptUint64 with value set to v.
+func NewOptUint64(v uint64) OptUint64 {
+	return OptUint64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptUint64 is optional uint64.
+type OptUint64 struct {
+	Value uint64
+	Set   bool
+}
+
+// IsSet returns true if OptUint64 was set.
+func (o OptUint64) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptUint64) Reset() {
+	var v uint64
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptUint64) SetTo(v uint64) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptUint64) Get() (v uint64, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptUint64) Or(d uint64) uint64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptUnixMicro returns new OptUnixMicro with value set to v.
 func NewOptUnixMicro(v time.Time) OptUnixMicro {
 	return OptUnixMicro{
@@ -3787,6 +4204,9 @@ type TestRequestFormatTestReq struct {
 	RequiredArrayInteger                       []int                "json:\"required_array_integer\""
 	RequiredArrayIntegerInt32                  []int32              "json:\"required_array_integer_int32\""
 	RequiredArrayIntegerInt64                  []int64              "json:\"required_array_integer_int64\""
+	RequiredArrayIntegerUint                   []uint               "json:\"required_array_integer_uint\""
+	RequiredArrayIntegerUint32                 []uint32             "json:\"required_array_integer_uint32\""
+	RequiredArrayIntegerUint64                 []uint64             "json:\"required_array_integer_uint64\""
 	RequiredArrayIntegerUnix                   []time.Time          "json:\"required_array_integer_unix\""
 	RequiredArrayIntegerUnixMinusMicro         []time.Time          "json:\"required_array_integer_unix-micro\""
 	RequiredArrayIntegerUnixMinusMilli         []time.Time          "json:\"required_array_integer_unix-milli\""
@@ -3826,6 +4246,9 @@ type TestRequestFormatTestReq struct {
 	RequiredDoubleArrayInteger                 [][]int              "json:\"required_double_array_integer\""
 	RequiredDoubleArrayIntegerInt32            [][]int32            "json:\"required_double_array_integer_int32\""
 	RequiredDoubleArrayIntegerInt64            [][]int64            "json:\"required_double_array_integer_int64\""
+	RequiredDoubleArrayIntegerUint             [][]uint             "json:\"required_double_array_integer_uint\""
+	RequiredDoubleArrayIntegerUint32           [][]uint32           "json:\"required_double_array_integer_uint32\""
+	RequiredDoubleArrayIntegerUint64           [][]uint64           "json:\"required_double_array_integer_uint64\""
 	RequiredDoubleArrayIntegerUnix             [][]time.Time        "json:\"required_double_array_integer_unix\""
 	RequiredDoubleArrayIntegerUnixMinusMicro   [][]time.Time        "json:\"required_double_array_integer_unix-micro\""
 	RequiredDoubleArrayIntegerUnixMinusMilli   [][]time.Time        "json:\"required_double_array_integer_unix-milli\""
@@ -3862,6 +4285,9 @@ type TestRequestFormatTestReq struct {
 	RequiredInteger                            int                  "json:\"required_integer\""
 	RequiredIntegerInt32                       int32                "json:\"required_integer_int32\""
 	RequiredIntegerInt64                       int64                "json:\"required_integer_int64\""
+	RequiredIntegerUint                        uint                 "json:\"required_integer_uint\""
+	RequiredIntegerUint32                      uint32               "json:\"required_integer_uint32\""
+	RequiredIntegerUint64                      uint64               "json:\"required_integer_uint64\""
 	RequiredIntegerUnix                        time.Time            "json:\"required_integer_unix\""
 	RequiredIntegerUnixMinusMicro              time.Time            "json:\"required_integer_unix-micro\""
 	RequiredIntegerUnixMinusMilli              time.Time            "json:\"required_integer_unix-milli\""
@@ -3901,6 +4327,9 @@ type TestRequestFormatTestReq struct {
 	OptionalArrayInteger                       []int                "json:\"optional_array_integer\""
 	OptionalArrayIntegerInt32                  []int32              "json:\"optional_array_integer_int32\""
 	OptionalArrayIntegerInt64                  []int64              "json:\"optional_array_integer_int64\""
+	OptionalArrayIntegerUint                   []uint               "json:\"optional_array_integer_uint\""
+	OptionalArrayIntegerUint32                 []uint32             "json:\"optional_array_integer_uint32\""
+	OptionalArrayIntegerUint64                 []uint64             "json:\"optional_array_integer_uint64\""
 	OptionalArrayIntegerUnix                   []time.Time          "json:\"optional_array_integer_unix\""
 	OptionalArrayIntegerUnixMinusMicro         []time.Time          "json:\"optional_array_integer_unix-micro\""
 	OptionalArrayIntegerUnixMinusMilli         []time.Time          "json:\"optional_array_integer_unix-milli\""
@@ -3940,6 +4369,9 @@ type TestRequestFormatTestReq struct {
 	OptionalDoubleArrayInteger                 [][]int              "json:\"optional_double_array_integer\""
 	OptionalDoubleArrayIntegerInt32            [][]int32            "json:\"optional_double_array_integer_int32\""
 	OptionalDoubleArrayIntegerInt64            [][]int64            "json:\"optional_double_array_integer_int64\""
+	OptionalDoubleArrayIntegerUint             [][]uint             "json:\"optional_double_array_integer_uint\""
+	OptionalDoubleArrayIntegerUint32           [][]uint32           "json:\"optional_double_array_integer_uint32\""
+	OptionalDoubleArrayIntegerUint64           [][]uint64           "json:\"optional_double_array_integer_uint64\""
 	OptionalDoubleArrayIntegerUnix             [][]time.Time        "json:\"optional_double_array_integer_unix\""
 	OptionalDoubleArrayIntegerUnixMinusMicro   [][]time.Time        "json:\"optional_double_array_integer_unix-micro\""
 	OptionalDoubleArrayIntegerUnixMinusMilli   [][]time.Time        "json:\"optional_double_array_integer_unix-milli\""
@@ -3976,6 +4408,9 @@ type TestRequestFormatTestReq struct {
 	OptionalInteger                            OptInt               "json:\"optional_integer\""
 	OptionalIntegerInt32                       OptInt32             "json:\"optional_integer_int32\""
 	OptionalIntegerInt64                       OptInt64             "json:\"optional_integer_int64\""
+	OptionalIntegerUint                        OptUint              "json:\"optional_integer_uint\""
+	OptionalIntegerUint32                      OptUint32            "json:\"optional_integer_uint32\""
+	OptionalIntegerUint64                      OptUint64            "json:\"optional_integer_uint64\""
 	OptionalIntegerUnix                        OptUnixSeconds       "json:\"optional_integer_unix\""
 	OptionalIntegerUnixMinusMicro              OptUnixMicro         "json:\"optional_integer_unix-micro\""
 	OptionalIntegerUnixMinusMilli              OptUnixMilli         "json:\"optional_integer_unix-milli\""
@@ -4020,6 +4455,9 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredArrayInteger                       []int                "json:\"required_array_integer\""
 	RequiredArrayIntegerInt32                  []int32              "json:\"required_array_integer_int32\""
 	RequiredArrayIntegerInt64                  []int64              "json:\"required_array_integer_int64\""
+	RequiredArrayIntegerUint                   []uint               "json:\"required_array_integer_uint\""
+	RequiredArrayIntegerUint32                 []uint32             "json:\"required_array_integer_uint32\""
+	RequiredArrayIntegerUint64                 []uint64             "json:\"required_array_integer_uint64\""
 	RequiredArrayIntegerUnix                   []time.Time          "json:\"required_array_integer_unix\""
 	RequiredArrayIntegerUnixMinusMicro         []time.Time          "json:\"required_array_integer_unix-micro\""
 	RequiredArrayIntegerUnixMinusMilli         []time.Time          "json:\"required_array_integer_unix-milli\""
@@ -4059,6 +4497,9 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredDoubleArrayInteger                 [][]int              "json:\"required_double_array_integer\""
 	RequiredDoubleArrayIntegerInt32            [][]int32            "json:\"required_double_array_integer_int32\""
 	RequiredDoubleArrayIntegerInt64            [][]int64            "json:\"required_double_array_integer_int64\""
+	RequiredDoubleArrayIntegerUint             [][]uint             "json:\"required_double_array_integer_uint\""
+	RequiredDoubleArrayIntegerUint32           [][]uint32           "json:\"required_double_array_integer_uint32\""
+	RequiredDoubleArrayIntegerUint64           [][]uint64           "json:\"required_double_array_integer_uint64\""
 	RequiredDoubleArrayIntegerUnix             [][]time.Time        "json:\"required_double_array_integer_unix\""
 	RequiredDoubleArrayIntegerUnixMinusMicro   [][]time.Time        "json:\"required_double_array_integer_unix-micro\""
 	RequiredDoubleArrayIntegerUnixMinusMilli   [][]time.Time        "json:\"required_double_array_integer_unix-milli\""
@@ -4095,6 +4536,9 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredInteger                            int                  "json:\"required_integer\""
 	RequiredIntegerInt32                       int32                "json:\"required_integer_int32\""
 	RequiredIntegerInt64                       int64                "json:\"required_integer_int64\""
+	RequiredIntegerUint                        uint                 "json:\"required_integer_uint\""
+	RequiredIntegerUint32                      uint32               "json:\"required_integer_uint32\""
+	RequiredIntegerUint64                      uint64               "json:\"required_integer_uint64\""
 	RequiredIntegerUnix                        time.Time            "json:\"required_integer_unix\""
 	RequiredIntegerUnixMinusMicro              time.Time            "json:\"required_integer_unix-micro\""
 	RequiredIntegerUnixMinusMilli              time.Time            "json:\"required_integer_unix-milli\""
@@ -4134,6 +4578,9 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalArrayInteger                       []int                "json:\"optional_array_integer\""
 	OptionalArrayIntegerInt32                  []int32              "json:\"optional_array_integer_int32\""
 	OptionalArrayIntegerInt64                  []int64              "json:\"optional_array_integer_int64\""
+	OptionalArrayIntegerUint                   []uint               "json:\"optional_array_integer_uint\""
+	OptionalArrayIntegerUint32                 []uint32             "json:\"optional_array_integer_uint32\""
+	OptionalArrayIntegerUint64                 []uint64             "json:\"optional_array_integer_uint64\""
 	OptionalArrayIntegerUnix                   []time.Time          "json:\"optional_array_integer_unix\""
 	OptionalArrayIntegerUnixMinusMicro         []time.Time          "json:\"optional_array_integer_unix-micro\""
 	OptionalArrayIntegerUnixMinusMilli         []time.Time          "json:\"optional_array_integer_unix-milli\""
@@ -4173,6 +4620,9 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalDoubleArrayInteger                 [][]int              "json:\"optional_double_array_integer\""
 	OptionalDoubleArrayIntegerInt32            [][]int32            "json:\"optional_double_array_integer_int32\""
 	OptionalDoubleArrayIntegerInt64            [][]int64            "json:\"optional_double_array_integer_int64\""
+	OptionalDoubleArrayIntegerUint             [][]uint             "json:\"optional_double_array_integer_uint\""
+	OptionalDoubleArrayIntegerUint32           [][]uint32           "json:\"optional_double_array_integer_uint32\""
+	OptionalDoubleArrayIntegerUint64           [][]uint64           "json:\"optional_double_array_integer_uint64\""
 	OptionalDoubleArrayIntegerUnix             [][]time.Time        "json:\"optional_double_array_integer_unix\""
 	OptionalDoubleArrayIntegerUnixMinusMicro   [][]time.Time        "json:\"optional_double_array_integer_unix-micro\""
 	OptionalDoubleArrayIntegerUnixMinusMilli   [][]time.Time        "json:\"optional_double_array_integer_unix-milli\""
@@ -4209,6 +4659,9 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalInteger                            OptInt               "json:\"optional_integer\""
 	OptionalIntegerInt32                       OptInt32             "json:\"optional_integer_int32\""
 	OptionalIntegerInt64                       OptInt64             "json:\"optional_integer_int64\""
+	OptionalIntegerUint                        OptUint              "json:\"optional_integer_uint\""
+	OptionalIntegerUint32                      OptUint32            "json:\"optional_integer_uint32\""
+	OptionalIntegerUint64                      OptUint64            "json:\"optional_integer_uint64\""
 	OptionalIntegerUnix                        OptUnixSeconds       "json:\"optional_integer_unix\""
 	OptionalIntegerUnixMinusMicro              OptUnixMicro         "json:\"optional_integer_unix-micro\""
 	OptionalIntegerUnixMinusMilli              OptUnixMilli         "json:\"optional_integer_unix-milli\""
@@ -4253,6 +4706,9 @@ type TestResponseFormatTestOK struct {
 	RequiredArrayInteger                       []int                "json:\"required_array_integer\""
 	RequiredArrayIntegerInt32                  []int32              "json:\"required_array_integer_int32\""
 	RequiredArrayIntegerInt64                  []int64              "json:\"required_array_integer_int64\""
+	RequiredArrayIntegerUint                   []uint               "json:\"required_array_integer_uint\""
+	RequiredArrayIntegerUint32                 []uint32             "json:\"required_array_integer_uint32\""
+	RequiredArrayIntegerUint64                 []uint64             "json:\"required_array_integer_uint64\""
 	RequiredArrayIntegerUnix                   []time.Time          "json:\"required_array_integer_unix\""
 	RequiredArrayIntegerUnixMinusMicro         []time.Time          "json:\"required_array_integer_unix-micro\""
 	RequiredArrayIntegerUnixMinusMilli         []time.Time          "json:\"required_array_integer_unix-milli\""
@@ -4292,6 +4748,9 @@ type TestResponseFormatTestOK struct {
 	RequiredDoubleArrayInteger                 [][]int              "json:\"required_double_array_integer\""
 	RequiredDoubleArrayIntegerInt32            [][]int32            "json:\"required_double_array_integer_int32\""
 	RequiredDoubleArrayIntegerInt64            [][]int64            "json:\"required_double_array_integer_int64\""
+	RequiredDoubleArrayIntegerUint             [][]uint             "json:\"required_double_array_integer_uint\""
+	RequiredDoubleArrayIntegerUint32           [][]uint32           "json:\"required_double_array_integer_uint32\""
+	RequiredDoubleArrayIntegerUint64           [][]uint64           "json:\"required_double_array_integer_uint64\""
 	RequiredDoubleArrayIntegerUnix             [][]time.Time        "json:\"required_double_array_integer_unix\""
 	RequiredDoubleArrayIntegerUnixMinusMicro   [][]time.Time        "json:\"required_double_array_integer_unix-micro\""
 	RequiredDoubleArrayIntegerUnixMinusMilli   [][]time.Time        "json:\"required_double_array_integer_unix-milli\""
@@ -4328,6 +4787,9 @@ type TestResponseFormatTestOK struct {
 	RequiredInteger                            int                  "json:\"required_integer\""
 	RequiredIntegerInt32                       int32                "json:\"required_integer_int32\""
 	RequiredIntegerInt64                       int64                "json:\"required_integer_int64\""
+	RequiredIntegerUint                        uint                 "json:\"required_integer_uint\""
+	RequiredIntegerUint32                      uint32               "json:\"required_integer_uint32\""
+	RequiredIntegerUint64                      uint64               "json:\"required_integer_uint64\""
 	RequiredIntegerUnix                        time.Time            "json:\"required_integer_unix\""
 	RequiredIntegerUnixMinusMicro              time.Time            "json:\"required_integer_unix-micro\""
 	RequiredIntegerUnixMinusMilli              time.Time            "json:\"required_integer_unix-milli\""
@@ -4367,6 +4829,9 @@ type TestResponseFormatTestOK struct {
 	OptionalArrayInteger                       []int                "json:\"optional_array_integer\""
 	OptionalArrayIntegerInt32                  []int32              "json:\"optional_array_integer_int32\""
 	OptionalArrayIntegerInt64                  []int64              "json:\"optional_array_integer_int64\""
+	OptionalArrayIntegerUint                   []uint               "json:\"optional_array_integer_uint\""
+	OptionalArrayIntegerUint32                 []uint32             "json:\"optional_array_integer_uint32\""
+	OptionalArrayIntegerUint64                 []uint64             "json:\"optional_array_integer_uint64\""
 	OptionalArrayIntegerUnix                   []time.Time          "json:\"optional_array_integer_unix\""
 	OptionalArrayIntegerUnixMinusMicro         []time.Time          "json:\"optional_array_integer_unix-micro\""
 	OptionalArrayIntegerUnixMinusMilli         []time.Time          "json:\"optional_array_integer_unix-milli\""
@@ -4406,6 +4871,9 @@ type TestResponseFormatTestOK struct {
 	OptionalDoubleArrayInteger                 [][]int              "json:\"optional_double_array_integer\""
 	OptionalDoubleArrayIntegerInt32            [][]int32            "json:\"optional_double_array_integer_int32\""
 	OptionalDoubleArrayIntegerInt64            [][]int64            "json:\"optional_double_array_integer_int64\""
+	OptionalDoubleArrayIntegerUint             [][]uint             "json:\"optional_double_array_integer_uint\""
+	OptionalDoubleArrayIntegerUint32           [][]uint32           "json:\"optional_double_array_integer_uint32\""
+	OptionalDoubleArrayIntegerUint64           [][]uint64           "json:\"optional_double_array_integer_uint64\""
 	OptionalDoubleArrayIntegerUnix             [][]time.Time        "json:\"optional_double_array_integer_unix\""
 	OptionalDoubleArrayIntegerUnixMinusMicro   [][]time.Time        "json:\"optional_double_array_integer_unix-micro\""
 	OptionalDoubleArrayIntegerUnixMinusMilli   [][]time.Time        "json:\"optional_double_array_integer_unix-milli\""
@@ -4442,6 +4910,9 @@ type TestResponseFormatTestOK struct {
 	OptionalInteger                            OptInt               "json:\"optional_integer\""
 	OptionalIntegerInt32                       OptInt32             "json:\"optional_integer_int32\""
 	OptionalIntegerInt64                       OptInt64             "json:\"optional_integer_int64\""
+	OptionalIntegerUint                        OptUint              "json:\"optional_integer_uint\""
+	OptionalIntegerUint32                      OptUint32            "json:\"optional_integer_uint32\""
+	OptionalIntegerUint64                      OptUint64            "json:\"optional_integer_uint64\""
 	OptionalIntegerUnix                        OptUnixSeconds       "json:\"optional_integer_unix\""
 	OptionalIntegerUnixMinusMicro              OptUnixMicro         "json:\"optional_integer_unix-micro\""
 	OptionalIntegerUnixMinusMilli              OptUnixMilli         "json:\"optional_integer_unix-milli\""
