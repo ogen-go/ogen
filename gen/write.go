@@ -206,22 +206,22 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 	}{
 		{"schemas", true},
 		{"uri", g.hasURIObjectParams()},
-		{"json", true},
-		{"interfaces", genClient || genServer},
-		{"parameters", true},
+		{"json", g.hasJSON()},
+		{"interfaces", (genClient || genServer) && len(interfaces) > 0},
+		{"parameters", g.hasParams()},
 		{"handlers", genServer},
 		{"request_encoders", genClient},
 		{"request_decoders", genServer},
 		{"response_encoders", genServer},
 		{"response_decoders", genClient},
-		{"validators", true},
-		{"middleware", true},
+		{"validators", g.hasValidators()},
+		{"middleware", genServer},
 		{"server", genServer},
 		{"client", genClient},
 		{"cfg", true},
 		{"router", genServer},
-		{"defaults", true},
-		{"security", genClient || genServer},
+		{"defaults", g.hasDefaultFields()},
+		{"security", (genClient || genServer) && len(g.securities) > 0},
 		{"test_examples", g.opt.GenerateExampleTests},
 		{"faker", g.opt.GenerateExampleTests},
 		{"unimplemented", !g.opt.SkipUnimplemented && genServer},
@@ -243,11 +243,40 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 	return nil
 }
 
-func (g *Generator) hasURIObjectParams() bool {
+func (g *Generator) hasAnyType(check func(t *ir.Type) bool) bool {
 	for _, t := range g.tstorage.types {
-		if t.HasFeature("uri") && t.Is(ir.KindStruct) {
+		if check(t) {
 			return true
 		}
 	}
 	return false
+}
+
+func (g *Generator) hasDefaultFields() bool {
+	return g.hasAnyType((*ir.Type).HasDefaultFields)
+}
+
+func (g *Generator) hasJSON() bool {
+	return g.hasAnyType(func(t *ir.Type) bool {
+		return t.HasFeature("json")
+	})
+}
+
+func (g *Generator) hasValidators() bool {
+	return g.hasAnyType((*ir.Type).NeedValidation)
+}
+
+func (g *Generator) hasParams() bool {
+	for _, op := range g.operations {
+		if len(op.Params) > 0 {
+			return true
+		}
+	}
+	return false
+}
+
+func (g *Generator) hasURIObjectParams() bool {
+	return g.hasAnyType(func(t *ir.Type) bool {
+		return t.IsStruct() && t.HasFeature("uri")
+	})
 }
