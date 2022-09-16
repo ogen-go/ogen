@@ -71,6 +71,30 @@ func BenchmarkValidation(b *testing.B) {
 	}
 }
 
+func benchClient() *http.Client {
+	const (
+		maxConnsPerHost     = 20
+		maxIdleConns        = maxConnsPerHost
+		maxIdleConnsPerHost = maxIdleConns
+	)
+	return &http.Client{
+		Timeout: 5 * time.Second,
+		Transport: &http.Transport{
+			DialContext: (&net.Dialer{
+				Timeout:   30 * time.Second,
+				KeepAlive: 30 * time.Second,
+			}).DialContext,
+			ForceAttemptHTTP2:     true,
+			MaxIdleConns:          maxIdleConns,
+			MaxIdleConnsPerHost:   maxIdleConnsPerHost,
+			MaxConnsPerHost:       maxConnsPerHost,
+			IdleConnTimeout:       90 * time.Second,
+			TLSHandshakeTimeout:   10 * time.Second,
+			ExpectContinueTimeout: 1 * time.Second,
+		},
+	}
+}
+
 func BenchmarkIntegration(b *testing.B) {
 	b.Run("Baseline", func(b *testing.B) {
 		// Use baseline implementation to measure framework overhead.
@@ -174,14 +198,7 @@ func BenchmarkIntegration(b *testing.B) {
 		defer s.Close()
 
 		ctx := context.Background()
-		client := &http.Client{
-			Transport: &http.Transport{
-				MaxConnsPerHost:     100,
-				MaxIdleConnsPerHost: 100,
-				MaxIdleConns:        100,
-			},
-			CheckRedirect: nil,
-		}
+		client := benchClient()
 		b.Run("JSON", func(b *testing.B) {
 			b.ReportAllocs()
 			b.ResetTimer()
@@ -225,21 +242,7 @@ func BenchmarkIntegration(b *testing.B) {
 		s := httptest.NewServer(h)
 		defer s.Close()
 
-		httpClient := &http.Client{
-			Timeout: time.Second,
-			Transport: &http.Transport{
-				DialContext: (&net.Dialer{
-					Timeout:   30 * time.Second,
-					KeepAlive: 30 * time.Second,
-				}).DialContext,
-				ForceAttemptHTTP2:     true,
-				MaxIdleConns:          100,
-				MaxConnsPerHost:       20,
-				IdleConnTimeout:       90 * time.Second,
-				TLSHandshakeTimeout:   10 * time.Second,
-				ExpectContinueTimeout: 1 * time.Second,
-			},
-		}
+		httpClient := benchClient()
 		client, err := techempower.NewClient(s.URL,
 			techempower.WithClient(httpClient),
 			techempower.WithTracerProvider(trace.NewNoopTracerProvider()),
@@ -256,7 +259,7 @@ func BenchmarkIntegration(b *testing.B) {
 				for pb.Next() {
 					hw, err := client.JSON(ctx)
 					if err != nil {
-						b.Error(err)
+						b.Fatal(err)
 						return
 					}
 					if hw.Message != "Hello, world!" {
