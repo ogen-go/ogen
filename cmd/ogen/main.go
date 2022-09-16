@@ -8,6 +8,8 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"runtime"
+	"runtime/pprof"
 	"strings"
 	"time"
 
@@ -128,6 +130,7 @@ func run() error {
 		_, _ = fmt.Fprintf(set.Output(), "Usage: %s [options] <spec>\n", toolName)
 		set.PrintDefaults()
 	}
+
 	var (
 		targetDir         = set.String("target", "api", "Path to target dir")
 		packageName       = set.String("package", "api", "Target package name")
@@ -141,10 +144,14 @@ func run() error {
 		noServer          = set.Bool("no-server", false, "Disables server generation")
 
 		debugIgnoreNotImplemented = set.String("debug.ignoreNotImplemented", "",
-			"Ignore methods having functionality which is not implemented ")
+			"Ignore methods having functionality which is not implemented")
 		debugNoerr = set.Bool("debug.noerr", false, "Ignore errors")
 
 		logOptions ogenzap.Options
+
+		cpuProfile     = set.String("cpuprofile", "", "Write cpu profile to file")
+		memProfile     = set.String("memprofile", "", "Write memory profile to this file")
+		memProfileRate = set.Int("memprofilerate", -1, "If > 0, sets runtime.MemProfileRate")
 	)
 	logOptions.RegisterFlags(set)
 
@@ -188,6 +195,41 @@ func run() error {
 	defer func() {
 		_ = logger.Sync()
 	}()
+
+	if f := *cpuProfile; f != "" {
+		f, err := os.Create(f)
+		if err != nil {
+			return errors.Wrap(err, "create cpu profile")
+		}
+		defer func() {
+			_ = f.Close()
+		}()
+
+		if err := pprof.StartCPUProfile(f); err != nil {
+			logger.Error("Start CPU profiling", zap.Error(err))
+		} else {
+			defer pprof.StopCPUProfile()
+		}
+	}
+	if f := *memProfile; f != "" {
+		f, err := os.Create(f)
+		if err != nil {
+			return errors.Wrap(err, "create memory profile")
+		}
+		defer func() {
+			_ = f.Close()
+		}()
+
+		if *memProfileRate > 0 {
+			runtime.MemProfileRate = *memProfileRate
+		}
+		defer func() {
+			runtime.GC()
+			if err := pprof.WriteHeapProfile(f); err != nil {
+				logger.Error("Write memory profile", zap.Error(err))
+			}
+		}()
+	}
 
 	specDir, fileName := filepath.Split(specPath)
 	opts := gen.Options{
