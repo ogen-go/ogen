@@ -17,9 +17,7 @@ type DeletePetParams struct {
 }
 
 func unpackDeletePetParams(packed map[string]any) (params DeletePetParams) {
-	if v, ok := packed["id"]; ok {
-		params.ID, _ = v.(int64)
-	}
+	params.ID = packed["id"].(int64)
 	return params
 }
 
@@ -64,9 +62,7 @@ type FindPetByIDParams struct {
 }
 
 func unpackFindPetByIDParams(packed map[string]any) (params FindPetByIDParams) {
-	if v, ok := packed["id"]; ok {
-		params.ID, _ = v.(int64)
-	}
+	params.ID = packed["id"].(int64)
 	return params
 }
 
@@ -114,10 +110,10 @@ type FindPetsParams struct {
 
 func unpackFindPetsParams(packed map[string]any) (params FindPetsParams) {
 	if v, ok := packed["tags"]; ok {
-		params.Tags, _ = v.([]string)
+		params.Tags = v.([]string)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt32)
+		params.Limit = v.(OptInt32)
 	}
 	return params
 }

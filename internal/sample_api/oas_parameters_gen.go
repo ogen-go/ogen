@@ -23,21 +23,11 @@ type DataGetFormatParams struct {
 }
 
 func unpackDataGetFormatParams(packed map[string]any) (params DataGetFormatParams) {
-	if v, ok := packed["id"]; ok {
-		params.ID, _ = v.(int)
-	}
-	if v, ok := packed["foo"]; ok {
-		params.Foo, _ = v.(string)
-	}
-	if v, ok := packed["bar"]; ok {
-		params.Bar, _ = v.(string)
-	}
-	if v, ok := packed["baz"]; ok {
-		params.Baz, _ = v.(string)
-	}
-	if v, ok := packed["kek"]; ok {
-		params.Kek, _ = v.(string)
-	}
+	params.ID = packed["id"].(int)
+	params.Foo = packed["foo"].(string)
+	params.Bar = packed["bar"].(string)
+	params.Baz = packed["baz"].(string)
+	params.Kek = packed["kek"].(string)
 	return params
 }
 
@@ -223,7 +213,7 @@ type DefaultTestParams struct {
 
 func unpackDefaultTestParams(packed map[string]any) (params DefaultTestParams) {
 	if v, ok := packed["default"]; ok {
-		params.Default, _ = v.(OptInt32)
+		params.Default = v.(OptInt32)
 	}
 	return params
 }
@@ -280,12 +270,8 @@ type FoobarGetParams struct {
 }
 
 func unpackFoobarGetParams(packed map[string]any) (params FoobarGetParams) {
-	if v, ok := packed["inlinedParam"]; ok {
-		params.InlinedParam, _ = v.(int64)
-	}
-	if v, ok := packed["skip"]; ok {
-		params.Skip, _ = v.(int32)
-	}
+	params.InlinedParam = packed["inlinedParam"].(int64)
+	params.Skip = packed["skip"].(int32)
 	return params
 }
 
@@ -357,9 +343,7 @@ type GetHeaderParams struct {
 }
 
 func unpackGetHeaderParams(packed map[string]any) (params GetHeaderParams) {
-	if v, ok := packed["x-auth-token"]; ok {
-		params.XAuthToken, _ = v.(string)
-	}
+	params.XAuthToken = packed["x-auth-token"].(string)
 	return params
 }
 
@@ -401,9 +385,7 @@ type PetFriendsNamesByIDParams struct {
 }
 
 func unpackPetFriendsNamesByIDParams(packed map[string]any) (params PetFriendsNamesByIDParams) {
-	if v, ok := packed["id"]; ok {
-		params.ID, _ = v.(int)
-	}
+	params.ID = packed["id"].(int)
 	return params
 }
 
@@ -454,18 +436,10 @@ type PetGetParams struct {
 }
 
 func unpackPetGetParams(packed map[string]any) (params PetGetParams) {
-	if v, ok := packed["petID"]; ok {
-		params.PetID, _ = v.(int64)
-	}
-	if v, ok := packed["x-tags"]; ok {
-		params.XTags, _ = v.([]uuid.UUID)
-	}
-	if v, ok := packed["x-scope"]; ok {
-		params.XScope, _ = v.([]string)
-	}
-	if v, ok := packed["token"]; ok {
-		params.Token, _ = v.(string)
-	}
+	params.PetID = packed["petID"].(int64)
+	params.XTags = packed["x-tags"].([]uuid.UUID)
+	params.XScope = packed["x-scope"].([]string)
+	params.Token = packed["token"].(string)
 	return params
 }
 
@@ -644,9 +618,7 @@ type PetGetAvatarByIDParams struct {
 }
 
 func unpackPetGetAvatarByIDParams(packed map[string]any) (params PetGetAvatarByIDParams) {
-	if v, ok := packed["petID"]; ok {
-		params.PetID, _ = v.(int64)
-	}
+	params.PetID = packed["petID"].(int64)
 	return params
 }
 
@@ -690,9 +662,7 @@ type PetGetAvatarByNameParams struct {
 }
 
 func unpackPetGetAvatarByNameParams(packed map[string]any) (params PetGetAvatarByNameParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	return params
 }
 
@@ -737,9 +707,7 @@ type PetGetByNameParams struct {
 }
 
 func unpackPetGetByNameParams(packed map[string]any) (params PetGetByNameParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	return params
 }
 
@@ -784,9 +752,7 @@ type PetNameByIDParams struct {
 }
 
 func unpackPetNameByIDParams(packed map[string]any) (params PetNameByIDParams) {
-	if v, ok := packed["id"]; ok {
-		params.ID, _ = v.(int)
-	}
+	params.ID = packed["id"].(int)
 	return params
 }
 
@@ -831,9 +797,7 @@ type PetUploadAvatarByIDParams struct {
 }
 
 func unpackPetUploadAvatarByIDParams(packed map[string]any) (params PetUploadAvatarByIDParams) {
-	if v, ok := packed["petID"]; ok {
-		params.PetID, _ = v.(int64)
-	}
+	params.PetID = packed["petID"].(int64)
 	return params
 }
 
@@ -877,7 +841,7 @@ type TestContentParameterParams struct {
 
 func unpackTestContentParameterParams(packed map[string]any) (params TestContentParameterParams) {
 	if v, ok := packed["param"]; ok {
-		params.Param, _ = v.(OptTestContentParameterParam)
+		params.Param = v.(OptTestContentParameterParam)
 	}
 	return params
 }
@@ -923,10 +887,10 @@ type TestObjectQueryParameterParams struct {
 
 func unpackTestObjectQueryParameterParams(packed map[string]any) (params TestObjectQueryParameterParams) {
 	if v, ok := packed["formObject"]; ok {
-		params.FormObject, _ = v.(OptTestObjectQueryParameterFormObject)
+		params.FormObject = v.(OptTestObjectQueryParameterFormObject)
 	}
 	if v, ok := packed["deepObject"]; ok {
-		params.DeepObject, _ = v.(OptTestObjectQueryParameterDeepObject)
+		params.DeepObject = v.(OptTestObjectQueryParameterDeepObject)
 	}
 	return params
 }

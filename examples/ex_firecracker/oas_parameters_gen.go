@@ -17,9 +17,7 @@ type PatchGuestDriveByIDParams struct {
 }
 
 func unpackPatchGuestDriveByIDParams(packed map[string]any) (params PatchGuestDriveByIDParams) {
-	if v, ok := packed["drive_id"]; ok {
-		params.DriveID, _ = v.(string)
-	}
+	params.DriveID = packed["drive_id"].(string)
 	return params
 }
 
@@ -64,9 +62,7 @@ type PatchGuestNetworkInterfaceByIDParams struct {
 }
 
 func unpackPatchGuestNetworkInterfaceByIDParams(packed map[string]any) (params PatchGuestNetworkInterfaceByIDParams) {
-	if v, ok := packed["iface_id"]; ok {
-		params.IfaceID, _ = v.(string)
-	}
+	params.IfaceID = packed["iface_id"].(string)
 	return params
 }
 
@@ -111,9 +107,7 @@ type PutGuestDriveByIDParams struct {
 }
 
 func unpackPutGuestDriveByIDParams(packed map[string]any) (params PutGuestDriveByIDParams) {
-	if v, ok := packed["drive_id"]; ok {
-		params.DriveID, _ = v.(string)
-	}
+	params.DriveID = packed["drive_id"].(string)
 	return params
 }
 
@@ -158,9 +152,7 @@ type PutGuestNetworkInterfaceByIDParams struct {
 }
 
 func unpackPutGuestNetworkInterfaceByIDParams(packed map[string]any) (params PutGuestNetworkInterfaceByIDParams) {
-	if v, ok := packed["iface_id"]; ok {
-		params.IfaceID, _ = v.(string)
-	}
+	params.IfaceID = packed["iface_id"].(string)
 	return params
 }
 

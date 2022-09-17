@@ -22,15 +22,9 @@ type ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 }
 
 func unpackActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(packed map[string]any) (params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
-	if v, ok := packed["repository_id"]; ok {
-		params.RepositoryID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
+	params.RepositoryID = packed["repository_id"].(int)
 	return params
 }
 
@@ -139,15 +133,9 @@ type ActionsAddSelectedRepoToOrgSecretParams struct {
 }
 
 func unpackActionsAddSelectedRepoToOrgSecretParams(packed map[string]any) (params ActionsAddSelectedRepoToOrgSecretParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["secret_name"]; ok {
-		params.SecretName, _ = v.(string)
-	}
-	if v, ok := packed["repository_id"]; ok {
-		params.RepositoryID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.SecretName = packed["secret_name"].(string)
+	params.RepositoryID = packed["repository_id"].(int)
 	return params
 }
 
@@ -257,15 +245,9 @@ type ActionsAddSelfHostedRunnerToGroupForOrgParams struct {
 }
 
 func unpackActionsAddSelfHostedRunnerToGroupForOrgParams(packed map[string]any) (params ActionsAddSelfHostedRunnerToGroupForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
-	if v, ok := packed["runner_id"]; ok {
-		params.RunnerID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
+	params.RunnerID = packed["runner_id"].(int)
 	return params
 }
 
@@ -374,15 +356,9 @@ type ActionsApproveWorkflowRunParams struct {
 }
 
 func unpackActionsApproveWorkflowRunParams(packed map[string]any) (params ActionsApproveWorkflowRunParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["run_id"]; ok {
-		params.RunID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.RunID = packed["run_id"].(int)
 	return params
 }
 
@@ -491,15 +467,9 @@ type ActionsCancelWorkflowRunParams struct {
 }
 
 func unpackActionsCancelWorkflowRunParams(packed map[string]any) (params ActionsCancelWorkflowRunParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["run_id"]; ok {
-		params.RunID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.RunID = packed["run_id"].(int)
 	return params
 }
 
@@ -609,15 +579,9 @@ type ActionsCreateOrUpdateEnvironmentSecretParams struct {
 }
 
 func unpackActionsCreateOrUpdateEnvironmentSecretParams(packed map[string]any) (params ActionsCreateOrUpdateEnvironmentSecretParams) {
-	if v, ok := packed["repository_id"]; ok {
-		params.RepositoryID, _ = v.(int)
-	}
-	if v, ok := packed["environment_name"]; ok {
-		params.EnvironmentName, _ = v.(string)
-	}
-	if v, ok := packed["secret_name"]; ok {
-		params.SecretName, _ = v.(string)
-	}
+	params.RepositoryID = packed["repository_id"].(int)
+	params.EnvironmentName = packed["environment_name"].(string)
+	params.SecretName = packed["secret_name"].(string)
 	return params
 }
 
@@ -725,12 +689,8 @@ type ActionsCreateOrUpdateOrgSecretParams struct {
 }
 
 func unpackActionsCreateOrUpdateOrgSecretParams(packed map[string]any) (params ActionsCreateOrUpdateOrgSecretParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["secret_name"]; ok {
-		params.SecretName, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.SecretName = packed["secret_name"].(string)
 	return params
 }
 
@@ -808,15 +768,9 @@ type ActionsCreateOrUpdateRepoSecretParams struct {
 }
 
 func unpackActionsCreateOrUpdateRepoSecretParams(packed map[string]any) (params ActionsCreateOrUpdateRepoSecretParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["secret_name"]; ok {
-		params.SecretName, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.SecretName = packed["secret_name"].(string)
 	return params
 }
 
@@ -922,9 +876,7 @@ type ActionsCreateRegistrationTokenForOrgParams struct {
 }
 
 func unpackActionsCreateRegistrationTokenForOrgParams(packed map[string]any) (params ActionsCreateRegistrationTokenForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -969,12 +921,8 @@ type ActionsCreateRegistrationTokenForRepoParams struct {
 }
 
 func unpackActionsCreateRegistrationTokenForRepoParams(packed map[string]any) (params ActionsCreateRegistrationTokenForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -1049,9 +997,7 @@ type ActionsCreateRemoveTokenForOrgParams struct {
 }
 
 func unpackActionsCreateRemoveTokenForOrgParams(packed map[string]any) (params ActionsCreateRemoveTokenForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -1096,12 +1042,8 @@ type ActionsCreateRemoveTokenForRepoParams struct {
 }
 
 func unpackActionsCreateRemoveTokenForRepoParams(packed map[string]any) (params ActionsCreateRemoveTokenForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -1176,9 +1118,7 @@ type ActionsCreateSelfHostedRunnerGroupForOrgParams struct {
 }
 
 func unpackActionsCreateSelfHostedRunnerGroupForOrgParams(packed map[string]any) (params ActionsCreateSelfHostedRunnerGroupForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -1225,15 +1165,9 @@ type ActionsDeleteArtifactParams struct {
 }
 
 func unpackActionsDeleteArtifactParams(packed map[string]any) (params ActionsDeleteArtifactParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["artifact_id"]; ok {
-		params.ArtifactID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.ArtifactID = packed["artifact_id"].(int)
 	return params
 }
 
@@ -1343,15 +1277,9 @@ type ActionsDeleteEnvironmentSecretParams struct {
 }
 
 func unpackActionsDeleteEnvironmentSecretParams(packed map[string]any) (params ActionsDeleteEnvironmentSecretParams) {
-	if v, ok := packed["repository_id"]; ok {
-		params.RepositoryID, _ = v.(int)
-	}
-	if v, ok := packed["environment_name"]; ok {
-		params.EnvironmentName, _ = v.(string)
-	}
-	if v, ok := packed["secret_name"]; ok {
-		params.SecretName, _ = v.(string)
-	}
+	params.RepositoryID = packed["repository_id"].(int)
+	params.EnvironmentName = packed["environment_name"].(string)
+	params.SecretName = packed["secret_name"].(string)
 	return params
 }
 
@@ -1459,12 +1387,8 @@ type ActionsDeleteOrgSecretParams struct {
 }
 
 func unpackActionsDeleteOrgSecretParams(packed map[string]any) (params ActionsDeleteOrgSecretParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["secret_name"]; ok {
-		params.SecretName, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.SecretName = packed["secret_name"].(string)
 	return params
 }
 
@@ -1542,15 +1466,9 @@ type ActionsDeleteRepoSecretParams struct {
 }
 
 func unpackActionsDeleteRepoSecretParams(packed map[string]any) (params ActionsDeleteRepoSecretParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["secret_name"]; ok {
-		params.SecretName, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.SecretName = packed["secret_name"].(string)
 	return params
 }
 
@@ -1658,12 +1576,8 @@ type ActionsDeleteSelfHostedRunnerFromOrgParams struct {
 }
 
 func unpackActionsDeleteSelfHostedRunnerFromOrgParams(packed map[string]any) (params ActionsDeleteSelfHostedRunnerFromOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["runner_id"]; ok {
-		params.RunnerID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.RunnerID = packed["runner_id"].(int)
 	return params
 }
 
@@ -1741,15 +1655,9 @@ type ActionsDeleteSelfHostedRunnerFromRepoParams struct {
 }
 
 func unpackActionsDeleteSelfHostedRunnerFromRepoParams(packed map[string]any) (params ActionsDeleteSelfHostedRunnerFromRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["runner_id"]; ok {
-		params.RunnerID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.RunnerID = packed["runner_id"].(int)
 	return params
 }
 
@@ -1857,12 +1765,8 @@ type ActionsDeleteSelfHostedRunnerGroupFromOrgParams struct {
 }
 
 func unpackActionsDeleteSelfHostedRunnerGroupFromOrgParams(packed map[string]any) (params ActionsDeleteSelfHostedRunnerGroupFromOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
 	return params
 }
 
@@ -1940,15 +1844,9 @@ type ActionsDeleteWorkflowRunParams struct {
 }
 
 func unpackActionsDeleteWorkflowRunParams(packed map[string]any) (params ActionsDeleteWorkflowRunParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["run_id"]; ok {
-		params.RunID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.RunID = packed["run_id"].(int)
 	return params
 }
 
@@ -2057,15 +1955,9 @@ type ActionsDeleteWorkflowRunLogsParams struct {
 }
 
 func unpackActionsDeleteWorkflowRunLogsParams(packed map[string]any) (params ActionsDeleteWorkflowRunLogsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["run_id"]; ok {
-		params.RunID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.RunID = packed["run_id"].(int)
 	return params
 }
 
@@ -2172,12 +2064,8 @@ type ActionsDisableSelectedRepositoryGithubActionsOrganizationParams struct {
 }
 
 func unpackActionsDisableSelectedRepositoryGithubActionsOrganizationParams(packed map[string]any) (params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["repository_id"]; ok {
-		params.RepositoryID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.RepositoryID = packed["repository_id"].(int)
 	return params
 }
 
@@ -2256,18 +2144,10 @@ type ActionsDownloadArtifactParams struct {
 }
 
 func unpackActionsDownloadArtifactParams(packed map[string]any) (params ActionsDownloadArtifactParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["artifact_id"]; ok {
-		params.ArtifactID, _ = v.(int)
-	}
-	if v, ok := packed["archive_format"]; ok {
-		params.ArchiveFormat, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.ArtifactID = packed["artifact_id"].(int)
+	params.ArchiveFormat = packed["archive_format"].(string)
 	return params
 }
 
@@ -2407,15 +2287,9 @@ type ActionsDownloadJobLogsForWorkflowRunParams struct {
 }
 
 func unpackActionsDownloadJobLogsForWorkflowRunParams(packed map[string]any) (params ActionsDownloadJobLogsForWorkflowRunParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["job_id"]; ok {
-		params.JobID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.JobID = packed["job_id"].(int)
 	return params
 }
 
@@ -2524,15 +2398,9 @@ type ActionsDownloadWorkflowRunLogsParams struct {
 }
 
 func unpackActionsDownloadWorkflowRunLogsParams(packed map[string]any) (params ActionsDownloadWorkflowRunLogsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["run_id"]; ok {
-		params.RunID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.RunID = packed["run_id"].(int)
 	return params
 }
 
@@ -2639,12 +2507,8 @@ type ActionsEnableSelectedRepositoryGithubActionsOrganizationParams struct {
 }
 
 func unpackActionsEnableSelectedRepositoryGithubActionsOrganizationParams(packed map[string]any) (params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["repository_id"]; ok {
-		params.RepositoryID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.RepositoryID = packed["repository_id"].(int)
 	return params
 }
 
@@ -2719,9 +2583,7 @@ type ActionsGetAllowedActionsOrganizationParams struct {
 }
 
 func unpackActionsGetAllowedActionsOrganizationParams(packed map[string]any) (params ActionsGetAllowedActionsOrganizationParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -2766,12 +2628,8 @@ type ActionsGetAllowedActionsRepositoryParams struct {
 }
 
 func unpackActionsGetAllowedActionsRepositoryParams(packed map[string]any) (params ActionsGetAllowedActionsRepositoryParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -2849,15 +2707,9 @@ type ActionsGetArtifactParams struct {
 }
 
 func unpackActionsGetArtifactParams(packed map[string]any) (params ActionsGetArtifactParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["artifact_id"]; ok {
-		params.ArtifactID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.ArtifactID = packed["artifact_id"].(int)
 	return params
 }
 
@@ -2965,12 +2817,8 @@ type ActionsGetEnvironmentPublicKeyParams struct {
 }
 
 func unpackActionsGetEnvironmentPublicKeyParams(packed map[string]any) (params ActionsGetEnvironmentPublicKeyParams) {
-	if v, ok := packed["repository_id"]; ok {
-		params.RepositoryID, _ = v.(int)
-	}
-	if v, ok := packed["environment_name"]; ok {
-		params.EnvironmentName, _ = v.(string)
-	}
+	params.RepositoryID = packed["repository_id"].(int)
+	params.EnvironmentName = packed["environment_name"].(string)
 	return params
 }
 
@@ -3049,15 +2897,9 @@ type ActionsGetEnvironmentSecretParams struct {
 }
 
 func unpackActionsGetEnvironmentSecretParams(packed map[string]any) (params ActionsGetEnvironmentSecretParams) {
-	if v, ok := packed["repository_id"]; ok {
-		params.RepositoryID, _ = v.(int)
-	}
-	if v, ok := packed["environment_name"]; ok {
-		params.EnvironmentName, _ = v.(string)
-	}
-	if v, ok := packed["secret_name"]; ok {
-		params.SecretName, _ = v.(string)
-	}
+	params.RepositoryID = packed["repository_id"].(int)
+	params.EnvironmentName = packed["environment_name"].(string)
+	params.SecretName = packed["secret_name"].(string)
 	return params
 }
 
@@ -3163,9 +3005,7 @@ type ActionsGetGithubActionsPermissionsOrganizationParams struct {
 }
 
 func unpackActionsGetGithubActionsPermissionsOrganizationParams(packed map[string]any) (params ActionsGetGithubActionsPermissionsOrganizationParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -3210,12 +3050,8 @@ type ActionsGetGithubActionsPermissionsRepositoryParams struct {
 }
 
 func unpackActionsGetGithubActionsPermissionsRepositoryParams(packed map[string]any) (params ActionsGetGithubActionsPermissionsRepositoryParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -3293,15 +3129,9 @@ type ActionsGetJobForWorkflowRunParams struct {
 }
 
 func unpackActionsGetJobForWorkflowRunParams(packed map[string]any) (params ActionsGetJobForWorkflowRunParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["job_id"]; ok {
-		params.JobID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.JobID = packed["job_id"].(int)
 	return params
 }
 
@@ -3407,9 +3237,7 @@ type ActionsGetOrgPublicKeyParams struct {
 }
 
 func unpackActionsGetOrgPublicKeyParams(packed map[string]any) (params ActionsGetOrgPublicKeyParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -3455,12 +3283,8 @@ type ActionsGetOrgSecretParams struct {
 }
 
 func unpackActionsGetOrgSecretParams(packed map[string]any) (params ActionsGetOrgSecretParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["secret_name"]; ok {
-		params.SecretName, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.SecretName = packed["secret_name"].(string)
 	return params
 }
 
@@ -3536,12 +3360,8 @@ type ActionsGetRepoPublicKeyParams struct {
 }
 
 func unpackActionsGetRepoPublicKeyParams(packed map[string]any) (params ActionsGetRepoPublicKeyParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -3619,15 +3439,9 @@ type ActionsGetRepoSecretParams struct {
 }
 
 func unpackActionsGetRepoSecretParams(packed map[string]any) (params ActionsGetRepoSecretParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["secret_name"]; ok {
-		params.SecretName, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.SecretName = packed["secret_name"].(string)
 	return params
 }
 
@@ -3736,15 +3550,9 @@ type ActionsGetReviewsForRunParams struct {
 }
 
 func unpackActionsGetReviewsForRunParams(packed map[string]any) (params ActionsGetReviewsForRunParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["run_id"]; ok {
-		params.RunID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.RunID = packed["run_id"].(int)
 	return params
 }
 
@@ -3852,12 +3660,8 @@ type ActionsGetSelfHostedRunnerForOrgParams struct {
 }
 
 func unpackActionsGetSelfHostedRunnerForOrgParams(packed map[string]any) (params ActionsGetSelfHostedRunnerForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["runner_id"]; ok {
-		params.RunnerID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.RunnerID = packed["runner_id"].(int)
 	return params
 }
 
@@ -3935,15 +3739,9 @@ type ActionsGetSelfHostedRunnerForRepoParams struct {
 }
 
 func unpackActionsGetSelfHostedRunnerForRepoParams(packed map[string]any) (params ActionsGetSelfHostedRunnerForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["runner_id"]; ok {
-		params.RunnerID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.RunnerID = packed["runner_id"].(int)
 	return params
 }
 
@@ -4051,12 +3849,8 @@ type ActionsGetSelfHostedRunnerGroupForOrgParams struct {
 }
 
 func unpackActionsGetSelfHostedRunnerGroupForOrgParams(packed map[string]any) (params ActionsGetSelfHostedRunnerGroupForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
 	return params
 }
 
@@ -4134,15 +3928,9 @@ type ActionsGetWorkflowRunParams struct {
 }
 
 func unpackActionsGetWorkflowRunParams(packed map[string]any) (params ActionsGetWorkflowRunParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["run_id"]; ok {
-		params.RunID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.RunID = packed["run_id"].(int)
 	return params
 }
 
@@ -4251,15 +4039,9 @@ type ActionsGetWorkflowRunUsageParams struct {
 }
 
 func unpackActionsGetWorkflowRunUsageParams(packed map[string]any) (params ActionsGetWorkflowRunUsageParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["run_id"]; ok {
-		params.RunID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.RunID = packed["run_id"].(int)
 	return params
 }
 
@@ -4370,17 +4152,13 @@ type ActionsListArtifactsForRepoParams struct {
 }
 
 func unpackActionsListArtifactsForRepoParams(packed map[string]any) (params ActionsListArtifactsForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -4541,17 +4319,13 @@ type ActionsListEnvironmentSecretsParams struct {
 }
 
 func unpackActionsListEnvironmentSecretsParams(packed map[string]any) (params ActionsListEnvironmentSecretsParams) {
-	if v, ok := packed["repository_id"]; ok {
-		params.RepositoryID, _ = v.(int)
-	}
-	if v, ok := packed["environment_name"]; ok {
-		params.EnvironmentName, _ = v.(string)
-	}
+	params.RepositoryID = packed["repository_id"].(int)
+	params.EnvironmentName = packed["environment_name"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -4717,23 +4491,17 @@ type ActionsListJobsForWorkflowRunParams struct {
 }
 
 func unpackActionsListJobsForWorkflowRunParams(packed map[string]any) (params ActionsListJobsForWorkflowRunParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["run_id"]; ok {
-		params.RunID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.RunID = packed["run_id"].(int)
 	if v, ok := packed["filter"]; ok {
-		params.Filter, _ = v.(OptActionsListJobsForWorkflowRunFilter)
+		params.Filter = v.(OptActionsListJobsForWorkflowRunFilter)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -4977,14 +4745,12 @@ type ActionsListOrgSecretsParams struct {
 }
 
 func unpackActionsListOrgSecretsParams(packed map[string]any) (params ActionsListOrgSecretsParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -5114,17 +4880,13 @@ type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 }
 
 func unpackActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(packed map[string]any) (params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	return params
 }
@@ -5284,17 +5046,13 @@ type ActionsListRepoSecretsParams struct {
 }
 
 func unpackActionsListRepoSecretsParams(packed map[string]any) (params ActionsListRepoSecretsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -5454,17 +5212,13 @@ type ActionsListRepoWorkflowsParams struct {
 }
 
 func unpackActionsListRepoWorkflowsParams(packed map[string]any) (params ActionsListRepoWorkflowsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -5619,9 +5373,7 @@ type ActionsListRunnerApplicationsForOrgParams struct {
 }
 
 func unpackActionsListRunnerApplicationsForOrgParams(packed map[string]any) (params ActionsListRunnerApplicationsForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -5666,12 +5418,8 @@ type ActionsListRunnerApplicationsForRepoParams struct {
 }
 
 func unpackActionsListRunnerApplicationsForRepoParams(packed map[string]any) (params ActionsListRunnerApplicationsForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -5752,17 +5500,13 @@ type ActionsListSelectedReposForOrgSecretParams struct {
 }
 
 func unpackActionsListSelectedReposForOrgSecretParams(packed map[string]any) (params ActionsListSelectedReposForOrgSecretParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["secret_name"]; ok {
-		params.SecretName, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.SecretName = packed["secret_name"].(string)
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	return params
 }
@@ -5921,14 +5665,12 @@ type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams struc
 }
 
 func unpackActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(packed map[string]any) (params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -6056,14 +5798,12 @@ type ActionsListSelfHostedRunnerGroupsForOrgParams struct {
 }
 
 func unpackActionsListSelfHostedRunnerGroupsForOrgParams(packed map[string]any) (params ActionsListSelfHostedRunnerGroupsForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -6191,14 +5931,12 @@ type ActionsListSelfHostedRunnersForOrgParams struct {
 }
 
 func unpackActionsListSelfHostedRunnersForOrgParams(packed map[string]any) (params ActionsListSelfHostedRunnersForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -6327,17 +6065,13 @@ type ActionsListSelfHostedRunnersForRepoParams struct {
 }
 
 func unpackActionsListSelfHostedRunnersForRepoParams(packed map[string]any) (params ActionsListSelfHostedRunnersForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -6498,17 +6232,13 @@ type ActionsListSelfHostedRunnersInGroupForOrgParams struct {
 }
 
 func unpackActionsListSelfHostedRunnersInGroupForOrgParams(packed map[string]any) (params ActionsListSelfHostedRunnersInGroupForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -6670,20 +6400,14 @@ type ActionsListWorkflowRunArtifactsParams struct {
 }
 
 func unpackActionsListWorkflowRunArtifactsParams(packed map[string]any) (params ActionsListWorkflowRunArtifactsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["run_id"]; ok {
-		params.RunID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.RunID = packed["run_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -6889,32 +6613,28 @@ type ActionsListWorkflowRunsForRepoParams struct {
 }
 
 func unpackActionsListWorkflowRunsForRepoParams(packed map[string]any) (params ActionsListWorkflowRunsForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["actor"]; ok {
-		params.Actor, _ = v.(OptString)
+		params.Actor = v.(OptString)
 	}
 	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(OptString)
+		params.Branch = v.(OptString)
 	}
 	if v, ok := packed["event"]; ok {
-		params.Event, _ = v.(OptString)
+		params.Event = v.(OptString)
 	}
 	if v, ok := packed["status"]; ok {
-		params.Status, _ = v.(OptActionsListWorkflowRunsForRepoStatus)
+		params.Status = v.(OptActionsListWorkflowRunsForRepoStatus)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["created"]; ok {
-		params.Created, _ = v.(OptDateTime)
+		params.Created = v.(OptDateTime)
 	}
 	return params
 }
@@ -7257,15 +6977,9 @@ type ActionsReRunWorkflowParams struct {
 }
 
 func unpackActionsReRunWorkflowParams(packed map[string]any) (params ActionsReRunWorkflowParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["run_id"]; ok {
-		params.RunID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.RunID = packed["run_id"].(int)
 	return params
 }
 
@@ -7374,15 +7088,9 @@ type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 }
 
 func unpackActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(packed map[string]any) (params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
-	if v, ok := packed["repository_id"]; ok {
-		params.RepositoryID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
+	params.RepositoryID = packed["repository_id"].(int)
 	return params
 }
 
@@ -7491,15 +7199,9 @@ type ActionsRemoveSelectedRepoFromOrgSecretParams struct {
 }
 
 func unpackActionsRemoveSelectedRepoFromOrgSecretParams(packed map[string]any) (params ActionsRemoveSelectedRepoFromOrgSecretParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["secret_name"]; ok {
-		params.SecretName, _ = v.(string)
-	}
-	if v, ok := packed["repository_id"]; ok {
-		params.RepositoryID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.SecretName = packed["secret_name"].(string)
+	params.RepositoryID = packed["repository_id"].(int)
 	return params
 }
 
@@ -7609,15 +7311,9 @@ type ActionsRemoveSelfHostedRunnerFromGroupForOrgParams struct {
 }
 
 func unpackActionsRemoveSelfHostedRunnerFromGroupForOrgParams(packed map[string]any) (params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
-	if v, ok := packed["runner_id"]; ok {
-		params.RunnerID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
+	params.RunnerID = packed["runner_id"].(int)
 	return params
 }
 
@@ -7726,15 +7422,9 @@ type ActionsRetryWorkflowParams struct {
 }
 
 func unpackActionsRetryWorkflowParams(packed map[string]any) (params ActionsRetryWorkflowParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["run_id"]; ok {
-		params.RunID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.RunID = packed["run_id"].(int)
 	return params
 }
 
@@ -7843,15 +7533,9 @@ type ActionsReviewPendingDeploymentsForRunParams struct {
 }
 
 func unpackActionsReviewPendingDeploymentsForRunParams(packed map[string]any) (params ActionsReviewPendingDeploymentsForRunParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["run_id"]; ok {
-		params.RunID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.RunID = packed["run_id"].(int)
 	return params
 }
 
@@ -7957,9 +7641,7 @@ type ActionsSetAllowedActionsOrganizationParams struct {
 }
 
 func unpackActionsSetAllowedActionsOrganizationParams(packed map[string]any) (params ActionsSetAllowedActionsOrganizationParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -8004,12 +7686,8 @@ type ActionsSetAllowedActionsRepositoryParams struct {
 }
 
 func unpackActionsSetAllowedActionsRepositoryParams(packed map[string]any) (params ActionsSetAllowedActionsRepositoryParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -8084,9 +7762,7 @@ type ActionsSetGithubActionsPermissionsOrganizationParams struct {
 }
 
 func unpackActionsSetGithubActionsPermissionsOrganizationParams(packed map[string]any) (params ActionsSetGithubActionsPermissionsOrganizationParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -8131,12 +7807,8 @@ type ActionsSetGithubActionsPermissionsRepositoryParams struct {
 }
 
 func unpackActionsSetGithubActionsPermissionsRepositoryParams(packed map[string]any) (params ActionsSetGithubActionsPermissionsRepositoryParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -8213,12 +7885,8 @@ type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 }
 
 func unpackActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(packed map[string]any) (params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
 	return params
 }
 
@@ -8295,12 +7963,8 @@ type ActionsSetSelectedReposForOrgSecretParams struct {
 }
 
 func unpackActionsSetSelectedReposForOrgSecretParams(packed map[string]any) (params ActionsSetSelectedReposForOrgSecretParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["secret_name"]; ok {
-		params.SecretName, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.SecretName = packed["secret_name"].(string)
 	return params
 }
 
@@ -8375,9 +8039,7 @@ type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams struct
 }
 
 func unpackActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(packed map[string]any) (params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -8423,12 +8085,8 @@ type ActionsSetSelfHostedRunnersInGroupForOrgParams struct {
 }
 
 func unpackActionsSetSelfHostedRunnersInGroupForOrgParams(packed map[string]any) (params ActionsSetSelfHostedRunnersInGroupForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
 	return params
 }
 
@@ -8505,12 +8163,8 @@ type ActionsUpdateSelfHostedRunnerGroupForOrgParams struct {
 }
 
 func unpackActionsUpdateSelfHostedRunnerGroupForOrgParams(packed map[string]any) (params ActionsUpdateSelfHostedRunnerGroupForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
 	return params
 }
 
@@ -8586,12 +8240,8 @@ type ActivityCheckRepoIsStarredByAuthenticatedUserParams struct {
 }
 
 func unpackActivityCheckRepoIsStarredByAuthenticatedUserParams(packed map[string]any) (params ActivityCheckRepoIsStarredByAuthenticatedUserParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -8667,12 +8317,8 @@ type ActivityDeleteRepoSubscriptionParams struct {
 }
 
 func unpackActivityDeleteRepoSubscriptionParams(packed map[string]any) (params ActivityDeleteRepoSubscriptionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -8748,9 +8394,7 @@ type ActivityDeleteThreadSubscriptionParams struct {
 }
 
 func unpackActivityDeleteThreadSubscriptionParams(packed map[string]any) (params ActivityDeleteThreadSubscriptionParams) {
-	if v, ok := packed["thread_id"]; ok {
-		params.ThreadID, _ = v.(int)
-	}
+	params.ThreadID = packed["thread_id"].(int)
 	return params
 }
 
@@ -8795,12 +8439,8 @@ type ActivityGetRepoSubscriptionParams struct {
 }
 
 func unpackActivityGetRepoSubscriptionParams(packed map[string]any) (params ActivityGetRepoSubscriptionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -8876,9 +8516,7 @@ type ActivityGetThreadParams struct {
 }
 
 func unpackActivityGetThreadParams(packed map[string]any) (params ActivityGetThreadParams) {
-	if v, ok := packed["thread_id"]; ok {
-		params.ThreadID, _ = v.(int)
-	}
+	params.ThreadID = packed["thread_id"].(int)
 	return params
 }
 
@@ -8923,9 +8561,7 @@ type ActivityGetThreadSubscriptionForAuthenticatedUserParams struct {
 }
 
 func unpackActivityGetThreadSubscriptionForAuthenticatedUserParams(packed map[string]any) (params ActivityGetThreadSubscriptionForAuthenticatedUserParams) {
-	if v, ok := packed["thread_id"]; ok {
-		params.ThreadID, _ = v.(int)
-	}
+	params.ThreadID = packed["thread_id"].(int)
 	return params
 }
 
@@ -8973,14 +8609,12 @@ type ActivityListEventsForAuthenticatedUserParams struct {
 }
 
 func unpackActivityListEventsForAuthenticatedUserParams(packed map[string]any) (params ActivityListEventsForAuthenticatedUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -9118,22 +8752,22 @@ type ActivityListNotificationsForAuthenticatedUserParams struct {
 
 func unpackActivityListNotificationsForAuthenticatedUserParams(packed map[string]any) (params ActivityListNotificationsForAuthenticatedUserParams) {
 	if v, ok := packed["all"]; ok {
-		params.All, _ = v.(OptBool)
+		params.All = v.(OptBool)
 	}
 	if v, ok := packed["participating"]; ok {
-		params.Participating, _ = v.(OptBool)
+		params.Participating = v.(OptBool)
 	}
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptDateTime)
+		params.Since = v.(OptDateTime)
 	}
 	if v, ok := packed["before"]; ok {
-		params.Before, _ = v.(OptDateTime)
+		params.Before = v.(OptDateTime)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -9377,17 +9011,13 @@ type ActivityListOrgEventsForAuthenticatedUserParams struct {
 }
 
 func unpackActivityListOrgEventsForAuthenticatedUserParams(packed map[string]any) (params ActivityListOrgEventsForAuthenticatedUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
+	params.Org = packed["org"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -9546,10 +9176,10 @@ type ActivityListPublicEventsParams struct {
 
 func unpackActivityListPublicEventsParams(packed map[string]any) (params ActivityListPublicEventsParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -9647,17 +9277,13 @@ type ActivityListPublicEventsForRepoNetworkParams struct {
 }
 
 func unpackActivityListPublicEventsForRepoNetworkParams(packed map[string]any) (params ActivityListPublicEventsForRepoNetworkParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -9816,14 +9442,12 @@ type ActivityListPublicEventsForUserParams struct {
 }
 
 func unpackActivityListPublicEventsForUserParams(packed map[string]any) (params ActivityListPublicEventsForUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -9951,14 +9575,12 @@ type ActivityListPublicOrgEventsParams struct {
 }
 
 func unpackActivityListPublicOrgEventsParams(packed map[string]any) (params ActivityListPublicOrgEventsParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -10086,14 +9708,12 @@ type ActivityListReceivedEventsForUserParams struct {
 }
 
 func unpackActivityListReceivedEventsForUserParams(packed map[string]any) (params ActivityListReceivedEventsForUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -10221,14 +9841,12 @@ type ActivityListReceivedPublicEventsForUserParams struct {
 }
 
 func unpackActivityListReceivedPublicEventsForUserParams(packed map[string]any) (params ActivityListReceivedPublicEventsForUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -10357,17 +9975,13 @@ type ActivityListRepoEventsParams struct {
 }
 
 func unpackActivityListRepoEventsParams(packed map[string]any) (params ActivityListRepoEventsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -10537,29 +10151,25 @@ type ActivityListRepoNotificationsForAuthenticatedUserParams struct {
 }
 
 func unpackActivityListRepoNotificationsForAuthenticatedUserParams(packed map[string]any) (params ActivityListRepoNotificationsForAuthenticatedUserParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["all"]; ok {
-		params.All, _ = v.(OptBool)
+		params.All = v.(OptBool)
 	}
 	if v, ok := packed["participating"]; ok {
-		params.Participating, _ = v.(OptBool)
+		params.Participating = v.(OptBool)
 	}
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptDateTime)
+		params.Since = v.(OptDateTime)
 	}
 	if v, ok := packed["before"]; ok {
-		params.Before, _ = v.(OptDateTime)
+		params.Before = v.(OptDateTime)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -10868,16 +10478,16 @@ type ActivityListReposStarredByAuthenticatedUserParams struct {
 
 func unpackActivityListReposStarredByAuthenticatedUserParams(packed map[string]any) (params ActivityListReposStarredByAuthenticatedUserParams) {
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptActivityListReposStarredByAuthenticatedUserSort)
+		params.Sort = v.(OptActivityListReposStarredByAuthenticatedUserSort)
 	}
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptActivityListReposStarredByAuthenticatedUserDirection)
+		params.Direction = v.(OptActivityListReposStarredByAuthenticatedUserDirection)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -11082,14 +10692,12 @@ type ActivityListReposWatchedByUserParams struct {
 }
 
 func unpackActivityListReposWatchedByUserParams(packed map[string]any) (params ActivityListReposWatchedByUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -11217,10 +10825,10 @@ type ActivityListWatchedReposForAuthenticatedUserParams struct {
 
 func unpackActivityListWatchedReposForAuthenticatedUserParams(packed map[string]any) (params ActivityListWatchedReposForAuthenticatedUserParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -11318,17 +10926,13 @@ type ActivityListWatchersForRepoParams struct {
 }
 
 func unpackActivityListWatchersForRepoParams(packed map[string]any) (params ActivityListWatchersForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -11484,12 +11088,8 @@ type ActivityMarkRepoNotificationsAsReadParams struct {
 }
 
 func unpackActivityMarkRepoNotificationsAsReadParams(packed map[string]any) (params ActivityMarkRepoNotificationsAsReadParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -11565,9 +11165,7 @@ type ActivityMarkThreadAsReadParams struct {
 }
 
 func unpackActivityMarkThreadAsReadParams(packed map[string]any) (params ActivityMarkThreadAsReadParams) {
-	if v, ok := packed["thread_id"]; ok {
-		params.ThreadID, _ = v.(int)
-	}
+	params.ThreadID = packed["thread_id"].(int)
 	return params
 }
 
@@ -11612,12 +11210,8 @@ type ActivitySetRepoSubscriptionParams struct {
 }
 
 func unpackActivitySetRepoSubscriptionParams(packed map[string]any) (params ActivitySetRepoSubscriptionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -11693,9 +11287,7 @@ type ActivitySetThreadSubscriptionParams struct {
 }
 
 func unpackActivitySetThreadSubscriptionParams(packed map[string]any) (params ActivitySetThreadSubscriptionParams) {
-	if v, ok := packed["thread_id"]; ok {
-		params.ThreadID, _ = v.(int)
-	}
+	params.ThreadID = packed["thread_id"].(int)
 	return params
 }
 
@@ -11740,12 +11332,8 @@ type ActivityStarRepoForAuthenticatedUserParams struct {
 }
 
 func unpackActivityStarRepoForAuthenticatedUserParams(packed map[string]any) (params ActivityStarRepoForAuthenticatedUserParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -11821,12 +11409,8 @@ type ActivityUnstarRepoForAuthenticatedUserParams struct {
 }
 
 func unpackActivityUnstarRepoForAuthenticatedUserParams(packed map[string]any) (params ActivityUnstarRepoForAuthenticatedUserParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -11903,12 +11487,8 @@ type AppsAddRepoToInstallationParams struct {
 }
 
 func unpackAppsAddRepoToInstallationParams(packed map[string]any) (params AppsAddRepoToInstallationParams) {
-	if v, ok := packed["installation_id"]; ok {
-		params.InstallationID, _ = v.(int)
-	}
-	if v, ok := packed["repository_id"]; ok {
-		params.RepositoryID, _ = v.(int)
-	}
+	params.InstallationID = packed["installation_id"].(int)
+	params.RepositoryID = packed["repository_id"].(int)
 	return params
 }
 
@@ -11984,9 +11564,7 @@ type AppsCheckTokenParams struct {
 }
 
 func unpackAppsCheckTokenParams(packed map[string]any) (params AppsCheckTokenParams) {
-	if v, ok := packed["client_id"]; ok {
-		params.ClientID, _ = v.(string)
-	}
+	params.ClientID = packed["client_id"].(string)
 	return params
 }
 
@@ -12037,15 +11615,9 @@ type AppsCreateContentAttachmentParams struct {
 }
 
 func unpackAppsCreateContentAttachmentParams(packed map[string]any) (params AppsCreateContentAttachmentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["content_reference_id"]; ok {
-		params.ContentReferenceID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.ContentReferenceID = packed["content_reference_id"].(int)
 	return params
 }
 
@@ -12151,9 +11723,7 @@ type AppsCreateFromManifestParams struct {
 }
 
 func unpackAppsCreateFromManifestParams(packed map[string]any) (params AppsCreateFromManifestParams) {
-	if v, ok := packed["code"]; ok {
-		params.Code, _ = v.(string)
-	}
+	params.Code = packed["code"].(string)
 	return params
 }
 
@@ -12198,9 +11768,7 @@ type AppsCreateInstallationAccessTokenParams struct {
 }
 
 func unpackAppsCreateInstallationAccessTokenParams(packed map[string]any) (params AppsCreateInstallationAccessTokenParams) {
-	if v, ok := packed["installation_id"]; ok {
-		params.InstallationID, _ = v.(int)
-	}
+	params.InstallationID = packed["installation_id"].(int)
 	return params
 }
 
@@ -12245,9 +11813,7 @@ type AppsDeleteAuthorizationParams struct {
 }
 
 func unpackAppsDeleteAuthorizationParams(packed map[string]any) (params AppsDeleteAuthorizationParams) {
-	if v, ok := packed["client_id"]; ok {
-		params.ClientID, _ = v.(string)
-	}
+	params.ClientID = packed["client_id"].(string)
 	return params
 }
 
@@ -12292,9 +11858,7 @@ type AppsDeleteInstallationParams struct {
 }
 
 func unpackAppsDeleteInstallationParams(packed map[string]any) (params AppsDeleteInstallationParams) {
-	if v, ok := packed["installation_id"]; ok {
-		params.InstallationID, _ = v.(int)
-	}
+	params.InstallationID = packed["installation_id"].(int)
 	return params
 }
 
@@ -12339,9 +11903,7 @@ type AppsDeleteTokenParams struct {
 }
 
 func unpackAppsDeleteTokenParams(packed map[string]any) (params AppsDeleteTokenParams) {
-	if v, ok := packed["client_id"]; ok {
-		params.ClientID, _ = v.(string)
-	}
+	params.ClientID = packed["client_id"].(string)
 	return params
 }
 
@@ -12385,9 +11947,7 @@ type AppsGetBySlugParams struct {
 }
 
 func unpackAppsGetBySlugParams(packed map[string]any) (params AppsGetBySlugParams) {
-	if v, ok := packed["app_slug"]; ok {
-		params.AppSlug, _ = v.(string)
-	}
+	params.AppSlug = packed["app_slug"].(string)
 	return params
 }
 
@@ -12432,9 +11992,7 @@ type AppsGetSubscriptionPlanForAccountParams struct {
 }
 
 func unpackAppsGetSubscriptionPlanForAccountParams(packed map[string]any) (params AppsGetSubscriptionPlanForAccountParams) {
-	if v, ok := packed["account_id"]; ok {
-		params.AccountID, _ = v.(int)
-	}
+	params.AccountID = packed["account_id"].(int)
 	return params
 }
 
@@ -12479,9 +12037,7 @@ type AppsGetSubscriptionPlanForAccountStubbedParams struct {
 }
 
 func unpackAppsGetSubscriptionPlanForAccountStubbedParams(packed map[string]any) (params AppsGetSubscriptionPlanForAccountStubbedParams) {
-	if v, ok := packed["account_id"]; ok {
-		params.AccountID, _ = v.(int)
-	}
+	params.AccountID = packed["account_id"].(int)
 	return params
 }
 
@@ -12525,9 +12081,7 @@ type AppsGetWebhookDeliveryParams struct {
 }
 
 func unpackAppsGetWebhookDeliveryParams(packed map[string]any) (params AppsGetWebhookDeliveryParams) {
-	if v, ok := packed["delivery_id"]; ok {
-		params.DeliveryID, _ = v.(int)
-	}
+	params.DeliveryID = packed["delivery_id"].(int)
 	return params
 }
 
@@ -12581,20 +12135,18 @@ type AppsListAccountsForPlanParams struct {
 }
 
 func unpackAppsListAccountsForPlanParams(packed map[string]any) (params AppsListAccountsForPlanParams) {
-	if v, ok := packed["plan_id"]; ok {
-		params.PlanID, _ = v.(int)
-	}
+	params.PlanID = packed["plan_id"].(int)
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptAppsListAccountsForPlanSort)
+		params.Sort = v.(OptAppsListAccountsForPlanSort)
 	}
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptAppsListAccountsForPlanDirection)
+		params.Direction = v.(OptAppsListAccountsForPlanDirection)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -12831,20 +12383,18 @@ type AppsListAccountsForPlanStubbedParams struct {
 }
 
 func unpackAppsListAccountsForPlanStubbedParams(packed map[string]any) (params AppsListAccountsForPlanStubbedParams) {
-	if v, ok := packed["plan_id"]; ok {
-		params.PlanID, _ = v.(int)
-	}
+	params.PlanID = packed["plan_id"].(int)
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptAppsListAccountsForPlanStubbedSort)
+		params.Sort = v.(OptAppsListAccountsForPlanStubbedSort)
 	}
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptAppsListAccountsForPlanStubbedDirection)
+		params.Direction = v.(OptAppsListAccountsForPlanStubbedDirection)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -13076,14 +12626,12 @@ type AppsListInstallationReposForAuthenticatedUserParams struct {
 }
 
 func unpackAppsListInstallationReposForAuthenticatedUserParams(packed map[string]any) (params AppsListInstallationReposForAuthenticatedUserParams) {
-	if v, ok := packed["installation_id"]; ok {
-		params.InstallationID, _ = v.(int)
-	}
+	params.InstallationID = packed["installation_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -13211,10 +12759,10 @@ type AppsListPlansParams struct {
 
 func unpackAppsListPlansParams(packed map[string]any) (params AppsListPlansParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -13311,10 +12859,10 @@ type AppsListPlansStubbedParams struct {
 
 func unpackAppsListPlansStubbedParams(packed map[string]any) (params AppsListPlansStubbedParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -13411,10 +12959,10 @@ type AppsListReposAccessibleToInstallationParams struct {
 
 func unpackAppsListReposAccessibleToInstallationParams(packed map[string]any) (params AppsListReposAccessibleToInstallationParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -13511,10 +13059,10 @@ type AppsListSubscriptionsForAuthenticatedUserParams struct {
 
 func unpackAppsListSubscriptionsForAuthenticatedUserParams(packed map[string]any) (params AppsListSubscriptionsForAuthenticatedUserParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -13611,10 +13159,10 @@ type AppsListSubscriptionsForAuthenticatedUserStubbedParams struct {
 
 func unpackAppsListSubscriptionsForAuthenticatedUserStubbedParams(packed map[string]any) (params AppsListSubscriptionsForAuthenticatedUserStubbedParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -13712,10 +13260,10 @@ type AppsListWebhookDeliveriesParams struct {
 
 func unpackAppsListWebhookDeliveriesParams(packed map[string]any) (params AppsListWebhookDeliveriesParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["cursor"]; ok {
-		params.Cursor, _ = v.(OptString)
+		params.Cursor = v.(OptString)
 	}
 	return params
 }
@@ -13803,9 +13351,7 @@ type AppsRedeliverWebhookDeliveryParams struct {
 }
 
 func unpackAppsRedeliverWebhookDeliveryParams(packed map[string]any) (params AppsRedeliverWebhookDeliveryParams) {
-	if v, ok := packed["delivery_id"]; ok {
-		params.DeliveryID, _ = v.(int)
-	}
+	params.DeliveryID = packed["delivery_id"].(int)
 	return params
 }
 
@@ -13851,12 +13397,8 @@ type AppsRemoveRepoFromInstallationParams struct {
 }
 
 func unpackAppsRemoveRepoFromInstallationParams(packed map[string]any) (params AppsRemoveRepoFromInstallationParams) {
-	if v, ok := packed["installation_id"]; ok {
-		params.InstallationID, _ = v.(int)
-	}
-	if v, ok := packed["repository_id"]; ok {
-		params.RepositoryID, _ = v.(int)
-	}
+	params.InstallationID = packed["installation_id"].(int)
+	params.RepositoryID = packed["repository_id"].(int)
 	return params
 }
 
@@ -13932,9 +13474,7 @@ type AppsResetTokenParams struct {
 }
 
 func unpackAppsResetTokenParams(packed map[string]any) (params AppsResetTokenParams) {
-	if v, ok := packed["client_id"]; ok {
-		params.ClientID, _ = v.(string)
-	}
+	params.ClientID = packed["client_id"].(string)
 	return params
 }
 
@@ -13979,9 +13519,7 @@ type AppsScopeTokenParams struct {
 }
 
 func unpackAppsScopeTokenParams(packed map[string]any) (params AppsScopeTokenParams) {
-	if v, ok := packed["client_id"]; ok {
-		params.ClientID, _ = v.(string)
-	}
+	params.ClientID = packed["client_id"].(string)
 	return params
 }
 
@@ -14026,9 +13564,7 @@ type AppsSuspendInstallationParams struct {
 }
 
 func unpackAppsSuspendInstallationParams(packed map[string]any) (params AppsSuspendInstallationParams) {
-	if v, ok := packed["installation_id"]; ok {
-		params.InstallationID, _ = v.(int)
-	}
+	params.InstallationID = packed["installation_id"].(int)
 	return params
 }
 
@@ -14073,9 +13609,7 @@ type AppsUnsuspendInstallationParams struct {
 }
 
 func unpackAppsUnsuspendInstallationParams(packed map[string]any) (params AppsUnsuspendInstallationParams) {
-	if v, ok := packed["installation_id"]; ok {
-		params.InstallationID, _ = v.(int)
-	}
+	params.InstallationID = packed["installation_id"].(int)
 	return params
 }
 
@@ -14120,9 +13654,7 @@ type BillingGetGithubActionsBillingGheParams struct {
 }
 
 func unpackBillingGetGithubActionsBillingGheParams(packed map[string]any) (params BillingGetGithubActionsBillingGheParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	return params
 }
 
@@ -14166,9 +13698,7 @@ type BillingGetGithubActionsBillingOrgParams struct {
 }
 
 func unpackBillingGetGithubActionsBillingOrgParams(packed map[string]any) (params BillingGetGithubActionsBillingOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -14212,9 +13742,7 @@ type BillingGetGithubActionsBillingUserParams struct {
 }
 
 func unpackBillingGetGithubActionsBillingUserParams(packed map[string]any) (params BillingGetGithubActionsBillingUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -14259,9 +13787,7 @@ type BillingGetGithubPackagesBillingGheParams struct {
 }
 
 func unpackBillingGetGithubPackagesBillingGheParams(packed map[string]any) (params BillingGetGithubPackagesBillingGheParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	return params
 }
 
@@ -14305,9 +13831,7 @@ type BillingGetGithubPackagesBillingOrgParams struct {
 }
 
 func unpackBillingGetGithubPackagesBillingOrgParams(packed map[string]any) (params BillingGetGithubPackagesBillingOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -14351,9 +13875,7 @@ type BillingGetGithubPackagesBillingUserParams struct {
 }
 
 func unpackBillingGetGithubPackagesBillingUserParams(packed map[string]any) (params BillingGetGithubPackagesBillingUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -14398,9 +13920,7 @@ type BillingGetSharedStorageBillingGheParams struct {
 }
 
 func unpackBillingGetSharedStorageBillingGheParams(packed map[string]any) (params BillingGetSharedStorageBillingGheParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	return params
 }
 
@@ -14444,9 +13964,7 @@ type BillingGetSharedStorageBillingOrgParams struct {
 }
 
 func unpackBillingGetSharedStorageBillingOrgParams(packed map[string]any) (params BillingGetSharedStorageBillingOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -14490,9 +14008,7 @@ type BillingGetSharedStorageBillingUserParams struct {
 }
 
 func unpackBillingGetSharedStorageBillingUserParams(packed map[string]any) (params BillingGetSharedStorageBillingUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -14537,12 +14053,8 @@ type ChecksCreateSuiteParams struct {
 }
 
 func unpackChecksCreateSuiteParams(packed map[string]any) (params ChecksCreateSuiteParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -14620,15 +14132,9 @@ type ChecksGetParams struct {
 }
 
 func unpackChecksGetParams(packed map[string]any) (params ChecksGetParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["check_run_id"]; ok {
-		params.CheckRunID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CheckRunID = packed["check_run_id"].(int)
 	return params
 }
 
@@ -14737,15 +14243,9 @@ type ChecksGetSuiteParams struct {
 }
 
 func unpackChecksGetSuiteParams(packed map[string]any) (params ChecksGetSuiteParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["check_suite_id"]; ok {
-		params.CheckSuiteID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CheckSuiteID = packed["check_suite_id"].(int)
 	return params
 }
 
@@ -14858,20 +14358,14 @@ type ChecksListAnnotationsParams struct {
 }
 
 func unpackChecksListAnnotationsParams(packed map[string]any) (params ChecksListAnnotationsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["check_run_id"]; ok {
-		params.CheckRunID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CheckRunID = packed["check_run_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -15073,32 +14567,26 @@ type ChecksListForRefParams struct {
 }
 
 func unpackChecksListForRefParams(packed map[string]any) (params ChecksListForRefParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["ref"]; ok {
-		params.Ref, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Ref = packed["ref"].(string)
 	if v, ok := packed["check_name"]; ok {
-		params.CheckName, _ = v.(OptString)
+		params.CheckName = v.(OptString)
 	}
 	if v, ok := packed["status"]; ok {
-		params.Status, _ = v.(OptChecksListForRefStatus)
+		params.Status = v.(OptChecksListForRefStatus)
 	}
 	if v, ok := packed["filter"]; ok {
-		params.Filter, _ = v.(OptChecksListForRefFilter)
+		params.Filter = v.(OptChecksListForRefFilter)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["app_id"]; ok {
-		params.AppID, _ = v.(OptInt)
+		params.AppID = v.(OptInt)
 	}
 	return params
 }
@@ -15470,29 +14958,23 @@ type ChecksListForSuiteParams struct {
 }
 
 func unpackChecksListForSuiteParams(packed map[string]any) (params ChecksListForSuiteParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["check_suite_id"]; ok {
-		params.CheckSuiteID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CheckSuiteID = packed["check_suite_id"].(int)
 	if v, ok := packed["check_name"]; ok {
-		params.CheckName, _ = v.(OptString)
+		params.CheckName = v.(OptString)
 	}
 	if v, ok := packed["status"]; ok {
-		params.Status, _ = v.(OptChecksListForSuiteStatus)
+		params.Status = v.(OptChecksListForSuiteStatus)
 	}
 	if v, ok := packed["filter"]; ok {
-		params.Filter, _ = v.(OptChecksListForSuiteFilter)
+		params.Filter = v.(OptChecksListForSuiteFilter)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -15826,26 +15308,20 @@ type ChecksListSuitesForRefParams struct {
 }
 
 func unpackChecksListSuitesForRefParams(packed map[string]any) (params ChecksListSuitesForRefParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["ref"]; ok {
-		params.Ref, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Ref = packed["ref"].(string)
 	if v, ok := packed["app_id"]; ok {
-		params.AppID, _ = v.(OptInt)
+		params.AppID = v.(OptInt)
 	}
 	if v, ok := packed["check_name"]; ok {
-		params.CheckName, _ = v.(OptString)
+		params.CheckName = v.(OptString)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -16102,15 +15578,9 @@ type ChecksRerequestSuiteParams struct {
 }
 
 func unpackChecksRerequestSuiteParams(packed map[string]any) (params ChecksRerequestSuiteParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["check_suite_id"]; ok {
-		params.CheckSuiteID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CheckSuiteID = packed["check_suite_id"].(int)
 	return params
 }
 
@@ -16217,12 +15687,8 @@ type ChecksSetSuitesPreferencesParams struct {
 }
 
 func unpackChecksSetSuitesPreferencesParams(packed map[string]any) (params ChecksSetSuitesPreferencesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -16306,17 +15772,11 @@ type CodeScanningDeleteAnalysisParams struct {
 }
 
 func unpackCodeScanningDeleteAnalysisParams(packed map[string]any) (params CodeScanningDeleteAnalysisParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["analysis_id"]; ok {
-		params.AnalysisID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.AnalysisID = packed["analysis_id"].(int)
 	if v, ok := packed["confirm_delete"]; ok {
-		params.ConfirmDelete, _ = v.(OptNilString)
+		params.ConfirmDelete = v.(OptNilString)
 	}
 	return params
 }
@@ -16463,15 +15923,9 @@ type CodeScanningGetAlertParams struct {
 }
 
 func unpackCodeScanningGetAlertParams(packed map[string]any) (params CodeScanningGetAlertParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["alert_number"]; ok {
-		params.AlertNumber, _ = v.(AlertNumber)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.AlertNumber = packed["alert_number"].(AlertNumber)
 	return params
 }
 
@@ -16588,15 +16042,9 @@ type CodeScanningGetAnalysisParams struct {
 }
 
 func unpackCodeScanningGetAnalysisParams(packed map[string]any) (params CodeScanningGetAnalysisParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["analysis_id"]; ok {
-		params.AnalysisID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.AnalysisID = packed["analysis_id"].(int)
 	return params
 }
 
@@ -16705,15 +16153,9 @@ type CodeScanningGetSarifParams struct {
 }
 
 func unpackCodeScanningGetSarifParams(packed map[string]any) (params CodeScanningGetSarifParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["sarif_id"]; ok {
-		params.SarifID, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.SarifID = packed["sarif_id"].(string)
 	return params
 }
 
@@ -16832,23 +16274,17 @@ type CodeScanningListAlertInstancesParams struct {
 }
 
 func unpackCodeScanningListAlertInstancesParams(packed map[string]any) (params CodeScanningListAlertInstancesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["alert_number"]; ok {
-		params.AlertNumber, _ = v.(AlertNumber)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.AlertNumber = packed["alert_number"].(AlertNumber)
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["ref"]; ok {
-		params.Ref, _ = v.(OptCodeScanningRef)
+		params.Ref = v.(OptCodeScanningRef)
 	}
 	return params
 }
@@ -17100,29 +16536,25 @@ type CodeScanningListAlertsForRepoParams struct {
 }
 
 func unpackCodeScanningListAlertsForRepoParams(packed map[string]any) (params CodeScanningListAlertsForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["tool_name"]; ok {
-		params.ToolName, _ = v.(OptCodeScanningAnalysisToolName)
+		params.ToolName = v.(OptCodeScanningAnalysisToolName)
 	}
 	if v, ok := packed["tool_guid"]; ok {
-		params.ToolGUID, _ = v.(OptNilCodeScanningAnalysisToolGUID)
+		params.ToolGUID = v.(OptNilCodeScanningAnalysisToolGUID)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["ref"]; ok {
-		params.Ref, _ = v.(OptCodeScanningRef)
+		params.Ref = v.(OptCodeScanningRef)
 	}
 	if v, ok := packed["state"]; ok {
-		params.State, _ = v.(OptCodeScanningAlertState)
+		params.State = v.(OptCodeScanningAlertState)
 	}
 	return params
 }
@@ -17467,29 +16899,25 @@ type CodeScanningListRecentAnalysesParams struct {
 }
 
 func unpackCodeScanningListRecentAnalysesParams(packed map[string]any) (params CodeScanningListRecentAnalysesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["tool_name"]; ok {
-		params.ToolName, _ = v.(OptCodeScanningAnalysisToolName)
+		params.ToolName = v.(OptCodeScanningAnalysisToolName)
 	}
 	if v, ok := packed["tool_guid"]; ok {
-		params.ToolGUID, _ = v.(OptNilCodeScanningAnalysisToolGUID)
+		params.ToolGUID = v.(OptNilCodeScanningAnalysisToolGUID)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["ref"]; ok {
-		params.Ref, _ = v.(OptCodeScanningRef)
+		params.Ref = v.(OptCodeScanningRef)
 	}
 	if v, ok := packed["sarif_id"]; ok {
-		params.SarifID, _ = v.(OptCodeScanningAnalysisSarifID)
+		params.SarifID = v.(OptCodeScanningAnalysisSarifID)
 	}
 	return params
 }
@@ -17813,15 +17241,9 @@ type CodeScanningUpdateAlertParams struct {
 }
 
 func unpackCodeScanningUpdateAlertParams(packed map[string]any) (params CodeScanningUpdateAlertParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["alert_number"]; ok {
-		params.AlertNumber, _ = v.(AlertNumber)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.AlertNumber = packed["alert_number"].(AlertNumber)
 	return params
 }
 
@@ -17935,12 +17357,8 @@ type CodeScanningUploadSarifParams struct {
 }
 
 func unpackCodeScanningUploadSarifParams(packed map[string]any) (params CodeScanningUploadSarifParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -18015,9 +17433,7 @@ type CodesOfConductGetConductCodeParams struct {
 }
 
 func unpackCodesOfConductGetConductCodeParams(packed map[string]any) (params CodesOfConductGetConductCodeParams) {
-	if v, ok := packed["key"]; ok {
-		params.Key, _ = v.(string)
-	}
+	params.Key = packed["key"].(string)
 	return params
 }
 
@@ -18066,15 +17482,9 @@ type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct
 }
 
 func unpackEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(packed map[string]any) (params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
-	if v, ok := packed["org_id"]; ok {
-		params.OrgID, _ = v.(int)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
+	params.OrgID = packed["org_id"].(int)
 	return params
 }
 
@@ -18185,15 +17595,9 @@ type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(packed map[string]any) (params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
-	if v, ok := packed["runner_id"]; ok {
-		params.RunnerID, _ = v.(int)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
+	params.RunnerID = packed["runner_id"].(int)
 	return params
 }
 
@@ -18300,9 +17704,7 @@ type EnterpriseAdminCreateRegistrationTokenForEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(packed map[string]any) (params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	return params
 }
 
@@ -18347,9 +17749,7 @@ type EnterpriseAdminCreateRemoveTokenForEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminCreateRemoveTokenForEnterpriseParams(packed map[string]any) (params EnterpriseAdminCreateRemoveTokenForEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	return params
 }
 
@@ -18394,9 +17794,7 @@ type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(packed map[string]any) (params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	return params
 }
 
@@ -18443,12 +17841,8 @@ type EnterpriseAdminDeleteScimGroupFromEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminDeleteScimGroupFromEnterpriseParams(packed map[string]any) (params EnterpriseAdminDeleteScimGroupFromEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["scim_group_id"]; ok {
-		params.ScimGroupID, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.ScimGroupID = packed["scim_group_id"].(string)
 	return params
 }
 
@@ -18526,12 +17920,8 @@ type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(packed map[string]any) (params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["runner_id"]; ok {
-		params.RunnerID, _ = v.(int)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.RunnerID = packed["runner_id"].(int)
 	return params
 }
 
@@ -18609,12 +17999,8 @@ type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(packed map[string]any) (params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
 	return params
 }
 
@@ -18692,12 +18078,8 @@ type EnterpriseAdminDeleteUserFromEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminDeleteUserFromEnterpriseParams(packed map[string]any) (params EnterpriseAdminDeleteUserFromEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["scim_user_id"]; ok {
-		params.ScimUserID, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.ScimUserID = packed["scim_user_id"].(string)
 	return params
 }
 
@@ -18775,12 +18157,8 @@ type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams str
 }
 
 func unpackEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(packed map[string]any) (params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["org_id"]; ok {
-		params.OrgID, _ = v.(int)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.OrgID = packed["org_id"].(int)
 	return params
 }
 
@@ -18858,12 +18236,8 @@ type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams stru
 }
 
 func unpackEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(packed map[string]any) (params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["org_id"]; ok {
-		params.OrgID, _ = v.(int)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.OrgID = packed["org_id"].(int)
 	return params
 }
 
@@ -18939,9 +18313,7 @@ type EnterpriseAdminGetAllowedActionsEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminGetAllowedActionsEnterpriseParams(packed map[string]any) (params EnterpriseAdminGetAllowedActionsEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	return params
 }
 
@@ -19011,29 +18383,27 @@ type EnterpriseAdminGetAuditLogParams struct {
 }
 
 func unpackEnterpriseAdminGetAuditLogParams(packed map[string]any) (params EnterpriseAdminGetAuditLogParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	if v, ok := packed["phrase"]; ok {
-		params.Phrase, _ = v.(OptString)
+		params.Phrase = v.(OptString)
 	}
 	if v, ok := packed["include"]; ok {
-		params.Include, _ = v.(OptEnterpriseAdminGetAuditLogInclude)
+		params.Include = v.(OptEnterpriseAdminGetAuditLogInclude)
 	}
 	if v, ok := packed["after"]; ok {
-		params.After, _ = v.(OptString)
+		params.After = v.(OptString)
 	}
 	if v, ok := packed["before"]; ok {
-		params.Before, _ = v.(OptString)
+		params.Before = v.(OptString)
 	}
 	if v, ok := packed["order"]; ok {
-		params.Order, _ = v.(OptEnterpriseAdminGetAuditLogOrder)
+		params.Order = v.(OptEnterpriseAdminGetAuditLogOrder)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	return params
 }
@@ -19358,9 +18728,7 @@ type EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(packed map[string]any) (params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	return params
 }
 
@@ -19409,14 +18777,10 @@ type EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams struct {
 }
 
 func unpackEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(packed map[string]any) (params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["scim_group_id"]; ok {
-		params.ScimGroupID, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.ScimGroupID = packed["scim_group_id"].(string)
 	if v, ok := packed["excludedAttributes"]; ok {
-		params.ExcludedAttributes, _ = v.(OptString)
+		params.ExcludedAttributes = v.(OptString)
 	}
 	return params
 }
@@ -19530,12 +18894,8 @@ type EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams struct {
 }
 
 func unpackEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(packed map[string]any) (params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["scim_user_id"]; ok {
-		params.ScimUserID, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.ScimUserID = packed["scim_user_id"].(string)
 	return params
 }
 
@@ -19613,12 +18973,8 @@ type EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(packed map[string]any) (params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["runner_id"]; ok {
-		params.RunnerID, _ = v.(int)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.RunnerID = packed["runner_id"].(int)
 	return params
 }
 
@@ -19696,12 +19052,8 @@ type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(packed map[string]any) (params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
 	return params
 }
 
@@ -19783,17 +19135,13 @@ type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struc
 }
 
 func unpackEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(packed map[string]any) (params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -19957,20 +19305,18 @@ type EnterpriseAdminListProvisionedGroupsEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminListProvisionedGroupsEnterpriseParams(packed map[string]any) (params EnterpriseAdminListProvisionedGroupsEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	if v, ok := packed["startIndex"]; ok {
-		params.StartIndex, _ = v.(OptInt)
+		params.StartIndex = v.(OptInt)
 	}
 	if v, ok := packed["count"]; ok {
-		params.Count, _ = v.(OptInt)
+		params.Count = v.(OptInt)
 	}
 	if v, ok := packed["filter"]; ok {
-		params.Filter, _ = v.(OptString)
+		params.Filter = v.(OptString)
 	}
 	if v, ok := packed["excludedAttributes"]; ok {
-		params.ExcludedAttributes, _ = v.(OptString)
+		params.ExcludedAttributes = v.(OptString)
 	}
 	return params
 }
@@ -20159,17 +19505,15 @@ type EnterpriseAdminListProvisionedIdentitiesEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(packed map[string]any) (params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	if v, ok := packed["startIndex"]; ok {
-		params.StartIndex, _ = v.(OptInt)
+		params.StartIndex = v.(OptInt)
 	}
 	if v, ok := packed["count"]; ok {
-		params.Count, _ = v.(OptInt)
+		params.Count = v.(OptInt)
 	}
 	if v, ok := packed["filter"]; ok {
-		params.Filter, _ = v.(OptString)
+		params.Filter = v.(OptString)
 	}
 	return params
 }
@@ -20318,9 +19662,7 @@ type EnterpriseAdminListRunnerApplicationsForEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminListRunnerApplicationsForEnterpriseParams(packed map[string]any) (params EnterpriseAdminListRunnerApplicationsForEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	return params
 }
 
@@ -20369,14 +19711,12 @@ type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParam
 }
 
 func unpackEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(packed map[string]any) (params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -20505,14 +19845,12 @@ type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(packed map[string]any) (params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -20641,14 +19979,12 @@ type EnterpriseAdminListSelfHostedRunnersForEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(packed map[string]any) (params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -20779,17 +20115,13 @@ type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(packed map[string]any) (params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -20945,9 +20277,7 @@ type EnterpriseAdminProvisionAndInviteEnterpriseGroupParams struct {
 }
 
 func unpackEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(packed map[string]any) (params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	return params
 }
 
@@ -20992,9 +20322,7 @@ type EnterpriseAdminProvisionAndInviteEnterpriseUserParams struct {
 }
 
 func unpackEnterpriseAdminProvisionAndInviteEnterpriseUserParams(packed map[string]any) (params EnterpriseAdminProvisionAndInviteEnterpriseUserParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	return params
 }
 
@@ -21043,15 +20371,9 @@ type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams str
 }
 
 func unpackEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(packed map[string]any) (params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
-	if v, ok := packed["org_id"]; ok {
-		params.OrgID, _ = v.(int)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
+	params.OrgID = packed["org_id"].(int)
 	return params
 }
 
@@ -21162,15 +20484,9 @@ type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(packed map[string]any) (params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
-	if v, ok := packed["runner_id"]; ok {
-		params.RunnerID, _ = v.(int)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
+	params.RunnerID = packed["runner_id"].(int)
 	return params
 }
 
@@ -21277,9 +20593,7 @@ type EnterpriseAdminSetAllowedActionsEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminSetAllowedActionsEnterpriseParams(packed map[string]any) (params EnterpriseAdminSetAllowedActionsEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	return params
 }
 
@@ -21324,9 +20638,7 @@ type EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(packed map[string]any) (params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	return params
 }
 
@@ -21373,12 +20685,8 @@ type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams struct {
 }
 
 func unpackEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(packed map[string]any) (params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["scim_group_id"]; ok {
-		params.ScimGroupID, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.ScimGroupID = packed["scim_group_id"].(string)
 	return params
 }
 
@@ -21456,12 +20764,8 @@ type EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams struct {
 }
 
 func unpackEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(packed map[string]any) (params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["scim_user_id"]; ok {
-		params.ScimUserID, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.ScimUserID = packed["scim_user_id"].(string)
 	return params
 }
 
@@ -21539,12 +20843,8 @@ type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct
 }
 
 func unpackEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(packed map[string]any) (params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
 	return params
 }
 
@@ -21620,9 +20920,7 @@ type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams
 }
 
 func unpackEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(packed map[string]any) (params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
 	return params
 }
 
@@ -21669,12 +20967,8 @@ type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(packed map[string]any) (params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
 	return params
 }
 
@@ -21752,12 +21046,8 @@ type EnterpriseAdminUpdateAttributeForEnterpriseGroupParams struct {
 }
 
 func unpackEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(packed map[string]any) (params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["scim_group_id"]; ok {
-		params.ScimGroupID, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.ScimGroupID = packed["scim_group_id"].(string)
 	return params
 }
 
@@ -21835,12 +21125,8 @@ type EnterpriseAdminUpdateAttributeForEnterpriseUserParams struct {
 }
 
 func unpackEnterpriseAdminUpdateAttributeForEnterpriseUserParams(packed map[string]any) (params EnterpriseAdminUpdateAttributeForEnterpriseUserParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["scim_user_id"]; ok {
-		params.ScimUserID, _ = v.(string)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.ScimUserID = packed["scim_user_id"].(string)
 	return params
 }
 
@@ -21918,12 +21204,8 @@ type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams struct {
 }
 
 func unpackEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(packed map[string]any) (params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams) {
-	if v, ok := packed["enterprise"]; ok {
-		params.Enterprise, _ = v.(string)
-	}
-	if v, ok := packed["runner_group_id"]; ok {
-		params.RunnerGroupID, _ = v.(int)
-	}
+	params.Enterprise = packed["enterprise"].(string)
+	params.RunnerGroupID = packed["runner_group_id"].(int)
 	return params
 }
 
@@ -21999,9 +21281,7 @@ type GistsCheckIsStarredParams struct {
 }
 
 func unpackGistsCheckIsStarredParams(packed map[string]any) (params GistsCheckIsStarredParams) {
-	if v, ok := packed["gist_id"]; ok {
-		params.GistID, _ = v.(string)
-	}
+	params.GistID = packed["gist_id"].(string)
 	return params
 }
 
@@ -22046,9 +21326,7 @@ type GistsCreateCommentParams struct {
 }
 
 func unpackGistsCreateCommentParams(packed map[string]any) (params GistsCreateCommentParams) {
-	if v, ok := packed["gist_id"]; ok {
-		params.GistID, _ = v.(string)
-	}
+	params.GistID = packed["gist_id"].(string)
 	return params
 }
 
@@ -22093,9 +21371,7 @@ type GistsDeleteParams struct {
 }
 
 func unpackGistsDeleteParams(packed map[string]any) (params GistsDeleteParams) {
-	if v, ok := packed["gist_id"]; ok {
-		params.GistID, _ = v.(string)
-	}
+	params.GistID = packed["gist_id"].(string)
 	return params
 }
 
@@ -22142,12 +21418,8 @@ type GistsDeleteCommentParams struct {
 }
 
 func unpackGistsDeleteCommentParams(packed map[string]any) (params GistsDeleteCommentParams) {
-	if v, ok := packed["gist_id"]; ok {
-		params.GistID, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.GistID = packed["gist_id"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	return params
 }
 
@@ -22223,9 +21495,7 @@ type GistsForkParams struct {
 }
 
 func unpackGistsForkParams(packed map[string]any) (params GistsForkParams) {
-	if v, ok := packed["gist_id"]; ok {
-		params.GistID, _ = v.(string)
-	}
+	params.GistID = packed["gist_id"].(string)
 	return params
 }
 
@@ -22270,9 +21540,7 @@ type GistsGetParams struct {
 }
 
 func unpackGistsGetParams(packed map[string]any) (params GistsGetParams) {
-	if v, ok := packed["gist_id"]; ok {
-		params.GistID, _ = v.(string)
-	}
+	params.GistID = packed["gist_id"].(string)
 	return params
 }
 
@@ -22319,12 +21587,8 @@ type GistsGetCommentParams struct {
 }
 
 func unpackGistsGetCommentParams(packed map[string]any) (params GistsGetCommentParams) {
-	if v, ok := packed["gist_id"]; ok {
-		params.GistID, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.GistID = packed["gist_id"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	return params
 }
 
@@ -22401,12 +21665,8 @@ type GistsGetRevisionParams struct {
 }
 
 func unpackGistsGetRevisionParams(packed map[string]any) (params GistsGetRevisionParams) {
-	if v, ok := packed["gist_id"]; ok {
-		params.GistID, _ = v.(string)
-	}
-	if v, ok := packed["sha"]; ok {
-		params.Sha, _ = v.(string)
-	}
+	params.GistID = packed["gist_id"].(string)
+	params.Sha = packed["sha"].(string)
 	return params
 }
 
@@ -22488,13 +21748,13 @@ type GistsListParams struct {
 
 func unpackGistsListParams(packed map[string]any) (params GistsListParams) {
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptDateTime)
+		params.Since = v.(OptDateTime)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -22626,14 +21886,12 @@ type GistsListCommentsParams struct {
 }
 
 func unpackGistsListCommentsParams(packed map[string]any) (params GistsListCommentsParams) {
-	if v, ok := packed["gist_id"]; ok {
-		params.GistID, _ = v.(string)
-	}
+	params.GistID = packed["gist_id"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -22762,14 +22020,12 @@ type GistsListCommitsParams struct {
 }
 
 func unpackGistsListCommitsParams(packed map[string]any) (params GistsListCommitsParams) {
-	if v, ok := packed["gist_id"]; ok {
-		params.GistID, _ = v.(string)
-	}
+	params.GistID = packed["gist_id"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -22900,17 +22156,15 @@ type GistsListForUserParams struct {
 }
 
 func unpackGistsListForUserParams(packed map[string]any) (params GistsListForUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptDateTime)
+		params.Since = v.(OptDateTime)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -23073,14 +22327,12 @@ type GistsListForksParams struct {
 }
 
 func unpackGistsListForksParams(packed map[string]any) (params GistsListForksParams) {
-	if v, ok := packed["gist_id"]; ok {
-		params.GistID, _ = v.(string)
-	}
+	params.GistID = packed["gist_id"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -23211,13 +22463,13 @@ type GistsListPublicParams struct {
 
 func unpackGistsListPublicParams(packed map[string]any) (params GistsListPublicParams) {
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptDateTime)
+		params.Since = v.(OptDateTime)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -23351,13 +22603,13 @@ type GistsListStarredParams struct {
 
 func unpackGistsListStarredParams(packed map[string]any) (params GistsListStarredParams) {
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptDateTime)
+		params.Since = v.(OptDateTime)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -23485,9 +22737,7 @@ type GistsStarParams struct {
 }
 
 func unpackGistsStarParams(packed map[string]any) (params GistsStarParams) {
-	if v, ok := packed["gist_id"]; ok {
-		params.GistID, _ = v.(string)
-	}
+	params.GistID = packed["gist_id"].(string)
 	return params
 }
 
@@ -23532,9 +22782,7 @@ type GistsUnstarParams struct {
 }
 
 func unpackGistsUnstarParams(packed map[string]any) (params GistsUnstarParams) {
-	if v, ok := packed["gist_id"]; ok {
-		params.GistID, _ = v.(string)
-	}
+	params.GistID = packed["gist_id"].(string)
 	return params
 }
 
@@ -23581,12 +22829,8 @@ type GistsUpdateCommentParams struct {
 }
 
 func unpackGistsUpdateCommentParams(packed map[string]any) (params GistsUpdateCommentParams) {
-	if v, ok := packed["gist_id"]; ok {
-		params.GistID, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.GistID = packed["gist_id"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	return params
 }
 
@@ -23662,12 +22906,8 @@ type GitCreateBlobParams struct {
 }
 
 func unpackGitCreateBlobParams(packed map[string]any) (params GitCreateBlobParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -23743,12 +22983,8 @@ type GitCreateCommitParams struct {
 }
 
 func unpackGitCreateCommitParams(packed map[string]any) (params GitCreateCommitParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -23824,12 +23060,8 @@ type GitCreateRefParams struct {
 }
 
 func unpackGitCreateRefParams(packed map[string]any) (params GitCreateRefParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -23905,12 +23137,8 @@ type GitCreateTagParams struct {
 }
 
 func unpackGitCreateTagParams(packed map[string]any) (params GitCreateTagParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -23986,12 +23214,8 @@ type GitCreateTreeParams struct {
 }
 
 func unpackGitCreateTreeParams(packed map[string]any) (params GitCreateTreeParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -24069,15 +23293,9 @@ type GitDeleteRefParams struct {
 }
 
 func unpackGitDeleteRefParams(packed map[string]any) (params GitDeleteRefParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["ref"]; ok {
-		params.Ref, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Ref = packed["ref"].(string)
 	return params
 }
 
@@ -24185,15 +23403,9 @@ type GitGetBlobParams struct {
 }
 
 func unpackGitGetBlobParams(packed map[string]any) (params GitGetBlobParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["file_sha"]; ok {
-		params.FileSha, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.FileSha = packed["file_sha"].(string)
 	return params
 }
 
@@ -24302,15 +23514,9 @@ type GitGetCommitParams struct {
 }
 
 func unpackGitGetCommitParams(packed map[string]any) (params GitGetCommitParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["commit_sha"]; ok {
-		params.CommitSha, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommitSha = packed["commit_sha"].(string)
 	return params
 }
 
@@ -24419,15 +23625,9 @@ type GitGetRefParams struct {
 }
 
 func unpackGitGetRefParams(packed map[string]any) (params GitGetRefParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["ref"]; ok {
-		params.Ref, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Ref = packed["ref"].(string)
 	return params
 }
 
@@ -24535,15 +23735,9 @@ type GitGetTagParams struct {
 }
 
 func unpackGitGetTagParams(packed map[string]any) (params GitGetTagParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["tag_sha"]; ok {
-		params.TagSha, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.TagSha = packed["tag_sha"].(string)
 	return params
 }
 
@@ -24656,17 +23850,11 @@ type GitGetTreeParams struct {
 }
 
 func unpackGitGetTreeParams(packed map[string]any) (params GitGetTreeParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["tree_sha"]; ok {
-		params.TreeSha, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.TreeSha = packed["tree_sha"].(string)
 	if v, ok := packed["recursive"]; ok {
-		params.Recursive, _ = v.(OptString)
+		params.Recursive = v.(OptString)
 	}
 	return params
 }
@@ -24815,20 +24003,14 @@ type GitListMatchingRefsParams struct {
 }
 
 func unpackGitListMatchingRefsParams(packed map[string]any) (params GitListMatchingRefsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["ref"]; ok {
-		params.Ref, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Ref = packed["ref"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -25017,15 +24199,9 @@ type GitUpdateRefParams struct {
 }
 
 func unpackGitUpdateRefParams(packed map[string]any) (params GitUpdateRefParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["ref"]; ok {
-		params.Ref, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Ref = packed["ref"].(string)
 	return params
 }
 
@@ -25131,9 +24307,7 @@ type GitignoreGetTemplateParams struct {
 }
 
 func unpackGitignoreGetTemplateParams(packed map[string]any) (params GitignoreGetTemplateParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	return params
 }
 
@@ -25177,9 +24351,7 @@ type InteractionsRemoveRestrictionsForOrgParams struct {
 }
 
 func unpackInteractionsRemoveRestrictionsForOrgParams(packed map[string]any) (params InteractionsRemoveRestrictionsForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -25224,12 +24396,8 @@ type InteractionsRemoveRestrictionsForRepoParams struct {
 }
 
 func unpackInteractionsRemoveRestrictionsForRepoParams(packed map[string]any) (params InteractionsRemoveRestrictionsForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -25304,9 +24472,7 @@ type InteractionsSetRestrictionsForOrgParams struct {
 }
 
 func unpackInteractionsSetRestrictionsForOrgParams(packed map[string]any) (params InteractionsSetRestrictionsForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -25351,12 +24517,8 @@ type InteractionsSetRestrictionsForRepoParams struct {
 }
 
 func unpackInteractionsSetRestrictionsForRepoParams(packed map[string]any) (params InteractionsSetRestrictionsForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -25434,15 +24596,9 @@ type IssuesAddAssigneesParams struct {
 }
 
 func unpackIssuesAddAssigneesParams(packed map[string]any) (params IssuesAddAssigneesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["issue_number"]; ok {
-		params.IssueNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.IssueNumber = packed["issue_number"].(int)
 	return params
 }
 
@@ -25550,15 +24706,9 @@ type IssuesCheckUserCanBeAssignedParams struct {
 }
 
 func unpackIssuesCheckUserCanBeAssignedParams(packed map[string]any) (params IssuesCheckUserCanBeAssignedParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["assignee"]; ok {
-		params.Assignee, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Assignee = packed["assignee"].(string)
 	return params
 }
 
@@ -25665,12 +24815,8 @@ type IssuesCreateParams struct {
 }
 
 func unpackIssuesCreateParams(packed map[string]any) (params IssuesCreateParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -25748,15 +24894,9 @@ type IssuesCreateCommentParams struct {
 }
 
 func unpackIssuesCreateCommentParams(packed map[string]any) (params IssuesCreateCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["issue_number"]; ok {
-		params.IssueNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.IssueNumber = packed["issue_number"].(int)
 	return params
 }
 
@@ -25863,12 +25003,8 @@ type IssuesCreateLabelParams struct {
 }
 
 func unpackIssuesCreateLabelParams(packed map[string]any) (params IssuesCreateLabelParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -25944,12 +25080,8 @@ type IssuesCreateMilestoneParams struct {
 }
 
 func unpackIssuesCreateMilestoneParams(packed map[string]any) (params IssuesCreateMilestoneParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -26027,15 +25159,9 @@ type IssuesDeleteCommentParams struct {
 }
 
 func unpackIssuesDeleteCommentParams(packed map[string]any) (params IssuesDeleteCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	return params
 }
 
@@ -26143,15 +25269,9 @@ type IssuesDeleteLabelParams struct {
 }
 
 func unpackIssuesDeleteLabelParams(packed map[string]any) (params IssuesDeleteLabelParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Name = packed["name"].(string)
 	return params
 }
 
@@ -26260,15 +25380,9 @@ type IssuesDeleteMilestoneParams struct {
 }
 
 func unpackIssuesDeleteMilestoneParams(packed map[string]any) (params IssuesDeleteMilestoneParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["milestone_number"]; ok {
-		params.MilestoneNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.MilestoneNumber = packed["milestone_number"].(int)
 	return params
 }
 
@@ -26377,15 +25491,9 @@ type IssuesGetParams struct {
 }
 
 func unpackIssuesGetParams(packed map[string]any) (params IssuesGetParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["issue_number"]; ok {
-		params.IssueNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.IssueNumber = packed["issue_number"].(int)
 	return params
 }
 
@@ -26494,15 +25602,9 @@ type IssuesGetCommentParams struct {
 }
 
 func unpackIssuesGetCommentParams(packed map[string]any) (params IssuesGetCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	return params
 }
 
@@ -26610,15 +25712,9 @@ type IssuesGetEventParams struct {
 }
 
 func unpackIssuesGetEventParams(packed map[string]any) (params IssuesGetEventParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["event_id"]; ok {
-		params.EventID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.EventID = packed["event_id"].(int)
 	return params
 }
 
@@ -26726,15 +25822,9 @@ type IssuesGetLabelParams struct {
 }
 
 func unpackIssuesGetLabelParams(packed map[string]any) (params IssuesGetLabelParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Name = packed["name"].(string)
 	return params
 }
 
@@ -26843,15 +25933,9 @@ type IssuesGetMilestoneParams struct {
 }
 
 func unpackIssuesGetMilestoneParams(packed map[string]any) (params IssuesGetMilestoneParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["milestone_number"]; ok {
-		params.MilestoneNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.MilestoneNumber = packed["milestone_number"].(int)
 	return params
 }
 
@@ -26984,40 +26068,40 @@ type IssuesListParams struct {
 
 func unpackIssuesListParams(packed map[string]any) (params IssuesListParams) {
 	if v, ok := packed["filter"]; ok {
-		params.Filter, _ = v.(OptIssuesListFilter)
+		params.Filter = v.(OptIssuesListFilter)
 	}
 	if v, ok := packed["state"]; ok {
-		params.State, _ = v.(OptIssuesListState)
+		params.State = v.(OptIssuesListState)
 	}
 	if v, ok := packed["labels"]; ok {
-		params.Labels, _ = v.(OptString)
+		params.Labels = v.(OptString)
 	}
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptIssuesListSort)
+		params.Sort = v.(OptIssuesListSort)
 	}
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptIssuesListDirection)
+		params.Direction = v.(OptIssuesListDirection)
 	}
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptDateTime)
+		params.Since = v.(OptDateTime)
 	}
 	if v, ok := packed["collab"]; ok {
-		params.Collab, _ = v.(OptBool)
+		params.Collab = v.(OptBool)
 	}
 	if v, ok := packed["orgs"]; ok {
-		params.Orgs, _ = v.(OptBool)
+		params.Orgs = v.(OptBool)
 	}
 	if v, ok := packed["owned"]; ok {
-		params.Owned, _ = v.(OptBool)
+		params.Owned = v.(OptBool)
 	}
 	if v, ok := packed["pulls"]; ok {
-		params.Pulls, _ = v.(OptBool)
+		params.Pulls = v.(OptBool)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -27535,17 +26619,13 @@ type IssuesListAssigneesParams struct {
 }
 
 func unpackIssuesListAssigneesParams(packed map[string]any) (params IssuesListAssigneesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -27710,23 +26790,17 @@ type IssuesListCommentsParams struct {
 }
 
 func unpackIssuesListCommentsParams(packed map[string]any) (params IssuesListCommentsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["issue_number"]; ok {
-		params.IssueNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.IssueNumber = packed["issue_number"].(int)
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptDateTime)
+		params.Since = v.(OptDateTime)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -27958,26 +27032,22 @@ type IssuesListCommentsForRepoParams struct {
 }
 
 func unpackIssuesListCommentsForRepoParams(packed map[string]any) (params IssuesListCommentsForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptIssuesListCommentsForRepoSort)
+		params.Sort = v.(OptIssuesListCommentsForRepoSort)
 	}
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptIssuesListCommentsForRepoDirection)
+		params.Direction = v.(OptIssuesListCommentsForRepoDirection)
 	}
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptDateTime)
+		params.Since = v.(OptDateTime)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -28274,17 +27344,13 @@ type IssuesListEventsForRepoParams struct {
 }
 
 func unpackIssuesListEventsForRepoParams(packed map[string]any) (params IssuesListEventsForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -28462,28 +27528,28 @@ type IssuesListForAuthenticatedUserParams struct {
 
 func unpackIssuesListForAuthenticatedUserParams(packed map[string]any) (params IssuesListForAuthenticatedUserParams) {
 	if v, ok := packed["filter"]; ok {
-		params.Filter, _ = v.(OptIssuesListForAuthenticatedUserFilter)
+		params.Filter = v.(OptIssuesListForAuthenticatedUserFilter)
 	}
 	if v, ok := packed["state"]; ok {
-		params.State, _ = v.(OptIssuesListForAuthenticatedUserState)
+		params.State = v.(OptIssuesListForAuthenticatedUserState)
 	}
 	if v, ok := packed["labels"]; ok {
-		params.Labels, _ = v.(OptString)
+		params.Labels = v.(OptString)
 	}
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptIssuesListForAuthenticatedUserSort)
+		params.Sort = v.(OptIssuesListForAuthenticatedUserSort)
 	}
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptIssuesListForAuthenticatedUserDirection)
+		params.Direction = v.(OptIssuesListForAuthenticatedUserDirection)
 	}
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptDateTime)
+		params.Since = v.(OptDateTime)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -28883,32 +27949,30 @@ type IssuesListForOrgParams struct {
 }
 
 func unpackIssuesListForOrgParams(packed map[string]any) (params IssuesListForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["filter"]; ok {
-		params.Filter, _ = v.(OptIssuesListForOrgFilter)
+		params.Filter = v.(OptIssuesListForOrgFilter)
 	}
 	if v, ok := packed["state"]; ok {
-		params.State, _ = v.(OptIssuesListForOrgState)
+		params.State = v.(OptIssuesListForOrgState)
 	}
 	if v, ok := packed["labels"]; ok {
-		params.Labels, _ = v.(OptString)
+		params.Labels = v.(OptString)
 	}
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptIssuesListForOrgSort)
+		params.Sort = v.(OptIssuesListForOrgSort)
 	}
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptIssuesListForOrgDirection)
+		params.Direction = v.(OptIssuesListForOrgDirection)
 	}
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptDateTime)
+		params.Since = v.(OptDateTime)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -29343,44 +28407,40 @@ type IssuesListForRepoParams struct {
 }
 
 func unpackIssuesListForRepoParams(packed map[string]any) (params IssuesListForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["milestone"]; ok {
-		params.Milestone, _ = v.(OptString)
+		params.Milestone = v.(OptString)
 	}
 	if v, ok := packed["state"]; ok {
-		params.State, _ = v.(OptIssuesListForRepoState)
+		params.State = v.(OptIssuesListForRepoState)
 	}
 	if v, ok := packed["assignee"]; ok {
-		params.Assignee, _ = v.(OptString)
+		params.Assignee = v.(OptString)
 	}
 	if v, ok := packed["creator"]; ok {
-		params.Creator, _ = v.(OptString)
+		params.Creator = v.(OptString)
 	}
 	if v, ok := packed["mentioned"]; ok {
-		params.Mentioned, _ = v.(OptString)
+		params.Mentioned = v.(OptString)
 	}
 	if v, ok := packed["labels"]; ok {
-		params.Labels, _ = v.(OptString)
+		params.Labels = v.(OptString)
 	}
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptIssuesListForRepoSort)
+		params.Sort = v.(OptIssuesListForRepoSort)
 	}
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptIssuesListForRepoDirection)
+		params.Direction = v.(OptIssuesListForRepoDirection)
 	}
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptDateTime)
+		params.Since = v.(OptDateTime)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -29908,20 +28968,14 @@ type IssuesListLabelsForMilestoneParams struct {
 }
 
 func unpackIssuesListLabelsForMilestoneParams(packed map[string]any) (params IssuesListLabelsForMilestoneParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["milestone_number"]; ok {
-		params.MilestoneNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.MilestoneNumber = packed["milestone_number"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -30112,17 +29166,13 @@ type IssuesListLabelsForRepoParams struct {
 }
 
 func unpackIssuesListLabelsForRepoParams(packed map[string]any) (params IssuesListLabelsForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -30284,20 +29334,14 @@ type IssuesListLabelsOnIssueParams struct {
 }
 
 func unpackIssuesListLabelsOnIssueParams(packed map[string]any) (params IssuesListLabelsOnIssueParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["issue_number"]; ok {
-		params.IssueNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.IssueNumber = packed["issue_number"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -30494,26 +29538,22 @@ type IssuesListMilestonesParams struct {
 }
 
 func unpackIssuesListMilestonesParams(packed map[string]any) (params IssuesListMilestonesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["state"]; ok {
-		params.State, _ = v.(OptIssuesListMilestonesState)
+		params.State = v.(OptIssuesListMilestonesState)
 	}
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptIssuesListMilestonesSort)
+		params.Sort = v.(OptIssuesListMilestonesSort)
 	}
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptIssuesListMilestonesDirection)
+		params.Direction = v.(OptIssuesListMilestonesDirection)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -30833,15 +29873,9 @@ type IssuesLockParams struct {
 }
 
 func unpackIssuesLockParams(packed map[string]any) (params IssuesLockParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["issue_number"]; ok {
-		params.IssueNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.IssueNumber = packed["issue_number"].(int)
 	return params
 }
 
@@ -30950,15 +29984,9 @@ type IssuesRemoveAllLabelsParams struct {
 }
 
 func unpackIssuesRemoveAllLabelsParams(packed map[string]any) (params IssuesRemoveAllLabelsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["issue_number"]; ok {
-		params.IssueNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.IssueNumber = packed["issue_number"].(int)
 	return params
 }
 
@@ -31067,15 +30095,9 @@ type IssuesRemoveAssigneesParams struct {
 }
 
 func unpackIssuesRemoveAssigneesParams(packed map[string]any) (params IssuesRemoveAssigneesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["issue_number"]; ok {
-		params.IssueNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.IssueNumber = packed["issue_number"].(int)
 	return params
 }
 
@@ -31185,18 +30207,10 @@ type IssuesRemoveLabelParams struct {
 }
 
 func unpackIssuesRemoveLabelParams(packed map[string]any) (params IssuesRemoveLabelParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["issue_number"]; ok {
-		params.IssueNumber, _ = v.(int)
-	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.IssueNumber = packed["issue_number"].(int)
+	params.Name = packed["name"].(string)
 	return params
 }
 
@@ -31336,15 +30350,9 @@ type IssuesUnlockParams struct {
 }
 
 func unpackIssuesUnlockParams(packed map[string]any) (params IssuesUnlockParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["issue_number"]; ok {
-		params.IssueNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.IssueNumber = packed["issue_number"].(int)
 	return params
 }
 
@@ -31453,15 +30461,9 @@ type IssuesUpdateParams struct {
 }
 
 func unpackIssuesUpdateParams(packed map[string]any) (params IssuesUpdateParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["issue_number"]; ok {
-		params.IssueNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.IssueNumber = packed["issue_number"].(int)
 	return params
 }
 
@@ -31570,15 +30572,9 @@ type IssuesUpdateCommentParams struct {
 }
 
 func unpackIssuesUpdateCommentParams(packed map[string]any) (params IssuesUpdateCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	return params
 }
 
@@ -31686,15 +30682,9 @@ type IssuesUpdateLabelParams struct {
 }
 
 func unpackIssuesUpdateLabelParams(packed map[string]any) (params IssuesUpdateLabelParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Name = packed["name"].(string)
 	return params
 }
 
@@ -31803,15 +30793,9 @@ type IssuesUpdateMilestoneParams struct {
 }
 
 func unpackIssuesUpdateMilestoneParams(packed map[string]any) (params IssuesUpdateMilestoneParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["milestone_number"]; ok {
-		params.MilestoneNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.MilestoneNumber = packed["milestone_number"].(int)
 	return params
 }
 
@@ -31917,9 +30901,7 @@ type LicensesGetParams struct {
 }
 
 func unpackLicensesGetParams(packed map[string]any) (params LicensesGetParams) {
-	if v, ok := packed["license"]; ok {
-		params.License, _ = v.(string)
-	}
+	params.License = packed["license"].(string)
 	return params
 }
 
@@ -31968,13 +30950,13 @@ type LicensesGetAllCommonlyUsedParams struct {
 
 func unpackLicensesGetAllCommonlyUsedParams(packed map[string]any) (params LicensesGetAllCommonlyUsedParams) {
 	if v, ok := packed["featured"]; ok {
-		params.Featured, _ = v.(OptBool)
+		params.Featured = v.(OptBool)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -32102,12 +31084,8 @@ type LicensesGetForRepoParams struct {
 }
 
 func unpackLicensesGetForRepoParams(packed map[string]any) (params LicensesGetForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -32183,12 +31161,8 @@ type MigrationsCancelImportParams struct {
 }
 
 func unpackMigrationsCancelImportParams(packed map[string]any) (params MigrationsCancelImportParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -32264,9 +31238,7 @@ type MigrationsDeleteArchiveForAuthenticatedUserParams struct {
 }
 
 func unpackMigrationsDeleteArchiveForAuthenticatedUserParams(packed map[string]any) (params MigrationsDeleteArchiveForAuthenticatedUserParams) {
-	if v, ok := packed["migration_id"]; ok {
-		params.MigrationID, _ = v.(int)
-	}
+	params.MigrationID = packed["migration_id"].(int)
 	return params
 }
 
@@ -32312,12 +31284,8 @@ type MigrationsDeleteArchiveForOrgParams struct {
 }
 
 func unpackMigrationsDeleteArchiveForOrgParams(packed map[string]any) (params MigrationsDeleteArchiveForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["migration_id"]; ok {
-		params.MigrationID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.MigrationID = packed["migration_id"].(int)
 	return params
 }
 
@@ -32394,12 +31362,8 @@ type MigrationsDownloadArchiveForOrgParams struct {
 }
 
 func unpackMigrationsDownloadArchiveForOrgParams(packed map[string]any) (params MigrationsDownloadArchiveForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["migration_id"]; ok {
-		params.MigrationID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.MigrationID = packed["migration_id"].(int)
 	return params
 }
 
@@ -32475,9 +31439,7 @@ type MigrationsGetArchiveForAuthenticatedUserParams struct {
 }
 
 func unpackMigrationsGetArchiveForAuthenticatedUserParams(packed map[string]any) (params MigrationsGetArchiveForAuthenticatedUserParams) {
-	if v, ok := packed["migration_id"]; ok {
-		params.MigrationID, _ = v.(int)
-	}
+	params.MigrationID = packed["migration_id"].(int)
 	return params
 }
 
@@ -32524,14 +31486,10 @@ type MigrationsGetCommitAuthorsParams struct {
 }
 
 func unpackMigrationsGetCommitAuthorsParams(packed map[string]any) (params MigrationsGetCommitAuthorsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptInt)
+		params.Since = v.(OptInt)
 	}
 	return params
 }
@@ -32643,12 +31601,8 @@ type MigrationsGetImportStatusParams struct {
 }
 
 func unpackMigrationsGetImportStatusParams(packed map[string]any) (params MigrationsGetImportStatusParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -32724,12 +31678,8 @@ type MigrationsGetLargeFilesParams struct {
 }
 
 func unpackMigrationsGetLargeFilesParams(packed map[string]any) (params MigrationsGetLargeFilesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -32806,11 +31756,9 @@ type MigrationsGetStatusForAuthenticatedUserParams struct {
 }
 
 func unpackMigrationsGetStatusForAuthenticatedUserParams(packed map[string]any) (params MigrationsGetStatusForAuthenticatedUserParams) {
-	if v, ok := packed["migration_id"]; ok {
-		params.MigrationID, _ = v.(int)
-	}
+	params.MigrationID = packed["migration_id"].(int)
 	if v, ok := packed["exclude"]; ok {
-		params.Exclude, _ = v.([]string)
+		params.Exclude = v.([]string)
 	}
 	return params
 }
@@ -32896,14 +31844,10 @@ type MigrationsGetStatusForOrgParams struct {
 }
 
 func unpackMigrationsGetStatusForOrgParams(packed map[string]any) (params MigrationsGetStatusForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["migration_id"]; ok {
-		params.MigrationID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.MigrationID = packed["migration_id"].(int)
 	if v, ok := packed["exclude"]; ok {
-		params.Exclude, _ = v.([]MigrationsGetStatusForOrgExcludeItem)
+		params.Exclude = v.([]MigrationsGetStatusForOrgExcludeItem)
 	}
 	return params
 }
@@ -33042,10 +31986,10 @@ type MigrationsListForAuthenticatedUserParams struct {
 
 func unpackMigrationsListForAuthenticatedUserParams(packed map[string]any) (params MigrationsListForAuthenticatedUserParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -33144,17 +32088,15 @@ type MigrationsListForOrgParams struct {
 }
 
 func unpackMigrationsListForOrgParams(packed map[string]any) (params MigrationsListForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["exclude"]; ok {
-		params.Exclude, _ = v.([]MigrationsListForOrgExcludeItem)
+		params.Exclude = v.([]MigrationsListForOrgExcludeItem)
 	}
 	return params
 }
@@ -33342,17 +32284,13 @@ type MigrationsListReposForOrgParams struct {
 }
 
 func unpackMigrationsListReposForOrgParams(packed map[string]any) (params MigrationsListReposForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["migration_id"]; ok {
-		params.MigrationID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.MigrationID = packed["migration_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -33512,14 +32450,12 @@ type MigrationsListReposForUserParams struct {
 }
 
 func unpackMigrationsListReposForUserParams(packed map[string]any) (params MigrationsListReposForUserParams) {
-	if v, ok := packed["migration_id"]; ok {
-		params.MigrationID, _ = v.(int)
-	}
+	params.MigrationID = packed["migration_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -33645,15 +32581,9 @@ type MigrationsMapCommitAuthorParams struct {
 }
 
 func unpackMigrationsMapCommitAuthorParams(packed map[string]any) (params MigrationsMapCommitAuthorParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["author_id"]; ok {
-		params.AuthorID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.AuthorID = packed["author_id"].(int)
 	return params
 }
 
@@ -33760,12 +32690,8 @@ type MigrationsSetLfsPreferenceParams struct {
 }
 
 func unpackMigrationsSetLfsPreferenceParams(packed map[string]any) (params MigrationsSetLfsPreferenceParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -33840,9 +32766,7 @@ type MigrationsStartForOrgParams struct {
 }
 
 func unpackMigrationsStartForOrgParams(packed map[string]any) (params MigrationsStartForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -33887,12 +32811,8 @@ type MigrationsStartImportParams struct {
 }
 
 func unpackMigrationsStartImportParams(packed map[string]any) (params MigrationsStartImportParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -33970,12 +32890,8 @@ type MigrationsUnlockRepoForAuthenticatedUserParams struct {
 }
 
 func unpackMigrationsUnlockRepoForAuthenticatedUserParams(packed map[string]any) (params MigrationsUnlockRepoForAuthenticatedUserParams) {
-	if v, ok := packed["migration_id"]; ok {
-		params.MigrationID, _ = v.(int)
-	}
-	if v, ok := packed["repo_name"]; ok {
-		params.RepoName, _ = v.(string)
-	}
+	params.MigrationID = packed["migration_id"].(int)
+	params.RepoName = packed["repo_name"].(string)
 	return params
 }
 
@@ -34054,15 +32970,9 @@ type MigrationsUnlockRepoForOrgParams struct {
 }
 
 func unpackMigrationsUnlockRepoForOrgParams(packed map[string]any) (params MigrationsUnlockRepoForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["migration_id"]; ok {
-		params.MigrationID, _ = v.(int)
-	}
-	if v, ok := packed["repo_name"]; ok {
-		params.RepoName, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.MigrationID = packed["migration_id"].(int)
+	params.RepoName = packed["repo_name"].(string)
 	return params
 }
 
@@ -34169,12 +33079,8 @@ type MigrationsUpdateImportParams struct {
 }
 
 func unpackMigrationsUpdateImportParams(packed map[string]any) (params MigrationsUpdateImportParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -34250,9 +33156,7 @@ type OAuthAuthorizationsDeleteAuthorizationParams struct {
 }
 
 func unpackOAuthAuthorizationsDeleteAuthorizationParams(packed map[string]any) (params OAuthAuthorizationsDeleteAuthorizationParams) {
-	if v, ok := packed["authorization_id"]; ok {
-		params.AuthorizationID, _ = v.(int)
-	}
+	params.AuthorizationID = packed["authorization_id"].(int)
 	return params
 }
 
@@ -34297,9 +33201,7 @@ type OAuthAuthorizationsDeleteGrantParams struct {
 }
 
 func unpackOAuthAuthorizationsDeleteGrantParams(packed map[string]any) (params OAuthAuthorizationsDeleteGrantParams) {
-	if v, ok := packed["grant_id"]; ok {
-		params.GrantID, _ = v.(int)
-	}
+	params.GrantID = packed["grant_id"].(int)
 	return params
 }
 
@@ -34344,9 +33246,7 @@ type OAuthAuthorizationsGetAuthorizationParams struct {
 }
 
 func unpackOAuthAuthorizationsGetAuthorizationParams(packed map[string]any) (params OAuthAuthorizationsGetAuthorizationParams) {
-	if v, ok := packed["authorization_id"]; ok {
-		params.AuthorizationID, _ = v.(int)
-	}
+	params.AuthorizationID = packed["authorization_id"].(int)
 	return params
 }
 
@@ -34391,9 +33291,7 @@ type OAuthAuthorizationsGetGrantParams struct {
 }
 
 func unpackOAuthAuthorizationsGetGrantParams(packed map[string]any) (params OAuthAuthorizationsGetGrantParams) {
-	if v, ok := packed["grant_id"]; ok {
-		params.GrantID, _ = v.(int)
-	}
+	params.GrantID = packed["grant_id"].(int)
 	return params
 }
 
@@ -34438,9 +33336,7 @@ type OAuthAuthorizationsGetOrCreateAuthorizationForAppParams struct {
 }
 
 func unpackOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(packed map[string]any) (params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams) {
-	if v, ok := packed["client_id"]; ok {
-		params.ClientID, _ = v.(string)
-	}
+	params.ClientID = packed["client_id"].(string)
 	return params
 }
 
@@ -34486,12 +33382,8 @@ type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams struc
 }
 
 func unpackOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(packed map[string]any) (params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams) {
-	if v, ok := packed["client_id"]; ok {
-		params.ClientID, _ = v.(string)
-	}
-	if v, ok := packed["fingerprint"]; ok {
-		params.Fingerprint, _ = v.(string)
-	}
+	params.ClientID = packed["client_id"].(string)
+	params.Fingerprint = packed["fingerprint"].(string)
 	return params
 }
 
@@ -34572,13 +33464,13 @@ type OAuthAuthorizationsListAuthorizationsParams struct {
 
 func unpackOAuthAuthorizationsListAuthorizationsParams(packed map[string]any) (params OAuthAuthorizationsListAuthorizationsParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["client_id"]; ok {
-		params.ClientID, _ = v.(OptString)
+		params.ClientID = v.(OptString)
 	}
 	return params
 }
@@ -34711,13 +33603,13 @@ type OAuthAuthorizationsListGrantsParams struct {
 
 func unpackOAuthAuthorizationsListGrantsParams(packed map[string]any) (params OAuthAuthorizationsListGrantsParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["client_id"]; ok {
-		params.ClientID, _ = v.(OptString)
+		params.ClientID = v.(OptString)
 	}
 	return params
 }
@@ -34845,9 +33737,7 @@ type OAuthAuthorizationsUpdateAuthorizationParams struct {
 }
 
 func unpackOAuthAuthorizationsUpdateAuthorizationParams(packed map[string]any) (params OAuthAuthorizationsUpdateAuthorizationParams) {
-	if v, ok := packed["authorization_id"]; ok {
-		params.AuthorizationID, _ = v.(int)
-	}
+	params.AuthorizationID = packed["authorization_id"].(int)
 	return params
 }
 
@@ -34892,12 +33782,8 @@ type OrgsBlockUserParams struct {
 }
 
 func unpackOrgsBlockUserParams(packed map[string]any) (params OrgsBlockUserParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -34974,12 +33860,8 @@ type OrgsCancelInvitationParams struct {
 }
 
 func unpackOrgsCancelInvitationParams(packed map[string]any) (params OrgsCancelInvitationParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["invitation_id"]; ok {
-		params.InvitationID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.InvitationID = packed["invitation_id"].(int)
 	return params
 }
 
@@ -35055,12 +33937,8 @@ type OrgsCheckBlockedUserParams struct {
 }
 
 func unpackOrgsCheckBlockedUserParams(packed map[string]any) (params OrgsCheckBlockedUserParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -35136,12 +34014,8 @@ type OrgsCheckMembershipForUserParams struct {
 }
 
 func unpackOrgsCheckMembershipForUserParams(packed map[string]any) (params OrgsCheckMembershipForUserParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -35217,12 +34091,8 @@ type OrgsCheckPublicMembershipForUserParams struct {
 }
 
 func unpackOrgsCheckPublicMembershipForUserParams(packed map[string]any) (params OrgsCheckPublicMembershipForUserParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -35298,12 +34168,8 @@ type OrgsConvertMemberToOutsideCollaboratorParams struct {
 }
 
 func unpackOrgsConvertMemberToOutsideCollaboratorParams(packed map[string]any) (params OrgsConvertMemberToOutsideCollaboratorParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -35378,9 +34244,7 @@ type OrgsCreateInvitationParams struct {
 }
 
 func unpackOrgsCreateInvitationParams(packed map[string]any) (params OrgsCreateInvitationParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -35424,9 +34288,7 @@ type OrgsCreateWebhookParams struct {
 }
 
 func unpackOrgsCreateWebhookParams(packed map[string]any) (params OrgsCreateWebhookParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -35471,12 +34333,8 @@ type OrgsDeleteWebhookParams struct {
 }
 
 func unpackOrgsDeleteWebhookParams(packed map[string]any) (params OrgsDeleteWebhookParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.HookID = packed["hook_id"].(int)
 	return params
 }
 
@@ -35551,9 +34409,7 @@ type OrgsGetParams struct {
 }
 
 func unpackOrgsGetParams(packed map[string]any) (params OrgsGetParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -35622,29 +34478,27 @@ type OrgsGetAuditLogParams struct {
 }
 
 func unpackOrgsGetAuditLogParams(packed map[string]any) (params OrgsGetAuditLogParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["phrase"]; ok {
-		params.Phrase, _ = v.(OptString)
+		params.Phrase = v.(OptString)
 	}
 	if v, ok := packed["include"]; ok {
-		params.Include, _ = v.(OptOrgsGetAuditLogInclude)
+		params.Include = v.(OptOrgsGetAuditLogInclude)
 	}
 	if v, ok := packed["after"]; ok {
-		params.After, _ = v.(OptString)
+		params.After = v.(OptString)
 	}
 	if v, ok := packed["before"]; ok {
-		params.Before, _ = v.(OptString)
+		params.Before = v.(OptString)
 	}
 	if v, ok := packed["order"]; ok {
-		params.Order, _ = v.(OptOrgsGetAuditLogOrder)
+		params.Order = v.(OptOrgsGetAuditLogOrder)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -35968,9 +34822,7 @@ type OrgsGetMembershipForAuthenticatedUserParams struct {
 }
 
 func unpackOrgsGetMembershipForAuthenticatedUserParams(packed map[string]any) (params OrgsGetMembershipForAuthenticatedUserParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -36015,12 +34867,8 @@ type OrgsGetMembershipForUserParams struct {
 }
 
 func unpackOrgsGetMembershipForUserParams(packed map[string]any) (params OrgsGetMembershipForUserParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -36096,12 +34944,8 @@ type OrgsGetWebhookParams struct {
 }
 
 func unpackOrgsGetWebhookParams(packed map[string]any) (params OrgsGetWebhookParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.HookID = packed["hook_id"].(int)
 	return params
 }
 
@@ -36177,12 +35021,8 @@ type OrgsGetWebhookConfigForOrgParams struct {
 }
 
 func unpackOrgsGetWebhookConfigForOrgParams(packed map[string]any) (params OrgsGetWebhookConfigForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.HookID = packed["hook_id"].(int)
 	return params
 }
 
@@ -36259,15 +35099,9 @@ type OrgsGetWebhookDeliveryParams struct {
 }
 
 func unpackOrgsGetWebhookDeliveryParams(packed map[string]any) (params OrgsGetWebhookDeliveryParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
-	if v, ok := packed["delivery_id"]; ok {
-		params.DeliveryID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.HookID = packed["hook_id"].(int)
+	params.DeliveryID = packed["delivery_id"].(int)
 	return params
 }
 
@@ -36377,10 +35211,10 @@ type OrgsListParams struct {
 
 func unpackOrgsListParams(packed map[string]any) (params OrgsListParams) {
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptInt)
+		params.Since = v.(OptInt)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	return params
 }
@@ -36468,9 +35302,7 @@ type OrgsListBlockedUsersParams struct {
 }
 
 func unpackOrgsListBlockedUsersParams(packed map[string]any) (params OrgsListBlockedUsersParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -36518,14 +35350,12 @@ type OrgsListFailedInvitationsParams struct {
 }
 
 func unpackOrgsListFailedInvitationsParams(packed map[string]any) (params OrgsListFailedInvitationsParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -36653,10 +35483,10 @@ type OrgsListForAuthenticatedUserParams struct {
 
 func unpackOrgsListForAuthenticatedUserParams(packed map[string]any) (params OrgsListForAuthenticatedUserParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -36753,14 +35583,12 @@ type OrgsListForUserParams struct {
 }
 
 func unpackOrgsListForUserParams(packed map[string]any) (params OrgsListForUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -36890,17 +35718,13 @@ type OrgsListInvitationTeamsParams struct {
 }
 
 func unpackOrgsListInvitationTeamsParams(packed map[string]any) (params OrgsListInvitationTeamsParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["invitation_id"]; ok {
-		params.InvitationID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.InvitationID = packed["invitation_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -37069,20 +35893,18 @@ type OrgsListMembersParams struct {
 }
 
 func unpackOrgsListMembersParams(packed map[string]any) (params OrgsListMembersParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["filter"]; ok {
-		params.Filter, _ = v.(OptOrgsListMembersFilter)
+		params.Filter = v.(OptOrgsListMembersFilter)
 	}
 	if v, ok := packed["role"]; ok {
-		params.Role, _ = v.(OptOrgsListMembersRole)
+		params.Role = v.(OptOrgsListMembersRole)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -37321,13 +36143,13 @@ type OrgsListMembershipsForAuthenticatedUserParams struct {
 
 func unpackOrgsListMembershipsForAuthenticatedUserParams(packed map[string]any) (params OrgsListMembershipsForAuthenticatedUserParams) {
 	if v, ok := packed["state"]; ok {
-		params.State, _ = v.(OptOrgsListMembershipsForAuthenticatedUserState)
+		params.State = v.(OptOrgsListMembershipsForAuthenticatedUserState)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -37478,17 +36300,15 @@ type OrgsListOutsideCollaboratorsParams struct {
 }
 
 func unpackOrgsListOutsideCollaboratorsParams(packed map[string]any) (params OrgsListOutsideCollaboratorsParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["filter"]; ok {
-		params.Filter, _ = v.(OptOrgsListOutsideCollaboratorsFilter)
+		params.Filter = v.(OptOrgsListOutsideCollaboratorsFilter)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -37670,14 +36490,12 @@ type OrgsListPendingInvitationsParams struct {
 }
 
 func unpackOrgsListPendingInvitationsParams(packed map[string]any) (params OrgsListPendingInvitationsParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -37805,14 +36623,12 @@ type OrgsListPublicMembersParams struct {
 }
 
 func unpackOrgsListPublicMembersParams(packed map[string]any) (params OrgsListPublicMembersParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -37936,9 +36752,7 @@ type OrgsListSamlSSOAuthorizationsParams struct {
 }
 
 func unpackOrgsListSamlSSOAuthorizationsParams(packed map[string]any) (params OrgsListSamlSSOAuthorizationsParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -37988,17 +36802,13 @@ type OrgsListWebhookDeliveriesParams struct {
 }
 
 func unpackOrgsListWebhookDeliveriesParams(packed map[string]any) (params OrgsListWebhookDeliveriesParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.HookID = packed["hook_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["cursor"]; ok {
-		params.Cursor, _ = v.(OptString)
+		params.Cursor = v.(OptString)
 	}
 	return params
 }
@@ -38152,14 +36962,12 @@ type OrgsListWebhooksParams struct {
 }
 
 func unpackOrgsListWebhooksParams(packed map[string]any) (params OrgsListWebhooksParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -38284,12 +37092,8 @@ type OrgsPingWebhookParams struct {
 }
 
 func unpackOrgsPingWebhookParams(packed map[string]any) (params OrgsPingWebhookParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.HookID = packed["hook_id"].(int)
 	return params
 }
 
@@ -38366,15 +37170,9 @@ type OrgsRedeliverWebhookDeliveryParams struct {
 }
 
 func unpackOrgsRedeliverWebhookDeliveryParams(packed map[string]any) (params OrgsRedeliverWebhookDeliveryParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
-	if v, ok := packed["delivery_id"]; ok {
-		params.DeliveryID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.HookID = packed["hook_id"].(int)
+	params.DeliveryID = packed["delivery_id"].(int)
 	return params
 }
 
@@ -38481,12 +37279,8 @@ type OrgsRemoveMemberParams struct {
 }
 
 func unpackOrgsRemoveMemberParams(packed map[string]any) (params OrgsRemoveMemberParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -38562,12 +37356,8 @@ type OrgsRemoveMembershipForUserParams struct {
 }
 
 func unpackOrgsRemoveMembershipForUserParams(packed map[string]any) (params OrgsRemoveMembershipForUserParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -38643,12 +37433,8 @@ type OrgsRemoveOutsideCollaboratorParams struct {
 }
 
 func unpackOrgsRemoveOutsideCollaboratorParams(packed map[string]any) (params OrgsRemoveOutsideCollaboratorParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -38724,12 +37510,8 @@ type OrgsRemovePublicMembershipForAuthenticatedUserParams struct {
 }
 
 func unpackOrgsRemovePublicMembershipForAuthenticatedUserParams(packed map[string]any) (params OrgsRemovePublicMembershipForAuthenticatedUserParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -38805,12 +37587,8 @@ type OrgsRemoveSamlSSOAuthorizationParams struct {
 }
 
 func unpackOrgsRemoveSamlSSOAuthorizationParams(packed map[string]any) (params OrgsRemoveSamlSSOAuthorizationParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["credential_id"]; ok {
-		params.CredentialID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.CredentialID = packed["credential_id"].(int)
 	return params
 }
 
@@ -38886,12 +37664,8 @@ type OrgsSetMembershipForUserParams struct {
 }
 
 func unpackOrgsSetMembershipForUserParams(packed map[string]any) (params OrgsSetMembershipForUserParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -38967,12 +37741,8 @@ type OrgsSetPublicMembershipForAuthenticatedUserParams struct {
 }
 
 func unpackOrgsSetPublicMembershipForAuthenticatedUserParams(packed map[string]any) (params OrgsSetPublicMembershipForAuthenticatedUserParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -39048,12 +37818,8 @@ type OrgsUnblockUserParams struct {
 }
 
 func unpackOrgsUnblockUserParams(packed map[string]any) (params OrgsUnblockUserParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -39128,9 +37894,7 @@ type OrgsUpdateMembershipForAuthenticatedUserParams struct {
 }
 
 func unpackOrgsUpdateMembershipForAuthenticatedUserParams(packed map[string]any) (params OrgsUpdateMembershipForAuthenticatedUserParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -39175,12 +37939,8 @@ type OrgsUpdateWebhookParams struct {
 }
 
 func unpackOrgsUpdateWebhookParams(packed map[string]any) (params OrgsUpdateWebhookParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.HookID = packed["hook_id"].(int)
 	return params
 }
 
@@ -39256,12 +38016,8 @@ type OrgsUpdateWebhookConfigForOrgParams struct {
 }
 
 func unpackOrgsUpdateWebhookConfigForOrgParams(packed map[string]any) (params OrgsUpdateWebhookConfigForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.HookID = packed["hook_id"].(int)
 	return params
 }
 
@@ -39343,12 +38099,8 @@ type PackagesDeletePackageForAuthenticatedUserParams struct {
 }
 
 func unpackPackagesDeletePackageForAuthenticatedUserParams(packed map[string]any) (params PackagesDeletePackageForAuthenticatedUserParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesDeletePackageForAuthenticatedUserPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
+	params.PackageType = packed["package_type"].(PackagesDeletePackageForAuthenticatedUserPackageType)
+	params.PackageName = packed["package_name"].(string)
 	return params
 }
 
@@ -39439,15 +38191,9 @@ type PackagesDeletePackageForOrgParams struct {
 }
 
 func unpackPackagesDeletePackageForOrgParams(packed map[string]any) (params PackagesDeletePackageForOrgParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesDeletePackageForOrgPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.PackageType = packed["package_type"].(PackagesDeletePackageForOrgPackageType)
+	params.PackageName = packed["package_name"].(string)
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -39569,15 +38315,9 @@ type PackagesDeletePackageForUserParams struct {
 }
 
 func unpackPackagesDeletePackageForUserParams(packed map[string]any) (params PackagesDeletePackageForUserParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesDeletePackageForUserPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.PackageType = packed["package_type"].(PackagesDeletePackageForUserPackageType)
+	params.PackageName = packed["package_name"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -39700,15 +38440,9 @@ type PackagesDeletePackageVersionForAuthenticatedUserParams struct {
 }
 
 func unpackPackagesDeletePackageVersionForAuthenticatedUserParams(packed map[string]any) (params PackagesDeletePackageVersionForAuthenticatedUserParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesDeletePackageVersionForAuthenticatedUserPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
-	if v, ok := packed["package_version_id"]; ok {
-		params.PackageVersionID, _ = v.(int)
-	}
+	params.PackageType = packed["package_type"].(PackagesDeletePackageVersionForAuthenticatedUserPackageType)
+	params.PackageName = packed["package_name"].(string)
+	params.PackageVersionID = packed["package_version_id"].(int)
 	return params
 }
 
@@ -39832,18 +38566,10 @@ type PackagesDeletePackageVersionForOrgParams struct {
 }
 
 func unpackPackagesDeletePackageVersionForOrgParams(packed map[string]any) (params PackagesDeletePackageVersionForOrgParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesDeletePackageVersionForOrgPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["package_version_id"]; ok {
-		params.PackageVersionID, _ = v.(int)
-	}
+	params.PackageType = packed["package_type"].(PackagesDeletePackageVersionForOrgPackageType)
+	params.PackageName = packed["package_name"].(string)
+	params.Org = packed["org"].(string)
+	params.PackageVersionID = packed["package_version_id"].(int)
 	return params
 }
 
@@ -39998,18 +38724,10 @@ type PackagesDeletePackageVersionForUserParams struct {
 }
 
 func unpackPackagesDeletePackageVersionForUserParams(packed map[string]any) (params PackagesDeletePackageVersionForUserParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesDeletePackageVersionForUserPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
-	if v, ok := packed["package_version_id"]; ok {
-		params.PackageVersionID, _ = v.(int)
-	}
+	params.PackageType = packed["package_type"].(PackagesDeletePackageVersionForUserPackageType)
+	params.PackageName = packed["package_name"].(string)
+	params.Username = packed["username"].(string)
+	params.PackageVersionID = packed["package_version_id"].(int)
 	return params
 }
 
@@ -40167,20 +38885,16 @@ type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams struc
 }
 
 func unpackPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(packed map[string]any) (params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
+	params.PackageType = packed["package_type"].(PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType)
+	params.PackageName = packed["package_name"].(string)
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["state"]; ok {
-		params.State, _ = v.(OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState)
+		params.State = v.(OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState)
 	}
 	return params
 }
@@ -40411,23 +39125,17 @@ type PackagesGetAllPackageVersionsForPackageOwnedByOrgParams struct {
 }
 
 func unpackPackagesGetAllPackageVersionsForPackageOwnedByOrgParams(packed map[string]any) (params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.PackageType = packed["package_type"].(PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType)
+	params.PackageName = packed["package_name"].(string)
+	params.Org = packed["org"].(string)
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["state"]; ok {
-		params.State, _ = v.(OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState)
+		params.State = v.(OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState)
 	}
 	return params
 }
@@ -40683,15 +39391,9 @@ type PackagesGetAllPackageVersionsForPackageOwnedByUserParams struct {
 }
 
 func unpackPackagesGetAllPackageVersionsForPackageOwnedByUserParams(packed map[string]any) (params PackagesGetAllPackageVersionsForPackageOwnedByUserParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.PackageType = packed["package_type"].(PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType)
+	params.PackageName = packed["package_name"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -40812,12 +39514,8 @@ type PackagesGetPackageForAuthenticatedUserParams struct {
 }
 
 func unpackPackagesGetPackageForAuthenticatedUserParams(packed map[string]any) (params PackagesGetPackageForAuthenticatedUserParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesGetPackageForAuthenticatedUserPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
+	params.PackageType = packed["package_type"].(PackagesGetPackageForAuthenticatedUserPackageType)
+	params.PackageName = packed["package_name"].(string)
 	return params
 }
 
@@ -40908,15 +39606,9 @@ type PackagesGetPackageForOrganizationParams struct {
 }
 
 func unpackPackagesGetPackageForOrganizationParams(packed map[string]any) (params PackagesGetPackageForOrganizationParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesGetPackageForOrganizationPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.PackageType = packed["package_type"].(PackagesGetPackageForOrganizationPackageType)
+	params.PackageName = packed["package_name"].(string)
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -41038,15 +39730,9 @@ type PackagesGetPackageForUserParams struct {
 }
 
 func unpackPackagesGetPackageForUserParams(packed map[string]any) (params PackagesGetPackageForUserParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesGetPackageForUserPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.PackageType = packed["package_type"].(PackagesGetPackageForUserPackageType)
+	params.PackageName = packed["package_name"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -41169,15 +39855,9 @@ type PackagesGetPackageVersionForAuthenticatedUserParams struct {
 }
 
 func unpackPackagesGetPackageVersionForAuthenticatedUserParams(packed map[string]any) (params PackagesGetPackageVersionForAuthenticatedUserParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesGetPackageVersionForAuthenticatedUserPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
-	if v, ok := packed["package_version_id"]; ok {
-		params.PackageVersionID, _ = v.(int)
-	}
+	params.PackageType = packed["package_type"].(PackagesGetPackageVersionForAuthenticatedUserPackageType)
+	params.PackageName = packed["package_name"].(string)
+	params.PackageVersionID = packed["package_version_id"].(int)
 	return params
 }
 
@@ -41301,18 +39981,10 @@ type PackagesGetPackageVersionForOrganizationParams struct {
 }
 
 func unpackPackagesGetPackageVersionForOrganizationParams(packed map[string]any) (params PackagesGetPackageVersionForOrganizationParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesGetPackageVersionForOrganizationPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["package_version_id"]; ok {
-		params.PackageVersionID, _ = v.(int)
-	}
+	params.PackageType = packed["package_type"].(PackagesGetPackageVersionForOrganizationPackageType)
+	params.PackageName = packed["package_name"].(string)
+	params.Org = packed["org"].(string)
+	params.PackageVersionID = packed["package_version_id"].(int)
 	return params
 }
 
@@ -41467,18 +40139,10 @@ type PackagesGetPackageVersionForUserParams struct {
 }
 
 func unpackPackagesGetPackageVersionForUserParams(packed map[string]any) (params PackagesGetPackageVersionForUserParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesGetPackageVersionForUserPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
-	if v, ok := packed["package_version_id"]; ok {
-		params.PackageVersionID, _ = v.(int)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.PackageType = packed["package_type"].(PackagesGetPackageVersionForUserPackageType)
+	params.PackageName = packed["package_name"].(string)
+	params.PackageVersionID = packed["package_version_id"].(int)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -41633,11 +40297,9 @@ type PackagesListPackagesForAuthenticatedUserParams struct {
 }
 
 func unpackPackagesListPackagesForAuthenticatedUserParams(packed map[string]any) (params PackagesListPackagesForAuthenticatedUserParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesListPackagesForAuthenticatedUserPackageType)
-	}
+	params.PackageType = packed["package_type"].(PackagesListPackagesForAuthenticatedUserPackageType)
 	if v, ok := packed["visibility"]; ok {
-		params.Visibility, _ = v.(OptPackagesListPackagesForAuthenticatedUserVisibility)
+		params.Visibility = v.(OptPackagesListPackagesForAuthenticatedUserVisibility)
 	}
 	return params
 }
@@ -41749,14 +40411,10 @@ type PackagesListPackagesForOrganizationParams struct {
 }
 
 func unpackPackagesListPackagesForOrganizationParams(packed map[string]any) (params PackagesListPackagesForOrganizationParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesListPackagesForOrganizationPackageType)
-	}
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.PackageType = packed["package_type"].(PackagesListPackagesForOrganizationPackageType)
+	params.Org = packed["org"].(string)
 	if v, ok := packed["visibility"]; ok {
-		params.Visibility, _ = v.(OptPackagesListPackagesForOrganizationVisibility)
+		params.Visibility = v.(OptPackagesListPackagesForOrganizationVisibility)
 	}
 	return params
 }
@@ -41899,15 +40557,11 @@ type PackagesListPackagesForUserParams struct {
 }
 
 func unpackPackagesListPackagesForUserParams(packed map[string]any) (params PackagesListPackagesForUserParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesListPackagesForUserPackageType)
-	}
+	params.PackageType = packed["package_type"].(PackagesListPackagesForUserPackageType)
 	if v, ok := packed["visibility"]; ok {
-		params.Visibility, _ = v.(OptPackagesListPackagesForUserVisibility)
+		params.Visibility = v.(OptPackagesListPackagesForUserVisibility)
 	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -42047,14 +40701,10 @@ type PackagesRestorePackageForAuthenticatedUserParams struct {
 }
 
 func unpackPackagesRestorePackageForAuthenticatedUserParams(packed map[string]any) (params PackagesRestorePackageForAuthenticatedUserParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesRestorePackageForAuthenticatedUserPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
+	params.PackageType = packed["package_type"].(PackagesRestorePackageForAuthenticatedUserPackageType)
+	params.PackageName = packed["package_name"].(string)
 	if v, ok := packed["token"]; ok {
-		params.Token, _ = v.(OptString)
+		params.Token = v.(OptString)
 	}
 	return params
 }
@@ -42183,17 +40833,11 @@ type PackagesRestorePackageForOrgParams struct {
 }
 
 func unpackPackagesRestorePackageForOrgParams(packed map[string]any) (params PackagesRestorePackageForOrgParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesRestorePackageForOrgPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.PackageType = packed["package_type"].(PackagesRestorePackageForOrgPackageType)
+	params.PackageName = packed["package_name"].(string)
+	params.Org = packed["org"].(string)
 	if v, ok := packed["token"]; ok {
-		params.Token, _ = v.(OptString)
+		params.Token = v.(OptString)
 	}
 	return params
 }
@@ -42353,17 +40997,11 @@ type PackagesRestorePackageForUserParams struct {
 }
 
 func unpackPackagesRestorePackageForUserParams(packed map[string]any) (params PackagesRestorePackageForUserParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesRestorePackageForUserPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.PackageType = packed["package_type"].(PackagesRestorePackageForUserPackageType)
+	params.PackageName = packed["package_name"].(string)
+	params.Username = packed["username"].(string)
 	if v, ok := packed["token"]; ok {
-		params.Token, _ = v.(OptString)
+		params.Token = v.(OptString)
 	}
 	return params
 }
@@ -42522,15 +41160,9 @@ type PackagesRestorePackageVersionForAuthenticatedUserParams struct {
 }
 
 func unpackPackagesRestorePackageVersionForAuthenticatedUserParams(packed map[string]any) (params PackagesRestorePackageVersionForAuthenticatedUserParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesRestorePackageVersionForAuthenticatedUserPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
-	if v, ok := packed["package_version_id"]; ok {
-		params.PackageVersionID, _ = v.(int)
-	}
+	params.PackageType = packed["package_type"].(PackagesRestorePackageVersionForAuthenticatedUserPackageType)
+	params.PackageName = packed["package_name"].(string)
+	params.PackageVersionID = packed["package_version_id"].(int)
 	return params
 }
 
@@ -42654,18 +41286,10 @@ type PackagesRestorePackageVersionForOrgParams struct {
 }
 
 func unpackPackagesRestorePackageVersionForOrgParams(packed map[string]any) (params PackagesRestorePackageVersionForOrgParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesRestorePackageVersionForOrgPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["package_version_id"]; ok {
-		params.PackageVersionID, _ = v.(int)
-	}
+	params.PackageType = packed["package_type"].(PackagesRestorePackageVersionForOrgPackageType)
+	params.PackageName = packed["package_name"].(string)
+	params.Org = packed["org"].(string)
+	params.PackageVersionID = packed["package_version_id"].(int)
 	return params
 }
 
@@ -42820,18 +41444,10 @@ type PackagesRestorePackageVersionForUserParams struct {
 }
 
 func unpackPackagesRestorePackageVersionForUserParams(packed map[string]any) (params PackagesRestorePackageVersionForUserParams) {
-	if v, ok := packed["package_type"]; ok {
-		params.PackageType, _ = v.(PackagesRestorePackageVersionForUserPackageType)
-	}
-	if v, ok := packed["package_name"]; ok {
-		params.PackageName, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
-	if v, ok := packed["package_version_id"]; ok {
-		params.PackageVersionID, _ = v.(int)
-	}
+	params.PackageType = packed["package_type"].(PackagesRestorePackageVersionForUserPackageType)
+	params.PackageName = packed["package_name"].(string)
+	params.Username = packed["username"].(string)
+	params.PackageVersionID = packed["package_version_id"].(int)
 	return params
 }
 
@@ -42977,12 +41593,8 @@ type ProjectsAddCollaboratorParams struct {
 }
 
 func unpackProjectsAddCollaboratorParams(packed map[string]any) (params ProjectsAddCollaboratorParams) {
-	if v, ok := packed["project_id"]; ok {
-		params.ProjectID, _ = v.(int)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.ProjectID = packed["project_id"].(int)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -43057,9 +41669,7 @@ type ProjectsCreateColumnParams struct {
 }
 
 func unpackProjectsCreateColumnParams(packed map[string]any) (params ProjectsCreateColumnParams) {
-	if v, ok := packed["project_id"]; ok {
-		params.ProjectID, _ = v.(int)
-	}
+	params.ProjectID = packed["project_id"].(int)
 	return params
 }
 
@@ -43103,9 +41713,7 @@ type ProjectsCreateForOrgParams struct {
 }
 
 func unpackProjectsCreateForOrgParams(packed map[string]any) (params ProjectsCreateForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -43150,12 +41758,8 @@ type ProjectsCreateForRepoParams struct {
 }
 
 func unpackProjectsCreateForRepoParams(packed map[string]any) (params ProjectsCreateForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -43230,9 +41834,7 @@ type ProjectsDeleteParams struct {
 }
 
 func unpackProjectsDeleteParams(packed map[string]any) (params ProjectsDeleteParams) {
-	if v, ok := packed["project_id"]; ok {
-		params.ProjectID, _ = v.(int)
-	}
+	params.ProjectID = packed["project_id"].(int)
 	return params
 }
 
@@ -43277,9 +41879,7 @@ type ProjectsDeleteCardParams struct {
 }
 
 func unpackProjectsDeleteCardParams(packed map[string]any) (params ProjectsDeleteCardParams) {
-	if v, ok := packed["card_id"]; ok {
-		params.CardID, _ = v.(int)
-	}
+	params.CardID = packed["card_id"].(int)
 	return params
 }
 
@@ -43324,9 +41924,7 @@ type ProjectsDeleteColumnParams struct {
 }
 
 func unpackProjectsDeleteColumnParams(packed map[string]any) (params ProjectsDeleteColumnParams) {
-	if v, ok := packed["column_id"]; ok {
-		params.ColumnID, _ = v.(int)
-	}
+	params.ColumnID = packed["column_id"].(int)
 	return params
 }
 
@@ -43370,9 +41968,7 @@ type ProjectsGetParams struct {
 }
 
 func unpackProjectsGetParams(packed map[string]any) (params ProjectsGetParams) {
-	if v, ok := packed["project_id"]; ok {
-		params.ProjectID, _ = v.(int)
-	}
+	params.ProjectID = packed["project_id"].(int)
 	return params
 }
 
@@ -43417,9 +42013,7 @@ type ProjectsGetCardParams struct {
 }
 
 func unpackProjectsGetCardParams(packed map[string]any) (params ProjectsGetCardParams) {
-	if v, ok := packed["card_id"]; ok {
-		params.CardID, _ = v.(int)
-	}
+	params.CardID = packed["card_id"].(int)
 	return params
 }
 
@@ -43464,9 +42058,7 @@ type ProjectsGetColumnParams struct {
 }
 
 func unpackProjectsGetColumnParams(packed map[string]any) (params ProjectsGetColumnParams) {
-	if v, ok := packed["column_id"]; ok {
-		params.ColumnID, _ = v.(int)
-	}
+	params.ColumnID = packed["column_id"].(int)
 	return params
 }
 
@@ -43511,12 +42103,8 @@ type ProjectsGetPermissionForUserParams struct {
 }
 
 func unpackProjectsGetPermissionForUserParams(packed map[string]any) (params ProjectsGetPermissionForUserParams) {
-	if v, ok := packed["project_id"]; ok {
-		params.ProjectID, _ = v.(int)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.ProjectID = packed["project_id"].(int)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -43599,17 +42187,15 @@ type ProjectsListCardsParams struct {
 }
 
 func unpackProjectsListCardsParams(packed map[string]any) (params ProjectsListCardsParams) {
-	if v, ok := packed["column_id"]; ok {
-		params.ColumnID, _ = v.(int)
-	}
+	params.ColumnID = packed["column_id"].(int)
 	if v, ok := packed["archived_state"]; ok {
-		params.ArchivedState, _ = v.(OptProjectsListCardsArchivedState)
+		params.ArchivedState = v.(OptProjectsListCardsArchivedState)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -43798,17 +42384,15 @@ type ProjectsListCollaboratorsParams struct {
 }
 
 func unpackProjectsListCollaboratorsParams(packed map[string]any) (params ProjectsListCollaboratorsParams) {
-	if v, ok := packed["project_id"]; ok {
-		params.ProjectID, _ = v.(int)
-	}
+	params.ProjectID = packed["project_id"].(int)
 	if v, ok := packed["affiliation"]; ok {
-		params.Affiliation, _ = v.(OptProjectsListCollaboratorsAffiliation)
+		params.Affiliation = v.(OptProjectsListCollaboratorsAffiliation)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -43990,14 +42574,12 @@ type ProjectsListColumnsParams struct {
 }
 
 func unpackProjectsListColumnsParams(packed map[string]any) (params ProjectsListColumnsParams) {
-	if v, ok := packed["project_id"]; ok {
-		params.ProjectID, _ = v.(int)
-	}
+	params.ProjectID = packed["project_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -44127,17 +42709,15 @@ type ProjectsListForOrgParams struct {
 }
 
 func unpackProjectsListForOrgParams(packed map[string]any) (params ProjectsListForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["state"]; ok {
-		params.State, _ = v.(OptProjectsListForOrgState)
+		params.State = v.(OptProjectsListForOrgState)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -44322,20 +42902,16 @@ type ProjectsListForRepoParams struct {
 }
 
 func unpackProjectsListForRepoParams(packed map[string]any) (params ProjectsListForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["state"]; ok {
-		params.State, _ = v.(OptProjectsListForRepoState)
+		params.State = v.(OptProjectsListForRepoState)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -44550,17 +43126,15 @@ type ProjectsListForUserParams struct {
 }
 
 func unpackProjectsListForUserParams(packed map[string]any) (params ProjectsListForUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	if v, ok := packed["state"]; ok {
-		params.State, _ = v.(OptProjectsListForUserState)
+		params.State = v.(OptProjectsListForUserState)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -44739,9 +43313,7 @@ type ProjectsMoveCardParams struct {
 }
 
 func unpackProjectsMoveCardParams(packed map[string]any) (params ProjectsMoveCardParams) {
-	if v, ok := packed["card_id"]; ok {
-		params.CardID, _ = v.(int)
-	}
+	params.CardID = packed["card_id"].(int)
 	return params
 }
 
@@ -44786,9 +43358,7 @@ type ProjectsMoveColumnParams struct {
 }
 
 func unpackProjectsMoveColumnParams(packed map[string]any) (params ProjectsMoveColumnParams) {
-	if v, ok := packed["column_id"]; ok {
-		params.ColumnID, _ = v.(int)
-	}
+	params.ColumnID = packed["column_id"].(int)
 	return params
 }
 
@@ -44833,12 +43403,8 @@ type ProjectsRemoveCollaboratorParams struct {
 }
 
 func unpackProjectsRemoveCollaboratorParams(packed map[string]any) (params ProjectsRemoveCollaboratorParams) {
-	if v, ok := packed["project_id"]; ok {
-		params.ProjectID, _ = v.(int)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.ProjectID = packed["project_id"].(int)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -44913,9 +43479,7 @@ type ProjectsUpdateParams struct {
 }
 
 func unpackProjectsUpdateParams(packed map[string]any) (params ProjectsUpdateParams) {
-	if v, ok := packed["project_id"]; ok {
-		params.ProjectID, _ = v.(int)
-	}
+	params.ProjectID = packed["project_id"].(int)
 	return params
 }
 
@@ -44960,9 +43524,7 @@ type ProjectsUpdateCardParams struct {
 }
 
 func unpackProjectsUpdateCardParams(packed map[string]any) (params ProjectsUpdateCardParams) {
-	if v, ok := packed["card_id"]; ok {
-		params.CardID, _ = v.(int)
-	}
+	params.CardID = packed["card_id"].(int)
 	return params
 }
 
@@ -45007,9 +43569,7 @@ type ProjectsUpdateColumnParams struct {
 }
 
 func unpackProjectsUpdateColumnParams(packed map[string]any) (params ProjectsUpdateColumnParams) {
-	if v, ok := packed["column_id"]; ok {
-		params.ColumnID, _ = v.(int)
-	}
+	params.ColumnID = packed["column_id"].(int)
 	return params
 }
 
@@ -45055,15 +43615,9 @@ type PullsCheckIfMergedParams struct {
 }
 
 func unpackPullsCheckIfMergedParams(packed map[string]any) (params PullsCheckIfMergedParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
 	return params
 }
 
@@ -45170,12 +43724,8 @@ type PullsCreateParams struct {
 }
 
 func unpackPullsCreateParams(packed map[string]any) (params PullsCreateParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -45254,18 +43804,10 @@ type PullsCreateReplyForReviewCommentParams struct {
 }
 
 func unpackPullsCreateReplyForReviewCommentParams(packed map[string]any) (params PullsCreateReplyForReviewCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
+	params.CommentID = packed["comment_id"].(int)
 	return params
 }
 
@@ -45404,15 +43946,9 @@ type PullsCreateReviewParams struct {
 }
 
 func unpackPullsCreateReviewParams(packed map[string]any) (params PullsCreateReviewParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
 	return params
 }
 
@@ -45520,15 +44056,9 @@ type PullsCreateReviewCommentParams struct {
 }
 
 func unpackPullsCreateReviewCommentParams(packed map[string]any) (params PullsCreateReviewCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
 	return params
 }
 
@@ -45638,18 +44168,10 @@ type PullsDeletePendingReviewParams struct {
 }
 
 func unpackPullsDeletePendingReviewParams(packed map[string]any) (params PullsDeletePendingReviewParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
-	if v, ok := packed["review_id"]; ok {
-		params.ReviewID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
+	params.ReviewID = packed["review_id"].(int)
 	return params
 }
 
@@ -45789,15 +44311,9 @@ type PullsDeleteReviewCommentParams struct {
 }
 
 func unpackPullsDeleteReviewCommentParams(packed map[string]any) (params PullsDeleteReviewCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	return params
 }
 
@@ -45907,18 +44423,10 @@ type PullsDismissReviewParams struct {
 }
 
 func unpackPullsDismissReviewParams(packed map[string]any) (params PullsDismissReviewParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
-	if v, ok := packed["review_id"]; ok {
-		params.ReviewID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
+	params.ReviewID = packed["review_id"].(int)
 	return params
 }
 
@@ -46057,15 +44565,9 @@ type PullsGetParams struct {
 }
 
 func unpackPullsGetParams(packed map[string]any) (params PullsGetParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
 	return params
 }
 
@@ -46175,18 +44677,10 @@ type PullsGetReviewParams struct {
 }
 
 func unpackPullsGetReviewParams(packed map[string]any) (params PullsGetReviewParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
-	if v, ok := packed["review_id"]; ok {
-		params.ReviewID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
+	params.ReviewID = packed["review_id"].(int)
 	return params
 }
 
@@ -46326,15 +44820,9 @@ type PullsGetReviewCommentParams struct {
 }
 
 func unpackPullsGetReviewCommentParams(packed map[string]any) (params PullsGetReviewCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	return params
 }
 
@@ -46458,32 +44946,28 @@ type PullsListParams struct {
 }
 
 func unpackPullsListParams(packed map[string]any) (params PullsListParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["state"]; ok {
-		params.State, _ = v.(OptPullsListState)
+		params.State = v.(OptPullsListState)
 	}
 	if v, ok := packed["head"]; ok {
-		params.Head, _ = v.(OptString)
+		params.Head = v.(OptString)
 	}
 	if v, ok := packed["base"]; ok {
-		params.Base, _ = v.(OptString)
+		params.Base = v.(OptString)
 	}
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptPullsListSort)
+		params.Sort = v.(OptPullsListSort)
 	}
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptPullsListDirection)
+		params.Direction = v.(OptPullsListDirection)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -46871,23 +45355,15 @@ type PullsListCommentsForReviewParams struct {
 }
 
 func unpackPullsListCommentsForReviewParams(packed map[string]any) (params PullsListCommentsForReviewParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
-	if v, ok := packed["review_id"]; ok {
-		params.ReviewID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
+	params.ReviewID = packed["review_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -47110,20 +45586,14 @@ type PullsListCommitsParams struct {
 }
 
 func unpackPullsListCommitsParams(packed map[string]any) (params PullsListCommitsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -47315,20 +45785,14 @@ type PullsListFilesParams struct {
 }
 
 func unpackPullsListFilesParams(packed map[string]any) (params PullsListFilesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -47520,20 +45984,14 @@ type PullsListRequestedReviewersParams struct {
 }
 
 func unpackPullsListRequestedReviewersParams(packed map[string]any) (params PullsListRequestedReviewersParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -47732,29 +46190,23 @@ type PullsListReviewCommentsParams struct {
 }
 
 func unpackPullsListReviewCommentsParams(packed map[string]any) (params PullsListReviewCommentsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptPullsListReviewCommentsSort)
+		params.Sort = v.(OptPullsListReviewCommentsSort)
 	}
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptPullsListReviewCommentsDirection)
+		params.Direction = v.(OptPullsListReviewCommentsDirection)
 	}
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptDateTime)
+		params.Since = v.(OptDateTime)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -48088,26 +46540,22 @@ type PullsListReviewCommentsForRepoParams struct {
 }
 
 func unpackPullsListReviewCommentsForRepoParams(packed map[string]any) (params PullsListReviewCommentsForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptPullsListReviewCommentsForRepoSort)
+		params.Sort = v.(OptPullsListReviewCommentsForRepoSort)
 	}
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptPullsListReviewCommentsForRepoDirection)
+		params.Direction = v.(OptPullsListReviewCommentsForRepoDirection)
 	}
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptDateTime)
+		params.Since = v.(OptDateTime)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -48400,20 +46848,14 @@ type PullsListReviewsParams struct {
 }
 
 func unpackPullsListReviewsParams(packed map[string]any) (params PullsListReviewsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -48601,15 +47043,9 @@ type PullsMergeParams struct {
 }
 
 func unpackPullsMergeParams(packed map[string]any) (params PullsMergeParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
 	return params
 }
 
@@ -48717,15 +47153,9 @@ type PullsRemoveRequestedReviewersParams struct {
 }
 
 func unpackPullsRemoveRequestedReviewersParams(packed map[string]any) (params PullsRemoveRequestedReviewersParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
 	return params
 }
 
@@ -48835,18 +47265,10 @@ type PullsSubmitReviewParams struct {
 }
 
 func unpackPullsSubmitReviewParams(packed map[string]any) (params PullsSubmitReviewParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
-	if v, ok := packed["review_id"]; ok {
-		params.ReviewID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
+	params.ReviewID = packed["review_id"].(int)
 	return params
 }
 
@@ -48985,15 +47407,9 @@ type PullsUpdateParams struct {
 }
 
 func unpackPullsUpdateParams(packed map[string]any) (params PullsUpdateParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
 	return params
 }
 
@@ -49101,15 +47517,9 @@ type PullsUpdateBranchParams struct {
 }
 
 func unpackPullsUpdateBranchParams(packed map[string]any) (params PullsUpdateBranchParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
 	return params
 }
 
@@ -49219,18 +47629,10 @@ type PullsUpdateReviewParams struct {
 }
 
 func unpackPullsUpdateReviewParams(packed map[string]any) (params PullsUpdateReviewParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["pull_number"]; ok {
-		params.PullNumber, _ = v.(int)
-	}
-	if v, ok := packed["review_id"]; ok {
-		params.ReviewID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.PullNumber = packed["pull_number"].(int)
+	params.ReviewID = packed["review_id"].(int)
 	return params
 }
 
@@ -49370,15 +47772,9 @@ type PullsUpdateReviewCommentParams struct {
 }
 
 func unpackPullsUpdateReviewCommentParams(packed map[string]any) (params PullsUpdateReviewCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	return params
 }
 
@@ -49487,15 +47883,9 @@ type ReactionsCreateForCommitCommentParams struct {
 }
 
 func unpackReactionsCreateForCommitCommentParams(packed map[string]any) (params ReactionsCreateForCommitCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	return params
 }
 
@@ -49604,15 +47994,9 @@ type ReactionsCreateForIssueParams struct {
 }
 
 func unpackReactionsCreateForIssueParams(packed map[string]any) (params ReactionsCreateForIssueParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["issue_number"]; ok {
-		params.IssueNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.IssueNumber = packed["issue_number"].(int)
 	return params
 }
 
@@ -49721,15 +48105,9 @@ type ReactionsCreateForIssueCommentParams struct {
 }
 
 func unpackReactionsCreateForIssueCommentParams(packed map[string]any) (params ReactionsCreateForIssueCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	return params
 }
 
@@ -49838,15 +48216,9 @@ type ReactionsCreateForPullRequestReviewCommentParams struct {
 }
 
 func unpackReactionsCreateForPullRequestReviewCommentParams(packed map[string]any) (params ReactionsCreateForPullRequestReviewCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	return params
 }
 
@@ -49955,15 +48327,9 @@ type ReactionsCreateForReleaseParams struct {
 }
 
 func unpackReactionsCreateForReleaseParams(packed map[string]any) (params ReactionsCreateForReleaseParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["release_id"]; ok {
-		params.ReleaseID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.ReleaseID = packed["release_id"].(int)
 	return params
 }
 
@@ -50073,18 +48439,10 @@ type ReactionsCreateForTeamDiscussionCommentInOrgParams struct {
 }
 
 func unpackReactionsCreateForTeamDiscussionCommentInOrgParams(packed map[string]any) (params ReactionsCreateForTeamDiscussionCommentInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
-	if v, ok := packed["comment_number"]; ok {
-		params.CommentNumber, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.DiscussionNumber = packed["discussion_number"].(int)
+	params.CommentNumber = packed["comment_number"].(int)
 	return params
 }
 
@@ -50223,15 +48581,9 @@ type ReactionsCreateForTeamDiscussionCommentLegacyParams struct {
 }
 
 func unpackReactionsCreateForTeamDiscussionCommentLegacyParams(packed map[string]any) (params ReactionsCreateForTeamDiscussionCommentLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
-	if v, ok := packed["comment_number"]; ok {
-		params.CommentNumber, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.DiscussionNumber = packed["discussion_number"].(int)
+	params.CommentNumber = packed["comment_number"].(int)
 	return params
 }
 
@@ -50340,15 +48692,9 @@ type ReactionsCreateForTeamDiscussionInOrgParams struct {
 }
 
 func unpackReactionsCreateForTeamDiscussionInOrgParams(packed map[string]any) (params ReactionsCreateForTeamDiscussionInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.DiscussionNumber = packed["discussion_number"].(int)
 	return params
 }
 
@@ -50455,12 +48801,8 @@ type ReactionsCreateForTeamDiscussionLegacyParams struct {
 }
 
 func unpackReactionsCreateForTeamDiscussionLegacyParams(packed map[string]any) (params ReactionsCreateForTeamDiscussionLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.DiscussionNumber = packed["discussion_number"].(int)
 	return params
 }
 
@@ -50539,18 +48881,10 @@ type ReactionsDeleteForCommitCommentParams struct {
 }
 
 func unpackReactionsDeleteForCommitCommentParams(packed map[string]any) (params ReactionsDeleteForCommitCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
-	if v, ok := packed["reaction_id"]; ok {
-		params.ReactionID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
+	params.ReactionID = packed["reaction_id"].(int)
 	return params
 }
 
@@ -50691,18 +49025,10 @@ type ReactionsDeleteForIssueParams struct {
 }
 
 func unpackReactionsDeleteForIssueParams(packed map[string]any) (params ReactionsDeleteForIssueParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["issue_number"]; ok {
-		params.IssueNumber, _ = v.(int)
-	}
-	if v, ok := packed["reaction_id"]; ok {
-		params.ReactionID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.IssueNumber = packed["issue_number"].(int)
+	params.ReactionID = packed["reaction_id"].(int)
 	return params
 }
 
@@ -50843,18 +49169,10 @@ type ReactionsDeleteForIssueCommentParams struct {
 }
 
 func unpackReactionsDeleteForIssueCommentParams(packed map[string]any) (params ReactionsDeleteForIssueCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
-	if v, ok := packed["reaction_id"]; ok {
-		params.ReactionID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
+	params.ReactionID = packed["reaction_id"].(int)
 	return params
 }
 
@@ -50995,18 +49313,10 @@ type ReactionsDeleteForPullRequestCommentParams struct {
 }
 
 func unpackReactionsDeleteForPullRequestCommentParams(packed map[string]any) (params ReactionsDeleteForPullRequestCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
-	if v, ok := packed["reaction_id"]; ok {
-		params.ReactionID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
+	params.ReactionID = packed["reaction_id"].(int)
 	return params
 }
 
@@ -51147,18 +49457,10 @@ type ReactionsDeleteForTeamDiscussionParams struct {
 }
 
 func unpackReactionsDeleteForTeamDiscussionParams(packed map[string]any) (params ReactionsDeleteForTeamDiscussionParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
-	if v, ok := packed["reaction_id"]; ok {
-		params.ReactionID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.DiscussionNumber = packed["discussion_number"].(int)
+	params.ReactionID = packed["reaction_id"].(int)
 	return params
 }
 
@@ -51300,21 +49602,11 @@ type ReactionsDeleteForTeamDiscussionCommentParams struct {
 }
 
 func unpackReactionsDeleteForTeamDiscussionCommentParams(packed map[string]any) (params ReactionsDeleteForTeamDiscussionCommentParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
-	if v, ok := packed["comment_number"]; ok {
-		params.CommentNumber, _ = v.(int)
-	}
-	if v, ok := packed["reaction_id"]; ok {
-		params.ReactionID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.DiscussionNumber = packed["discussion_number"].(int)
+	params.CommentNumber = packed["comment_number"].(int)
+	params.ReactionID = packed["reaction_id"].(int)
 	return params
 }
 
@@ -51482,9 +49774,7 @@ type ReactionsDeleteLegacyParams struct {
 }
 
 func unpackReactionsDeleteLegacyParams(packed map[string]any) (params ReactionsDeleteLegacyParams) {
-	if v, ok := packed["reaction_id"]; ok {
-		params.ReactionID, _ = v.(int)
-	}
+	params.ReactionID = packed["reaction_id"].(int)
 	return params
 }
 
@@ -51538,23 +49828,17 @@ type ReactionsListForCommitCommentParams struct {
 }
 
 func unpackReactionsListForCommitCommentParams(packed map[string]any) (params ReactionsListForCommitCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	if v, ok := packed["content"]; ok {
-		params.Content, _ = v.(OptReactionsListForCommitCommentContent)
+		params.Content = v.(OptReactionsListForCommitCommentContent)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -51799,23 +50083,17 @@ type ReactionsListForIssueParams struct {
 }
 
 func unpackReactionsListForIssueParams(packed map[string]any) (params ReactionsListForIssueParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["issue_number"]; ok {
-		params.IssueNumber, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.IssueNumber = packed["issue_number"].(int)
 	if v, ok := packed["content"]; ok {
-		params.Content, _ = v.(OptReactionsListForIssueContent)
+		params.Content = v.(OptReactionsListForIssueContent)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -52060,23 +50338,17 @@ type ReactionsListForIssueCommentParams struct {
 }
 
 func unpackReactionsListForIssueCommentParams(packed map[string]any) (params ReactionsListForIssueCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	if v, ok := packed["content"]; ok {
-		params.Content, _ = v.(OptReactionsListForIssueCommentContent)
+		params.Content = v.(OptReactionsListForIssueCommentContent)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -52321,23 +50593,17 @@ type ReactionsListForPullRequestReviewCommentParams struct {
 }
 
 func unpackReactionsListForPullRequestReviewCommentParams(packed map[string]any) (params ReactionsListForPullRequestReviewCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	if v, ok := packed["content"]; ok {
-		params.Content, _ = v.(OptReactionsListForPullRequestReviewCommentContent)
+		params.Content = v.(OptReactionsListForPullRequestReviewCommentContent)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -52583,26 +50849,18 @@ type ReactionsListForTeamDiscussionCommentInOrgParams struct {
 }
 
 func unpackReactionsListForTeamDiscussionCommentInOrgParams(packed map[string]any) (params ReactionsListForTeamDiscussionCommentInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
-	if v, ok := packed["comment_number"]; ok {
-		params.CommentNumber, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.DiscussionNumber = packed["discussion_number"].(int)
+	params.CommentNumber = packed["comment_number"].(int)
 	if v, ok := packed["content"]; ok {
-		params.Content, _ = v.(OptReactionsListForTeamDiscussionCommentInOrgContent)
+		params.Content = v.(OptReactionsListForTeamDiscussionCommentInOrgContent)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -52877,23 +51135,17 @@ type ReactionsListForTeamDiscussionCommentLegacyParams struct {
 }
 
 func unpackReactionsListForTeamDiscussionCommentLegacyParams(packed map[string]any) (params ReactionsListForTeamDiscussionCommentLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
-	if v, ok := packed["comment_number"]; ok {
-		params.CommentNumber, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.DiscussionNumber = packed["discussion_number"].(int)
+	params.CommentNumber = packed["comment_number"].(int)
 	if v, ok := packed["content"]; ok {
-		params.Content, _ = v.(OptReactionsListForTeamDiscussionCommentLegacyContent)
+		params.Content = v.(OptReactionsListForTeamDiscussionCommentLegacyContent)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -53138,23 +51390,17 @@ type ReactionsListForTeamDiscussionInOrgParams struct {
 }
 
 func unpackReactionsListForTeamDiscussionInOrgParams(packed map[string]any) (params ReactionsListForTeamDiscussionInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.DiscussionNumber = packed["discussion_number"].(int)
 	if v, ok := packed["content"]; ok {
-		params.Content, _ = v.(OptReactionsListForTeamDiscussionInOrgContent)
+		params.Content = v.(OptReactionsListForTeamDiscussionInOrgContent)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -53397,20 +51643,16 @@ type ReactionsListForTeamDiscussionLegacyParams struct {
 }
 
 func unpackReactionsListForTeamDiscussionLegacyParams(packed map[string]any) (params ReactionsListForTeamDiscussionLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.DiscussionNumber = packed["discussion_number"].(int)
 	if v, ok := packed["content"]; ok {
-		params.Content, _ = v.(OptReactionsListForTeamDiscussionLegacyContent)
+		params.Content = v.(OptReactionsListForTeamDiscussionLegacyContent)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -53615,9 +51857,7 @@ type ReposAcceptInvitationParams struct {
 }
 
 func unpackReposAcceptInvitationParams(packed map[string]any) (params ReposAcceptInvitationParams) {
-	if v, ok := packed["invitation_id"]; ok {
-		params.InvitationID, _ = v.(int)
-	}
+	params.InvitationID = packed["invitation_id"].(int)
 	return params
 }
 
@@ -53664,15 +51904,9 @@ type ReposAddAppAccessRestrictionsParams struct {
 }
 
 func unpackReposAddAppAccessRestrictionsParams(packed map[string]any) (params ReposAddAppAccessRestrictionsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -53780,15 +52014,9 @@ type ReposAddCollaboratorParams struct {
 }
 
 func unpackReposAddCollaboratorParams(packed map[string]any) (params ReposAddCollaboratorParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -53897,15 +52125,9 @@ type ReposAddStatusCheckContextsParams struct {
 }
 
 func unpackReposAddStatusCheckContextsParams(packed map[string]any) (params ReposAddStatusCheckContextsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -54014,15 +52236,9 @@ type ReposAddTeamAccessRestrictionsParams struct {
 }
 
 func unpackReposAddTeamAccessRestrictionsParams(packed map[string]any) (params ReposAddTeamAccessRestrictionsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -54131,15 +52347,9 @@ type ReposAddUserAccessRestrictionsParams struct {
 }
 
 func unpackReposAddUserAccessRestrictionsParams(packed map[string]any) (params ReposAddUserAccessRestrictionsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -54247,15 +52457,9 @@ type ReposCheckCollaboratorParams struct {
 }
 
 func unpackReposCheckCollaboratorParams(packed map[string]any) (params ReposCheckCollaboratorParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -54362,12 +52566,8 @@ type ReposCheckVulnerabilityAlertsParams struct {
 }
 
 func unpackReposCheckVulnerabilityAlertsParams(packed map[string]any) (params ReposCheckVulnerabilityAlertsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -54449,21 +52649,15 @@ type ReposCompareCommitsParams struct {
 }
 
 func unpackReposCompareCommitsParams(packed map[string]any) (params ReposCompareCommitsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
-	if v, ok := packed["basehead"]; ok {
-		params.Basehead, _ = v.(string)
-	}
+	params.Basehead = packed["basehead"].(string)
 	return params
 }
 
@@ -54649,12 +52843,8 @@ type ReposCreateAutolinkParams struct {
 }
 
 func unpackReposCreateAutolinkParams(packed map[string]any) (params ReposCreateAutolinkParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -54732,15 +52922,9 @@ type ReposCreateCommitCommentParams struct {
 }
 
 func unpackReposCreateCommitCommentParams(packed map[string]any) (params ReposCreateCommitCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["commit_sha"]; ok {
-		params.CommitSha, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommitSha = packed["commit_sha"].(string)
 	return params
 }
 
@@ -54849,15 +53033,9 @@ type ReposCreateCommitSignatureProtectionParams struct {
 }
 
 func unpackReposCreateCommitSignatureProtectionParams(packed map[string]any) (params ReposCreateCommitSignatureProtectionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -54965,15 +53143,9 @@ type ReposCreateCommitStatusParams struct {
 }
 
 func unpackReposCreateCommitStatusParams(packed map[string]any) (params ReposCreateCommitStatusParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["sha"]; ok {
-		params.Sha, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Sha = packed["sha"].(string)
 	return params
 }
 
@@ -55080,12 +53252,8 @@ type ReposCreateDeployKeyParams struct {
 }
 
 func unpackReposCreateDeployKeyParams(packed map[string]any) (params ReposCreateDeployKeyParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -55161,12 +53329,8 @@ type ReposCreateDeploymentParams struct {
 }
 
 func unpackReposCreateDeploymentParams(packed map[string]any) (params ReposCreateDeploymentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -55244,15 +53408,9 @@ type ReposCreateDeploymentStatusParams struct {
 }
 
 func unpackReposCreateDeploymentStatusParams(packed map[string]any) (params ReposCreateDeploymentStatusParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["deployment_id"]; ok {
-		params.DeploymentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.DeploymentID = packed["deployment_id"].(int)
 	return params
 }
 
@@ -55359,12 +53517,8 @@ type ReposCreateDispatchEventParams struct {
 }
 
 func unpackReposCreateDispatchEventParams(packed map[string]any) (params ReposCreateDispatchEventParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -55440,12 +53594,8 @@ type ReposCreateForkParams struct {
 }
 
 func unpackReposCreateForkParams(packed map[string]any) (params ReposCreateForkParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -55520,9 +53670,7 @@ type ReposCreateInOrgParams struct {
 }
 
 func unpackReposCreateInOrgParams(packed map[string]any) (params ReposCreateInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -55569,15 +53717,9 @@ type ReposCreateOrUpdateFileContentsParams struct {
 }
 
 func unpackReposCreateOrUpdateFileContentsParams(packed map[string]any) (params ReposCreateOrUpdateFileContentsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["path"]; ok {
-		params.Path, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Path = packed["path"].(string)
 	return params
 }
 
@@ -55684,12 +53826,8 @@ type ReposCreatePagesSiteParams struct {
 }
 
 func unpackReposCreatePagesSiteParams(packed map[string]any) (params ReposCreatePagesSiteParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -55765,12 +53903,8 @@ type ReposCreateReleaseParams struct {
 }
 
 func unpackReposCreateReleaseParams(packed map[string]any) (params ReposCreateReleaseParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -55846,12 +53980,8 @@ type ReposCreateUsingTemplateParams struct {
 }
 
 func unpackReposCreateUsingTemplateParams(packed map[string]any) (params ReposCreateUsingTemplateParams) {
-	if v, ok := packed["template_owner"]; ok {
-		params.TemplateOwner, _ = v.(string)
-	}
-	if v, ok := packed["template_repo"]; ok {
-		params.TemplateRepo, _ = v.(string)
-	}
+	params.TemplateOwner = packed["template_owner"].(string)
+	params.TemplateRepo = packed["template_repo"].(string)
 	return params
 }
 
@@ -55927,12 +54057,8 @@ type ReposCreateWebhookParams struct {
 }
 
 func unpackReposCreateWebhookParams(packed map[string]any) (params ReposCreateWebhookParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -56008,9 +54134,7 @@ type ReposDeclineInvitationParams struct {
 }
 
 func unpackReposDeclineInvitationParams(packed map[string]any) (params ReposDeclineInvitationParams) {
-	if v, ok := packed["invitation_id"]; ok {
-		params.InvitationID, _ = v.(int)
-	}
+	params.InvitationID = packed["invitation_id"].(int)
 	return params
 }
 
@@ -56055,12 +54179,8 @@ type ReposDeleteParams struct {
 }
 
 func unpackReposDeleteParams(packed map[string]any) (params ReposDeleteParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -56138,15 +54258,9 @@ type ReposDeleteAccessRestrictionsParams struct {
 }
 
 func unpackReposDeleteAccessRestrictionsParams(packed map[string]any) (params ReposDeleteAccessRestrictionsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -56255,15 +54369,9 @@ type ReposDeleteAdminBranchProtectionParams struct {
 }
 
 func unpackReposDeleteAdminBranchProtectionParams(packed map[string]any) (params ReposDeleteAdminBranchProtectionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -56372,15 +54480,9 @@ type ReposDeleteAnEnvironmentParams struct {
 }
 
 func unpackReposDeleteAnEnvironmentParams(packed map[string]any) (params ReposDeleteAnEnvironmentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["environment_name"]; ok {
-		params.EnvironmentName, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.EnvironmentName = packed["environment_name"].(string)
 	return params
 }
 
@@ -56489,15 +54591,9 @@ type ReposDeleteAutolinkParams struct {
 }
 
 func unpackReposDeleteAutolinkParams(packed map[string]any) (params ReposDeleteAutolinkParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["autolink_id"]; ok {
-		params.AutolinkID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.AutolinkID = packed["autolink_id"].(int)
 	return params
 }
 
@@ -56606,15 +54702,9 @@ type ReposDeleteBranchProtectionParams struct {
 }
 
 func unpackReposDeleteBranchProtectionParams(packed map[string]any) (params ReposDeleteBranchProtectionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -56723,15 +54813,9 @@ type ReposDeleteCommitCommentParams struct {
 }
 
 func unpackReposDeleteCommitCommentParams(packed map[string]any) (params ReposDeleteCommitCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	return params
 }
 
@@ -56840,15 +54924,9 @@ type ReposDeleteCommitSignatureProtectionParams struct {
 }
 
 func unpackReposDeleteCommitSignatureProtectionParams(packed map[string]any) (params ReposDeleteCommitSignatureProtectionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -56957,15 +55035,9 @@ type ReposDeleteDeployKeyParams struct {
 }
 
 func unpackReposDeleteDeployKeyParams(packed map[string]any) (params ReposDeleteDeployKeyParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["key_id"]; ok {
-		params.KeyID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.KeyID = packed["key_id"].(int)
 	return params
 }
 
@@ -57074,15 +55146,9 @@ type ReposDeleteDeploymentParams struct {
 }
 
 func unpackReposDeleteDeploymentParams(packed map[string]any) (params ReposDeleteDeploymentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["deployment_id"]; ok {
-		params.DeploymentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.DeploymentID = packed["deployment_id"].(int)
 	return params
 }
 
@@ -57191,15 +55257,9 @@ type ReposDeleteFileParams struct {
 }
 
 func unpackReposDeleteFileParams(packed map[string]any) (params ReposDeleteFileParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["path"]; ok {
-		params.Path, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Path = packed["path"].(string)
 	return params
 }
 
@@ -57308,15 +55368,9 @@ type ReposDeleteInvitationParams struct {
 }
 
 func unpackReposDeleteInvitationParams(packed map[string]any) (params ReposDeleteInvitationParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["invitation_id"]; ok {
-		params.InvitationID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.InvitationID = packed["invitation_id"].(int)
 	return params
 }
 
@@ -57423,12 +55477,8 @@ type ReposDeletePagesSiteParams struct {
 }
 
 func unpackReposDeletePagesSiteParams(packed map[string]any) (params ReposDeletePagesSiteParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -57506,15 +55556,9 @@ type ReposDeletePullRequestReviewProtectionParams struct {
 }
 
 func unpackReposDeletePullRequestReviewProtectionParams(packed map[string]any) (params ReposDeletePullRequestReviewProtectionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -57623,15 +55667,9 @@ type ReposDeleteReleaseParams struct {
 }
 
 func unpackReposDeleteReleaseParams(packed map[string]any) (params ReposDeleteReleaseParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["release_id"]; ok {
-		params.ReleaseID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.ReleaseID = packed["release_id"].(int)
 	return params
 }
 
@@ -57740,15 +55778,9 @@ type ReposDeleteReleaseAssetParams struct {
 }
 
 func unpackReposDeleteReleaseAssetParams(packed map[string]any) (params ReposDeleteReleaseAssetParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["asset_id"]; ok {
-		params.AssetID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.AssetID = packed["asset_id"].(int)
 	return params
 }
 
@@ -57856,15 +55888,9 @@ type ReposDeleteWebhookParams struct {
 }
 
 func unpackReposDeleteWebhookParams(packed map[string]any) (params ReposDeleteWebhookParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.HookID = packed["hook_id"].(int)
 	return params
 }
 
@@ -57971,12 +55997,8 @@ type ReposDisableAutomatedSecurityFixesParams struct {
 }
 
 func unpackReposDisableAutomatedSecurityFixesParams(packed map[string]any) (params ReposDisableAutomatedSecurityFixesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -58052,12 +56074,8 @@ type ReposDisableLfsForRepoParams struct {
 }
 
 func unpackReposDisableLfsForRepoParams(packed map[string]any) (params ReposDisableLfsForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -58133,12 +56151,8 @@ type ReposDisableVulnerabilityAlertsParams struct {
 }
 
 func unpackReposDisableVulnerabilityAlertsParams(packed map[string]any) (params ReposDisableVulnerabilityAlertsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -58215,15 +56229,9 @@ type ReposDownloadTarballArchiveParams struct {
 }
 
 func unpackReposDownloadTarballArchiveParams(packed map[string]any) (params ReposDownloadTarballArchiveParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["ref"]; ok {
-		params.Ref, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Ref = packed["ref"].(string)
 	return params
 }
 
@@ -58331,15 +56339,9 @@ type ReposDownloadZipballArchiveParams struct {
 }
 
 func unpackReposDownloadZipballArchiveParams(packed map[string]any) (params ReposDownloadZipballArchiveParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["ref"]; ok {
-		params.Ref, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Ref = packed["ref"].(string)
 	return params
 }
 
@@ -58446,12 +56448,8 @@ type ReposEnableAutomatedSecurityFixesParams struct {
 }
 
 func unpackReposEnableAutomatedSecurityFixesParams(packed map[string]any) (params ReposEnableAutomatedSecurityFixesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -58527,12 +56525,8 @@ type ReposEnableLfsForRepoParams struct {
 }
 
 func unpackReposEnableLfsForRepoParams(packed map[string]any) (params ReposEnableLfsForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -58608,12 +56602,8 @@ type ReposEnableVulnerabilityAlertsParams struct {
 }
 
 func unpackReposEnableVulnerabilityAlertsParams(packed map[string]any) (params ReposEnableVulnerabilityAlertsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -58689,12 +56679,8 @@ type ReposGetParams struct {
 }
 
 func unpackReposGetParams(packed map[string]any) (params ReposGetParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -58772,15 +56758,9 @@ type ReposGetAccessRestrictionsParams struct {
 }
 
 func unpackReposGetAccessRestrictionsParams(packed map[string]any) (params ReposGetAccessRestrictionsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -58889,15 +56869,9 @@ type ReposGetAdminBranchProtectionParams struct {
 }
 
 func unpackReposGetAdminBranchProtectionParams(packed map[string]any) (params ReposGetAdminBranchProtectionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -59006,15 +56980,9 @@ type ReposGetAllStatusCheckContextsParams struct {
 }
 
 func unpackReposGetAllStatusCheckContextsParams(packed map[string]any) (params ReposGetAllStatusCheckContextsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -59125,17 +57093,13 @@ type ReposGetAllTopicsParams struct {
 }
 
 func unpackReposGetAllTopicsParams(packed map[string]any) (params ReposGetAllTopicsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	return params
 }
@@ -59293,15 +57257,9 @@ type ReposGetAppsWithAccessToProtectedBranchParams struct {
 }
 
 func unpackReposGetAppsWithAccessToProtectedBranchParams(packed map[string]any) (params ReposGetAppsWithAccessToProtectedBranchParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -59410,15 +57368,9 @@ type ReposGetAutolinkParams struct {
 }
 
 func unpackReposGetAutolinkParams(packed map[string]any) (params ReposGetAutolinkParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["autolink_id"]; ok {
-		params.AutolinkID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.AutolinkID = packed["autolink_id"].(int)
 	return params
 }
 
@@ -59527,15 +57479,9 @@ type ReposGetBranchParams struct {
 }
 
 func unpackReposGetBranchParams(packed map[string]any) (params ReposGetBranchParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -59644,15 +57590,9 @@ type ReposGetBranchProtectionParams struct {
 }
 
 func unpackReposGetBranchProtectionParams(packed map[string]any) (params ReposGetBranchProtectionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -59761,14 +57701,10 @@ type ReposGetClonesParams struct {
 }
 
 func unpackReposGetClonesParams(packed map[string]any) (params ReposGetClonesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per"]; ok {
-		params.Per, _ = v.(OptReposGetClonesPer)
+		params.Per = v.(OptReposGetClonesPer)
 	}
 	return params
 }
@@ -59900,12 +57836,8 @@ type ReposGetCodeFrequencyStatsParams struct {
 }
 
 func unpackReposGetCodeFrequencyStatsParams(packed map[string]any) (params ReposGetCodeFrequencyStatsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -59982,15 +57914,9 @@ type ReposGetCollaboratorPermissionLevelParams struct {
 }
 
 func unpackReposGetCollaboratorPermissionLevelParams(packed map[string]any) (params ReposGetCollaboratorPermissionLevelParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -60103,20 +58029,14 @@ type ReposGetCombinedStatusForRefParams struct {
 }
 
 func unpackReposGetCombinedStatusForRefParams(packed map[string]any) (params ReposGetCombinedStatusForRefParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["ref"]; ok {
-		params.Ref, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Ref = packed["ref"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -60309,21 +58229,15 @@ type ReposGetCommitParams struct {
 }
 
 func unpackReposGetCommitParams(packed map[string]any) (params ReposGetCommitParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
-	if v, ok := packed["ref"]; ok {
-		params.Ref, _ = v.(string)
-	}
+	params.Ref = packed["ref"].(string)
 	return params
 }
 
@@ -60509,12 +58423,8 @@ type ReposGetCommitActivityStatsParams struct {
 }
 
 func unpackReposGetCommitActivityStatsParams(packed map[string]any) (params ReposGetCommitActivityStatsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -60592,15 +58502,9 @@ type ReposGetCommitCommentParams struct {
 }
 
 func unpackReposGetCommitCommentParams(packed map[string]any) (params ReposGetCommitCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	return params
 }
 
@@ -60709,15 +58613,9 @@ type ReposGetCommitSignatureProtectionParams struct {
 }
 
 func unpackReposGetCommitSignatureProtectionParams(packed map[string]any) (params ReposGetCommitSignatureProtectionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -60824,12 +58722,8 @@ type ReposGetCommunityProfileMetricsParams struct {
 }
 
 func unpackReposGetCommunityProfileMetricsParams(packed map[string]any) (params ReposGetCommunityProfileMetricsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -60905,12 +58799,8 @@ type ReposGetContributorsStatsParams struct {
 }
 
 func unpackReposGetContributorsStatsParams(packed map[string]any) (params ReposGetContributorsStatsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -60988,15 +58878,9 @@ type ReposGetDeployKeyParams struct {
 }
 
 func unpackReposGetDeployKeyParams(packed map[string]any) (params ReposGetDeployKeyParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["key_id"]; ok {
-		params.KeyID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.KeyID = packed["key_id"].(int)
 	return params
 }
 
@@ -61105,15 +58989,9 @@ type ReposGetDeploymentParams struct {
 }
 
 func unpackReposGetDeploymentParams(packed map[string]any) (params ReposGetDeploymentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["deployment_id"]; ok {
-		params.DeploymentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.DeploymentID = packed["deployment_id"].(int)
 	return params
 }
 
@@ -61223,18 +59101,10 @@ type ReposGetDeploymentStatusParams struct {
 }
 
 func unpackReposGetDeploymentStatusParams(packed map[string]any) (params ReposGetDeploymentStatusParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["deployment_id"]; ok {
-		params.DeploymentID, _ = v.(int)
-	}
-	if v, ok := packed["status_id"]; ok {
-		params.StatusID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.DeploymentID = packed["deployment_id"].(int)
+	params.StatusID = packed["status_id"].(int)
 	return params
 }
 
@@ -61372,12 +59242,8 @@ type ReposGetLatestPagesBuildParams struct {
 }
 
 func unpackReposGetLatestPagesBuildParams(packed map[string]any) (params ReposGetLatestPagesBuildParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -61453,12 +59319,8 @@ type ReposGetLatestReleaseParams struct {
 }
 
 func unpackReposGetLatestReleaseParams(packed map[string]any) (params ReposGetLatestReleaseParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -61534,12 +59396,8 @@ type ReposGetPagesParams struct {
 }
 
 func unpackReposGetPagesParams(packed map[string]any) (params ReposGetPagesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -61616,15 +59474,9 @@ type ReposGetPagesBuildParams struct {
 }
 
 func unpackReposGetPagesBuildParams(packed map[string]any) (params ReposGetPagesBuildParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["build_id"]; ok {
-		params.BuildID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.BuildID = packed["build_id"].(int)
 	return params
 }
 
@@ -61731,12 +59583,8 @@ type ReposGetPagesHealthCheckParams struct {
 }
 
 func unpackReposGetPagesHealthCheckParams(packed map[string]any) (params ReposGetPagesHealthCheckParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -61812,12 +59660,8 @@ type ReposGetParticipationStatsParams struct {
 }
 
 func unpackReposGetParticipationStatsParams(packed map[string]any) (params ReposGetParticipationStatsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -61895,15 +59739,9 @@ type ReposGetPullRequestReviewProtectionParams struct {
 }
 
 func unpackReposGetPullRequestReviewProtectionParams(packed map[string]any) (params ReposGetPullRequestReviewProtectionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -62010,12 +59848,8 @@ type ReposGetPunchCardStatsParams struct {
 }
 
 func unpackReposGetPunchCardStatsParams(packed map[string]any) (params ReposGetPunchCardStatsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -62093,14 +59927,10 @@ type ReposGetReadmeParams struct {
 }
 
 func unpackReposGetReadmeParams(packed map[string]any) (params ReposGetReadmeParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["ref"]; ok {
-		params.Ref, _ = v.(OptString)
+		params.Ref = v.(OptString)
 	}
 	return params
 }
@@ -62216,17 +60046,11 @@ type ReposGetReadmeInDirectoryParams struct {
 }
 
 func unpackReposGetReadmeInDirectoryParams(packed map[string]any) (params ReposGetReadmeInDirectoryParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["dir"]; ok {
-		params.Dir, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Dir = packed["dir"].(string)
 	if v, ok := packed["ref"]; ok {
-		params.Ref, _ = v.(OptString)
+		params.Ref = v.(OptString)
 	}
 	return params
 }
@@ -62371,15 +60195,9 @@ type ReposGetReleaseParams struct {
 }
 
 func unpackReposGetReleaseParams(packed map[string]any) (params ReposGetReleaseParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["release_id"]; ok {
-		params.ReleaseID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.ReleaseID = packed["release_id"].(int)
 	return params
 }
 
@@ -62488,15 +60306,9 @@ type ReposGetReleaseAssetParams struct {
 }
 
 func unpackReposGetReleaseAssetParams(packed map[string]any) (params ReposGetReleaseAssetParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["asset_id"]; ok {
-		params.AssetID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.AssetID = packed["asset_id"].(int)
 	return params
 }
 
@@ -62605,15 +60417,9 @@ type ReposGetReleaseByTagParams struct {
 }
 
 func unpackReposGetReleaseByTagParams(packed map[string]any) (params ReposGetReleaseByTagParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["tag"]; ok {
-		params.Tag, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Tag = packed["tag"].(string)
 	return params
 }
 
@@ -62722,15 +60528,9 @@ type ReposGetStatusChecksProtectionParams struct {
 }
 
 func unpackReposGetStatusChecksProtectionParams(packed map[string]any) (params ReposGetStatusChecksProtectionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -62839,15 +60639,9 @@ type ReposGetTeamsWithAccessToProtectedBranchParams struct {
 }
 
 func unpackReposGetTeamsWithAccessToProtectedBranchParams(packed map[string]any) (params ReposGetTeamsWithAccessToProtectedBranchParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -62954,12 +60748,8 @@ type ReposGetTopPathsParams struct {
 }
 
 func unpackReposGetTopPathsParams(packed map[string]any) (params ReposGetTopPathsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -63035,12 +60825,8 @@ type ReposGetTopReferrersParams struct {
 }
 
 func unpackReposGetTopReferrersParams(packed map[string]any) (params ReposGetTopReferrersParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -63118,15 +60904,9 @@ type ReposGetUsersWithAccessToProtectedBranchParams struct {
 }
 
 func unpackReposGetUsersWithAccessToProtectedBranchParams(packed map[string]any) (params ReposGetUsersWithAccessToProtectedBranchParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -63235,14 +61015,10 @@ type ReposGetViewsParams struct {
 }
 
 func unpackReposGetViewsParams(packed map[string]any) (params ReposGetViewsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per"]; ok {
-		params.Per, _ = v.(OptReposGetViewsPer)
+		params.Per = v.(OptReposGetViewsPer)
 	}
 	return params
 }
@@ -63375,15 +61151,9 @@ type ReposGetWebhookParams struct {
 }
 
 func unpackReposGetWebhookParams(packed map[string]any) (params ReposGetWebhookParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.HookID = packed["hook_id"].(int)
 	return params
 }
 
@@ -63491,15 +61261,9 @@ type ReposGetWebhookConfigForRepoParams struct {
 }
 
 func unpackReposGetWebhookConfigForRepoParams(packed map[string]any) (params ReposGetWebhookConfigForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.HookID = packed["hook_id"].(int)
 	return params
 }
 
@@ -63608,18 +61372,10 @@ type ReposGetWebhookDeliveryParams struct {
 }
 
 func unpackReposGetWebhookDeliveryParams(packed map[string]any) (params ReposGetWebhookDeliveryParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
-	if v, ok := packed["delivery_id"]; ok {
-		params.DeliveryID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.HookID = packed["hook_id"].(int)
+	params.DeliveryID = packed["delivery_id"].(int)
 	return params
 }
 
@@ -63759,14 +61515,10 @@ type ReposListAutolinksParams struct {
 }
 
 func unpackReposListAutolinksParams(packed map[string]any) (params ReposListAutolinksParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -63890,20 +61642,16 @@ type ReposListBranchesParams struct {
 }
 
 func unpackReposListBranchesParams(packed map[string]any) (params ReposListBranchesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["protected"]; ok {
-		params.Protected, _ = v.(OptBool)
+		params.Protected = v.(OptBool)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -64095,15 +61843,9 @@ type ReposListBranchesForHeadCommitParams struct {
 }
 
 func unpackReposListBranchesForHeadCommitParams(packed map[string]any) (params ReposListBranchesForHeadCommitParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["commit_sha"]; ok {
-		params.CommitSha, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommitSha = packed["commit_sha"].(string)
 	return params
 }
 
@@ -64220,20 +61962,16 @@ type ReposListCollaboratorsParams struct {
 }
 
 func unpackReposListCollaboratorsParams(packed map[string]any) (params ReposListCollaboratorsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["affiliation"]; ok {
-		params.Affiliation, _ = v.(OptReposListCollaboratorsAffiliation)
+		params.Affiliation = v.(OptReposListCollaboratorsAffiliation)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -64449,20 +62187,14 @@ type ReposListCommentsForCommitParams struct {
 }
 
 func unpackReposListCommentsForCommitParams(packed map[string]any) (params ReposListCommentsForCommitParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["commit_sha"]; ok {
-		params.CommitSha, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommitSha = packed["commit_sha"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -64653,17 +62385,13 @@ type ReposListCommitCommentsForRepoParams struct {
 }
 
 func unpackReposListCommitCommentsForRepoParams(packed map[string]any) (params ReposListCommitCommentsForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -64825,20 +62553,14 @@ type ReposListCommitStatusesForRefParams struct {
 }
 
 func unpackReposListCommitStatusesForRefParams(packed map[string]any) (params ReposListCommitStatusesForRefParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["ref"]; ok {
-		params.Ref, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Ref = packed["ref"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -65042,32 +62764,28 @@ type ReposListCommitsParams struct {
 }
 
 func unpackReposListCommitsParams(packed map[string]any) (params ReposListCommitsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["sha"]; ok {
-		params.Sha, _ = v.(OptString)
+		params.Sha = v.(OptString)
 	}
 	if v, ok := packed["path"]; ok {
-		params.Path, _ = v.(OptString)
+		params.Path = v.(OptString)
 	}
 	if v, ok := packed["author"]; ok {
-		params.Author, _ = v.(OptString)
+		params.Author = v.(OptString)
 	}
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptDateTime)
+		params.Since = v.(OptDateTime)
 	}
 	if v, ok := packed["until"]; ok {
-		params.Until, _ = v.(OptDateTime)
+		params.Until = v.(OptDateTime)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -65399,20 +63117,16 @@ type ReposListContributorsParams struct {
 }
 
 func unpackReposListContributorsParams(packed map[string]any) (params ReposListContributorsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["anon"]; ok {
-		params.Anon, _ = v.(OptString)
+		params.Anon = v.(OptString)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -65606,17 +63320,13 @@ type ReposListDeployKeysParams struct {
 }
 
 func unpackReposListDeployKeysParams(packed map[string]any) (params ReposListDeployKeysParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -65778,20 +63488,14 @@ type ReposListDeploymentStatusesParams struct {
 }
 
 func unpackReposListDeploymentStatusesParams(packed map[string]any) (params ReposListDeploymentStatusesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["deployment_id"]; ok {
-		params.DeploymentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.DeploymentID = packed["deployment_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -65990,29 +63694,25 @@ type ReposListDeploymentsParams struct {
 }
 
 func unpackReposListDeploymentsParams(packed map[string]any) (params ReposListDeploymentsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["sha"]; ok {
-		params.Sha, _ = v.(OptString)
+		params.Sha = v.(OptString)
 	}
 	if v, ok := packed["ref"]; ok {
-		params.Ref, _ = v.(OptString)
+		params.Ref = v.(OptString)
 	}
 	if v, ok := packed["task"]; ok {
-		params.Task, _ = v.(OptString)
+		params.Task = v.(OptString)
 	}
 	if v, ok := packed["environment"]; ok {
-		params.Environment, _ = v.(OptNilString)
+		params.Environment = v.(OptNilString)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -66351,31 +64051,31 @@ type ReposListForAuthenticatedUserParams struct {
 
 func unpackReposListForAuthenticatedUserParams(packed map[string]any) (params ReposListForAuthenticatedUserParams) {
 	if v, ok := packed["visibility"]; ok {
-		params.Visibility, _ = v.(OptReposListForAuthenticatedUserVisibility)
+		params.Visibility = v.(OptReposListForAuthenticatedUserVisibility)
 	}
 	if v, ok := packed["affiliation"]; ok {
-		params.Affiliation, _ = v.(OptString)
+		params.Affiliation = v.(OptString)
 	}
 	if v, ok := packed["type"]; ok {
-		params.Type, _ = v.(OptReposListForAuthenticatedUserType)
+		params.Type = v.(OptReposListForAuthenticatedUserType)
 	}
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptReposListForAuthenticatedUserSort)
+		params.Sort = v.(OptReposListForAuthenticatedUserSort)
 	}
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptReposListForAuthenticatedUserDirection)
+		params.Direction = v.(OptReposListForAuthenticatedUserDirection)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptDateTime)
+		params.Since = v.(OptDateTime)
 	}
 	if v, ok := packed["before"]; ok {
-		params.Before, _ = v.(OptDateTime)
+		params.Before = v.(OptDateTime)
 	}
 	return params
 }
@@ -66801,23 +64501,21 @@ type ReposListForOrgParams struct {
 }
 
 func unpackReposListForOrgParams(packed map[string]any) (params ReposListForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["type"]; ok {
-		params.Type, _ = v.(OptReposListForOrgType)
+		params.Type = v.(OptReposListForOrgType)
 	}
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptReposListForOrgSort)
+		params.Sort = v.(OptReposListForOrgSort)
 	}
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptReposListForOrgDirection)
+		params.Direction = v.(OptReposListForOrgDirection)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -67103,23 +64801,21 @@ type ReposListForUserParams struct {
 }
 
 func unpackReposListForUserParams(packed map[string]any) (params ReposListForUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	if v, ok := packed["type"]; ok {
-		params.Type, _ = v.(OptReposListForUserType)
+		params.Type = v.(OptReposListForUserType)
 	}
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptReposListForUserSort)
+		params.Sort = v.(OptReposListForUserSort)
 	}
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptReposListForUserDirection)
+		params.Direction = v.(OptReposListForUserDirection)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -67407,20 +65103,16 @@ type ReposListForksParams struct {
 }
 
 func unpackReposListForksParams(packed map[string]any) (params ReposListForksParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptReposListForksSort)
+		params.Sort = v.(OptReposListForksSort)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -67634,17 +65326,13 @@ type ReposListInvitationsParams struct {
 }
 
 func unpackReposListInvitationsParams(packed map[string]any) (params ReposListInvitationsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -67803,10 +65491,10 @@ type ReposListInvitationsForAuthenticatedUserParams struct {
 
 func unpackReposListInvitationsForAuthenticatedUserParams(packed map[string]any) (params ReposListInvitationsForAuthenticatedUserParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -67900,12 +65588,8 @@ type ReposListLanguagesParams struct {
 }
 
 func unpackReposListLanguagesParams(packed map[string]any) (params ReposListLanguagesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -67985,17 +65669,13 @@ type ReposListPagesBuildsParams struct {
 }
 
 func unpackReposListPagesBuildsParams(packed map[string]any) (params ReposListPagesBuildsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -68152,7 +65832,7 @@ type ReposListPublicParams struct {
 
 func unpackReposListPublicParams(packed map[string]any) (params ReposListPublicParams) {
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptInt)
+		params.Since = v.(OptInt)
 	}
 	return params
 }
@@ -68208,20 +65888,14 @@ type ReposListPullRequestsAssociatedWithCommitParams struct {
 }
 
 func unpackReposListPullRequestsAssociatedWithCommitParams(packed map[string]any) (params ReposListPullRequestsAssociatedWithCommitParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["commit_sha"]; ok {
-		params.CommitSha, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommitSha = packed["commit_sha"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -68414,20 +66088,14 @@ type ReposListReleaseAssetsParams struct {
 }
 
 func unpackReposListReleaseAssetsParams(packed map[string]any) (params ReposListReleaseAssetsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["release_id"]; ok {
-		params.ReleaseID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.ReleaseID = packed["release_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -68618,17 +66286,13 @@ type ReposListReleasesParams struct {
 }
 
 func unpackReposListReleasesParams(packed map[string]any) (params ReposListReleasesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -68788,17 +66452,13 @@ type ReposListTagsParams struct {
 }
 
 func unpackReposListTagsParams(packed map[string]any) (params ReposListTagsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -68958,17 +66618,13 @@ type ReposListTeamsParams struct {
 }
 
 func unpackReposListTeamsParams(packed map[string]any) (params ReposListTeamsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -69130,20 +66786,14 @@ type ReposListWebhookDeliveriesParams struct {
 }
 
 func unpackReposListWebhookDeliveriesParams(packed map[string]any) (params ReposListWebhookDeliveriesParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.HookID = packed["hook_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["cursor"]; ok {
-		params.Cursor, _ = v.(OptString)
+		params.Cursor = v.(OptString)
 	}
 	return params
 }
@@ -69329,17 +66979,13 @@ type ReposListWebhooksParams struct {
 }
 
 func unpackReposListWebhooksParams(packed map[string]any) (params ReposListWebhooksParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -69495,12 +67141,8 @@ type ReposMergeParams struct {
 }
 
 func unpackReposMergeParams(packed map[string]any) (params ReposMergeParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -69576,12 +67218,8 @@ type ReposMergeUpstreamParams struct {
 }
 
 func unpackReposMergeUpstreamParams(packed map[string]any) (params ReposMergeUpstreamParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -69658,15 +67296,9 @@ type ReposPingWebhookParams struct {
 }
 
 func unpackReposPingWebhookParams(packed map[string]any) (params ReposPingWebhookParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.HookID = packed["hook_id"].(int)
 	return params
 }
 
@@ -69775,18 +67407,10 @@ type ReposRedeliverWebhookDeliveryParams struct {
 }
 
 func unpackReposRedeliverWebhookDeliveryParams(packed map[string]any) (params ReposRedeliverWebhookDeliveryParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
-	if v, ok := packed["delivery_id"]; ok {
-		params.DeliveryID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.HookID = packed["hook_id"].(int)
+	params.DeliveryID = packed["delivery_id"].(int)
 	return params
 }
 
@@ -69926,15 +67550,9 @@ type ReposRemoveAppAccessRestrictionsParams struct {
 }
 
 func unpackReposRemoveAppAccessRestrictionsParams(packed map[string]any) (params ReposRemoveAppAccessRestrictionsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -70042,15 +67660,9 @@ type ReposRemoveCollaboratorParams struct {
 }
 
 func unpackReposRemoveCollaboratorParams(packed map[string]any) (params ReposRemoveCollaboratorParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -70159,15 +67771,9 @@ type ReposRemoveStatusCheckContextsParams struct {
 }
 
 func unpackReposRemoveStatusCheckContextsParams(packed map[string]any) (params ReposRemoveStatusCheckContextsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -70276,15 +67882,9 @@ type ReposRemoveStatusCheckProtectionParams struct {
 }
 
 func unpackReposRemoveStatusCheckProtectionParams(packed map[string]any) (params ReposRemoveStatusCheckProtectionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -70393,15 +67993,9 @@ type ReposRemoveTeamAccessRestrictionsParams struct {
 }
 
 func unpackReposRemoveTeamAccessRestrictionsParams(packed map[string]any) (params ReposRemoveTeamAccessRestrictionsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -70510,15 +68104,9 @@ type ReposRemoveUserAccessRestrictionsParams struct {
 }
 
 func unpackReposRemoveUserAccessRestrictionsParams(packed map[string]any) (params ReposRemoveUserAccessRestrictionsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -70627,15 +68215,9 @@ type ReposRenameBranchParams struct {
 }
 
 func unpackReposRenameBranchParams(packed map[string]any) (params ReposRenameBranchParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -70742,12 +68324,8 @@ type ReposReplaceAllTopicsParams struct {
 }
 
 func unpackReposReplaceAllTopicsParams(packed map[string]any) (params ReposReplaceAllTopicsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -70823,12 +68401,8 @@ type ReposRequestPagesBuildParams struct {
 }
 
 func unpackReposRequestPagesBuildParams(packed map[string]any) (params ReposRequestPagesBuildParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -70906,15 +68480,9 @@ type ReposSetAdminBranchProtectionParams struct {
 }
 
 func unpackReposSetAdminBranchProtectionParams(packed map[string]any) (params ReposSetAdminBranchProtectionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -71023,15 +68591,9 @@ type ReposSetAppAccessRestrictionsParams struct {
 }
 
 func unpackReposSetAppAccessRestrictionsParams(packed map[string]any) (params ReposSetAppAccessRestrictionsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -71140,15 +68702,9 @@ type ReposSetStatusCheckContextsParams struct {
 }
 
 func unpackReposSetStatusCheckContextsParams(packed map[string]any) (params ReposSetStatusCheckContextsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -71257,15 +68813,9 @@ type ReposSetTeamAccessRestrictionsParams struct {
 }
 
 func unpackReposSetTeamAccessRestrictionsParams(packed map[string]any) (params ReposSetTeamAccessRestrictionsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -71374,15 +68924,9 @@ type ReposSetUserAccessRestrictionsParams struct {
 }
 
 func unpackReposSetUserAccessRestrictionsParams(packed map[string]any) (params ReposSetUserAccessRestrictionsParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -71490,15 +69034,9 @@ type ReposTestPushWebhookParams struct {
 }
 
 func unpackReposTestPushWebhookParams(packed map[string]any) (params ReposTestPushWebhookParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.HookID = packed["hook_id"].(int)
 	return params
 }
 
@@ -71605,12 +69143,8 @@ type ReposTransferParams struct {
 }
 
 func unpackReposTransferParams(packed map[string]any) (params ReposTransferParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -71686,12 +69220,8 @@ type ReposUpdateParams struct {
 }
 
 func unpackReposUpdateParams(packed map[string]any) (params ReposUpdateParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -71769,15 +69299,9 @@ type ReposUpdateBranchProtectionParams struct {
 }
 
 func unpackReposUpdateBranchProtectionParams(packed map[string]any) (params ReposUpdateBranchProtectionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -71886,15 +69410,9 @@ type ReposUpdateCommitCommentParams struct {
 }
 
 func unpackReposUpdateCommitCommentParams(packed map[string]any) (params ReposUpdateCommitCommentParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["comment_id"]; ok {
-		params.CommentID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.CommentID = packed["comment_id"].(int)
 	return params
 }
 
@@ -72003,15 +69521,9 @@ type ReposUpdateInvitationParams struct {
 }
 
 func unpackReposUpdateInvitationParams(packed map[string]any) (params ReposUpdateInvitationParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["invitation_id"]; ok {
-		params.InvitationID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.InvitationID = packed["invitation_id"].(int)
 	return params
 }
 
@@ -72120,15 +69632,9 @@ type ReposUpdatePullRequestReviewProtectionParams struct {
 }
 
 func unpackReposUpdatePullRequestReviewProtectionParams(packed map[string]any) (params ReposUpdatePullRequestReviewProtectionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -72237,15 +69743,9 @@ type ReposUpdateReleaseParams struct {
 }
 
 func unpackReposUpdateReleaseParams(packed map[string]any) (params ReposUpdateReleaseParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["release_id"]; ok {
-		params.ReleaseID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.ReleaseID = packed["release_id"].(int)
 	return params
 }
 
@@ -72354,15 +69854,9 @@ type ReposUpdateReleaseAssetParams struct {
 }
 
 func unpackReposUpdateReleaseAssetParams(packed map[string]any) (params ReposUpdateReleaseAssetParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["asset_id"]; ok {
-		params.AssetID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.AssetID = packed["asset_id"].(int)
 	return params
 }
 
@@ -72471,15 +69965,9 @@ type ReposUpdateStatusCheckProtectionParams struct {
 }
 
 func unpackReposUpdateStatusCheckProtectionParams(packed map[string]any) (params ReposUpdateStatusCheckProtectionParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["branch"]; ok {
-		params.Branch, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.Branch = packed["branch"].(string)
 	return params
 }
 
@@ -72587,15 +70075,9 @@ type ReposUpdateWebhookParams struct {
 }
 
 func unpackReposUpdateWebhookParams(packed map[string]any) (params ReposUpdateWebhookParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.HookID = packed["hook_id"].(int)
 	return params
 }
 
@@ -72703,15 +70185,9 @@ type ReposUpdateWebhookConfigForRepoParams struct {
 }
 
 func unpackReposUpdateWebhookConfigForRepoParams(packed map[string]any) (params ReposUpdateWebhookConfigForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["hook_id"]; ok {
-		params.HookID, _ = v.(int)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.HookID = packed["hook_id"].(int)
 	return params
 }
 
@@ -72819,12 +70295,8 @@ type ScimDeleteUserFromOrgParams struct {
 }
 
 func unpackScimDeleteUserFromOrgParams(packed map[string]any) (params ScimDeleteUserFromOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["scim_user_id"]; ok {
-		params.ScimUserID, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.ScimUserID = packed["scim_user_id"].(string)
 	return params
 }
 
@@ -72915,20 +70387,18 @@ type SearchCodeParams struct {
 }
 
 func unpackSearchCodeParams(packed map[string]any) (params SearchCodeParams) {
-	if v, ok := packed["q"]; ok {
-		params.Q, _ = v.(string)
-	}
+	params.Q = packed["q"].(string)
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptSearchCodeSort)
+		params.Sort = v.(OptSearchCodeSort)
 	}
 	if v, ok := packed["order"]; ok {
-		params.Order, _ = v.(OptSearchCodeOrder)
+		params.Order = v.(OptSearchCodeOrder)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -73168,20 +70638,18 @@ type SearchCommitsParams struct {
 }
 
 func unpackSearchCommitsParams(packed map[string]any) (params SearchCommitsParams) {
-	if v, ok := packed["q"]; ok {
-		params.Q, _ = v.(string)
-	}
+	params.Q = packed["q"].(string)
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptSearchCommitsSort)
+		params.Sort = v.(OptSearchCommitsSort)
 	}
 	if v, ok := packed["order"]; ok {
-		params.Order, _ = v.(OptSearchCommitsOrder)
+		params.Order = v.(OptSearchCommitsOrder)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -73424,20 +70892,18 @@ type SearchIssuesAndPullRequestsParams struct {
 }
 
 func unpackSearchIssuesAndPullRequestsParams(packed map[string]any) (params SearchIssuesAndPullRequestsParams) {
-	if v, ok := packed["q"]; ok {
-		params.Q, _ = v.(string)
-	}
+	params.Q = packed["q"].(string)
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptSearchIssuesAndPullRequestsSort)
+		params.Sort = v.(OptSearchIssuesAndPullRequestsSort)
 	}
 	if v, ok := packed["order"]; ok {
-		params.Order, _ = v.(OptSearchIssuesAndPullRequestsOrder)
+		params.Order = v.(OptSearchIssuesAndPullRequestsOrder)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -73677,23 +71143,19 @@ type SearchLabelsParams struct {
 }
 
 func unpackSearchLabelsParams(packed map[string]any) (params SearchLabelsParams) {
-	if v, ok := packed["repository_id"]; ok {
-		params.RepositoryID, _ = v.(int)
-	}
-	if v, ok := packed["q"]; ok {
-		params.Q, _ = v.(string)
-	}
+	params.RepositoryID = packed["repository_id"].(int)
+	params.Q = packed["q"].(string)
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptSearchLabelsSort)
+		params.Sort = v.(OptSearchLabelsSort)
 	}
 	if v, ok := packed["order"]; ok {
-		params.Order, _ = v.(OptSearchLabelsOrder)
+		params.Order = v.(OptSearchLabelsOrder)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -73964,20 +71426,18 @@ type SearchReposParams struct {
 }
 
 func unpackSearchReposParams(packed map[string]any) (params SearchReposParams) {
-	if v, ok := packed["q"]; ok {
-		params.Q, _ = v.(string)
-	}
+	params.Q = packed["q"].(string)
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptSearchReposSort)
+		params.Sort = v.(OptSearchReposSort)
 	}
 	if v, ok := packed["order"]; ok {
-		params.Order, _ = v.(OptSearchReposOrder)
+		params.Order = v.(OptSearchReposOrder)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -74210,14 +71670,12 @@ type SearchTopicsParams struct {
 }
 
 func unpackSearchTopicsParams(packed map[string]any) (params SearchTopicsParams) {
-	if v, ok := packed["q"]; ok {
-		params.Q, _ = v.(string)
-	}
+	params.Q = packed["q"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -74355,20 +71813,18 @@ type SearchUsersParams struct {
 }
 
 func unpackSearchUsersParams(packed map[string]any) (params SearchUsersParams) {
-	if v, ok := packed["q"]; ok {
-		params.Q, _ = v.(string)
-	}
+	params.Q = packed["q"].(string)
 	if v, ok := packed["sort"]; ok {
-		params.Sort, _ = v.(OptSearchUsersSort)
+		params.Sort = v.(OptSearchUsersSort)
 	}
 	if v, ok := packed["order"]; ok {
-		params.Order, _ = v.(OptSearchUsersOrder)
+		params.Order = v.(OptSearchUsersOrder)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -74598,15 +72054,9 @@ type SecretScanningGetAlertParams struct {
 }
 
 func unpackSecretScanningGetAlertParams(packed map[string]any) (params SecretScanningGetAlertParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["alert_number"]; ok {
-		params.AlertNumber, _ = v.(AlertNumber)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.AlertNumber = packed["alert_number"].(AlertNumber)
 	return params
 }
 
@@ -74727,20 +72177,18 @@ type SecretScanningListAlertsForOrgParams struct {
 }
 
 func unpackSecretScanningListAlertsForOrgParams(packed map[string]any) (params SecretScanningListAlertsForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["state"]; ok {
-		params.State, _ = v.(OptSecretScanningListAlertsForOrgState)
+		params.State = v.(OptSecretScanningListAlertsForOrgState)
 	}
 	if v, ok := packed["secret_type"]; ok {
-		params.SecretType, _ = v.(OptString)
+		params.SecretType = v.(OptString)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	return params
 }
@@ -74958,23 +72406,19 @@ type SecretScanningListAlertsForRepoParams struct {
 }
 
 func unpackSecretScanningListAlertsForRepoParams(packed map[string]any) (params SecretScanningListAlertsForRepoParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	if v, ok := packed["state"]; ok {
-		params.State, _ = v.(OptSecretScanningListAlertsForRepoState)
+		params.State = v.(OptSecretScanningListAlertsForRepoState)
 	}
 	if v, ok := packed["secret_type"]; ok {
-		params.SecretType, _ = v.(OptString)
+		params.SecretType = v.(OptString)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	return params
 }
@@ -75217,15 +72661,9 @@ type SecretScanningUpdateAlertParams struct {
 }
 
 func unpackSecretScanningUpdateAlertParams(packed map[string]any) (params SecretScanningUpdateAlertParams) {
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
-	if v, ok := packed["alert_number"]; ok {
-		params.AlertNumber, _ = v.(AlertNumber)
-	}
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
+	params.AlertNumber = packed["alert_number"].(AlertNumber)
 	return params
 }
 
@@ -75339,12 +72777,8 @@ type TeamsAddMemberLegacyParams struct {
 }
 
 func unpackTeamsAddMemberLegacyParams(packed map[string]any) (params TeamsAddMemberLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -75422,15 +72856,9 @@ type TeamsAddOrUpdateMembershipForUserInOrgParams struct {
 }
 
 func unpackTeamsAddOrUpdateMembershipForUserInOrgParams(packed map[string]any) (params TeamsAddOrUpdateMembershipForUserInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -75537,12 +72965,8 @@ type TeamsAddOrUpdateMembershipForUserLegacyParams struct {
 }
 
 func unpackTeamsAddOrUpdateMembershipForUserLegacyParams(packed map[string]any) (params TeamsAddOrUpdateMembershipForUserLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -75620,15 +73044,9 @@ type TeamsAddOrUpdateProjectPermissionsInOrgParams struct {
 }
 
 func unpackTeamsAddOrUpdateProjectPermissionsInOrgParams(packed map[string]any) (params TeamsAddOrUpdateProjectPermissionsInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["project_id"]; ok {
-		params.ProjectID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.ProjectID = packed["project_id"].(int)
 	return params
 }
 
@@ -75735,12 +73153,8 @@ type TeamsAddOrUpdateProjectPermissionsLegacyParams struct {
 }
 
 func unpackTeamsAddOrUpdateProjectPermissionsLegacyParams(packed map[string]any) (params TeamsAddOrUpdateProjectPermissionsLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["project_id"]; ok {
-		params.ProjectID, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.ProjectID = packed["project_id"].(int)
 	return params
 }
 
@@ -75819,18 +73233,10 @@ type TeamsAddOrUpdateRepoPermissionsInOrgParams struct {
 }
 
 func unpackTeamsAddOrUpdateRepoPermissionsInOrgParams(packed map[string]any) (params TeamsAddOrUpdateRepoPermissionsInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -75969,15 +73375,9 @@ type TeamsAddOrUpdateRepoPermissionsLegacyParams struct {
 }
 
 func unpackTeamsAddOrUpdateRepoPermissionsLegacyParams(packed map[string]any) (params TeamsAddOrUpdateRepoPermissionsLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -76086,15 +73486,9 @@ type TeamsCheckPermissionsForProjectInOrgParams struct {
 }
 
 func unpackTeamsCheckPermissionsForProjectInOrgParams(packed map[string]any) (params TeamsCheckPermissionsForProjectInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["project_id"]; ok {
-		params.ProjectID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.ProjectID = packed["project_id"].(int)
 	return params
 }
 
@@ -76201,12 +73595,8 @@ type TeamsCheckPermissionsForProjectLegacyParams struct {
 }
 
 func unpackTeamsCheckPermissionsForProjectLegacyParams(packed map[string]any) (params TeamsCheckPermissionsForProjectLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["project_id"]; ok {
-		params.ProjectID, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.ProjectID = packed["project_id"].(int)
 	return params
 }
 
@@ -76285,18 +73675,10 @@ type TeamsCheckPermissionsForRepoInOrgParams struct {
 }
 
 func unpackTeamsCheckPermissionsForRepoInOrgParams(packed map[string]any) (params TeamsCheckPermissionsForRepoInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -76435,15 +73817,9 @@ type TeamsCheckPermissionsForRepoLegacyParams struct {
 }
 
 func unpackTeamsCheckPermissionsForRepoLegacyParams(packed map[string]any) (params TeamsCheckPermissionsForRepoLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -76549,9 +73925,7 @@ type TeamsCreateParams struct {
 }
 
 func unpackTeamsCreateParams(packed map[string]any) (params TeamsCreateParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	return params
 }
 
@@ -76598,15 +73972,9 @@ type TeamsCreateDiscussionCommentInOrgParams struct {
 }
 
 func unpackTeamsCreateDiscussionCommentInOrgParams(packed map[string]any) (params TeamsCreateDiscussionCommentInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.DiscussionNumber = packed["discussion_number"].(int)
 	return params
 }
 
@@ -76713,12 +74081,8 @@ type TeamsCreateDiscussionCommentLegacyParams struct {
 }
 
 func unpackTeamsCreateDiscussionCommentLegacyParams(packed map[string]any) (params TeamsCreateDiscussionCommentLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.DiscussionNumber = packed["discussion_number"].(int)
 	return params
 }
 
@@ -76795,12 +74159,8 @@ type TeamsCreateDiscussionInOrgParams struct {
 }
 
 func unpackTeamsCreateDiscussionInOrgParams(packed map[string]any) (params TeamsCreateDiscussionInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
 	return params
 }
 
@@ -76875,9 +74235,7 @@ type TeamsCreateDiscussionLegacyParams struct {
 }
 
 func unpackTeamsCreateDiscussionLegacyParams(packed map[string]any) (params TeamsCreateDiscussionLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
 	return params
 }
 
@@ -76923,12 +74281,8 @@ type TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams struct {
 }
 
 func unpackTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(packed map[string]any) (params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
 	return params
 }
 
@@ -77003,9 +74357,7 @@ type TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams struct {
 }
 
 func unpackTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(packed map[string]any) (params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
 	return params
 }
 
@@ -77053,18 +74405,10 @@ type TeamsDeleteDiscussionCommentInOrgParams struct {
 }
 
 func unpackTeamsDeleteDiscussionCommentInOrgParams(packed map[string]any) (params TeamsDeleteDiscussionCommentInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
-	if v, ok := packed["comment_number"]; ok {
-		params.CommentNumber, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.DiscussionNumber = packed["discussion_number"].(int)
+	params.CommentNumber = packed["comment_number"].(int)
 	return params
 }
 
@@ -77203,15 +74547,9 @@ type TeamsDeleteDiscussionCommentLegacyParams struct {
 }
 
 func unpackTeamsDeleteDiscussionCommentLegacyParams(packed map[string]any) (params TeamsDeleteDiscussionCommentLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
-	if v, ok := packed["comment_number"]; ok {
-		params.CommentNumber, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.DiscussionNumber = packed["discussion_number"].(int)
+	params.CommentNumber = packed["comment_number"].(int)
 	return params
 }
 
@@ -77320,15 +74658,9 @@ type TeamsDeleteDiscussionInOrgParams struct {
 }
 
 func unpackTeamsDeleteDiscussionInOrgParams(packed map[string]any) (params TeamsDeleteDiscussionInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.DiscussionNumber = packed["discussion_number"].(int)
 	return params
 }
 
@@ -77435,12 +74767,8 @@ type TeamsDeleteDiscussionLegacyParams struct {
 }
 
 func unpackTeamsDeleteDiscussionLegacyParams(packed map[string]any) (params TeamsDeleteDiscussionLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.DiscussionNumber = packed["discussion_number"].(int)
 	return params
 }
 
@@ -77517,12 +74845,8 @@ type TeamsDeleteInOrgParams struct {
 }
 
 func unpackTeamsDeleteInOrgParams(packed map[string]any) (params TeamsDeleteInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
 	return params
 }
 
@@ -77597,9 +74921,7 @@ type TeamsDeleteLegacyParams struct {
 }
 
 func unpackTeamsDeleteLegacyParams(packed map[string]any) (params TeamsDeleteLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
 	return params
 }
 
@@ -77645,12 +74967,8 @@ type TeamsGetByNameParams struct {
 }
 
 func unpackTeamsGetByNameParams(packed map[string]any) (params TeamsGetByNameParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
 	return params
 }
 
@@ -77729,18 +75047,10 @@ type TeamsGetDiscussionCommentInOrgParams struct {
 }
 
 func unpackTeamsGetDiscussionCommentInOrgParams(packed map[string]any) (params TeamsGetDiscussionCommentInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
-	if v, ok := packed["comment_number"]; ok {
-		params.CommentNumber, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.DiscussionNumber = packed["discussion_number"].(int)
+	params.CommentNumber = packed["comment_number"].(int)
 	return params
 }
 
@@ -77879,15 +75189,9 @@ type TeamsGetDiscussionCommentLegacyParams struct {
 }
 
 func unpackTeamsGetDiscussionCommentLegacyParams(packed map[string]any) (params TeamsGetDiscussionCommentLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
-	if v, ok := packed["comment_number"]; ok {
-		params.CommentNumber, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.DiscussionNumber = packed["discussion_number"].(int)
+	params.CommentNumber = packed["comment_number"].(int)
 	return params
 }
 
@@ -77996,15 +75300,9 @@ type TeamsGetDiscussionInOrgParams struct {
 }
 
 func unpackTeamsGetDiscussionInOrgParams(packed map[string]any) (params TeamsGetDiscussionInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.DiscussionNumber = packed["discussion_number"].(int)
 	return params
 }
 
@@ -78111,12 +75409,8 @@ type TeamsGetDiscussionLegacyParams struct {
 }
 
 func unpackTeamsGetDiscussionLegacyParams(packed map[string]any) (params TeamsGetDiscussionLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.DiscussionNumber = packed["discussion_number"].(int)
 	return params
 }
 
@@ -78191,9 +75485,7 @@ type TeamsGetLegacyParams struct {
 }
 
 func unpackTeamsGetLegacyParams(packed map[string]any) (params TeamsGetLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
 	return params
 }
 
@@ -78238,12 +75530,8 @@ type TeamsGetMemberLegacyParams struct {
 }
 
 func unpackTeamsGetMemberLegacyParams(packed map[string]any) (params TeamsGetMemberLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -78321,15 +75609,9 @@ type TeamsGetMembershipForUserInOrgParams struct {
 }
 
 func unpackTeamsGetMembershipForUserInOrgParams(packed map[string]any) (params TeamsGetMembershipForUserInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -78436,12 +75718,8 @@ type TeamsGetMembershipForUserLegacyParams struct {
 }
 
 func unpackTeamsGetMembershipForUserLegacyParams(packed map[string]any) (params TeamsGetMembershipForUserLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -78520,14 +75798,12 @@ type TeamsListParams struct {
 }
 
 func unpackTeamsListParams(packed map[string]any) (params TeamsListParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -78657,17 +75933,13 @@ type TeamsListChildInOrgParams struct {
 }
 
 func unpackTeamsListChildInOrgParams(packed map[string]any) (params TeamsListChildInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -78826,14 +76098,12 @@ type TeamsListChildLegacyParams struct {
 }
 
 func unpackTeamsListChildLegacyParams(packed map[string]any) (params TeamsListChildLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -78966,23 +76236,17 @@ type TeamsListDiscussionCommentsInOrgParams struct {
 }
 
 func unpackTeamsListDiscussionCommentsInOrgParams(packed map[string]any) (params TeamsListDiscussionCommentsInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.DiscussionNumber = packed["discussion_number"].(int)
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptTeamsListDiscussionCommentsInOrgDirection)
+		params.Direction = v.(OptTeamsListDiscussionCommentsInOrgDirection)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -79229,20 +76493,16 @@ type TeamsListDiscussionCommentsLegacyParams struct {
 }
 
 func unpackTeamsListDiscussionCommentsLegacyParams(packed map[string]any) (params TeamsListDiscussionCommentsLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.DiscussionNumber = packed["discussion_number"].(int)
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptTeamsListDiscussionCommentsLegacyDirection)
+		params.Direction = v.(OptTeamsListDiscussionCommentsLegacyDirection)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -79461,23 +76721,19 @@ type TeamsListDiscussionsInOrgParams struct {
 }
 
 func unpackTeamsListDiscussionsInOrgParams(packed map[string]any) (params TeamsListDiscussionsInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptTeamsListDiscussionsInOrgDirection)
+		params.Direction = v.(OptTeamsListDiscussionsInOrgDirection)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	if v, ok := packed["pinned"]; ok {
-		params.Pinned, _ = v.(OptString)
+		params.Pinned = v.(OptString)
 	}
 	return params
 }
@@ -79726,17 +76982,15 @@ type TeamsListDiscussionsLegacyParams struct {
 }
 
 func unpackTeamsListDiscussionsLegacyParams(packed map[string]any) (params TeamsListDiscussionsLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
 	if v, ok := packed["direction"]; ok {
-		params.Direction, _ = v.(OptTeamsListDiscussionsLegacyDirection)
+		params.Direction = v.(OptTeamsListDiscussionsLegacyDirection)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -79918,10 +77172,10 @@ type TeamsListForAuthenticatedUserParams struct {
 
 func unpackTeamsListForAuthenticatedUserParams(packed map[string]any) (params TeamsListForAuthenticatedUserParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -80014,9 +77268,7 @@ type TeamsListIdpGroupsForLegacyParams struct {
 }
 
 func unpackTeamsListIdpGroupsForLegacyParams(packed map[string]any) (params TeamsListIdpGroupsForLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
 	return params
 }
 
@@ -80064,14 +77316,12 @@ type TeamsListIdpGroupsForOrgParams struct {
 }
 
 func unpackTeamsListIdpGroupsForOrgParams(packed map[string]any) (params TeamsListIdpGroupsForOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptString)
+		params.Page = v.(OptString)
 	}
 	return params
 }
@@ -80192,12 +77442,8 @@ type TeamsListIdpGroupsInOrgParams struct {
 }
 
 func unpackTeamsListIdpGroupsInOrgParams(packed map[string]any) (params TeamsListIdpGroupsInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
 	return params
 }
 
@@ -80283,20 +77529,16 @@ type TeamsListMembersInOrgParams struct {
 }
 
 func unpackTeamsListMembersInOrgParams(packed map[string]any) (params TeamsListMembersInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
 	if v, ok := packed["role"]; ok {
-		params.Role, _ = v.(OptTeamsListMembersInOrgRole)
+		params.Role = v.(OptTeamsListMembersInOrgRole)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -80514,17 +77756,15 @@ type TeamsListMembersLegacyParams struct {
 }
 
 func unpackTeamsListMembersLegacyParams(packed map[string]any) (params TeamsListMembersLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
 	if v, ok := packed["role"]; ok {
-		params.Role, _ = v.(OptTeamsListMembersLegacyRole)
+		params.Role = v.(OptTeamsListMembersLegacyRole)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -80708,17 +77948,13 @@ type TeamsListPendingInvitationsInOrgParams struct {
 }
 
 func unpackTeamsListPendingInvitationsInOrgParams(packed map[string]any) (params TeamsListPendingInvitationsInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -80877,14 +78113,12 @@ type TeamsListPendingInvitationsLegacyParams struct {
 }
 
 func unpackTeamsListPendingInvitationsLegacyParams(packed map[string]any) (params TeamsListPendingInvitationsLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -81014,17 +78248,13 @@ type TeamsListProjectsInOrgParams struct {
 }
 
 func unpackTeamsListProjectsInOrgParams(packed map[string]any) (params TeamsListProjectsInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -81183,14 +78413,12 @@ type TeamsListProjectsLegacyParams struct {
 }
 
 func unpackTeamsListProjectsLegacyParams(packed map[string]any) (params TeamsListProjectsLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -81320,17 +78548,13 @@ type TeamsListReposInOrgParams struct {
 }
 
 func unpackTeamsListReposInOrgParams(packed map[string]any) (params TeamsListReposInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -81489,14 +78713,12 @@ type TeamsListReposLegacyParams struct {
 }
 
 func unpackTeamsListReposLegacyParams(packed map[string]any) (params TeamsListReposLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -81621,12 +78843,8 @@ type TeamsRemoveMemberLegacyParams struct {
 }
 
 func unpackTeamsRemoveMemberLegacyParams(packed map[string]any) (params TeamsRemoveMemberLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -81704,15 +78922,9 @@ type TeamsRemoveMembershipForUserInOrgParams struct {
 }
 
 func unpackTeamsRemoveMembershipForUserInOrgParams(packed map[string]any) (params TeamsRemoveMembershipForUserInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -81819,12 +79031,8 @@ type TeamsRemoveMembershipForUserLegacyParams struct {
 }
 
 func unpackTeamsRemoveMembershipForUserLegacyParams(packed map[string]any) (params TeamsRemoveMembershipForUserLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -81902,15 +79110,9 @@ type TeamsRemoveProjectInOrgParams struct {
 }
 
 func unpackTeamsRemoveProjectInOrgParams(packed map[string]any) (params TeamsRemoveProjectInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["project_id"]; ok {
-		params.ProjectID, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.ProjectID = packed["project_id"].(int)
 	return params
 }
 
@@ -82017,12 +79219,8 @@ type TeamsRemoveProjectLegacyParams struct {
 }
 
 func unpackTeamsRemoveProjectLegacyParams(packed map[string]any) (params TeamsRemoveProjectLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["project_id"]; ok {
-		params.ProjectID, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.ProjectID = packed["project_id"].(int)
 	return params
 }
 
@@ -82101,18 +79299,10 @@ type TeamsRemoveRepoInOrgParams struct {
 }
 
 func unpackTeamsRemoveRepoInOrgParams(packed map[string]any) (params TeamsRemoveRepoInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -82251,15 +79441,9 @@ type TeamsRemoveRepoLegacyParams struct {
 }
 
 func unpackTeamsRemoveRepoLegacyParams(packed map[string]any) (params TeamsRemoveRepoLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["owner"]; ok {
-		params.Owner, _ = v.(string)
-	}
-	if v, ok := packed["repo"]; ok {
-		params.Repo, _ = v.(string)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.Owner = packed["owner"].(string)
+	params.Repo = packed["repo"].(string)
 	return params
 }
 
@@ -82369,18 +79553,10 @@ type TeamsUpdateDiscussionCommentInOrgParams struct {
 }
 
 func unpackTeamsUpdateDiscussionCommentInOrgParams(packed map[string]any) (params TeamsUpdateDiscussionCommentInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
-	if v, ok := packed["comment_number"]; ok {
-		params.CommentNumber, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.DiscussionNumber = packed["discussion_number"].(int)
+	params.CommentNumber = packed["comment_number"].(int)
 	return params
 }
 
@@ -82519,15 +79695,9 @@ type TeamsUpdateDiscussionCommentLegacyParams struct {
 }
 
 func unpackTeamsUpdateDiscussionCommentLegacyParams(packed map[string]any) (params TeamsUpdateDiscussionCommentLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
-	if v, ok := packed["comment_number"]; ok {
-		params.CommentNumber, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.DiscussionNumber = packed["discussion_number"].(int)
+	params.CommentNumber = packed["comment_number"].(int)
 	return params
 }
 
@@ -82636,15 +79806,9 @@ type TeamsUpdateDiscussionInOrgParams struct {
 }
 
 func unpackTeamsUpdateDiscussionInOrgParams(packed map[string]any) (params TeamsUpdateDiscussionInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
+	params.DiscussionNumber = packed["discussion_number"].(int)
 	return params
 }
 
@@ -82751,12 +79915,8 @@ type TeamsUpdateDiscussionLegacyParams struct {
 }
 
 func unpackTeamsUpdateDiscussionLegacyParams(packed map[string]any) (params TeamsUpdateDiscussionLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
-	if v, ok := packed["discussion_number"]; ok {
-		params.DiscussionNumber, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
+	params.DiscussionNumber = packed["discussion_number"].(int)
 	return params
 }
 
@@ -82833,12 +79993,8 @@ type TeamsUpdateInOrgParams struct {
 }
 
 func unpackTeamsUpdateInOrgParams(packed map[string]any) (params TeamsUpdateInOrgParams) {
-	if v, ok := packed["org"]; ok {
-		params.Org, _ = v.(string)
-	}
-	if v, ok := packed["team_slug"]; ok {
-		params.TeamSlug, _ = v.(string)
-	}
+	params.Org = packed["org"].(string)
+	params.TeamSlug = packed["team_slug"].(string)
 	return params
 }
 
@@ -82913,9 +80069,7 @@ type TeamsUpdateLegacyParams struct {
 }
 
 func unpackTeamsUpdateLegacyParams(packed map[string]any) (params TeamsUpdateLegacyParams) {
-	if v, ok := packed["team_id"]; ok {
-		params.TeamID, _ = v.(int)
-	}
+	params.TeamID = packed["team_id"].(int)
 	return params
 }
 
@@ -82959,9 +80113,7 @@ type UsersBlockParams struct {
 }
 
 func unpackUsersBlockParams(packed map[string]any) (params UsersBlockParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -83005,9 +80157,7 @@ type UsersCheckBlockedParams struct {
 }
 
 func unpackUsersCheckBlockedParams(packed map[string]any) (params UsersCheckBlockedParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -83052,12 +80202,8 @@ type UsersCheckFollowingForUserParams struct {
 }
 
 func unpackUsersCheckFollowingForUserParams(packed map[string]any) (params UsersCheckFollowingForUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
-	if v, ok := packed["target_user"]; ok {
-		params.TargetUser, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
+	params.TargetUser = packed["target_user"].(string)
 	return params
 }
 
@@ -83132,9 +80278,7 @@ type UsersCheckPersonIsFollowedByAuthenticatedParams struct {
 }
 
 func unpackUsersCheckPersonIsFollowedByAuthenticatedParams(packed map[string]any) (params UsersCheckPersonIsFollowedByAuthenticatedParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -83179,9 +80323,7 @@ type UsersDeleteGpgKeyForAuthenticatedParams struct {
 }
 
 func unpackUsersDeleteGpgKeyForAuthenticatedParams(packed map[string]any) (params UsersDeleteGpgKeyForAuthenticatedParams) {
-	if v, ok := packed["gpg_key_id"]; ok {
-		params.GpgKeyID, _ = v.(int)
-	}
+	params.GpgKeyID = packed["gpg_key_id"].(int)
 	return params
 }
 
@@ -83226,9 +80368,7 @@ type UsersDeletePublicSSHKeyForAuthenticatedParams struct {
 }
 
 func unpackUsersDeletePublicSSHKeyForAuthenticatedParams(packed map[string]any) (params UsersDeletePublicSSHKeyForAuthenticatedParams) {
-	if v, ok := packed["key_id"]; ok {
-		params.KeyID, _ = v.(int)
-	}
+	params.KeyID = packed["key_id"].(int)
 	return params
 }
 
@@ -83272,9 +80412,7 @@ type UsersFollowParams struct {
 }
 
 func unpackUsersFollowParams(packed map[string]any) (params UsersFollowParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -83318,9 +80456,7 @@ type UsersGetByUsernameParams struct {
 }
 
 func unpackUsersGetByUsernameParams(packed map[string]any) (params UsersGetByUsernameParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -83369,14 +80505,12 @@ type UsersGetContextForUserParams struct {
 }
 
 func unpackUsersGetContextForUserParams(packed map[string]any) (params UsersGetContextForUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	if v, ok := packed["subject_type"]; ok {
-		params.SubjectType, _ = v.(OptUsersGetContextForUserSubjectType)
+		params.SubjectType = v.(OptUsersGetContextForUserSubjectType)
 	}
 	if v, ok := packed["subject_id"]; ok {
-		params.SubjectID, _ = v.(OptString)
+		params.SubjectID = v.(OptString)
 	}
 	return params
 }
@@ -83506,9 +80640,7 @@ type UsersGetGpgKeyForAuthenticatedParams struct {
 }
 
 func unpackUsersGetGpgKeyForAuthenticatedParams(packed map[string]any) (params UsersGetGpgKeyForAuthenticatedParams) {
-	if v, ok := packed["gpg_key_id"]; ok {
-		params.GpgKeyID, _ = v.(int)
-	}
+	params.GpgKeyID = packed["gpg_key_id"].(int)
 	return params
 }
 
@@ -83553,9 +80685,7 @@ type UsersGetPublicSSHKeyForAuthenticatedParams struct {
 }
 
 func unpackUsersGetPublicSSHKeyForAuthenticatedParams(packed map[string]any) (params UsersGetPublicSSHKeyForAuthenticatedParams) {
-	if v, ok := packed["key_id"]; ok {
-		params.KeyID, _ = v.(int)
-	}
+	params.KeyID = packed["key_id"].(int)
 	return params
 }
 
@@ -83603,10 +80733,10 @@ type UsersListParams struct {
 
 func unpackUsersListParams(packed map[string]any) (params UsersListParams) {
 	if v, ok := packed["since"]; ok {
-		params.Since, _ = v.(OptInt)
+		params.Since = v.(OptInt)
 	}
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	return params
 }
@@ -83698,10 +80828,10 @@ type UsersListEmailsForAuthenticatedParams struct {
 
 func unpackUsersListEmailsForAuthenticatedParams(packed map[string]any) (params UsersListEmailsForAuthenticatedParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -83798,10 +80928,10 @@ type UsersListFollowedByAuthenticatedParams struct {
 
 func unpackUsersListFollowedByAuthenticatedParams(packed map[string]any) (params UsersListFollowedByAuthenticatedParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -83898,10 +81028,10 @@ type UsersListFollowersForAuthenticatedUserParams struct {
 
 func unpackUsersListFollowersForAuthenticatedUserParams(packed map[string]any) (params UsersListFollowersForAuthenticatedUserParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -83998,14 +81128,12 @@ type UsersListFollowersForUserParams struct {
 }
 
 func unpackUsersListFollowersForUserParams(packed map[string]any) (params UsersListFollowersForUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -84133,14 +81261,12 @@ type UsersListFollowingForUserParams struct {
 }
 
 func unpackUsersListFollowingForUserParams(packed map[string]any) (params UsersListFollowingForUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -84268,10 +81394,10 @@ type UsersListGpgKeysForAuthenticatedParams struct {
 
 func unpackUsersListGpgKeysForAuthenticatedParams(packed map[string]any) (params UsersListGpgKeysForAuthenticatedParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -84368,14 +81494,12 @@ type UsersListGpgKeysForUserParams struct {
 }
 
 func unpackUsersListGpgKeysForUserParams(packed map[string]any) (params UsersListGpgKeysForUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -84503,10 +81627,10 @@ type UsersListPublicEmailsForAuthenticatedParams struct {
 
 func unpackUsersListPublicEmailsForAuthenticatedParams(packed map[string]any) (params UsersListPublicEmailsForAuthenticatedParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -84603,14 +81727,12 @@ type UsersListPublicKeysForUserParams struct {
 }
 
 func unpackUsersListPublicKeysForUserParams(packed map[string]any) (params UsersListPublicKeysForUserParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -84738,10 +81860,10 @@ type UsersListPublicSSHKeysForAuthenticatedParams struct {
 
 func unpackUsersListPublicSSHKeysForAuthenticatedParams(packed map[string]any) (params UsersListPublicSSHKeysForAuthenticatedParams) {
 	if v, ok := packed["per_page"]; ok {
-		params.PerPage, _ = v.(OptInt)
+		params.PerPage = v.(OptInt)
 	}
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -84834,9 +81956,7 @@ type UsersUnblockParams struct {
 }
 
 func unpackUsersUnblockParams(packed map[string]any) (params UsersUnblockParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	return params
 }
 
@@ -84880,9 +82000,7 @@ type UsersUnfollowParams struct {
 }
 
 func unpackUsersUnfollowParams(packed map[string]any) (params UsersUnfollowParams) {
-	if v, ok := packed["username"]; ok {
-		params.Username, _ = v.(string)
-	}
+	params.Username = packed["username"].(string)
 	return params
 }
 

@@ -16,9 +16,7 @@ type CombinedParams struct {
 }
 
 func unpackCombinedParams(packed map[string]any) (params CombinedParams) {
-	if v, ok := packed["type"]; ok {
-		params.Type, _ = v.(CombinedType)
-	}
+	params.Type = packed["type"].(CombinedType)
 	return params
 }
 
@@ -69,9 +67,7 @@ type HeadersCombinedParams struct {
 }
 
 func unpackHeadersCombinedParams(packed map[string]any) (params HeadersCombinedParams) {
-	if v, ok := packed["type"]; ok {
-		params.Type, _ = v.(HeadersCombinedType)
-	}
+	params.Type = packed["type"].(HeadersCombinedType)
 	return params
 }
 
@@ -122,9 +118,7 @@ type IntersectPatternCodeParams struct {
 }
 
 func unpackIntersectPatternCodeParams(packed map[string]any) (params IntersectPatternCodeParams) {
-	if v, ok := packed["code"]; ok {
-		params.Code, _ = v.(int)
-	}
+	params.Code = packed["code"].(int)
 	return params
 }
 

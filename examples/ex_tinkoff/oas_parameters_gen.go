@@ -24,18 +24,10 @@ type MarketCandlesGetParams struct {
 }
 
 func unpackMarketCandlesGetParams(packed map[string]any) (params MarketCandlesGetParams) {
-	if v, ok := packed["figi"]; ok {
-		params.Figi, _ = v.(string)
-	}
-	if v, ok := packed["from"]; ok {
-		params.From, _ = v.(time.Time)
-	}
-	if v, ok := packed["to"]; ok {
-		params.To, _ = v.(time.Time)
-	}
-	if v, ok := packed["interval"]; ok {
-		params.Interval, _ = v.(CandleResolution)
-	}
+	params.Figi = packed["figi"].(string)
+	params.From = packed["from"].(time.Time)
+	params.To = packed["to"].(time.Time)
+	params.Interval = packed["interval"].(CandleResolution)
 	return params
 }
 
@@ -176,12 +168,8 @@ type MarketOrderbookGetParams struct {
 }
 
 func unpackMarketOrderbookGetParams(packed map[string]any) (params MarketOrderbookGetParams) {
-	if v, ok := packed["figi"]; ok {
-		params.Figi, _ = v.(string)
-	}
-	if v, ok := packed["depth"]; ok {
-		params.Depth, _ = v.(int32)
-	}
+	params.Figi = packed["figi"].(string)
+	params.Depth = packed["depth"].(int32)
 	return params
 }
 
@@ -254,9 +242,7 @@ type MarketSearchByFigiGetParams struct {
 }
 
 func unpackMarketSearchByFigiGetParams(packed map[string]any) (params MarketSearchByFigiGetParams) {
-	if v, ok := packed["figi"]; ok {
-		params.Figi, _ = v.(string)
-	}
+	params.Figi = packed["figi"].(string)
 	return params
 }
 
@@ -300,9 +286,7 @@ type MarketSearchByTickerGetParams struct {
 }
 
 func unpackMarketSearchByTickerGetParams(packed map[string]any) (params MarketSearchByTickerGetParams) {
-	if v, ok := packed["ticker"]; ok {
-		params.Ticker, _ = v.(string)
-	}
+	params.Ticker = packed["ticker"].(string)
 	return params
 }
 
@@ -352,17 +336,13 @@ type OperationsGetParams struct {
 }
 
 func unpackOperationsGetParams(packed map[string]any) (params OperationsGetParams) {
-	if v, ok := packed["from"]; ok {
-		params.From, _ = v.(time.Time)
-	}
-	if v, ok := packed["to"]; ok {
-		params.To, _ = v.(time.Time)
-	}
+	params.From = packed["from"].(time.Time)
+	params.To = packed["to"].(time.Time)
 	if v, ok := packed["figi"]; ok {
-		params.Figi, _ = v.(OptString)
+		params.Figi = v.(OptString)
 	}
 	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId, _ = v.(OptString)
+		params.BrokerAccountId = v.(OptString)
 	}
 	return params
 }
@@ -506,11 +486,9 @@ type OrdersCancelPostParams struct {
 }
 
 func unpackOrdersCancelPostParams(packed map[string]any) (params OrdersCancelPostParams) {
-	if v, ok := packed["orderId"]; ok {
-		params.OrderId, _ = v.(string)
-	}
+	params.OrderId = packed["orderId"].(string)
 	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId, _ = v.(OptString)
+		params.BrokerAccountId = v.(OptString)
 	}
 	return params
 }
@@ -590,7 +568,7 @@ type OrdersGetParams struct {
 
 func unpackOrdersGetParams(packed map[string]any) (params OrdersGetParams) {
 	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId, _ = v.(OptString)
+		params.BrokerAccountId = v.(OptString)
 	}
 	return params
 }
@@ -642,11 +620,9 @@ type OrdersLimitOrderPostParams struct {
 }
 
 func unpackOrdersLimitOrderPostParams(packed map[string]any) (params OrdersLimitOrderPostParams) {
-	if v, ok := packed["figi"]; ok {
-		params.Figi, _ = v.(string)
-	}
+	params.Figi = packed["figi"].(string)
 	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId, _ = v.(OptString)
+		params.BrokerAccountId = v.(OptString)
 	}
 	return params
 }
@@ -728,11 +704,9 @@ type OrdersMarketOrderPostParams struct {
 }
 
 func unpackOrdersMarketOrderPostParams(packed map[string]any) (params OrdersMarketOrderPostParams) {
-	if v, ok := packed["figi"]; ok {
-		params.Figi, _ = v.(string)
-	}
+	params.Figi = packed["figi"].(string)
 	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId, _ = v.(OptString)
+		params.BrokerAccountId = v.(OptString)
 	}
 	return params
 }
@@ -812,7 +786,7 @@ type PortfolioCurrenciesGetParams struct {
 
 func unpackPortfolioCurrenciesGetParams(packed map[string]any) (params PortfolioCurrenciesGetParams) {
 	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId, _ = v.(OptString)
+		params.BrokerAccountId = v.(OptString)
 	}
 	return params
 }
@@ -863,7 +837,7 @@ type PortfolioGetParams struct {
 
 func unpackPortfolioGetParams(packed map[string]any) (params PortfolioGetParams) {
 	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId, _ = v.(OptString)
+		params.BrokerAccountId = v.(OptString)
 	}
 	return params
 }
@@ -914,7 +888,7 @@ type SandboxClearPostParams struct {
 
 func unpackSandboxClearPostParams(packed map[string]any) (params SandboxClearPostParams) {
 	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId, _ = v.(OptString)
+		params.BrokerAccountId = v.(OptString)
 	}
 	return params
 }
@@ -965,7 +939,7 @@ type SandboxCurrenciesBalancePostParams struct {
 
 func unpackSandboxCurrenciesBalancePostParams(packed map[string]any) (params SandboxCurrenciesBalancePostParams) {
 	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId, _ = v.(OptString)
+		params.BrokerAccountId = v.(OptString)
 	}
 	return params
 }
@@ -1016,7 +990,7 @@ type SandboxPositionsBalancePostParams struct {
 
 func unpackSandboxPositionsBalancePostParams(packed map[string]any) (params SandboxPositionsBalancePostParams) {
 	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId, _ = v.(OptString)
+		params.BrokerAccountId = v.(OptString)
 	}
 	return params
 }
@@ -1067,7 +1041,7 @@ type SandboxRemovePostParams struct {
 
 func unpackSandboxRemovePostParams(packed map[string]any) (params SandboxRemovePostParams) {
 	if v, ok := packed["brokerAccountId"]; ok {
-		params.BrokerAccountId, _ = v.(OptString)
+		params.BrokerAccountId = v.(OptString)
 	}
 	return params
 }

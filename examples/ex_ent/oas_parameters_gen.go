@@ -17,9 +17,7 @@ type CreatePetCategoriesParams struct {
 }
 
 func unpackCreatePetCategoriesParams(packed map[string]any) (params CreatePetCategoriesParams) {
-	if v, ok := packed["id"]; ok {
-		params.ID, _ = v.(int)
-	}
+	params.ID = packed["id"].(int)
 	return params
 }
 
@@ -64,9 +62,7 @@ type CreatePetFriendsParams struct {
 }
 
 func unpackCreatePetFriendsParams(packed map[string]any) (params CreatePetFriendsParams) {
-	if v, ok := packed["id"]; ok {
-		params.ID, _ = v.(int)
-	}
+	params.ID = packed["id"].(int)
 	return params
 }
 
@@ -111,9 +107,7 @@ type CreatePetOwnerParams struct {
 }
 
 func unpackCreatePetOwnerParams(packed map[string]any) (params CreatePetOwnerParams) {
-	if v, ok := packed["id"]; ok {
-		params.ID, _ = v.(int)
-	}
+	params.ID = packed["id"].(int)
 	return params
 }
 
@@ -158,9 +152,7 @@ type DeletePetParams struct {
 }
 
 func unpackDeletePetParams(packed map[string]any) (params DeletePetParams) {
-	if v, ok := packed["id"]; ok {
-		params.ID, _ = v.(int)
-	}
+	params.ID = packed["id"].(int)
 	return params
 }
 
@@ -205,9 +197,7 @@ type DeletePetOwnerParams struct {
 }
 
 func unpackDeletePetOwnerParams(packed map[string]any) (params DeletePetOwnerParams) {
-	if v, ok := packed["id"]; ok {
-		params.ID, _ = v.(int)
-	}
+	params.ID = packed["id"].(int)
 	return params
 }
 
@@ -255,10 +245,10 @@ type ListPetParams struct {
 
 func unpackListPetParams(packed map[string]any) (params ListPetParams) {
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt32)
+		params.Page = v.(OptInt32)
 	}
 	if v, ok := packed["itemsPerPage"]; ok {
-		params.ItemsPerPage, _ = v.(OptInt32)
+		params.ItemsPerPage = v.(OptInt32)
 	}
 	return params
 }
@@ -346,14 +336,12 @@ type ListPetCategoriesParams struct {
 }
 
 func unpackListPetCategoriesParams(packed map[string]any) (params ListPetCategoriesParams) {
-	if v, ok := packed["id"]; ok {
-		params.ID, _ = v.(int)
-	}
+	params.ID = packed["id"].(int)
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt32)
+		params.Page = v.(OptInt32)
 	}
 	if v, ok := packed["itemsPerPage"]; ok {
-		params.ItemsPerPage, _ = v.(OptInt32)
+		params.ItemsPerPage = v.(OptInt32)
 	}
 	return params
 }
@@ -472,14 +460,12 @@ type ListPetFriendsParams struct {
 }
 
 func unpackListPetFriendsParams(packed map[string]any) (params ListPetFriendsParams) {
-	if v, ok := packed["id"]; ok {
-		params.ID, _ = v.(int)
-	}
+	params.ID = packed["id"].(int)
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt32)
+		params.Page = v.(OptInt32)
 	}
 	if v, ok := packed["itemsPerPage"]; ok {
-		params.ItemsPerPage, _ = v.(OptInt32)
+		params.ItemsPerPage = v.(OptInt32)
 	}
 	return params
 }
@@ -594,9 +580,7 @@ type ReadPetParams struct {
 }
 
 func unpackReadPetParams(packed map[string]any) (params ReadPetParams) {
-	if v, ok := packed["id"]; ok {
-		params.ID, _ = v.(int)
-	}
+	params.ID = packed["id"].(int)
 	return params
 }
 
@@ -641,9 +625,7 @@ type ReadPetOwnerParams struct {
 }
 
 func unpackReadPetOwnerParams(packed map[string]any) (params ReadPetOwnerParams) {
-	if v, ok := packed["id"]; ok {
-		params.ID, _ = v.(int)
-	}
+	params.ID = packed["id"].(int)
 	return params
 }
 
@@ -688,9 +670,7 @@ type UpdatePetParams struct {
 }
 
 func unpackUpdatePetParams(packed map[string]any) (params UpdatePetParams) {
-	if v, ok := packed["id"]; ok {
-		params.ID, _ = v.(int)
-	}
+	params.ID = packed["id"].(int)
 	return params
 }
 
