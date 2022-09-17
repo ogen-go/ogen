@@ -3,6 +3,8 @@ package internal
 import (
 	"bytes"
 	"context"
+	"crypto/sha256"
+	"encoding/hex"
 	"fmt"
 	"io"
 	"net/http"
@@ -97,6 +99,23 @@ func (s *testMiddleware) PetUploadAvatarByID(
 	return &api.PetUploadAvatarByIDOK{}, nil
 }
 
+func (s *testMiddleware) GetHeader(ctx context.Context, params api.GetHeaderParams) (api.Hash, error) {
+	h := sha256.Sum256([]byte(params.XAuthToken))
+	return api.Hash{
+		Raw: h[:],
+		Hex: hex.EncodeToString(h[:]),
+	}, nil
+}
+
+func (s *testMiddleware) ErrorGet(ctx context.Context) (api.ErrorStatusCode, error) {
+	return api.ErrorStatusCode{
+		StatusCode: http.StatusInternalServerError,
+		Response: api.Error{
+			Message: "test_error",
+		},
+	}, nil
+}
+
 func TestMiddleware(t *testing.T) {
 	a := require.New(t)
 	ctx := context.Background()
@@ -107,6 +126,12 @@ func TestMiddleware(t *testing.T) {
 			return zapcore.NewTee(orig, observerCore)
 		}),
 	)
+	checkLog := func(a *require.Assertions) {
+		entries := logs.TakeAll()
+		a.Len(entries, 3)
+		a.Equal("Handling request", entries[0].Message)
+		a.Equal("Success", entries[2].Message)
+	}
 
 	handler := &testMiddleware{}
 	h, err := api.NewServer(handler, handler,
@@ -123,6 +148,9 @@ func TestMiddleware(t *testing.T) {
 	client, err := api.NewClient(s.URL, handler, api.WithClient(s.Client()))
 	a.NoError(err)
 
+	// Test an endpoint with params and body.
+	//
+	// Check that request was modified.
 	stream := api.PetUploadAvatarByIDReq{
 		Data: io.NopCloser(bytes.NewReader(petAvatar)),
 	}
@@ -131,8 +159,22 @@ func TestMiddleware(t *testing.T) {
 	})
 	a.NoError(err)
 	a.Equal(&api.PetUploadAvatarByIDOK{}, got)
+	checkLog(a)
 
-	entries := logs.All()
-	a.Len(entries, 3)
-	a.Equal("Handling request", entries[0].Message)
+	// Test an endpoint with params only.
+	const token = "test_token"
+	hash, err := client.GetHeader(ctx, api.GetHeaderParams{
+		XAuthToken: token,
+	})
+	a.NoError(err)
+	sum := sha256.Sum256([]byte(token))
+	a.Equal(sum[:], hash.Raw)
+	checkLog(a)
+
+	// Test an endpoint without params and body.
+	code, err := client.ErrorGet(ctx)
+	a.NoError(err)
+	a.Equal(http.StatusInternalServerError, code.StatusCode)
+	a.Equal("test_error", code.Response.Message)
+	checkLog(a)
 }

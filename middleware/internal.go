@@ -12,7 +12,10 @@ func HookMiddleware[RequestType, ParamsType, ResponseType any](
 	cb func(context.Context, RequestType, ParamsType) (ResponseType, error),
 ) (r ResponseType, err error) {
 	next := func(req Request) (Response, error) {
-		request := req.Body.(RequestType)
+		var request RequestType
+		if body := req.Body; body != nil {
+			request = body.(RequestType)
+		}
 		var params ParamsType
 		if unpack != nil {
 			params = unpack(req.Params)
