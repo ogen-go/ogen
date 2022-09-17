@@ -14,7 +14,7 @@ type Request struct {
 	OperationName string
 	// OperationID is the spec operation ID, if any.
 	OperationID string
-	// Body is the operation request body. May be nil, if the operation has no body.
+	// Body is the operation request body. May be nil, if the operation has not body.
 	Body any
 	// Params is the operation parameters.
 	Params map[string]any
