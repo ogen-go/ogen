@@ -20,6 +20,7 @@ import (
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
 	"github.com/ogen-go/ogen/internal/location"
+	"github.com/ogen-go/ogen/internal/ogenversion"
 	"github.com/ogen-go/ogen/internal/ogenzap"
 )
 
@@ -132,6 +133,7 @@ func run() error {
 	}
 
 	var (
+		// Generator options.
 		targetDir         = set.String("target", "api", "Path to target dir")
 		packageName       = set.String("package", "api", "Target package name")
 		inferTypes        = set.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
@@ -142,16 +144,21 @@ func run() error {
 		skipUnimplemented = set.Bool("skip-unimplemented", false, "Disables generation of UnimplementedHandler")
 		noClient          = set.Bool("no-client", false, "Disables client generation")
 		noServer          = set.Bool("no-server", false, "Disables server generation")
-
+		// Debug options.
 		debugIgnoreNotImplemented = set.String("debug.ignoreNotImplemented", "",
 			"Ignore methods having functionality which is not implemented")
 		debugNoerr = set.Bool("debug.noerr", false, "Ignore errors")
 
+		// Logging options.
 		logOptions ogenzap.Options
 
+		// Profile options.
 		cpuProfile     = set.String("cpuprofile", "", "Write cpu profile to file")
 		memProfile     = set.String("memprofile", "", "Write memory profile to this file")
 		memProfileRate = set.Int("memprofilerate", -1, "If > 0, sets runtime.MemProfileRate")
+
+		// Version option.
+		version = set.Bool("version", false, "Print version and exit")
 	)
 	logOptions.RegisterFlags(set)
 
@@ -179,6 +186,12 @@ func run() error {
 
 	if err := set.Parse(os.Args[1:]); err != nil {
 		return err
+	}
+
+	if *version {
+		info, _ := ogenversion.GetInfo()
+		fmt.Println(info)
+		return nil
 	}
 
 	specPath := set.Arg(0)
