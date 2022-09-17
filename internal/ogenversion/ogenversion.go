@@ -15,6 +15,13 @@ var getOnce struct {
 	once sync.Once
 }
 
+func getOgenVersion(m *debug.Module) (string, bool) {
+	if m == nil || m.Path != "github.com/ogen-go/ogen" {
+		return "", false
+	}
+	return m.Version, true
+}
+
 func getInfo() (Info, bool) {
 	getOnce.once.Do(func() {
 		bi, ok := debug.ReadBuildInfo()
@@ -23,15 +30,29 @@ func getInfo() (Info, bool) {
 			return
 		}
 
-		getOnce.info.Version = bi.Main.Version
+		var ogenIsDep bool
+		if v, ok := getOgenVersion(&bi.Main); ok {
+			getOnce.info.Version = v
+		} else {
+			ogenIsDep = true
+			for _, m := range bi.Deps {
+				if v, ok := getOgenVersion(m); ok {
+					getOnce.info.Version = v
+					break
+				}
+			}
+		}
 		getOnce.info.GoVersion = bi.GoVersion
-		for _, s := range bi.Settings {
-			switch s.Key {
-			case "vcs.revision":
-				getOnce.info.Commit = s.Value
-			case "vcs.time":
-				if t, err := time.Parse(time.RFC3339Nano, s.Value); err == nil {
-					getOnce.info.Time = t
+		if !ogenIsDep {
+			// ogen is the main module, so we can use buildvcs data.
+			for _, s := range bi.Settings {
+				switch s.Key {
+				case "vcs.revision":
+					getOnce.info.Commit = s.Value
+				case "vcs.time":
+					if t, err := time.Parse(time.RFC3339Nano, s.Value); err == nil {
+						getOnce.info.Time = t
+					}
 				}
 			}
 		}
@@ -39,7 +60,7 @@ func getInfo() (Info, bool) {
 	return getOnce.info, getOnce.ok
 }
 
-// Info is the build information.
+// Info is the ogen build information.
 type Info struct {
 	// Version is the version of the ogen tool.
 	Version string
@@ -52,7 +73,7 @@ type Info struct {
 	Time time.Time
 }
 
-// GetInfo returns the build information.
+// GetInfo returns the ogen build information.
 func GetInfo() (Info, bool) {
 	return getInfo()
 }
