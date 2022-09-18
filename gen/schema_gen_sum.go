@@ -63,6 +63,10 @@ func ensureNoInfiniteRecursion(parent *jsonschema.Schema) error {
 	var do func(map[string]struct{}, []*jsonschema.Schema) error
 	do = func(ctx map[string]struct{}, schemas []*jsonschema.Schema) error {
 		for i, s := range schemas {
+			if s == nil {
+				// Just skip nil schemas. We handle them later.
+				continue
+			}
 			if ref := s.Ref; ref != "" {
 				if _, ok := ctx[ref]; ok {
 					return errors.Errorf("reference %q [%d] leads to infinite recursion", ref, i)
